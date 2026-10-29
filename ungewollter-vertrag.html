@@ -23,7 +23,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Ungewollt einen Vertrag am Hals? · KI-Macherei">
   <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:description" content="An der Tür, am Telefon oder online, und plötzlich hast du einen Vertrag, den du nicht wolltest.">
+  <meta property="og:description" content="An der Tür, am Telefon oder online, und plötzlich hast du einen Vertrag, den du nicht wolltest. Die KI rechnet aus, bis wann du raus kannst, oft länger als gedacht, und schreibt den Brief, der auch schon gezahltes Geld zurückfordert.">
   <meta property="og:url" content="https://die-ki-macherei.de/ungewollter-vertrag">
   <meta property="og:type" content="website">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -2100,6 +2100,246 @@ body { padding-bottom: 0; }
   .ra-brauchst li.v57-i > .v57-sym--ki svg { width: 15px; height: 15px; fill: currentColor; stroke: none; }
   .ra-brauchst li.v57-ki { padding-left: 40px; }
 </style>
+
+<style>
+/* Runde 64 (Jim, 29.10.2026): Use-Case-Seite aufgeräumt (Pam, Bauauftrag Runde 64) */
+.r64 .ra-kurztext { max-width: 32em; }
+.r64-erg .ra-zettel { padding: 18px 14px 16px; }
+.r64-erg h2 { margin: 0 0 12px; font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: 0; text-transform: none; }
+.r64-entwuerfe { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 0; }
+.r64-entwuerfe figure { margin: 0; text-align: center; }
+.r64-entwuerfe svg { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 1px 2px rgb(60 40 20 / .14); }
+.r64-entwuerfe figcaption { margin-top: 6px; font-size: 14px; font-weight: 600; line-height: 1.25; color: var(--ink); hyphens: manual; }
+.r64-erg-satz { margin: 12px 0 0; font-size: 16px; line-height: 1.45; color: var(--ink); text-wrap: pretty; }
+.r64-erg-satz b { font-weight: 800; }
+.r64 .ra-schritte li p .r64-klein { display: block; margin-top: 2px; font-size: 16px; line-height: 1.45; opacity: .92; }
+.r64-schilder { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.r64-schilder li { display: inline-flex; align-items: center; min-height: 32px; padding: 4px 12px; border-radius: 999px; font-size: 15px; font-weight: 650; color: #fff; background: rgb(0 0 0 / .22); }
+.r64-schilder li.r64-frei { flex-basis: 100%; padding: 0; min-height: 0; background: none; gap: 6px; font-weight: 500; }
+.r64-schilder .ra-marke { margin: 0; }
+.r64 .ra-links { margin: -4px 0 0 !important; }
+/* Ebene „Noch nicht bei ChatGPT angemeldet?“ mit weichgezeichnetem hellem Grund (Lehre 27.10.) */
+.r64-ebene { width: min(calc(100% - 32px), 460px); padding: 28px 24px 24px; border: 0; border-radius: 22px; background: #fbf8f3; color: #23201c; box-shadow: 0 30px 60px -28px rgb(60 45 25 / .45); font-family: Figtree, "Avenir Next", "Helvetica Neue", Arial, sans-serif; }
+.r64-ebene::backdrop { background: rgb(250 247 242 / .35); -webkit-backdrop-filter: blur(18px) saturate(1.05); backdrop-filter: blur(18px) saturate(1.05); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .r64-ebene::backdrop { background: rgb(246 242 236 / .94); } }
+.r64-ebene h2 { margin: 0 44px 10px 0; font-size: 20px; font-weight: 700; line-height: 1.3; }
+.r64-ebene p { margin: 0; font-size: 17px; line-height: 1.5; }
+.r64-zu { position: absolute; right: 8px; top: 8px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; color: inherit; font: 400 26px/1 Figtree, system-ui, sans-serif; cursor: pointer; }
+.r64-zu:focus-visible, .r64-rk button:focus-visible, .r64-rk a:focus-visible { outline: 2px solid #1c4a4f; outline-offset: 3px; }
+/* Rückkehr-Karte */
+.r64-rk { position: relative; margin: 16px var(--gutter) 4px; padding: 20px 18px 14px; border-radius: 24px; background: #fbf7f0; color: #2c2420; box-shadow: 0 10px 30px rgb(60 40 20 / .18); overflow: hidden; }
+.r64-rk[hidden], .r64-rk [hidden] { display: none !important; }
+.r64-rk-zeile { margin: 0 44px 4px 0; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #8a5a3b; }
+.r64-rk h2 { margin: 0 44px 14px 0; font-size: 23px; font-weight: 700; line-height: 1.25; color: #2c2420; letter-spacing: 0; text-transform: none; }
+.r64-rk-knoepfe { display: grid; gap: 10px; }
+.r64-rk-k { display: flex; align-items: center; width: 100%; min-height: 52px; margin: 0; padding: 12px 16px; border: 0; border-radius: 16px; font: 600 17px/1.3 inherit; font-family: inherit; text-align: left; color: #2c2420; background: #fff; box-shadow: 0 1px 0 rgb(0 0 0 / .08); cursor: pointer; }
+.r64-rk-k.r64-haupt, .r64-rk-k[aria-expanded="true"] { color: #fff; background: #2c2420; }
+.r64-rk-antwort { margin: 8px 0 0; padding: 14px 16px; border-radius: 16px; background: #fff; font-size: 16px; line-height: 1.5; }
+.r64-rk-antwort a:not(.r64-los) { color: #2c2420; text-decoration: underline; text-underline-offset: 3px; display: inline-flex; align-items: center; min-height: 44px; }
+.r64-rk-aktion { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; margin: 12px 0 0; }
+.r64-los { display: inline-flex; align-items: center; min-height: 48px; padding: 10px 18px; border-radius: 999px; color: #fff; background: #2c2420; font-weight: 600; text-decoration: none; }
+.r64-leise { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; color: #2c2420; font: 600 16px/1.3 inherit; font-family: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgb(44 36 32 / .45); cursor: pointer; }
+.r64-rk-fuss { margin: 6px 0 0; }
+/* Rückmeldung */
+.r64-rm-kopf { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.r64-rm-kopf h2 { margin-bottom: 4px; font-size: 20px; }
+.r64-rm-kopf .r64-leise { flex: none; margin-top: -10px; }
+.r64-rm-unter { margin: 0 0 12px; font-size: 16px; color: #5c5047; }
+.r64-punkte { display: flex; gap: 8px; margin: 0 0 14px; padding: 0; list-style: none; }
+.r64-punkte li { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--fc, #592c1d); transition: background .2s; }
+.r64-punkte li.voll { background: var(--fc, #592c1d); }
+.r64-frage { margin: 0 0 10px; font-size: 18px; font-weight: 700; line-height: 1.3; }
+.r64-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.r64-chip { min-height: 48px; padding: 10px 18px; border: 1.5px solid #cfc3b6; border-radius: 999px; background: #fff; color: #2c2420; font: 600 17px/1.2 inherit; font-family: inherit; cursor: pointer; }
+.r64-chip[aria-pressed="true"] { color: #fff; background: #2c2420; border-color: #2c2420; animation: r64-feder .15s ease-out; }
+@keyframes r64-feder { from { transform: scale(.96); } to { transform: scale(1); } }
+.r64-schritt { animation: r64-rein .25s ease-out; }
+@keyframes r64-rein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.r64-feld label { display: block; margin: 0 0 8px; font-size: 18px; font-weight: 700; }
+.r64-feld textarea { display: block; width: 100%; box-sizing: border-box; min-height: 48px; padding: 12px 14px; border: 1.5px solid #cfc3b6; border-radius: 14px; background: #fff; color: #2c2420; font: 400 17px/1.4 inherit; font-family: inherit; resize: none; overflow: hidden; }
+.r64-feld textarea:focus-visible { outline: 2px solid #1c4a4f; outline-offset: 2px; }
+.r64-feld-klein { margin: 6px 0 0; font-size: 14px; line-height: 1.4; color: #5c5047; }
+.r64-feld .r64-rk-aktion { margin-top: 8px; }
+.r64-feld button.r64-los { border: 0; font: 600 17px/1.2 inherit; font-family: inherit; cursor: pointer; }
+.r64-dank { position: relative; text-align: center; padding: 8px 0 4px; }
+.r64-haken { display: grid; place-items: center; width: 52px; height: 52px; margin: 4px auto 10px; border-radius: 50%; color: #fff; background: var(--fc, #592c1d); }
+.r64-haken svg { width: 28px; height: 28px; }
+.r64-dank p { margin: 0 0 4px; font-size: 18px; font-weight: 700; line-height: 1.35; }
+.r64-dank a { color: #2c2420; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; display: inline-flex; align-items: center; min-height: 44px; }
+.r64-konfetti { position: absolute; left: 50%; top: 30px; width: 8px; height: 8px; border-radius: 2px; pointer-events: none; animation: r64-flug .8s cubic-bezier(.2,.7,.3,1) forwards; }
+/* Abnahme Pam, Punkt 3: volle Deckkraft im Flug, erst ganz am Ende ausblenden */
+@keyframes r64-flug { from { transform: translate(-50%, 0) rotate(0); opacity: 1; } 85% { opacity: 1; } to { transform: translate(calc(-50% + var(--x)), var(--y)) rotate(var(--r)); opacity: 0; } }
+.r64-danke-zeile { margin-inline: var(--gutter) !important; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 14px; padding: 0 0 0 16px; border-radius: 999px; background: rgb(255 255 255 / .92); color: #2c2420; font-size: 16px; font-weight: 600; }
+.r64-danke-zeile .r64-zu { position: static; }
+/* Startleiste erst, wenn der Knopf oben aus dem Bild ist, und nie bei offener Rückkehr-Karte */
+html:not(.r64-vorbei) .r64 .ra-leiste, html.r64-rk-offen .r64 .ra-leiste { transform: translateY(140%) !important; visibility: hidden; }
+@media (prefers-reduced-motion: reduce) { .r64-chip[aria-pressed="true"], .r64-schritt { animation: none; } .r64-konfetti { display: none; } }
+/* Abnahme Pam, Punkt 2: unter 480 px vier Chips als 2 × 2, drei in einer Reihe, jeweils gleich breit; unter 360 passen drei nicht, dann untereinander */
+@media (max-width: 479px) {
+  .r64-chips { display: grid; gap: 8px 6px; }
+  .r64-chips[data-anzahl="4"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .r64-chips[data-anzahl="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .r64-chips[data-anzahl="3"] .r64-chip { padding-inline: 6px; }
+}
+@media (max-width: 359px) { .r64-chips[data-anzahl="3"] { grid-template-columns: minmax(0, 1fr); } }
+@media (min-width: 1024px) {
+  .r64 .ra-karte-innen { grid-template-columns: minmax(0, 58fr) minmax(0, 42fr); }
+  /* Abnahme Pam, Punkt 1: drei Schilder in einer Reihe, nur über Abstände (Schrift bleibt) */
+  .ra3.r64 .ra-handeln { padding-inline: 16px; }
+  .r64 .ra-schritte li { column-gap: 10px; }
+  .r64-schilder { gap: 8px 5px; }
+  .r64-schilder li:not(.r64-frei) { padding-inline: 7px; white-space: nowrap; font-size: 14px; }   /* Pam, Abnahme: 14 px, damit bei 1280 Luft bleibt */
+  .r64 .ra-hinweis { text-wrap: pretty; }
+  .r64-erg .ra-zettel { padding: 20px 20px 18px; }
+  .r64-entwuerfe { gap: 12px; }
+  .r64-rk { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); column-gap: 28px; align-items: start; margin: 0 0 26px; padding: 24px 28px 18px; }
+  .r64-rk > .r64-zu { z-index: 1; }
+  .r64-rk-teil { display: contents; }
+  /* Abnahme Pam (klein): „Prompt noch einmal kopieren“ direkt unter dem Titel; die Knöpfe rechts laufen über alle drei Zeilen */
+  .r64-rk:has(> [data-teil="hilfe"]:not([hidden])) { grid-template-rows: auto auto 1fr; }
+  .r64-rk-kopf { grid-column: 1; grid-row: 1; }
+  .r64-rk-knoepfe { grid-column: 2; grid-row: 1 / span 3; grid-template-columns: 1fr 1fr; margin-top: 30px; }
+  .r64-rk-fuss { grid-column: 1; grid-row: 2; margin-top: -8px; }
+  .r64-rm, .r64-dank, .r64-feld-teil { grid-column: 1 / -1; }
+  .r64-danke-zeile { grid-column: 1 / -1; margin-inline: 0 !important; }
+}
+</style>
+
+<style>
+/* Runde 70 (Jim, 29.10.2026): Raster und Blickführung (Pam, Skizzen a1 und a2). Abstandsreihe 8, 16, 24, 40, 64; Ausnahmen wie live: Innenrand 48, Überlappung 56 (Handy 28). */
+.ra3.r70 .ra-szene { margin: 0; }
+.ra3.r70 .ra-zurueck { margin: 0 0 8px 0; display: flex; width: 100%; box-sizing: border-box; }
+.r70-flaeche { display: none; }
+.ra3.r70 .ra-karte-innen { padding: 24px; row-gap: 24px; display: grid; grid-template-columns: minmax(0, 1fr); }
+.ra3.r70 .ra-lesen { padding: 0; gap: 16px; align-content: start; grid-template-columns: minmax(0, 1fr); }
+.ra3.r70 .ra-handeln { padding: 0; gap: 24px; align-content: start; grid-template-columns: minmax(0, 1fr); }
+.ra3.r70 .ra-kurztext, .ra3.r70.r64 .ra-kurztext { max-width: none; }
+.ra3.r70 .ra-meta { min-height: 44px; flex-wrap: wrap; }
+.ra3.r70 .ra-teilen + .ra-herz { margin-left: 0 !important; }
+.ra3.r70 .ra-meta .ra-teilen { margin-right: 0 !important; }
+.ra3.r70 .r64-rk, .ra3.r70 .r64-danke-zeile { margin: 0 !important; }
+.ra3.r70 .r64-danke-zeile { margin-inline: 0 !important; }
+
+/* Zettel: ohne Neigung, immer gleich hoch */
+.ra3.r70 .ra-ergebnis { padding: 8px 0 0; }
+.ra3.r70 .ra-zettel { transform: none; padding: 24px; box-sizing: border-box; height: var(--zettel-h, 264px); display: flex; flex-direction: column;
+  box-shadow: 0 1px 1px rgba(96,72,46,.12), 0 6px 12px -10px rgba(96,72,46,.28); }
+.ra3.r70 .ra-band { width: 64px; margin-left: -32px; top: -8px; height: 16px; }
+.ra3.r70 .ra-zettel h2 { margin: 0 0 8px; font-size: 18px; line-height: 24px; font-weight: 800; color: var(--ink); text-transform: none; letter-spacing: 0; }
+.ra3.r70 .r64-entwuerfe { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding-inline: 0; }
+.ra3.r70 .r64-entwuerfe svg { filter: saturate(.5); opacity: .92; box-shadow: none; height: 88px; }
+.ra3.r70 .r64-entwuerfe figcaption { margin-top: 8px; font-size: 14px; font-weight: 600; color: var(--ink-soft); }
+.ra3.r70 .r64-erg-satz { margin: 16px 0 0; font-size: 16px; line-height: 1.45; }
+.r70-beispiel { margin: 0 0 8px; font-size: 13px; line-height: 16px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.r70-liste { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.r70-liste li { display: flex; align-items: center; gap: 16px; min-height: 28px; padding: 0 8px; border-top: 1px solid var(--line); border-radius: 8px; font-size: 16px; line-height: 1.3; color: var(--ink); }
+.r70-liste li > span { flex: 1 1 auto; font-weight: 550; }
+.r70-liste small { display: inline; font-size: 13.5px; font-weight: 450; color: var(--muted); }
+.r70-liste b { flex: none; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 6.2ch; text-align: right; }
+.r70-liste em { flex: none; font-style: normal; font-size: 13px; font-weight: 800; padding: 4px 8px; border-radius: 999px; color: #fff; background: var(--fc); }
+.r70-liste li:first-child { border-top: 0; }
+.r70-liste li.r70-weg { background: color-mix(in srgb, var(--fa) 34%, #fff); }
+.r70-summe { margin: 8px 0 0; padding: 8px 16px; border-radius: 8px; font-size: 18px; line-height: 1.3; color: #2f4a26; background: var(--frei-bg); }
+.r70-summe b { font-weight: 800; }
+
+/* Schilder unter Titelzeile der linken Spalte */
+.ra3.r70 .r64-schilder { gap: 8px; }
+.ra3.r70 .r64-schilder li:not(.r64-frei) { padding-inline: 16px; white-space: nowrap; font-size: 14px; }
+.ra3.r70 .r64-schilder li.r64-frei { padding: 0; white-space: normal; }
+
+/* Rechte Spalte */
+.ra3.r70 .ra-schritte h2 { margin: 0 0 16px; }
+.ra3.r70 .ra-schritte li { grid-template-columns: 40px minmax(0, 1fr); column-gap: 16px; row-gap: 0; padding: 0 0 24px; }
+.ra3.r70 .ra-schritte li:last-child { padding-bottom: 0; }
+.ra3.r70 .ra-schritte li:not(:last-child)::after { left: 19px; top: 44px; bottom: 4px; }
+.ra3.r70 .ra-nr { width: 40px; height: 40px; }
+.ra3.r70 .ra-schritte li p { margin: 8px 0 0; }
+.ra3.r70 .ra-schritte li p .r64-klein { margin-top: 0; }
+.ra3.r70 .ra-start { gap: 16px; }
+.ra3.r70 .ra-start > * { margin: 0 !important; }
+.ra3.r70 .ra-links { justify-items: stretch; }
+.ra3.r70 .ra-schritte li > .ra-links { grid-column: 2; margin-top: 8px !important; }   /* „Wo finde ich den Export?“ unter Schritt 1 (Abos) */
+.ra3.r70 .ra-links a, .ra3.r70 .ra-links .ra-leise { display: block; padding: 0; min-height: 24px; }
+.ra3.r70 .ra-knopf { width: 100%; max-width: none; min-height: 64px; color: var(--ink);
+  background: linear-gradient(175deg, #fcfaf6 0%, #f5f0e8 60%, #ebe4d8 100%); box-shadow: inset 0 1.5px 0 #fff, 0 2px 4px rgb(40 26 14 / .25), 0 12px 22px -12px rgb(40 26 14 / .5); }
+.ra3.r70 .ra-knopf .logo, .ra3.r70 .ra-knopf .icon { color: var(--ink); }
+
+/* Mehr dazu: drei gleiche Kacheln unter beiden Spalten */
+.ra3.r70 .r70-mehr { width: 100%; max-width: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; border: 0; padding: 0; margin: 0; }
+.ra3.r70 .r70-mehr .ra-versal { grid-column: 1 / -1; margin: 0; }
+.ra3.r70 .r70-mehr details.ra-auf, .ra3.r70 .r70-mehr details.ra-auf:first-of-type { border: 0; border-radius: 22px; padding: 0 24px;
+  background-color: color-mix(in oklab, var(--bot) 80%, var(--fc)); background-image: var(--noise); background-blend-mode: soft-light;
+  box-shadow: inset 0 2px 6px rgb(0 0 0 / .2), inset 0 -1px 0 color-mix(in oklab, var(--sheen) 30%, transparent); }
+.ra3.r70 .r70-mehr summary { min-height: 64px; }
+
+/* Weitere Ideen */
+.ra3.r70 .ra-weitere { margin: 40px 0 0; }
+.ra3.r70 .ra-weitere .ra-versal { margin: 0 0 16px; }
+.ra3.r70 .ra-alle { display: block; margin: 24px 0 24px; padding: 0; }
+.ra3.r70 .ra-weitere > .ra-wrap:last-child { padding: 0; }
+
+/* Ohne Bild: am Handy keine Fläche (wie live), die Karte beginnt oben */
+@media (max-width: 1023px) {
+  .ra3.r70 { --zettel-h: 344px; }
+  .ra3.r70 .r64-entwuerfe { gap: 8px; }
+  .ra3.r70 .ra-meta { flex-wrap: nowrap; }
+  .ra3.r70 .ra-chip, .ra3.r70 .ra-siegel { padding-inline: 8px; }
+  /* Handy-Regel Runde 65: Fließtext 16 px, Tippflächen mindestens 44 px, Schilder wie live 15 px */
+  .ra3.r70 .ra-hinweis, .ra3.r70 .ra-links a, .ra3.r70 .ra-links .ra-leise { font-size: 16px !important; }
+  .ra3.r70 .ra-links a, .ra3.r70 .ra-links .ra-leise, .ra3.r70 .ra-alle { display: flex; align-items: center; min-height: 44px; }
+  .ra3.r70 .r64-schilder li:not(.r64-frei) { font-size: 15px; }
+}
+@media (max-width: 359px) {   /* schmalstes Handy: Zettel-Liste soll nicht über den Rand laufen */
+  .ra3.r70 .ra-zettel { padding-inline: 16px; }
+  .r70-liste li { gap: 8px; padding-inline: 8px; }
+  .r70-liste li > span { min-width: 0; }
+  .r70-liste b { min-width: 0; }
+}
+@media (min-width: 360px) and (max-width: 1023px) { .ra3.r70 .ra-chip, .ra3.r70 .ra-siegel { white-space: nowrap; } }
+
+/* Computer: Bild über die ganze Breite, Karte darüber, zwei Spalten 7 : 5 mit gleicher Oberkante */
+@media (min-width: 1024px) {
+  .ohne-bild.ra3.r70 .ra-szene { display: block; }
+  .ohne-bild.ra3.r70 .ra-karte { margin-top: -56px; }
+  .r70-flaeche { display: block; width: 100%; height: clamp(240px, 22vw, 340px);
+    background-color: color-mix(in oklab, var(--fa) 46%, #f6f1e8);
+    background-image: var(--noise), linear-gradient(180deg, color-mix(in oklab, var(--fa) 40%, #fbf8f2) 0%, color-mix(in oklab, var(--fa) 78%, var(--fb)) 100%);
+    background-blend-mode: soft-light, normal; }
+  .ra3.r70 .ra-szene img { height: clamp(240px, 22vw, 340px); }
+  .ra3.r70 .ra-karte-innen { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 48px; row-gap: 40px; padding: 48px; align-items: start; }
+  .ra3.r70 .ra-handeln { padding: 24px 24px 40px; }
+  .ra3.r70 .ra-schritte li.ra-start-schritt { padding-bottom: 64px; }
+  .ra3.r70.r70-z-liste .ra-schritte li:nth-child(1), .ra3.r70.r70-z-liste .ra-schritte li:nth-child(3) { padding-bottom: 40px; }
+  .ra3.r70 .r70-mehr { grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ra3.r70 .r64-rk, .ra3.r70 .r64-danke-zeile { grid-column: 1 / -1; }
+  .ra3.r70 .ra-wrap { width: min(calc(100% - 2 * var(--gutter)), 1160px); }
+  .ra3.r70 .ra-reihe { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; overflow: visible; padding: 0; scroll-snap-type: none;
+    width: min(calc(100% - 2 * var(--gutter)), 1160px); margin: 0 auto; }
+  .ra3.r70 .ra-reihe .mcard, .ra3.r70 .ra-reihe .mcard:not(:first-child) { width: auto !important; min-width: 0; flex: none !important; margin: 0; }
+}
+@media (min-width: 480px) { .r70-liste small::before { content: "· "; } }
+@media (max-width: 479px) {
+  .r70-liste li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 8px; row-gap: 0; padding-block: 3px; }
+  .r70-liste li > span { display: contents; }
+  .r70-liste .r73-n { grid-column: 1; grid-row: 1; min-width: 0; font-weight: 550; line-height: 1.3; }
+  .r70-liste small { grid-column: 1; grid-row: 2; justify-self: start; min-width: 0; font-size: 14px; line-height: 1.3; }
+  .r70-liste em { grid-column: 1; grid-row: 2; justify-self: start; font-size: 14px; line-height: 1.2; padding: 2px 8px; }
+  .r70-liste b { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; }
+}
+</style>
+
+<style>
+/* Runde 71 (Jim, 29.10.2026): Header-Bilder auf allen Use-Case-Seiten. Abstände, Farben und Raster bleiben wie in Runde 70. */
+/* Ergebnis-Block der Seite (Satz plus Prüfliste) statt Zettel: so hoch wie sein Inhalt */
+.ra3.r70.r70-z-ergebnis .ra-zettel { height: auto; }
+/* Handy: Band im Verhältnis 375 : 383, die Karte überlappt es um 28 px (wie live) */
+.ra3.r71 .r71-kopf img { display: block; width: 100%; height: auto; aspect-ratio: 375 / 383; object-fit: cover; object-position: var(--pos-hoch); }
+/* Computer: Band 300 bis 560 px (31 vw); höhere Spezifität als „.ra3.r70 .ra-szene img“ aus Runde 70, die Karte überlappt weiter 56 px */
+@media (min-width: 1024px) { .ra3.r71 .ra-szene.r71-kopf img { aspect-ratio: auto; height: clamp(300px, 31vw, 560px); object-position: var(--pos-quer); }
+  .ra3.r71 .r70-flaeche { height: clamp(300px, 31vw, 560px); } }
+/* Fokusring der Karten unter „Weitere Ideen“: 2 px in der Fokusfarbe der Seite */
+.ra3.r71 .ra-weitere .mcard a.mcard-link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+</style>
 <style>
   /* Runde 61 (Pam, Punkt 8): Logo quer im Kopf, 28 px am Handy bis 36 px am Rechner; Schutzzone = halbe Zeichenhöhe */
   .r61-brand { gap: 0; padding: 0; line-height: 0; flex: none; }
@@ -2145,7 +2385,7 @@ body { padding-bottom: 0; }
 </style>
   <link rel="canonical" href="https://die-ki-macherei.de/ungewollter-vertrag">
 </head>
-<body data-fall="ungewollter-vertrag"><div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-file-x" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="m14.5 12.5-5 5"/><path d="m9.5 12.5 5 5"/></symbol><symbol id="ls-house" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol><symbol id="ls-message-square-warning" viewBox="0 0 24 24"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/><path d="M12 15h.01"/><path d="M12 7v4"/></symbol><symbol id="ls-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
+<body data-fall="ungewollter-vertrag"><div class="live-aufbau" role="note"><b>Public Beta</b> · Die Seite ist noch im Aufbau.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-file-x" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="m14.5 12.5-5 5"/><path d="m9.5 12.5 5 5"/></symbol><symbol id="ls-house" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol><symbol id="ls-message-square-warning" viewBox="0 0 24 24"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/><path d="M12 15h.01"/><path d="M12 7v4"/></symbol><symbol id="ls-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
 
 Copyright (c) 2026 Lucide Icons and Contributors
@@ -2206,16 +2446,17 @@ SOFTWARE. --><symbol id="ls-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727
         </div>
       </header>
 
-<div class="ra ra3 ohne-bild" id="fall-vertrag" data-fall="vertrag">
-  <div class="ra-wrap"><a class="ra-zurueck" href="/ideen"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>Alle Ideen</a></div>
+<div class="ra ra3 r64 r70 r70-z-ergebnis r71" id="fall-vertrag" data-fall="vertrag">
+  <div class="ra-wrap"><a class="ra-zurueck" href="/ideen"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>Alle Ideen</a></div><figure class="ra-szene r70-kopf r71-kopf" style="--fa:#a8c2d1;--fb:#5f8398;--fc:#274357;--ml:0%;--mb:26%;--pos-hoch:50% 50%;--pos-quer:50% 40.4%"><picture><source media="(min-width: 1024px)" srcset="/a-299b7b812df2.webp 1600w, /a-1879a1c76e49.webp 2400w" sizes="100vw" width="2400" height="1200"><img src="/a-210192ad4e02.webp" srcset="/a-210192ad4e02.webp 750w, /a-7199a5717fe6.webp 1200w" sizes="100vw" alt="Leni an ihrer Wohnungstür liest eine Auftragsbestätigung für einen Vertrag, den sie nie abgeschlossen hat." width="1200" height="1224" decoding="async"></picture></figure>
   
   <article class="ra-karte" style="--fa:#a8c2d1;--fb:#5f8398;--fc:#274357;--ml:0%;--mb:26%">
     <svg class="ra-karte-symbol" viewBox="0 0 24 24" aria-hidden="true"><use href="#ls-file-x"/></svg>
-    <div class="ra-karte-innen">
+    <div class="ra-karte-innen"><section class="r64-rk" id="r64-rk" hidden aria-labelledby="r64-rk-t"><button type="button" class="r64-zu" aria-label="Schließen">×</button><div class="r64-rk-teil" data-teil="hilfe"><div class="r64-rk-kopf"><p class="r64-rk-zeile">Zurück aus ChatGPT</p><h2 id="r64-rk-t">Wie läuft's mit deinem Vertrag?</h2></div><div class="r64-rk-knoepfe"><div><button type="button" class="r64-rk-k r64-haupt" data-laeuft="laeuft">Läuft, ich sehe den Brief</button></div><div><button type="button" class="r64-rk-k" data-hilfe="leer" aria-expanded="false" aria-controls="r64-a-leer">Das Eingabefeld ist leer</button><div class="r64-rk-antwort" id="r64-a-leer" hidden><p style="margin:0">Das passiert manchmal nach dem Anmelden. Der Auftrag liegt schon in deiner Zwischenablage: <span data-nur-geraet="handy">ins Feld tippen, gedrückt halten und „Einfügen“ wählen, abschicken.</span><span data-nur-geraet="computer">ins Feld klicken, Rechtsklick und „Einfügen“, abschicken.</span></p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Auftrag kopieren und ChatGPT öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-leer">Hat geklappt</button></p></div></div><div><button type="button" class="r64-rk-k" data-hilfe="angemeldet" aria-expanded="false" aria-controls="r64-a-angemeldet">Ich bin nicht angemeldet</button><div class="r64-rk-antwort" id="r64-a-angemeldet" hidden><p style="margin:0"><span data-nur-geraet="computer">Melde dich vorher in diesem Browser bei ChatGPT an.</span><span data-nur-geraet="handy">Melde dich vorher in der ChatGPT-App an.</span> Dann öffnet der Knopf direkt den fertigen Auftrag. Noch kein Konto? Das legst du dort kostenlos an, mit E-Mail oder Google-Konto.</p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Auftrag kopieren und ChatGPT öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-angemeldet">Hat geklappt</button></p></div></div><div><button type="button" class="r64-rk-k" data-hilfe="nichts" aria-expanded="false" aria-controls="r64-a-nichts">Es hat sich nichts geöffnet</button><div class="r64-rk-antwort" id="r64-a-nichts" hidden><p style="margin:0"><span data-nur-geraet="handy">Dann fehlt meist die App. </span><a href="#" data-start-web target="_blank" rel="noopener">Im Browser öffnen</a></p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Auftrag kopieren und ChatGPT öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-nichts">Hat geklappt</button></p></div></div></div><p class="r64-rk-fuss"><button type="button" class="r64-leise" data-r64-kopieren>Auftrag noch einmal kopieren</button></p></div><div class="r64-rm" data-teil="rm" hidden><div class="r64-rm-kopf"><h2>Hilfst du uns kurz?</h2><button type="button" class="r64-leise" data-lieber-nicht>Lieber nicht</button></div><p class="r64-rm-unter">3 Fragen, nur antippen.</p><ol class="r64-punkte" aria-hidden="true"><li></li><li></li><li></li></ol><div data-frage="rm-entwuerfe"><p class="r64-frage" id="r64-f0">Wie gefällt dir der Brief?</p><div class="r64-chips" data-anzahl="4" role="group" aria-labelledby="r64-f0"><button type="button" class="r64-chip" data-wert="gar-nicht" aria-pressed="false">Gar nicht</button><button type="button" class="r64-chip" data-wert="geht-so" aria-pressed="false">Geht so</button><button type="button" class="r64-chip" data-wert="gut" aria-pressed="false">Gut</button><button type="button" class="r64-chip" data-wert="richtig-gut" aria-pressed="false">Richtig gut</button></div></div><div data-frage="rm-leicht" hidden><p class="r64-frage" id="r64-f1">War es leicht, loszulegen?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f1"><button type="button" class="r64-chip" data-wert="ganz-leicht" aria-pressed="false">Ganz leicht</button><button type="button" class="r64-chip" data-wert="ging-so" aria-pressed="false">Ging so</button><button type="button" class="r64-chip" data-wert="schwierig" aria-pressed="false">Schwierig</button></div></div><div data-frage="rm-wieder" hidden><p class="r64-frage" id="r64-f2">Würdest du so etwas wieder mit KI machen?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f2"><button type="button" class="r64-chip" data-wert="ja" aria-pressed="false">Ja</button><button type="button" class="r64-chip" data-wert="vielleicht" aria-pressed="false">Vielleicht</button><button type="button" class="r64-chip" data-wert="eher-nicht" aria-pressed="false">Eher nicht</button></div></div></div><div class="r64-feld r64-feld-teil" data-teil="feld" hidden><label for="r64-text">Magst du uns noch etwas sagen?</label><textarea id="r64-text" rows="1" maxlength="500" aria-describedby="r64-text-h"></textarea><p class="r64-feld-klein" id="r64-text-h">Freiwillig. Bitte keine Namen, Adressen oder andere persönlichen Daten.</p><p class="r64-rk-aktion"><button type="button" class="r64-los" data-feld="absenden">Absenden</button><button type="button" class="r64-leise" data-feld="fertig">Fertig</button></p></div><div class="r64-dank" data-teil="dank" hidden role="status"><span class="r64-haken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Danke! Damit machst du die KI-Macherei für alle ein Stück besser.</p><a href="/ideen">Noch eine Idee ausprobieren?</a></div><div class="r64-dank" data-teil="schoen" hidden role="status"><p>Schön! Alles Gute damit.</p></div></section><p class="r64-danke-zeile" id="r64-danke-zeile" hidden role="status"><span>Danke fürs Mitmachen</span><button type="button" class="r64-zu" aria-label="Hinweis schließen">×</button></p>
       <div class="ra-lesen">
         <div class="ra-meta"><span class="ra-chip">Papierkram erledigen</span><a class="ra-siegel ok" href="#" data-oeffne="gut"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Geprüft</a>
           <button type="button" class="ra-teilen" data-titel="Ungewollt einen Vertrag am Hals?" aria-label="Teilen: Ungewollt einen Vertrag am Hals?"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5"/><path d="M5 11.5V19a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7.5"/></svg></button>
           <button type="button" class="ra-herz" data-herz="n10" data-titel="Ungewollt einen Vertrag am Hals?" aria-pressed="false" aria-label="Merken: Ungewollt einen Vertrag am Hals?"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button></div>
+        <ul class="r64-schilder"><li class="r64-frei"><span class="ra-marke frei">Free</span> <span>· funktioniert, ohne für KI zu zahlen</span></li><li>Etwa 10 Min.</li><li>Text oder Foto vom Vertrag</li><li>Mit ChatGPT</li></ul>
         <h1>Ungewollt einen Vertrag am Hals?</h1>
         <p class="ra-kurztext">An der Tür, am Telefon oder online, und plötzlich hast du einen Vertrag, den du nicht wolltest. Die KI rechnet aus, bis wann du raus kannst, oft länger als gedacht, und schreibt den Brief, der auch schon gezahltes Geld zurückfordert.</p>
         <section class="ra-ergebnis" aria-label="Ergebnis"><div class="ra-zettel">
@@ -2224,19 +2465,19 @@ SOFTWARE. --><symbol id="ls-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727
         <ul class="ra-haken"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Empfehlung: widerrufen, bestreiten oder kündigen</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Letzter Tag zum Abschicken mit Rechenweg, dazu ein Tag zur Sicherheit</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Was drinsteht: Preis jetzt und später, Laufzeit, Haken</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Widerrufsbelehrung geprüft, und was mit deinem Geld ist</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Auf Wunsch: fertiger Brief, Versandweg und Tag zum Nachhaken</span></li></ul>
         
       </div></section>
-        <section class="ra-brauchst" aria-labelledby="vertrag-b"><h2 class="ra-versal" id="vertrag-b">Das brauchst du</h2><ul><li class="v57-i v57-ki"><span class="v57-sym v57-sym--ki" aria-hidden="true"><svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg><svg class="logo" aria-hidden="true"><use href="#l-claude"/></svg></span>Klappt mit ChatGPT und Claude.</li><li class="v57-i"><span class="v57-sym" aria-hidden="true"><svg aria-hidden="true"><use href="#i-camera"/></svg></span>Vertrag, Bestätigung, Brief oder Mail, als Text oder Foto</li><li class="v57-i"><span class="v57-sym" aria-hidden="true"><svg aria-hidden="true"><use href="#i-file-text"/></svg></span>Den Tag, an dem du zugestimmt hast (bei einer Ware: an dem sie ankam)</li><li class="v57-i"><span class="v57-sym" aria-hidden="true"><svg aria-hidden="true"><use href="#i-clock"/></svg></span>Etwa 10 Minuten</li><li class="ra-kosten"><span class="ra-marke frei">Free</span> <span>· funktioniert, ohne für KI zu zahlen</span></li></ul></section>
       </div>
       <div class="ra-handeln">
         <section class="ra-schritte" aria-labelledby="vertrag-s"><h2 class="ra-versal" id="vertrag-s">So geht's</h2><ol><li class="ra-start-schritt"><span class="ra-nr" aria-hidden="true">1</span>
         <div class="ra-start">
           <a class="button-primary ra-knopf" href="#" data-start data-art="prompt" target="_blank" rel="noopener"><svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg><span>Mit ChatGPT starten</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
           <p class="ra-hinweis">Der Auftrag enthält nichts über dich. Deinen Vertrag zeigst du erst im KI-Chat, wir sehen ihn nicht.</p>
-          <p class="ra-links"><a class="ra-leise ra-claude" href="#" data-start data-start-ki="claude" data-art="prompt" target="_blank" rel="noopener"><svg class="logo" aria-hidden="true"><use href="#l-claude"/></svg>Mit Claude starten</a><a class="ra-leise" href="#" data-oeffne="hakt">Noch nicht angemeldet?</a></p>
+          <p class="ra-links"><a class="ra-leise" href="#" data-r64-hilfe>Noch nicht angemeldet?</a></p>
         </div></li>
 <li><span class="ra-nr" aria-hidden="true">2</span><p>Vier kurze Fragen antippen</p></li>
 <li><span class="ra-nr" aria-hidden="true">3</span><p>Text oder Foto vom Vertrag schicken</p></li>
 <li><span class="ra-nr" aria-hidden="true">4</span><p>Auf Wunsch: den fertigen Brief abschicken</p></li></ol></section>
-        <section class="ra-mehr" aria-labelledby="vertrag-m"><h2 class="ra-versal" id="vertrag-m">Mehr dazu</h2><details class="ra-auf" data-teil="ki"><summary><span>Was die KI dabei macht</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><ol class="ra-ki"><li><b>Prüft die Belehrung: Fehlt sie, hast du bis zu ein Jahr länger Zeit</b></li><li>Rechnet dir deinen letzten Tag vor, mit Rechenweg und einem Tag zur Sicherheit</li><li>Zeigt Preis, Laufzeit, Haken und wie du gezahltes Geld zurückbekommst</li><li>Schreibt auf Wunsch den Brief, fertig zum Abschicken per Mail</li></ol></div></details><details class="ra-auf" data-teil="gut"><summary><span>Gut zu wissen</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><ul class="ra-punkte"><li><b>Keine Rechtsberatung:</b> Die KI schätzt ein, im Streit entscheidet ein Gericht. Bei Kredit, Versicherung, Geldanlage oder hohen Beträgen hilft die Verbraucherzentrale.</li><li><b>Längere Frist:</b> Fehlt die Widerrufsbelehrung oder ist sie lückenhaft, beginnen die 14 Tage nicht. Spätestens zwölf Monate und 14 Tage nach Vertragsschluss ist Schluss.</li><li><b>Strom und Gas:</b> Ein „Ja“ am Telefon allein reicht nicht, der Vertrag braucht Textform. Dann bestreitest du ihn und widerrufst vorsorglich.</li><li><b>Glasfaser:</b> Die höchstens 24 Monate Laufzeit zählen ab Unterschrift, nicht ab Anschluss.</li><li><b>Im Laden:</b> Dort gibt es kein gesetzliches Widerrufsrecht, dann bleibt die Kündigung.</li><li><b>Rechtzeitig heißt abgeschickt:</b> Beim Widerruf zählt der Tag, an dem du ihn abschickst, bei der Kündigung der Eingang. Eine Mail reicht, heb sie mit der Bestätigung auf. Bei Strom oder Gas oder wenn es knapp wird, lohnt sich der Weg zur Post trotzdem: Das Einwurf-Einschreiben ist dein Beleg.</li><li><b>Schon geliefert:</b> Hast du verlangt, dass es sofort losgeht, zahlst du bis zum Widerruf anteilig, aber nur, wenn die Belehrung stimmte.</li><li><b>Geprüft:</b> „Geprüft“ heißt: Diese Anleitung wurde von unserer Redaktion erfolgreich getestet und freigegeben. Kein amtliches Prüfzeichen.</li></ul></div></details><details class="ra-auf" data-teil="hakt"><summary><span>Falls etwas hakt</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><ul class="ra-punkte"><li><b>Noch nicht bei ChatGPT angemeldet?</b> <span data-nur-geraet="computer">Melde dich vorher in diesem Browser an.</span><span data-nur-geraet="handy">Melde dich vorher in der ChatGPT-App an.</span> Dann öffnet der Knopf direkt den fertigen Auftrag. Noch kein Konto? Das legst du dort kostenlos an, mit E-Mail oder Google-Konto.</li><li><b>Nur im Eingabefeld?</b> Dann tippe auf Senden.</li><li><b>Ich habe nichts Schriftliches:</b> Sag das der KI. Auch das zählt: Ohne Belehrung beginnen die 14 Tage nicht.</li><li><b>Ich weiß das Datum nicht genau:</b> Schau in Anrufliste, Mails oder Kontoauszug. Ohne bestätigtes Datum nennt die KI keine Frist, sondern rät, sofort abzuschicken.</li><li><b>Es wird trotzdem abgebucht:</b> Die Lastschrift kannst du bei deiner Bank innerhalb von acht Wochen zurückholen.</li><li><b>Die KI hört mitten drin auf:</b> Schreib „weiter“.</li></ul><p><a class="ra-leise" href="#" data-start-web target="_blank" rel="noopener">Im Browser öffnen</a></p></div></details><details class="ra-auf" data-teil="auftrag"><summary><span>Den Auftrag lesen</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><p class="ra-klein">Das bekommt ChatGPT von dir, wenn du auf „Mit ChatGPT starten“ tippst:</p><pre class="ra-auftrag" id="prompt-text">Ich habe einen Vertrag am Hals, den ich so nicht wollte. Lies mein Papier und sag mir, ob und bis wann ich rauskomme, auch wenn ich denke, es ist zu spät. Ich will nur abschicken, du prüfst, rechnest und schreibst. Am Ende will ich eine klare Empfehlung, meinen letzten Tag mit Rechenweg und auf Wunsch den fertigen Brief.
+      </div>
+      <section class="ra-mehr r70-mehr" aria-labelledby="vertrag-m"><h2 class="ra-versal" id="vertrag-m">Mehr dazu</h2><details class="ra-auf" data-teil="ki"><summary><span>Was die KI dabei macht</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><ol class="ra-ki"><li><b>Prüft die Belehrung: Fehlt sie, hast du bis zu ein Jahr länger Zeit</b></li><li>Rechnet dir deinen letzten Tag vor, mit Rechenweg und einem Tag zur Sicherheit</li><li>Zeigt Preis, Laufzeit, Haken und wie du gezahltes Geld zurückbekommst</li><li>Schreibt auf Wunsch den Brief, fertig zum Abschicken per Mail</li></ol><p class="ra-ki-abo"><b>Der Auftrag</b></p><p class="ra-klein">Das bekommt ChatGPT von dir, wenn du auf „Mit ChatGPT starten“ tippst:</p><pre class="ra-auftrag" id="prompt-text">Ich habe einen Vertrag am Hals, den ich so nicht wollte. Lies mein Papier und sag mir, ob und bis wann ich rauskomme, auch wenn ich denke, es ist zu spät. Ich will nur abschicken, du prüfst, rechnest und schreibst. Am Ende will ich eine klare Empfehlung, meinen letzten Tag mit Rechenweg und auf Wunsch den fertigen Brief.
 
 So redest du mit mir: einfach, ruhig, immer mit Du. Kurze Absätze mit höchstens zwei Sätzen. Keine Fachwörter; ist eins unvermeidbar, erklär es gleich in Alltagsworten, etwa Freischaltung. Zahlen und Daten nur, wenn sie zählen.
 
@@ -2284,8 +2525,7 @@ Du ersetzt keine Rechtsberatung. Bei Kredit, Versicherung, hohen Beträgen, abge
 7. Zum Schluss frag mich genau einmal, mit Knöpfen wie oben, ob du noch bei etwas helfen sollst, und erklär jede Wahl in einem Satz: 🛡️ Falls [Anbieter] nicht lockerlässt · 🔌 Alten Vertrag sichern (nur bei Internet oder Handy) · 👋 Nein danke. Fragen zu einem Angebot erst nach meiner Wahl. Danach bist du fertig.
 Bei 🛡️ frag mit Knöpfen, ob schon etwas kam, immer auch mit 📭 Noch nichts; dann je Lage ein bis zwei Sätze, wo nötig zum Kopieren: noch nichts: an welchem Tag ich nachhake, und darunter trotzdem kurz alle Lagen, damit ich vorbereitet bin. Keine Bestätigung oder kein Geld: noch einmal als Einwurf-Einschreiben mit Frist, mit einem verständnisvollen Satz, warum sich die Mühe jetzt lohnt. Weiter abgebucht: Lastschrift binnen acht Wochen bei der Bank zurückholen. Rechnung, Mahnung, Inkasso: nicht zahlen, per Mail widersprechen. Mahnbescheid vom Gericht: binnen zwei Wochen auf dem Formular widersprechen. Vertreter wieder da: „Du musst ihn nicht hereinlassen und nichts unterschreiben.“ Bei 🔌 eine Nachricht an meinen bisherigen Anbieter, dass ich bleibe.
 
-Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite jeden Schritt ganz durch und hör nie nach einer Ankündigung auf.</pre><p><button type="button" class="clay-btn ra-zweit" data-kopieren>Auftrag als Text kopieren</button></p></div></details><details class="ra-auf" data-teil="weiter"><summary><span>Weitergedacht</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><p>Vertreter gehen meist die ganze Straße ab, und am Telefon trifft es oft die Eltern. Schick die Seite deinen Eltern oder Nachbarn. Wer an der Tür unsicher ist, unterschreibt nichts, nennt keine Zählernummer und lässt sich die Unterlagen dalassen. Prüfen kannst du danach in Ruhe, so wie hier: erst zeigen, dann entscheiden. Das hilft auch bei jedem Vertrag, bevor du unterschreibst.</p></div></details></section>
-      </div>
+Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite jeden Schritt ganz durch und hör nie nach einer Ankündigung auf.</pre><p><button type="button" class="clay-btn ra-zweit" data-kopieren>Auftrag als Text kopieren</button></p></div></details><details class="ra-auf" data-teil="gut"><summary><span>Gut zu wissen</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><p>Klappt mit ChatGPT und Claude.</p><ul class="ra-punkte"><li><b>Keine Rechtsberatung:</b> Die KI schätzt ein, im Streit entscheidet ein Gericht. Bei Kredit, Versicherung, Geldanlage oder hohen Beträgen hilft die Verbraucherzentrale.</li><li><b>Längere Frist:</b> Fehlt die Widerrufsbelehrung oder ist sie lückenhaft, beginnen die 14 Tage nicht. Spätestens zwölf Monate und 14 Tage nach Vertragsschluss ist Schluss.</li><li><b>Strom und Gas:</b> Ein „Ja“ am Telefon allein reicht nicht, der Vertrag braucht Textform. Dann bestreitest du ihn und widerrufst vorsorglich.</li><li><b>Glasfaser:</b> Die höchstens 24 Monate Laufzeit zählen ab Unterschrift, nicht ab Anschluss.</li><li><b>Im Laden:</b> Dort gibt es kein gesetzliches Widerrufsrecht, dann bleibt die Kündigung.</li><li><b>Rechtzeitig heißt abgeschickt:</b> Beim Widerruf zählt der Tag, an dem du ihn abschickst, bei der Kündigung der Eingang. Eine Mail reicht, heb sie mit der Bestätigung auf. Bei Strom oder Gas oder wenn es knapp wird, lohnt sich der Weg zur Post trotzdem: Das Einwurf-Einschreiben ist dein Beleg.</li><li><b>Schon geliefert:</b> Hast du verlangt, dass es sofort losgeht, zahlst du bis zum Widerruf anteilig, aber nur, wenn die Belehrung stimmte.</li><li><b>Geprüft:</b> „Geprüft“ heißt: Diese Anleitung wurde von unserer Redaktion erfolgreich getestet und freigegeben. Kein amtliches Prüfzeichen.</li></ul></div></details><details class="ra-auf" data-teil="hakt"><summary><span>Falls etwas hakt</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><ul class="ra-punkte"><li><b>Noch nicht bei ChatGPT angemeldet?</b> <span data-nur-geraet="computer">Melde dich vorher in diesem Browser an.</span><span data-nur-geraet="handy">Melde dich vorher in der ChatGPT-App an.</span> Dann öffnet der Knopf direkt den fertigen Auftrag. Noch kein Konto? Das legst du dort kostenlos an, mit E-Mail oder Google-Konto.</li><li><b>Nur im Eingabefeld?</b> Dann tippe auf Senden.</li><li><b>Ich habe nichts Schriftliches:</b> Sag das der KI. Auch das zählt: Ohne Belehrung beginnen die 14 Tage nicht.</li><li><b>Ich weiß das Datum nicht genau:</b> Schau in Anrufliste, Mails oder Kontoauszug. Ohne bestätigtes Datum nennt die KI keine Frist, sondern rät, sofort abzuschicken.</li><li><b>Es wird trotzdem abgebucht:</b> Die Lastschrift kannst du bei deiner Bank innerhalb von acht Wochen zurückholen.</li><li><b>Die KI hört mitten drin auf:</b> Schreib „weiter“.</li></ul><p><a class="ra-leise" href="#" data-start-web target="_blank" rel="noopener">Im Browser öffnen</a></p></div></details></section>
     </div>
   </article>
   <section class="ra-weitere" aria-labelledby="vertrag-w">
@@ -2294,6 +2534,7 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
     <div class="ra-wrap"><a class="ra-leise ra-alle" href="/ideen">Alle Ideen</a></div>
   </section>
   
+  <dialog class="r64-ebene" id="r64-ebene" aria-labelledby="r64-ebene-h"><button type="button" class="r64-zu" aria-label="Schließen">×</button><h2 id="r64-ebene-h">Noch nicht bei ChatGPT angemeldet?</h2><p><span data-nur-geraet="computer">Melde dich vorher in diesem Browser bei ChatGPT an.</span><span data-nur-geraet="handy">Melde dich vorher in der ChatGPT-App an.</span> Dann öffnet der Knopf direkt den fertigen Auftrag. Noch kein Konto? Das legst du dort kostenlos an, mit E-Mail oder Google-Konto.</p></dialog>
   <div class="ra-leiste" data-leiste aria-hidden="true"><a class="button-primary" href="#" data-start data-art="prompt" target="_blank" rel="noopener" tabindex="-1"><svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg><span>Mit ChatGPT starten</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
 </div>
     
@@ -3570,6 +3811,165 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
       kopieren(url).then(function () { melden('Link kopiert'); }, function () { melden('Kopieren ging nicht. Die Adresse steht oben im Browser.'); });
     });
   })();
+</script>
+
+<script>
+// Runde 64 (Jim, 29.10.2026): Rückkehr-Karte „Wie läuft's?“ und Rückmeldung in der Beta (Pam, Bauauftrag Runde 64, Punkte 2, 5 und 7).
+(function () {
+  var CFG = {"fall": "vertrag", "beta": true, "negativ": ["gar-nicht", "schwierig"]};
+  var html = document.documentElement, karte = document.getElementById('r64-rk');
+  if (!karte) return;
+  var ruhig = matchMedia('(prefers-reduced-motion: reduce)');
+  function lies(k) { try { return JSON.parse(localStorage.getItem(k) || '{}') || {}; } catch (e) { return {}; } }
+  function schreib(k, feld, wert) { var o = lies(k); o[feld] = wert; try { localStorage.setItem(k, JSON.stringify(o)); } catch (e) {} }
+  var TAGE7 = 7 * 24 * 3600 * 1000, weg = false, offen = false;
+  function fertig() { return !!lies('r64-fertig')[CFG.fall]; }
+  function frisch() { var t = lies('r64-start')[CFG.fall]; return t && Date.now() - t < TAGE7; }
+  // Datenweg: nur mit aktiver Messung (nicht aus, kein Global Privacy Control, kein Blocker). Sonst kein „Danke“, das nicht stimmt.
+  function weg_da() { return CFG.beta && window.Messung && window.Messung.aktiv; }
+  function zaehlen(abfrage) { try { if (window.Messung) window.Messung.senden('abfrage_beantwortet', { abfrage: abfrage }); } catch (e) {} }
+  function rueckmelden(abfrage, antwort, text) {
+    var M = window.Messung; if (!M || !M.aktiv) return;
+    var n = { art: 'rueckmeldung', abfrage: abfrage, pfad: (location.pathname.replace(/[^A-Za-z0-9\/._~%-]/g, '') || '/').slice(0, 200),
+      fall: (document.body.getAttribute('data-fall') || '').replace(/[^a-z0-9-]/g, '').slice(0, 60),
+      geraet: matchMedia('(hover: none) and (pointer: coarse)').matches ? 'handy' : 'computer' };
+    if (!n.fall) delete n.fall;
+    if (antwort) n.antwort = antwort;
+    if (text) n.text = text.slice(0, 500);
+    if (M.testmodus) { (window.__messungTest = window.__messungTest || []).push(n); return; }
+    var s = document.querySelector('script[data-endpunkt]'), ziel = s && s.getAttribute('data-endpunkt');
+    if (!ziel) return;
+    try { fetch(ziel, { method: 'POST', body: JSON.stringify(n), keepalive: true, mode: 'no-cors', credentials: 'omit', cache: 'no-store', referrerPolicy: 'no-referrer' }).catch(function () {}); } catch (e) {}
+  }
+  function zeige() {
+    if (offen || fertig()) return;
+    offen = true; karte.hidden = false; html.classList.add('r64-rk-offen');
+    var r = karte.getBoundingClientRect();
+    if (r.top < 0 || r.top > innerHeight - 120) karte.scrollIntoView({ block: 'start', behavior: ruhig.matches ? 'auto' : 'smooth' });
+  }
+  function schliessen(endgueltig) {
+    if (endgueltig) schreib('r64-fertig', CFG.fall, 1);
+    var f = karte.contains(document.activeElement);
+    karte.hidden = true; offen = false; html.classList.remove('r64-rk-offen');
+    if (f) { var h = document.querySelector('.ra-karte h1'); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); } }
+  }
+  // Start-Tipp merken (je Use Case und Gerät); Rückkehr in denselben Tab oder späterer Besuch bis 7 Tage danach
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest || !e.target.closest('[data-start]')) return;
+    schreib('r64-start', CFG.fall, Date.now()); weg = false;
+  }, true);
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') { if (frisch()) weg = true; return; }
+    if (weg && frisch()) zeige();
+  });
+  addEventListener('pageshow', function (e) { if (e.persisted && frisch()) zeige(); });
+  if (frisch()) zeige();
+  // Startleiste erst, wenn der Knopf in Schritt 2 oben aus dem Bild ist
+  var knopf = document.querySelector('.ra-knopf');
+  if (knopf && 'IntersectionObserver' in window) new IntersectionObserver(function (es) {
+    html.classList.toggle('r64-vorbei', !es[0].isIntersecting && es[0].boundingClientRect.top < 0);
+  }).observe(knopf);
+  // Ebene „Noch nicht bei ChatGPT angemeldet?“
+  var ebene = document.getElementById('r64-ebene'), von = null;
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest && e.target.closest('[data-r64-hilfe]');
+    if (!t || !ebene || !ebene.showModal) return;
+    e.preventDefault(); von = t; ebene.showModal();
+  });
+  if (ebene) {
+    ebene.addEventListener('click', function (e) { if (e.target === ebene || e.target.closest('.r64-zu')) ebene.close(); });
+    ebene.addEventListener('close', function () { if (von) try { von.focus({ preventScroll: true }); } catch (e) {} });
+  }
+  // 5a: Hilfe
+  karte.querySelector('.r64-zu').addEventListener('click', function () { schliessen(true); });
+  karte.querySelectorAll('[data-hilfe]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var auf = b.getAttribute('aria-expanded') !== 'true';
+      karte.querySelectorAll('[data-hilfe]').forEach(function (x) { x.setAttribute('aria-expanded', 'false'); document.getElementById(x.getAttribute('aria-controls')).hidden = true; });
+      b.setAttribute('aria-expanded', String(auf)); document.getElementById(b.getAttribute('aria-controls')).hidden = !auf;
+      if (auf) { schreib('r64-fertig', CFG.fall, 1); zaehlen('rueckkehr-' + b.dataset.hilfe); }
+    });
+  });
+  karte.querySelectorAll('[data-r64-kopieren]').forEach(function (k) {
+    k.addEventListener('click', function () {
+      var p = document.getElementById('prompt-text'), alt = k.textContent;
+      if (p && navigator.clipboard) navigator.clipboard.writeText(p.textContent.trim()).then(function () {
+        k.textContent = 'Kopiert'; setTimeout(function () { k.textContent = alt; }, 2000);
+      }, function () {});
+    });
+  });
+  // „Läuft“ und „Hat geklappt“ → Rückmeldung (Beta) oder kurzer Abschied
+  var teil = function (n) { return karte.querySelector('[data-teil="' + n + '"]'); };
+  function wechsel(n) {
+    ['hilfe', 'rm', 'feld', 'dank', 'schoen'].forEach(function (x) { var t = teil(x); if (t) t.hidden = x !== n; });
+    karte.querySelector('.r64-zu').hidden = n !== 'hilfe';   // ab der Rückmeldung schließt „Lieber nicht“, das × läge sonst darüber
+    var t = teil(n); if (!t) return;
+    t.classList.remove('r64-schritt'); void t.offsetWidth; t.classList.add('r64-schritt');
+    var z = t.querySelector('h2, .r64-frage, label, p'); if (z) { z.tabIndex = -1; z.focus({ preventScroll: true }); }
+  }
+  karte.querySelectorAll('[data-laeuft]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      schreib('r64-fertig', CFG.fall, 1);
+      zaehlen('rueckkehr-' + b.dataset.laeuft);
+      if (weg_da()) { wechsel('rm'); frage(0); }
+      else { wechsel('schoen'); setTimeout(function () { schliessen(true); }, 4000); }
+    });
+  });
+  // 5b: drei Fragen, nur antippen
+  var punkte = karte.querySelectorAll('.r64-punkte li'), fragen = karte.querySelectorAll('[data-frage]'), negativ = false;
+  function frage(i) {
+    fragen.forEach(function (f, j) { f.hidden = j !== i; });
+    if (i > 0) { fragen[i].classList.remove('r64-schritt'); void fragen[i].offsetWidth; fragen[i].classList.add('r64-schritt'); var q = fragen[i].querySelector('.r64-frage'); q.tabIndex = -1; q.focus({ preventScroll: true }); }
+  }
+  fragen.forEach(function (f, i) {
+    f.querySelectorAll('.r64-chip').forEach(function (c) {
+      c.addEventListener('click', function () {
+        if (f.dataset.fertig) return; f.dataset.fertig = '1';
+        c.setAttribute('aria-pressed', 'true'); punkte[i].classList.add('voll');
+        rueckmelden(f.dataset.frage, c.dataset.wert);
+        if (CFG.negativ.indexOf(c.dataset.wert) >= 0) negativ = true;
+        setTimeout(function () {
+          if (i + 1 < fragen.length) frage(i + 1);
+          else { teil('feld').querySelector('label').textContent = negativ ? 'Schade. Was hat gefehlt?' : 'Magst du uns noch etwas sagen?'; wechsel('feld'); }
+        }, ruhig.matches ? 120 : 380);
+      });
+    });
+  });
+  karte.querySelectorAll('[data-lieber-nicht]').forEach(function (b) { b.addEventListener('click', function () { schliessen(true); }); });
+  var feld = karte.querySelector('.r64-feld textarea');
+  if (feld) feld.addEventListener('input', function () { feld.style.height = 'auto'; feld.style.height = feld.scrollHeight + 'px'; });
+  karte.querySelectorAll('[data-feld]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = feld.value.trim();
+      if (b.dataset.feld === 'absenden' && t) rueckmelden('rm-text', negativ ? 'gefehlt' : '', t);
+      danke();
+    });
+  });
+  function danke() {
+    wechsel('dank');
+    if (!ruhig.matches) {
+      // Abnahme Pam, Punkt 3: Kategoriefarbe der Karte, Grün des Free-Schilds, warmes Gelb der Startseite (Funke)
+      var ort = teil('dank'), farben = [getComputedStyle(karte).getPropertyValue('--fb') || '#9e5c26', '#2f4a26', '#f2b84f'];
+      for (var i = 0; i < 14; i++) {
+        var k = document.createElement('span'), w = (i / 14) * Math.PI * 2;
+        k.className = 'r64-konfetti';
+        k.style.background = farben[i % farben.length].trim() || '#9e5c26';
+        k.style.setProperty('--x', Math.round(Math.cos(w) * (60 + (i % 3) * 22)) + 'px');
+        k.style.setProperty('--y', Math.round(Math.sin(w) * (40 + (i % 4) * 12)) + 'px');
+        k.style.setProperty('--r', (i * 47 % 360) + 'deg');
+        ort.appendChild(k);
+      }
+      setTimeout(function () { ort.querySelectorAll('.r64-konfetti').forEach(function (k) { k.remove(); }); }, 900);
+    }
+    setTimeout(function () {
+      var f = karte.contains(document.activeElement);
+      schliessen(true);
+      var z = document.getElementById('r64-danke-zeile'); if (z) { z.hidden = false; if (f) z.querySelector('button').focus({ preventScroll: true }); }
+    }, 4000);
+  }
+  var zeile = document.getElementById('r64-danke-zeile');
+  if (zeile) zeile.querySelector('button').addEventListener('click', function () { zeile.hidden = true; });
+})();
 </script>
 <div class="live-fuss"><a href="/impressum">Impressum</a><span class="live-fuss-sep" aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a><span class="live-fuss-sep" aria-hidden="true"> · </span><span class="live-fuss-t">Testfassung im Aufbau</span></div><script src="/messung.js" data-endpunkt="https://script.google.com/macros/s/AKfycbxJ_s2hUjUxQiWQQ0QoXxSoxR5SfS0MiUvpHb7PcEJzYVgLpcVq1a9i5iUWonSEirfWSg/exec" defer></script><script src="/messpunkte.js" defer></script>
 </body>
