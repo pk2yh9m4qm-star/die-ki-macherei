@@ -2340,6 +2340,11 @@ html:not(.r64-vorbei) .r64 .ra-leiste, html.r64-rk-offen .r64 .ra-leiste { trans
 /* Fokusring der Karten unter „Weitere Ideen“: 2 px in der Fokusfarbe der Seite */
 .ra3.r71 .ra-weitere .mcard a.mcard-link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 </style>
+
+<style>
+/* Runde 75: mehr Luft unter dem Start-Knopf bei abo */
+@media (min-width: 1024px) { .ra3.r70.r70-z-liste.r71 .ra-schritte li:nth-child(1), .ra3.r70.r70-z-liste.r71 .ra-schritte li:nth-child(3) { padding-bottom: 16px; } }
+</style>
 <style>
   /* Runde 61 (Pam, Punkt 8): Logo quer im Kopf, 28 px am Handy bis 36 px am Rechner; Schutzzone = halbe Zeichenhöhe */
   .r61-brand { gap: 0; padding: 0; line-height: 0; flex: none; }
