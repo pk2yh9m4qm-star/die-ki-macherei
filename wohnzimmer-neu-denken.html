@@ -10,7 +10,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Wohnzimmer neu denken · KI-Macherei">
   <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:description" content="Seit Jahren steht alles am selben Platz, und dir fehlt die Idee für Neues.">
+  <meta property="og:description" content="Seit Jahren steht alles am selben Platz? Ein Foto genügt, und die KI zeigt dir neue Stile für deinen Raum.">
   <meta property="og:url" content="https://die-ki-macherei.de/wohnzimmer-neu-denken">
   <meta property="og:type" content="website">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -2141,6 +2141,110 @@ body { padding-bottom: 0; }
   .ra-brauchst li.v57-i > .v57-sym--ki svg { width: 15px; height: 15px; fill: currentColor; stroke: none; }
   .ra-brauchst li.v57-ki { padding-left: 40px; }
 </style>
+
+<style>
+/* Runde 64 (Jim, 29.10.2026): Use-Case-Seite aufgeräumt (Pam, Bauauftrag Runde 64) */
+.r64 .ra-kurztext { max-width: 32em; }
+.r64-erg .ra-zettel { padding: 18px 14px 16px; }
+.r64-erg h2 { margin: 0 0 12px; font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: 0; text-transform: none; }
+.r64-entwuerfe { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 0; }
+.r64-entwuerfe figure { margin: 0; text-align: center; }
+.r64-entwuerfe svg { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 1px 2px rgb(60 40 20 / .14); }
+.r64-entwuerfe figcaption { margin-top: 6px; font-size: 14px; font-weight: 600; line-height: 1.25; color: var(--ink); hyphens: manual; }
+.r64-erg-satz { margin: 12px 0 0; font-size: 16px; line-height: 1.45; color: var(--ink); text-wrap: pretty; }
+.r64-erg-satz b { font-weight: 800; }
+.r64 .ra-schritte li p .r64-klein { display: block; margin-top: 2px; font-size: 16px; line-height: 1.45; opacity: .92; }
+.r64-schilder { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.r64-schilder li { display: inline-flex; align-items: center; min-height: 32px; padding: 4px 12px; border-radius: 999px; font-size: 15px; font-weight: 650; color: #fff; background: rgb(0 0 0 / .22); }
+.r64-schilder li.r64-frei { flex-basis: 100%; padding: 0; min-height: 0; background: none; gap: 6px; font-weight: 500; }
+.r64-schilder .ra-marke { margin: 0; }
+.r64 .ra-links { margin: -4px 0 0 !important; }
+/* Ebene „Noch nicht bei ChatGPT angemeldet?“ mit weichgezeichnetem hellem Grund (Lehre 27.10.) */
+.r64-ebene { width: min(calc(100% - 32px), 460px); padding: 28px 24px 24px; border: 0; border-radius: 22px; background: #fbf8f3; color: #23201c; box-shadow: 0 30px 60px -28px rgb(60 45 25 / .45); font-family: Figtree, "Avenir Next", "Helvetica Neue", Arial, sans-serif; }
+.r64-ebene::backdrop { background: rgb(250 247 242 / .35); -webkit-backdrop-filter: blur(18px) saturate(1.05); backdrop-filter: blur(18px) saturate(1.05); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .r64-ebene::backdrop { background: rgb(246 242 236 / .94); } }
+.r64-ebene h2 { margin: 0 44px 10px 0; font-size: 20px; font-weight: 700; line-height: 1.3; }
+.r64-ebene p { margin: 0; font-size: 17px; line-height: 1.5; }
+.r64-zu { position: absolute; right: 8px; top: 8px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; color: inherit; font: 400 26px/1 Figtree, system-ui, sans-serif; cursor: pointer; }
+.r64-zu:focus-visible, .r64-rk button:focus-visible, .r64-rk a:focus-visible { outline: 2px solid #1c4a4f; outline-offset: 3px; }
+/* Rückkehr-Karte */
+.r64-rk { position: relative; margin: 16px var(--gutter) 4px; padding: 20px 18px 14px; border-radius: 24px; background: #fbf7f0; color: #2c2420; box-shadow: 0 10px 30px rgb(60 40 20 / .18); overflow: hidden; }
+.r64-rk[hidden], .r64-rk [hidden] { display: none !important; }
+.r64-rk-zeile { margin: 0 44px 4px 0; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #8a5a3b; }
+.r64-rk h2 { margin: 0 44px 14px 0; font-size: 23px; font-weight: 700; line-height: 1.25; color: #2c2420; letter-spacing: 0; text-transform: none; }
+.r64-rk-knoepfe { display: grid; gap: 10px; }
+.r64-rk-k { display: flex; align-items: center; width: 100%; min-height: 52px; margin: 0; padding: 12px 16px; border: 0; border-radius: 16px; font: 600 17px/1.3 inherit; font-family: inherit; text-align: left; color: #2c2420; background: #fff; box-shadow: 0 1px 0 rgb(0 0 0 / .08); cursor: pointer; }
+.r64-rk-k.r64-haupt, .r64-rk-k[aria-expanded="true"] { color: #fff; background: #2c2420; }
+.r64-rk-antwort { margin: 8px 0 0; padding: 14px 16px; border-radius: 16px; background: #fff; font-size: 16px; line-height: 1.5; }
+.r64-rk-antwort a:not(.r64-los) { color: #2c2420; text-decoration: underline; text-underline-offset: 3px; display: inline-flex; align-items: center; min-height: 44px; }
+.r64-rk-aktion { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; margin: 12px 0 0; }
+.r64-los { display: inline-flex; align-items: center; min-height: 48px; padding: 10px 18px; border-radius: 999px; color: #fff; background: #2c2420; font-weight: 600; text-decoration: none; }
+.r64-leise { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; color: #2c2420; font: 600 16px/1.3 inherit; font-family: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgb(44 36 32 / .45); cursor: pointer; }
+.r64-rk-fuss { margin: 6px 0 0; }
+/* Rückmeldung */
+.r64-rm-kopf { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.r64-rm-kopf h2 { margin-bottom: 4px; font-size: 20px; }
+.r64-rm-kopf .r64-leise { flex: none; margin-top: -10px; }
+.r64-rm-unter { margin: 0 0 12px; font-size: 16px; color: #5c5047; }
+.r64-punkte { display: flex; gap: 8px; margin: 0 0 14px; padding: 0; list-style: none; }
+.r64-punkte li { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--fc, #592c1d); transition: background .2s; }
+.r64-punkte li.voll { background: var(--fc, #592c1d); }
+.r64-frage { margin: 0 0 10px; font-size: 18px; font-weight: 700; line-height: 1.3; }
+.r64-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.r64-chip { min-height: 48px; padding: 10px 18px; border: 1.5px solid #cfc3b6; border-radius: 999px; background: #fff; color: #2c2420; font: 600 17px/1.2 inherit; font-family: inherit; cursor: pointer; }
+.r64-chip[aria-pressed="true"] { color: #fff; background: #2c2420; border-color: #2c2420; animation: r64-feder .15s ease-out; }
+@keyframes r64-feder { from { transform: scale(.96); } to { transform: scale(1); } }
+.r64-schritt { animation: r64-rein .25s ease-out; }
+@keyframes r64-rein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.r64-feld label { display: block; margin: 0 0 8px; font-size: 18px; font-weight: 700; }
+.r64-feld textarea { display: block; width: 100%; box-sizing: border-box; min-height: 48px; padding: 12px 14px; border: 1.5px solid #cfc3b6; border-radius: 14px; background: #fff; color: #2c2420; font: 400 17px/1.4 inherit; font-family: inherit; resize: none; overflow: hidden; }
+.r64-feld textarea:focus-visible { outline: 2px solid #1c4a4f; outline-offset: 2px; }
+.r64-feld-klein { margin: 6px 0 0; font-size: 14px; line-height: 1.4; color: #5c5047; }
+.r64-feld .r64-rk-aktion { margin-top: 8px; }
+.r64-feld button.r64-los { border: 0; font: 600 17px/1.2 inherit; font-family: inherit; cursor: pointer; }
+.r64-dank { position: relative; text-align: center; padding: 8px 0 4px; }
+.r64-haken { display: grid; place-items: center; width: 52px; height: 52px; margin: 4px auto 10px; border-radius: 50%; color: #fff; background: var(--fc, #592c1d); }
+.r64-haken svg { width: 28px; height: 28px; }
+.r64-dank p { margin: 0 0 4px; font-size: 18px; font-weight: 700; line-height: 1.35; }
+.r64-dank a { color: #2c2420; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; display: inline-flex; align-items: center; min-height: 44px; }
+.r64-konfetti { position: absolute; left: 50%; top: 30px; width: 8px; height: 8px; border-radius: 2px; pointer-events: none; animation: r64-flug .8s cubic-bezier(.2,.7,.3,1) forwards; }
+/* Abnahme Pam, Punkt 3: volle Deckkraft im Flug, erst ganz am Ende ausblenden */
+@keyframes r64-flug { from { transform: translate(-50%, 0) rotate(0); opacity: 1; } 85% { opacity: 1; } to { transform: translate(calc(-50% + var(--x)), var(--y)) rotate(var(--r)); opacity: 0; } }
+.r64-danke-zeile { margin-inline: var(--gutter) !important; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 14px; padding: 0 0 0 16px; border-radius: 999px; background: rgb(255 255 255 / .92); color: #2c2420; font-size: 16px; font-weight: 600; }
+.r64-danke-zeile .r64-zu { position: static; }
+/* Startleiste erst, wenn der Knopf oben aus dem Bild ist, und nie bei offener Rückkehr-Karte */
+html:not(.r64-vorbei) .r64 .ra-leiste, html.r64-rk-offen .r64 .ra-leiste { transform: translateY(140%) !important; visibility: hidden; }
+@media (prefers-reduced-motion: reduce) { .r64-chip[aria-pressed="true"], .r64-schritt { animation: none; } .r64-konfetti { display: none; } }
+/* Abnahme Pam, Punkt 2: unter 480 px vier Chips als 2 × 2, drei in einer Reihe, jeweils gleich breit; unter 360 passen drei nicht, dann untereinander */
+@media (max-width: 479px) {
+  .r64-chips { display: grid; gap: 8px 6px; }
+  .r64-chips[data-anzahl="4"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .r64-chips[data-anzahl="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .r64-chips[data-anzahl="3"] .r64-chip { padding-inline: 6px; }
+}
+@media (max-width: 359px) { .r64-chips[data-anzahl="3"] { grid-template-columns: minmax(0, 1fr); } }
+@media (min-width: 1024px) {
+  .r64 .ra-karte-innen { grid-template-columns: minmax(0, 58fr) minmax(0, 42fr); }
+  /* Abnahme Pam, Punkt 1: drei Schilder in einer Reihe, nur über Abstände (Schrift bleibt) */
+  .ra3.r64 .ra-handeln { padding-inline: 16px; }
+  .r64 .ra-schritte li { column-gap: 10px; }
+  .r64-schilder { gap: 8px 5px; }
+  .r64-schilder li:not(.r64-frei) { padding-inline: 7px; white-space: nowrap; font-size: 14px; }   /* Pam, Abnahme: 14 px, damit bei 1280 Luft bleibt */
+  .r64 .ra-hinweis { text-wrap: pretty; }
+  .r64-erg .ra-zettel { padding: 20px 20px 18px; }
+  .r64-entwuerfe { gap: 12px; }
+  .r64-rk { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); column-gap: 28px; align-items: start; margin: 0 0 26px; padding: 24px 28px 18px; }
+  .r64-rk > .r64-zu { z-index: 1; }
+  .r64-rk-teil { display: contents; }
+  /* Abnahme Pam (klein): „Prompt noch einmal kopieren“ direkt unter dem Titel; die Knöpfe rechts laufen über alle drei Zeilen */
+  .r64-rk:has(> [data-teil="hilfe"]:not([hidden])) { grid-template-rows: auto auto 1fr; }
+  .r64-rk-kopf { grid-column: 1; grid-row: 1; }
+  .r64-rk-knoepfe { grid-column: 2; grid-row: 1 / span 3; grid-template-columns: 1fr 1fr; margin-top: 30px; }
+  .r64-rk-fuss { grid-column: 1; grid-row: 2; margin-top: -8px; }
+  .r64-rm, .r64-dank, .r64-feld-teil { grid-column: 1 / -1; }
+  .r64-danke-zeile { grid-column: 1 / -1; margin-inline: 0 !important; }
+}
+</style>
 <style>
   /* Runde 61 (Pam, Punkt 8): Logo quer im Kopf, 28 px am Handy bis 36 px am Rechner; Schutzzone = halbe Zeichenhöhe */
   .r61-brand { gap: 0; padding: 0; line-height: 0; flex: none; }
@@ -2156,7 +2260,7 @@ body { padding-bottom: 0; }
 </style>
   <link rel="canonical" href="https://die-ki-macherei.de/wohnzimmer-neu-denken">
 </head>
-<body data-fall="wohnzimmer-neu-denken"><div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol><symbol id="ls-sofa" viewBox="0 0 24 24"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M4 18v2"/><path d="M20 18v2"/><path d="M12 4v9"/></symbol><symbol id="ls-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
+<body data-fall="wohnzimmer-neu-denken"><div class="live-aufbau" role="note"><b>Public Beta</b> · Die Seite ist noch im Aufbau.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol><symbol id="ls-sofa" viewBox="0 0 24 24"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M4 18v2"/><path d="M20 18v2"/><path d="M12 4v9"/></symbol><symbol id="ls-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
 
 Copyright (c) 2026 Lucide Icons and Contributors
@@ -2217,37 +2321,30 @@ SOFTWARE. --><symbol id="ls-flower-2" viewBox="0 0 24 24"><path d="M12 5a3 3 0 1
         </div>
       </header>
 
-<div class="ra ra3 ohne-bild" id="fall-wohnzimmer" data-fall="wohnzimmer">
+<div class="ra ra3 ohne-bild r64" id="fall-wohnzimmer" data-fall="wohnzimmer">
   <div class="ra-wrap"><a class="ra-zurueck" href="/ideen"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>Alle Ideen</a></div>
   
   <article class="ra-karte" style="--fa:#ecc19c;--fb:#9e5c26;--fc:#592c1d;--ml:0%;--mb:26%">
     <svg class="ra-karte-symbol" viewBox="0 0 24 24" aria-hidden="true"><use href="#ls-sofa"/></svg>
-    <div class="ra-karte-innen">
+    <div class="ra-karte-innen"><section class="r64-rk" id="r64-rk" hidden aria-labelledby="r64-rk-t"><button type="button" class="r64-zu" aria-label="Schließen">×</button><div class="r64-rk-teil" data-teil="hilfe"><div class="r64-rk-kopf"><p class="r64-rk-zeile">Zurück aus ChatGPT</p><h2 id="r64-rk-t">Wie läuft's mit deinem Wohnzimmer?</h2></div><div class="r64-rk-knoepfe"><div><button type="button" class="r64-rk-k r64-haupt" data-laeuft="laeuft">Läuft, ich sehe Entwürfe</button></div><div><button type="button" class="r64-rk-k" data-hilfe="leer" aria-expanded="false" aria-controls="r64-a-leer">Das Eingabefeld ist leer</button><div class="r64-rk-antwort" id="r64-a-leer" hidden><p style="margin:0">Das passiert manchmal nach dem Anmelden. Der Prompt liegt schon in deiner Zwischenablage: <span data-nur-geraet="handy">ins Feld tippen, gedrückt halten und „Einfügen“ wählen, abschicken.</span><span data-nur-geraet="computer">ins Feld klicken, Rechtsklick und „Einfügen“, abschicken.</span></p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Prompt kopieren und ChatGPT öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-leer">Hat geklappt</button></p></div></div><div><button type="button" class="r64-rk-k" data-hilfe="angemeldet" aria-expanded="false" aria-controls="r64-a-angemeldet">Ich bin nicht angemeldet</button><div class="r64-rk-antwort" id="r64-a-angemeldet" hidden><p style="margin:0"><span data-nur-geraet="computer">Melde dich vorher in diesem Browser bei ChatGPT an.</span><span data-nur-geraet="handy">Melde dich vorher in der ChatGPT-App an.</span> Dann öffnet der Knopf direkt den fertigen Prompt. Noch kein Konto? Das legst du dort kostenlos an, mit E-Mail oder Google-Konto.</p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Prompt kopieren und ChatGPT öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-angemeldet">Hat geklappt</button></p></div></div><div><button type="button" class="r64-rk-k" data-hilfe="nichts" aria-expanded="false" aria-controls="r64-a-nichts">Es hat sich nichts geöffnet</button><div class="r64-rk-antwort" id="r64-a-nichts" hidden><p style="margin:0"><span data-nur-geraet="handy">Dann fehlt meist die App. </span><a href="#" data-start-web target="_blank" rel="noopener">Im Browser öffnen</a></p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Prompt kopieren und ChatGPT öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-nichts">Hat geklappt</button></p></div></div></div><p class="r64-rk-fuss"><button type="button" class="r64-leise" data-r64-kopieren>Prompt noch einmal kopieren</button></p></div><div class="r64-rm" data-teil="rm" hidden><div class="r64-rm-kopf"><h2>Hilfst du uns kurz?</h2><button type="button" class="r64-leise" data-lieber-nicht>Lieber nicht</button></div><p class="r64-rm-unter">3 Fragen, nur antippen.</p><ol class="r64-punkte" aria-hidden="true"><li></li><li></li><li></li></ol><div data-frage="rm-entwuerfe"><p class="r64-frage" id="r64-f0">Wie gefallen dir die Entwürfe?</p><div class="r64-chips" data-anzahl="4" role="group" aria-labelledby="r64-f0"><button type="button" class="r64-chip" data-wert="gar-nicht" aria-pressed="false">Gar nicht</button><button type="button" class="r64-chip" data-wert="geht-so" aria-pressed="false">Geht so</button><button type="button" class="r64-chip" data-wert="gut" aria-pressed="false">Gut</button><button type="button" class="r64-chip" data-wert="richtig-gut" aria-pressed="false">Richtig gut</button></div></div><div data-frage="rm-leicht" hidden><p class="r64-frage" id="r64-f1">War es leicht, loszulegen?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f1"><button type="button" class="r64-chip" data-wert="ganz-leicht" aria-pressed="false">Ganz leicht</button><button type="button" class="r64-chip" data-wert="ging-so" aria-pressed="false">Ging so</button><button type="button" class="r64-chip" data-wert="schwierig" aria-pressed="false">Schwierig</button></div></div><div data-frage="rm-wieder" hidden><p class="r64-frage" id="r64-f2">Würdest du so etwas wieder mit KI machen?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f2"><button type="button" class="r64-chip" data-wert="ja" aria-pressed="false">Ja</button><button type="button" class="r64-chip" data-wert="vielleicht" aria-pressed="false">Vielleicht</button><button type="button" class="r64-chip" data-wert="eher-nicht" aria-pressed="false">Eher nicht</button></div></div></div><div class="r64-feld r64-feld-teil" data-teil="feld" hidden><label for="r64-text">Magst du uns noch etwas sagen?</label><textarea id="r64-text" rows="1" maxlength="500" aria-describedby="r64-text-h"></textarea><p class="r64-feld-klein" id="r64-text-h">Freiwillig. Bitte keine Namen, Adressen oder andere persönlichen Daten.</p><p class="r64-rk-aktion"><button type="button" class="r64-los" data-feld="absenden">Absenden</button><button type="button" class="r64-leise" data-feld="fertig">Fertig</button></p></div><div class="r64-dank" data-teil="dank" hidden role="status"><span class="r64-haken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Danke! Damit machst du die KI-Macherei für alle ein Stück besser.</p><a href="/ideen">Noch eine Idee ausprobieren?</a></div><div class="r64-dank" data-teil="schoen" hidden role="status"><p>Schön! Viel Spaß mit deinem neuen Wohnzimmer.</p></div></section><p class="r64-danke-zeile" id="r64-danke-zeile" hidden role="status"><span>Danke fürs Mitmachen</span><button type="button" class="r64-zu" aria-label="Hinweis schließen">×</button></p>
       <div class="ra-lesen">
         <div class="ra-meta"><span class="ra-chip">Umzug stemmen</span><a class="ra-siegel ok" href="#" data-oeffne="gut"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Geprüft</a>
           <button type="button" class="ra-teilen" data-titel="Wohnzimmer neu denken" aria-label="Teilen: Wohnzimmer neu denken"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5"/><path d="M5 11.5V19a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7.5"/></svg></button>
           <button type="button" class="ra-herz" data-herz="wohnzimmer" data-titel="Wohnzimmer neu denken" aria-pressed="false" aria-label="Merken: Wohnzimmer neu denken"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button></div>
         <h1>Wohnzimmer neu denken</h1>
-        <p class="ra-kurztext">Seit Jahren steht alles am selben Platz, und dir fehlt die Idee für Neues. Anders als Möbelhaus-Apps zeigt die KI Stile ohne Händlerbindung und bremst teure Fehlkäufe. Ein Foto genügt, das Umgestalten übernimmt sie:</p>
-        <section class="ra-ergebnis" aria-label="Ergebnis"><div class="ra-zettel">
-        <span class="ra-band" aria-hidden="true"></span>
-        <p class="ra-ergebnis-satz"><b>Ergebnis:</b> Du siehst, wie dein Wohnzimmer aussehen könnte, und bekommst eine Einkaufsliste im Budget, mit Preisen und Suchbegriffen. Mit Abo prüft die KI auch, ob deine Funde zusammenpassen.</p>
-        <ul class="ra-haken"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Drei Entwürfe deines Raums nebeneinander, auf Grundlage deines Fotos, als Inspiration</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Über jedem Entwurf die Nummer und der Name des Stils</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Zu deinem Favoriten eine Tabelle: Was, Was es dem Raum bringt, Preis ungefähr, Suchbegriffe</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Mit Abo: worauf es beim Kauf ankommt und wo du Abstriche machen kannst</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Mit Abo: Prüfung deiner Funde und dein Raum mit den ausgesuchten Teilen</span></li></ul>
-        
-      </div></section>
-        <section class="ra-brauchst" aria-labelledby="wohnzimmer-b"><h2 class="ra-versal" id="wohnzimmer-b">Das brauchst du</h2><ul><li class="v57-i v57-ki"><span class="v57-sym v57-sym--ki" aria-hidden="true"><svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg></span>Klappt mit ChatGPT, am Handy und am Computer. Mit Claude klappt das nicht: Claude kann keine Bilder erzeugen.</li><li class="v57-i"><span class="v57-sym" aria-hidden="true"><svg aria-hidden="true"><use href="#i-camera"/></svg></span>Ein Foto vom Raum reicht</li><li class="v57-i"><span class="v57-sym" aria-hidden="true"><svg aria-hidden="true"><use href="#i-clock"/></svg></span>Etwa 10 Minuten für dich</li><li class="v57-i"><span class="v57-sym" aria-hidden="true"><svg aria-hidden="true"><use href="#i-user-round"/></svg></span>Persönliche Daten: wenig. Die KI sieht ein Foto von deiner Wohnung.</li><li class="ra-kosten"><span class="ra-marke frei">Free</span> <span>· funktioniert, ohne für KI zu zahlen</span></li></ul></section>
+        <p class="ra-kurztext">Seit Jahren steht alles am selben Platz? Ein Foto genügt, und die KI zeigt dir neue Stile für deinen Raum.</p>
+        <section class="ra-ergebnis r64-erg" aria-labelledby="wohnzimmer-e"><div class="ra-zettel"><span class="ra-band" aria-hidden="true"></span><h2 id="wohnzimmer-e">Das bekommst du</h2><!-- PLATZHALTER Runde 64: gezeichnete Entwürfe, bis ein echtes Ergebnis aus einem Testlauf da ist --><div class="r64-entwuerfe" data-platzhalter role="img" aria-label="Drei Entwürfe desselben Wohnzimmers nebeneinander: skandinavisch, warm und natürlich"><figure><svg viewBox="0 0 120 90" role="presentation" focusable="false"><rect width="120" height="90" fill="#eef0ec"/><rect y="68" width="120" height="22" fill="#e3d3b8"/><rect x="62" y="12" width="26" height="34" rx="2" fill="#fbfaf6"/><rect x="74" y="12" width="2" height="34" fill="#e2ddd2"/><rect x="18" y="22" width="16" height="12" rx="1" fill="#fff" stroke="#c9cfc8"/><path d="M20 32l5-5 4 3 3-2v4z" fill="#a9b9ae"/><path d="M78 66c-6-8-7-17-2-24 3 7 4 14 2 24zm2 0c2-10 7-16 14-18-2 8-7 14-14 18zm-3-2c-7-3-11-9-11-16 6 3 10 9 11 16z" fill="#5f7d55"/><ellipse cx="44" cy="80" rx="34" ry="6" fill="#ffffff" opacity=".9"/><rect x="14" y="48" width="58" height="22" rx="6" fill="#a9b9ae"/><rect x="18" y="40" width="50" height="14" rx="5" fill="#a9b9ae" style="filter:brightness(.92)"/><rect x="22" y="44" width="12" height="9" rx="3" fill="#f4f1ea"/><rect x="52" y="44" width="12" height="9" rx="3" fill="#e2a23f"/><rect x="18" y="70" width="2.5" height="5" fill="#3d332b"/><rect x="65.5" y="70" width="2.5" height="5" fill="#3d332b"/></svg><figcaption>Skandi&shy;navisch</figcaption></figure><figure><svg viewBox="0 0 120 90" role="presentation" focusable="false"><rect width="120" height="90" fill="#f2dcc7"/><rect y="68" width="120" height="22" fill="#c99a6e"/><rect x="62" y="12" width="26" height="34" rx="2" fill="#fbfaf6"/><rect x="74" y="12" width="2" height="34" fill="#e2ddd2"/><rect x="16" y="20" width="22" height="14" rx="1" fill="#e9a66f"/><circle cx="31" cy="25" r="3" fill="#f6d28f"/><path d="M84 34h12l-3-9h-6z" fill="#fff6dc"/><rect x="89.2" y="34" width="1.6" height="34" fill="#3d332b"/><ellipse cx="90" cy="68" rx="5" ry="1.4" fill="#3d332b"/><ellipse cx="44" cy="80" rx="34" ry="6" fill="#e9b98f" opacity=".9"/><rect x="14" y="48" width="58" height="22" rx="6" fill="#b5603a"/><rect x="18" y="40" width="50" height="14" rx="5" fill="#b5603a" style="filter:brightness(.92)"/><rect x="22" y="44" width="12" height="9" rx="3" fill="#f0c38a"/><rect x="52" y="44" width="12" height="9" rx="3" fill="#7a8f5c"/><rect x="18" y="70" width="2.5" height="5" fill="#3d332b"/><rect x="65.5" y="70" width="2.5" height="5" fill="#3d332b"/></svg><figcaption>Warm</figcaption></figure><figure><svg viewBox="0 0 120 90" role="presentation" focusable="false"><rect width="120" height="90" fill="#e4e1d3"/><rect y="68" width="120" height="22" fill="#b9a27f"/><rect x="62" y="12" width="26" height="34" rx="2" fill="#fbfaf6"/><rect x="74" y="12" width="2" height="34" fill="#e2ddd2"/><path d="M78 66c-6-8-7-17-2-24 3 7 4 14 2 24zm2 0c2-10 7-16 14-18-2 8-7 14-14 18zm-3-2c-7-3-11-9-11-16 6 3 10 9 11 16z" fill="#5f7d55"/><circle cx="18" cy="28" r="7" fill="none" stroke="#8a7350" stroke-width="1.6"/><ellipse cx="44" cy="80" rx="34" ry="6" fill="#d9cfb6" opacity=".9"/><rect x="14" y="48" width="58" height="22" rx="6" fill="#6f7d5c"/><rect x="18" y="40" width="50" height="14" rx="5" fill="#6f7d5c" style="filter:brightness(.92)"/><rect x="22" y="44" width="12" height="9" rx="3" fill="#e8dcc0"/><rect x="52" y="44" width="12" height="9" rx="3" fill="#c98a5e"/><rect x="18" y="70" width="2.5" height="5" fill="#3d332b"/><rect x="65.5" y="70" width="2.5" height="5" fill="#3d332b"/></svg><figcaption>Natur</figcaption></figure></div><p class="r64-erg-satz">Drei Entwürfe von <b>deinem</b> Raum und zu deinem Favoriten eine Liste mit Preisen und Suchbegriffen.</p></div></section>
       </div>
       <div class="ra-handeln">
-        <section class="ra-schritte" aria-labelledby="wohnzimmer-s"><h2 class="ra-versal" id="wohnzimmer-s">So geht's</h2><ol><li><span class="ra-nr" aria-hidden="true">1</span><p><b>Raum fotografieren.</b> Mach ein Foto vom Wohnzimmer, so wie es jetzt ist, am besten bei Tageslicht und aus einer Ecke, damit viel vom Raum zu sehen ist. Wenn du magst, miss Länge und Breite.</p></li>
+        <section class="ra-schritte" aria-labelledby="wohnzimmer-s"><h2 class="ra-versal" id="wohnzimmer-s">So geht's</h2><ol><li><span class="ra-nr" aria-hidden="true">1</span><p><b>Foto vom Raum machen.</b><span class="r64-klein">Am besten bei Tageslicht, aus einer Ecke.</span></p></li>
 <li class="ra-start-schritt"><span class="ra-nr" aria-hidden="true">2</span>
-        <div class="ra-start">
+        <div class="ra-start"><ul class="r64-schilder"><li class="r64-frei"><span class="ra-marke frei">Free</span> <span>· funktioniert, ohne für KI zu zahlen</span></li><li>Etwa 10 Min.</li><li>Ein Foto vom Raum</li><li>Mit ChatGPT</li></ul>
           <a class="button-primary ra-knopf" href="#" data-start data-art="prompt" target="_blank" rel="noopener"><svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg><span>Mit ChatGPT starten</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-          <p class="ra-hinweis">Der Auftrag enthält nichts über dich. Dein Foto hängst du erst in ChatGPT an, wir sehen es nicht.</p>
-          <p class="ra-links"><a class="ra-leise" href="#" data-start data-art="abo" target="_blank" rel="noopener">Mit Abo auch den Einkauf planen</a><a class="ra-leise" href="#" data-oeffne="hakt">Noch nicht angemeldet?</a></p>
+          <p class="ra-hinweis">Dein Foto hängst du erst in ChatGPT an. Wir sehen es nicht.</p>
+          <p class="ra-links"><a class="ra-leise" href="#" data-r64-hilfe>Noch nicht bei ChatGPT angemeldet?</a></p>
         </div></li>
-<li><span class="ra-nr" aria-hidden="true">3</span><p><b>Foto anhängen und absenden.</b> <span data-nur-geraet="handy">Tippe auf das Plus, wähle das Foto vom Raum und schick ab.</span><span data-nur-geraet="computer">Klicke auf das Plus oder zieh das Foto ins Fenster, dann abschicken.</span></p></li>
-<li><span class="ra-nr" aria-hidden="true">4</span><p><b>Fragen beantworten, Entwürfe ansehen.</b> Die KI fragt kurz nach Budget und Geschmack und zeigt dir dann drei Stile in deinem eigenen Raum.</p></li></ol></section>
-        <section class="ra-mehr" aria-labelledby="wohnzimmer-m"><h2 class="ra-versal" id="wohnzimmer-m">Mehr dazu</h2><details class="ra-auf" data-teil="ki"><summary><span>Was die KI dabei macht</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><ol class="ra-ki"><li>Fragt nach Budget, Geschmack und dem, was bleiben soll</li><li>Zeigt drei Stile auf deinem eigenen Foto<span class="ra-ki-mehr">Wände, Fenster und was bleiben soll, bleiben, wie sie sind.</span></li><li>Sagt dir, womit du anfangen kannst<span class="ra-ki-mehr">Was mit wenig Geld am meisten verändert, etwa Farbe, Licht oder Stoffe.</span></li></ol><p class="ra-ki-abo"><b>Mit Abo möglich</b></p><ol class="ra-ki" start="4"><li>Schreibt einen Einkaufszettel im Budget<span class="ra-ki-mehr">Worauf es bei jedem Teil ankommt, wo du sparen kannst und welche Suchbegriffe helfen.</span></li><li>Prüft, ob deine Funde zusammenpassen<span class="ra-ki-mehr">Du schickst Links oder Screenshots, sie sagt dir ehrlich, was nicht passt.</span></li><li>Zeigt deinen Raum mit deinen Funden<span class="ra-ki-mehr">Mit allen ausgesuchten Teilen oder mit einem einzelnen, im Raum, wie er jetzt ist.</span></li></ol></div></details><details class="ra-auf" data-teil="abo" data-v25-angebot><summary><span>Mit Abo geht mehr</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><p><b>Auch den Einkauf planen</b></p><p>Die Entwürfe klappen kostenlos. Mit einem Abo plant ChatGPT mit dir auch die Einkaufsliste im Budget und prüft, ob deine Funde zusammenpassen.</p><p>Stelle den Denkaufwand auf „Mittel“ oder „Hoch“, damit die KI gründlicher nachdenkt.</p><p><b>Teste ein Abo einen Monat. Wir begleiten dich drei Wochen dabei, kostenlos.</b> Das Abo kostet beim Anbieter 23 € im Monat und ist monatlich kündbar.</p><p class="v25-angebot-du" hidden></p><p class="ra-abo-knoepfe"><button type="button" class="clay-btn ra-zweit v25-angebot-los" aria-expanded="false" aria-controls="ra-abo-danke">Begleitung anfragen</button> <a class="ra-leise" href="/mein-bereich#artikel-kostenlos">Was bringt ein Abo?</a></p><p class="v25-angebot-danke" id="ra-abo-danke" hidden>Schön, dass du dabei sein willst. Schreib uns einfach „Test“ per WhatsApp oder Instagram. Wir melden uns und starten mit dir.</p></div></details><details class="ra-auf" data-teil="gut"><summary><span>Gut zu wissen</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><ul class="ra-punkte"><li><b>Datenschutz:</b> Der Auftrag enthält keine persönlichen Daten. Die KI sieht nur dein Foto. Achte nur darauf, dass nichts Persönliches lesbar im Bild ist, etwa ein offener Brief oder ein Bildschirm, auf dem gerade private Daten zu sehen sind.</li><li><b>Grenzen:</b> Ein KI-Bild zeigt eine Idee, keinen Bauplan. Echte Möbel sehen ähnlich aus, nicht genau gleich. Maße und Preise prüfst du im Shop, bevor du bestellst. In der kostenlosen Version von ChatGPT kann Werbung erscheinen.</li><li><b>Geprüft:</b> „Geprüft“ heißt: Diese Anleitung wurde von unserer Redaktion erfolgreich getestet und freigegeben. Kein amtliches Prüfzeichen.</li></ul></div></details><details class="ra-auf" data-teil="hakt"><summary><span>Falls etwas hakt</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><ul class="ra-punkte"><li><b>Noch nicht bei ChatGPT angemeldet?</b> <span data-nur-geraet="computer">Melde dich vorher in diesem Browser an.</span><span data-nur-geraet="handy">Melde dich vorher in der ChatGPT-App an.</span> Dann öffnet der Knopf direkt den fertigen Auftrag. Noch kein Konto? Das legst du dort kostenlos an, mit E-Mail oder Google-Konto.</li><li><b>Nur im Eingabefeld?</b> Dann tippe auf Senden.</li><li><b>Es hat sich nichts geöffnet:</b> <a href="#" data-start-web target="_blank" rel="noopener">Im Browser öffnen</a>.<span data-nur-geraet="handy"> Dann fehlt meist die App.</span></li><li><b>Das Eingabefeld ist leer:</b> Das passiert manchmal nach dem Anmelden. Der Auftrag liegt schon in deiner Zwischenablage: <span data-nur-geraet="handy">ins Feld tippen, gedrückt halten und „Einfügen“ wählen.</span><span data-nur-geraet="computer">ins Feld klicken, Rechtsklick und „Einfügen“.</span></li><li><b>Ich habe noch nie einen KI-Chat benutzt:</b> <a href="/mein-bereich#artikel-erster-chat">So fängst du an, in zwei Minuten</a></li><li><b>Was passiert mit meinen Daten?</b> Der Auftrag enthält nichts über dich. Dein Foto hängst du erst in ChatGPT an, wir sehen es nicht. <a href="/mein-bereich#artikel-daten">Mehr dazu</a></li><li><b>Die Antwort passt nicht:</b> <a href="/mein-bereich#artikel-falsch">Was, wenn die KI etwas falsch versteht?</a></li></ul><p><a class="ra-leise" href="#" data-start-web target="_blank" rel="noopener">Im Browser öffnen</a></p></div></details><details class="ra-auf" data-teil="auftrag"><summary><span>Den Auftrag lesen</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><p class="ra-klein">Das bekommt ChatGPT von dir, wenn du auf „Mit ChatGPT starten“ tippst:</p><pre class="ra-auftrag" id="prompt-text">Hilf mir, mein Wohnzimmer neu zu gestalten. Ich schicke dir ein Foto vom Raum, so wie er jetzt ist. Ist noch keins da, bitte mich nur darum.
+<li><span class="ra-nr" aria-hidden="true">3</span><p><b>In ChatGPT das Foto anhängen und abschicken.</b><span class="r64-klein">Die KI fragt kurz nach Budget und Geschmack und zeigt dir drei Stile.</span></p></li></ol></section>
+        <section class="ra-mehr" aria-labelledby="wohnzimmer-m"><h2 class="ra-versal" id="wohnzimmer-m">Mehr dazu</h2><details class="ra-auf" data-teil="ki"><summary><span>So arbeitet die KI</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><ol class="ra-ki"><li>Fragt nach Budget, Geschmack und dem, was bleiben soll</li><li>Zeigt drei Stile auf deinem eigenen Foto<span class="ra-ki-mehr">Wände, Fenster und was bleiben soll, bleiben, wie sie sind.</span></li><li>Sagt dir, womit du anfangen kannst<span class="ra-ki-mehr">Was mit wenig Geld am meisten verändert, etwa Farbe, Licht oder Stoffe.</span></li></ol><p class="ra-ki-abo"><b>Der Prompt</b></p><p class="ra-klein">Das bekommt ChatGPT von dir, wenn du auf „Mit ChatGPT starten“ tippst:</p><pre class="ra-auftrag" id="prompt-text">Hilf mir, mein Wohnzimmer neu zu gestalten. Ich schicke dir ein Foto vom Raum, so wie er jetzt ist. Ist noch keins da, bitte mich nur darum.
 
 So gehen wir vor:
 1. Frag mich in einer kurzen Nachricht nach dem, was du brauchst: mein Budget, was bleiben soll, die ungefähren Maße des Raums und was mir gefällt oder mich stört. Ich darf auch „weiß nicht“ sagen.
@@ -2260,7 +2357,7 @@ So gehen wir vor:
 
 Wichtig:
 - Das Bild ist eine Inspiration, kein Bauplan.
-- Schreib einfach und ohne Fachbegriffe.</pre><p><button type="button" class="clay-btn ra-zweit" data-kopieren>Auftrag als Text kopieren</button></p></div></details><details class="ra-auf" data-teil="weiter"><summary><span>Weitergedacht</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><p>Das klappt mit jedem Raum: mit dem Kinderzimmer, das mitwachsen soll, dem Balkon, der bisher nur Abstellfläche ist, oder den eigenen Geschäftsräumen, die einladender wirken sollen. Ein Foto reicht, und KI zeigt dir, was dort möglich wäre.</p><p><b>Denk an die Ecke in deiner Wohnung, an der du jeden Tag vorbeigehst und denkst: „Da müsste man mal was machen.“ Mach ein Foto davon, mehr brauchst du für den Anfang nicht.</b></p></div></details></section>
+- Schreib einfach und ohne Fachbegriffe.</pre><p><button type="button" class="clay-btn ra-zweit" data-kopieren>Prompt kopieren</button></p></div></details><details class="ra-auf" data-teil="abo" data-v25-angebot><summary><span>Mit Abo geht mehr</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><ol class="ra-ki"><li>Schreibt einen Einkaufszettel im Budget<span class="ra-ki-mehr">Worauf es bei jedem Teil ankommt, wo du sparen kannst und welche Suchbegriffe helfen.</span></li><li>Prüft, ob deine Funde zusammenpassen<span class="ra-ki-mehr">Du schickst Links oder Screenshots, sie sagt dir ehrlich, was nicht passt.</span></li><li>Zeigt deinen Raum mit deinen Funden<span class="ra-ki-mehr">Mit allen ausgesuchten Teilen oder mit einem einzelnen, im Raum, wie er jetzt ist.</span></li></ol><p><a class="ra-leise" href="#" data-start data-art="abo" target="_blank" rel="noopener">Mit Abo auch den Einkauf planen</a></p><p><b>Auch den Einkauf planen</b></p><p>Die Entwürfe klappen kostenlos. Mit einem Abo plant ChatGPT mit dir auch die Einkaufsliste im Budget und prüft, ob deine Funde zusammenpassen.</p><p>Stelle den Denkaufwand auf „Mittel“ oder „Hoch“, damit die KI gründlicher nachdenkt.</p><p><b>Teste ein Abo einen Monat. Wir begleiten dich drei Wochen dabei, kostenlos.</b> Das Abo kostet beim Anbieter 23 € im Monat und ist monatlich kündbar.</p><p class="v25-angebot-du" hidden></p><p class="ra-abo-knoepfe"><button type="button" class="clay-btn ra-zweit v25-angebot-los" aria-expanded="false" aria-controls="ra-abo-danke">Begleitung anfragen</button> <a class="ra-leise" href="/mein-bereich#artikel-kostenlos">Was bringt ein Abo?</a></p><p class="v25-angebot-danke" id="ra-abo-danke" hidden>Schön, dass du dabei sein willst. Schreib uns einfach „Test“ per WhatsApp oder Instagram. Wir melden uns und starten mit dir.</p></div></details><details class="ra-auf" data-teil="gut"><summary><span>Gut zu wissen</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><p>Klappt mit ChatGPT, am Handy und am Computer. Mit Claude klappt das nicht: Claude kann keine Bilder erzeugen.</p><ul class="ra-punkte"><li><b>Datenschutz:</b> Der Auftrag enthält keine persönlichen Daten. Die KI sieht nur dein Foto. Achte nur darauf, dass nichts Persönliches lesbar im Bild ist, etwa ein offener Brief oder ein Bildschirm, auf dem gerade private Daten zu sehen sind.</li><li><b>Grenzen:</b> Ein KI-Bild zeigt eine Idee, keinen Bauplan. Echte Möbel sehen ähnlich aus, nicht genau gleich. Maße und Preise prüfst du im Shop, bevor du bestellst. In der kostenlosen Version von ChatGPT kann Werbung erscheinen.</li><li><b>Geprüft:</b> „Geprüft“ heißt: Diese Anleitung wurde von unserer Redaktion erfolgreich getestet und freigegeben. Kein amtliches Prüfzeichen.</li></ul><p class="ra-ki-abo"><b>Falls etwas hakt</b></p><ul class="ra-punkte"><li><b>Das Eingabefeld ist leer:</b> Das passiert manchmal nach dem Anmelden. Der Prompt liegt schon in deiner Zwischenablage: <span data-nur-geraet="handy">ins Feld tippen, gedrückt halten und „Einfügen“ wählen, abschicken.</span><span data-nur-geraet="computer">ins Feld klicken, Rechtsklick und „Einfügen“, abschicken.</span></li><li><b>Ich bin nicht angemeldet:</b> <span data-nur-geraet="computer">Melde dich vorher in diesem Browser bei ChatGPT an.</span><span data-nur-geraet="handy">Melde dich vorher in der ChatGPT-App an.</span> Dann öffnet der Knopf direkt den fertigen Prompt. Noch kein Konto? Das legst du dort kostenlos an, mit E-Mail oder Google-Konto.</li><li><b>Es hat sich nichts geöffnet:</b> <span data-nur-geraet="handy">Dann fehlt meist die App. </span><a href="#" data-start-web target="_blank" rel="noopener">Im Browser öffnen</a></li></ul></div></details></section>
       </div>
     </div>
   </article>
@@ -2270,6 +2367,7 @@ Wichtig:
     <div class="ra-wrap"><a class="ra-leise ra-alle" href="/ideen">Alle Ideen</a></div>
   </section>
   
+  <dialog class="r64-ebene" id="r64-ebene" aria-labelledby="r64-ebene-h"><button type="button" class="r64-zu" aria-label="Schließen">×</button><h2 id="r64-ebene-h">Noch nicht bei ChatGPT angemeldet?</h2><p><span data-nur-geraet="computer">Melde dich vorher in diesem Browser bei ChatGPT an.</span><span data-nur-geraet="handy">Melde dich vorher in der ChatGPT-App an.</span> Dann öffnet der Knopf direkt den fertigen Prompt. Noch kein Konto? Das legst du dort kostenlos an, mit E-Mail oder Google-Konto.</p></dialog>
   <div class="ra-leiste" data-leiste aria-hidden="true"><a class="button-primary" href="#" data-start data-art="prompt" target="_blank" rel="noopener" tabindex="-1"><svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg><span>Mit ChatGPT starten</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
 </div>
     <template id="auftrag-abo">Hilf mir, mein Wohnzimmer neu zu gestalten und den Einkauf zu planen. Ich schicke dir ein Foto vom Raum, so wie er jetzt ist. Ist noch keins da, bitte mich nur darum.
@@ -3534,6 +3632,165 @@ Wichtig:
       kopieren(url).then(function () { melden('Link kopiert'); }, function () { melden('Kopieren ging nicht. Die Adresse steht oben im Browser.'); });
     });
   })();
+</script>
+
+<script>
+// Runde 64 (Jim, 29.10.2026): Rückkehr-Karte „Wie läuft's?“ und Rückmeldung in der Beta (Pam, Bauauftrag Runde 64, Punkte 2, 5 und 7).
+(function () {
+  var CFG = {"fall": "wohnzimmer", "beta": true, "negativ": ["gar-nicht", "schwierig"]};
+  var html = document.documentElement, karte = document.getElementById('r64-rk');
+  if (!karte) return;
+  var ruhig = matchMedia('(prefers-reduced-motion: reduce)');
+  function lies(k) { try { return JSON.parse(localStorage.getItem(k) || '{}') || {}; } catch (e) { return {}; } }
+  function schreib(k, feld, wert) { var o = lies(k); o[feld] = wert; try { localStorage.setItem(k, JSON.stringify(o)); } catch (e) {} }
+  var TAGE7 = 7 * 24 * 3600 * 1000, weg = false, offen = false;
+  function fertig() { return !!lies('r64-fertig')[CFG.fall]; }
+  function frisch() { var t = lies('r64-start')[CFG.fall]; return t && Date.now() - t < TAGE7; }
+  // Datenweg: nur mit aktiver Messung (nicht aus, kein Global Privacy Control, kein Blocker). Sonst kein „Danke“, das nicht stimmt.
+  function weg_da() { return CFG.beta && window.Messung && window.Messung.aktiv; }
+  function zaehlen(abfrage) { try { if (window.Messung) window.Messung.senden('abfrage_beantwortet', { abfrage: abfrage }); } catch (e) {} }
+  function rueckmelden(abfrage, antwort, text) {
+    var M = window.Messung; if (!M || !M.aktiv) return;
+    var n = { art: 'rueckmeldung', abfrage: abfrage, pfad: (location.pathname.replace(/[^A-Za-z0-9\/._~%-]/g, '') || '/').slice(0, 200),
+      fall: (document.body.getAttribute('data-fall') || '').replace(/[^a-z0-9-]/g, '').slice(0, 60),
+      geraet: matchMedia('(hover: none) and (pointer: coarse)').matches ? 'handy' : 'computer' };
+    if (!n.fall) delete n.fall;
+    if (antwort) n.antwort = antwort;
+    if (text) n.text = text.slice(0, 500);
+    if (M.testmodus) { (window.__messungTest = window.__messungTest || []).push(n); return; }
+    var s = document.querySelector('script[data-endpunkt]'), ziel = s && s.getAttribute('data-endpunkt');
+    if (!ziel) return;
+    try { fetch(ziel, { method: 'POST', body: JSON.stringify(n), keepalive: true, mode: 'no-cors', credentials: 'omit', cache: 'no-store', referrerPolicy: 'no-referrer' }).catch(function () {}); } catch (e) {}
+  }
+  function zeige() {
+    if (offen || fertig()) return;
+    offen = true; karte.hidden = false; html.classList.add('r64-rk-offen');
+    var r = karte.getBoundingClientRect();
+    if (r.top < 0 || r.top > innerHeight - 120) karte.scrollIntoView({ block: 'start', behavior: ruhig.matches ? 'auto' : 'smooth' });
+  }
+  function schliessen(endgueltig) {
+    if (endgueltig) schreib('r64-fertig', CFG.fall, 1);
+    var f = karte.contains(document.activeElement);
+    karte.hidden = true; offen = false; html.classList.remove('r64-rk-offen');
+    if (f) { var h = document.querySelector('.ra-karte h1'); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); } }
+  }
+  // Start-Tipp merken (je Use Case und Gerät); Rückkehr in denselben Tab oder späterer Besuch bis 7 Tage danach
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest || !e.target.closest('[data-start]')) return;
+    schreib('r64-start', CFG.fall, Date.now()); weg = false;
+  }, true);
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') { if (frisch()) weg = true; return; }
+    if (weg && frisch()) zeige();
+  });
+  addEventListener('pageshow', function (e) { if (e.persisted && frisch()) zeige(); });
+  if (frisch()) zeige();
+  // Startleiste erst, wenn der Knopf in Schritt 2 oben aus dem Bild ist
+  var knopf = document.querySelector('.ra-knopf');
+  if (knopf && 'IntersectionObserver' in window) new IntersectionObserver(function (es) {
+    html.classList.toggle('r64-vorbei', !es[0].isIntersecting && es[0].boundingClientRect.top < 0);
+  }).observe(knopf);
+  // Ebene „Noch nicht bei ChatGPT angemeldet?“
+  var ebene = document.getElementById('r64-ebene'), von = null;
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest && e.target.closest('[data-r64-hilfe]');
+    if (!t || !ebene || !ebene.showModal) return;
+    e.preventDefault(); von = t; ebene.showModal();
+  });
+  if (ebene) {
+    ebene.addEventListener('click', function (e) { if (e.target === ebene || e.target.closest('.r64-zu')) ebene.close(); });
+    ebene.addEventListener('close', function () { if (von) try { von.focus({ preventScroll: true }); } catch (e) {} });
+  }
+  // 5a: Hilfe
+  karte.querySelector('.r64-zu').addEventListener('click', function () { schliessen(true); });
+  karte.querySelectorAll('[data-hilfe]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var auf = b.getAttribute('aria-expanded') !== 'true';
+      karte.querySelectorAll('[data-hilfe]').forEach(function (x) { x.setAttribute('aria-expanded', 'false'); document.getElementById(x.getAttribute('aria-controls')).hidden = true; });
+      b.setAttribute('aria-expanded', String(auf)); document.getElementById(b.getAttribute('aria-controls')).hidden = !auf;
+      if (auf) { schreib('r64-fertig', CFG.fall, 1); zaehlen('rueckkehr-' + b.dataset.hilfe); }
+    });
+  });
+  karte.querySelectorAll('[data-r64-kopieren]').forEach(function (k) {
+    k.addEventListener('click', function () {
+      var p = document.getElementById('prompt-text'), alt = k.textContent;
+      if (p && navigator.clipboard) navigator.clipboard.writeText(p.textContent.trim()).then(function () {
+        k.textContent = 'Kopiert'; setTimeout(function () { k.textContent = alt; }, 2000);
+      }, function () {});
+    });
+  });
+  // „Läuft“ und „Hat geklappt“ → Rückmeldung (Beta) oder kurzer Abschied
+  var teil = function (n) { return karte.querySelector('[data-teil="' + n + '"]'); };
+  function wechsel(n) {
+    ['hilfe', 'rm', 'feld', 'dank', 'schoen'].forEach(function (x) { var t = teil(x); if (t) t.hidden = x !== n; });
+    karte.querySelector('.r64-zu').hidden = n !== 'hilfe';   // ab der Rückmeldung schließt „Lieber nicht“, das × läge sonst darüber
+    var t = teil(n); if (!t) return;
+    t.classList.remove('r64-schritt'); void t.offsetWidth; t.classList.add('r64-schritt');
+    var z = t.querySelector('h2, .r64-frage, label, p'); if (z) { z.tabIndex = -1; z.focus({ preventScroll: true }); }
+  }
+  karte.querySelectorAll('[data-laeuft]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      schreib('r64-fertig', CFG.fall, 1);
+      zaehlen('rueckkehr-' + b.dataset.laeuft);
+      if (weg_da()) { wechsel('rm'); frage(0); }
+      else { wechsel('schoen'); setTimeout(function () { schliessen(true); }, 4000); }
+    });
+  });
+  // 5b: drei Fragen, nur antippen
+  var punkte = karte.querySelectorAll('.r64-punkte li'), fragen = karte.querySelectorAll('[data-frage]'), negativ = false;
+  function frage(i) {
+    fragen.forEach(function (f, j) { f.hidden = j !== i; });
+    if (i > 0) { fragen[i].classList.remove('r64-schritt'); void fragen[i].offsetWidth; fragen[i].classList.add('r64-schritt'); var q = fragen[i].querySelector('.r64-frage'); q.tabIndex = -1; q.focus({ preventScroll: true }); }
+  }
+  fragen.forEach(function (f, i) {
+    f.querySelectorAll('.r64-chip').forEach(function (c) {
+      c.addEventListener('click', function () {
+        if (f.dataset.fertig) return; f.dataset.fertig = '1';
+        c.setAttribute('aria-pressed', 'true'); punkte[i].classList.add('voll');
+        rueckmelden(f.dataset.frage, c.dataset.wert);
+        if (CFG.negativ.indexOf(c.dataset.wert) >= 0) negativ = true;
+        setTimeout(function () {
+          if (i + 1 < fragen.length) frage(i + 1);
+          else { teil('feld').querySelector('label').textContent = negativ ? 'Schade. Was hat gefehlt?' : 'Magst du uns noch etwas sagen?'; wechsel('feld'); }
+        }, ruhig.matches ? 120 : 380);
+      });
+    });
+  });
+  karte.querySelectorAll('[data-lieber-nicht]').forEach(function (b) { b.addEventListener('click', function () { schliessen(true); }); });
+  var feld = karte.querySelector('.r64-feld textarea');
+  if (feld) feld.addEventListener('input', function () { feld.style.height = 'auto'; feld.style.height = feld.scrollHeight + 'px'; });
+  karte.querySelectorAll('[data-feld]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = feld.value.trim();
+      if (b.dataset.feld === 'absenden' && t) rueckmelden('rm-text', negativ ? 'gefehlt' : '', t);
+      danke();
+    });
+  });
+  function danke() {
+    wechsel('dank');
+    if (!ruhig.matches) {
+      // Abnahme Pam, Punkt 3: Kategoriefarbe der Karte, Grün des Free-Schilds, warmes Gelb der Startseite (Funke)
+      var ort = teil('dank'), farben = [getComputedStyle(karte).getPropertyValue('--fb') || '#9e5c26', '#2f4a26', '#f2b84f'];
+      for (var i = 0; i < 14; i++) {
+        var k = document.createElement('span'), w = (i / 14) * Math.PI * 2;
+        k.className = 'r64-konfetti';
+        k.style.background = farben[i % farben.length].trim() || '#9e5c26';
+        k.style.setProperty('--x', Math.round(Math.cos(w) * (60 + (i % 3) * 22)) + 'px');
+        k.style.setProperty('--y', Math.round(Math.sin(w) * (40 + (i % 4) * 12)) + 'px');
+        k.style.setProperty('--r', (i * 47 % 360) + 'deg');
+        ort.appendChild(k);
+      }
+      setTimeout(function () { ort.querySelectorAll('.r64-konfetti').forEach(function (k) { k.remove(); }); }, 900);
+    }
+    setTimeout(function () {
+      var f = karte.contains(document.activeElement);
+      schliessen(true);
+      var z = document.getElementById('r64-danke-zeile'); if (z) { z.hidden = false; if (f) z.querySelector('button').focus({ preventScroll: true }); }
+    }, 4000);
+  }
+  var zeile = document.getElementById('r64-danke-zeile');
+  if (zeile) zeile.querySelector('button').addEventListener('click', function () { zeile.hidden = true; });
+})();
 </script>
 <div class="live-fuss"><a href="/impressum">Impressum</a><span class="live-fuss-sep" aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a><span class="live-fuss-sep" aria-hidden="true"> · </span><span class="live-fuss-t">Testfassung im Aufbau</span></div><script src="/messung.js" data-endpunkt="https://script.google.com/macros/s/AKfycbxJ_s2hUjUxQiWQQ0QoXxSoxR5SfS0MiUvpHb7PcEJzYVgLpcVq1a9i5iUWonSEirfWSg/exec" defer></script><script src="/messpunkte.js" defer></script>
 </body>
