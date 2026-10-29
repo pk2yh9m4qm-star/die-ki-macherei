@@ -2165,6 +2165,36 @@ body { padding-bottom: 0; }
   .footer .r61-fuss a { color: inherit; text-underline-offset: 3px; }
   @media (max-width: 767.98px) { .footer .r61-fuss a { display: inline-flex; align-items: center; min-height: 44px; } }
 </style>
+<style id="r65">
+  /* Runde 65 (Jim, 29.10.2026; Pam): bei 375 nichts unter 13 px, Schilder 13 px ab Gewicht 600, Nebenzeilen 14 px, Tippflächen 44 × 44 */
+  .tag { font-size: 13px; }
+  .tag--frei, .tag--cat { font-weight: 650; }
+  .ra-weitere .tag { font-size: 13px; }
+  .ra-weitere .tag--frei, .ra-weitere .tag--cat { font-weight: 650; }
+  .mz2-ck { font-size: 13px; }   /* Kopf des kleinen Chatfensters auf der Startseite (12 px), damit nichts unter 13 bleibt */
+  .ra-versal { font-size: 13px; }
+  .r65-motto { font-size: 14px; }
+  /* Siegel bricht nie um; bei 320 wird zuerst der Innenabstand kleiner (Pam: nie die Schrift) */
+  .ra-siegel { white-space: nowrap; }
+  @media (max-width: 359px) { .ra-siegel, .ra-siegel.offen { padding-inline: 7px; } }
+  .mb-fuss-reset .ki-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
+  /* Herz auf den Karten (38 × 38, absolut gesetzt): sieht gleich aus, Trefferfläche unsichtbar 3 px rundum */
+  .herz::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; }
+  /* „← Zur Startseite“: 44 hoch, Text an derselben Stelle */
+  a.zurueck { display: inline-flex; align-items: center; min-height: 44px; margin: -8.5px 0 11.5px; }
+  .v22z-skip:focus { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; }
+  /* Fragen-Dialog: das echte Free-Schild hinter „am Schild“ */
+  .r65-schild { margin-left: 6px; vertical-align: middle; }
+  @media (max-width: 700px) { .v57-unter-m { margin: 12px 6px 12px; } }
+  /* Ergänzung a (Pam/Yannis): Kopfzeile der Use-Case-Seiten unter 360 px darf umbrechen; Schilder nie, Teilen und Herz zusammen rechtsbündig */
+  /* Teilen reserviert den Platz des Herzens mit (54 px = 44 + 2 + 8 Abstand), das Herz rückt mit -52 px auf diesen Platz: beide brechen nur zusammen um, ohne HTML-Umbau */
+  @media (max-width: 359px) { .ra-chip { white-space: nowrap; } .ra-meta { flex-wrap: wrap; gap: 6px 8px; }
+    .ra-meta .ra-teilen { margin-left: auto; margin-right: 54px; } .ra-meta .ra-teilen + .ra-herz { margin-left: -52px; } }
+  /* Ergänzung b: Datenschutz-Inhaltsverzeichnis unter 768 px, jeder Link 44 px hoch (Innenabstand statt Lücke) */
+  @media (max-width: 767.98px) { ul.index a.index-link { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; } }
+  /* Ergänzung c: Knopftexte „Mit Claude starten“ (15 px) und „Mit ChatGPT starten“ in der Startseiten-Vorführung (15,5 px) auf 16 px */
+  .ra-leise.ra-claude, .mz2-knopf { font-size: 16px; }
+</style>
   <link rel="canonical" href="https://die-ki-macherei.de/keller-ausmisten">
 </head>
 <body data-fall="keller-ausmisten"><div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol><symbol id="ls-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -2299,7 +2329,7 @@ SOFTWARE. --><symbol id="ls-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727
   <div class="ra-leiste" data-leiste aria-hidden="true"><a class="button-primary" href="#" data-start data-art="prompt" target="_blank" rel="noopener" tabindex="-1"><svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg><span>Mit ChatGPT starten</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
 </div>
     
-    <footer class="footer"><div class="wrap"><span class="r61-fuss">Die KI-Macherei<span aria-hidden="true"> · </span><a href="https://www.instagram.com/ki_macherei/" target="_blank" rel="noopener">Instagram: @ki_macherei</a></span><span>Von Menschen für Menschen</span></div></footer>
+    <footer class="footer"><div class="wrap"><span class="r61-fuss">Die KI-Macherei<span aria-hidden="true"> · </span><a href="https://www.instagram.com/ki_macherei/" target="_blank" rel="noopener">Instagram: @ki_macherei</a></span><span class="r65-motto">Von Menschen für Menschen</span></div></footer>
   </main>
   
 

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Seite nicht gefunden · Die KI-Macherei</title>
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <style>
+  /* Live-Fassung (15.10.2026): Leiste „im Aufbau“, Fuß mit Impressum. Die Leiste liegt unter allen Fenstern und
+     Seitenblättern (z-index 1), sonst deckt sie deren oberen Rand ab. */
+  .live-aufbau { position: relative; z-index: 1; background: #2b2420; color: #f7f1e8; font: 500 14px/1.4 Figtree, system-ui, sans-serif;
+    text-align: center; padding: 8px 16px; }
+  .live-aufbau b { font-weight: 700; }
+  .live-fuss { font: 500 14px/1.5 Figtree, system-ui, sans-serif; color: #6f655c; text-align: center; padding: 18px 16px 28px; }
+  .live-fuss a { color: inherit; }
+  /* Fuß am Handy (Runde 11, 19.10.2026, live seit Yannis' „stell live“): Links 44 px hoch, „Testfassung im Aufbau“ in eigener Zeile */
+  @media (max-width: 767.98px) {
+    .live-fuss { padding: 12px 16px 28px; }
+    .live-fuss a { display: inline-flex; align-items: center; min-height: 44px; font-size: 1rem; margin-inline: 8px; text-underline-offset: 3px; }
+    .live-fuss-sep { display: none; }
+    .live-fuss-t { display: block; margin-top: 4px; }
+  }
+</style>
+  <style>
+    body { margin: 0; background: #f2ece3; color: #2b2420; font: 400 17px/1.6 Figtree, system-ui, sans-serif; }
+    main { max-width: 680px; margin: 0 auto; padding: 32px 16px 48px; }
+    h1 { font-size: 32px; line-height: 1.15; margin: 0 0 6px; }
+    h2 { font-size: 19px; margin: 28px 0 6px; }
+    p { margin: 0 0 10px; }
+    .platz { background: #f6e3b5; padding: 0 6px; border-radius: 4px; }
+    h3 { font-size: 17px; margin: 18px 0 4px; }
+    ul { margin: 0 0 10px; padding-left: 22px; }
+    a { color: inherit; overflow-wrap: anywhere; }
+    a.zurueck { display: inline-block; margin-bottom: 20px; color: inherit; }
+  </style>
+<style>
+  .r61-rechtskopf { display: flex; align-items: center; height: 80px; width: min(calc(100% - 2 * clamp(16px, 4vw, 40px)), 1220px); margin: 0 auto; }
+  .r61-rechtskopf .r61-brand { display: flex; align-items: center; min-height: 44px; }
+  @media (max-width: 700px) { .r61-rechtskopf { height: 68px; } }
+  .r61-rechtskopf + main { padding-top: 8px; }
+</style>
+<style>
+  /* Runde 61 (Pam, Punkt 8): Logo quer im Kopf, 28 px am Handy bis 36 px am Rechner; Schutzzone = halbe Zeichenhöhe */
+  .r61-brand { gap: 0; padding: 0; line-height: 0; flex: none; }
+  .r61-brand picture { display: block; line-height: 0; }
+  .r61-logo { display: block; height: clamp(28px, 2.6vw, 36px); width: auto; }
+  .site-nav .nav-end { margin-left: clamp(14px, 1.3vw, 18px); }
+  @media (max-width: 359.98px) { .r61-logo { width: clamp(28px, 2.6vw, 36px); } }
+  .r61-popup-logo { display: block; height: 22px; width: auto; }
+  /* Fuß: Name und Instagram in S6, 400 */
+  .footer .r61-fuss { font-size: 15px; font-weight: 400; }
+  .footer .r61-fuss a { color: inherit; text-underline-offset: 3px; }
+  @media (max-width: 767.98px) { .footer .r61-fuss a { display: inline-flex; align-items: center; min-height: 44px; } }
+</style>
+<style id="r65">
+  /* Runde 65 (Jim, 29.10.2026; Pam): bei 375 nichts unter 13 px, Schilder 13 px ab Gewicht 600, Nebenzeilen 14 px, Tippflächen 44 × 44 */
+  .tag { font-size: 13px; }
+  .tag--frei, .tag--cat { font-weight: 650; }
+  .ra-weitere .tag { font-size: 13px; }
+  .ra-weitere .tag--frei, .ra-weitere .tag--cat { font-weight: 650; }
+  .mz2-ck { font-size: 13px; }   /* Kopf des kleinen Chatfensters auf der Startseite (12 px), damit nichts unter 13 bleibt */
+  .ra-versal { font-size: 13px; }
+  .r65-motto { font-size: 14px; }
+  /* Siegel bricht nie um; bei 320 wird zuerst der Innenabstand kleiner (Pam: nie die Schrift) */
+  .ra-siegel { white-space: nowrap; }
+  @media (max-width: 359px) { .ra-siegel, .ra-siegel.offen { padding-inline: 7px; } }
+  .mb-fuss-reset .ki-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
+  /* Herz auf den Karten (38 × 38, absolut gesetzt): sieht gleich aus, Trefferfläche unsichtbar 3 px rundum */
+  .herz::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; }
+  /* „← Zur Startseite“: 44 hoch, Text an derselben Stelle */
+  a.zurueck { display: inline-flex; align-items: center; min-height: 44px; margin: -8.5px 0 11.5px; }
+  .v22z-skip:focus { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; }
+  /* Fragen-Dialog: das echte Free-Schild hinter „am Schild“ */
+  .r65-schild { margin-left: 6px; vertical-align: middle; }
+  @media (max-width: 700px) { .v57-unter-m { margin: 12px 6px 12px; } }
+  /* Ergänzung a (Pam/Yannis): Kopfzeile der Use-Case-Seiten unter 360 px darf umbrechen; Schilder nie, Teilen und Herz zusammen rechtsbündig */
+  /* Teilen reserviert den Platz des Herzens mit (54 px = 44 + 2 + 8 Abstand), das Herz rückt mit -52 px auf diesen Platz: beide brechen nur zusammen um, ohne HTML-Umbau */
+  @media (max-width: 359px) { .ra-chip { white-space: nowrap; } .ra-meta { flex-wrap: wrap; gap: 6px 8px; }
+    .ra-meta .ra-teilen { margin-left: auto; margin-right: 54px; } .ra-meta .ra-teilen + .ra-herz { margin-left: -52px; } }
+  /* Ergänzung b: Datenschutz-Inhaltsverzeichnis unter 768 px, jeder Link 44 px hoch (Innenabstand statt Lücke) */
+  @media (max-width: 767.98px) { ul.index a.index-link { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; } }
+  /* Ergänzung c: Knopftexte „Mit Claude starten“ (15 px) und „Mit ChatGPT starten“ in der Startseiten-Vorführung (15,5 px) auf 16 px */
+  .ra-leise.ra-claude, .mz2-knopf { font-size: 16px; }
+</style>
+<style id="r65-404">
+  /* Runde 65: 404-Seite wie Impressum, eine Spalte oben bündig, zwei Knöpfe, kein Schmuck (Pam, Punkt 4) */
+  .r65-knoepfe { display: grid; gap: 12px; margin: 24px 0 0; }
+  .r65-k { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 22px; border-radius: 999px; box-sizing: border-box;
+    font-size: 17px; font-weight: 650; text-decoration: none; color: #23201c; background: #fffdf9; box-shadow: inset 0 0 0 1.5px #d9cfc2; }
+  .r65-k--haupt { color: #fbf7f0; background: #23201c; box-shadow: none; }
+  .r65-k:focus-visible { outline: 3px solid #3b5a9a; outline-offset: 3px; }
+  @media (min-width: 600px) { .r65-knoepfe { display: flex; flex-wrap: wrap; } }
+</style>
+  <link rel="canonical" href="https://die-ki-macherei.de/404">
+</head>
+<body>
+<div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div>
+<header class="r61-rechtskopf"><a class="r61-brand" href="/"><img class="r61-logo" src="/ki-macherei_quer_hell.svg" alt="Die KI-Macherei, zur Startseite" width="159" height="28"></a></header>
+<main>
+  <h1>Diese Seite gibt es nicht (mehr).</h1>
+  <p>Vielleicht hat sich im Link ein Tippfehler versteckt, oder die Seite ist umgezogen. Hier geht's weiter:</p>
+  <p class="r65-knoepfe"><a class="r65-k r65-k--haupt" href="/">Zur Startseite</a><a class="r65-k" href="/ideen">Alle Ideen ansehen</a></p>
+</main>
+<div class="live-fuss"><a href="/impressum">Impressum</a><span class="live-fuss-sep" aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a><span class="live-fuss-sep" aria-hidden="true"> · </span><span class="live-fuss-t">Testfassung im Aufbau</span></div>
+<script src="/messung.js" data-endpunkt="https://script.google.com/macros/s/AKfycbxJ_s2hUjUxQiWQQ0QoXxSoxR5SfS0MiUvpHb7PcEJzYVgLpcVq1a9i5iUWonSEirfWSg/exec" defer></script><script src="/messpunkte.js" defer></script>
+</body>
+</html>
