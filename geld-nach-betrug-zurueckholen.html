@@ -1,6 +1,19 @@
 <!doctype html>
 <html lang="de">
 <head>
+<script>/* Runde 69: Merk-Speicher auf eine Kennung je Idee umziehen (vor allen anderen Skripten) */(function () { try {
+  var A = {"miete":"r07","foerderung":"f-foerderung","anschaffung":"r45","gehalt":"r17","therapie":"r50","r26":"facharzt","r37":"stadtrat","r18":"todesfall","r38":"netz","r43":"versicherung","r08":"auto","r32":"garten","r12":"gewerbe","r22":"foto","r25":"suetterlin"}, s = window.sessionStorage;
+  var h = s.getItem('ki-entdecken-herzen');
+  if (h) { var d = JSON.parse(h), o = {}, ch = false;
+    Object.keys(d).forEach(function (k) { var g = A[k] || k; if (g !== k) ch = true;
+      if (!(g in o)) o[g] = d[k]; else { ch = true; if (d[k] && (d[k].am || 0) < (o[g] && o[g].am || 0)) o[g] = d[k]; } });
+    if (ch) s.setItem('ki-entdecken-herzen', JSON.stringify(o)); }
+  var l = s.getItem('ki-entdecken-sammlungen');
+  if (l) { var a = JSON.parse(l), c2 = false;
+    if (Array.isArray(a)) a.forEach(function (x) { if (x && Array.isArray(x.items)) { var n = x.items.map(function (i) { return A[i] || i; }).filter(function (i, p, r) { return r.indexOf(i) === p; });
+      if (n.length !== x.items.length || n.some(function (i, p) { return i !== x.items[p]; })) { x.items = n; c2 = true; } } });
+    if (c2) s.setItem('ki-entdecken-sammlungen', JSON.stringify(a)); }
+} catch (e) { /* kein Speicher */ } })();</script>
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Karte sperren, online anzeigen, Geld von der Bank zurückfordern: Die KI führt dich durch alles und schreibt die Forderung an deine Bank mit Frist.">
   <meta property="og:site_name" content="Die KI-Macherei">
