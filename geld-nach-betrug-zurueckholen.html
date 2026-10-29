@@ -2341,6 +2341,13 @@ html:not(.r64-vorbei) .r64 .ra-leiste, html.r64-rk-offen .r64 .ra-leiste { trans
 /* Fokusring der Karten unter „Weitere Ideen“: 2 px in der Fokusfarbe der Seite */
 .ra3.r71 .ra-weitere .mcard a.mcard-link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 </style>
+
+<style>
+/* Runde 76: Start-Button im „So geht's“-Kasten halten. 1. min-width 300 px aus dem Computer-Block weg (ab 1024 px). 2. Zwischen 1024 und 1183 px ist die
+   Spalte nur 229–285 px breit: Schrift 15 px, Abstand Zeichen–Text 8 px, Innenabstand 18/14 px, damit der Text einzeilig bleibt. Ab 1184 px bleibt der Button wie bisher (17 px). */
+@media (min-width: 1024px) { .ra3.r70 .ra-knopf { min-width: 0; } }
+@media (min-width: 1024px) and (max-width: 1183px) { .ra3.r70 .ra-knopf { font-size: 15px; gap: 8px; padding: 0 14px 0 18px; } }
+</style>
 <style>
   /* Runde 61 (Pam, Punkt 8): Logo quer im Kopf, 28 px am Handy bis 36 px am Rechner; Schutzzone = halbe Zeichenhöhe */
   .r61-brand { gap: 0; padding: 0; line-height: 0; flex: none; }
