@@ -3362,14 +3362,14 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
     const teile = dlg.querySelectorAll('[data-schritt]');
     const form = dlg.querySelector('[data-v25r7-form]'), nameForm = dlg.querySelector('[data-v25r7-nameform]');
     const TITEL = { 1: 'v25r7-t1', 2: 'v25r7-t2', 3: 'v25r7-t3' };
-    let zuletzt = null;
+    let zuletzt = null, von = null;   // Runde 66: Auslöser ausdrücklich merken
     function zeige(n) {
       teile.forEach(t => { t.hidden = t.dataset.schritt !== String(n); });
       dlg.setAttribute('aria-labelledby', TITEL[n]);
       const k = KI.konto();
       if (n === 2) dlg.querySelector('[data-v25r7-name]').textContent = (k && k.name) || 'du';
       if (n === 3) { nameForm.elements.vorname.value = (k && k.name) || ''; nameForm.querySelector('[data-fehler]').hidden = true; }
-      if (!dlg.open) { zuletzt = document.activeElement; dlg.showModal(); }
+      if (!dlg.open) { zuletzt = von || document.activeElement; von = null; dlg.showModal(); }
       dlg.scrollTop = 0;
       const ziel = n === 3 ? nameForm.elements.vorname : dlg.querySelector('[data-schritt="' + n + '"] .v25r7__zu');
       ziel.focus({ preventScroll: true });
@@ -3381,7 +3381,11 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
       zeige(n || 1);
     }
     window.v25r7Oeffnen = oeffne;
-    dlg.addEventListener('close', () => { if (zuletzt && document.contains(zuletzt)) zuletzt.focus({ preventScroll: true }); });
+    dlg.addEventListener('close', () => {   // Runde 66 (Pam): Auslöser weg oder versteckt (Blase) → Personen-Knopf im Kopf
+      let ziel = zuletzt;
+      if (!ziel || !document.contains(ziel) || !ziel.getClientRects().length) ziel = [...document.querySelectorAll('a.nav-mein')].find(a => a.getClientRects().length);
+      if (ziel) ziel.focus({ preventScroll: true });
+    });
     dlg.addEventListener('click', e => {
       if (e.target === dlg || e.target.closest('[data-v25r7-zu]')) { dlg.close(); return; }
       if (e.target.closest('[data-v25r7-google]')) { fertig('Jana', 'google'); return; }
@@ -3440,6 +3444,7 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
       const t = e.target.closest('[data-ki-konto], [data-mb-konto], [data-v25r7-nachricht], [data-v25r7-umbenennen]');
       if (!t) return;
       e.preventDefault(); e.stopImmediatePropagation();
+      if (!dlg.open) von = t;
       if (t.matches('[data-v25r7-nachricht]')) oeffne(2);
       else if (t.matches('[data-v25r7-umbenennen]')) oeffne(3);
       else oeffne(1);
