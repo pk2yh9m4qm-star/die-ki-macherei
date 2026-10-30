@@ -1456,6 +1456,623 @@
     .v57-k i::before { content: "Free"; font-size: 12px; font-weight: 700; } .v57-k i.abo::before { content: "Abo"; }
     .v57-k { padding-top: 24px !important; } }
 </style>
+<style id="r72">
+  /* Runde 72 (Jim, 29.10.2026): Einstiegsfenster Runde 2. Werte aus dem Entwurf (entwurf-r2-vorlage.html), Logos in Originalfarbe auf heller Scheibe (Pam A). */
+  .v47-ein { --r72-feder: cubic-bezier(.34, 1.56, .64, 1); }
+  .v47-marke { margin-bottom: 24px; flex: none; }
+  .v47-teil { padding-top: 0; }
+  .v47-teil[hidden] { display: none; }
+  .v57-zurueck { margin: 6px 0 -10px -2px; }
+  .v47-fort span { white-space: nowrap; }
+  .v47-vorschau { --zeichen-h: 74px; isolation: isolate; }
+  .v47-opt > .r72-stufe { flex: none; width: 24px; height: 24px; margin-right: -2px; color: var(--ink); }
+  .v47-opt > span { flex: 1; }
+  .v47-opt { min-height: 56px; }
+  .v47-unter { bottom: calc(var(--zeichen-h) + 34px); }
+  .v47-szene[data-szene="f2"] .r72-deko { position: absolute; border-radius: 50%; box-shadow: 0 2px 4px rgb(96 72 46 / .25); }
+  .r72-deko.d1 { left: 18%; top: 22%; width: 14px; height: 14px; background: #e8cba3; }
+  .r72-deko.d2 { right: 20%; top: 30%; width: 10px; height: 10px; background: #b0c8a8; }
+  .r72-deko.d3 { left: 30%; top: 62%; width: 18px; height: 18px; background: #f2ad8e; }
+
+  /* Bühne für Illustrationen, 360 × 300, skaliert */
+  .ein-flaeche { position: absolute; left: 0; right: 0; top: 0; bottom: calc(var(--zeichen-h) + 21px); }
+  .ein-buehne { position: absolute; left: 50%; top: 50%; width: 360px; height: 300px; margin: -150px 0 0 -180px; transform-origin: 50% 50%;
+    transform: translate(calc((180px - var(--cx, 180px)) * var(--s, 1)), calc((150px - var(--cy, 150px)) * var(--s, 1))) scale(var(--s, 1)); }
+  .ein-f1a { --s: 1.33; --cx: 180px; --cy: 157px; }
+  .ein-kA { --s: 1.6; --cx: 183px; --cy: 148px; }
+  .ein-buehne > * { position: absolute; }
+  /* Frage 1: Kartenfächer (Entwurf Zeilen 61–81), ohne Person */
+  .ein-k { left: 140px; top: 88px; width: 80px; height: 112px; border-radius: 15px; z-index: 1; transform-origin: 50% 260.7%;
+    transition: transform .55s var(--feder), opacity .3s ease; opacity: 0; transform: translateY(34px) scale(.7); }
+  .ein-k.field { box-shadow: var(--bevel), 0 1px 1px color-mix(in oklab, var(--fc) 38%, transparent), 0 10px 18px -8px rgb(96 72 46 / .45); }
+  .ein-k .mcard-symbol { position: absolute; right: -24%; bottom: -14%; height: 74%; width: auto; aspect-ratio: 1; fill: none; stroke: #000; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; opacity: .14; }
+  .ein-k::after { content: ""; position: absolute; left: 11px; top: 12px; width: 36px; height: 10px; border-radius: 5px; background: rgb(255 255 255 / .82); }
+  .ein-k:nth-child(2) { transition-delay: .03s; } .ein-k:nth-child(3) { transition-delay: .06s; } .ein-k:nth-child(4) { transition-delay: .09s; } .ein-k:nth-child(5) { transition-delay: .12s; }
+  [data-stufe="1"] .ein-k:nth-child(3) { opacity: 1; transform: rotate(-14deg); }
+  [data-stufe="2"] .ein-k:nth-child(2) { opacity: 1; transform: rotate(-22deg); }
+  [data-stufe="2"] .ein-k:nth-child(3) { opacity: 1; transform: rotate(0deg) translateY(-6px); }
+  [data-stufe="2"] .ein-k:nth-child(4) { opacity: 1; transform: rotate(22deg); }
+  [data-stufe="3"] .ein-k:nth-child(1) { opacity: 1; transform: rotate(-26deg); }
+  [data-stufe="3"] .ein-k:nth-child(2) { opacity: 1; transform: rotate(-13deg) translateY(-5px); }
+  [data-stufe="3"] .ein-k:nth-child(3) { opacity: 1; transform: rotate(0deg) translateY(-9px); }
+  [data-stufe="3"] .ein-k:nth-child(4) { opacity: 1; transform: rotate(13deg) translateY(-5px); }
+  [data-stufe="3"] .ein-k:nth-child(5) { opacity: 1; transform: rotate(26deg); }
+  @media (prefers-reduced-motion: reduce) { .ein-k { transition: transform .25s ease, opacity .2s ease; transition-delay: 0s !important; } }
+
+  /* „Ich hab noch keine“ (Entwurf Zeilen 118–131), Scheibe hell mit Zeichen in Originalfarbe */
+  .ein-kA .ein-gross { top: 82px; width: 128px; height: 128px; border-radius: 50%; display: grid; place-items: center;
+    background: linear-gradient(175deg, var(--clay-hi), var(--clay) 60%, #efe9df);
+    box-shadow: inset 0 2px 0 rgb(255 255 255 / .6), inset 0 -16px 22px -14px rgb(96 72 46 / .3), 0 3px 5px rgb(96 72 46 / .2), 0 22px 34px -16px rgb(96 72 46 / .6); }
+  .ein-kA .ein-gross svg { width: 62px; height: 62px; }
+  .ein-kA .g1 { left: 62px; transform: rotate(-6deg); }
+  .ein-kA .g2 { left: 170px; top: 96px; transform: rotate(5deg); }
+  .ein-funke { width: 14px; height: 14px; border-radius: 50%; background: var(--sand-a); box-shadow: 0 2px 4px rgb(96 72 46 / .25); }
+  .ein-kA .f1 { left: 58px; top: 52px; } .ein-kA .f2 { left: 300px; top: 70px; width: 10px; height: 10px; background: var(--green-a); } .ein-kA .f3 { left: 286px; top: 226px; width: 18px; height: 18px; background: var(--coral-a); }
+  .v47-szene.an .ein-kA .g1, .ein-kA.an .g1 { animation: ein-rein-l .7s var(--feder) both; }
+  .v47-szene.an .ein-kA .g2, .ein-kA.an .g2 { animation: ein-rein-r .7s var(--feder) .08s both; }
+  .v47-szene.an .ein-funke, .ein-kA.an .ein-funke { animation: ein-pop .5s var(--feder) .3s both; }
+  @keyframes ein-rein-l { from { transform: translate(-40px, 30px) rotate(-24deg) scale(.7); opacity: 0; } to { transform: rotate(-6deg); opacity: 1; } }
+  @keyframes ein-rein-r { from { transform: translate(40px, 30px) rotate(24deg) scale(.7); opacity: 0; } to { transform: rotate(5deg); opacity: 1; } }
+  @keyframes ein-pop { from { transform: scale(0); } to { transform: scale(1); } }
+  @keyframes r72-ein150 { from { opacity: 0; } to { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    .v47-szene.an .ein-kA .ein-gross, .ein-kA.an .ein-gross, .v47-szene.an .ein-funke, .ein-kA.an .ein-funke { animation: r72-ein150 .15s ease both !important; }
+  }
+
+  /* Frage 3: drei Karten */
+  .r72-faecher { position: absolute; left: 0; right: 0; top: 0; bottom: calc(var(--zeichen-h) + 66px); }
+  .r72-fk { position: absolute; top: 50%; left: 50%; width: 140px; height: 262px; margin: -131px 0 0 -70px; border-radius: 18px; padding: 12px 12px 14px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
+    transform-origin: 50% 50%; transition: transform .5s var(--feder); }
+  .r72-fk .mcard-symbol { position: absolute; right: -30%; bottom: -8%; height: 66%; }
+  .r72-fk .title { position: relative; margin: 0; font-size: 18px; line-height: 1.15; }
+  .r72-fk .tag { position: relative; align-self: flex-start; font-size: 12px; min-height: 26px; padding: 3px 10px; }
+  .r72-fk:nth-child(1) { transform: translateX(-142px) translateY(10px) rotate(-5deg); z-index: 1; }
+  .r72-fk:nth-child(2) { transform: translateY(-6px); z-index: 3; }
+  .r72-fk:nth-child(3) { transform: translateX(142px) translateY(10px) rotate(5deg); z-index: 2; }
+  .v47-szene:not(.an) .r72-fk { transform: translateY(-6px); }
+
+  /* Die drei Marken (Entwurf Zeilen 164–185), Aufrubbeln */
+  .v47-rechts { position: relative; }
+  .ein-zeichen { position: absolute; left: 0; right: 12px; bottom: 40px; z-index: 2; display: flex; justify-content: center; gap: 30px; pointer-events: none; }
+  .ein-z { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 104px; }
+  .ein-z-m { position: relative; width: 46px; height: 46px; border-radius: 50%; overflow: hidden; display: grid; place-items: center; color: var(--ink);
+    background: linear-gradient(175deg, var(--clay-hi), var(--clay) 60%, #efe9df);
+    box-shadow: 0 1px 1px rgb(var(--sh) / .16), 0 6px 12px -5px rgb(var(--sh) / .35), inset 0 1.5px 0 #fff, inset 0 -8px 12px -8px rgb(var(--sh) / .28); }
+  .ein-z-m > .inhalt { display: grid; place-items: center; width: 100%; height: 100%; }
+  .ein-z-m .icon, .ein-z-m .ein-stufe { width: 22px; height: 22px; }
+  .ein-z-m .logo { width: 22px; height: 22px; }
+  .ein-z-m .frage { font-size: 20px; font-weight: 700; color: var(--muted); }
+  .ein-z-t { min-height: 16px; font-size: 13px; line-height: 16px; font-weight: 650; color: var(--ink-soft); white-space: nowrap; transition: opacity .2s ease; }
+  .ein-z:not(.voll) .ein-z-t { opacity: 0; }
+  .ein-z-m canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .ein-konfetti { position: fixed; inset: 0; z-index: 2147483002; pointer-events: none; }
+  .v47-ein.geht { animation: ein-weg .32s var(--ease) forwards; }
+  @keyframes ein-weg { to { opacity: 0; transform: translateY(12px) scale(.98); } }
+
+  /* KI-Wahl: neun schwebende Logos */
+  .r72-feld { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 14px;
+    position: absolute; left: 50%; right: 12px; top: 12px; bottom: 107px; z-index: 3; margin: 0; padding: 20px 22px; }
+  .r72-zelle { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 48px; border-radius: 16px; cursor: pointer; transition: opacity .25s ease; }
+  .r72-zelle input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+  .r72-bahn { display: block; animation: r72-schwebe var(--dauer, 24s) ease-in-out infinite; animation-delay: var(--vz, 0s); }
+  .r72-zelle:nth-child(3n+1) { --ax: 6px; --ay: 5px; --dauer: 22s; --vz: -3s; } .r72-zelle:nth-child(3n+2) { --ax: -5px; --ay: 6px; --dauer: 27s; --vz: -11s; } .r72-zelle:nth-child(3n) { --ax: 5px; --ay: -4px; --dauer: 19s; --vz: -7s; }
+  .r72-zelle:nth-child(2) { --dauer: 29s; } .r72-zelle:nth-child(5) { --dauer: 18s; } .r72-zelle:nth-child(8) { --dauer: 25s; } .r72-zelle:nth-child(4) { --dauer: 30s; }
+  @keyframes r72-schwebe { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(var(--ax, 5px), calc(var(--ay, 5px) * -1)); } 50% { transform: translate(0, calc(var(--ay, 5px) * -1.4)); } 75% { transform: translate(calc(var(--ax, 5px) * -1), calc(var(--ay, 5px) * .4)); } }
+  .r72-feld.still .r72-bahn { animation-play-state: paused; }
+  .r72-scheibe { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 50%; transform-origin: 50% 100%;
+    transform: translate(var(--dx, 0px), var(--dy, 0px)) scale(var(--sc, 1)); transition: transform .35s var(--ease);
+    background: linear-gradient(175deg, var(--clay-hi), var(--clay) 60%, #efe9df);
+    box-shadow: 0 1px 1px rgb(var(--sh) / .16), 0 6px 12px -5px rgb(var(--sh) / .35), inset 0 1.5px 0 #fff, inset 0 -8px 12px -8px rgb(var(--sh) / .28); }
+  .r72-scheibe svg { width: 50%; height: 50%; }
+  .r72-name { font-size: 15px; line-height: 1.2; font-weight: 650; color: var(--ink); text-align: center; position: relative; z-index: 1; }
+  .r72-zelle:has(input:checked) .r72-name { text-decoration: underline; text-underline-offset: 3px; }
+  .r72-zelle:has(input:focus-visible) { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .r72-feld.ein .r72-zelle, .r72-feld.keine .r72-zelle { opacity: 0; pointer-events: none; }
+  .r72-feld.ein .r72-bahn, .r72-feld.keine .r72-bahn { animation-play-state: paused; }
+  .r72-gross { position: absolute; z-index: 4; display: grid; place-items: center; border-radius: 50%; pointer-events: none; will-change: transform;
+    background: linear-gradient(175deg, var(--clay-hi), var(--clay) 60%, #efe9df);
+    box-shadow: inset 0 2px 0 rgb(255 255 255 / .6), inset 0 -16px 22px -14px rgb(96 72 46 / .3), 0 3px 5px rgb(96 72 46 / .2), 0 22px 34px -16px rgb(96 72 46 / .6); }
+  .r72-gross svg { width: 50%; height: 50%; }
+  .r72-feld:has(input[name="ein-ki"]:focus-visible) .r72-gross { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .r72-funke { position: absolute; z-index: 3; border-radius: 50%; box-shadow: 0 2px 4px rgb(96 72 46 / .25); pointer-events: none; }
+  .r72-info { position: absolute; left: 0; right: 0; z-index: 5; display: flex; flex-direction: column; align-items: center; gap: 0; text-align: center; }
+  .r72-info[hidden] { display: none; }
+  .r72-in-name { font-size: 20px; font-weight: 700; letter-spacing: -.01em; }
+  .r72-aendern { min-height: 48px; min-width: 48px; padding: 0 14px; border: 0; background: none; font: inherit; font-size: 16px; font-weight: 600; color: var(--ink-soft); cursor: pointer;
+    text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgb(60 45 30 / .35); }
+  .r72-aendern:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 8px; }
+  .r72-feld .ein-buehne.r72-paar { display: none; --s: 1.6; }
+  .r72-feld.keine .ein-buehne.r72-paar { display: block; }
+  .r72-keine { margin-top: 0; }
+  .r72-tipp { min-height: 90px; }  /* reserviert für den Satz mit „Mistral (Le Chat)“ und Marker: 4 Zeilen bei 1280, gemessen */
+  .r72-tipp.mit-marker { display: flex; align-items: flex-start; gap: 8px; }   /* Marker oben bündig, Folgezeilen hängend eingerückt */
+  .r72-mark { flex: none; box-sizing: border-box; width: 18px; height: 18px; border-radius: 50%; background: #9e5c26; color: #fff; font-size: 12px; line-height: 18px; font-weight: 700; text-align: center; }  /* copper-b aus tokens.json, kein Rot */
+  .r72-tipp-t { min-width: 0; }
+  .r72-privat { margin: 16px 0 0; font-size: 14px; line-height: 1.4; font-weight: 500; color: #5d554c; }
+  .v47-fort-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
+  @media (hover: none), (pointer: coarse) { .r72-zelle { --sc: 1 !important; } }
+
+  /* Leiste „Für dich eingerichtet“ auf Alle Ideen (Entwurf alle_ideen_wirkung) */
+  .r72-leiste { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; margin-top: 22px; padding: 4px 8px 4px 18px; border-radius: 999px; background: var(--clay-in);
+    box-shadow: inset 0 1px 2px rgb(96 72 46 / .22), 0 1px 0 #fff; font-size: 16px; font-weight: 600; color: var(--ink); }
+  .r72-leiste .r72-l-i { display: inline-flex; align-items: center; gap: 7px; min-height: 36px; }
+  .r72-leiste .r72-l-i svg.r72-stufe { width: 18px; height: 18px; }
+  .r72-leiste .r72-l-m { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(175deg, var(--clay-hi), var(--clay) 60%, #efe9df);
+    box-shadow: 0 1px 1px rgb(var(--sh) / .2), inset 0 1px 0 #fff; }
+  .r72-leiste .r72-l-m svg { width: 13px; height: 13px; }
+  .r72-leiste .tag { font-size: 13px; }
+  .r72-leiste .r72-leiste-aendern { min-height: 48px; min-width: 48px; padding: 0 10px; border: 0; background: none; font: inherit; font-size: 16px; font-weight: 600; color: var(--ink-soft); cursor: pointer;
+    text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgb(60 45 30 / .35); }
+  .r72-leiste .r72-leiste-aendern:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 8px; }
+  h1[tabindex="-1"]:focus, h1#alle-ideen-title[tabindex="-1"]:focus-visible { outline: none; }   /* Fokus bleibt auf der Überschrift, nur der Rahmen entfällt (Pam) */
+  .r72-melden { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 2147483000; max-width: min(92vw, 460px); padding: 12px 18px; border-radius: 16px;
+    background: #23201c; color: #fbf7f0; font-size: 16px; font-weight: 600; line-height: 1.35; box-shadow: 0 10px 30px rgb(0 0 0 / .25); }
+
+  /* ===== Handy ===== */
+  @media (max-width: 700px) {
+    .v47-vorschau { --zeichen-h: 0px; flex: none; height: 148px !important; }
+    .v47-unter { bottom: 8px; font-size: 12.5px; }
+    .v47-rechts { display: flex; flex-direction: column; height: auto !important; padding: 12px 12px 0; }
+    .ein-flaeche { bottom: 0; right: 40px; }
+    .ein-f1a { --s: .534; --cy: 154px; } .ein-kA { --s: .615; }
+    .ein-zeichen { position: relative; left: auto; right: auto; bottom: auto; flex: none; height: 52px; margin-top: 6px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+    .ein-z { width: auto; flex-direction: row; gap: 7px; justify-content: center; }
+    .ein-z-m { width: 36px; height: 36px; flex: none; }
+    .ein-z-m .icon, .ein-z-m .ein-stufe, .ein-z-m .logo { width: 18px; height: 18px; }
+    .ein-z-t { font-size: 12.5px; line-height: 1.15; white-space: normal; min-width: 0; }
+    .r72-faecher { bottom: 26px; right: 40px; }
+    .r72-fk { width: 100px; height: 98px; margin: -49px 0 0 -50px; padding: 6px 7px 7px; border-radius: 11px; }
+    .r72-fk .title { font-size: 12.5px; } .r72-fk .tag { font-size: 11px; min-height: 0; padding: 1px 7px; }
+    .r72-fk:nth-child(1) { transform: translateX(-94px) translateY(4px) rotate(-4deg); } .r72-fk:nth-child(2) { transform: translateY(-3px); } .r72-fk:nth-child(3) { transform: translateX(94px) translateY(4px) rotate(4deg); }
+    .v47-szene:not(.an) .r72-fk { transform: translateY(-3px); }
+    .v47-form { padding-top: 0; } .v57-zurueck { margin: 0 0 -14px -2px; } .v47-frage { margin-top: 0; }
+    .r72-feld { position: relative; left: auto; right: auto; top: auto; bottom: auto; z-index: auto; margin: 4px 0 0; padding: 0; height: 190px; gap: 8px; grid-template-rows: repeat(3, 1fr); }
+    .r72-scheibe { width: 40px; height: 40px; } .r72-name { font-size: 16px; line-height: 1.1; } .r72-zelle { gap: 2px; }
+    .r72-feld .ein-buehne.r72-paar { --s: .8; }
+    .r72-keine .v47-opt { min-height: 52px; }
+    .r72-privat { font-size: 16px; }
+    .r72-tipp { font-size: 16px; min-height: 118px; margin-top: 8px; }   /* 5 Zeilen bei 361 bis 700 px, gemessen */
+    .v47-marke { display: none; }
+    .v47-ein .v47-innen[data-schritt="f2"] .v47-vorschau { height: 56px !important; }
+    .v47-innen[data-schritt="f2"] .v47-szene .r72-deko { display: none; }
+    .r72-leiste { border-radius: 22px; padding: 4px 6px 4px 16px; font-size: 16px; }
+    .r72-leiste .r72-l-t { flex: 0 0 100%; }
+  }
+  @media (min-width: 361px) and (max-width: 700px) { .r72-feld { height: 216px; } .r72-scheibe { width: 44px; height: 44px; } .r72-zelle { gap: 4px; } }
+  @media (max-width: 360px) { .r72-tipp { min-height: 142px; }   /* 6 Zeilen bei 320 px, gemessen */
+    .v47-innen[data-schritt="f2"] .ein-zeichen { padding-right: 52px; grid-template-columns: auto auto auto; justify-content: space-between; }   /* Platz für .v47-x (44 px) mit 8 px Abstand */
+    .v47-innen[data-schritt="f2"] .ein-z { gap: 5px; } .v47-innen[data-schritt="f2"] .ein-z-m { width: 28px; height: 28px; }
+    .v47-innen[data-schritt="f2"] .ein-z-m .icon, .v47-innen[data-schritt="f2"] .ein-z-m .ein-stufe, .v47-innen[data-schritt="f2"] .ein-z-m .logo { width: 15px; height: 15px; }
+    .r72-info { flex-direction: row; justify-content: center; }   /* Name und „ändern“ nebeneinander, damit die 48-px-Fläche nicht in „Ich hab noch keine“ ragt */
+    .v47-innen[data-schritt="f2"] .v47-vorschau { display: none; } .v47-innen[data-schritt="f2"] .ein-zeichen { margin-top: 0; }
+    .r72-feld { height: 176px; } .r72-scheibe { width: 36px; height: 36px; } .r72-keine .v47-opt { min-height: 48px; } }
+  @media (prefers-reduced-motion: reduce) { .r72-bahn { animation: none; } .r72-scheibe { transition: none; } .r72-zelle { transition: none; } }
+</style>
+<style id="r80">
+  /* Runde 80 (Jim, 30.10.2026): Grundkurs-Banner A (Rinne wie die frühere Kompass-Leiste) und Pop-up im Look des Einstiegsfensters. Werte aus Pams Skizzen. */
+  .gk { position: relative; justify-self: stretch; width: 100%; max-width: none; margin: 2px 0 0; color: var(--ink); }
+  @media (min-width: 701px) { .gk { margin-top: 8px; } }
+  .gk h2, .gk p { margin: 0; }
+  .gk-btn { position: static; font: inherit; border: 0; cursor: pointer; }
+  .gk-btn::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+  .gk-btn:focus-visible { outline: none; }
+  .gk-label { display: inline-flex; align-items: center; min-height: 28px; padding: 0 12px; border-radius: 999px; font-size: 16px; font-weight: 700; line-height: 1; white-space: nowrap; }
+  .gk--a { isolation: isolate; overflow: hidden; border-radius: 30px; color: #fff;
+    background: radial-gradient(38% 130% at 8% 0%, rgba(168, 194, 209, .3) 0%, rgba(168, 194, 209, 0) 70%), radial-gradient(40% 160% at 100% 100%, rgba(8, 22, 34, .32) 0%, rgba(8, 22, 34, 0) 70%), linear-gradient(115deg, #3c6a85 0%, var(--k-blue) 46%, var(--k-deep) 100%);
+    box-shadow: inset 0 18px 24px -14px rgba(3, 12, 20, .66), inset 0 4px 5px -2px rgba(3, 12, 20, .55), inset 0 -14px 20px -16px rgba(3, 12, 20, .42), inset 0 -2px 0 rgba(168, 194, 209, .28), 0 1.5px 0 rgba(255, 255, 255, .95), 0 -1.5px 0 rgba(255, 255, 255, .9); }
+  .gk--a::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: var(--noise); background-size: 240px 240px; opacity: .26; mix-blend-mode: multiply; pointer-events: none; }
+  .gk--a .gk-in { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px clamp(20px, 2.6vw, 36px); padding: 24px clamp(24px, 3vw, 40px); }
+  .gk--a .gk-icon { display: grid; place-items: center; width: 72px; aspect-ratio: 1; border-radius: 50%; color: #fff; background: rgba(8, 22, 34, .28); box-shadow: inset 0 3px 6px rgba(3, 12, 20, .55), 0 1px 0 rgba(168, 194, 209, .35); }
+  .gk--a .gk-icon svg { width: 36px; height: 36px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 2px 2px rgba(3, 12, 20, .4)); }
+  .gk--a .gk-text { display: grid; justify-items: start; gap: 6px; min-width: 0; }
+  .gk--a .gk-label { color: var(--k-deep); background: linear-gradient(180deg, #fff, #eef2f4); box-shadow: inset 0 1px 0 #fff, 0 1px 1px rgba(3, 12, 20, .4), 0 4px 8px -3px rgba(3, 12, 20, .5); }
+  .gk--a h2 { margin-top: 1px; font-family: var(--font-display); font-size: clamp(26px, 2.4vw, 34px); line-height: 1.06; font-weight: 600; letter-spacing: -.02em; color: #fff; text-wrap: balance; text-shadow: 0 1px 1px rgba(3, 12, 20, .35); }
+  .gk--a p { max-width: 58ch; color: rgba(255, 255, 255, .95); font-size: clamp(16px, 1.2vw, 17px); font-weight: 500; line-height: 1.45; text-wrap: pretty; }
+  .gk--a .gk-btn { --lo: 24 14 8; --sh: 4 14 22; --glow: 255 248 236; display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 54px; padding: 0 20px 0 26px; border-radius: 999px; background: linear-gradient(180deg, #fff 0%, #f4f0ea 100%); color: var(--k-deep); font-size: 16px; font-weight: 720; white-space: nowrap; box-shadow: inset 0 1px 0 #fff, 0 1px 1px rgba(3, 12, 20, .4), 0 6px 10px -4px rgba(3, 12, 20, .5); }
+  .gk--a .gk-btn svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; transition: transform .35s var(--ease); }
+  .gk--a:hover .gk-btn svg { transform: translateX(4px); }
+  .gk--a:active .gk-btn { background: linear-gradient(180deg, #ebe6de, #f6f3ee); }
+  .gk--a .gk-btn:focus-visible::after { outline: 3px solid #fff; outline-offset: -8px; }
+  @media (prefers-reduced-motion: reduce) { .gk--a .gk-btn svg { transition: none; } .gk--a:hover .gk-btn svg { transform: none; } }
+  @media (max-width: 700px) {
+    .gk--a { border-radius: 24px; }
+    .gk--a .gk-in { grid-template-columns: auto minmax(0, 1fr); padding: 20px 18px 18px; gap: 12px 14px; }
+    .gk--a .gk-icon { width: 56px; }
+    .gk--a .gk-icon svg { width: 28px; height: 28px; }
+    .gk--a .gk-text { display: contents; }
+    .gk--a .gk-label { grid-column: 1 / -1; grid-row: 1; justify-self: start; }
+    .gk--a .gk-icon { grid-row: 2; }
+    .gk--a h2 { grid-column: 2; grid-row: 2; align-self: center; font-size: 26px; }
+    .gk--a p { grid-column: 1 / -1; grid-row: 3; }
+    .gk--a .gk-action { grid-column: 1 / -1; grid-row: 4; display: grid; }
+    .gk--a .gk-btn { width: 100%; }
+  }
+
+  /* Pop-up: Karte wie das Einstiegsfenster (.v47-ein: weiß, Rand #e7dfd4, 24 px, Schatten); der helle, unscharfe Schleier kommt von window.v47Fenster (.v47-schleier) */
+  .r80-pop { position: fixed; inset: 0; z-index: 2147483001; box-sizing: border-box; margin: auto; width: min(540px, calc(100vw - 32px)); height: fit-content; max-height: calc(100dvh - 32px); overflow: auto;
+    padding: 36px 36px 28px; border: 1px solid #e7dfd4; border-radius: 24px; background: #fff; color: var(--ink); box-shadow: 0 24px 64px rgb(60 40 20 / .18); }
+  .r80-pop[open] { animation: r80-ein .22s var(--ease) both; }
+  @keyframes r80-ein { from { opacity: 0; transform: translateY(8px); } }
+  @media (prefers-reduced-motion: reduce) { .r80-pop[open] { animation: none; } }
+  .r80-x { position: absolute; top: 12px; right: 12px; z-index: 3; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%;
+    background: rgb(255 255 255 / .92); color: var(--ink, #23201c); cursor: pointer; box-shadow: 0 1px 2px rgb(60 40 20 / .14); }
+  .r80-x .icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .r80-x:hover { background: #f3eee7; }
+  .r80-pop-h { margin: 0; padding-right: 48px; font-family: var(--font-display); font-size: clamp(26px, 2.4vw, 30px); line-height: 1.14; font-weight: 600; letter-spacing: -.02em; text-wrap: balance; }
+  .r80-pop-h:focus { outline: none; }
+  .r80-pop-t { margin: 16px 0 0; font-size: 16px; line-height: 1.45; font-weight: 500; color: var(--ink-soft); text-wrap: pretty; }
+  .r80-akt { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 24px; }
+  .r80-ja { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 0; border-radius: 999px;
+    background: linear-gradient(#4a433b, #1d1a16); color: #fbf7f0; font: inherit; font-size: 16px; font-weight: 650; white-space: nowrap; cursor: pointer;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / .18), 0 2px 4px rgb(96 72 46 / .3), 0 14px 24px -12px rgb(96 72 46 / .7); }
+  .r80-ja .icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .r80-ja[aria-disabled="true"] { background: #e3ecd9; color: #2f4a26; box-shadow: none; cursor: default; }
+  .r80-leise { min-height: 48px; padding: 0 6px; border: 0; background: none; color: var(--ink-soft); font: inherit; font-size: 16px; font-weight: 600; cursor: pointer;
+    text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgb(60 45 30 / .35); }
+  .r80-note { margin: 14px 0 0; font-size: 16px; line-height: 1.45; font-weight: 500; color: var(--muted); }
+  .r80-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
+  :is(.r80-x, .r80-ja, .r80-leise):focus-visible { outline: 3px solid var(--focus, #3b5a9a); outline-offset: 3px; }
+  @media (max-width: 700px) {
+    .r80-pop { padding: 30px 22px 22px; }
+    .r80-ja { width: 100%; }
+    .r80-akt { gap: 6px; }
+    .r80-leise { width: 100%; }
+  }
+</style>
+<style id="r100">
+  /* Runde 100 (Ryan, 30.10.2026): Korrekturen Yannis Station 2, Punkte 6–10 */
+  /* 9: schwarze Formen bei Frage 3 – dieselbe Formatierung wie .ein-k .mcard-symbol (Lage und Größe bleiben bei .r72-fk .mcard-symbol) */
+  .r72-fk .mcard-symbol { fill: none; stroke: #000; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; opacity: .14; }
+
+  /* 8: Logo-Wolke (nur Deko, nichts davon ist klickbar). Außen driftet es, innen federt es (nie beides auf demselben Element). */
+  .r100-wolke { position: absolute; inset: 0; --u: 1; pointer-events: none; }
+  .r100-l { position: absolute; left: var(--x); top: var(--y); width: calc(var(--g) * var(--u) * 1px); height: calc(var(--g) * var(--u) * 1px);
+    margin: calc(var(--g) * var(--u) * -.5px) 0 0 calc(var(--g) * var(--u) * -.5px); z-index: 1; }
+  .r100-l.vorn { z-index: 3; }
+  .r100-drift { display: block; width: 100%; height: 100%; animation: r100-drift var(--dur) ease-in-out infinite; animation-delay: var(--vz); }
+  @keyframes r100-drift { 0%, 100% { transform: translate(0, 0); }
+    22% { transform: translate(calc(var(--ax) * var(--u) * 1px), calc(var(--ay) * var(--u) * -1px)); }
+    51% { transform: translate(calc(var(--ax) * var(--u) * -.7px), calc(var(--ay) * var(--u) * .6px)); }
+    78% { transform: translate(calc(var(--ax) * var(--u) * .4px), calc(var(--ay) * var(--u) * 1.1px)); } }
+  .r100-scheibe { display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%;
+    transform: translate(var(--tx, 0px), var(--ty, 0px)) rotate(var(--rot, 0deg)) scale(var(--sc, 1)); opacity: var(--op, 1);
+    transition: transform .7s var(--feder), opacity .45s ease; transition-delay: var(--vzg, 0s);
+    background: linear-gradient(175deg, var(--clay-hi), var(--clay) 60%, #efe9df);
+    box-shadow: inset 0 2px 0 rgb(255 255 255 / .6), inset 0 -10px 16px -10px rgb(96 72 46 / .3), 0 2px 4px rgb(96 72 46 / .2), 0 14px 24px -12px rgb(96 72 46 / .55); }
+  .r100-scheibe svg { width: 50%; height: 50%; }
+  @media (prefers-reduced-motion: reduce) { .r100-drift { animation: none; } .r100-scheibe { transition: none; transition-delay: 0s; } }
+
+  /* 7: Zeilen in Frage 2. Der Hinweis nach „Andere“ hat fünf Zeilen (gemessen bei 1280: 486 px Inhalt, 420 px Platz): Zeilen und Abstände in Frage 2 enger, Fenster 24 px höher. */
+  .r72-tipp { min-height: 112px; margin-top: 8px; }
+  .v47-innen[data-schritt="f2"] .v47-opt { min-height: 48px; }
+  .v47-innen[data-schritt="f2"] .v47-fort { margin-top: 14px; }
+  .v47-innen[data-schritt="f2"] .v47-opts { margin-top: 12px; }
+  @media (min-width: 701px) { .v47-ein { height: min(624px, calc(100vh - 48px)); } }
+
+  /* 10: Ladeansicht und Erfolgsansicht */
+  .v47-innen[data-schritt="laden"] .v47-fuss, .v47-innen[data-schritt="fertig"] .v47-fuss { display: none; }
+  .r100-balken { margin-top: 24px; height: 8px; border-radius: 4px; background: #e3dcd1; overflow: hidden; }
+  .r100-balken i { display: block; height: 100%; width: 0; border-radius: 4px; background: #2b2420; transition: width .65s cubic-bezier(.3, .7, .3, 1); }
+  .r100-zeilen { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 12px; }
+  .r100-zeilen li { display: flex; align-items: center; gap: 12px; min-height: 28px; font-size: 16.5px; line-height: 1.3; font-weight: 550; animation: r100-zeile .3s ease both; }
+  .r100-ic { flex: none; width: 22px; height: 22px; border-radius: 50%; box-sizing: border-box; }
+  .r100-zeilen li.lauf .r100-ic { border: 2.2px solid #e3dcd1; border-top-color: #2b2420; animation: r100-dreh .8s linear infinite; }
+  .r100-zeilen li.fertig .r100-ic { background: #2b2420 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 14px no-repeat; }
+  .r100-zeilen li.lauf { color: var(--ink-soft); }
+  @keyframes r100-zeile { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @keyframes r100-dreh { to { transform: rotate(360deg); } }
+  .r100-link { color: var(--ink); font-weight: 650; text-decoration: underline; text-underline-offset: 3px; }
+  .r100-link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+  .r100-ende { margin-top: 28px; }
+  .r100-ende .v47-dunkel { margin-left: 0; }
+  @media (prefers-reduced-motion: reduce) { .r100-balken i { transition: none; } .r100-zeilen li { animation: none; } }
+
+  @media (max-width: 700px) {
+    .r100-wolke { --u: .6; }
+    .v47-ein .v47-innen[data-schritt="f2"] .v47-vorschau { height: 132px !important; }
+    .r72-tipp { min-height: 118px; }
+    .v47-innen[data-schritt="f2"] .v47-fort { margin-top: 10px; }
+  }
+  @media (max-width: 360px) { .v47-ein .v47-innen[data-schritt="f2"] .v47-vorschau { display: none !important; } }
+</style>
+<style id="r101">
+  /* Runde 101 (Ryan, 30.10.2026) */
+  /* s2-11: Hinweis unter dem Tipp in Frage 2 (Stil des „!“-Hinweises aus Runde 72) */
+  .r101-hinweise { min-height: 112px; margin-top: 8px; }
+  .r101-hinweise .r72-tipp { min-height: 0; margin-top: 0; }
+  .r101-hinweis { display: flex; align-items: flex-start; gap: 8px; margin-top: 10px; }
+  .r101-hinweis[hidden] { display: none; }
+  .r101-hinweis b { font-weight: 700; color: var(--ink); }
+
+  /* s2-12: echte Karten von „Alle Ideen“, geklont, nur Bildfläche mit Rahmen, per Skalierung kleiner */
+  .r101-fk { position: absolute; top: 50%; left: 50%; width: 286px; margin: -86px 0 0 -143px; transform-origin: 50% 50%; transition: transform .5s var(--feder); }
+  .r101-fk .mcard { width: 286px; box-sizing: border-box; margin: 0; pointer-events: none; }
+  .r101-fk:nth-child(1) { transform: translateX(-118px) translateY(10px) rotate(-5deg) scale(.58); z-index: 1; }
+  .r101-fk:nth-child(2) { transform: translateY(-6px) scale(.64); z-index: 3; }
+  .r101-fk:nth-child(3) { transform: translateX(118px) translateY(10px) rotate(5deg) scale(.58); z-index: 2; }
+  .v47-szene:not(.an) .r101-fk { transform: translateY(-6px) scale(.58); }
+
+  /* s2-14: Walzen-Zeile unten im rechten Panel */
+  .v47-vorschau { --zeichen-h: 74px; }
+  .ein-zeichen.r101-z { position: absolute; left: 24px; right: 36px; bottom: 36px; z-index: 2; display: flex; justify-content: stretch; gap: 0; height: 64px; padding: 0; margin: 0;
+    border-radius: 999px; background: rgb(255 255 255 / .72); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); overflow: hidden;
+    box-shadow: 0 1px 1px rgb(var(--sh) / .16), 0 6px 12px -5px rgb(var(--sh) / .35), inset 0 1.5px 0 #fff; pointer-events: none; }
+  .r101-z .ein-z.r101-fenster { position: relative; flex: 1 1 0; width: auto; min-width: 0; height: 64px; flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 0; }
+  .r101-z .r101-fenster + .r101-fenster::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 1px; background: rgb(60 45 30 / .16); z-index: 2; }
+  .r101-walze { height: 64px; overflow: hidden; }
+  .r101-walze.dreht { -webkit-mask-image: linear-gradient(transparent, #000 24%, #000 76%, transparent); mask-image: linear-gradient(transparent, #000 24%, #000 76%, transparent); }
+  .r101-strip { display: block; will-change: transform; }
+  .r101-it { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; height: 64px; padding: 0 6px; box-sizing: border-box; text-align: center; color: var(--ink); }
+  .r101-ic { display: grid; place-items: center; width: 24px; height: 24px; flex: none; }
+  .r101-ic svg { width: 24px; height: 24px; }
+  .r101-t { max-width: 100%; font-size: 14px; line-height: 1.1; font-weight: 600; color: var(--ink-soft); text-wrap: balance; }
+  .r101-q { font-size: 26px; line-height: 1; font-weight: 700; color: var(--muted); }
+  .ein-zeichen.r101-z.blitz { animation: r101-blitz .8s ease-out 1; }
+  @keyframes r101-blitz { 0% { box-shadow: 0 1px 1px rgb(var(--sh) / .16), 0 6px 12px -5px rgb(var(--sh) / .35), inset 0 1.5px 0 #fff; }
+    30% { background: rgb(255 255 255 / .98); box-shadow: 0 0 0 3px rgb(242 173 142 / .7), 0 0 26px 6px rgb(255 214 160 / .85), inset 0 1.5px 0 #fff; }
+    100% { box-shadow: 0 1px 1px rgb(var(--sh) / .16), 0 6px 12px -5px rgb(var(--sh) / .35), inset 0 1.5px 0 #fff; } }
+  @media (prefers-reduced-motion: reduce) { .ein-zeichen.r101-z.blitz { animation: none; } }
+
+  /* s2-16: kleines Erfolgs-Pop-up, kein rechter Bereich */
+  .v47-ein.r101-klein { width: min(440px, calc(100vw - 32px)); max-width: none; height: fit-content; max-height: calc(100vh - 32px); margin: auto; border: 1px solid #e7dfd4; border-radius: 24px; }
+  .v47-ein.r101-klein .v47-innen { display: block; height: auto; }
+  .v47-ein.r101-klein .v47-rechts, .v47-ein.r101-klein .v47-marke { display: none; }
+  .v47-ein.r101-klein .v47-links { padding: 44px 32px 30px; }
+  .v47-ein.r101-klein .v47-form { overflow: visible; }
+  .v47-ein.r101-klein .r101-z { position: relative; left: auto; right: auto; bottom: auto; margin: 22px 0 0; }
+  .v47-ein.r101-klein .r100-ende { margin-top: 22px; }
+
+  @media (max-width: 700px) {
+    .r101-hinweise { min-height: 118px; }
+    .r101-fk:nth-child(1) { transform: translateX(-98px) translateY(4px) rotate(-4deg) scale(.36); }
+    .r101-fk:nth-child(2) { transform: translateY(-3px) scale(.4); }
+    .r101-fk:nth-child(3) { transform: translateX(98px) translateY(4px) rotate(4deg) scale(.36); }
+    .v47-szene:not(.an) .r101-fk { transform: translateY(-3px) scale(.36); }
+    .ein-zeichen.r101-z { position: relative; left: auto; right: auto; bottom: auto; flex: none; margin: 8px 0 0; }
+    .v47-innen[data-schritt="f2"] .ein-zeichen.r101-z { padding-right: 0; display: flex; }
+    .v47-ein.r101-klein .r101-z { margin: 22px 0 0; }
+  }
+</style>
+<style id="r84">
+  /* Runde 84 (Jim, 30.10.2026): „Alle Ideen“ Weg A mit Yannis' Karte. Alles unter #ideen .shelf, damit Ryans geklonte Karten im Einstiegsfenster unberührt bleiben.
+     Grundlage ist die Karte für Handy und Touch (erste Karte offen); der Rechner (ab 1024 px, hover: hover, pointer: fine) überschreibt unten in einer Media-Query. */
+  #ideen .shelf { margin-top: clamp(14px, 1.6vw, 22px); }
+  #ideen .shelf .shelf-track { gap: 14px; align-items: flex-start; padding: 16px var(--edge) 34px; margin-bottom: -12px; }
+  #ideen .shelf .mcard { --r84-h: 264px; flex: 0 0 clamp(160px, 45vw, 210px); width: clamp(160px, 45vw, 210px); height: var(--r84-h); box-sizing: border-box; padding: 6px;
+    border-radius: 24px; transform: none !important; }
+  #ideen .shelf .mcard.r84-offen { flex-basis: clamp(250px, 70vw, 330px); width: clamp(250px, 70vw, 330px); }
+  #ideen .shelf .mcard:active { transform: none !important; }
+  #ideen .shelf .mcard .mcard-link { position: static; display: block; height: 100%; border-radius: 18px; }
+  #ideen .shelf .mcard .mcard-link::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: 24px; }
+  #ideen .shelf .mcard .field { box-sizing: border-box; height: 100%; min-height: 0 !important; aspect-ratio: auto !important; display: flex; flex-direction: column; justify-content: flex-start;
+    gap: 0; padding: 12px; border-radius: 18px; transform: none !important; }
+  #ideen .shelf .mcard.r84-offen .field { height: 122px; }
+  #ideen .shelf .mcard .field h3.title { order: 1; margin: 0; font-size: 18px !important; line-height: 1.2 !important; padding-right: 0; }
+  #ideen .shelf .mcard .field-top { order: 3; margin: auto 0 0; display: none; }
+  #ideen .shelf .mcard.r84-offen .field-top { display: flex; }
+  #ideen .shelf .mcard .field-tags { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+  #ideen .shelf .mcard .tag--cat { display: none; }
+  #ideen .shelf[data-kat="weitere"] .mcard .tag--cat { display: inline-flex; }
+  #ideen .shelf[data-kat="weitere"] .mcard .tag--frei { display: none; }
+  #ideen .shelf[data-kat="weitere"] .mcard .field-top { display: flex; order: 0; margin: 0 0 8px; }
+  /* Text-Teil (.body): liegt über der Karte, fängt keine Klicks ab (außer „Anleitung“) */
+  #ideen .shelf .mcard .body { position: absolute; inset: 6px; z-index: 2; display: block; padding: 0 !important; min-height: 0 !important; gap: 0; overflow: hidden; border-radius: 18px; pointer-events: none; }
+  #ideen .shelf .mcard .mcard-nutzen { position: absolute; left: 12px; right: 12px; bottom: 62px; margin: 0; color: #fff; font-size: 16px; line-height: 1.3; font-weight: 520;
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; text-shadow: 0 1px 1px color-mix(in oklab, var(--fc) 55%, transparent); }
+  #ideen .shelf .mcard.r84-offen .mcard-nutzen { display: none; }
+  /* nicht offene Karten am Handy: Kurztext und „Anleitung“ bleiben für Screenreader da, sind aber unsichtbar */
+  #ideen .shelf .mcard:not(.r84-offen) .mcard-kachel { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  #ideen .shelf .mcard:not(.r84-offen):has(:focus-visible) .mcard-kachel { left: 0; right: 0; bottom: 0; width: auto; height: auto; clip-path: none; white-space: normal; z-index: 3;
+    padding: 10px 12px 8px; border-radius: 16px; background: linear-gradient(175deg, var(--clay-hi), var(--clay)); pointer-events: auto; }
+  #ideen .shelf .mcard.r84-offen .body { top: 128px; }
+  #ideen .shelf .mcard.r84-offen .mcard-kachel { position: absolute; inset: 0; padding: 12px 14px 0; background: none; }
+  #ideen .shelf .mcard .situation { margin: 0; font-size: 16px; line-height: 1.35; color: #2f2a24; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+  #ideen .shelf .mcard .anriss-ende::after { display: none; }
+  #ideen .shelf .mcard .mcard-aktion { position: absolute; left: 14px; bottom: 8px; height: 44px; display: flex; align-items: center; pointer-events: none; }
+  #ideen .shelf .mcard:not(.r84-offen) .mcard-aktion { left: 12px; bottom: 6px; }
+  #ideen .shelf .mcard .outcome { margin: 0; font-size: 16px; line-height: 1.3; }
+  #ideen .shelf .mcard .mcard-los-link { position: absolute; inset: -8px -10px; z-index: 3; border-radius: 10px; pointer-events: auto; }
+  #ideen .shelf .mcard .mcard-los-link:focus-visible { outline: 3px solid var(--focus); outline-offset: -2px; }
+  /* Herz: immer sichtbar, unten rechts, Tippfläche 44 × 44 */
+  #ideen .shelf .mcard .herz { position: absolute; z-index: 4; top: auto; bottom: 12px; right: 12px; width: 44px; height: 44px; }
+  /* kein Anheben, keine Bewegung der Karte: Rechtecke bleiben gleich */
+  #ideen .shelf .mcard:hover, #ideen .shelf .mcard:active, #ideen .shelf .mcard:has(.mcard-link:focus-visible), #ideen .shelf .mcard:has(.herz:active) { --c-lift: 0px; transform: none !important; }
+  #ideen .shelf .mcard:hover .field, #ideen .shelf .mcard:active .field, #ideen .shelf .mcard:has(.herz:active) .field { --f-lift: 0px; transform: none !important; }
+  #ideen .shelf .mcard.r84-zu .mcard-kachel { opacity: 0 !important; }
+
+  /* ---------- Rechner: ab 1024 px, nur mit Maus ---------- */
+  @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+    #ideen .shelf .shelf-track { gap: 18px; }
+    #ideen .shelf .mcard, #ideen .shelf .mcard.r84-offen { --r84-h: 176px; --r84-w: clamp(244px, 20.5vw, 288px); flex: 0 0 var(--r84-w); width: var(--r84-w); }
+    #ideen .shelf .mcard .field, #ideen .shelf .mcard.r84-offen .field { height: 100%; padding: 10px 14px 12px; }
+    #ideen .shelf .mcard .field h3.title { padding-right: 46px; }
+    #ideen .shelf .mcard .field-top, #ideen .shelf .mcard.r84-offen .field-top { display: flex; order: 2; margin: auto 0 28px; }
+    #ideen .shelf[data-kat="weitere"] .mcard .field-top { order: 2; margin: auto 0 28px; }
+    #ideen .shelf .mcard .herz { top: 9px; bottom: auto; right: 9px; width: 40px; height: 40px; }
+    #ideen .shelf .mcard .body, #ideen .shelf .mcard.r84-offen .body { top: 6px; }
+    #ideen .shelf .mcard .mcard-nutzen, #ideen .shelf .mcard.r84-offen .mcard-nutzen { display: block; left: 14px; right: 14px; bottom: 11px; white-space: nowrap; text-overflow: ellipsis;
+      -webkit-line-clamp: unset; transition: none; }
+    #ideen .shelf .mcard .mcard-kachel, #ideen .shelf .mcard.r84-offen .mcard-kachel, #ideen .shelf .mcard:not(.r84-offen) .mcard-kachel {
+      position: absolute; inset: auto 0 0 0; left: 0; right: 0; bottom: 0; width: auto; height: 108px; overflow: hidden; clip-path: none; white-space: normal; box-sizing: border-box; padding: 9px 14px 0;
+      border-radius: 16px; background: linear-gradient(175deg, var(--clay-hi) 0%, var(--clay) 60%, #efe9df 100%);
+      box-shadow: 0 -4px 12px -6px rgb(var(--sh) / .3), inset 0 1.5px 0 rgb(255 255 255 / .95);
+      opacity: 0; transform: translateY(100%); transition: none; pointer-events: none; }
+    #ideen .shelf .mcard .situation { font-size: 16px; line-height: 1.3; }
+    #ideen .shelf .mcard .mcard-aktion, #ideen .shelf .mcard:not(.r84-offen) .mcard-aktion { left: 14px; bottom: 7px; height: 24px; }
+    #ideen .shelf .mcard:is(:hover, :focus-within):not(.r84-zu) .mcard-kachel { opacity: 1 !important; transform: translateY(0); transition: opacity .2s ease .15s, transform .2s ease .15s; }
+    #ideen .shelf .mcard:is(:hover, :focus-within):not(.r84-zu) .mcard-nutzen { opacity: 0; transition: opacity .2s ease .15s; }
+    #ideen .shelf .mcard:is(:hover, :focus-within):not(.r84-zu) .mcard-los-link { pointer-events: auto; }
+    #ideen .shelf .mcard .mcard-los-link { inset: -4px -8px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #ideen .shelf .mcard .mcard-kachel, #ideen .shelf .mcard:is(:hover, :focus-within):not(.r84-zu) .mcard-kachel { transform: none !important; }
+  }
+  /* „Gemerkt“ ganz oben: nur sichtbar, wenn etwas gemerkt ist */
+  #r84-gemerkt[hidden] { display: none !important; }
+  #ideen > #r84-gemerkt { margin-top: clamp(14px, 1.6vw, 22px); }
+</style>
+<style>
+/* Runde 95: Station 3, Nachbesserung /ideen. Spezifität höher als Runde 84 (#ideen .shelf .mcard.mcard ...). */
+@media (min-width: 1024px) {
+  /* a) Einleitung in einer Zeile */
+  #alle-ideen .v22i-lead { max-width: 900px; }
+  /* c) Header → Pill → H1 */
+  #alle-ideen.v22i-kopf { padding-top: 16px; }
+  #alle-ideen .v22i-titel { margin-top: 2px; }
+  /* b) Banner → „Was steht bei dir an?“: 40 px */
+  section#ideen.v22s-ideen { padding-top: 0; }
+  section#ideen.v22s-ideen > .v22i-bereiche { margin-top: 35px; } /* Zeile ist 44 px hoch (Knöpfe), die H2 sitzt 5 px tiefer: Banner → H2 = 40 px */
+  /* d) H2-Zeile → Reihentitel, Reihentitel → Karten: je höchstens 16 px */
+  section#ideen.v22s-ideen #mehr-themen > .shelf:first-child { margin-top: 4px; } /* Zeile 44 px, Reihentitel sitzt 5 px tiefer: H2 → Reihentitel ca. 16 px */
+  /* Rückfall laut Pam: H2 „Was steht bei dir an?“ auf 32 px */
+  section#ideen.v22s-ideen > .v22i-bereiche .section-title { font-size: 32px; }
+  #ideen .shelf .shelf-track { padding-top: 12px; }
+}
+/* 3. Nutzenzeile zweizeilig, Handy und Rechner */
+#ideen .shelf.shelf .mcard.mcard .mcard-nutzen { -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden;
+  white-space: normal; text-overflow: clip; line-height: 1.25; }
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  #ideen .shelf.shelf .mcard.mcard .mcard-nutzen { display: -webkit-box; white-space: normal; text-overflow: clip; -webkit-line-clamp: 2; }
+  /* Pill „Mit Free nutzbar“ über die zwei Zeilen Nutzen setzen (Karte bleibt 176 px) */
+  #ideen .shelf.shelf .mcard.mcard .field-top { margin-bottom: 52px; }
+  #ideen .shelf.shelf[data-kat="weitere"] .mcard.mcard .field-top { margin-bottom: 52px; }
+}
+</style>
+<style id="r105">
+  /* Runde 105 (Ryan, 30.10.2026) */
+  /* s2-20: beide Hinweise weg, der Kasten braucht keinen reservierten Platz mehr (der Tipp hat seinen eigenen) */
+  .r101-hinweise { min-height: 0; margin-top: 0; }
+  @media (max-width: 700px) { .r101-hinweise { min-height: 0; } }
+  /* R105b (s2-21/22): Titel und Tag als Block unten in der Karte, Abstand Titel zu Tag 4 px */
+  .r101-fk .mcard .field { justify-content: flex-end; gap: 4px; }
+  .r101-fk .mcard .field-top { margin: 0; }
+</style>
+<style id="r109">
+  /* Runde 109 (Ryan, 30.10.2026) */
+@media (max-width: 700px) {
+  #v47-ein:not(.r101-klein) { margin-top: 12px; height: calc(100% - 12px); }
+  #v47-ein .v47-form { padding-top: 16px; }
+  #v47-ein .v47-fuss { padding: 10px 20px 10px; gap: 2px; }
+  #v47-ein .v47-fuss .v47-dunkel { min-height: 48px; }
+}
+@media (max-width: 700px) {
+  #v47-ein .v47-innen .v47-vorschau { height: 72px !important; }
+  #v47-ein .v47-vorschau .v47-szene { inset: auto; left: 50%; top: 50%; width: 100%; height: 148px; transform: translate(-50%, -50%) scale(0.4865); }
+  #v47-ein .v47-innen[data-schritt="f2"] .v47-vorschau .v47-szene { height: 132px; transform: translate(-50%, -50%) scale(0.5455); }
+}
+#v47-ein .v47-x { display: none !important; }   /* Nachbesserung: X auf allen Größen weg; Escape und „Überspringen“ bleiben */
+#v47-ein .v2-zeile { display: flex; align-items: center; justify-content: space-between; min-height: 44px; max-width: 100%; box-sizing: border-box; }
+#v47-ein .v2-zeile .v47-fort { margin: 0 0 0 auto !important; }
+#v47-ein .v2-zeile .v57-zurueck { margin: 0 0 0 -12px !important; padding: 0 12px; min-height: 44px; min-width: 44px; }
+/* s2-28: ein <legend> mit Vorgänger im Fieldset würde trotzdem als erstes gezeichnet; schwebend wird sie zum normalen Block und folgt der DOM-Reihenfolge (Zeile, dann Frage) */
+#v47-ein .v47-teil > .v2-zeile + .v47-frage { float: left; margin-bottom: 10px; }
+#v47-ein .v47-teil > .v2-zeile + .v47-frage ~ * { clear: both; }
+@media (max-width: 700px) {
+  #v47-ein .v47-rechts { padding: 0 !important; margin: 12px 12px 0; border-radius: 32px; overflow: hidden; box-shadow: 0 1px 1px rgb(var(--sh) / .16), 0 6px 12px -5px rgb(var(--sh) / .35); }
+  #v47-ein .v47-innen .v47-vorschau { border-radius: 0 !important; }
+  #v47-ein .ein-zeichen.r101-z { margin: 0 !important; border-radius: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
+  #v47-ein .ein-zeichen.r101-z::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: rgba(60, 45, 30, 0.16); z-index: 3; }
+
+  #v47-ein .ein-zeichen.r101-z { height: 56px; }
+  #v47-ein .r101-z .ein-z.r101-fenster, #v47-ein .r101-walze, #v47-ein .r101-it { height: 56px; }
+}
+  /* s2-27 (alle Größen): der Tag steht oben in der Karte, vor dem Titel; überschreibt „Block unten“ aus R105b */
+  .r101-fk .mcard .field { justify-content: flex-start; gap: 4px; }
+  .r101-fk .mcard .field-top { margin: 0; align-self: flex-start; }
+@media (max-width: 700px) {
+  /* s2-26: keine sichtbare Beschriftung unter den Icons, Text bleibt für Screenreader; Icons senkrecht mittig */
+  #v47-ein .r101-z .r101-t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; padding: 0; border: 0; }
+  #v47-ein .r101-it { justify-content: center; align-items: center; gap: 0; }
+}
+</style>
+<style id="r107">
+/* Runde 107 (Jim, 30.10.2026): Scheck-Karte (s3-5), Banner je Stufe (s3-6), Überschrift Version b (s3-9). */
+
+/* ===== s3-9: Überschrift „Was steht bei dir an?“ oben, Muster ideen-b.html ===== */
+#alle-ideen .v22i-oben { width: 100%; margin: 0; }
+#alle-ideen .v22i-lead { font-size: 16px; }
+#alle-ideen .v22i-oben .section-title { font-size: clamp(34px, 3.4vw, 48px); }
+@media (min-width: 1024px) { #alle-ideen .v22i-oben .section-title { font-size: 32px; } }
+#alle-ideen.v22i-kopf { padding-bottom: 36px; }   /* Banner -> erste Reihentitel: mindestens 40 px (gemessen) */
+/* Header-Knopf „Alle Ideen“ ist hier aktiv: Banner-Blau, Text und Symbol weiß */
+html .site-nav .v44-nav a.v47-pille[aria-current="page"] { background: linear-gradient(180deg, #386682, var(--k-blue) 60%); color: #fff;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / .18), 0 1px 1px rgb(3 12 20 / .35), 0 6px 10px -5px rgb(3 12 20 / .5); }
+html .site-nav .v44-nav a.v47-pille[aria-current="page"]:is(:hover, :active) { background: linear-gradient(180deg, #2f5871, var(--k-deep)); color: #fff; }
+html .site-nav .v44-nav a.v47-pille[aria-current="page"] .v47-ic { color: #fff; stroke: #fff; }
+html .site-nav .v44-nav a.v47-pille[aria-current="page"] span { color: #fff; }
+
+/* ===== s3-6: Banner je Stufe ===== */
+.gk--a .gk-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; }
+.gk--a .gk-stufe { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; line-height: 1.2; font-weight: 600; color: rgb(255 255 255 / .8); text-shadow: 0 1px 1px rgb(3 12 20 / .35); }
+.gk--a .gk-balken { display: inline-flex; gap: 3px; }
+.gk--a .gk-balken i { display: block; width: 14px; height: 4px; border-radius: 2px; background: rgb(255 255 255 / .3); }
+.gk--a .gk-balken i.an { background: #fff; }
+.gk--a[data-stufe="2"] p, .gk--a[data-stufe="3"] p { max-width: 62ch; font-size: 16px; line-height: 1.45; }
+@media (max-width: 700px) {
+  .gk--a .gk-meta { grid-column: 1 / -1; grid-row: 1; justify-self: start; }
+  .gk--a .gk-icon { width: 40px; }
+  .gk--a .gk-icon svg { width: 22px; height: 22px; }
+  .gk--a .gk-text p { font-size: 16px; }
+}
+
+/* ===== s3-5: Scheck-Karte „Zuschüsse finden“ (nur Regal „Geld sparen“) ===== */
+.r107-erk { display: none; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck { --r84-h: auto; height: auto !important; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck .mcard-link { height: auto; }
+/* der eine Link deckt die ganze Karte; das Herz liegt darüber und bleibt eigenes Ziel */
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck { position: relative; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck .mcard-link::after { content: ""; position: absolute; inset: 0; z-index: 2; border-radius: inherit; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck .herz { z-index: 4; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck .field { height: auto !important; min-height: 0 !important; aspect-ratio: 5 / 4 !important; padding: 12px 14px !important;
+  clip-path: inset(0 0 0 0 round 19px 19px 19px 19px); transition: clip-path 240ms var(--ease) 0s; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck .field h3.title { order: 1; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden;
+  margin: 0; padding-right: 48px; font-size: 20px !important; font-weight: 600; line-height: 1.2 !important; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck .field-top { order: 2; display: flex !important; margin: 8px 0 0 !important; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck .field-tags { flex-direction: row; flex-wrap: nowrap; gap: 8px; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck .tag--cat { display: none !important; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck .field .mcard-symbol { right: -7%; bottom: -9%; height: 45%; opacity: .12; transition: opacity 160ms ease 0s; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck .body { inset: 6px !important; top: 6px !important; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck :is(.mcard-nutzen, .mcard-kachel, .mcard-aktion) { display: none !important; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck .herz { top: 9px; bottom: auto; right: 9px; width: 40px; height: 40px; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck .r107-erk { display: block; position: absolute; inset: 0; opacity: 0; transform: translateY(6px); transition: opacity 0s, transform 0s; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck .r107-text { position: absolute; left: 14px; right: 14px; top: calc(46% + 10px); margin: 0; color: var(--ink-soft);
+  font-size: 15px; line-height: 1.45; font-weight: 500; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; text-wrap: pretty; }
+@media (max-width: 1399px) and (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  #ideen .shelf[data-kat="geld"] .mcard.r107-scheck .r107-text { -webkit-line-clamp: 2; line-clamp: 2; }
+}
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck .r107-pille { position: absolute; left: 14px; bottom: 0; display: inline-flex; align-items: center; min-height: 44px; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck .r107-pille-i { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 16px; border-radius: 999px;
+  background: var(--sand-c); color: #fff; font-size: 14px; font-weight: 600; line-height: 1; white-space: nowrap; box-shadow: 0 1px 2px rgb(60 40 20 / .25); }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck .r107-pille-i svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Endzustand: Tastaturfokus immer, Hover nur mit Maus, ohne Hover-Gerät dauerhaft */
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck:focus-within:not(.r84-zu) .field { clip-path: inset(0 0 54% 0 round 19px 19px 0 0); transition: clip-path 320ms cubic-bezier(.22, 1, .36, 1) 80ms; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck:focus-within:not(.r84-zu) .field .mcard-symbol { opacity: 0; transition: opacity 160ms ease 80ms; }
+#ideen .shelf[data-kat="geld"] .mcard.r107-scheck:focus-within:not(.r84-zu) .r107-erk { opacity: 1; transform: none;
+  transition: opacity 220ms ease 170ms, transform 220ms cubic-bezier(.22, 1, .36, 1) 170ms; }
+@media (hover: hover) and (pointer: fine) {
+  #ideen .shelf[data-kat="geld"] .mcard.r107-scheck:hover:not(.r84-zu) .field { clip-path: inset(0 0 54% 0 round 19px 19px 0 0); transition: clip-path 320ms cubic-bezier(.22, 1, .36, 1) 80ms; }
+  #ideen .shelf[data-kat="geld"] .mcard.r107-scheck:hover:not(.r84-zu) .field .mcard-symbol { opacity: 0; transition: opacity 160ms ease 80ms; }
+  #ideen .shelf[data-kat="geld"] .mcard.r107-scheck:hover:not(.r84-zu) .r107-erk { opacity: 1; transform: none;
+    transition: opacity 220ms ease 170ms, transform 220ms cubic-bezier(.22, 1, .36, 1) 170ms; }
+}
+@media (hover: none) {
+  #ideen .shelf[data-kat="geld"] .mcard.r107-scheck { flex: 0 0 clamp(250px, 78vw, 330px) !important; width: clamp(250px, 78vw, 330px) !important; }
+  #ideen .shelf[data-kat="geld"] .mcard.r107-scheck .field { aspect-ratio: 4 / 5 !important; clip-path: inset(0 0 54% 0 round 19px 19px 0 0); transition: none; }
+  #ideen .shelf[data-kat="geld"] .mcard.r107-scheck .field .mcard-symbol { opacity: 0; transition: none; }
+  #ideen .shelf[data-kat="geld"] .mcard.r107-scheck .r107-erk { opacity: 1; transform: none; transition: none; }
+  #ideen .shelf[data-kat="geld"] .mcard.r107-scheck .herz { top: 6px; right: 6px; width: 44px; height: 44px; }
+}
+/* reduzierte Bewegung: kein Schrumpfen in Bewegung, Fläche und Text wechseln mit 120 ms Überblendung direkt in den Endzustand */
+@keyframes r107-ueber { from { opacity: .35; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  /* kein Schrumpfen in Bewegung: Fläche springt in den Endzustand, Symbol und Text blenden in 120 ms über */
+  #ideen .shelf[data-kat="geld"] .mcard.r107-scheck .field, #ideen .shelf[data-kat="geld"] .mcard.r107-scheck:is(:hover, :focus-within):not(.r84-zu) .field { transition: none !important; }
+  #ideen .shelf[data-kat="geld"] .mcard.r107-scheck .r107-erk, #ideen .shelf[data-kat="geld"] .mcard.r107-scheck:is(:hover, :focus-within):not(.r84-zu) .r107-erk { transform: none !important; transition: opacity 120ms linear 0s !important; }
+  #ideen .shelf[data-kat="geld"] .mcard.r107-scheck .field .mcard-symbol, #ideen .shelf[data-kat="geld"] .mcard.r107-scheck:is(:hover, :focus-within):not(.r84-zu) .field .mcard-symbol { transition: opacity 120ms linear 0s !important; }
+  #ideen .shelf[data-kat="geld"] .mcard.r107-scheck:is(:hover, :focus-within):not(.r84-zu) .field { animation: r107-ueber 120ms linear !important; }
+}
+</style>
 <style>
   /* Runde 61 (Pam, Punkt 8): Logo quer im Kopf, 28 px am Handy bis 36 px am Rechner; Schutzzone = halbe Zeichenhöhe */
   .r61-brand { gap: 0; padding: 0; line-height: 0; flex: none; }
@@ -1502,6 +2119,17 @@
 <style id="r67-dialog">
   /* Runde 67, Nachbesserung (Pam, 29.10.2026): Marke stößt im Fragen-Dialog sonst an die Überschrift */
   @media (min-width: 768px) { #v47-ein .v47-marke { margin-bottom: 24px; } }
+</style>
+<style id="r98">
+/* Runde 98: Footer-Icons wie Startseite (Regeln wörtlich aus index.html, Runde 81) */
+  .footer .r61-fuss { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 0 6px; }
+  .footer .r61-fuss .r81-social { display: inline-flex; align-items: center; margin-left: 2px; }
+  .footer .r61-fuss .r81-icon { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; width: 44px; height: 44px; min-height: 44px; color: inherit; text-decoration: none; border-radius: 12px; }
+  .footer .r61-fuss .r81-icon[hidden] { display: none; }
+  .footer .r61-fuss .r81-icon + .r81-icon { margin-left: 8px; }
+  .footer .r61-fuss .r81-icon svg { display: block; width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .footer .r61-fuss .r81-icon:hover { opacity: .75; }
+  .footer .r61-fuss .r81-icon:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
 </style>
   <link rel="canonical" href="https://die-ki-macherei.de/ideen">
 </head>
@@ -1665,46 +2293,68 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
 
     <section class="v22i-kopf" id="alle-ideen" aria-labelledby="alle-ideen-title">
       <div class="wrap">
-        <a class="button-quiet v22i-zurueck" href="/"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg><span>Startseite</span></a>
-        <h1 class="display v22i-titel" id="alle-ideen-title">Alle Ideen</h1>
+        
+        <div class="v22i-bereiche v22i-oben"><h1 class="display section-title" id="ideen-title"><span class="sr-only" id="alle-ideen-title">Alle Ideen. </span>Was steht bei dir an?</h1><nav class="kat-nav" aria-label="Zu einer Kategorie springen"><a class="kat-chip pal-sand" href="#shelf-geld"><i aria-hidden="true"></i>Geld</a><a class="kat-chip pal-blue" href="#shelf-papier"><i aria-hidden="true"></i>Papierkram</a><a class="kat-chip pal-plum" href="#shelf-daten"><i aria-hidden="true"></i>Daten</a><a class="kat-chip pal-moss" href="#shelf-weitere"><i aria-hidden="true"></i>Weitere Themen</a></nav></div>
         <p class="v22i-lead">Stöbere nach dem, was bei dir gerade ansteht. Mit dem <span style="white-space: nowrap">Herz-Symbol</span> merkst du dir eine Idee.</p>
+        <section class="gk gk--a" id="r80-banner" aria-labelledby="r80-gk-h" data-stufe="1">
+          <div class="gk-in">
+            <span class="gk-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
+            <div class="gk-text">
+              <div class="gk-meta"><span class="gk-label">Im Aufbau</span><span class="gk-stufe"><span class="gk-balken" aria-hidden="true"><i class="an"></i><i></i><i></i></span><span class="gk-stufe-t">Stufe 1 von 3</span></span></div>
+              <h2 id="r80-gk-h">Neu bei KI? Fang hier an.</h2>
+              <p>Der Einsteiger-Kurs bringt dir die ersten Schritte bei, ganz ohne Vorwissen.</p>
+            </div>
+            <div class="gk-action"><button type="button" class="gk-btn" data-r80-open aria-haspopup="dialog">Starten<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+          </div>
+        </section>
+        <script>
+  // Runde 107 (Jim, 30.10.2026, s3-6): Banner je Stufe. Liest ki-einstieg / ki-erfahrung (nur lesen). Einsteiger oder nichts = Stufe 1 (Markup oben).
+  (function () {
+    var e = null;
+    try {
+      if (localStorage.getItem('ki-einstieg') === 'fertig') e = localStorage.getItem('ki-erfahrung');
+    } catch (x) {}
+    var s = e === 'etwas' ? 2 : e === 'erfahren' ? 3 : 1;
+    if (s === 1) return;
+    var b = document.getElementById('r80-banner');
+    if (!b) return;
+    b.setAttribute('data-stufe', String(s));
+    var ic = b.querySelector('.gk-icon svg'); if (ic) ic.innerHTML = s === 2 ? '<path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/>' : '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98"/><path d="m15.41 6.51-6.82 3.98"/>';
+    var h = b.querySelector('h2'); if (h) h.textContent = "Bring deine KI-Skills aufs nächste Level";
+    var p = b.querySelector('.gk-text p'); if (p) p.textContent = s === 2 ? "Teils wöchentlich kommt Neues dazu. Lerne, was KI heute kann und wie du es nutzt." : "Lerne, wie du Automationen & agentische Prozesse für dich nutzt und optimierst.";
+    var t = b.querySelector('.gk-stufe-t'); if (t) t.textContent = 'Stufe ' + s + ' von 3';
+    var bal = b.querySelectorAll('.gk-balken i');
+    for (var k = 0; k < bal.length; k++) bal[k].className = k < s ? 'an' : '';
+  })();
+</script>
       </div>
     </section>
 
     <section class="cases v22s-ideen" id="ideen" aria-labelledby="alle-ideen-title">
+      <div class="shelf pal-coral" data-kat="gemerkt" role="region" aria-labelledby="shelf-gemerkt" id="r84-gemerkt" hidden>
+        <div class="wrap shelf-head"><h3 class="shelf-title" id="shelf-gemerkt">Gemerkt</h3><div class="shelf-nav"><button type="button" data-dir="-1" aria-label="Zurück blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button><button type="button" data-dir="1" aria-label="Weiter blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div></div>
+        <div class="shelf-track" tabindex="0" aria-label="Gemerkt, zum Blättern"></div>
+      </div>
       <div class="shelf shelf--foryou" role="region" aria-labelledby="shelf-foryou">
         <div class="wrap shelf-head"><div><h3 class="shelf-title" id="shelf-foryou">Passt zu dir</h3><p class="grid-note" id="grid-note" hidden>Für dich ausgewählte Ideen</p></div><div class="shelf-nav"><button type="button" data-dir="-1" aria-label="Zurück blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button><button type="button" data-dir="1" aria-label="Weiter blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div></div>
         <div class="shelf-track" id="case-grid" tabindex="0" aria-label="Passt zu dir, zum Blättern"></div>
       </div>
-      <div class="wrap v22i-bereiche"><h2 class="display section-title" id="ideen-title">Was steht bei dir an?</h2><nav class="kat-nav" aria-label="Zu einer Kategorie springen"><a class="kat-chip pal-sand" href="#shelf-geld"><i aria-hidden="true"></i>Geld</a><a class="kat-chip pal-blue" href="#shelf-papier"><i aria-hidden="true"></i>Papierkram</a><a class="kat-chip pal-plum" href="#shelf-daten"><i aria-hidden="true"></i>Daten</a><a class="kat-chip pal-copper" href="#shelf-umzug"><i aria-hidden="true"></i>Umzug</a><a class="kat-chip pal-green" href="#shelf-arzt"><i aria-hidden="true"></i>Arztsachen</a><a class="kat-chip pal-coral" href="#shelf-urlaub"><i aria-hidden="true"></i>Urlaub &amp; Freizeit</a><a class="kat-chip pal-indigo" href="#shelf-job"><i aria-hidden="true"></i>Job</a></nav></div>
-      <div class="shelves-more" id="mehr-themen">
+            <div class="shelves-more" id="mehr-themen">
       <div class="shelf pal-sand" data-kat="geld" role="region" aria-labelledby="shelf-geld">
         <div class="wrap shelf-head"><h3 class="shelf-title" id="shelf-geld">Geld sparen</h3><div class="shelf-nav"><button type="button" data-dir="-1" aria-label="Zurück blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button><button type="button" data-dir="1" aria-label="Weiter blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div></div>
-        <div class="shelf-track" tabindex="0" aria-label="Geld sparen, zum Blättern"><article class="mcard pal-sand " data-case="f-foerderung" data-einleitung="Neues Bad, neue Heizung, E-Auto? Die KI sucht, welche Zuschüsse heute wirklich offen sind, rechnet aus, wie viel zusammenkommt, und sagt dir, was du tun musst, bevor du jemanden beauftragst." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="F-Foerderung"><a class="mcard-link" href="/zuschuesse-finden" aria-label="Anleitung öffnen: Zuschüsse finden"><div class="field pal-sand tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-coins"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Zuschüsse finden</h3></div><div class="body"><p class="situation anriss">Neues Bad, neue Heizung, E-Auto? Die KI sucht, welche Zuschüsse heute wirklich offen sind, rechnet aus, wie <span class="anriss-ende">viel …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="f-foerderung" data-titel="Zuschüsse finden" aria-pressed="false" aria-label="Merken: Zuschüsse finden" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand" data-case="abo" data-einleitung="Kontoumsätze hochladen. Die KI findet jedes Abo, auch das vergessene Probeabo, rechnet die Jahreskosten und schreibt die Kündigungen." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R30"><a class="mcard-link" href="/kontoauszug-abos" aria-label="Anleitung öffnen: Vergessene Abos finden"><div class="field pal-sand tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-refresh-cw"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Vergessene Abos finden</h3></div><div class="body"><p class="situation anriss">Kontoumsätze hochladen. Die KI findet jedes Abo, auch das vergessene Probeabo, rechnet die Jahreskosten und <span class="anriss-ende">schreibt …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="abo" data-titel="Vergessene Abos finden" aria-pressed="false" aria-label="Merken: Vergessene Abos finden" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand" data-case="keller" data-einleitung="Du machst ein Foto von dem Zeug, das weg soll, im Keller oder in einer Ecke im Zimmer. Die KI erkennt jedes Ding, schätzt, was es auf Kleinanzeigen oder eBay noch bringt, und rät dir: verkaufen, wenn es sich lohnt, sonst spenden, verschenken oder entsorgen, jeweils mit der passenden Stelle in deiner Nähe und den Öffnungszeiten." data-kategorie="geld" data-themen="haushalt" data-ease="2" data-sensitive="0" data-status="ready" data-fall="F-Keller"><a class="mcard-link" href="/keller-ausmisten" aria-label="Anleitung öffnen: Keller ausmisten"><div class="field pal-sand tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-package"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--abo">Mit Abo</span></span></div><h3 class="title">Keller ausmisten</h3></div><div class="body"><p class="situation anriss">Du machst ein Foto von dem Zeug, das weg soll, im Keller oder in einer Ecke im Zimmer. Die KI erkennt jedes <span class="anriss-ende">Ding, …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="keller" data-titel="Keller ausmisten" aria-pressed="false" aria-label="Merken: Keller ausmisten" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand " data-case="r45" data-einleitung="Eine neue Waschmaschine oder ein Fernseher muss her? Die KI klärt, was du wirklich brauchst, rechnet die Kosten über die Jahre und sagt dir, bei welchem Preis du zuschlägst." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R45"><a class="mcard-link" href="/grosse-anschaffung-planen" aria-label="Anleitung öffnen: Große Anschaffung planen"><div class="field pal-sand tone-2"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-shopping-bag"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Große Anschaffung planen</h3></div><div class="body"><p class="situation anriss">Eine neue Waschmaschine oder ein Fernseher muss her? Die KI klärt, was du wirklich brauchst, rechnet die Kosten <span class="anriss-ende">über …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="r45" data-titel="Große Anschaffung planen" aria-pressed="false" aria-label="Merken: Große Anschaffung planen" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand " data-case="r17" data-einleitung="Vor dem Gehaltsgespräch nur ein Gefühl? Die KI sucht, was dein Beruf in deiner Region bringt, und macht aus deiner Arbeit Argumente mit Zahlen." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R17"><a class="mcard-link" href="/gehaltsgespraech-vorbereiten" aria-label="Anleitung öffnen: Gehaltsgespräch vorbereiten"><div class="field pal-sand tone-3"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-trending-up"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Gehaltsgespräch vorbereiten</h3></div><div class="body"><p class="situation anriss">Vor dem Gehaltsgespräch nur ein Gefühl? Die KI sucht, was dein Beruf in deiner Region bringt, und macht aus <span class="anriss-ende">deiner …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="r17" data-titel="Gehaltsgespräch vorbereiten" aria-pressed="false" aria-label="Merken: Gehaltsgespräch vorbereiten" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand " data-case="r07" data-einleitung="Zahlst du mehr, als die Mietpreisbremse erlaubt? Die KI rechnet es mit dem offiziellen Mietspiegel nach und sagt dir in Euro, ob sich Nachhaken lohnt." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R07"><a class="mcard-link" href="/zahlst-du-zu-viel-miete" aria-label="Anleitung öffnen: Zahlst du zu viel Miete?"><div class="field pal-sand tone-3"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-house"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--abo">Mit Abo</span></span></div><h3 class="title">Zahlst du zu viel Miete?</h3></div><div class="body"><p class="situation anriss">Zahlst du mehr, als die Mietpreisbremse erlaubt? Die KI rechnet es mit dem offiziellen Mietspiegel nach und sagt <span class="anriss-ende">dir …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="r07" data-titel="Zahlst du zu viel Miete?" aria-pressed="false" aria-label="Merken: Zahlst du zu viel Miete?" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article></div>
+        <div class="shelf-track" tabindex="0" aria-label="Geld sparen, zum Blättern"><article class="mcard pal-sand r107-scheck" data-case="f-foerderung" data-einleitung="Neues Bad, neue Heizung, E-Auto? Die KI sucht, welche Zuschüsse heute wirklich offen sind, rechnet aus, wie viel zusammenkommt, und sagt dir, was du tun musst, bevor du jemanden beauftragst." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="F-Foerderung"><a class="mcard-link" href="/zuschuesse-finden" aria-label="Anleitung öffnen: Zuschüsse finden"><div class="field pal-sand tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-coins"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Zuschüsse finden</h3></div></a><div class="body"><div class="r107-erk"><p class="r107-text">Neues Bad, neue Heizung, E-Auto? Die KI sucht, welche Zuschüsse heute wirklich offen sind, rechnet aus, wie viel zusammenkommt, und sagt dir, was du tun musst, bevor du jemanden beauftragst.</p><span class="r107-pille" aria-hidden="true"><span class="r107-pille-i">Anleitung starten<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></div><p class="mcard-nutzen">Neues Bad, neue Heizung, E-Auto?</p><div class="mcard-kachel"><p class="situation anriss">Neues Bad, neue Heizung, E-Auto? Die KI sucht, welche Zuschüsse heute wirklich offen sind, rechnet aus, wie <span class="anriss-ende">viel …</span></p><div class="mcard-aktion"><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></div></div><button class="herz" type="button" data-herz="f-foerderung" data-titel="Zuschüsse finden" aria-pressed="false" aria-label="Merken: Zuschüsse finden" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand" data-case="abo" data-einleitung="Kontoumsätze hochladen. Die KI findet jedes Abo, auch das vergessene Probeabo, rechnet die Jahreskosten und schreibt die Kündigungen." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R30"><a class="mcard-link" href="/kontoauszug-abos" aria-label="Anleitung öffnen: Vergessene Abos finden"><div class="field pal-sand tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-refresh-cw"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Vergessene Abos finden</h3></div></a><div class="body"><p class="mcard-nutzen">Kontoumsätze hochladen.</p><div class="mcard-kachel"><p class="situation anriss">Kontoumsätze hochladen. Die KI findet jedes Abo, auch das vergessene Probeabo, rechnet die Jahreskosten und <span class="anriss-ende">schreibt …</span></p><div class="mcard-aktion"><p class="outcome"><b class="mcard-los">Anleitung</b></p><a class="mcard-los-link" href="/kontoauszug-abos" aria-label="Anleitung lesen: Vergessene Abos finden"></a></div></div></div><button class="herz" type="button" data-herz="abo" data-titel="Vergessene Abos finden" aria-pressed="false" aria-label="Merken: Vergessene Abos finden" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand" data-case="keller" data-einleitung="Du machst ein Foto von dem Zeug, das weg soll, im Keller oder in einer Ecke im Zimmer. Die KI erkennt jedes Ding, schätzt, was es auf Kleinanzeigen oder eBay noch bringt, und rät dir: verkaufen, wenn es sich lohnt, sonst spenden, verschenken oder entsorgen, jeweils mit der passenden Stelle in deiner Nähe und den Öffnungszeiten." data-kategorie="geld" data-themen="haushalt" data-ease="2" data-sensitive="0" data-status="ready" data-fall="F-Keller"><a class="mcard-link" href="/keller-ausmisten" aria-label="Anleitung öffnen: Keller ausmisten"><div class="field pal-sand tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-package"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--abo">Mit Abo</span></span></div><h3 class="title">Keller ausmisten</h3></div></a><div class="body"><p class="mcard-nutzen">Du machst ein Foto von dem Zeug, das weg soll, im Keller oder in einer Ecke im Zimmer.</p><div class="mcard-kachel"><p class="situation anriss">Du machst ein Foto von dem Zeug, das weg soll, im Keller oder in einer Ecke im Zimmer. Die KI erkennt jedes <span class="anriss-ende">Ding, …</span></p><div class="mcard-aktion"><p class="outcome"><b class="mcard-los">Anleitung</b></p><a class="mcard-los-link" href="/keller-ausmisten" aria-label="Anleitung lesen: Keller ausmisten"></a></div></div></div><button class="herz" type="button" data-herz="keller" data-titel="Keller ausmisten" aria-pressed="false" aria-label="Merken: Keller ausmisten" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand " data-case="r45" data-einleitung="Eine neue Waschmaschine oder ein Fernseher muss her? Die KI klärt, was du wirklich brauchst, rechnet die Kosten über die Jahre und sagt dir, bei welchem Preis du zuschlägst." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R45"><a class="mcard-link" href="/grosse-anschaffung-planen" aria-label="Anleitung öffnen: Große Anschaffung planen"><div class="field pal-sand tone-2"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-shopping-bag"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Große Anschaffung planen</h3></div><div class="body"><p class="situation anriss">Eine neue Waschmaschine oder ein Fernseher muss her? Die KI klärt, was du wirklich brauchst, rechnet die Kosten <span class="anriss-ende">über …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="r45" data-titel="Große Anschaffung planen" aria-pressed="false" aria-label="Merken: Große Anschaffung planen" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand " data-case="r17" data-einleitung="Vor dem Gehaltsgespräch nur ein Gefühl? Die KI sucht, was dein Beruf in deiner Region bringt, und macht aus deiner Arbeit Argumente mit Zahlen." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R17"><a class="mcard-link" href="/gehaltsgespraech-vorbereiten" aria-label="Anleitung öffnen: Gehaltsgespräch vorbereiten"><div class="field pal-sand tone-3"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-trending-up"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Gehaltsgespräch vorbereiten</h3></div></a><div class="body"><p class="mcard-nutzen">Vor dem Gehaltsgespräch nur ein Gefühl?</p><div class="mcard-kachel"><p class="situation anriss">Vor dem Gehaltsgespräch nur ein Gefühl? Die KI sucht, was dein Beruf in deiner Region bringt, und macht aus <span class="anriss-ende">deiner …</span></p><div class="mcard-aktion"><p class="outcome"><b class="mcard-los">Anleitung</b></p><a class="mcard-los-link" href="/gehaltsgespraech-vorbereiten" aria-label="Anleitung lesen: Gehaltsgespräch vorbereiten"></a></div></div></div><button class="herz" type="button" data-herz="r17" data-titel="Gehaltsgespräch vorbereiten" aria-pressed="false" aria-label="Merken: Gehaltsgespräch vorbereiten" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand " data-case="r07" data-einleitung="Zahlst du mehr, als die Mietpreisbremse erlaubt? Die KI rechnet es mit dem offiziellen Mietspiegel nach und sagt dir in Euro, ob sich Nachhaken lohnt." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R07"><a class="mcard-link" href="/zahlst-du-zu-viel-miete" aria-label="Anleitung öffnen: Zahlst du zu viel Miete?"><div class="field pal-sand tone-3"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-house"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--abo">Mit Abo</span></span></div><h3 class="title">Zahlst du zu viel Miete?</h3></div></a><div class="body"><p class="mcard-nutzen">Zahlst du mehr, als die Mietpreisbremse erlaubt?</p><div class="mcard-kachel"><p class="situation anriss">Zahlst du mehr, als die Mietpreisbremse erlaubt? Die KI rechnet es mit dem offiziellen Mietspiegel nach und sagt <span class="anriss-ende">dir …</span></p><div class="mcard-aktion"><p class="outcome"><b class="mcard-los">Anleitung</b></p><a class="mcard-los-link" href="/zahlst-du-zu-viel-miete" aria-label="Anleitung lesen: Zahlst du zu viel Miete?"></a></div></div></div><button class="herz" type="button" data-herz="r07" data-titel="Zahlst du zu viel Miete?" aria-pressed="false" aria-label="Merken: Zahlst du zu viel Miete?" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article></div>
       </div>
       <div class="shelf pal-blue" data-kat="papier" role="region" aria-labelledby="shelf-papier">
         <div class="wrap shelf-head"><h3 class="shelf-title" id="shelf-papier">Papierkram erledigen</h3><div class="shelf-nav"><button type="button" data-dir="-1" aria-label="Zurück blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button><button type="button" data-dir="1" aria-label="Weiter blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div></div>
-        <div class="shelf-track" tabindex="0" aria-label="Papierkram erledigen, zum Blättern"><article class="mcard pal-blue" data-case="i10" data-einleitung="Die KI hilft beim Ausfüllen der amtlichen Vorlagen für Vorsorgevollmacht und Patientenverfügung oder stellt dir selbst die Fragen und füllt alles vor. Du musst nur noch prüfen." data-kategorie="papier" data-themen="amt" data-ease="2" data-sensitive="0" data-status="ready" data-fall="I10"><a class="mcard-link" href="/vorsorgemappe-anlegen" aria-label="Anleitung öffnen: Vorsorgemappe anlegen"><div class="field pal-blue tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-folder-heart"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Papierkram erledigen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Vorsorgemappe anlegen</h3></div><div class="body"><p class="situation anriss">Die KI hilft beim Ausfüllen der amtlichen Vorlagen für Vorsorgevollmacht und Patientenverfügung oder stellt <span class="anriss-ende">dir …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="i10" data-titel="Vorsorgemappe anlegen" aria-pressed="false" aria-label="Merken: Vorsorgemappe anlegen" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-blue" data-case="brief" data-einleitung="Du fotografierst einen Brief vom Amt, der Versicherung oder dem Vermieter, und die KI sagt dir in einfachen Worten, worum es geht, was du bis wann tun musst, und schreibt auf Wunsch die Antwort." data-kategorie="papier" data-themen="amt" data-ease="2" data-sensitive="0" data-status="ready" data-fall="F-Brief"><a class="mcard-link" href="/brief-verstehen" aria-label="Anleitung öffnen: Brief vom Amt verstehen"><div class="field pal-blue tone-2"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-mail"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Papierkram erledigen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Brief vom Amt verstehen</h3></div><div class="body"><p class="situation anriss">Du fotografierst einen Brief vom Amt, der Versicherung oder dem Vermieter, und die KI sagt dir in einfachen <span class="anriss-ende">Worten, …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="brief" data-titel="Brief vom Amt verstehen" aria-pressed="false" aria-label="Merken: Brief vom Amt verstehen" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-blue " data-case="n10" data-einleitung="An der Tür oder am Telefon etwas abgeschlossen, das du nicht wolltest? Die KI liest den Vertrag und sagt dir, wie du rauskommst und bis wann." data-kategorie="papier" data-themen="amt" data-ease="2" data-sensitive="0" data-status="ready" data-fall="N10"><a class="mcard-link" href="/ungewollter-vertrag" aria-label="Anleitung öffnen: Ungewollt einen Vertrag am Hals?"><div class="field pal-blue tone-3"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-file-x"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Papierkram erledigen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Ungewollt einen Vertrag am Hals?</h3></div><div class="body"><p class="situation anriss">An der Tür oder am Telefon etwas abgeschlossen, das du nicht wolltest? Die KI liest den Vertrag und sagt dir, wie <span class="anriss-ende">du …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="n10" data-titel="Ungewollt einen Vertrag am Hals?" aria-pressed="false" aria-label="Merken: Ungewollt einen Vertrag am Hals?" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article></div>
+        <div class="shelf-track" tabindex="0" aria-label="Papierkram erledigen, zum Blättern"><article class="mcard pal-blue" data-case="i10" data-einleitung="Die KI hilft beim Ausfüllen der amtlichen Vorlagen für Vorsorgevollmacht und Patientenverfügung oder stellt dir selbst die Fragen und füllt alles vor. Du musst nur noch prüfen." data-kategorie="papier" data-themen="amt" data-ease="2" data-sensitive="0" data-status="ready" data-fall="I10"><a class="mcard-link" href="/vorsorgemappe-anlegen" aria-label="Anleitung öffnen: Vorsorgemappe anlegen"><div class="field pal-blue tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-folder-heart"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Papierkram erledigen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Vorsorgemappe anlegen</h3></div></a><div class="body"><p class="mcard-nutzen">Die KI hilft beim Ausfüllen der amtlichen Vorlagen für Vorsorgevollmacht und Patientenverfügung oder stellt dir selbst die Fragen und füllt alles vor.</p><div class="mcard-kachel"><p class="situation anriss">Die KI hilft beim Ausfüllen der amtlichen Vorlagen für Vorsorgevollmacht und Patientenverfügung oder stellt <span class="anriss-ende">dir …</span></p><div class="mcard-aktion"><p class="outcome"><b class="mcard-los">Anleitung</b></p><a class="mcard-los-link" href="/vorsorgemappe-anlegen" aria-label="Anleitung lesen: Vorsorgemappe anlegen"></a></div></div></div><button class="herz" type="button" data-herz="i10" data-titel="Vorsorgemappe anlegen" aria-pressed="false" aria-label="Merken: Vorsorgemappe anlegen" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-blue" data-case="brief" data-einleitung="Du fotografierst einen Brief vom Amt, der Versicherung oder dem Vermieter, und die KI sagt dir in einfachen Worten, worum es geht, was du bis wann tun musst, und schreibt auf Wunsch die Antwort." data-kategorie="papier" data-themen="amt" data-ease="2" data-sensitive="0" data-status="ready" data-fall="F-Brief"><a class="mcard-link" href="/brief-verstehen" aria-label="Anleitung öffnen: Brief vom Amt verstehen"><div class="field pal-blue tone-2"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-mail"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Papierkram erledigen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Brief vom Amt verstehen</h3></div></a><div class="body"><p class="mcard-nutzen">Du fotografierst einen Brief vom Amt, der Versicherung oder dem Vermieter, und die KI sagt dir in einfachen Worten, worum es geht, was du bis wann tun musst, und schreibt auf Wunsch die Antwort.</p><div class="mcard-kachel"><p class="situation anriss">Du fotografierst einen Brief vom Amt, der Versicherung oder dem Vermieter, und die KI sagt dir in einfachen <span class="anriss-ende">Worten, …</span></p><div class="mcard-aktion"><p class="outcome"><b class="mcard-los">Anleitung</b></p><a class="mcard-los-link" href="/brief-verstehen" aria-label="Anleitung lesen: Brief vom Amt verstehen"></a></div></div></div><button class="herz" type="button" data-herz="brief" data-titel="Brief vom Amt verstehen" aria-pressed="false" aria-label="Merken: Brief vom Amt verstehen" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-blue " data-case="n10" data-einleitung="An der Tür oder am Telefon etwas abgeschlossen, das du nicht wolltest? Die KI liest den Vertrag und sagt dir, wie du rauskommst und bis wann." data-kategorie="papier" data-themen="amt" data-ease="2" data-sensitive="0" data-status="ready" data-fall="N10"><a class="mcard-link" href="/ungewollter-vertrag" aria-label="Anleitung öffnen: Ungewollt einen Vertrag am Hals?"><div class="field pal-blue tone-3"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-file-x"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Papierkram erledigen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Ungewollt einen Vertrag am Hals?</h3></div></a><div class="body"><p class="mcard-nutzen">An der Tür oder am Telefon etwas abgeschlossen, das du nicht wolltest?</p><div class="mcard-kachel"><p class="situation anriss">An der Tür oder am Telefon etwas abgeschlossen, das du nicht wolltest? Die KI liest den Vertrag und sagt dir, wie <span class="anriss-ende">du …</span></p><div class="mcard-aktion"><p class="outcome"><b class="mcard-los">Anleitung</b></p><a class="mcard-los-link" href="/ungewollter-vertrag" aria-label="Anleitung lesen: Ungewollt einen Vertrag am Hals?"></a></div></div></div><button class="herz" type="button" data-herz="n10" data-titel="Ungewollt einen Vertrag am Hals?" aria-pressed="false" aria-label="Merken: Ungewollt einen Vertrag am Hals?" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article></div>
       </div>
       <div class="shelf pal-plum" data-kat="daten" role="region" aria-labelledby="shelf-daten">
         <div class="wrap shelf-head"><h3 class="shelf-title" id="shelf-daten">Daten schützen</h3><div class="shelf-nav"><button type="button" data-dir="-1" aria-label="Zurück blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button><button type="button" data-dir="1" aria-label="Weiter blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div></div>
-        <div class="shelf-track" tabindex="0" aria-label="Daten schützen, zum Blättern"><article class="mcard pal-plum " data-case="n01" data-einleitung="Du schickst einen Screenshot der verdächtigen Nachricht oder beschreibst den Anruf, und die KI sagt dir, welche Warnzeichen sie sieht, was du auf keinen Fall tun solltest und wie du über den offiziellen Weg nachprüfst." data-kategorie="daten" data-themen="amt persoenlich" data-ease="2" data-sensitive="0" data-status="ready" data-fall="N01"><a class="mcard-link" href="/betrug-oder-echt" aria-label="Anleitung öffnen: Betrug oder echt?"><div class="field pal-plum tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-message-square-warning"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Daten schützen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Betrug oder echt?</h3></div><div class="body"><p class="situation anriss">Du schickst einen Screenshot der verdächtigen Nachricht oder beschreibst den Anruf, und die KI sagt dir, <span class="anriss-ende">welche …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="n01" data-titel="Betrug oder echt?" aria-pressed="false" aria-label="Merken: Betrug oder echt?" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-plum " data-case="n02" data-einleitung="Auf eine falsche Nachricht reingefallen, und Geld ist weg? Die KI sagt dir, was jetzt zuerst kommt, und schreibt die Forderung an deine Bank." data-kategorie="daten" data-themen="amt persoenlich" data-ease="2" data-sensitive="0" data-status="ready" data-fall="N02"><a class="mcard-link" href="/geld-nach-betrug-zurueckholen" aria-label="Anleitung öffnen: Geld nach Betrug zurückholen"><div class="field pal-plum tone-2"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-undo-2"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Daten schützen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Geld nach Betrug zurückholen</h3></div><div class="body"><p class="situation anriss">Auf eine falsche Nachricht reingefallen, und Geld ist weg? Die KI sagt dir, was jetzt zuerst kommt, und schreibt <span class="anriss-ende">die …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="n02" data-titel="Geld nach Betrug zurückholen" aria-pressed="false" aria-label="Merken: Geld nach Betrug zurückholen" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article></div>
+        <div class="shelf-track" tabindex="0" aria-label="Daten schützen, zum Blättern"><article class="mcard pal-plum " data-case="n01" data-einleitung="Du schickst einen Screenshot der verdächtigen Nachricht oder beschreibst den Anruf, und die KI sagt dir, welche Warnzeichen sie sieht, was du auf keinen Fall tun solltest und wie du über den offiziellen Weg nachprüfst." data-kategorie="daten" data-themen="amt persoenlich" data-ease="2" data-sensitive="0" data-status="ready" data-fall="N01"><a class="mcard-link" href="/betrug-oder-echt" aria-label="Anleitung öffnen: Betrug oder echt?"><div class="field pal-plum tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-message-square-warning"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Daten schützen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Betrug oder echt?</h3></div></a><div class="body"><p class="mcard-nutzen">Du schickst einen Screenshot der verdächtigen Nachricht oder beschreibst den Anruf, und die KI sagt dir, welche Warnzeichen sie sieht, was du auf keinen Fall tun solltest und wie du über den offiziellen Weg nachprüfst.</p><div class="mcard-kachel"><p class="situation anriss">Du schickst einen Screenshot der verdächtigen Nachricht oder beschreibst den Anruf, und die KI sagt dir, <span class="anriss-ende">welche …</span></p><div class="mcard-aktion"><p class="outcome"><b class="mcard-los">Anleitung</b></p><a class="mcard-los-link" href="/betrug-oder-echt" aria-label="Anleitung lesen: Betrug oder echt?"></a></div></div></div><button class="herz" type="button" data-herz="n01" data-titel="Betrug oder echt?" aria-pressed="false" aria-label="Merken: Betrug oder echt?" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-plum " data-case="n02" data-einleitung="Auf eine falsche Nachricht reingefallen, und Geld ist weg? Die KI sagt dir, was jetzt zuerst kommt, und schreibt die Forderung an deine Bank." data-kategorie="daten" data-themen="amt persoenlich" data-ease="2" data-sensitive="0" data-status="ready" data-fall="N02"><a class="mcard-link" href="/geld-nach-betrug-zurueckholen" aria-label="Anleitung öffnen: Geld nach Betrug zurückholen"><div class="field pal-plum tone-2"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-undo-2"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Daten schützen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Geld nach Betrug zurückholen</h3></div></a><div class="body"><p class="mcard-nutzen">Auf eine falsche Nachricht reingefallen, und Geld ist weg?</p><div class="mcard-kachel"><p class="situation anriss">Auf eine falsche Nachricht reingefallen, und Geld ist weg? Die KI sagt dir, was jetzt zuerst kommt, und schreibt <span class="anriss-ende">die …</span></p><div class="mcard-aktion"><p class="outcome"><b class="mcard-los">Anleitung</b></p><a class="mcard-los-link" href="/geld-nach-betrug-zurueckholen" aria-label="Anleitung lesen: Geld nach Betrug zurückholen"></a></div></div></div><button class="herz" type="button" data-herz="n02" data-titel="Geld nach Betrug zurückholen" aria-pressed="false" aria-label="Merken: Geld nach Betrug zurückholen" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article></div>
       </div>
-      <div class="shelf pal-copper" data-kat="umzug" role="region" aria-labelledby="shelf-umzug">
-        <div class="wrap shelf-head"><h3 class="shelf-title" id="shelf-umzug">Umzug stemmen</h3><div class="shelf-nav"><button type="button" data-dir="-1" aria-label="Zurück blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button><button type="button" data-dir="1" aria-label="Weiter blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div></div>
-        <div class="shelf-track" tabindex="0" aria-label="Umzug stemmen, zum Blättern"><article class="mcard pal-copper" data-case="wohnzimmer" data-einleitung="Du schickst ein Foto deines Wohnzimmers und deine Wünsche, und die KI zeigt dir drei Stile in genau diesem Raum; mit Abo plant sie auch den Einkauf im Budget." data-kategorie="umzug" data-themen="haushalt" data-ease="2" data-sensitive="0" data-status="ready" data-fall="F-Wohnzimmer"><a class="mcard-link" href="/wohnzimmer-neu-denken" aria-label="Anleitung öffnen: Wohnzimmer neu denken"><div class="field pal-copper tone-2"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-sofa"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Umzug stemmen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Wohnzimmer neu denken</h3></div><div class="body"><p class="situation anriss">Du schickst ein Foto deines Wohnzimmers und deine Wünsche, und die KI zeigt dir drei Stile in genau diesem Raum; <span class="anriss-ende">mit …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="wohnzimmer" data-titel="Wohnzimmer neu denken" aria-pressed="false" aria-label="Merken: Wohnzimmer neu denken" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article></div>
-      </div>
-      <div class="shelf pal-green" data-kat="arzt" role="region" aria-labelledby="shelf-arzt">
-        <div class="wrap shelf-head"><h3 class="shelf-title" id="shelf-arzt">Arztsachen klären</h3><div class="shelf-nav"><button type="button" data-dir="-1" aria-label="Zurück blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button><button type="button" data-dir="1" aria-label="Weiter blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div></div>
-        <div class="shelf-track" tabindex="0" aria-label="Arztsachen klären, zum Blättern"><article class="mcard pal-green " data-case="r50" data-einleitung="Überall Wartelisten, und die Kraft wird weniger? Die KI plant mit dir den Weg zum Therapieplatz: wen du wann anrufst, ein Protokoll deiner Absagen und auf Wunsch den Antrag an deine Kasse." data-kategorie="arzt" data-themen="gesundheit" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R50"><a class="mcard-link" href="/therapieplatz-finden" aria-label="Anleitung öffnen: Therapieplatz finden"><div class="field pal-green tone-2"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-heart-handshake"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Arztsachen klären</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Therapieplatz finden</h3></div><div class="body"><p class="situation anriss">Überall Wartelisten, und die Kraft wird weniger? Die KI plant mit dir den Weg zum Therapieplatz: wen du wann <span class="anriss-ende">anrufst, …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="r50" data-titel="Therapieplatz finden" aria-pressed="false" aria-label="Merken: Therapieplatz finden" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article></div>
-      </div>
-      <div class="shelf pal-coral" data-kat="urlaub" role="region" aria-labelledby="shelf-urlaub">
-        <div class="wrap shelf-head"><h3 class="shelf-title" id="shelf-urlaub">Urlaub &amp; Freizeit planen</h3><div class="shelf-nav"><button type="button" data-dir="-1" aria-label="Zurück blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button><button type="button" data-dir="1" aria-label="Weiter blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div></div>
-        <div class="shelf-track" tabindex="0" aria-label="Urlaub &amp; Freizeit planen, zum Blättern"><article class="mcard pal-coral" data-case="y4" data-einleitung="Die KI fragt zuerst, was du gern machst, was dir wichtig ist und welches Gefühl das Wochenende dir geben soll. Dann sucht sie, was in deiner Stadt los ist, und schlägt vor, was zu dir passt." data-kategorie="urlaub" data-themen="reisen kreativ" data-ease="2" data-sensitive="0" data-status="ready" data-fall="Y4"><a class="mcard-link" href="/wochenende-planen" aria-label="Anleitung öffnen: Was mach ich am Wochenende?"><div class="field pal-coral tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-sun"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Urlaub &amp; Freizeit planen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Was mach ich am Wochenende?</h3></div><div class="body"><p class="situation anriss">Die KI fragt zuerst, was du gern machst, was dir wichtig ist und welches Gefühl das Wochenende dir geben soll. <span class="anriss-ende">Dann …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="y4" data-titel="Was mach ich am Wochenende?" aria-pressed="false" aria-label="Merken: Was mach ich am Wochenende?" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article></div>
-      </div>
-      <div class="shelf pal-indigo" data-kat="job" role="region" aria-labelledby="shelf-job">
-        <div class="wrap shelf-head"><h3 class="shelf-title" id="shelf-job">Job wechseln</h3><div class="shelf-nav"><button type="button" data-dir="-1" aria-label="Zurück blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button><button type="button" data-dir="1" aria-label="Weiter blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div></div>
-        <div class="shelf-track" tabindex="0" aria-label="Job wechseln, zum Blättern"><article class="mcard pal-indigo " data-case="n05" data-einleitung="Die Kündigung liegt im Briefkasten? Die KI rechnet deine Fristen mit Datum aus und sagt dir, was du jetzt nicht unterschreibst." data-kategorie="job" data-themen="job" data-ease="2" data-sensitive="0" data-status="ready" data-fall="N05"><a class="mcard-link" href="/gekuendigt-und-jetzt" aria-label="Anleitung öffnen: Gekündigt, und jetzt?"><div class="field pal-indigo tone-3"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-door-open"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Job wechseln</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Gekündigt, und jetzt?</h3></div><div class="body"><p class="situation anriss">Die Kündigung liegt im Briefkasten? Die KI rechnet deine Fristen mit Datum aus und sagt dir, was du jetzt <span class="anriss-ende">nicht …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="n05" data-titel="Gekündigt, und jetzt?" aria-pressed="false" aria-label="Merken: Gekündigt, und jetzt?" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article></div>
+      <div class="shelf pal-moss" data-kat="weitere" role="region" aria-labelledby="shelf-weitere">
+        <div class="wrap shelf-head"><h3 class="shelf-title" id="shelf-weitere">Weitere Themen</h3><div class="shelf-nav"><button type="button" data-dir="-1" aria-label="Zurück blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button><button type="button" data-dir="1" aria-label="Weiter blättern"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div></div>
+        <div class="shelf-track" tabindex="0" aria-label="Weitere Themen, zum Blättern"><article class="mcard pal-copper" data-case="wohnzimmer" data-einleitung="Du schickst ein Foto deines Wohnzimmers und deine Wünsche, und die KI zeigt dir drei Stile in genau diesem Raum; mit Abo plant sie auch den Einkauf im Budget." data-kategorie="umzug" data-themen="haushalt" data-ease="2" data-sensitive="0" data-status="ready" data-fall="F-Wohnzimmer"><a class="mcard-link" href="/wohnzimmer-neu-denken" aria-label="Anleitung öffnen: Wohnzimmer neu denken"><div class="field pal-copper tone-2"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-sofa"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Umzug stemmen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Wohnzimmer neu denken</h3></div></a><div class="body"><p class="mcard-nutzen">Du schickst ein Foto deines Wohnzimmers und deine Wünsche, und die KI zeigt dir drei Stile in genau diesem Raum; mit Abo plant sie auch den Einkauf im Budget.</p><div class="mcard-kachel"><p class="situation anriss">Du schickst ein Foto deines Wohnzimmers und deine Wünsche, und die KI zeigt dir drei Stile in genau diesem Raum; <span class="anriss-ende">mit …</span></p><div class="mcard-aktion"><p class="outcome"><b class="mcard-los">Anleitung</b></p><a class="mcard-los-link" href="/wohnzimmer-neu-denken" aria-label="Anleitung lesen: Wohnzimmer neu denken"></a></div></div></div><button class="herz" type="button" data-herz="wohnzimmer" data-titel="Wohnzimmer neu denken" aria-pressed="false" aria-label="Merken: Wohnzimmer neu denken" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-green " data-case="r50" data-einleitung="Überall Wartelisten, und die Kraft wird weniger? Die KI plant mit dir den Weg zum Therapieplatz: wen du wann anrufst, ein Protokoll deiner Absagen und auf Wunsch den Antrag an deine Kasse." data-kategorie="arzt" data-themen="gesundheit" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R50"><a class="mcard-link" href="/therapieplatz-finden" aria-label="Anleitung öffnen: Therapieplatz finden"><div class="field pal-green tone-2"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-heart-handshake"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Arztsachen klären</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Therapieplatz finden</h3></div></a><div class="body"><p class="mcard-nutzen">Überall Wartelisten, und die Kraft wird weniger?</p><div class="mcard-kachel"><p class="situation anriss">Überall Wartelisten, und die Kraft wird weniger? Die KI plant mit dir den Weg zum Therapieplatz: wen du wann <span class="anriss-ende">anrufst, …</span></p><div class="mcard-aktion"><p class="outcome"><b class="mcard-los">Anleitung</b></p><a class="mcard-los-link" href="/therapieplatz-finden" aria-label="Anleitung lesen: Therapieplatz finden"></a></div></div></div><button class="herz" type="button" data-herz="r50" data-titel="Therapieplatz finden" aria-pressed="false" aria-label="Merken: Therapieplatz finden" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-coral" data-case="y4" data-einleitung="Die KI fragt zuerst, was du gern machst, was dir wichtig ist und welches Gefühl das Wochenende dir geben soll. Dann sucht sie, was in deiner Stadt los ist, und schlägt vor, was zu dir passt." data-kategorie="urlaub" data-themen="reisen kreativ" data-ease="2" data-sensitive="0" data-status="ready" data-fall="Y4"><a class="mcard-link" href="/wochenende-planen" aria-label="Anleitung öffnen: Was mach ich am Wochenende?"><div class="field pal-coral tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-sun"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Urlaub &amp; Freizeit planen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Was mach ich am Wochenende?</h3></div></a><div class="body"><p class="mcard-nutzen">Die KI fragt zuerst, was du gern machst, was dir wichtig ist und welches Gefühl das Wochenende dir geben soll.</p><div class="mcard-kachel"><p class="situation anriss">Die KI fragt zuerst, was du gern machst, was dir wichtig ist und welches Gefühl das Wochenende dir geben soll. <span class="anriss-ende">Dann …</span></p><div class="mcard-aktion"><p class="outcome"><b class="mcard-los">Anleitung</b></p><a class="mcard-los-link" href="/wochenende-planen" aria-label="Anleitung lesen: Was mach ich am Wochenende?"></a></div></div></div><button class="herz" type="button" data-herz="y4" data-titel="Was mach ich am Wochenende?" aria-pressed="false" aria-label="Merken: Was mach ich am Wochenende?" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-indigo " data-case="n05" data-einleitung="Die Kündigung liegt im Briefkasten? Die KI rechnet deine Fristen mit Datum aus und sagt dir, was du jetzt nicht unterschreibst." data-kategorie="job" data-themen="job" data-ease="2" data-sensitive="0" data-status="ready" data-fall="N05"><a class="mcard-link" href="/gekuendigt-und-jetzt" aria-label="Anleitung öffnen: Gekündigt, und jetzt?"><div class="field pal-indigo tone-3"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-door-open"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Job wechseln</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Gekündigt, und jetzt?</h3></div></a><div class="body"><p class="mcard-nutzen">Die Kündigung liegt im Briefkasten?</p><div class="mcard-kachel"><p class="situation anriss">Die Kündigung liegt im Briefkasten? Die KI rechnet deine Fristen mit Datum aus und sagt dir, was du jetzt <span class="anriss-ende">nicht …</span></p><div class="mcard-aktion"><p class="outcome"><b class="mcard-los">Anleitung</b></p><a class="mcard-los-link" href="/gekuendigt-und-jetzt" aria-label="Anleitung lesen: Gekündigt, und jetzt?"></a></div></div></div><button class="herz" type="button" data-herz="n05" data-titel="Gekündigt, und jetzt?" aria-pressed="false" aria-label="Merken: Gekündigt, und jetzt?" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article></div>
       </div>
       </div>
       <div class="wrap more-row" hidden><button type="button" class="more-toggle" id="mehr-toggle" aria-expanded="true" aria-controls="mehr-themen"><span class="more-label">Weniger anzeigen</span><span class="more-icon" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-chevron-down"/></svg></span></button></div>
@@ -1713,7 +2363,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
     <section class="r61-bald" aria-labelledby="r61-bald-titel"><div class="wrap"><h2 id="r61-bald-titel">Bald dabei</h2><p>Daran arbeiten wir gerade.</p><ul><li><button type="button" data-idee="Versicherungen durchleuchten">Versicherungen durchleuchten</button></li><li><button type="button" data-idee="Konto durchleuchten">Konto durchleuchten</button></li><li><button type="button" data-idee="Nebenkosten prüfen">Nebenkosten prüfen</button></li><li><button type="button" data-idee="Rente netto ausrechnen">Rente netto ausrechnen</button></li><li><button type="button" data-idee="Ein Einkauf, sechs Gerichte">Ein Einkauf, sechs Gerichte</button></li><li><button type="button" data-idee="Gebrauchtwagen prüfen">Gebrauchtwagen prüfen</button></li><li><button type="button" data-idee="Kfz-Versicherung prüfen">Kfz-Versicherung prüfen</button></li><li><button type="button" data-idee="Strom und Gas günstiger">Strom und Gas günstiger</button></li><li><button type="button" data-idee="Lücken im Rentenkonto finden">Lücken im Rentenkonto finden</button></li><li><button type="button" data-idee="Neue Regeln für dich">Neue Regeln für dich</button></li><li><button type="button" data-idee="Daten über mich löschen">Daten über mich löschen</button></li><li><button type="button" data-idee="Daten bei Firmen abfragen">Daten bei Firmen abfragen</button></li><li><button type="button" data-idee="Fake-Shop oder seriös?">Fake-Shop oder seriös?</button></li><li><button type="button" data-idee="Wer sieht meine Fotos?">Wer sieht meine Fotos?</button></li><li><button type="button" data-idee="Gehacktes Konto retten">Gehacktes Konto retten</button></li><li><button type="button" data-idee="Passwort-Chaos aufräumen">Passwort-Chaos aufräumen</button></li><li><button type="button" data-idee="Privatsphäre-Check fürs Handy">Privatsphäre-Check fürs Handy</button></li><li><button type="button" data-idee="Datenleck prüfen">Datenleck prüfen</button></li><li><button type="button" data-idee="Umzug komplett planen">Umzug komplett planen</button></li><li><button type="button" data-idee="Möbel nach Maß planen">Möbel nach Maß planen</button></li><li><button type="button" data-idee="Mietvertrag prüfen">Mietvertrag prüfen</button></li><li><button type="button" data-idee="Streichen beim Auszug?">Streichen beim Auszug?</button></li><li><button type="button" data-idee="Wohnungsmängel melden">Wohnungsmängel melden</button></li><li><button type="button" data-idee="Welcher Stadtteil passt zu uns?">Welcher Stadtteil passt zu uns?</button></li><li><button type="button" data-idee="Abstimmen als Eigentümer">Abstimmen als Eigentümer</button></li><li><button type="button" data-idee="Kostenfallen beim Wohnungskauf">Kostenfallen beim Wohnungskauf</button></li><li><button type="button" data-idee="Was plant der Stadtrat?">Was plant der Stadtrat?</button></li><li><button type="button" data-idee="Befund verstehen">Befund verstehen</button></li><li><button type="button" data-idee="Zahnarzt-Kostenplan verstehen">Zahnarzt-Kostenplan verstehen</button></li><li><button type="button" data-idee="Klinik für die OP finden">Klinik für die OP finden</button></li><li><button type="button" data-idee="Schneller zum Facharzt">Schneller zum Facharzt</button></li><li><button type="button" data-idee="Selbst zahlen beim Arzt?">Selbst zahlen beim Arzt?</button></li><li><button type="button" data-idee="Diagnose gemeinsam verstehen">Diagnose gemeinsam verstehen</button></li><li><button type="button" data-idee="Krank im Urlaub">Krank im Urlaub</button></li><li><button type="button" data-idee="Garten neu bepflanzen">Garten neu bepflanzen</button></li><li><button type="button" data-idee="Altes Familienfoto retten">Altes Familienfoto retten</button></li><li><button type="button" data-idee="Kochen mit dem, was da ist">Kochen mit dem, was da ist</button></li><li><button type="button" data-idee="Vereinsfest organisieren">Vereinsfest organisieren</button></li><li><button type="button" data-idee="Flugentschädigung fordern">Flugentschädigung fordern</button></li><li><button type="button" data-idee="Jobs finden lassen">Jobs finden lassen</button></li><li><button type="button" data-idee="Nebengewerbe starten">Nebengewerbe starten</button></li><li><button type="button" data-idee="Alte Website auffrischen">Alte Website auffrischen</button></li><li><button type="button" data-idee="Arbeitszeugnis entschlüsseln">Arbeitszeugnis entschlüsseln</button></li><li><button type="button" data-idee="Schwieriges Gespräch üben">Schwieriges Gespräch üben</button></li><li><button type="button" data-idee="Wenn Eltern älter werden">Wenn Eltern älter werden</button></li><li><button type="button" data-idee="Uralte Briefe entziffern">Uralte Briefe entziffern</button></li><li><button type="button" data-idee="Pflegeleistungen voll nutzen">Pflegeleistungen voll nutzen</button></li><li><button type="button" data-idee="Stolperfallen finden">Stolperfallen finden</button></li><li><button type="button" data-idee="Erbstücke fair aufteilen">Erbstücke fair aufteilen</button></li><li><button type="button" data-idee="Demenz im Alltag">Demenz im Alltag</button></li><li><button type="button" data-idee="Wenn ein Elternteil stirbt">Wenn ein Elternteil stirbt</button></li><li><button type="button" data-idee="Pflegebegutachtung vorbereiten">Pflegebegutachtung vorbereiten</button></li><li><button type="button" data-idee="Medikamente der Eltern ordnen">Medikamente der Eltern ordnen</button></li></ul></div></section>
 
 
-    <footer class="footer"><div class="wrap"><span class="r61-fuss">Die KI-Macherei<span aria-hidden="true"> · </span><a href="https://www.instagram.com/ki_macherei/" target="_blank" rel="noopener">Instagram: @ki_macherei</a></span><span class="footer-rechts"><a href="/">Startseite</a><a href="/mein-bereich#wissen">Wissen</a><a href="#kommt-bald" data-sheet="idee">Eigene Idee teilen</a></span></div></footer>
+    <footer class="footer"><div class="wrap"><span class="r61-fuss">Die KI-Macherei<span class="r81-social"><a class="r81-icon" href="https://www.instagram.com/ki_macherei/" target="_blank" rel="noopener" aria-label="Die KI-Macherei auf Instagram"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a><a class="r81-icon" href="https://www.youtube.com/@ki_macherei" data-r81-youtube target="_blank" rel="noopener" aria-label="Die KI-Macherei auf YouTube"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a></span></span><span class="footer-rechts"><a href="/">Startseite</a><a href="/mein-bereich#wissen">Wissen</a><a href="#kommt-bald" data-sheet="idee">Eigene Idee teilen</a></span></div></footer>
   </main>
 
   <dialog class="k-dialog" id="kompass-dialog" aria-labelledby="k-head-title">
@@ -1978,7 +2628,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       job: 'Job und Bewerbung'
     };
     const SORGEN = {
-      daten: ['Was passiert mit meinen Daten?', 'Deine Antworten im Kompass bleiben ohne Konto auf deinem Gerät, verschickt wird nichts. Was du in deinem KI-Chat teilst, entscheidest du, und bei ChatGPT und Claude kannst du ausschalten, dass damit trainiert wird. Jede Anleitung sagt dir vorher, was du weglassen oder abdecken kannst.'],
+      daten: ['Was passiert mit all meinen Daten?', 'Deine Antworten im Kompass bleiben ohne Konto auf deinem Gerät, verschickt wird nichts. Was du in deinem KI-Chat teilst, entscheidest du, und bei ChatGPT und Claude kannst du ausschalten, dass damit trainiert wird. Jede Anleitung sagt dir vorher, was du weglassen oder abdecken kannst.'],
       kosten: ['Kostet mich das etwas?', 'Diese Seite ist kostenlos und braucht kein Konto. Für die KI-App brauchst du ein kostenloses Konto, etwa bei ChatGPT oder Claude. Damit kannst du vieles ausprobieren. Was erst mit Abo geht, steht bei jeder Anleitung dabei.'],
       falsch: ['Was, wenn die KI falsch liegt?', 'Das kommt vor. Deshalb vergleichst du Wichtiges wie Beträge und Termine mit dem Original. Geht es um Fristen, Geld oder Recht, fragst du zusätzlich einen Menschen.'],
       vertrauen: ['Kann ich den Antworten trauen?', 'Blind vertrauen musst du ihnen nicht. Wichtiges wie Beträge und Termine vergleichst du mit dem Original. Geht es um Fristen, Geld oder Recht, fragst du zusätzlich einen Menschen.'],
@@ -2042,7 +2692,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
         { wert: 'assistenten', titel: 'Eigene Assistenten einrichten', info: 'Die KI kennt dauerhaft dein Thema oder deine Vorlieben, etwa in einem eigenen Projekt oder einem eigenen GPT.' },
         { wert: 'nichts', titel: 'Nichts davon', exklusiv: true }] },
       sorgen: { frage: 'Gibt es etwas, das dich zögern lässt?', optionen: [
-        { wert: 'daten', titel: 'Was passiert mit meinen Daten?' },
+        { wert: 'daten', titel: 'Was passiert mit all meinen Daten?' },
         { wert: 'kosten', titel: 'Kostet mich das etwas?' },
         { wert: 'falsch', titel: 'Was, wenn die KI falsch liegt?' },
         { wert: 'kaputt', titel: 'Ich habe Angst, etwas falsch zu machen.' },
@@ -2050,7 +2700,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       zweifel: { frage: 'Was lässt dich zweifeln?', optionen: [
         { wert: 'hype', titel: 'Ist das nicht nur ein Hype?' },
         { wert: 'vertrauen', titel: 'Ich vertraue den Antworten nicht.' },
-        { wert: 'daten', titel: 'Was passiert mit meinen Daten?' },
+        { wert: 'daten', titel: 'Was passiert mit all meinen Daten?' },
         { wert: 'abhaengig', titel: 'Mache ich mich abhängig?' },
         { wert: 'kosten', titel: 'Kostet mich das etwas?' },
         { wert: 'keine', titel: 'Nichts Bestimmtes', exklusiv: true }] },
@@ -3235,7 +3885,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
   (function () {
     function angleichen() {
       ['.mcard .field', '.mcard .body'].forEach(function (sel) {   // Bildfläche, dann Textteil (Pam, 27.10.: alle Karten gleich lang)
-        var f = [].slice.call(document.querySelectorAll(sel)).filter(function (x) { return x.offsetWidth > 0; });
+        var f = [].slice.call(document.querySelectorAll(sel)).filter(function (x) { return x.offsetWidth > 0 && !x.closest('.r107-scheck'); });
         f.forEach(function (x) { x.style.minHeight = ''; x.style.removeProperty('aspect-ratio'); });
         var h = 0; f.forEach(function (x) { h = Math.max(h, x.getBoundingClientRect().height); });
         // Runde 49: Seitenverhältnis aus, sobald die Höhe fest ist (Safari machte die Fläche sonst über das Verhältnis breiter als die Karte)
@@ -3251,27 +3901,46 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
   })();
 </script>
 
-<dialog class="v47-ein" id="v47-ein" aria-labelledby="v47-titel"><button type="button" class="v47-x" data-v47="x" aria-label="Schließen"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="r72-gem" x1="0" y1="24" x2="24" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4285f4"/><stop offset=".55" stop-color="#9b72cb"/><stop offset="1" stop-color="#d96570"/></linearGradient><linearGradient id="r72-cop1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a8bf2"/><stop offset="1" stop-color="#8f5cf5"/></linearGradient><linearGradient id="r72-cop2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a3c"/><stop offset="1" stop-color="#f5c542"/></linearGradient></defs><symbol id="r72-l-chatgpt" viewBox="0 0 24 24"><path fill="#10100f" d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></symbol><symbol id="r72-l-claude" viewBox="0 0 24 24"><path fill="#d97757" d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></symbol><symbol id="r72-l-gemini" viewBox="0 0 24 24"><path fill="url(#r72-gem)" d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></symbol><symbol id="r72-l-grok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4" fill="none" stroke="#10100f" stroke-width="2.4"/><path d="M4.2 20.2 19.8 3.8" stroke="#10100f" stroke-width="2.4" stroke-linecap="round" fill="none"/></symbol><symbol id="r72-l-copilot" viewBox="0 0 24 24"><path fill="url(#r72-cop1)" d="M12.6 2.6c-2.4 0-3.6 1.2-4.3 3.4L4.4 15.7c-.6 1.7.3 3 2 3h3.2l3.5-12.5c.4-1.4.2-3.6-.5-3.6z"/><path fill="url(#r72-cop2)" d="M12.9 7.2 9.6 18.7c-.1.4.2.7.6.7h4.4c2.1 0 3.3-1 4-3.1l1-3.5c.5-1.7-.4-2.9-2.1-2.9h-2.9l.9-2.7z"/></symbol><symbol id="r72-l-perplexity" viewBox="0 0 24 24"><g fill="none" stroke="#20808d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5v19M5 5.8l7 6.2 7-6.2M5 18.2l7-6.2 7 6.2M5 5.8v12.4M19 5.8v12.4M12 12 5 5.8M12 12l7-6.2"/></g></symbol><symbol id="r72-l-mistral" viewBox="0 0 24 24"><g shape-rendering="crispEdges"><rect x="1.5" y="2" width="4.2" height="4.2" fill="#ffd800"/><rect x="18.3" y="2" width="4.2" height="4.2" fill="#ffd800"/><rect x="1.5" y="6.2" width="4.2" height="4.2" fill="#ffaf00"/><rect x="5.7" y="6.2" width="4.2" height="4.2" fill="#ffaf00"/><rect x="14.1" y="6.2" width="4.2" height="4.2" fill="#ffaf00"/><rect x="18.3" y="6.2" width="4.2" height="4.2" fill="#ffaf00"/><rect x="1.5" y="10.4" width="21" height="4.2" fill="#ff8205"/><rect x="1.5" y="14.6" width="4.2" height="4.2" fill="#fa500f"/><rect x="9.9" y="14.6" width="4.2" height="4.2" fill="#fa500f"/><rect x="18.3" y="14.6" width="4.2" height="4.2" fill="#fa500f"/><rect x="1.5" y="18.8" width="4.2" height="3.4" fill="#e10500"/><rect x="18.3" y="18.8" width="4.2" height="3.4" fill="#e10500"/></g></symbol><symbol id="r72-l-meta" viewBox="0 0 24 24"><path fill="none" stroke="#0866ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5.6 17c-2 0-3.1-2.2-3.1-5S4.1 7 6.3 7c2.7 0 4.3 3.6 5.7 6.1s2.8 3.9 4.2 3.9c2 0 3.3-2 3.3-5s-1.4-5-3.4-5c-1.8 0-3.1 1.7-4.5 4.1C10.2 14.200 8.600 17 5.600 17z"/></symbol><symbol id="r72-l-deepseek" viewBox="0 0 24 24"><path fill="#4d6bfe" d="M2.6 13.4C2.6 9.5 6.500 6.600 11 6.600c3.100 0 5.400 1 7.100 2.700l2.900-1.200-.6 3.300c.3.700.5 1.400.5 2.100 0 3.700-3.900 5.800-8.700 5.800-1.200 0-2.300-.1-3.300-.4l-3 2 .6-3.100c-2.200-1.100-3.900-2.600-3.900-4.400z"/><circle cx="7.600" cy="12" r="1.100" fill="#fff"/></symbol><symbol id="r72-stufe-1" viewBox="0 0 24 24"><rect x="3" y="14" width="4.5" height="7" rx="1.6" fill="currentColor"/><rect x="9.75" y="9" width="4.5" height="12" rx="1.6" fill="currentColor" opacity=".22"/><rect x="16.5" y="3" width="4.5" height="18" rx="1.6" fill="currentColor" opacity=".22"/></symbol><symbol id="r72-stufe-2" viewBox="0 0 24 24"><rect x="3" y="14" width="4.5" height="7" rx="1.6" fill="currentColor"/><rect x="9.75" y="9" width="4.5" height="12" rx="1.6" fill="currentColor"/><rect x="16.5" y="3" width="4.5" height="18" rx="1.6" fill="currentColor" opacity=".22"/></symbol><symbol id="r72-stufe-3" viewBox="0 0 24 24"><rect x="3" y="14" width="4.5" height="7" rx="1.6" fill="currentColor"/><rect x="9.75" y="9" width="4.5" height="12" rx="1.6" fill="currentColor"/><rect x="16.5" y="3" width="4.5" height="18" rx="1.6" fill="currentColor"/></symbol><symbol id="r72-grad" viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="r72-l-andere" viewBox="0 0 24 24"><g fill="none" stroke="#10100f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5l1.9 5.1 5.1 1.9-5.1 1.9L11 17.5l-1.9-5.1L4 10.5l5.1-1.9z"/><path d="M18.5 15.5v4M16.5 17.5h4"/></g></symbol></svg>
+<dialog class="v47-ein" id="v47-ein" aria-labelledby="ein-titel-f1"><button type="button" class="v47-x" data-v47="x" aria-label="Schließen"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
   <div class="v47-innen" data-schritt="f1">
     <div class="v47-links">
       <div class="v47-marke" aria-hidden="true"><img class="r61-popup-logo" src="/ki-macherei_quer_hell.svg" alt="" width="125" height="22"></div>
       <form class="v47-form" novalidate>
-        <fieldset class="v47-teil" data-teil="f1"><legend class="v47-frage" id="v47-titel" tabindex="-1">Mit welcher KI willst du starten?</legend>
-          <div class="v47-fort" aria-hidden="true"><b class="an"></b><b></b><span>Frage 1 von 2</span></div>
-          <p class="v47-fort-sr">Frage 1 von 2</p>
-          <div class="v47-opts"><label class="v47-opt" data-szene="chatgpt"><input type="radio" name="v47-f1" value="chatgpt"><span>ChatGPT</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="claude"><input type="radio" name="v47-f1" value="claude"><span>Claude</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="keine"><input type="radio" name="v47-f1" value="keine"><span>Ich hab noch keine</span><i aria-hidden="true"></i></label></div>
-          <p class="v47-tipp">Du nutzt beide? Nimm die, die du öfter nutzt. Jede Idee kannst du trotzdem mit beiden starten.</p>
+        <fieldset class="v47-teil" data-teil="f1"><legend class="v47-frage" id="ein-titel-f1" tabindex="-1">Wie viel hast du schon mit KI gemacht?</legend>
+          <div class="v47-fort" aria-hidden="true"><b class="an"></b><b></b><b></b><span>Frage 1 von 3</span></div><p class="v47-fort-sr">Frage 1 von 3</p>
+          <div class="v47-opts"><label class="v47-opt" data-szene="f1"><input type="radio" name="ein-niveau" value="einsteiger"><span>Noch nichts, ich fange bei null an</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="f1"><input type="radio" name="ein-niveau" value="etwas"><span>Ein paar Mal ausprobiert</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="f1"><input type="radio" name="ein-niveau" value="erfahren"><span>Ich nutze KI regelmäßig</span><i aria-hidden="true"></i></label></div>
         </fieldset>
-        <fieldset class="v47-teil" data-teil="f2" hidden><legend class="v47-frage" id="v47-titel2" tabindex="-1">Zahlst du für <span data-v47-ki>ChatGPT</span>?</legend>
-          <button type="button" class="v57-zurueck" data-v47="zurueck">← Zurück</button><div class="v47-fort" aria-hidden="true"><b class="an"></b><b class="an"></b><span>Frage 2 von 2</span></div>
-          <p class="v47-fort-sr">Frage 2 von 2</p>
-          <div class="v47-opts"><label class="v47-opt" data-szene="frei"><input type="radio" name="v47-f2" value="frei"><span>Nein, kostenlos</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="abo"><input type="radio" name="v47-f2" value="abo"><span>Ja, Abo</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="weissnicht"><input type="radio" name="v47-f2" value="weissnicht"><span>Weiß ich nicht</span><i aria-hidden="true"></i></label></div>
+        <fieldset class="v47-teil" data-teil="f2" hidden><legend class="v47-frage" id="ein-titel-f2" tabindex="-1">Welche KI nutzt du?</legend>
+          <button type="button" class="v57-zurueck" data-v47="zurueck">← Zurück</button><div class="v47-fort" aria-hidden="true"><b class="an"></b><b class="an"></b><b></b><span>Frage 2 von 3</span></div><p class="v47-fort-sr">Frage 2 von 3</p>
+          <p class="v47-fort-sr" id="r72-status" aria-live="polite"></p>
+          <div class="v47-opts" id="r100-ki-zeilen"><label class="v47-opt" data-szene="chatgpt"><input type="radio" name="ein-ki" value="chatgpt"><span>ChatGPT</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="claude"><input type="radio" name="ein-ki" value="claude"><span>Claude</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="andere"><input type="radio" name="ein-ki" value="andere"><span>Andere</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="keine"><input type="radio" name="ein-ki" value="keine"><span>Ich hab noch keine</span><i aria-hidden="true"></i></label></div>
+          <div class="r101-hinweise"><p class="v47-tipp r72-tipp" id="r72-tipp" aria-live="polite">Du nutzt mehrere? Wähle die App, die du öfter nutzt oder wo du ein Abo besitzt.</p>
+</div>
+        </fieldset>
+        <fieldset class="v47-teil" data-teil="f3" hidden><legend class="v47-frage" id="ein-titel-f3" tabindex="-1">Zahlst du für <span data-ein-ki>ChatGPT</span>?</legend>
+          <button type="button" class="v57-zurueck" data-v47="zurueck">← Zurück</button><div class="v47-fort" aria-hidden="true"><b class="an"></b><b class="an"></b><b class="an"></b><span>Frage 3 von 3</span></div><p class="v47-fort-sr">Frage 3 von 3</p>
+          <div class="v47-opts"><label class="v47-opt" data-szene="frei"><input type="radio" name="ein-abo" value="frei"><span>Nein, kostenlos</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="abo"><input type="radio" name="ein-abo" value="abo"><span>Ja, Abo</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="weissnicht"><input type="radio" name="ein-abo" value="weissnicht"><span>Weiß ich nicht</span><i aria-hidden="true"></i></label></div>
+          <p class="r72-privat" id="r72-privat">Deine Antworten bleiben nur auf diesem Gerät, damit die Seite beim nächsten Besuch für dich eingerichtet ist. Ändern kannst du sie jederzeit.</p>
         </fieldset>
         <div class="v47-teil" data-teil="keine" hidden>
-          <h2 class="v47-frage" id="v47-titel-keine" tabindex="-1">Warum nur ChatGPT und Claude?</h2>
+          <h2 class="v47-frage" id="ein-titel-keine" tabindex="-1">Du benötigst ein Konto bei ChatGPT oder Claude.</h2>
           <button type="button" class="v57-zurueck" data-v47="zurueck">← Zurück</button>
-          <p class="v47-text">Jede Anleitung bei uns ist mit ChatGPT und Claude getestet. Und der Start-Knopf öffnet sie dort direkt, mit dem fertigen Auftrag im Eingabefeld.</p>
-          <p class="v47-text">Am schnellsten geht es mit einem kostenlosen Konto bei ChatGPT.</p>
+          <p class="v47-text">Jede Anleitung bei uns ist mit ChatGPT und Claude getestet. Wir beschränken uns auf diese Apps, da sie die aktuell fähigsten KI-Modelle nutzen.</p>
+          <p class="v47-text">Für den schnellen Einstieg empfehlen wir ein kostenloses Konto bei ChatGPT.</p>
+        </div>
+        <div class="v47-teil" data-teil="laden" hidden>
+          <h2 class="v47-frage" id="ein-titel-laden" tabindex="-1">Wird für dich eingerichtet</h2>
+          <div class="r100-balken" aria-hidden="true"><i></i></div>
+          <ol class="r100-zeilen" id="r100-zeilen" aria-live="polite"></ol>
+        </div>
+        <div class="v47-teil" data-teil="fertig" hidden>
+          <h2 class="v47-frage" id="ein-titel-fertig" tabindex="-1">Fertig eingerichtet!</h2>
+          <p class="v47-text" id="r100-ok-t"></p>
+          <p class="v47-text" id="r100-ok-hilfe" hidden>Brauchst du Hilfe für den Anfang? Dann fang bei den <a class="r100-link" href="/mein-bereich#wissen" data-r100="grundlagen">Grundlagen</a> an. Ein Einsteiger-Kurs kommt noch dazu, wir bauen ihn gerade.</p>
+          <div id="r101-ok-leiste"></div>
+          <div class="r100-ende"><button type="button" class="v47-dunkel" data-v47="schliessen">Ideen ansehen <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div>
         </div>
       </form>
       <div class="v47-fuss">
@@ -3279,122 +3948,356 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
         <button type="button" class="v47-leise" data-v47="stoebern" hidden>Erst mal stöbern</button>
         <button type="button" class="v47-dunkel" data-v47="weiter" disabled>Weiter <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
         <a class="v47-dunkel" data-v47="konto" href="https://chatgpt.com/auth/login" target="_blank" rel="noopener" hidden>ChatGPT-Konto anlegen · 2 Min. <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-        <button type="button" class="v47-dunkel" data-v47="fertig" hidden>Ideen ansehen <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
       </div>
     </div>
-    <div class="v47-rechts" aria-hidden="true"><div class="v47-vorschau">
-      <div class="v47-szene" data-szene="chatgpt"><div class="v47-chat v47-chat--chatgpt"><div class="v47-chat-bar"><i></i><i></i><i></i></div><div class="v47-chat-kopf"><span class="v47-chat-logo"><svg aria-hidden="true"><use href="#l-openai"/></svg></span><p>ChatGPT</p></div><div class="v47-chat-feld"><p class="v47-tippt" data-text="Hilf mir, meine Kündigung zu verstehen. Frag mich Schritt für Schritt nach Datum, Frist und Brief, und sag mir, was ich bis wann tun muss.">Hilf mir, meine Kündigung zu verstehen. Frag mich Schritt für Schritt nach Datum, Frist und Brief, und sag mir, was ich bis wann tun muss.</p><b><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></b></div></div><p class="v47-unter">ChatGPT öffnet sich mit dem fertigen Auftrag</p></div>
-      <div class="v47-szene" data-szene="claude"><div class="v47-chat v47-chat--claude"><div class="v47-chat-bar"><i></i><i></i><i></i></div><div class="v47-chat-kopf"><span class="v47-chat-logo"><svg aria-hidden="true"><use href="#l-claude"/></svg></span><p>Claude</p></div><div class="v47-chat-feld"><p class="v47-tippt" data-text="Hilf mir, meine Kündigung zu verstehen. Frag mich Schritt für Schritt nach Datum, Frist und Brief, und sag mir, was ich bis wann tun muss.">Hilf mir, meine Kündigung zu verstehen. Frag mich Schritt für Schritt nach Datum, Frist und Brief, und sag mir, was ich bis wann tun muss.</p><b><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></b></div></div><p class="v47-unter">Claude öffnet sich mit dem fertigen Auftrag</p></div>
-      <div class="v47-szene" data-szene="keine"><ol class="v47-schritte"><li><b>1</b>Konto anlegen</li><li><b>2</b>Idee aussuchen</li><li><b>3</b>Start drücken</li></ol>
-        <p class="v47-unter">Etwa 2 Minuten bis zum ersten Start</p></div>
-      <div class="v47-szene v57-wand-szene" data-szene="frei"><div class="v57-wand" data-wahl="frei"></div><p class="v47-unter" data-v57-unter="frei"></p></div>
-      <div class="v47-szene v57-wand-szene" data-szene="weissnicht"><div class="v57-wand" data-wahl="weissnicht"></div><p class="v47-unter" data-v57-unter="weissnicht"></p></div>
-      <div class="v47-szene v57-wand-szene" data-szene="abo"><div class="v57-wand" data-wahl="abo"></div><p class="v47-unter" data-v57-unter="abo"></p></div>
-    </div></div>
+    <div class="v47-rechts"><div class="v47-vorschau" aria-hidden="true">
+      <div class="v47-szene" data-szene="f1"><div class="ein-flaeche"><div class="ein-buehne ein-f1a" data-stufe="0"><div class="ein-k field pal-sand"><svg class="mcard-symbol" viewBox="0 0 24 24"><use href="#ls-coins"/></svg></div><div class="ein-k field pal-blue"><svg class="mcard-symbol" viewBox="0 0 24 24"><use href="#ls-mail"/></svg></div><div class="ein-k field pal-moss"><svg class="mcard-symbol" viewBox="0 0 24 24"><use href="#r72-grad"/></svg></div><div class="ein-k field pal-coral"><svg class="mcard-symbol" viewBox="0 0 24 24"><use href="#ls-sun"/></svg></div><div class="ein-k field pal-plum"><svg class="mcard-symbol" viewBox="0 0 24 24"><use href="#ls-message-square-warning"/></svg></div></div></div></div>
+      <div class="v47-szene" data-szene="f2"><div class="ein-flaeche"><div class="r100-wolke" id="r100-wolke" aria-hidden="true"><span class="r100-l" data-k="chatgpt" style="--g:92;--x:27%;--y:30%;--ax:14;--ay:11;--dur:17s;--vz:-4s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-chatgpt"/></svg></span></span></span><span class="r100-l" data-k="claude" style="--g:92;--x:66%;--y:58%;--ax:12;--ay:15;--dur:23s;--vz:-11s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-claude"/></svg></span></span></span><span class="r100-l" data-k="gemini" style="--g:60;--x:77%;--y:20%;--ax:13;--ay:12;--dur:19s;--vz:-7s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-gemini"/></svg></span></span></span><span class="r100-l" data-k="copilot" style="--g:56;--x:43%;--y:83%;--ax:15;--ay:10;--dur:21s;--vz:-2s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-copilot"/></svg></span></span></span><span class="r100-l" data-k="grok" style="--g:50;--x:13%;--y:66%;--ax:11;--ay:14;--dur:16s;--vz:-9s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-grok"/></svg></span></span></span><span class="r100-l" data-k="perplexity" style="--g:44;--x:52%;--y:10%;--ax:12;--ay:13;--dur:24s;--vz:-14s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-perplexity"/></svg></span></span></span><span class="r100-l" data-k="meta" style="--g:48;--x:45%;--y:52%;--ax:10;--ay:12;--dur:20s;--vz:-5s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-meta"/></svg></span></span></span><span class="r100-l" data-k="deepseek" style="--g:42;--x:11%;--y:40%;--ax:13;--ay:9;--dur:18s;--vz:-13s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-deepseek"/></svg></span></span></span><span class="r100-l" data-k="mistral" style="--g:40;--x:89%;--y:78%;--ax:9;--ay:12;--dur:22s;--vz:-8s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-mistral"/></svg></span></span></span></div></div></div>
+      <div class="v47-szene" data-szene="keine"><div class="ein-flaeche"><div class="ein-buehne ein-kA"><span class="ein-funke f1"></span><span class="ein-funke f2"></span><span class="ein-funke f3"></span><span class="ein-gross g1"><svg aria-hidden="true"><use href="#r72-l-chatgpt"/></svg></span><span class="ein-gross g2"><svg aria-hidden="true"><use href="#r72-l-claude"/></svg></span></div></div></div>
+      <div class="v47-szene" data-szene="frei"><div class="r72-faecher" data-art="frei"></div><p class="v47-unter" data-unter="frei"></p></div>
+      <div class="v47-szene" data-szene="abo"><div class="r72-faecher" data-art="abo"></div><p class="v47-unter">Alle Ideen stehen dir offen.</p></div>
+      <div class="v47-szene" data-szene="weissnicht"><div class="r72-faecher" data-art="frei"></div><p class="v47-unter">Diese gehen sicher kostenlos.</p></div>
+    </div>
+      <div class="ein-zeichen r101-z" role="group" aria-label="Deine Auswahl"><div class="ein-z r101-fenster" data-art="niveau"><div class="r101-walze"><span class="r101-strip"><span class="r101-it"><span class="r101-q" role="img" aria-label="Erfahrung noch offen">?</span></span></span></div></div><div class="ein-z r101-fenster" data-art="ki"><div class="r101-walze"><span class="r101-strip"><span class="r101-it"><span class="r101-q" role="img" aria-label="KI noch offen">?</span></span></span></div></div><div class="ein-z r101-fenster" data-art="abo"><div class="r101-walze"><span class="r101-strip"><span class="r101-it"><span class="r101-q" role="img" aria-label="Abo noch offen">?</span></span></span></div></div><p class="v47-fort-sr" id="r101-live" aria-live="polite"></p></div>
+    </div>
   </div>
 </dialog><script>
-  // Runde 47 (Jim, 27.10.2026), Punkt 3–5: Pop-up auf „Alle Ideen“ nach „Jetzt loslegen“, nur beim ersten Mal. Gemerkt wird nur die KI („ki-wahl“,
-  // liest die Anleitung) und dass das Pop-up durch ist („ki-einstieg“). Escape = Überspringen. Keine Vorauswahl, kein Filter auf „Alle Ideen“.
+  // Runde 100 (Ryan, 30.10.2026): Einstiegsfenster nach Yannis' Korrekturen (Station 2, Punkte 6–10). Baut auf dem Skript der Runde 72 auf (Ausschnitte unten unverändert).
+  // Gemerkt wird wie in Runde 72: ki-wahl bei „Weiter“ nach Frage 2; ki-einstieg, ki-erfahrung, ki-abo, ki-wahl sofort bei „Ideen ansehen“ (vor der Ladeansicht).
   (function () {
     var dlg = document.getElementById('v47-ein');
     if (!dlg) return;
-    var NAMEN = {"chatgpt": "ChatGPT", "claude": "Claude"}, innen = dlg.querySelector('.v47-innen'), ruhig = matchMedia('(prefers-reduced-motion: reduce)');
+    var KIS = [["chatgpt", "ChatGPT", "ChatGPT"], ["claude", "Claude", "Claude"], ["gemini", "Gemini", "Google Gemini"], ["grok", "Grok", "Grok"], ["copilot", "Copilot", "Microsoft Copilot"], ["perplexity", "Perplexity", "Perplexity"], ["mistral", "Mistral", "Mistral Le Chat"], ["meta", "Meta AI", "Meta AI"], ["deepseek", "DeepSeek", "DeepSeek"]], TIPP = "Du nutzt mehrere? Wähle die App, die du öfter nutzt oder wo du ein Abo besitzt.", ANDERE = "Mit anderen KIs klappt es vielleicht auch: Du kopierst die Anleitung einfach hinein. Wir empfehlen dir ChatGPT oder Claude, denn mit beiden testen wir unsere Anleitungen, und mit ihnen gelingen die meisten Ideen zuverlässig.", T = {"anfang": "Hilfe für den Anfang wird bereitgelegt", "kopier": "Kopier-Buttons werden hinzugefügt", "frei": "Kostenlose Ideen werden vorgezogen", "abo": "Ideen mit Abo werden einsortiert", "speicher": "Deine Auswahl wird auf diesem Gerät gespeichert", "fertig": "Alles für dich eingerichtet", "okKi": "In jeder Idee wartet jetzt der Button für {Name}. Unter „Alle Ideen“ ist schon alles nach deinen Antworten für dich eingestellt. Stöbere einfach los.", "okAndere": "In jeder Idee wartet jetzt ein Kopier-Button für deine KI. Unter „Alle Ideen“ ist schon alles nach deinen Antworten für dich eingestellt. Stöbere einfach los.", "gesamt": 2900};
+    var NAME = {}; KIS.forEach(function (k) { NAME[k[0]] = k[1]; }); NAME.andere = 'Andere KI';
+    var innen = dlg.querySelector('.v47-innen'), ruhigMQ = matchMedia('(prefers-reduced-motion: reduce)'), ruhig = function () { return ruhigMQ.matches; };
+    var tipp = dlg.querySelector('#r72-tipp'), status = dlg.querySelector('#r72-status');
     var knopf = function (n) { return dlg.querySelector('[data-v47="' + n + '"]'); };
-    var schritt = 'f1', ki = null, uhr = 0, vorher = null;
+    var schritt = 'f1', vorher = null, zeichenNr = 0, ladeNr = 0, ladeTimer = 0;
+    var FELD = { f1: 'ein-niveau', f2: 'ein-ki', f3: 'ein-abo' };
+    var NIVEAU = { einsteiger: ['Einsteiger', 1], etwas: ['Wenig Erfahrung', 2], erfahren: ['Erfahren', 3] };
+    var STUFE = { einsteiger: 1, etwas: 2, erfahren: 3 };
+    var ZEILE = { chatgpt: 'ChatGPT', claude: 'Claude', andere: 'Andere', keine: 'Ich hab noch keine' };
     function merke(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
-    function fertig() { try { return !!localStorage.getItem('ki-einstieg'); } catch (e) { return false; } }
+    function lies(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
     function wert(n) { var x = dlg.querySelector('input[name="' + n + '"]:checked'); return x ? x.value : null; }
-    // Vorschau: Szene zeigen, im Chat tippt der Auftrag (ruhige Fassung: steht sofort da)
-    function szene(s) {
-      if (window.v57Wand) window.v57Wand(dlg);   // Runde 57: Wand aus den Karten der Seite (einmal)
-      dlg.querySelectorAll('.v47-szene').forEach(function (el) { el.classList.toggle('an', el.dataset.szene === s); });
-      var p = dlg.querySelector('.v47-szene.an .v47-tippt');
-      clearInterval(uhr);
-      if (!p) return;
-      var t = p.dataset.text;
-      if (ruhig.matches) { p.textContent = t; return; }
-      var i = 0; p.textContent = '';
-      uhr = setInterval(function () { i += 2; p.textContent = t.slice(0, i); if (i >= t.length) clearInterval(uhr); }, 28);
-    }
+    function ns(t) { return t; }
+
+    // ---- Bild rechts
+    function szene(s) { dlg.querySelectorAll('.v47-szene').forEach(function (el) { el.classList.toggle('an', el.dataset.szene === s); }); }
     function standSzene() {
-      if (schritt !== 'f1' && schritt !== 'f2') return schritt;
-      var x = dlg.querySelector('input[name="v47-' + schritt + '"]:checked');
-      return x ? x.closest('.v47-opt').dataset.szene : schritt === 'f1' ? 'chatgpt' : 'frei';
+      if (schritt === 'f1') return 'f1';
+      if (schritt === 'f2') return 'f2';
+      if (schritt === 'keine') return 'keine';
+      var a = wert('ein-abo'); return a || 'frei';
     }
+    function stufe(n) { var b = dlg.querySelector('.ein-f1a'); b.dataset.stufe = n; }
+    function karten() {   // Frage 3 (Runde 101, s2-12): echte Karten von „Alle Ideen“ klonen, drei verschiedene Farben, Tarif-Pille je nach Antwort
+      var alle = [].slice.call(document.querySelectorAll('#mehr-themen .mcard[data-status="ready"]')), gesehen = {}, frei = [], abo = [];
+      alle.forEach(function (k) {
+        var t = k.querySelector('h3.title'); if (!t) return; var titel = t.textContent.trim(); if (gesehen[titel]) return; gesehen[titel] = 1;
+        (k.querySelector('.tag--frei') ? frei : abo).push(k);
+      });
+      function pal(k) { return (k.className.match(/\bpal-\w+/) || ['pal-sand'])[0]; }
+      function drei(liste) {
+        var aus = [], p = {};
+        liste.forEach(function (k) { if (aus.length < 3 && !p[pal(k)]) { p[pal(k)] = 1; aus.push(k); } });
+        liste.forEach(function (k) { if (aus.length < 3 && aus.indexOf(k) < 0) aus.push(k); });
+        return aus;
+      }
+      function titelVon(k) { var t = k.querySelector('h3.title'); return t ? t.textContent.trim() : ''; }
+      var vorsorge = null;   // Runde 105 (s2-22): bei „Mit Abo“ bleibt diese Karte „Free“
+      function auswahl(art) {   // links hinten, vorne, rechts
+        if (art !== 'abo') return drei(frei);
+        var kel = abo.filter(function (k) { return titelVon(k) === "Keller ausmisten"; })[0],
+            vor = frei.filter(function (k) { return titelVon(k) === "Vorsorgemappe anlegen"; })[0];
+        if (!kel || !vor) return drei(abo.concat(frei));
+        vorsorge = vor;
+        var rest = abo.filter(function (k) { return k !== kel; }), dritte = rest.filter(function (k) { return pal(k) !== pal(kel) && pal(k) !== pal(vor); })[0] || rest[0];
+        return dritte ? [vor, kel, dritte] : [vor, kel];
+      }
+      dlg.querySelectorAll('.r72-faecher').forEach(function (f) {
+        var art = f.dataset.art; f.innerHTML = '';
+        auswahl(art).forEach(function (k) {
+          var c = k.cloneNode(true), w = document.createElement('div'); w.className = 'r101-fk';
+          [].slice.call(c.attributes).forEach(function (a) { if (a.name !== 'class' && a.name !== 'data-status') c.removeAttribute(a.name); });
+          ['.body', '.herz'].forEach(function (s) { var x = c.querySelector(s); if (x) x.remove(); });
+          var l = c.querySelector('.mcard-link'); if (l) { l.removeAttribute('href'); l.removeAttribute('aria-label'); l.setAttribute('tabindex', '-1'); }
+          var tf = c.querySelector('.tag--frei, .tag--abo');
+          var kat = c.querySelector('.tag--cat'); if (kat) kat.remove();   // Runde 105 (s2-21): keine Kategorie-Pill
+          var ti = c.querySelector('h3.title'), ft = c.querySelector('.field-top'); if (ti && ft) ti.before(ft);   // Runde 109 (s2-27): der Tag steht oben, vor dem Titel
+          if (tf) { var imAbo = art === 'abo' && k !== vorsorge; tf.className = 'tag ' + (imAbo ? 'tag--abo' : 'tag--frei'); tf.textContent = imAbo ? "Mit Abo" : "Free"; }
+          w.appendChild(c); f.appendChild(w);
+        });
+      });
+      var u = dlg.querySelector('[data-unter="frei"]'); if (u) u.textContent = '+ ' + Math.max(0, frei.length - 3) + ' weitere kostenlos';
+    }
+
+    // ---- Walzen-Zeile (Runde 101, s2-14): drei Fenster, jedes dreht sich nach seiner Antwort und rastet ein
+    var WAL = { niveau: { name: 'Erfahrung', opt: ['einsteiger', 'etwas', 'erfahren'] }, ki: { name: 'KI', opt: ['chatgpt', 'claude', 'andere'] }, abo: { name: 'Abo', opt: ['frei', 'abo'] } };
+    function inhalt(art, v) {
+      if (art === 'niveau') return ['<svg class="ein-stufe" aria-hidden="true"><use href="#r72-stufe-' + NIVEAU[v][1] + '"/></svg>', NIVEAU[v][0]];
+      if (art === 'ki') return ['<svg class="logo" aria-hidden="true"><use href="#r72-l-' + v + '"/></svg>', NAME[v]];
+      return v === 'abo' ? ['<svg class="icon" aria-hidden="true"><use href="#ls-badge-euro"/></svg>', 'Abo'] : ['<svg class="icon" aria-hidden="true"><use href="#ls-gift"/></svg>', 'Free'];
+    }
+    function stueck(art, v) {
+      if (!v) return '<span class="r101-it"><span class="r101-q" role="img" aria-label="' + WAL[art].name + ' noch offen">?</span></span>';
+      var x = inhalt(art, v); return '<span class="r101-it"><span class="r101-ic">' + x[0] + '</span><span class="r101-t">' + x[1] + '</span></span>';
+    }
+    function leer(z) {
+      z.classList.remove('voll'); delete z.dataset.wert; z._tok = (z._tok || 0) + 1;
+      var w = z.querySelector('.r101-walze'); w.classList.remove('dreht'); w.removeAttribute('aria-hidden');
+      w.innerHTML = '<span class="r101-strip">' + stueck(z.dataset.art, null) + '</span>';
+    }
+    function drehen(z, art, von, nach) {
+      var w = z.querySelector('.r101-walze'), H = w.clientHeight || 64, tok = z._tok = (z._tok || 0) + 1;
+      if (ruhig()) { w.innerHTML = '<span class="r101-strip">' + stueck(art, nach) + '</span>'; w.firstChild.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 150 }); return; }
+      var folge = [''].concat(WAL[art].opt), n = folge.length, a = folge.indexOf(von), b = folge.indexOf(nach), k = ((b - a + n) % n) + n, h = '';
+      for (var i = 0; i <= k; i++) h += stueck(art, folge[(a + i) % n]);
+      w.innerHTML = '<span class="r101-strip">' + h + '</span>'; w.classList.add('dreht'); w.setAttribute('aria-hidden', 'true');
+      var s = w.firstChild, an = s.animate([{ transform: 'translateY(0)', easing: 'cubic-bezier(.2,.8,.2,1)' }, { transform: 'translateY(' + (-(k * H) - 3) + 'px)', offset: .84, easing: 'ease-out' },
+        { transform: 'translateY(' + (-(k * H)) + 'px)' }], { duration: 900, fill: 'forwards' });
+      an.onfinish = function () {
+        if (z._tok !== tok) return;
+        w.classList.remove('dreht'); w.removeAttribute('aria-hidden'); w.innerHTML = '<span class="r101-strip">' + stueck(art, nach) + '</span>';
+      };
+    }
+    function zeichen(art, v) {
+      var z = dlg.querySelector('.ein-z[data-art="' + art + '"]'), schl = v ? (art === 'abo' && v === 'weissnicht' ? 'frei' : v) : '';
+      if ((z.dataset.wert || '') === schl) return;
+      if (!schl) { leer(z); return; }
+      var von = z.dataset.wert || ''; z.dataset.wert = schl; z.classList.add('voll');
+      drehen(z, art, von, schl);
+      var live = dlg.querySelector('#r101-live'); live.textContent = ''; setTimeout(function () { live.textContent = WAL[art].name + ': ' + inhalt(art, schl)[1]; }, 30);
+    }
+
+    // ---- KI-Wahl (Punkt 8): Die Logos rechts sind nur Bild. Zeile hovern, fokussieren oder wählen holt die passenden mit der Feder nach vorn.
+    var wolke = dlg.querySelector('#r100-wolke'), logos = [].slice.call(wolke.querySelectorAll('.r100-l'));
+    var VORN = { chatgpt: ['chatgpt'], claude: ['claude'], andere: ['copilot', 'gemini', 'grok'], keine: ['chatgpt', 'claude'] };
+    var hoverK = null, fokusK = null;
+    function wolkeZeigen() {
+      var k = hoverK || fokusK || wert('ein-ki') || null, vorn = k ? VORN[k] : [], W = wolke.clientWidth, H = wolke.clientHeight;
+      wolke.dataset.zustand = k || '';
+      logos.forEach(function (l, n) {
+        var s = l.querySelector('.r100-scheibe'), i = vorn.indexOf(l.dataset.k), p = s.style;
+        ['--tx', '--ty', '--rot', '--sc', '--op', '--vzg'].forEach(function (v) { p.removeProperty(v); });
+        l.classList.toggle('vorn', i >= 0);
+        if (!k || !W) return;
+        if (i < 0) { p.setProperty('--sc', '.72'); p.setProperty('--op', '.35'); return; }
+        var m = vorn.length, d, cx, cy = H * .46, rot = 0;
+        if (m === 1) { d = Math.min(W * .5, H * .6, 190); cx = W * .5; }
+        else if (m === 2) { d = Math.min(W * .36, H * .5, 150); cx = W * (i ? .7 : .3); rot = i ? 5 : -6; }
+        else { d = Math.min(W * .27, H * .4, 112); cx = W * (.2 + i * .3); }
+        var hx = l.offsetLeft + l.offsetWidth / 2, hy = l.offsetTop + l.offsetHeight / 2;
+        p.setProperty('--tx', (cx - hx).toFixed(1) + 'px'); p.setProperty('--ty', (cy - hy).toFixed(1) + 'px');
+        p.setProperty('--sc', (d / l.offsetWidth).toFixed(3)); p.setProperty('--rot', rot + 'deg');
+        if (i && !ruhig()) p.setProperty('--vzg', (i * .08) + 's');
+      });
+    }
+    window.addEventListener('resize', function () { if (schritt === 'f2') wolkeZeigen(); });
+    function tippText(k) {   // Runde 105 (s2-20): beide Hinweise entfallen, bei jeder Wahl (auch „Andere“) steht nur der Tipp
+      tipp.classList.remove('mit-marker'); tipp.textContent = TIPP;
+    }
+    function melde(t) { status.textContent = ''; setTimeout(function () { status.textContent = t; }, 30); }
+
+
+    // ---- Erfolgs-Pop-up (Runde 101, s2-16): Dialog schrumpft vom großen Fenster aufs kleine Pop-up; die Walzen-Zeile zieht mit um
+    var dlgZiel = null;
+    function leisteZiehen(s) {
+      var z = dlg.querySelector('.ein-zeichen'), slot = dlg.querySelector('#r101-ok-leiste'), rechts = dlg.querySelector('.v47-rechts');
+      if (s === 'fertig' && z.parentNode !== slot) slot.appendChild(z);
+      if (s !== 'fertig' && z.parentNode === slot) rechts.appendChild(z);
+      dlg.classList.toggle('r101-klein', s === 'fertig');
+      if (s !== 'fertig') dlg.getAnimations().forEach(function (a) { a.cancel(); });
+    }
+    function klein(r0, br0) {
+      dlgZiel = dlg.getBoundingClientRect();
+      if (!r0 || ruhig()) return;
+      dlg.animate([{ width: r0.width + 'px', height: r0.height + 'px', marginTop: r0.top + 'px', borderRadius: br0 },
+        { width: dlgZiel.width + 'px', height: dlgZiel.height + 'px', marginTop: dlgZiel.top + 'px', borderRadius: '24px' }], { duration: 480, easing: 'cubic-bezier(.3,.8,.2,1)' });
+      dlg.querySelector('[data-teil="fertig"]').animate([{ opacity: 0 }, { opacity: 1 }], { duration: 260, delay: 200, fill: 'backwards' });
+    }
+    function blitz() {
+      var z = dlg.querySelector('.ein-zeichen'); if (ruhig()) return;
+      z.classList.remove('blitz'); void z.offsetWidth; z.classList.add('blitz'); setTimeout(function () { z.classList.remove('blitz'); }, 900);
+    }
+    // ---- Schritte
     function zeige(s) {
-      schritt = s; innen.dataset.schritt = s;
+      var r0 = (s === 'fertig' && dlg.open) ? dlg.getBoundingClientRect() : null, br0 = getComputedStyle(dlg).borderRadius;
+      schritt = s; innen.dataset.schritt = s; leisteZiehen(s);
       dlg.querySelectorAll('.v47-teil').forEach(function (t) { t.hidden = t.dataset.teil !== s; });
-      var frage = s === 'f1' || s === 'f2';
-      knopf('ueberspringen').hidden = !frage;
-      knopf('weiter').hidden = !frage;
-      knopf('weiter').firstChild.textContent = s === 'f2' ? 'Ideen ansehen ' : 'Weiter ';   // Runde 57
-      knopf('weiter').disabled = !wert(s === 'f1' ? 'v47-f1' : 'v47-f2');
-      knopf('stoebern').hidden = s !== 'keine';
-      knopf('konto').hidden = s !== 'keine';
-      knopf('fertig').hidden = s !== 'frei' && s !== 'abo';
-      dlg.setAttribute('aria-labelledby', s === 'f1' ? 'v47-titel' : s === 'f2' ? 'v47-titel2' : 'v47-titel-' + s);
+      var frage = !!FELD[s];
+      knopf('ueberspringen').hidden = !frage; knopf('weiter').hidden = !frage;
+      knopf('weiter').firstChild.textContent = s === 'f3' ? 'Ideen ansehen ' : 'Weiter ';
+      knopf('weiter').disabled = frage ? !wert(FELD[s]) : true;
+      knopf('stoebern').hidden = s !== 'keine'; knopf('konto').hidden = s !== 'keine';
+      dlg.setAttribute('aria-labelledby', 'ein-titel-' + s);
       szene(standSzene());
-      var ziel = dlg.querySelector('#' + (s === 'f1' ? 'v47-titel' : s === 'f2' ? 'v47-titel2' : 'v47-titel-' + s));
+      hoverK = null; fokusK = null; wolkeZeigen();
+      var ziel = document.getElementById('ein-titel-' + s);
       try { ziel.focus({ preventScroll: true }); } catch (e) {}
+      if (s === 'fertig') klein(r0, br0);
     }
-    // Runde 50: Kam das Pop-up nach „Jetzt loslegen“ von der Startseite, gibt es den Knopf hier nicht; dann an den Anfang des Inhalts
+    function konfetti(x0, y0, breite) {
+      var c = document.createElement('canvas'), dpr = Math.min(2, devicePixelRatio || 1);
+      c.className = 'ein-konfetti'; c.width = innerWidth * dpr; c.height = innerHeight * dpr; c.style.width = innerWidth + 'px'; c.style.height = innerHeight + 'px'; (dlg.open ? dlg : document.body).appendChild(c);   // Runde 105 (s2-23): ohne feste Größe misst die Fläche Pixel statt CSS-Pixel (bei dpr 2 doppelt so groß, Konfetti unten rechts)   // Runde 101: im Dialog, sonst liegt das Konfetti unter dem Top Layer
+      var g = c.getContext('2d'); g.scale(dpr, dpr);
+      var farben = ['#d47a63', '#f2ad8e', '#c0956a', '#e8cba3', '#5f8a77', '#b0c8a8', '#5f8398', '#a8c2d1', '#96677d', '#8a9160', '#2b2420'];
+      var teile = [], N = innerWidth > 700 ? 150 : 90, gr = innerWidth > 700;
+      for (var i = 0; i < N; i++) {
+        var w = (Math.random() - .5) * 1.4;
+        teile.push({ x: x0 + (Math.random() - .5) * breite, y: y0, vx: Math.sin(w) * (300 + Math.random() * 380), vy: -(gr ? 620 + Math.random() * 520 : 520 + Math.random() * 420) * Math.cos(w),
+          r: Math.random() * 6.28, vr: (Math.random() - .5) * 14, b: 6 + Math.random() * 5, h: 3 + Math.random() * 3, f: farben[i % farben.length], kipp: Math.random() * 6.28 });
+      }
+      var start = performance.now(), DAUER = 1350, zuletzt = start;
+      function bild(t) {
+        var dt = Math.min(.034, (t - zuletzt) / 1000), alter = t - start; zuletzt = t;
+        g.clearRect(0, 0, innerWidth, innerHeight);
+        var alpha = alter > DAUER - 380 ? Math.max(0, (DAUER - alter) / 380) : 1;
+        teile.forEach(function (p) {
+          p.vy += 1500 * dt; p.vx *= (1 - 1.4 * dt); p.vy *= (1 - .8 * dt);
+          p.x += p.vx * dt; p.y += p.vy * dt; p.r += p.vr * dt; p.kipp += 9 * dt;
+          g.save(); g.globalAlpha = alpha; g.translate(p.x, p.y); g.rotate(p.r); g.scale(1, Math.abs(Math.cos(p.kipp)) * .8 + .2);
+          g.fillStyle = p.f; g.fillRect(-p.b / 2, -p.h / 2, p.b, p.h); g.restore();
+        });
+        if (alter < DAUER) requestAnimationFrame(bild); else c.remove();
+      }
+      requestAnimationFrame(bild);
+    }
     function v50Anfang() { var h = document.getElementById('alle-ideen-title') || document.querySelector('main h1, h1'); if (h && !h.hasAttribute('tabindex')) h.setAttribute('tabindex', '-1'); return h || document.querySelector('.v47-pille') || document.body; }
-    function zu(art) {
-      merke('ki-einstieg', art);
-      clearInterval(uhr);
-      if (dlg.open) dlg.close();
+    function ladenStopp() { ladeNr++; clearTimeout(ladeTimer); }
+    function zu(art, sanft) {
+      if (art === 'uebersprungen' && (schritt === 'laden' || schritt === 'fertig')) art = 'fertig';   // X/Escape während der Ladeansicht zählt als fertig: Speicher steht schon
+      ladenStopp();
+      if (!(art === 'uebersprungen' && lies('ki-einstieg') === 'fertig')) merke('ki-einstieg', art);   // wer schon eingerichtet ist und nur „ändern“ schließt, bleibt eingerichtet
+      var ende = function () { if (dlg.open) dlg.close(); dlg.classList.remove('geht'); eingerichtet(); };
+      if (sanft && !ruhig()) { dlg.classList.add('geht'); setTimeout(ende, 320); } else ende();
     }
+    // Punkt 10: erst schreiben, dann die Ladeansicht (Balken, Zeilen nacheinander), Konfetti, Erfolgsansicht
+    function ideenAnsehen() {
+      if (schritt !== 'f3') return;
+      var ein = wert('ein-niveau'), ki = wert('ein-ki'), abo = wert('ein-abo');
+      merke('ki-einstieg', 'fertig'); merke('ki-wahl', ki); merke('ki-erfahrung', ein); merke('ki-abo', abo);   // Dwight 1: erst hier, mit den echten Antworten
+      var zeilen = [];
+      if (ein === 'einsteiger') zeilen.push(T.anfang);
+      zeilen.push(ki === 'andere' ? T.kopier : NAME[ki] + '-Buttons werden hinzugefügt');
+      zeilen.push(abo === 'abo' ? T.abo : T.frei);
+      zeilen.push(T.speicher); zeilen.push(T.fertig);
+      var ok = dlg.querySelector('#r100-ok-t'); ok.textContent = ki === 'andere' ? T.okAndere : T.okKi.replace('{Name}', NAME[ki]);
+      dlg.querySelector('#r100-ok-hilfe').hidden = ein !== 'einsteiger';
+      ladenStopp();
+      if (ruhig()) { zeige('fertig'); return; }   // keine künstliche Wartezeit, kein Konfetti
+      zeige('laden');
+      var tok = ladeNr, ul = dlg.querySelector('#r100-zeilen'), balken = dlg.querySelector('.r100-balken i'), n = zeilen.length;
+      ul.innerHTML = ''; balken.style.width = '0%';
+      var dauer = (T.gesamt - 700) / (n - 1);
+      function zeile(i) {
+        if (tok !== ladeNr) return;
+        var li = document.createElement('li'), letzte = i === n - 1;
+        li.className = letzte ? 'fertig' : 'lauf';
+        li.innerHTML = '<span class="r100-ic" aria-hidden="true"></span><span></span>'; li.lastChild.textContent = zeilen[i] + (letzte ? '' : '…');
+        ul.appendChild(li);
+        balken.style.width = Math.round(((letzte ? n : i + .6) / n) * 100) + '%';
+        if (letzte) { ladeTimer = setTimeout(fertigAnzeige, 700); return; }
+        ladeTimer = setTimeout(function () {
+          if (tok !== ladeNr) return;
+          li.className = 'fertig'; li.lastChild.textContent = zeilen[i];
+          zeile(i + 1);
+        }, dauer);
+      }
+      function fertigAnzeige() {
+        if (tok !== ladeNr) return;
+        zeige('fertig');
+        var m = dlgZiel || dlg.getBoundingClientRect(); konfetti(m.left + m.width / 2, m.top + m.height * .55, Math.min(innerWidth * .8, 700)); blitz();
+      }
+      zeile(0);
+    }
+
+    // ---- Bedienung
     dlg.addEventListener('change', function (e) {
-      if (e.target.name === 'v47-f1') { ki = NAMEN[e.target.value] ? e.target.value : null; dlg.querySelectorAll('[data-v47-ki]').forEach(function (s) { if (ki) s.textContent = NAMEN[ki]; }); }
+      var n = e.target.name; if (!n) return;
       knopf('weiter').disabled = false;
-      szene(e.target.closest('.v47-opt').dataset.szene);
+      if (n === 'ein-niveau') { stufe(STUFE[e.target.value]); zeichen('niveau', e.target.value); }
+      else if (n === 'ein-ki') {
+        var k = e.target.value;
+        wolkeZeigen(); tippText(k); melde(ZEILE[k] + ' gewählt');
+        if (k === 'keine') zeichen('ki', null);
+        else { zeichen('ki', k); dlg.querySelectorAll('[data-ein-ki]').forEach(function (s) { s.textContent = k === 'andere' ? 'deine KI' : NAME[k]; }); }
+      } else if (n === 'ein-abo') { szene(e.target.value); zeichen('abo', e.target.value); }
     });
-    dlg.querySelectorAll('.v47-opt').forEach(function (o) {
-      o.addEventListener('mouseenter', function () { szene(o.dataset.szene); });
-      o.addEventListener('mouseleave', function () { szene(standSzene()); });
+    dlg.querySelectorAll('.v47-opts .v47-opt').forEach(function (o) {
+      var inp = o.querySelector('input');
+      o.addEventListener('pointerenter', function (e) {
+        if (e.pointerType !== 'mouse') return;
+        if (inp.name === 'ein-niveau') stufe(STUFE[inp.value]); else if (inp.name === 'ein-abo') szene(o.dataset.szene);
+        else if (inp.name === 'ein-ki') { hoverK = inp.value; wolkeZeigen(); }
+      });
+      o.addEventListener('pointerleave', function (e) {
+        if (e.pointerType !== 'mouse') return;
+        if (inp.name === 'ein-niveau') stufe(STUFE[wert('ein-niveau')] || 0); else if (inp.name === 'ein-abo') szene(standSzene());
+        else if (inp.name === 'ein-ki') { hoverK = null; wolkeZeigen(); }
+      });
+      if (inp.name === 'ein-ki') {
+        inp.addEventListener('focus', function () { if (inp.matches(':focus-visible')) { fokusK = inp.value; wolkeZeigen(); } });
+        inp.addEventListener('blur', function () { fokusK = null; wolkeZeigen(); });
+      }
     });
-    // Enter in der Auswahl = Weiter
     dlg.querySelector('.v47-form').addEventListener('submit', function (e) { e.preventDefault(); if (!knopf('weiter').hidden && !knopf('weiter').disabled) knopf('weiter').click(); });
     dlg.addEventListener('keydown', function (e) { if (e.key === 'Enter' && e.target.matches('.v47-opt input')) { e.preventDefault(); if (!knopf('weiter').disabled) knopf('weiter').click(); } });
     knopf('weiter').addEventListener('click', function () {
-      if (schritt === 'f1') {
-        var w = wert('v47-f1');
-        if (!w) return;
-        if (w === 'keine') { zeige('keine'); return; }
-        merke('ki-wahl', w);
-        zeige('f2');
-      } else if (schritt === 'f2') {
-        var z = wert('v47-f2');
-        if (z) zu('fertig');   // Runde 57: direkt zu „Alle Ideen“, keine Zwischenseite
-      }
+      if (schritt === 'f1' && wert('ein-niveau')) zeige('f2');
+      else if (schritt === 'f2') { var w = wert('ein-ki'); if (!w) return; if (w === 'keine') { zeige('keine'); return; } merke('ki-wahl', w); if (w === 'andere') { zeige('keine'); return; } zeige('f3'); }
+      else if (schritt === 'f3' && wert('ein-abo')) ideenAnsehen();
     });
+    dlg.querySelectorAll('[data-v47="zurueck"]').forEach(function (z) { z.addEventListener('click', function () { zeige(schritt === 'f3' || schritt === 'keine' ? 'f2' : 'f1'); }); });
     knopf('ueberspringen').addEventListener('click', function () { zu('uebersprungen'); });
-    knopf('x').addEventListener('click', function () { zu('uebersprungen'); });   // Runde 50
+    knopf('x').addEventListener('click', function () { zu('uebersprungen'); });
     knopf('stoebern').addEventListener('click', function () { zu('fertig'); });
-    knopf('fertig').addEventListener('click', function () { zu('fertig'); });
     knopf('konto').addEventListener('click', function () { setTimeout(function () { zu('fertig'); }, 0); });
+    knopf('schliessen').addEventListener('click', function () { zu('fertig', true); });
+    dlg.querySelector('[data-r100="grundlagen"]').addEventListener('click', function () { zu('fertig'); });   // der Link navigiert selbst; das Fenster schließt dabei
     dlg.addEventListener('close', function () {
+      ladenStopp();
       document.documentElement.classList.remove('v47-ein-offen');
       try { (vorher && vorher.isConnected && vorher !== document.body ? vorher : v50Anfang()).focus({ preventScroll: true }); } catch (e) {}
     });
     function auf() {
+      ladenStopp(); dlg.querySelector('#r100-zeilen').innerHTML = ''; dlg.querySelector('.r100-balken i').style.width = '0%';
       dlg.querySelectorAll('input[type="radio"]').forEach(function (r) { r.checked = false; });
-      ki = null; vorher = document.activeElement;
+      dlg.querySelectorAll('.ein-z').forEach(leer); stufe(0); tippText(null); hoverK = null; fokusK = null; wolkeZeigen();
+      dlg.querySelectorAll('[data-ein-ki]').forEach(function (s) { s.textContent = 'ChatGPT'; });
+      vorher = document.activeElement;
       document.documentElement.classList.add('v47-ein-offen');
-      window.v47Fenster(dlg, function () { zu('uebersprungen'); }, function () { zu('uebersprungen'); });   // Escape und Klick daneben = Überspringen (Runde 50)
+      window.v47Fenster(dlg, function () { zu('uebersprungen'); }, function () { zu('uebersprungen'); });
       zeige('f1');
     }
     function pruefe() {
       var los = null; try { los = window.KI && KI.lies('ki-entdecken-los', null); } catch (e) {}
       if (!los) return;
       try { KI.schreib('ki-entdecken-los', null); } catch (e) {}
-      if (!fertig() && !dlg.open) auf();
+      if (!lies('ki-einstieg') && !dlg.open) auf();
+    }
+
+    // ---- Alle Ideen: Leiste „Für dich eingerichtet“ (nur nach „Ideen ansehen“)
+    function eingerichtet() {
+      if (dlg.open && (schritt === 'laden' || schritt === 'fertig')) return;   // Runde 100: die Leiste erscheint erst nach dem Schließen
+      var alt = document.getElementById('r72-leiste'); if (alt) alt.remove();
+      var ein = lies('ki-erfahrung'), abo = lies('ki-abo'), ki = lies('ki-wahl');
+      if (lies('ki-einstieg') !== 'fertig' || !NIVEAU[ein] || !abo || !NAME[ki]) return;
+      var lead = document.querySelector('.v22i-lead'); if (!lead) return;
+      var l = document.createElement('div'); l.id = 'r72-leiste'; l.className = 'r72-leiste'; l.setAttribute('role', 'group'); l.setAttribute('aria-label', 'Für dich eingerichtet');
+      l.innerHTML = '<span class="r72-l-t">Für dich eingerichtet:</span>' +
+        '<span class="r72-l-i"><svg class="r72-stufe" aria-hidden="true"><use href="#r72-stufe-' + NIVEAU[ein][1] + '"/></svg><span>' + NIVEAU[ein][0] + '</span></span>' +
+        '<span class="r72-l-i"><span class="r72-l-m"><svg aria-hidden="true"><use href="#r72-l-' + ki + '"/></svg></span><span>' + NAME[ki] + '</span></span>' +
+        '<span class="tag ' + (abo === 'abo' ? 'tag--abo' : 'tag--frei') + '">' + (abo === 'abo' ? 'Abo' : 'Free') + '</span>' +
+        '<button type="button" class="r72-leiste-aendern">ändern</button>';
+      lead.insertAdjacentElement('afterend', l);
+      l.querySelector('button').addEventListener('click', function () { auf(); });
     }
     window.v47Oeffnen = auf;
-    window.v57Zeige = zeige;   // Runde 57: „← Zurück“   // für die Prüfung und später „Deine Angaben ändern“
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pruefe); else pruefe();
-    // In der Hülle der Vorschau ist die Seite schon geladen; die Hülle meldet den Wechsel per Nachricht
-    window.addEventListener('message', function (e) { if (e.data && 'ideen' in e.data) setTimeout(pruefe, 0); });
+    window.v57Zeige = zeige;
+    karten();
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { pruefe(); eingerichtet(); }); else { pruefe(); eingerichtet(); }
+    window.addEventListener('message', function (e) { if (e.data && 'ideen' in e.data) setTimeout(function () { pruefe(); eingerichtet(); }, 0); });
   })();
 </script>
 <script>
@@ -3489,7 +4392,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
         var wahl = w.dataset.wahl, h = '';
         liste.forEach(function (i) {
           var dämpfen = wahl !== 'abo' && !i.frei;
-          h += '<div class="v57-k ' + i.pal + (dämpfen ? ' aus' : '') + '">' + (dämpfen ? '' : i.sym) + (i.frei ? '<i>Mit Free nutzbar</i>' : i.abo ? '<i class="abo">Mit Abo</i>' : '') + '<b></b></div>';
+          h += '<div class="v57-k ' + i.pal + (dämpfen ? ' aus' : '') + '">' + (dämpfen ? '' : i.sym) + (i.frei ? '<i>Free</i>' : i.abo ? '<i class="abo">Mit Abo</i>' : '') + '<b></b></div>';
         });
         if (liste.length > HANDY_ZEIGT) h += '<div class="v57-k v57-mehr">+ ' + (liste.length - HANDY_ZEIGT) + '</div>';
         w.innerHTML = h;
@@ -3499,7 +4402,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
           if (liste[n].sch && liste[n].sch !== 'none') k.style.setProperty('--v59-sch', liste[n].sch);
         });
         var u = dlg.querySelector('[data-v57-unter="' + wahl + '"]'); if (u) u.textContent = text(wahl, liste.length, frei);
-        if (u && wahl === 'frei') u.insertAdjacentHTML('beforeend', ' <span class="tag tag--frei r65-schild">Mit Free nutzbar</span>');   // Runde 65 (Pam)
+        if (u && wahl === 'frei') u.insertAdjacentHTML('beforeend', ' <span class="tag tag--frei r65-schild">Free</span>');   // Runde 65 (Pam)
       });
       // am Handy steht die Unterzeile unter dem Streifen
       var r = dlg.querySelector('.v47-rechts'), m = document.createElement('p');
@@ -3549,6 +4452,186 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
     new MutationObserver(function () { requestAnimationFrame(ganz); }).observe(dlg, { subtree: true, attributes: true, attributeFilter: ['class', 'open'] });
     addEventListener('resize', ganz);
   })();
+</script>
+
+<dialog class="r80-pop" id="r80-pop" aria-labelledby="r80-pop-h" aria-describedby="r80-pop-t">
+  <button type="button" class="r80-x" data-r80="x" aria-label="Schließen"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+  <h2 class="r80-pop-h" id="r80-pop-h" tabindex="-1">Der Einsteiger-Kurs entsteht gerade</h2>
+  <p class="r80-pop-t" id="r80-pop-t">Wir bauen ihn für alle, die mit KI bei null anfangen. Er führt dich Schritt für Schritt hinein, ganz ohne Vorwissen.</p>
+  <div class="r80-akt">
+    <button type="button" class="r80-ja" data-r80="ja">Will ich haben</button>
+    <button type="button" class="r80-leise" data-r80="zu">Schließen</button>
+  </div>
+  <p class="r80-note">Dein Klick zeigt uns, dass du ihn willst. Wir fragen nichts von dir ab.</p>
+  <p class="r80-sr" role="status" aria-live="polite"></p>
+</dialog>
+<script>
+  // Runde 80 (Jim, 30.10.2026): Grundkurs-Pop-up. Sendet nichts (kein fetch, kein Beacon, kein Speicher); der Dank gilt nur, solange die Seite offen ist.
+  (function () {
+    var dlg = document.getElementById('r80-pop'), knopf = document.querySelector('[data-r80-open]');
+    if (!dlg || !knopf) return;
+    var ja = dlg.querySelector('[data-r80="ja"]'), zuKnopf = dlg.querySelector('[data-r80="zu"]'), x = dlg.querySelector('[data-r80="x"]'), kopf = dlg.querySelector('.r80-pop-h'),
+        status = dlg.querySelector('.r80-sr'), vorher = null, gedankt = false;
+    var DANK = "Danke, das hilft uns.", JA = "Will ich haben";
+    var HAKEN = '<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+    function zeigeDank() { ja.setAttribute('aria-disabled', 'true'); ja.innerHTML = HAKEN + DANK; }
+    function auf() {
+      if (dlg.open) return;
+      vorher = knopf;
+      if (gedankt) zeigeDank(); else { ja.removeAttribute('aria-disabled'); ja.textContent = JA; }
+      status.textContent = '';
+      document.documentElement.classList.add('v47-ein-offen');
+      if (window.v47Fenster) window.v47Fenster(dlg, zu, zu); else dlg.show();
+      try { kopf.focus({ preventScroll: true }); } catch (e) {}
+    }
+    function zu() {
+      if (!dlg.open) return;
+      dlg.close();
+      document.documentElement.classList.remove('v47-ein-offen');
+      try { (vorher || knopf).focus({ preventScroll: true }); } catch (e) {}
+    }
+    knopf.addEventListener('click', auf);
+    x.addEventListener('click', zu);
+    zuKnopf.addEventListener('click', zu);
+    ja.addEventListener('click', function () {
+      if (gedankt) return;
+      gedankt = true; zeigeDank(); status.textContent = DANK;
+    });
+    dlg.addEventListener('keydown', function (e) { if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); zu(); } });
+  })();
+</script>
+<script>
+  // Runde 107 (Jim, 30.10.2026, s3-6): Pop-up je Stufe. Bei Stufe 1 bleibt der Text wie bisher.
+  (function () {
+    var b = document.getElementById('r80-banner'), s = b ? Number(b.getAttribute('data-stufe')) : 1;
+    if (s !== 2 && s !== 3) return;
+    var h = document.getElementById('r80-pop-h'), t = document.getElementById('r80-pop-t');
+    if (h) h.textContent = "Der Kurs entsteht gerade";
+    if (t) t.textContent = s === 2 ? "Wir bauen ihn für alle, die KI schon ausprobiert haben und mehr daraus machen wollen." : "Wir bauen ihn für alle, die KI regelmäßig nutzen und Abläufe automatisieren wollen.";
+  })();
+</script>
+<script>
+  // Runde 84 (Jim, 30.10.2026): „Alle Ideen“ Weg A. Erste sichtbare Karte jeder Reihe offen (Klasse r84-offen), Escape schließt die Kachel, Reihe „Gemerkt“.
+  // Kein eigener Speicher: Die Reihe liest den Herz-Speicher der Seite (sessionStorage „ki-entdecken-herzen“, Schlüssel = data-case); ohne Speicher zählen die gedrückten Herzen.
+  (function () {
+    var SCHLUESSEL = 'ki-entdecken-herzen';
+    // Auffangnetz: Die Live-Vorschau friert die Karte „Große Anschaffung planen“ (R45) auf den alten Stand ein und überschreibt damit den Umbau beim Bauen.
+    // Jede Karte ohne Kachel bekommt hier denselben Aufbau wie vom Bauskript (Titel-Link, Nutzen-Zeile, Kachel mit Kurztext, „Anleitung“ als eigener Link).
+    function baue(c) {
+      if (c.querySelector('.mcard-kachel')) return;
+      var link = c.querySelector('a.mcard-link'), body = link && link.querySelector('.body');
+      var sit = body && body.querySelector('.situation'), aus = body && body.querySelector('.outcome'), t = link && link.querySelector('.title');
+      if (!link || !body || !sit || !aus) return;
+      var erster = ((c.dataset.einleitung || sit.textContent).trim().match(/^(.+?[.?!])(\s|$)/) || [0, (c.dataset.einleitung || sit.textContent).trim()])[1];
+      var neu = document.createElement('div'); neu.className = 'body';
+      var n = document.createElement('p'); n.className = 'mcard-nutzen'; n.textContent = erster;
+      var k = document.createElement('div'); k.className = 'mcard-kachel';
+      var a = document.createElement('div'); a.className = 'mcard-aktion';
+      var l = document.createElement('a'); l.className = 'mcard-los-link'; l.setAttribute('href', link.getAttribute('href')); l.setAttribute('aria-label', 'Anleitung lesen: ' + (t ? t.textContent.trim() : ''));
+      a.appendChild(aus); a.appendChild(l); k.appendChild(sit); k.appendChild(a); neu.appendChild(n); neu.appendChild(k);
+      body.remove(); link.after(neu);
+    }
+    document.querySelectorAll('#ideen .mcard').forEach(baue);
+    function offen() {
+      document.querySelectorAll('#ideen .shelf-track').forEach(function (t) {
+        var erste = null;
+        [].slice.call(t.children).forEach(function (c) {
+          if (!c.classList.contains('mcard')) return;
+          var da = getComputedStyle(c).display !== 'none';
+          var ist = !erste && da;
+          if (ist) erste = c;
+          c.classList.toggle('r84-offen', ist);
+        });
+      });
+    }
+    // Escape: Kachel zu, solange Maus und Fokus auf der Karte bleiben
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape' || e.defaultPrevented || document.querySelector('dialog[open]')) return;
+      document.querySelectorAll('#ideen .mcard:hover, #ideen .mcard:focus-within').forEach(function (c) { c.classList.add('r84-zu'); });
+    });
+    function frei(c, n) {
+      setTimeout(function () { if (c.classList.contains('r84-zu') && !c.matches(':hover') && !c.matches(':focus-within')) c.classList.remove('r84-zu'); }, 0);
+    }
+    document.addEventListener('mouseout', function (e) { var c = e.target.closest && e.target.closest('.mcard.r84-zu'); if (c && !c.contains(e.relatedTarget)) frei(c); });
+    document.addEventListener('focusout', function (e) { var c = e.target.closest && e.target.closest('.mcard.r84-zu'); if (c && !c.contains(e.relatedTarget)) frei(c); });
+
+    // Reihe „Gemerkt“
+    var reihe = document.getElementById('r84-gemerkt');
+    var spur = reihe && reihe.querySelector('.shelf-track');
+    function ids() {
+      try {
+        var w = sessionStorage.getItem(SCHLUESSEL);
+        if (w) { var d = JSON.parse(w) || {}; return Object.keys(d).sort(function (a, b) { return ((d[b] && d[b].am) || 0) - ((d[a] && d[a].am) || 0); }); }
+      } catch (x) { /* ohne Speicher: gedrückte Herzen */ }
+      var aus = [];
+      document.querySelectorAll('#mehr-themen [data-herz][aria-pressed="true"]').forEach(function (b) { if (aus.indexOf(b.dataset.herz) < 0) aus.push(b.dataset.herz); });
+      return aus;
+    }
+    var zeichneHerzen = window.kiHerzZeichnen;
+    function neu() {
+      if (!reihe) return;
+      spur.textContent = '';
+      ids().forEach(function (id) {
+        var q = document.querySelector('#mehr-themen .mcard[data-case="' + id + '"]');
+        if (q) spur.appendChild(q.cloneNode(true));
+      });
+      reihe.hidden = !spur.children.length;
+      offen();
+      if (zeichneHerzen) zeichneHerzen();
+      spur.dispatchEvent(new Event('scroll'));
+    }
+    if (reihe) {
+      var knoepfe = reihe.querySelectorAll('.shelf-nav button');
+      var schritt = function () { var k = spur.querySelector('.mcard'); return k ? k.offsetWidth + 18 : spur.clientWidth * .8; };
+      var still = function () { return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'; };
+      var stand = function () {
+        knoepfe[0].disabled = spur.scrollLeft <= 2;
+        knoepfe[1].disabled = spur.scrollLeft >= spur.scrollWidth - spur.clientWidth - 2;
+      };
+      knoepfe.forEach(function (b) { b.addEventListener('click', function () { spur.scrollBy({ left: Number(b.dataset.dir) * schritt(), behavior: still() }); }); });
+      spur.addEventListener('scroll', stand, { passive: true });
+      // nach jedem Klick auf ein Herz (das Herz der Seite hat dann schon gespeichert).
+      // In der Reihe selbst bleibt die Karte kurz stehen (man sieht das Herz umspringen), dann verschwindet sie; der Fokus wandert zur nächsten Karte oder zur Reihe darüber.
+      document.addEventListener('click', function (e) {
+        var b = e.target.closest && e.target.closest('[data-herz]');
+        if (!b) return;
+        if (!reihe.contains(b)) { setTimeout(neu, 0); return; }
+        setTimeout(function () {
+          var hatteFokus = reihe.contains(document.activeElement);
+          neu();
+          if (!hatteFokus) return;
+          var ziel = spur.querySelector('.mcard-link');
+          if (!ziel) { ziel = document.querySelector('#ideen .shelf:not([hidden]) .shelf-head h2, #ideen .shelf:not([hidden]) .shelf-head h3'); if (ziel) ziel.setAttribute('tabindex', '-1'); }
+          if (ziel) ziel.focus({ preventScroll: true });
+        }, 650);
+      });
+      window.addEventListener('storage', neu);
+      window.addEventListener('pageshow', neu);
+      if (zeichneHerzen) window.kiHerzZeichnen = function () { zeichneHerzen(); if (!reihe.contains(document.activeElement)) neu(); };
+      neu();
+    }
+    offen();
+    var gitter = document.getElementById('case-grid');
+    if (gitter && window.MutationObserver) new MutationObserver(offen).observe(gitter, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+    window.addEventListener('resize', offen);
+  })();
+</script>
+<script id="r109-umhaengen">
+(function () {
+  // s2-28 (Nachbesserung: auf allen Größen): Zeile „Zurück · Frage x von 3“ steht direkt vor der Frage; idempotent
+  function umhaengen() {
+    var d = document.getElementById('v47-ein'); if (!d) return;
+    d.querySelectorAll('[data-teil="f1"], [data-teil="f2"], [data-teil="f3"]').forEach(function (t) {
+      var f = t.querySelector('.v47-fort'), q = t.querySelector('.v47-frage'), z = t.querySelector('.v57-zurueck'), row = t.querySelector('.v2-zeile');
+      if (!f || !q) return;
+      if (!row) { row = document.createElement('div'); row.className = 'v2-zeile'; if (z) row.append(z); row.append(f); }
+      if (row.nextSibling !== q || row.parentNode !== t) q.before(row);
+    });
+  }
+  var d0 = document.getElementById('v47-ein');
+  if (d0) new MutationObserver(umhaengen).observe(d0, { attributes: true, attributeFilter: ['open', 'data-schritt', 'hidden', 'class'], subtree: true, childList: true });
+  umhaengen();
+})();
 </script>
 <div class="live-fuss"><a href="/impressum">Impressum</a><span class="live-fuss-sep" aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a><span class="live-fuss-sep" aria-hidden="true"> · </span><span class="live-fuss-t">Testfassung im Aufbau</span></div><script src="/messung.js" data-endpunkt="https://script.google.com/macros/s/AKfycbxJ_s2hUjUxQiWQQ0QoXxSoxR5SfS0MiUvpHb7PcEJzYVgLpcVq1a9i5iUWonSEirfWSg/exec" defer></script><script src="/messpunkte.js" defer></script>
 </body>

@@ -2061,6 +2061,10 @@ body { padding-bottom: 0; }
   .r71c-kopf img { aspect-ratio: auto; height: clamp(300px, 31vw, 560px); object-position: var(--pos-quer); }
 }
 </style>
+<style id="r97">
+/* Runde 97: Fokusring doppelt wie Runde 104b, nur bei Tastatur-Fokus (:focus-visible) */
+html body :is(a, button, summary, input, select, textarea, [tabindex], [role="button"]):focus-visible { outline: 2px solid #1f1a14 !important; outline-offset: 2px !important; box-shadow: 0 0 0 2px #fff !important; }
+</style>
 <style>
   /* Runde 61 (Pam, Punkt 8): Logo quer im Kopf, 28 px am Handy bis 36 px am Rechner; Schutzzone = halbe Zeichenhöhe */
   .r61-brand { gap: 0; padding: 0; line-height: 0; flex: none; }

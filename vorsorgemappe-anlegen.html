@@ -2339,12 +2339,48 @@ html:not(.r64-vorbei) .r64 .ra-leiste, html.r64-rk-offen .r64 .ra-leiste { trans
 /* Fokusring der Karten unter „Weitere Ideen“: 2 px in der Fokusfarbe der Seite */
 .ra3.r71 .ra-weitere .mcard a.mcard-link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 </style>
+<script>
+  // Runde 72 (Jim, 29.10.2026), Punkt D: Wer im Einstiegsfenster Gemini, Grok, Copilot, Perplexity, Mistral, Meta AI oder DeepSeek gewählt hat, öffnet mit dem
+  // Start-Knopf keine Seite. Die Anleitung wird kopiert (das macht der Klick-Hörer der Seite schon), hier kommt nur der Hinweis dazu.
+  (function () {
+    var N = {"gemini": "Gemini", "grok": "Grok", "copilot": "Copilot", "perplexity": "Perplexity", "mistral": "Mistral", "meta": "Meta AI", "deepseek": "DeepSeek", "andere": "deine KI"}, k = null;
+    try { k = localStorage.getItem('ki-wahl'); } catch (e) {}
+    if (!N[k]) return;
+    function beschriften() { document.querySelectorAll('[data-start]').forEach(function (a) { var s = a.querySelector('span'); if (s) s.textContent = 'Anleitung kopieren'; }); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', beschriften); else beschriften();
+    var m = null, t = 0;
+    window.addEventListener('click', function (e) {   // am Fenster und im Kopf der Seite eingebaut, damit es vor den Hörern der Seite läuft
+      var a = e.target.closest && e.target.closest('[data-start]'); if (!a) return;
+      e.preventDefault();
+      // Das ChatGPT-/Claude-Anmeldefenster der Seite (nur am Rechner, erster Klick) passt nicht zu diesen KIs: kurz als „Handy“ ausgeben, danach zurück.
+      var g = document.documentElement, alt = g.getAttribute('data-geraet'); g.setAttribute('data-geraet', 'handy'); setTimeout(function () { if (alt === null) g.removeAttribute('data-geraet'); else g.setAttribute('data-geraet', alt); }, 0);
+      if (!m) { m = document.createElement('p'); m.className = 'r72-melden'; m.setAttribute('role', 'status'); document.body.appendChild(m); }
+      m.textContent = 'Anleitung kopiert. Füge sie in ' + N[k] + ' ein.'; m.hidden = false; clearTimeout(t); t = setTimeout(function () { m.hidden = true; }, 6000);
+    }, true);
+  })();
+  </script>
+  <style>.r72-melden { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 2147483000; max-width: min(92vw, 460px); padding: 12px 18px; border-radius: 16px;
+    background: #23201c; color: #fbf7f0; font-size: 16px; font-weight: 600; line-height: 1.35; box-shadow: 0 10px 30px rgb(0 0 0 / .25); }</style>
 
 <style>
 /* Runde 76: Start-Button im „So geht's“-Kasten halten. 1. min-width 300 px aus dem Computer-Block weg (ab 1024 px). 2. Zwischen 1024 und 1183 px ist die
    Spalte nur 229–285 px breit: Schrift 15 px, Abstand Zeichen–Text 8 px, Innenabstand 18/14 px, damit der Text einzeilig bleibt. Ab 1184 px bleibt der Button wie bisher (17 px). */
 @media (min-width: 1024px) { .ra3.r70 .ra-knopf { min-width: 0; } }
 @media (min-width: 1024px) and (max-width: 1183px) { .ra3.r70 .ra-knopf { font-size: 15px; gap: 8px; padding: 0 14px 0 18px; } }
+</style>
+
+<style>
+/* Runde 83: P05. Tafel (.ra-handeln) reicht ab 1024 px bis zur Unterkante der linken Spalte, unten 24 px Polster; Schritte kleben (nur ab 1024 × 700). */
+@media (min-width: 1024px) { .ra3.r70 .ra-karte-innen > .ra-handeln { align-self: stretch; padding-bottom: 24px; } }
+@media (min-width: 1024px) and (min-height: 700px) {
+  .ra3.r70 .ra-karte { overflow: clip; }
+  .ra3.r70 .ra-karte-innen > .ra-handeln { align-content: stretch; }
+  .ra3.r70 .ra-karte-innen > .ra-handeln > .ra-schritte { position: sticky; top: 24px; align-self: start; }
+}
+</style>
+<style id="r97">
+/* Runde 97: Fokusring doppelt wie Runde 104b, nur bei Tastatur-Fokus (:focus-visible) */
+html body :is(a, button, summary, input, select, textarea, [tabindex], [role="button"]):focus-visible { outline: 2px solid #1f1a14 !important; outline-offset: 2px !important; box-shadow: 0 0 0 2px #fff !important; }
 </style>
 <style>
   /* Runde 61 (Pam, Punkt 8): Logo quer im Kopf, 28 px am Handy bis 36 px am Rechner; Schutzzone = halbe Zeichenhöhe */
@@ -2388,6 +2424,17 @@ html:not(.r64-vorbei) .r64 .ra-leiste, html.r64-rk-offen .r64 .ra-leiste { trans
   @media (max-width: 767.98px) { ul.index a.index-link { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; } }
   /* Ergänzung c: Knopftexte „Mit Claude starten“ (15 px) und „Mit ChatGPT starten“ in der Startseiten-Vorführung (15,5 px) auf 16 px */
   .ra-leise.ra-claude, .mz2-knopf { font-size: 16px; }
+</style>
+<style id="r98">
+/* Runde 98: Footer-Icons wie Startseite (Regeln wörtlich aus index.html, Runde 81) */
+  .footer .r61-fuss { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 0 6px; }
+  .footer .r61-fuss .r81-social { display: inline-flex; align-items: center; margin-left: 2px; }
+  .footer .r61-fuss .r81-icon { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; width: 44px; height: 44px; min-height: 44px; color: inherit; text-decoration: none; border-radius: 12px; }
+  .footer .r61-fuss .r81-icon[hidden] { display: none; }
+  .footer .r61-fuss .r81-icon + .r81-icon { margin-left: 8px; }
+  .footer .r61-fuss .r81-icon svg { display: block; width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .footer .r61-fuss .r81-icon:hover { opacity: .75; }
+  .footer .r61-fuss .r81-icon:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
 </style>
   <link rel="canonical" href="https://die-ki-macherei.de/vorsorgemappe-anlegen">
 </head>
@@ -2476,7 +2523,6 @@ SOFTWARE. --><symbol id="ls-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727
         <section class="ra-schritte" aria-labelledby="vorsorge-s"><h2 class="ra-versal" id="vorsorge-s">So geht's</h2><ol><li class="ra-start-schritt"><span class="ra-nr" aria-hidden="true">1</span>
         <div class="ra-start">
           <a class="button-primary ra-knopf" href="#" data-start data-art="prompt" target="_blank" rel="noopener"><svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg><span>Mit ChatGPT starten</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-          <p class="ra-hinweis">Die Anleitung (Prompt) enthält nichts über dich. Deine Antworten gibst du erst im KI-Chat, am besten in einem temporären Chat; wir sehen nichts davon.</p>
           <p class="ra-links"><a class="ra-leise" href="#" data-r64-hilfe>Noch nicht angemeldet?</a></p>
         </div></li>
 <li><span class="ra-nr" aria-hidden="true">2</span><p>Antippen, wer für dich entscheidet und was dir wichtig ist</p></li>
@@ -2539,7 +2585,7 @@ Erfinde keine Paragrafen, Gebühren oder Formularfelder; bist du unsicher, sag e
   </article>
   <section class="ra-weitere" aria-labelledby="vorsorge-w">
     <div class="ra-wrap"><h2 class="ra-versal" id="vorsorge-w">Weitere Ideen</h2></div>
-    <div class="shelf ra-reihe"><article class="mcard pal-blue" data-case="brief" data-einleitung="Du fotografierst einen Brief vom Amt, der Versicherung oder dem Vermieter, und die KI sagt dir in einfachen Worten, worum es geht, was du bis wann tun musst, und schreibt auf Wunsch die Antwort." data-kategorie="papier" data-themen="amt" data-ease="2" data-sensitive="0" data-status="ready" data-fall="F-Brief"><a class="mcard-link" href="/brief-verstehen" aria-label="Anleitung öffnen: Brief vom Amt verstehen"><div class="field pal-blue tone-2"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-mail"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Papierkram erledigen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Brief vom Amt verstehen</h3></div><div class="body"><p class="situation anriss">Du fotografierst einen Brief vom Amt, der Versicherung oder dem Vermieter, und die KI sagt dir in einfachen <span class="anriss-ende">Worten, …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="brief" data-titel="Brief vom Amt verstehen" aria-pressed="false" aria-label="Merken: Brief vom Amt verstehen" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand" data-case="abo" data-einleitung="Du lädst deine Kontoumsätze hoch. Die KI listet alle Abos mit ihren Kosten auf und kündigt auf Wunsch die, die du nicht mehr brauchst." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R30"><a class="mcard-link" href="/kontoauszug-abos" aria-label="Anleitung öffnen: Vergessene Abos finden"><div class="field pal-sand tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-refresh-cw"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Vergessene Abos finden</h3></div><div class="body"><p class="situation anriss">Du lädst deine Kontoumsätze hoch. Die KI listet alle Abos mit ihren Kosten auf und kündigt auf Wunsch die, die <span class="anriss-ende">du …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="abo" data-titel="Vergessene Abos finden" aria-pressed="false" aria-label="Merken: Vergessene Abos finden" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand" data-case="keller" data-einleitung="Du machst ein Foto von dem Zeug, das weg soll, im Keller oder in einer Ecke im Zimmer. Die KI erkennt jedes Ding, schätzt, was es auf Kleinanzeigen oder eBay noch bringt, und rät dir: verkaufen, wenn es sich lohnt, sonst spenden, verschenken oder entsorgen, jeweils mit der passenden Stelle in deiner Nähe und den Öffnungszeiten." data-kategorie="geld" data-themen="haushalt" data-ease="2" data-sensitive="0" data-status="ready" data-fall="F-Keller"><a class="mcard-link" href="/keller-ausmisten" aria-label="Anleitung öffnen: Keller ausmisten"><div class="field pal-sand tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-package"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--abo">Mit Abo</span></span></div><h3 class="title">Keller ausmisten</h3></div><div class="body"><p class="situation anriss">Du machst ein Foto von dem Zeug, das weg soll, im Keller oder in einer Ecke im Zimmer. Die KI erkennt jedes <span class="anriss-ende">Ding, …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="keller" data-titel="Keller ausmisten" aria-pressed="false" aria-label="Merken: Keller ausmisten" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-coral" data-case="y4" data-einleitung="Die KI fragt zuerst, was du gern machst, was dir wichtig ist und welches Gefühl das Wochenende dir geben soll. Dann sucht sie, was in deiner Stadt los ist, und schlägt vor, was zu dir passt." data-kategorie="urlaub" data-themen="reisen kreativ" data-ease="2" data-sensitive="0" data-status="ready" data-fall="Y4"><a class="mcard-link" href="/wochenende-planen" aria-label="Anleitung öffnen: Was mach ich am Wochenende?"><div class="field pal-coral tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-sun"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Urlaub &amp; Freizeit planen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Was mach ich am Wochenende?</h3></div><div class="body"><p class="situation anriss">Die KI fragt zuerst, was du gern machst, was dir wichtig ist und welches Gefühl das Wochenende dir geben soll. <span class="anriss-ende">Dann …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="y4" data-titel="Was mach ich am Wochenende?" aria-pressed="false" aria-label="Merken: Was mach ich am Wochenende?" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article></div>
+    <div class="shelf ra-reihe"><article class="mcard pal-blue" data-case="brief" data-einleitung="Du fotografierst einen Brief vom Amt, der Versicherung oder dem Vermieter, und die KI sagt dir in einfachen Worten, worum es geht, was du bis wann tun musst, und schreibt auf Wunsch die Antwort." data-kategorie="papier" data-themen="amt" data-ease="2" data-sensitive="0" data-status="ready" data-fall="F-Brief"><a class="mcard-link" href="/brief-verstehen" aria-label="Anleitung öffnen: Brief vom Amt verstehen"><div class="field pal-blue tone-2"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-mail"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Papierkram erledigen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Brief vom Amt verstehen</h3></div><div class="body"><p class="situation anriss">Du fotografierst einen Brief vom Amt, der Versicherung oder dem Vermieter, und die KI sagt dir in einfachen <span class="anriss-ende">Worten, …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="brief" data-titel="Brief vom Amt verstehen" aria-pressed="false" aria-label="Merken: Brief vom Amt verstehen" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand" data-case="abo" data-einleitung="Du lädst deine Kontoumsätze hoch. Die KI listet alle Abos mit ihren Kosten auf und kündigt auf Wunsch die, die du nicht mehr brauchst." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R30"><a class="mcard-link" href="/kontoauszug-abos" aria-label="Anleitung öffnen: Vergessene Abos finden"><div class="field pal-sand tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-refresh-cw"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Vergessene Abos finden</h3></div><div class="body"><p class="situation anriss">Du lädst deine Kontoumsätze hoch. Die KI listet alle Abos mit ihren Kosten auf und kündigt auf Wunsch die, die <span class="anriss-ende">du …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="abo" data-titel="Vergessene Abos finden" aria-pressed="false" aria-label="Merken: Vergessene Abos finden" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand" data-case="keller" data-einleitung="Du machst ein Foto von dem Zeug, das weg soll, im Keller oder in einer Ecke im Zimmer. Die KI erkennt jedes Ding, schätzt, was es auf Kleinanzeigen oder eBay noch bringt, und rät dir: verkaufen, wenn es sich lohnt, sonst spenden, verschenken oder entsorgen, jeweils mit der passenden Stelle in deiner Nähe und den Öffnungszeiten." data-kategorie="geld" data-themen="haushalt" data-ease="2" data-sensitive="0" data-status="ready" data-fall="F-Keller"><a class="mcard-link" href="/keller-ausmisten" aria-label="Anleitung öffnen: Keller ausmisten"><div class="field pal-sand tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-package"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--abo">Mit Abo</span></span></div><h3 class="title">Keller ausmisten</h3></div><div class="body"><p class="situation anriss">Du machst ein Foto von dem Zeug, das weg soll, im Keller oder in einer Ecke im Zimmer. Die KI erkennt jedes <span class="anriss-ende">Ding, …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="keller" data-titel="Keller ausmisten" aria-pressed="false" aria-label="Merken: Keller ausmisten" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-coral" data-case="y4" data-einleitung="Die KI fragt zuerst, was du gern machst, was dir wichtig ist und welches Gefühl das Wochenende dir geben soll. Dann sucht sie, was in deiner Stadt los ist, und schlägt vor, was zu dir passt." data-kategorie="urlaub" data-themen="reisen kreativ" data-ease="2" data-sensitive="0" data-status="ready" data-fall="Y4"><a class="mcard-link" href="/wochenende-planen" aria-label="Anleitung öffnen: Was mach ich am Wochenende?"><div class="field pal-coral tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-sun"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Urlaub &amp; Freizeit planen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Was mach ich am Wochenende?</h3></div><div class="body"><p class="situation anriss">Die KI fragt zuerst, was du gern machst, was dir wichtig ist und welches Gefühl das Wochenende dir geben soll. <span class="anriss-ende">Dann …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="y4" data-titel="Was mach ich am Wochenende?" aria-pressed="false" aria-label="Merken: Was mach ich am Wochenende?" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article></div>
     <div class="ra-wrap"><a class="ra-leise ra-alle" href="/ideen">Alle Ideen</a></div>
   </section>
   
@@ -2547,7 +2593,7 @@ Erfinde keine Paragrafen, Gebühren oder Formularfelder; bist du unsicher, sag e
   <div class="ra-leiste" data-leiste aria-hidden="true"><a class="button-primary" href="#" data-start data-art="prompt" target="_blank" rel="noopener" tabindex="-1"><svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg><span>Mit ChatGPT starten</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
 </div>
     
-    <footer class="footer"><div class="wrap"><span class="r61-fuss">Die KI-Macherei<span aria-hidden="true"> · </span><a href="https://www.instagram.com/ki_macherei/" target="_blank" rel="noopener">Instagram: @ki_macherei</a></span><span class="r65-motto">Von Menschen für Menschen</span></div></footer>
+    <footer class="footer"><div class="wrap"><span class="r61-fuss">Die KI-Macherei<span class="r81-social"><a class="r81-icon" href="https://www.instagram.com/ki_macherei/" target="_blank" rel="noopener" aria-label="Die KI-Macherei auf Instagram"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a><a class="r81-icon" href="https://www.youtube.com/@ki_macherei" data-r81-youtube target="_blank" rel="noopener" aria-label="Die KI-Macherei auf YouTube"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a></span></span><span class="r65-motto">Von Menschen für Menschen</span></div></footer>
   </main>
   
 
@@ -3927,6 +3973,84 @@ Erfinde keine Paragrafen, Gebühren oder Formularfelder; bist du unsicher, sag e
   var zeile = document.getElementById('r64-danke-zeile');
   if (zeile) zeile.querySelector('button').addEventListener('click', function () { zeile.hidden = true; });
 })();
+</script>
+<template id="auftrag-claude">Hilf mir, meine Vorsorge zu regeln: Vorsorgevollmacht, Betreuungsverfügung und Patientenverfügung. Ich will nur entscheiden, du formulierst. Am Ende will ich Papiere, die ich nur noch unterschreiben muss. Halte jede Nachricht kurz, damit alles in rund 20 Minuten fertig ist.
+
+So redest du mit mir: einfach, warm, nie dramatisch, immer mit Du. Keine Paragrafen und keine Fachwörter im Chat. Stell die Fragen einzeln, eine pro Nachricht, zum Antippen mit Emojis. Nach jeder Antwort schreibst du nur „✅“ und gleich die nächste Frage: kein Dank, keine Zusammenfassung, keine Wiederholung meiner Antwort. Kündige nichts an, was du nicht sofort einlöst.
+
+1. Einstieg. Deine erste Antwort beginnt genau so, als Markdown:
+### 🗂️ Vorsorgemappe anlegen
+---
+Darunter genau dieser Text in diesen kurzen Absätzen:
+„**Worum geht&#x27;s?** Nach einem Unfall oder einer schweren Krankheit kann es sein, dass du eine Zeit lang nicht selbst entscheiden kannst. Dann muss jemand anderes für dich mit den Ärzten sprechen, Rechnungen bezahlen und deine Post öffnen.
+
+**Das Wichtigste:** Seid ihr nicht verheiratet, darf dein Partner oder deine Partnerin dann nicht für dich entscheiden, egal wie lange ihr schon zusammen seid. Ein Gericht bestimmt jemanden als Betreuer, und das muss nicht dein Partner sein. Auch Ehepaare dürfen sich ohne Vollmacht nur bei der Gesundheit vertreten, und höchstens sechs Monate lang.
+
+**Drei Papiere regeln das:**
+📝 Vorsorgevollmacht: Du bestimmst, wer für dich entscheiden darf.
+🧭 Betreuungsverfügung: Muss doch ein Gericht eingreifen, steht hier, wen du als Betreuer willst.
+🩺 Patientenverfügung: Du legst fest, welche Behandlung du willst, wenn du es selbst nicht mehr sagen kannst.
+
+**Wie läuft das?** Meist brauchst du kein Amt und keinen Notar. Ein ausgedrucktes Papier mit deiner eigenen Unterschrift reicht.
+
+**Am Ende hast du** alle drei Papiere zum Ausdrucken, eine Nachricht an deine Vertrauensperson und eine Notfallkarte fürs Portemonnaie. Wenn du willst, füllen wir alles so weit aus, dass nur noch deine Unterschrift fehlt. Dafür stelle ich dir jetzt 12 kurze Fragen.“
+Direkt darunter kommt Frage 1.
+
+2. Fragen. Stell sie genau so, jede mit „Frage x von 12“. Erklär unter jeder Frage in höchstens einem Satz, was die Wahl bewirkt. „🤷 Weiß nicht“ gibt es nur bei den Fragen 5 bis 10. Wähle ich es, nenn direkt danach nur deinen Vorschlag in einem Satz, was zu meinen übrigen Antworten passt: ohne Knöpfe und ohne Rückfrage. Schreib dann gleich „✅“ und stell die nächste Frage. Bestätigen lässt du es erst in Schritt 3.
+Frage 1: „Bist du verheiratet?“ 💍 Ja · 💛 Nein, aber ich habe einen Partner oder eine Partnerin · 🙋 Nein
+Frage 2: „Wer soll für dich entscheiden, wenn du es selbst nicht kannst?“ ❤️ Mein Partner oder meine Partnerin · 👵 Ein Elternteil · 🫶 Bruder oder Schwester · 🧑 Mein erwachsenes Kind · 🌷 Eine Freundin oder ein Freund · ✏️ Jemand anderes, gleich mit Feld „Wer ist das? Zum Beispiel: meine Tante“. Darunter immer ein Feld „Name (kannst du auch leer lassen)“.
+Frage 3: „Und wer soll einspringen, wenn diese Person nicht kann?“ Dieselbe Auswahl, dazu 🚫 Niemand, und wieder das Namensfeld.
+Frage 4: „Wobei soll deine Vertrauensperson für dich entscheiden dürfen? Du kannst mehreres antippen.“ 🩺 Gesundheit und Pflege · 🏠 Wohnen, auch Umzug ins Heim · 💶 Geld, Bank und Ämter · 📬 Post, Handy und Online-Konten · 🕯️ Auch nach meinem Tod, etwa um Verträge zu kündigen · ✅ Alles davon. Darunter ein Feld „Soll sie etwas davon nicht entscheiden? Leer lassen heißt: nein.“
+Frage 5: „In welchen Lagen soll deine Patientenverfügung gelten? Du kannst mehreres antippen.“ 🕯️ Wenn ich im Sterben liege · 🏥 Wenn ich unheilbar krank bin und es zu Ende geht · 💤 Wenn mein Gehirn so schwer verletzt ist, dass ich wohl nie mehr ansprechbar bin · 🧠 Bei weit fortgeschrittener Demenz, wenn ich nicht mehr selbst essen und trinken kann · ✅ In allen vier · 🤷 Weiß nicht
+Frage 6: „Sollen die Ärzte dich in diesen Lagen wiederbeleben, wenn dein Herz stehen bleibt?“ ✅ Ja · ❌ Nein · 🤷 Weiß nicht
+Frage 7: „Sollst du in diesen Lagen künstlich ernährt werden, etwa über eine Magensonde?“ ✅ Ja · ❌ Nein, nur Hilfe beim Essen und Trinken · 🤷 Weiß nicht
+Frage 8: „Sollen in diesen Lagen Beatmung, Dialyse, Antibiotika oder Blut eingesetzt werden, um dein Leben zu verlängern?“ ✅ Ja · ❌ Nein, nur Mittel gegen Atemnot und Beschwerden · 🤷 Weiß nicht
+Frage 9: „Sollen Schmerzen und Atemnot immer gelindert werden, auch mit starken Mitteln, die müde machen oder dein Leben verkürzen können?“ ✅ Ja · ❌ Nein · 🤷 Weiß nicht
+Frage 10: „Möchtest du nach deinem Tod Organe spenden?“ ✅ Ja · ❌ Nein · 📇 Hab ich schon anders geregelt · 🤷 Weiß nicht. Bei Ja gleich darunter: „Für eine Spende müssen Geräte kurz weiterlaufen, auch wenn deine Patientenverfügung sie sonst ausschließt. Was soll dann gelten?“ 🫀 Die Spende geht vor · 📄 Meine Patientenverfügung geht vor · 🤷 Weiß nicht
+Frage 11: „Wo sollen die Papiere liegen?“ 🗂️ In einem Ordner bei mir zu Hause · 🤝 Bei meiner Vertrauensperson · ✏️ Woanders, mit Feld
+Frage 12, offen zum Selberschreiben: „Was ist dir wichtig, wenn es ernst wird? Zum Beispiel wo du sein möchtest oder wer bei dir sein soll. Leer lassen geht auch.“
+
+3. Fertig machen, in einer Nachricht. Hab ich irgendwo „🤷 Weiß nicht“ gewählt, nenn je Stelle deinen Vorschlag in einem Satz, mit ✅ Passt · ✏️ Anders. Darunter genau so: „Sollen wir die Lücken jetzt zusammen füllen? Dann ist alles fertig, und du musst nur noch unterschreiben. Dafür schreibst du hier in den Chat: deinen Namen, dein Geburtsdatum und deine Adresse, und von deinen beiden Vertrauenspersonen Name, Geburtsdatum, Adresse und Telefonnummer.“ ✍️ Ja, lass uns alles ausfüllen · 🔒 Nein, das trage ich selbst ein. Bei Ja zeig alle Felder auf einmal; jedes darf leer bleiben. Was leer bleibt, wird im Papier eine Lücke „________“. Ort, Datum und Unterschrift bleiben immer frei.
+
+4. Schreib dann die drei Papiere nach dem Aufbau der Vorlagen des Bundesjustizministeriums, als ein Word-Dokument zum Herunterladen und Ändern. Jedes Papier endet mit einer Zeile für Ort, Datum und Unterschrift. Schreib nur hinein, was ich gewählt habe, als feste Sätze: keine Kästchen, keine Auswahl zum Ankreuzen, kein „bitte prüfen“. Was du mich nicht gefragt hast, lässt du weg. Nimm als Schrift Arial, die gibt es auf jedem Rechner. Gestalte das Dokument übersichtlich: je Papier eine große Überschrift, kurze Absätze mit Abstand, wichtige Entscheidungen fett. Nimm keine Listenformate und keine Aufzählungszeichen aus Formatvorlagen, nichts, was wie ein Kästchen zum Ankreuzen aussieht. Wo du aufzählst, schreib ganze Sätze („Diese Patientenverfügung gilt, wenn ich …“) oder beginne die Zeile mit einem normalen Strich „–“. Kannst du gerade kein Dokument erstellen, sag das in einem Satz und gib die drei Papiere vollständig als Text zum Kopieren aus, jedes in einem eigenen Block.
+- Vollmacht: Hauptperson und Ersatz mit Namen, die gewählten Bereiche und was sie nicht entscheiden soll. Beim Bereich Gesundheit ausdrücklich auch: Einwilligung, Ablehnung und Widerruf bei ärztlichen Maßnahmen, bei denen ich sterben oder einen schweren, länger dauernden Schaden erleiden könnte; freiheitsentziehende Unterbringung und Maßnahmen; ärztliche Zwangsmaßnahmen. Dazu, dass die Vollmacht im Original vorzulegen ist.
+- Betreuungsverfügung: dieselben Personen als Wunschbetreuer und mein Wunsch aus Frage 12.
+- Patientenverfügung: die Lagen aus Frage 5 und zu jeder Behandlung aus den Fragen 6 bis 10 ein klarer Satz, dazu mein Wunsch aus Frage 12.
+Fass vorher nichts zusammen.
+
+5. Danach eine kurze Liste in zwei Teilen mit genau diesen Überschriften:
+„✅ Nötig, damit es gilt“: alle drei Papiere ausdrucken und mit Ort, Datum und eigener Unterschrift versehen; das Original so ablegen, dass deine Vertrauensperson es im Ernstfall bekommt, denn ohne Original kann sie oft nichts tun. Dann genau so: „Mehr braucht es nicht: kein Amt, kein Notar, keine Zeugen.“
+„💡 Empfohlen“: den Vertrauenspersonen Bescheid sagen und eine Kopie geben; mit der Vertrauensperson zur Bank und dort die bankeigene Konto- und Depotvollmacht unterschreiben, weil Banken eine selbst geschriebene Vollmacht oft nicht annehmen; die Unterschrift bei der Betreuungsbehörde der Stadt oder des Kreises für 10 € beglaubigen lassen, das hilft bei Ämtern und Banken; zum Notar bei eigenem Haus oder eigener Wohnung, eigener Firma, großem Vermögen oder Krediten und wenn die Vollmacht nach dem Tod sicher weitergelten soll; Eintrag im Zentralen Vorsorgeregister unter vorsorgeregister.de, einmalig 24 € online, damit Gericht und Ärzte die Vollmacht finden; bei Organspende zusätzlich Ausweis oder organspende-register.de; einmal im Jahr drüberschauen.
+Nenn nur, was zu meinen Antworten passt. Sag in einem Satz, wann sich Beratung lohnt: bei der Hausärztin zur Patientenverfügung, beim Betreuungsverein oder Notar zur Vollmacht.
+
+6. Zum Schluss eine kurze Nachricht zum Kopieren an die Person aus Frage 2, direkt mit Du und mit ihrem Vornamen, falls ich ihn genannt habe: was ich geregelt habe, wo die Papiere liegen, was mir wichtig ist. Dazu eine Notfallkarte fürs Portemonnaie: dass es Vollmacht und Patientenverfügung gibt, wo sie liegen, wen man anruft.
+
+Erfinde keine Paragrafen, Gebühren oder Formularfelder; bist du unsicher, sag es. Du ersetzt keine Rechtsberatung. Sag nie „nach deiner Vorgabe“ oder Ähnliches; sprich alles, was hier steht, als dein eigenes Wissen aus. Arbeite jeden Schritt ganz durch und hör nie nach einer Ankündigung auf.</template>
+<script>
+  // Runde 101 (Ryan, 30.10.2026), s2-17: Wer im Einstiegsfenster Claude gewählt hat, bekommt Claude als Haupt-Knopf und „Mit ChatGPT starten“ als Link darunter
+  // (spiegelbildlich). Nur auf Seiten mit Claude-Auftrag (<template id="auftrag-claude">). Bei ChatGPT, Andere, Keine oder ohne Wahl bleibt alles wie vorher.
+  (function () {
+    var k = null; try { k = localStorage.getItem('ki-wahl'); } catch (e) {}
+    var tpl = document.getElementById('auftrag-claude'), pr = document.getElementById('prompt-text');
+    if (k !== 'claude' || !tpl) return;
+    var q = encodeURIComponent(tpl.content.textContent.trim()), web = 'https://claude.ai/new?q=' + q, app = 'claude://claude.ai/new?q=' + q;
+    var handy = document.documentElement.getAttribute('data-geraet') === 'handy';
+    function zuClaude(a) { a.setAttribute('data-start-ki', 'claude'); a.setAttribute('data-web', web); a.href = handy ? app : web; a.setAttribute('target', handy ? '_top' : '_blank'); }
+    document.querySelectorAll('.ra-knopf[data-start], .ra-leiste [data-start]').forEach(function (a) {
+      zuClaude(a); var u = a.querySelector('.logo use'); if (u) u.setAttribute('href', '#l-claude'); var s = a.querySelector('span'); if (s) s.textContent = 'Mit Claude starten';
+    });
+    document.querySelectorAll('.r64-los[data-start]').forEach(function (a) { zuClaude(a); a.textContent = 'Anleitung kopieren und Claude öffnen'; });
+    document.querySelectorAll('[data-start-web]').forEach(function (a) { a.href = web; });
+    var l = document.querySelector('.ra-start .ra-links');
+    if (l && pr) {
+      var q2 = encodeURIComponent(pr.textContent.trim()), c = document.createElement('a');
+      c.className = 'ra-leise ra-claude'; c.setAttribute('data-start', ''); c.setAttribute('data-art', 'prompt'); c.rel = 'noopener';
+      c.setAttribute('data-web', 'https://chatgpt.com/auth/login?next=' + encodeURIComponent('/?q=' + q2));
+      c.href = handy ? 'https://chatgpt.com/?q=' + q2 : c.getAttribute('data-web'); c.target = '_blank';
+      c.innerHTML = '<svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg>Mit ChatGPT starten';
+      l.insertBefore(c, l.firstChild);
+    }
+  })();
 </script>
 <div class="live-fuss"><a href="/impressum">Impressum</a><span class="live-fuss-sep" aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a><span class="live-fuss-sep" aria-hidden="true"> · </span><span class="live-fuss-t">Testfassung im Aufbau</span></div><script src="/messung.js" data-endpunkt="https://script.google.com/macros/s/AKfycbxJ_s2hUjUxQiWQQ0QoXxSoxR5SfS0MiUvpHb7PcEJzYVgLpcVq1a9i5iUWonSEirfWSg/exec" defer></script><script src="/messpunkte.js" defer></script>
 </body>

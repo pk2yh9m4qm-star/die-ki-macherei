@@ -2340,12 +2340,48 @@ html:not(.r64-vorbei) .r64 .ra-leiste, html.r64-rk-offen .r64 .ra-leiste { trans
 /* Fokusring der Karten unter „Weitere Ideen“: 2 px in der Fokusfarbe der Seite */
 .ra3.r71 .ra-weitere .mcard a.mcard-link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 </style>
+<script>
+  // Runde 72 (Jim, 29.10.2026), Punkt D: Wer im Einstiegsfenster Gemini, Grok, Copilot, Perplexity, Mistral, Meta AI oder DeepSeek gewählt hat, öffnet mit dem
+  // Start-Knopf keine Seite. Die Anleitung wird kopiert (das macht der Klick-Hörer der Seite schon), hier kommt nur der Hinweis dazu.
+  (function () {
+    var N = {"gemini": "Gemini", "grok": "Grok", "copilot": "Copilot", "perplexity": "Perplexity", "mistral": "Mistral", "meta": "Meta AI", "deepseek": "DeepSeek", "andere": "deine KI"}, k = null;
+    try { k = localStorage.getItem('ki-wahl'); } catch (e) {}
+    if (!N[k]) return;
+    function beschriften() { document.querySelectorAll('[data-start]').forEach(function (a) { var s = a.querySelector('span'); if (s) s.textContent = 'Anleitung kopieren'; }); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', beschriften); else beschriften();
+    var m = null, t = 0;
+    window.addEventListener('click', function (e) {   // am Fenster und im Kopf der Seite eingebaut, damit es vor den Hörern der Seite läuft
+      var a = e.target.closest && e.target.closest('[data-start]'); if (!a) return;
+      e.preventDefault();
+      // Das ChatGPT-/Claude-Anmeldefenster der Seite (nur am Rechner, erster Klick) passt nicht zu diesen KIs: kurz als „Handy“ ausgeben, danach zurück.
+      var g = document.documentElement, alt = g.getAttribute('data-geraet'); g.setAttribute('data-geraet', 'handy'); setTimeout(function () { if (alt === null) g.removeAttribute('data-geraet'); else g.setAttribute('data-geraet', alt); }, 0);
+      if (!m) { m = document.createElement('p'); m.className = 'r72-melden'; m.setAttribute('role', 'status'); document.body.appendChild(m); }
+      m.textContent = 'Anleitung kopiert. Füge sie in ' + N[k] + ' ein.'; m.hidden = false; clearTimeout(t); t = setTimeout(function () { m.hidden = true; }, 6000);
+    }, true);
+  })();
+  </script>
+  <style>.r72-melden { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 2147483000; max-width: min(92vw, 460px); padding: 12px 18px; border-radius: 16px;
+    background: #23201c; color: #fbf7f0; font-size: 16px; font-weight: 600; line-height: 1.35; box-shadow: 0 10px 30px rgb(0 0 0 / .25); }</style>
 
 <style>
 /* Runde 76: Start-Button im „So geht's“-Kasten halten. 1. min-width 300 px aus dem Computer-Block weg (ab 1024 px). 2. Zwischen 1024 und 1183 px ist die
    Spalte nur 229–285 px breit: Schrift 15 px, Abstand Zeichen–Text 8 px, Innenabstand 18/14 px, damit der Text einzeilig bleibt. Ab 1184 px bleibt der Button wie bisher (17 px). */
 @media (min-width: 1024px) { .ra3.r70 .ra-knopf { min-width: 0; } }
 @media (min-width: 1024px) and (max-width: 1183px) { .ra3.r70 .ra-knopf { font-size: 15px; gap: 8px; padding: 0 14px 0 18px; } }
+</style>
+
+<style>
+/* Runde 83: P05. Tafel (.ra-handeln) reicht ab 1024 px bis zur Unterkante der linken Spalte, unten 24 px Polster; Schritte kleben (nur ab 1024 × 700). */
+@media (min-width: 1024px) { .ra3.r70 .ra-karte-innen > .ra-handeln { align-self: stretch; padding-bottom: 24px; } }
+@media (min-width: 1024px) and (min-height: 700px) {
+  .ra3.r70 .ra-karte { overflow: clip; }
+  .ra3.r70 .ra-karte-innen > .ra-handeln { align-content: stretch; }
+  .ra3.r70 .ra-karte-innen > .ra-handeln > .ra-schritte { position: sticky; top: 24px; align-self: start; }
+}
+</style>
+<style id="r97">
+/* Runde 97: Fokusring doppelt wie Runde 104b, nur bei Tastatur-Fokus (:focus-visible) */
+html body :is(a, button, summary, input, select, textarea, [tabindex], [role="button"]):focus-visible { outline: 2px solid #1f1a14 !important; outline-offset: 2px !important; box-shadow: 0 0 0 2px #fff !important; }
 </style>
 <style>
   /* Runde 61 (Pam, Punkt 8): Logo quer im Kopf, 28 px am Handy bis 36 px am Rechner; Schutzzone = halbe Zeichenhöhe */
@@ -2389,6 +2425,17 @@ html:not(.r64-vorbei) .r64 .ra-leiste, html.r64-rk-offen .r64 .ra-leiste { trans
   @media (max-width: 767.98px) { ul.index a.index-link { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; } }
   /* Ergänzung c: Knopftexte „Mit Claude starten“ (15 px) und „Mit ChatGPT starten“ in der Startseiten-Vorführung (15,5 px) auf 16 px */
   .ra-leise.ra-claude, .mz2-knopf { font-size: 16px; }
+</style>
+<style id="r98">
+/* Runde 98: Footer-Icons wie Startseite (Regeln wörtlich aus index.html, Runde 81) */
+  .footer .r61-fuss { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 0 6px; }
+  .footer .r61-fuss .r81-social { display: inline-flex; align-items: center; margin-left: 2px; }
+  .footer .r61-fuss .r81-icon { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; width: 44px; height: 44px; min-height: 44px; color: inherit; text-decoration: none; border-radius: 12px; }
+  .footer .r61-fuss .r81-icon[hidden] { display: none; }
+  .footer .r61-fuss .r81-icon + .r81-icon { margin-left: 8px; }
+  .footer .r61-fuss .r81-icon svg { display: block; width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .footer .r61-fuss .r81-icon:hover { opacity: .75; }
+  .footer .r61-fuss .r81-icon:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
 </style>
   <link rel="canonical" href="https://die-ki-macherei.de/gehaltsgespraech-vorbereiten">
 </head>
@@ -2477,7 +2524,6 @@ SOFTWARE. --><symbol id="ls-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727
         <section class="ra-schritte" aria-labelledby="gehalt-s"><h2 class="ra-versal" id="gehalt-s">So geht's</h2><ol><li class="ra-start-schritt"><span class="ra-nr" aria-hidden="true">1</span>
         <div class="ra-start">
           <a class="button-primary ra-knopf" href="#" data-start data-art="prompt" target="_blank" rel="noopener"><svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg><span>Mit ChatGPT starten</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-          <p class="ra-hinweis">Die Anleitung (Prompt) enthält nichts über dich. Was du verdienst, erzählst du erst im Chat, wir sehen es nicht.</p>
           <p class="ra-links"><a class="ra-leise" href="#" data-r64-hilfe>Noch nicht angemeldet?</a></p>
         </div></li>
 <li><span class="ra-nr" aria-hidden="true">2</span><p>Sechs kurze Fragen beantworten</p></li>
@@ -2525,7 +2571,7 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
   </article>
   <section class="ra-weitere" aria-labelledby="gehalt-w">
     <div class="ra-wrap"><h2 class="ra-versal" id="gehalt-w">Weitere Ideen</h2></div>
-    <div class="shelf ra-reihe"><article class="mcard pal-sand " data-case="r07" data-einleitung="Zahlst du mehr, als die Mietpreisbremse erlaubt? Die KI rechnet es mit dem offiziellen Mietspiegel nach und sagt dir in Euro, ob sich Nachhaken lohnt." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R07"><a class="mcard-link" href="/zahlst-du-zu-viel-miete" aria-label="Anleitung öffnen: Zahlst du zu viel Miete?"><div class="field pal-sand tone-3"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-house"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--abo">Mit Abo</span></span></div><h3 class="title">Zahlst du zu viel Miete?</h3></div><div class="body"><p class="situation anriss">Zahlst du mehr, als die Mietpreisbremse erlaubt? Die KI rechnet es mit dem offiziellen Mietspiegel nach und sagt <span class="anriss-ende">dir …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="r07" data-titel="Zahlst du zu viel Miete?" aria-pressed="false" aria-label="Merken: Zahlst du zu viel Miete?" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand" data-case="abo" data-einleitung="Kontoumsätze hochladen. Die KI findet jedes Abo, auch das vergessene Probeabo, rechnet die Jahreskosten und schreibt die Kündigungen." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R30"><a class="mcard-link" href="/kontoauszug-abos" aria-label="Anleitung öffnen: Vergessene Abos finden"><div class="field pal-sand tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-refresh-cw"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Vergessene Abos finden</h3></div><div class="body"><p class="situation anriss">Kontoumsätze hochladen. Die KI findet jedes Abo, auch das vergessene Probeabo, rechnet die Jahreskosten und <span class="anriss-ende">schreibt …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="abo" data-titel="Vergessene Abos finden" aria-pressed="false" aria-label="Merken: Vergessene Abos finden" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand " data-case="r45" data-einleitung="Eine neue Waschmaschine oder ein Fernseher muss her? Die KI klärt, was du wirklich brauchst, rechnet auf Wunsch die Kosten über die Jahre und sagt dir, was ein guter Kaufpreis ist." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R45"><a class="mcard-link" href="/grosse-anschaffung-planen" aria-label="Anleitung öffnen: Große Anschaffung planen"><div class="field pal-sand tone-2"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-shopping-bag"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Große Anschaffung planen</h3></div><div class="body"><p class="situation anriss">Eine neue Waschmaschine oder ein Fernseher muss her? Die KI klärt, was du wirklich brauchst, rechnet auf Wunsch <span class="anriss-ende">die …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="r45" data-titel="Große Anschaffung planen" aria-pressed="false" aria-label="Merken: Große Anschaffung planen" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-plum " data-case="n01" data-einleitung="Du schickst einen Screenshot der verdächtigen Nachricht oder beschreibst den Anruf, und die KI sagt dir, welche Warnzeichen sie sieht, was du auf keinen Fall tun solltest und wie du über den offiziellen Weg nachprüfst." data-kategorie="daten" data-themen="amt persoenlich" data-ease="2" data-sensitive="0" data-status="ready" data-fall="N01"><a class="mcard-link" href="/betrug-oder-echt" aria-label="Anleitung öffnen: Betrug oder echt?"><div class="field pal-plum tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-message-square-warning"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Daten schützen</span><span class="tag tag--frei">Mit Free nutzbar</span></span></div><h3 class="title">Betrug oder echt?</h3></div><div class="body"><p class="situation anriss">Du schickst einen Screenshot der verdächtigen Nachricht oder beschreibst den Anruf, und die KI sagt dir, <span class="anriss-ende">welche …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="n01" data-titel="Betrug oder echt?" aria-pressed="false" aria-label="Merken: Betrug oder echt?" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article></div>
+    <div class="shelf ra-reihe"><article class="mcard pal-sand " data-case="r07" data-einleitung="Zahlst du mehr, als die Mietpreisbremse erlaubt? Die KI rechnet es mit dem offiziellen Mietspiegel nach und sagt dir in Euro, ob sich Nachhaken lohnt." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R07"><a class="mcard-link" href="/zahlst-du-zu-viel-miete" aria-label="Anleitung öffnen: Zahlst du zu viel Miete?"><div class="field pal-sand tone-3"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-house"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--abo">Mit Abo</span></span></div><h3 class="title">Zahlst du zu viel Miete?</h3></div><div class="body"><p class="situation anriss">Zahlst du mehr, als die Mietpreisbremse erlaubt? Die KI rechnet es mit dem offiziellen Mietspiegel nach und sagt <span class="anriss-ende">dir …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="r07" data-titel="Zahlst du zu viel Miete?" aria-pressed="false" aria-label="Merken: Zahlst du zu viel Miete?" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand" data-case="abo" data-einleitung="Kontoumsätze hochladen. Die KI findet jedes Abo, auch das vergessene Probeabo, rechnet die Jahreskosten und schreibt die Kündigungen." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R30"><a class="mcard-link" href="/kontoauszug-abos" aria-label="Anleitung öffnen: Vergessene Abos finden"><div class="field pal-sand tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-refresh-cw"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Vergessene Abos finden</h3></div><div class="body"><p class="situation anriss">Kontoumsätze hochladen. Die KI findet jedes Abo, auch das vergessene Probeabo, rechnet die Jahreskosten und <span class="anriss-ende">schreibt …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="abo" data-titel="Vergessene Abos finden" aria-pressed="false" aria-label="Merken: Vergessene Abos finden" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-sand " data-case="r45" data-einleitung="Eine neue Waschmaschine oder ein Fernseher muss her? Die KI klärt, was du wirklich brauchst, rechnet auf Wunsch die Kosten über die Jahre und sagt dir, was ein guter Kaufpreis ist." data-kategorie="geld" data-themen="geld einkauf" data-ease="2" data-sensitive="0" data-status="ready" data-fall="R45"><a class="mcard-link" href="/grosse-anschaffung-planen" aria-label="Anleitung öffnen: Große Anschaffung planen"><div class="field pal-sand tone-2"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-shopping-bag"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Geld sparen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Große Anschaffung planen</h3></div><div class="body"><p class="situation anriss">Eine neue Waschmaschine oder ein Fernseher muss her? Die KI klärt, was du wirklich brauchst, rechnet auf Wunsch <span class="anriss-ende">die …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="r45" data-titel="Große Anschaffung planen" aria-pressed="false" aria-label="Merken: Große Anschaffung planen" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article><article class="mcard pal-plum " data-case="n01" data-einleitung="Du schickst einen Screenshot der verdächtigen Nachricht oder beschreibst den Anruf, und die KI sagt dir, welche Warnzeichen sie sieht, was du auf keinen Fall tun solltest und wie du über den offiziellen Weg nachprüfst." data-kategorie="daten" data-themen="amt persoenlich" data-ease="2" data-sensitive="0" data-status="ready" data-fall="N01"><a class="mcard-link" href="/betrug-oder-echt" aria-label="Anleitung öffnen: Betrug oder echt?"><div class="field pal-plum tone-1"><svg class="mcard-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#ls-message-square-warning"/></svg><span class="glow glow--t" aria-hidden="true"></span><div class="field-top"><span class="field-tags"><span class="tag tag--cat">Daten schützen</span><span class="tag tag--frei">Free</span></span></div><h3 class="title">Betrug oder echt?</h3></div><div class="body"><p class="situation anriss">Du schickst einen Screenshot der verdächtigen Nachricht oder beschreibst den Anruf, und die KI sagt dir, <span class="anriss-ende">welche …</span></p><p class="outcome"><b class="mcard-los">Anleitung</b></p></div></a><button class="herz" type="button" data-herz="n01" data-titel="Betrug oder echt?" aria-pressed="false" aria-label="Merken: Betrug oder echt?" title="Merken"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg></button></article></div>
     <div class="ra-wrap"><a class="ra-leise ra-alle" href="/ideen">Alle Ideen</a></div>
   </section>
   
@@ -2533,7 +2579,7 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
   <div class="ra-leiste" data-leiste aria-hidden="true"><a class="button-primary" href="#" data-start data-art="prompt" target="_blank" rel="noopener" tabindex="-1"><svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg><span>Mit ChatGPT starten</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
 </div>
     
-    <footer class="footer"><div class="wrap"><span class="r61-fuss">Die KI-Macherei<span aria-hidden="true"> · </span><a href="https://www.instagram.com/ki_macherei/" target="_blank" rel="noopener">Instagram: @ki_macherei</a></span><span class="r65-motto">Von Menschen für Menschen</span></div></footer>
+    <footer class="footer"><div class="wrap"><span class="r61-fuss">Die KI-Macherei<span class="r81-social"><a class="r81-icon" href="https://www.instagram.com/ki_macherei/" target="_blank" rel="noopener" aria-label="Die KI-Macherei auf Instagram"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a><a class="r81-icon" href="https://www.youtube.com/@ki_macherei" data-r81-youtube target="_blank" rel="noopener" aria-label="Die KI-Macherei auf YouTube"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a></span></span><span class="r65-motto">Von Menschen für Menschen</span></div></footer>
   <template id="auftrag-claude">Hilf mir, mein Gehaltsgespräch vorzubereiten: mit einer belegten Zahl, was mein Beruf hier bringt, und Argumenten aus dem, was ich geschafft habe. Ich will nur erzählen und entscheiden, du suchst, rechnest und formulierst. Am Ende will ich mein Ziel in Euro und einen Spickzettel fürs Gespräch.
 
 So redest du mit mir: einfach, ermutigend, immer mit Du. Kurze Absätze mit höchstens zwei Sätzen. Keine Fachwörter; ist eins unvermeidbar, erklär es gleich in Alltagsworten, etwa Median. Zahlen und Daten nur, wenn sie zählen.
@@ -3954,6 +4000,32 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
   var zeile = document.getElementById('r64-danke-zeile');
   if (zeile) zeile.querySelector('button').addEventListener('click', function () { zeile.hidden = true; });
 })();
+</script>
+<script>
+  // Runde 101 (Ryan, 30.10.2026), s2-17: Wer im Einstiegsfenster Claude gewählt hat, bekommt Claude als Haupt-Knopf und „Mit ChatGPT starten“ als Link darunter
+  // (spiegelbildlich). Nur auf Seiten mit Claude-Auftrag (<template id="auftrag-claude">). Bei ChatGPT, Andere, Keine oder ohne Wahl bleibt alles wie vorher.
+  (function () {
+    var k = null; try { k = localStorage.getItem('ki-wahl'); } catch (e) {}
+    var tpl = document.getElementById('auftrag-claude'), pr = document.getElementById('prompt-text');
+    if (k !== 'claude' || !tpl) return;
+    var q = encodeURIComponent(tpl.content.textContent.trim()), web = 'https://claude.ai/new?q=' + q, app = 'claude://claude.ai/new?q=' + q;
+    var handy = document.documentElement.getAttribute('data-geraet') === 'handy';
+    function zuClaude(a) { a.setAttribute('data-start-ki', 'claude'); a.setAttribute('data-web', web); a.href = handy ? app : web; a.setAttribute('target', handy ? '_top' : '_blank'); }
+    document.querySelectorAll('.ra-knopf[data-start], .ra-leiste [data-start]').forEach(function (a) {
+      zuClaude(a); var u = a.querySelector('.logo use'); if (u) u.setAttribute('href', '#l-claude'); var s = a.querySelector('span'); if (s) s.textContent = 'Mit Claude starten';
+    });
+    document.querySelectorAll('.r64-los[data-start]').forEach(function (a) { zuClaude(a); a.textContent = 'Anleitung kopieren und Claude öffnen'; });
+    document.querySelectorAll('[data-start-web]').forEach(function (a) { a.href = web; });
+    var l = document.querySelector('.ra-start .ra-links');
+    if (l && pr) {
+      var q2 = encodeURIComponent(pr.textContent.trim()), c = document.createElement('a');
+      c.className = 'ra-leise ra-claude'; c.setAttribute('data-start', ''); c.setAttribute('data-art', 'prompt'); c.rel = 'noopener';
+      c.setAttribute('data-web', 'https://chatgpt.com/auth/login?next=' + encodeURIComponent('/?q=' + q2));
+      c.href = handy ? 'https://chatgpt.com/?q=' + q2 : c.getAttribute('data-web'); c.target = '_blank';
+      c.innerHTML = '<svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg>Mit ChatGPT starten';
+      l.insertBefore(c, l.firstChild);
+    }
+  })();
 </script>
 <div class="live-fuss"><a href="/impressum">Impressum</a><span class="live-fuss-sep" aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a><span class="live-fuss-sep" aria-hidden="true"> · </span><span class="live-fuss-t">Testfassung im Aufbau</span></div><script src="/messung.js" data-endpunkt="https://script.google.com/macros/s/AKfycbxJ_s2hUjUxQiWQQ0QoXxSoxR5SfS0MiUvpHb7PcEJzYVgLpcVq1a9i5iUWonSEirfWSg/exec" defer></script><script src="/messpunkte.js" defer></script>
 </body>
