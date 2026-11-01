@@ -3599,6 +3599,8 @@ article.mcard > .herz { top: 9px; bottom: auto; right: 9px; width: 40px; height:
   .v22z-schluss--kurz .v22z-los-raster { margin-top: 0; }
 </style>
 <meta name="runde118" content="start-fenster-datenschutz-2026-10-31">
+<style>/* Runde 121: Rahmen nur bei Tastatur; Zeiger-Bedienung zeigt nach dem Schließen eines Fensters keinen Rahmen */ html.r121-zeiger .shelf-track:focus-visible, html.r121-zeiger .herz:focus-visible, html.r121-zeiger [data-herz]:focus-visible { outline: none; } html:not(.r121-zeiger) .herz.r121-fokus, html:not(.r121-zeiger) [data-herz].r121-fokus { outline: 3px solid var(--focus, #3b5a9a); outline-offset: 2px; }</style>
+<meta name="runde121" content="fokus-nach-fenster-2026-10-31">
   <link rel="canonical" href="https://die-ki-macherei.de/">
 </head>
 <body><div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole der Laufbänder: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -8608,5 +8610,42 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
   })();
 </script>
 <div class="live-fuss"><a href="/impressum">Impressum</a><span class="live-fuss-sep" aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a><span class="live-fuss-sep" aria-hidden="true"> · </span><span class="live-fuss-t">Testfassung im Aufbau</span></div><script src="/messung.js" data-endpunkt="https://script.google.com/macros/s/AKfycbxJ_s2hUjUxQiWQQ0QoXxSoxR5SfS0MiUvpHb7PcEJzYVgLpcVq1a9i5iUWonSEirfWSg/exec" defer></script><script src="/messpunkte.js" defer></script>
+<!-- Runde 121: Skript -->
+<script>
+  // Runde 121 (31.10.2026): Nach dem Anmeldefenster zurück zum Herz, Rahmen nur bei Tastatur (Yannis' Screenshot, Auftrag s1-36).
+  (function () {
+    var dlg = document.getElementById('v25r7'), root = document.documentElement;
+    if (!dlg) return;
+    var letztes = null, von = null, offen = false, zeit = 0;
+    function modus(zeiger) { root.classList.toggle('r121-zeiger', zeiger); }
+    document.addEventListener('pointerdown', function () { modus(true); }, true);
+    document.addEventListener('keydown', function (e) {
+      if (offen && e.key === 'Escape') return;
+      if (e.key === 'Shift' || e.key === 'Control' || e.key === 'Alt' || e.key === 'Meta') return;
+      modus(false);
+    }, true);
+    document.addEventListener('click', function (e) {
+      var h = e.target && e.target.closest ? e.target.closest('[data-herz], .herz') : null;
+      if (!h) return;
+      letztes = h; zeit = Date.now();
+      if (e.detail === 0) modus(false); else modus(true);
+      if (dlg.open) fest();
+    }, true);
+    // Das Fenster geht nicht immer im selben Augenblick auf wie der Klick; deshalb auf das open-Attribut hören
+    function fest() { if (letztes && Date.now() - zeit < 2500) { von = letztes; offen = true; } }
+    new MutationObserver(function () { if (dlg.open) fest(); }).observe(dlg, { attributes: true, attributeFilter: ['open'] });
+    dlg.addEventListener('close', function () {
+      var ziel = von; von = null;
+      if (!ziel || !document.contains(ziel) || !ziel.getClientRects().length) { offen = false; return; }
+      var taste = !root.classList.contains('r121-zeiger');
+      try { ziel.focus({ preventScroll: true }); } catch (e) {}
+      if (taste) {
+        ziel.classList.add('r121-fokus');
+        ziel.addEventListener('blur', function () { ziel.classList.remove('r121-fokus'); }, { once: true });
+      }
+      setTimeout(function () { offen = false; }, 0);
+    });
+  })();
+</script>
 </body>
 </html>
