@@ -2766,7 +2766,18 @@ article.mcard > .herz { top: 9px; bottom: auto; right: 9px; width: 40px; height:
 #mb-wissen-inhalt .mb-art, #mb-wissen-inhalt .k-faq > * { scroll-margin-top: calc(env(safe-area-inset-top, 0px) + var(--r169-tabs-h) + 8px); }
 </style>
 <meta name="runde169" content="abstand-startleiste-2026-11-02">
+<style id="r161">
+  /* (c) Kopf: bis 389 px kleinerer Abstand (gap 0), damit Logo, „Alle Ideen“ und Personen-Knopf mit 16 px Rand ins Bild passen (vorher ragte der Knopf bei 360 px über den Rand) */
+  @media (max-width: 389px) { html .site-nav { gap: 0; }   /* bleibt der Abstand 14 px von .nav-end (margin-left) */ }
+  /* Kopf von 550 bis 700 px: Icon und Wort „Mein Bereich“ nebeneinander, 16 px, Tippfläche mindestens 44 × 44 px; darunter bleibt nur das Icon (aria-label bleibt) */
+  @media (min-width: 550px) and (max-width: 700px) {
+    html .site-nav .nav-mein { width: auto; min-width: 44px; min-height: 44px; padding: 0 14px 0 12px; gap: 6px; }
+    html .site-nav .nav-mein .nav-mein__text { position: static; width: auto; height: auto; overflow: visible; clip: auto; font-size: 16px; line-height: 1; }
+  }
+</style>
+<meta name="runde161" content="startleiste-frei-header-mein-bereich-2026-11-02">
 <meta name="runde171" content="oscar-f93-f60-2026-11-02">
+<meta name="runde172" content="anmelden-einmal-je-geraet-2026-11-02">
   <link rel="canonical" href="https://die-ki-macherei.de/mein-bereich">
 </head>
 <body><div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -3227,7 +3238,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
             <figure class="df"><div class="df-kopf"><span>So diktierst du</span><span class="df-r"><span class="df-chip">Beispiel</span><label class="df-pause" title="Animation anhalten"><input type="checkbox" aria-label="Animation anhalten"><svg class="df-pz" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="2" width="3" height="10" rx="1"/><rect x="8.5" y="2" width="3" height="10" rx="1"/></svg><svg class="df-play" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.2v9.6a.6.6 0 0 0 .9.5l7.6-4.8a.6.6 0 0 0 0-1L4.9 1.7a.6.6 0 0 0-.9.5z"/></svg></label></span></div><div class="df-buehne" aria-hidden="true"><div class="df-chat"><span class="df-leer">Wie kann ich helfen?</span><span class="df-blase">Also, ich bin Rentnerin, krieg 1.100 Euro Rente und zahl 600 Euro Miete. Jetzt will der Vermieter mehr. Kann ich da Wohngeld bekommen?</span></div><div class="df-box"><span class="df-feld"><span class="df-ph">Frag irgendwas …</span><span class="df-z df-z1">Also, ich bin Rentnerin, krieg 1.100 Euro</span><span class="df-z df-z2">Rente und zahl 600 Euro Miete. Jetzt will</span><span class="df-z df-z3">der Vermieter mehr. Kann ich da</span><span class="df-z df-z4">Wohngeld bekommen?</span></span><span class="df-zeile"><span class="df-plus"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><span class="df-welle"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><b>Ich höre zu …</b></span><span class="df-mikro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></span><span class="df-rund"><span class="df-ic-wellen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v4M10 7v10M14 9v6M17 11v2"/></svg></span><span class="df-ic-pfeil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></span></span><span class="df-finger"></span></div><div class="df-legende"><span class="df-l-mikro"><span class="df-l-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></span>Mikrofon: diktieren</span><span class="df-l-rund"><span class="df-l-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v4M10 7v10M14 9v6M17 11v2"/></svg></span>Wellen: Gespräch mit Stimme</span></div></div></figure>
             <p>Nimm das Mikrofon, nicht das runde Symbol mit den Wellen daneben. Das startet ein Gespräch mit Stimme, bei dem die KI laut antwortet.</p>
             <h4>Was dir begegnen kann</h4>
-            <p>Manchmal öffnet sich ein Fenster und bietet dir ein Abo an. Du kannst es wegklicken. Für den Anfang brauchst du keins. Mehr dazu: <a href="/mein-bereich#artikel-kosten">„Kostet mich das etwas?“</a></p>
+            <p>Manchmal erscheint ein Hinweis und bietet dir ein Abo an. Du musst nicht darauf eingehen. Für den Anfang brauchst du keins. Mehr dazu: <a href="/mein-bereich#artikel-kosten">„Kostet mich das etwas?“</a></p>
             <p class="note">Du kannst immer alles fragen, auch wenn du dir unsicher bist. Eine dumme Frage gibt es hier nicht.</p>`, fall: 'brief' },
         'chatgpt-konto': { g: 'loslegen', q: 'Wie lege ich ein ChatGPT-Konto an?', kw: 'konto anlegen registrieren anmelden chatgpt account erstellen kostenlos e-mail google passwort neu',
           lead: 'Das dauert etwa zwei Minuten und kostet nichts. Du brauchst nur eine E-Mail-Adresse oder dein Google-Konto.',

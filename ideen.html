@@ -2351,6 +2351,17 @@ html .site-nav .v44-nav a.v47-pille[aria-current="page"] span { color: #fff; }
 </style>
 <meta name="runde151" content="herz-dauerhaft-ablage-text-2026-11-02">
 <meta name="runde157" content="wissen-teil-c-2026-11-02">
+<style id="r161">
+  /* (c) Kopf: bis 389 px kleinerer Abstand (gap 0), damit Logo, „Alle Ideen“ und Personen-Knopf mit 16 px Rand ins Bild passen (vorher ragte der Knopf bei 360 px über den Rand) */
+  @media (max-width: 389px) { html .site-nav { gap: 0; }   /* bleibt der Abstand 14 px von .nav-end (margin-left) */ }
+  /* Kopf von 493 bis 700 px: Icon und Wort „Mein Bereich“ nebeneinander, 16 px, Tippfläche mindestens 44 × 44 px; darunter bleibt nur das Icon (aria-label bleibt) */
+  @media (min-width: 493px) and (max-width: 700px) {
+    html .site-nav .nav-mein { width: auto; min-width: 44px; min-height: 44px; padding: 0 14px 0 12px; gap: 6px; }
+    html .site-nav .nav-mein .nav-mein__text { position: static; width: auto; height: auto; overflow: visible; clip: auto; font-size: 16px; line-height: 1; }
+  }
+</style>
+<meta name="runde161" content="startleiste-frei-header-mein-bereich-2026-11-02">
+<meta name="runde172" content="anmelden-einmal-je-geraet-2026-11-02">
   <link rel="canonical" href="https://die-ki-macherei.de/ideen">
 </head>
 <body><div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -3974,6 +3985,12 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       if (ziel) ziel.focus({ preventScroll: true });
     }
     window.v25r7Oeffnen = oeffne;
+    // Runde 172 (Pam, 02.11.2026): „Anmelden geht bald“ nur einmal je Gerät und Browser, nicht je Tab. Gespeichert wird
+    // nur der Stand. Kommt die echte Anmeldung, R172_STAND auf 2 setzen: Dann kommt das Fenster bewusst noch einmal.
+    const R172_KEY = 'ki-anmeldung-hinweis', R172_STAND = 1;
+    function r172Gesehen() { try { return Number(localStorage.getItem(R172_KEY)) >= R172_STAND; } catch (e) { return false; } }
+    function r172Merken() { try { localStorage.setItem(R172_KEY, String(R172_STAND)); } catch (e) { /* nur dieser Tab */ } }
+    dlg.addEventListener('close', r172Merken);
     dlg.addEventListener('close', () => {   // Runde 66 (Pam): Auslöser weg oder versteckt (Blase) → Personen-Knopf im Kopf
       let ziel = zuletzt;
       if (!ziel || !document.contains(ziel) || !ziel.getClientRects().length) ziel = [...document.querySelectorAll('a.nav-mein')].find(a => a.getClientRects().length);
@@ -3987,9 +4004,10 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
     KI.nachHerz = function (id, titel) {
       const n = Object.keys(KI.herzen()).length, h = KI.hinweis();
       let sichtbar = true; try { sichtbar = !window.frameElement || !window.frameElement.hidden; } catch (e) {}
-      if (!KI.konto() && n >= 2 && !h.anmeldung && sichtbar) {
+      if (!KI.konto() && n >= 2 && !h.anmeldung && !r172Gesehen() && sichtbar) {
         h.anmeldung = Date.now(); h.blase = h.blase || h.anmeldung;
         KI.schreib(KI.K.hinweis, h);
+        r172Merken();
         oeffne(1);
         return;
       }
