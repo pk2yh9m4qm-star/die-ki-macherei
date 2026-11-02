@@ -2817,6 +2817,131 @@ button.hh-link{background:none;border:0;padding:0;font-family:inherit;font-size:
   }
 </style>
 <meta name="runde151" content="herz-dauerhaft-ablage-text-2026-11-02">
+<script id="merkspeicher">
+/* merkspeicher.js (Runde 103, Ryan, 30.10.2026)
+   Gemerktes (Herzen, Sammlungen und die uebrigen ki-entdecken-Schluessel) bleibt im Browser (localStorage) und ist nach
+   Tab schliessen und neu oeffnen noch da. Nichts verlaesst den Browser, keine Kennung, keine Anfrage.
+   Startseite und "Alle Ideen" schreiben bis zu Jims naechster Runde noch in sessionStorage. Deshalb gleicht diese Datei
+   Herzen und Sammlungen mit sessionStorage ab (Drei-Wege-Abgleich mit Merkzettel "ki-entdecken-abgleich" in sessionStorage):
+     - neu auf einer Seite: kommt auf beide Seiten
+     - auf einer Seite entfernt (war beim letzten Abgleich auf beiden): faellt auf beiden weg
+   Die Uebergabeschluessel der Testumgebung (live-befehl, live-von) bleiben in sessionStorage und werden hier nicht angefasst.
+   Alles in try/catch. Geht kein Speicher (privates Fenster mit gesperrtem Speicher), merkt sich die Seite nur bis zum Neuladen. */
+(function () {
+  'use strict';
+  var PRAEFIX = 'ki-entdecken-';
+  var HERZEN = PRAEFIX + 'herzen', SAMMLUNGEN = PRAEFIX + 'sammlungen', MERKER = PRAEFIX + 'abgleich';
+  var ALLE = ['herzen', 'sammlungen', 'kompass', 'konto', 'hinweis', 'wissen'].map(function (n) { return PRAEFIX + n; });
+  var ersatz = {};   // nur wenn kein Speicher geht
+
+  function lager(art) {
+    try { var s = window[art]; s.getItem(HERZEN); return s; } catch (e) { return null; }
+  }
+  function leseJson(s, k, leer) {
+    try { if (!s) return leer; var w = s.getItem(k); return w ? JSON.parse(w) : leer; } catch (e) { return leer; }
+  }
+  function schreibeJson(s, k, v) {
+    try { if (!s) return; if (v == null) s.removeItem(k); else s.setItem(k, JSON.stringify(v)); } catch (e) { /* voll oder gesperrt */ }
+  }
+
+  // Herzen (Objekt) und Sammlungen (Liste) als Karte id -> Eintrag
+  function alsKarte(k, v) {
+    var m = {}, i;
+    if (k === HERZEN) { if (v && typeof v === 'object' && !Array.isArray(v)) Object.keys(v).forEach(function (id) { m[id] = v[id]; }); }
+    else if (Array.isArray(v)) for (i = 0; i < v.length; i++) if (v[i] && v[i].id) m[v[i].id] = v[i];
+    return m;
+  }
+  function ausKarte(k, m) {
+    if (k === HERZEN) return m;
+    return Object.keys(m).map(function (id) { return m[id]; }).sort(function (a, b) { return (a.am || 0) - (b.am || 0); });
+  }
+  var js = function (x) { return JSON.stringify(x); };
+
+  function abgleichen(k) {
+    var ls = lager('localStorage'), ss = lager('sessionStorage');
+    if (!ls || !ss) return;
+    var merker = leseJson(ss, MERKER, {});
+    var a = alsKarte(k, leseJson(ls, k, null)), b = alsKarte(k, leseJson(ss, k, null)), alt = merker[k] || {};
+    var neu = {}, ids = {};
+    Object.keys(a).concat(Object.keys(b)).forEach(function (id) { ids[id] = 1; });
+    Object.keys(ids).forEach(function (id) {
+      var inA = id in a, inB = id in b, war = id in alt;
+      if (war && !(inA && inB)) return;   // auf einer Seite entfernt
+      if (inA && inB) {
+        // beide da: hat nur die Sitzung etwas geaendert, gilt die Sitzung, sonst der dauerhafte Speicher
+        neu[id] = (js(b[id]) !== alt[id] && js(a[id]) === alt[id]) ? b[id] : a[id];
+      } else neu[id] = inA ? a[id] : b[id];
+    });
+    var soll = ausKarte(k, neu);
+    if (js(leseJson(ls, k, null)) !== js(soll)) schreibeJson(ls, k, soll);
+    if (js(leseJson(ss, k, null)) !== js(soll)) schreibeJson(ss, k, soll);
+    var stand = {};
+    Object.keys(neu).forEach(function (id) { stand[id] = js(neu[id]); });
+    merker[k] = stand;
+    schreibeJson(ss, MERKER, merker);
+  }
+
+  // Einmal beim Laden: uebrige Schluessel aus der Sitzung uebernehmen, wenn dauerhaft noch nichts steht
+  function uebernehmen() {
+    var ls = lager('localStorage'), ss = lager('sessionStorage');
+    if (!ls || !ss) return;
+    ALLE.forEach(function (k) {
+      if (k === HERZEN || k === SAMMLUNGEN) return;
+      try { if (ls.getItem(k) == null && ss.getItem(k) != null) ls.setItem(k, ss.getItem(k)); } catch (e) { /* weiter */ }
+    });
+  }
+
+  function lies(k, leer) {
+    var ls = lager('localStorage');
+    if (!ls) return k in ersatz ? JSON.parse(ersatz[k]) : leer;
+    if (k === HERZEN || k === SAMMLUNGEN) abgleichen(k);
+    return leseJson(ls, k, leer);
+  }
+  function schreib(k, v) {
+    var ls = lager('localStorage'), ss = lager('sessionStorage');
+    if (!ls) { if (v == null) delete ersatz[k]; else ersatz[k] = js(v); }
+    else schreibeJson(ls, k, v);
+    if (k === HERZEN || k === SAMMLUNGEN) {
+      // Jims Seiten lesen noch aus der Sitzung: spiegeln und Merkzettel nachziehen
+      schreibeJson(ss, k, v);
+      if (ss) {
+        var merker = leseJson(ss, MERKER, {}), stand = {}, m = alsKarte(k, v);
+        Object.keys(m).forEach(function (id) { stand[id] = js(m[id]); });
+        merker[k] = stand; schreibeJson(ss, MERKER, merker);
+      }
+    }
+  }
+  function alleLoeschen() {
+    var ls = lager('localStorage'), ss = lager('sessionStorage');
+    // Runde 103: auch die Antworten des Einstiegsfensters; fremde Schlüssel (etwa der Ausschalter der Besucherzählung) bleiben stehen
+    var ANTWORTEN = ['ki-wahl', 'ki-erfahrung', 'ki-abo', 'ki-einstieg', 'ki-einstieg-stand',
+      // Runde 117: Ablage und Los aus Entdecken, Startplan-Merker (beides localStorage und sessionStorage)
+      'ki-entdecken-ablage', 'ki-entdecken-los', 'r64-start', 'r64-fertig', 'ki-entdecken-abgleich'];
+    ALLE.concat(ANTWORTEN).forEach(function (k) { try { if (ls) ls.removeItem(k); } catch (e) {} try { if (ss) ss.removeItem(k); } catch (e) {} });
+    try { if (ss) ss.removeItem(MERKER); } catch (e) {}
+    ersatz = {};
+  }
+
+  uebernehmen();
+  abgleichen(HERZEN); abgleichen(SAMMLUNGEN);
+  window.KIMerk = { verfuegbar: function () { return !!lager('localStorage'); }, lies: lies, schreib: schreib, alleLoeschen: alleLoeschen, abgleichen: function () { abgleichen(HERZEN); abgleichen(SAMMLUNGEN); }, schluessel: ALLE.slice() };
+})();
+
+  </script>
+<script id="r159-herz">
+/* Runde 159: Herzen und Sammlungen dieser Seite gelten sofort auch dauerhaft (localStorage). Gelesen wird weiter aus der Sitzung;
+   merkspeicher (oben) hat beim Laden beides abgeglichen. Geht ein Speicher nicht, bleibt alles wie vorher. */
+(function () { try {
+  var H = 'ki-entdecken-herzen', S = 'ki-entdecken-sammlungen', ss = window.sessionStorage, ls = window.localStorage, P = Storage.prototype;
+  if (!ss || !ls) return;
+  var set = P.setItem, rem = P.removeItem, clr = P.clear;
+  P.setItem = function (k, v) { set.call(this, k, v); if (this === ss && (k === H || k === S)) { try { set.call(ls, k, String(v)); } catch (e) { /* voll */ } } };
+  P.removeItem = function (k) { rem.call(this, k); if (this === ss && (k === H || k === S)) { try { rem.call(ls, k); } catch (e) { /* weiter */ } } };
+  P.clear = function () { clr.call(this); if (this === ss) { try { rem.call(ls, H); rem.call(ls, S); } catch (e) { /* weiter */ } } };
+} catch (e) { /* kein Speicher */ } })();
+</script>
+<meta name="runde159" content="herz-dauerhaft-start-anleitungen-2026-11-02">
+<meta name="runde160" content="hoch-header-2026-11-02">
   <link rel="canonical" href="https://die-ki-macherei.de/zahlst-du-zu-viel-miete">
 </head>
 <body data-fall="zahlst-du-zu-viel-miete"><div class="live-aufbau" role="note"><b>Public Beta</b> · Die Seite ist noch im Aufbau.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-folder-heart" viewBox="0 0 24 24"><path d="M10.638 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v3.417"/><path d="M14.62 18.8A2.25 2.25 0 1 1 18 15.836a2.25 2.25 0 1 1 3.38 2.966l-2.626 2.856a.998.998 0 0 1-1.507 0z"/></symbol><symbol id="ls-house" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol><symbol id="ls-message-square-warning" viewBox="0 0 24 24"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/><path d="M12 15h.01"/><path d="M12 7v4"/></symbol><symbol id="ls-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -2881,7 +3006,7 @@ SOFTWARE. --><symbol id="ls-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727
       </header>
 
 <div class="ra ra3 r64 r70 r70-z-ergebnis r71" id="fall-miete" data-fall="miete">
-  <div class="ra-wrap"><a class="ra-zurueck" href="/ideen"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>Alle Ideen</a></div><div class="d-buehne"><figure class="ra-szene r70-kopf r71-kopf vd" style="--fa:#e8cba3;--fb:#c0956a;--fc:#6b4a3a;--ml:10%;--mb:58%;--pos-hoch:50% 24%;--pos-quer:50% 27%;--qb:2400;--qh:1200" data-r115="1"><picture><source media="(min-width:1024px)" type="image/webp" srcset="/a-7f103bfe1792.webp 1600w, /a-c1dafc60da45.webp 2400w" sizes="min(100vw, 2400px)" width="2400" height="1200"><img data-m="1" src="/a-641cc9bca4c2.webp" srcset="/a-641cc9bca4c2.webp 750w, /a-015eacccb03b.webp 1200w" sizes="100vw" alt="Eine junge Frau sitzt nachdenklich im Sessel unter der Dachschräge und liest den Mietvertrag, den sie in der Hand hält, um zu prüfen, ob sie zu viel Miete zahlt; links steht ein Beistelltisch mit Sparschwein." width="1200" height="1224" fetchpriority="high" loading="eager" decoding="async"></picture><span class="d-dunkel" aria-hidden="true"></span></figure>
+  <div class="ra-wrap"><a class="ra-zurueck" href="/ideen"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>Alle Ideen</a></div><div class="d-buehne"><figure class="ra-szene r70-kopf r71-kopf vd" style="--fa:#e8cba3;--fb:#c0956a;--fc:#6b4a3a;--ml:10%;--mb:58%;--pos-hoch:50% 9.5%;--pos-quer:50% 27%;--qb:2400;--qh:1200" data-r115="1"><picture><source media="(min-width:1024px)" type="image/webp" srcset="/a-7f103bfe1792.webp 1600w, /a-c1dafc60da45.webp 2400w" sizes="min(100vw, 2400px)" width="2400" height="1200"><img data-m="1" src="/a-49b635c3f156.webp" srcset="/a-49b635c3f156.webp 750w, /a-6fb2098321d1.webp 1200w" sizes="100vw" alt="Eine junge Frau sitzt nachdenklich im Sessel unter der Dachschräge und liest den Mietvertrag, den sie in der Hand hält, um zu prüfen, ob sie zu viel Miete zahlt; links steht ein Beistelltisch mit Sparschwein." width="1200" height="1224" fetchpriority="high" loading="eager" decoding="async"></picture><span class="d-dunkel" aria-hidden="true"></span></figure>
   
   <article class="ra-karte" style="--fa:#e8cba3;--fb:#c0956a;--fc:#6b4a3a;--ml:10%;--mb:58%">
     <div class="ra-karte-innen"><section class="r64-rk" id="r64-rk" hidden aria-labelledby="r64-rk-t"><button type="button" class="r64-zu" aria-label="Schließen">×</button><div class="r64-rk-teil" data-teil="hilfe"><div class="r64-rk-kopf"><p class="r64-rk-zeile">Zurück aus dem Chat</p><h2 id="r64-rk-t">Wie läuft's mit deiner Miete?</h2></div><div class="r64-rk-knoepfe"><div><button type="button" class="r64-rk-k" data-laeuft="laeuft">Läuft, ich sehe das Ergebnis</button></div><div><button type="button" class="r64-rk-k" data-hilfe="leer" aria-expanded="false" aria-controls="r64-a-leer">Das Eingabefeld ist leer</button><div class="r64-rk-antwort" id="r64-a-leer" hidden><p style="margin:0">Das passiert manchmal nach dem Anmelden. Die Anleitung liegt schon in deiner Zwischenablage: <span data-nur-geraet="handy">ins Feld tippen, gedrückt halten und „Einfügen“ wählen, abschicken.</span><span data-nur-geraet="computer">ins Feld klicken, Rechtsklick und „Einfügen“, abschicken.</span></p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und den Chat öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-leer">Hat geklappt</button></p></div></div><div><button type="button" class="r64-rk-k" data-hilfe="angemeldet" aria-expanded="false" aria-controls="r64-a-angemeldet">Ich bin nicht angemeldet</button><div class="r64-rk-antwort" id="r64-a-angemeldet" hidden><p style="margin:0"><span data-nur-geraet="computer">Melde dich vorher in diesem Browser bei deiner KI an.</span><span data-nur-geraet="handy">Melde dich vorher in der App deiner KI an.</span> Dann öffnet der Knopf direkt die fertige Anleitung. Noch kein Konto? Das legst du dort kostenlos an, mit E-Mail oder Google-Konto.</p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und den Chat öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-angemeldet">Hat geklappt</button></p></div></div><div><button type="button" class="r64-rk-k" data-hilfe="nichts" aria-expanded="false" aria-controls="r64-a-nichts">Es hat sich nichts geöffnet</button><div class="r64-rk-antwort" id="r64-a-nichts" hidden><p style="margin:0"><span data-nur-geraet="handy">Dann fehlt meist die App. </span><a href="#" data-start-web target="_blank" rel="noopener">Im Browser öffnen</a></p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und den Chat öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-nichts">Hat geklappt</button></p></div></div></div><p class="r64-rk-fuss"><button type="button" class="r64-leise" data-r64-kopieren>Anleitung noch einmal kopieren</button><button type="button" class="r64-leise hh-karte-link" aria-haspopup="dialog" aria-controls="hh-sheet">Hilfe bei Problemen</button></p></div><div class="r64-rm" data-teil="rm" hidden><div class="r64-rm-kopf"><h2>Hilfst du uns kurz?</h2><button type="button" class="r64-leise" data-lieber-nicht>Lieber nicht</button></div><p class="r64-rm-unter">3 Fragen, nur antippen.</p><div class="v47-fort" aria-hidden="true"><b class="an"></b><b></b><b></b><span>Frage 1 von 3</span></div><div data-frage="rm-entwuerfe"><p class="r64-frage" id="r64-f0"><span class="r131-sr">Frage 1 von 3: </span>Wie gefällt dir das Ergebnis?</p><div class="r64-chips" data-anzahl="4" role="group" aria-labelledby="r64-f0"><button type="button" class="r64-chip" data-wert="gar-nicht" aria-pressed="false">Gar nicht</button><button type="button" class="r64-chip" data-wert="geht-so" aria-pressed="false">Geht so</button><button type="button" class="r64-chip" data-wert="gut" aria-pressed="false">Gut</button><button type="button" class="r64-chip" data-wert="richtig-gut" aria-pressed="false">Richtig gut</button></div></div><div data-frage="rm-leicht" hidden><p class="r64-frage" id="r64-f1"><span class="r131-sr">Frage 2 von 3: </span>War es leicht, loszulegen?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f1"><button type="button" class="r64-chip" data-wert="ganz-leicht" aria-pressed="false">Ganz leicht</button><button type="button" class="r64-chip" data-wert="ging-so" aria-pressed="false">Ging so</button><button type="button" class="r64-chip" data-wert="schwierig" aria-pressed="false">Schwierig</button></div></div><div data-frage="rm-wieder" hidden><p class="r64-frage" id="r64-f2"><span class="r131-sr">Frage 3 von 3: </span>Würdest du so etwas wieder mit KI machen?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f2"><button type="button" class="r64-chip" data-wert="ja" aria-pressed="false">Ja</button><button type="button" class="r64-chip" data-wert="vielleicht" aria-pressed="false">Vielleicht</button><button type="button" class="r64-chip" data-wert="eher-nicht" aria-pressed="false">Eher nicht</button></div></div></div><div class="r64-feld r64-feld-teil" data-teil="feld" hidden><label for="r64-text">Magst du uns noch etwas sagen?</label><textarea id="r64-text" rows="1" maxlength="500" aria-describedby="r64-text-h"></textarea><p class="r64-feld-klein" id="r64-text-h">Freiwillig. Bitte keine Namen, Adressen oder andere persönliche Daten.</p><p class="r64-rk-aktion"><button type="button" class="r64-los" data-feld="absenden">Absenden</button><button type="button" class="r64-leise" data-feld="fertig">Fertig</button></p></div><div class="r64-dank" data-teil="dank" hidden role="status"><span class="r64-haken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Danke! Damit machst du die KI-Macherei für alle ein Stück besser.</p><a href="/ideen">Noch eine Idee ausprobieren?</a></div><div class="r64-dank" data-teil="schoen" hidden role="status"><p>Schön! Alles Gute damit.</p></div></section><p class="r64-danke-zeile" id="r64-danke-zeile" hidden role="status"><span>Danke fürs Mitmachen</span><button type="button" class="r64-zu" aria-label="Hinweis schließen">×</button></p>

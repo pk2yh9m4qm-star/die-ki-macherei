@@ -3612,6 +3612,130 @@ article.mcard > .herz { top: 9px; bottom: auto; right: 9px; width: 40px; height:
 <meta name="runde143" content="yannis-korrekturen-2026-11-02">
 <meta name="runde147" content="keller-film-rechner-mitte-2026-11-02">
 <meta name="runde157" content="wissen-teil-c-2026-11-02">
+<script id="merkspeicher">
+/* merkspeicher.js (Runde 103, Ryan, 30.10.2026)
+   Gemerktes (Herzen, Sammlungen und die uebrigen ki-entdecken-Schluessel) bleibt im Browser (localStorage) und ist nach
+   Tab schliessen und neu oeffnen noch da. Nichts verlaesst den Browser, keine Kennung, keine Anfrage.
+   Startseite und "Alle Ideen" schreiben bis zu Jims naechster Runde noch in sessionStorage. Deshalb gleicht diese Datei
+   Herzen und Sammlungen mit sessionStorage ab (Drei-Wege-Abgleich mit Merkzettel "ki-entdecken-abgleich" in sessionStorage):
+     - neu auf einer Seite: kommt auf beide Seiten
+     - auf einer Seite entfernt (war beim letzten Abgleich auf beiden): faellt auf beiden weg
+   Die Uebergabeschluessel der Testumgebung (live-befehl, live-von) bleiben in sessionStorage und werden hier nicht angefasst.
+   Alles in try/catch. Geht kein Speicher (privates Fenster mit gesperrtem Speicher), merkt sich die Seite nur bis zum Neuladen. */
+(function () {
+  'use strict';
+  var PRAEFIX = 'ki-entdecken-';
+  var HERZEN = PRAEFIX + 'herzen', SAMMLUNGEN = PRAEFIX + 'sammlungen', MERKER = PRAEFIX + 'abgleich';
+  var ALLE = ['herzen', 'sammlungen', 'kompass', 'konto', 'hinweis', 'wissen'].map(function (n) { return PRAEFIX + n; });
+  var ersatz = {};   // nur wenn kein Speicher geht
+
+  function lager(art) {
+    try { var s = window[art]; s.getItem(HERZEN); return s; } catch (e) { return null; }
+  }
+  function leseJson(s, k, leer) {
+    try { if (!s) return leer; var w = s.getItem(k); return w ? JSON.parse(w) : leer; } catch (e) { return leer; }
+  }
+  function schreibeJson(s, k, v) {
+    try { if (!s) return; if (v == null) s.removeItem(k); else s.setItem(k, JSON.stringify(v)); } catch (e) { /* voll oder gesperrt */ }
+  }
+
+  // Herzen (Objekt) und Sammlungen (Liste) als Karte id -> Eintrag
+  function alsKarte(k, v) {
+    var m = {}, i;
+    if (k === HERZEN) { if (v && typeof v === 'object' && !Array.isArray(v)) Object.keys(v).forEach(function (id) { m[id] = v[id]; }); }
+    else if (Array.isArray(v)) for (i = 0; i < v.length; i++) if (v[i] && v[i].id) m[v[i].id] = v[i];
+    return m;
+  }
+  function ausKarte(k, m) {
+    if (k === HERZEN) return m;
+    return Object.keys(m).map(function (id) { return m[id]; }).sort(function (a, b) { return (a.am || 0) - (b.am || 0); });
+  }
+  var js = function (x) { return JSON.stringify(x); };
+
+  function abgleichen(k) {
+    var ls = lager('localStorage'), ss = lager('sessionStorage');
+    if (!ls || !ss) return;
+    var merker = leseJson(ss, MERKER, {});
+    var a = alsKarte(k, leseJson(ls, k, null)), b = alsKarte(k, leseJson(ss, k, null)), alt = merker[k] || {};
+    var neu = {}, ids = {};
+    Object.keys(a).concat(Object.keys(b)).forEach(function (id) { ids[id] = 1; });
+    Object.keys(ids).forEach(function (id) {
+      var inA = id in a, inB = id in b, war = id in alt;
+      if (war && !(inA && inB)) return;   // auf einer Seite entfernt
+      if (inA && inB) {
+        // beide da: hat nur die Sitzung etwas geaendert, gilt die Sitzung, sonst der dauerhafte Speicher
+        neu[id] = (js(b[id]) !== alt[id] && js(a[id]) === alt[id]) ? b[id] : a[id];
+      } else neu[id] = inA ? a[id] : b[id];
+    });
+    var soll = ausKarte(k, neu);
+    if (js(leseJson(ls, k, null)) !== js(soll)) schreibeJson(ls, k, soll);
+    if (js(leseJson(ss, k, null)) !== js(soll)) schreibeJson(ss, k, soll);
+    var stand = {};
+    Object.keys(neu).forEach(function (id) { stand[id] = js(neu[id]); });
+    merker[k] = stand;
+    schreibeJson(ss, MERKER, merker);
+  }
+
+  // Einmal beim Laden: uebrige Schluessel aus der Sitzung uebernehmen, wenn dauerhaft noch nichts steht
+  function uebernehmen() {
+    var ls = lager('localStorage'), ss = lager('sessionStorage');
+    if (!ls || !ss) return;
+    ALLE.forEach(function (k) {
+      if (k === HERZEN || k === SAMMLUNGEN) return;
+      try { if (ls.getItem(k) == null && ss.getItem(k) != null) ls.setItem(k, ss.getItem(k)); } catch (e) { /* weiter */ }
+    });
+  }
+
+  function lies(k, leer) {
+    var ls = lager('localStorage');
+    if (!ls) return k in ersatz ? JSON.parse(ersatz[k]) : leer;
+    if (k === HERZEN || k === SAMMLUNGEN) abgleichen(k);
+    return leseJson(ls, k, leer);
+  }
+  function schreib(k, v) {
+    var ls = lager('localStorage'), ss = lager('sessionStorage');
+    if (!ls) { if (v == null) delete ersatz[k]; else ersatz[k] = js(v); }
+    else schreibeJson(ls, k, v);
+    if (k === HERZEN || k === SAMMLUNGEN) {
+      // Jims Seiten lesen noch aus der Sitzung: spiegeln und Merkzettel nachziehen
+      schreibeJson(ss, k, v);
+      if (ss) {
+        var merker = leseJson(ss, MERKER, {}), stand = {}, m = alsKarte(k, v);
+        Object.keys(m).forEach(function (id) { stand[id] = js(m[id]); });
+        merker[k] = stand; schreibeJson(ss, MERKER, merker);
+      }
+    }
+  }
+  function alleLoeschen() {
+    var ls = lager('localStorage'), ss = lager('sessionStorage');
+    // Runde 103: auch die Antworten des Einstiegsfensters; fremde Schlüssel (etwa der Ausschalter der Besucherzählung) bleiben stehen
+    var ANTWORTEN = ['ki-wahl', 'ki-erfahrung', 'ki-abo', 'ki-einstieg', 'ki-einstieg-stand',
+      // Runde 117: Ablage und Los aus Entdecken, Startplan-Merker (beides localStorage und sessionStorage)
+      'ki-entdecken-ablage', 'ki-entdecken-los', 'r64-start', 'r64-fertig', 'ki-entdecken-abgleich'];
+    ALLE.concat(ANTWORTEN).forEach(function (k) { try { if (ls) ls.removeItem(k); } catch (e) {} try { if (ss) ss.removeItem(k); } catch (e) {} });
+    try { if (ss) ss.removeItem(MERKER); } catch (e) {}
+    ersatz = {};
+  }
+
+  uebernehmen();
+  abgleichen(HERZEN); abgleichen(SAMMLUNGEN);
+  window.KIMerk = { verfuegbar: function () { return !!lager('localStorage'); }, lies: lies, schreib: schreib, alleLoeschen: alleLoeschen, abgleichen: function () { abgleichen(HERZEN); abgleichen(SAMMLUNGEN); }, schluessel: ALLE.slice() };
+})();
+
+  </script>
+<script id="r159-herz">
+/* Runde 159: Herzen und Sammlungen dieser Seite gelten sofort auch dauerhaft (localStorage). Gelesen wird weiter aus der Sitzung;
+   merkspeicher (oben) hat beim Laden beides abgeglichen. Geht ein Speicher nicht, bleibt alles wie vorher. */
+(function () { try {
+  var H = 'ki-entdecken-herzen', S = 'ki-entdecken-sammlungen', ss = window.sessionStorage, ls = window.localStorage, P = Storage.prototype;
+  if (!ss || !ls) return;
+  var set = P.setItem, rem = P.removeItem, clr = P.clear;
+  P.setItem = function (k, v) { set.call(this, k, v); if (this === ss && (k === H || k === S)) { try { set.call(ls, k, String(v)); } catch (e) { /* voll */ } } };
+  P.removeItem = function (k) { rem.call(this, k); if (this === ss && (k === H || k === S)) { try { rem.call(ls, k); } catch (e) { /* weiter */ } } };
+  P.clear = function () { clr.call(this); if (this === ss) { try { rem.call(ls, H); rem.call(ls, S); } catch (e) { /* weiter */ } } };
+} catch (e) { /* kein Speicher */ } })();
+</script>
+<meta name="runde159" content="herz-dauerhaft-start-anleitungen-2026-11-02">
   <link rel="canonical" href="https://die-ki-macherei.de/">
 </head>
 <body><div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole der Laufbänder: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
