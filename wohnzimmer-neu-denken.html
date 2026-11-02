@@ -2999,10 +2999,16 @@ button.hh-link{background:none;border:0;padding:0;font-family:inherit;font-size:
 <meta name="runde160" content="hoch-header-2026-11-02">
 <meta name="runde164" content="quer-header-2026-11-02b">
 <meta name="runde165" content="wohnzimmer-abo-texte-2026-11-02">
+<meta name="runde166" content="abo-fehler-j1-j8-2026-11-02">
 <style>/* Runde 168: Breit-Header ab 1600x900 */
 @media (min-width:1600px) and (min-height:900px) { body .ra3.r71 figure.ra-szene.vd[style*="--pos-quer-breit"] img { object-position: var(--pos-quer-breit); } }
 </style>
 <meta name="runde168" content="breit-header-2026-11-02">
+<style>/* Runde 169: Abstand unten = Startleiste + 12 px (Pam M1) */
+:root { --r169-leiste-h: 56px; --r169-leiste-rand: 12px; --r169-luft: 12px; }
+@media (max-width: 1023px) { html body { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--r169-leiste-rand) + var(--r169-leiste-h) + var(--r169-luft) + var(--r169-luft)); } }
+</style>
+<meta name="runde169" content="abstand-startleiste-2026-11-02">
   <link rel="canonical" href="https://die-ki-macherei.de/wohnzimmer-neu-denken">
 </head>
 <body data-fall="wohnzimmer-neu-denken"><div class="live-aufbau" role="note"><b>Public Beta</b> · Die Seite ist noch im Aufbau.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol><symbol id="ls-sofa" viewBox="0 0 24 24"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M4 18v2"/><path d="M20 18v2"/><path d="M12 4v9"/></symbol><symbol id="ls-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -4576,10 +4582,10 @@ Wichtig:
 <dialog class="r133-ebene" id="r133-ebene" aria-labelledby="r133-titel"><div class="r133-kopf"><h3 class="r133-titel" id="r133-titel" tabindex="-1"></h3><button type="button" class="r133-zu" aria-label="Schließen"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button></div><div class="r133-text"><div class="r133-text-inhalt"></div><button type="button" class="r133-fertig">Zurück zur Anleitung</button></div><template data-r133="kostenlos" data-titel="Wie weit komme ich mit der kostenlosen KI-Version?"><p class="r133-lead">Für die Grundlagen reicht sie: fragen, erklären lassen, umformulieren, übersetzen, üben. Bei allem, was mehr Arbeit macht, stößt du schnell an Grenzen, manchmal schon nach einem Foto oder Dokument.</p><div class="r133-prosa"><h4>Was kostenlos gut klappt</h4>
             <p>Eine Frage stellen, dir etwas erklären lassen, einen Text umformulieren oder übersetzen, ein schwieriges Gespräch üben, einen kurzen Brief verstehen. Dafür reichen die kostenlosen Versionen von ChatGPT, Claude und Gemini.</p>
             <h4>Wo du an Grenzen stößt</h4>
-            <ul><li><b>Menge.</b> Wer viel oder lange am Stück arbeitet, muss irgendwann warten oder bekommt eine schwächere KI-Version. Wie viele Nachrichten gehen, sagt kein Anbieter genau.</li>
-            <li><b>Gründlichkeit.</b> Die stärksten KI-Versionen denken gründlicher nach, das gibt es erst im Abo. Das merkst du bei allem, was mehrere Schritte braucht.</li>
-            <li><b>Fotos, Dateien und lange Dokumente.</b> Kostenlos kannst du nur wenige Fotos und Dateien hochladen, und die KI liest deutlich weniger Text auf einmal.</li>
-            <li><b>Recherche und Bilder.</b> Gründliche Recherche mit Quellen und eigene Bilder gibt es kostenlos nur in kleinen Portionen. Was ChatGPT und Claude unterscheidet, steht unter „Welche KI soll ich nehmen?“</li>
+            <ul><li><b>Menge.</b> Bei ChatGPT hat normales Schreiben kostenlos keine feste Grenze. Begrenzt sind Fotos und Dateien, Bilder, Sprechen und das Auswerten von Tabellen: Ist das aufgebraucht, wartest du. Bei Claude zählt, wie viel du in fünf Stunden machst, eine feste Zahl an Nachrichten gibt es nicht.</li>
+            <li><b>Gründlichkeit.</b> Die stärksten KI-Versionen gibt es erst im Abo, bei ChatGPT ab Plus. Gründlicher nachdenken kann ChatGPT auch kostenlos.</li>
+            <li><b>Fotos, Dateien und lange Dokumente.</b> Bei ChatGPT kannst du kostenlos nur wenige Fotos und Dateien am Tag hochladen, und die KI liest weniger Text auf einmal. Bei Claude gelten dieselben Grenzen wie im Abo, jeder Anhang verbraucht aber von deiner Menge, und im Abo hast du mehr davon.</li>
+            <li><b>Recherche und Bilder.</b> Bei ChatGPT gibt es gründliche Recherche mit Quellen und eigene Bilder kostenlos nur in kleinen Portionen. Claude recherchiert gründlich erst im Abo. Fotos oder gezeichnete Bilder erzeugt Claude nicht, nur Diagramme. Was ChatGPT und Claude unterscheidet, steht unter „Welche KI soll ich nehmen?“</li>
             <li><b>Aufgaben im Hintergrund.</b> Dass die KI etwas selbstständig oder regelmäßig für dich erledigt, gibt es fast nur im Abo. Ein Beispiel: Sie sucht jeden Morgen neue Stellenanzeigen.</li>
             <li><b>Werbung.</b> In der kostenlosen Version von ChatGPT kann Werbung erscheinen. Mehr dazu: „Was passiert mit all meinen Daten?“</li></ul>
             <h4>Was ein Abo kostet</h4>

@@ -2761,6 +2761,12 @@ article.mcard > .herz { top: 9px; bottom: auto; right: 9px; width: 40px; height:
 </style>
 <meta name="runde150" content="einstieg-app-hinweis-2026-11-02">
 <meta name="runde154" content="kostenlos-oder-abo-2026-11-02">
+<style>/* Runde 169: Sprungziele im Wissen-Tab unter der klebenden Tableiste (Pam F3) */
+:root { --r169-tabs-h: 63px; }
+#mb-wissen-inhalt .mb-art, #mb-wissen-inhalt .k-faq > * { scroll-margin-top: calc(env(safe-area-inset-top, 0px) + var(--r169-tabs-h) + 8px); }
+</style>
+<meta name="runde169" content="abstand-startleiste-2026-11-02">
+<meta name="runde171" content="oscar-f93-f60-2026-11-02">
   <link rel="canonical" href="https://die-ki-macherei.de/mein-bereich">
 </head>
 <body><div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -3258,7 +3264,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
           body: `<p>Ein Abo ist ein bezahlter Zugang mit mehr Möglichkeiten.</p>
             <h4 id="kostenlos--hochladen">Fotos und Dateien hochladen</h4>
             <p><b>Mit Abo geht mehr:</b> Du kannst mehr Fotos, PDFs und Tabellen hochladen.</p>
-            <ul><li><b>ChatGPT:</b> Kostenlos gehen am Tag nur wenige Fotos und Dateien. Ist die Grenze erreicht, geht es erst später wieder. Mit Abo liest die KI auch längere Dokumente auf einmal.</li>
+            <ul><li><b>ChatGPT:</b> Kostenlos gehen nur begrenzt Fotos und Dateien. Ist die Grenze erreicht, geht es erst später wieder. Mit Abo liest die KI auch längere Dokumente auf einmal.</li>
             <li><b>Claude:</b> Auch hier ist die Menge kostenlos begrenzt. Mit Abo passt mehr hinein.</li></ul>
             <h4 id="kostenlos--bilder">Bilder erzeugen</h4>
             <p><b>Mit Abo geht mehr, aber nur bei ChatGPT.</b></p>
@@ -3331,7 +3337,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
             <h4>Was du beim Anmelden akzeptierst</h4>
             <p>Mit dem Konto stimmst du den Nutzungsbedingungen und der Datenschutzerklärung des Anbieters zu. In Europa gelten für dich die europäischen Datenschutzregeln, denn dein Vertragspartner sitzt in Irland. Du kannst jederzeit nachfragen, welche Daten gespeichert sind, alles herunterladen und dein Konto mitsamt den Chats löschen.</p>
             <h4>So schützt du dich zusätzlich</h4>
-            <ul><li><b>Für Heikles ein Chat ohne Verlauf:</b> bei ChatGPT der „temporäre Chat“, bei Claude „Inkognito“. Diese Chats landen weder im Verlauf noch im Training und sind nach etwa 30 Tagen gelöscht.</li>
+            <ul><li><b>Für Heikles ein Chat ohne Verlauf:</b> bei ChatGPT der „temporäre Chat“, bei Claude „Inkognito“. Diese Chats landen weder im Verlauf noch im Training und werden noch etwa 30 Tage aufbewahrt.</li>
             <li><b>Daumen nur bei Unverfänglichem:</b> Bewertest du eine Antwort mit Daumen hoch oder runter, bekommt der Anbieter den ganzen Chat zum Verbessern, auch wenn das Training aus ist.</li>
             <li><b>Gedächtnis ansehen:</b> Was sich die KI über dich merkt, findest du in den Einstellungen und kannst es dort löschen.</li>
             <li><b>Abdecken, was sie nicht braucht:</b> Name, Adresse, Konto- und Ausweisnummern. Was du teilen kannst, steht unter <a href="/mein-bereich#artikel-ampel">„Was darf ich der KI erzählen?“</a></li></ul>
