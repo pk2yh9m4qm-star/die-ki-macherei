@@ -2750,6 +2750,16 @@ article.mcard > .herz { top: 9px; bottom: auto; right: 9px; width: 40px; height:
 </style>
 <meta name="runde149" content="einstieg-keine-ki-leerer-kreis-2026-11-02">
 <meta name="runde153" content="wissensbereich-teil-a-2026-11-02">
+<style id="r150">
+  /* Runde 150: App-Hinweis im Einstiegsfenster (Schritt „keine“) */
+  #v47-ein .v47-text.r150-klein { font-size: 15px; line-height: 1.45; margin-top: 10px; }
+  #v47-ein .r150-klein a { display: inline-block; padding: 12px 0; margin: -12px 0; color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  /* Nach der Rückkehr („Angemeldet?“): keine leere Fläche; „Weiter mit ChatGPT“ rückt direkt unter „← Zurück“ */
+  #v47-ein .v47-innen.r130-konto .v47-form { flex: none; }
+  #v47-ein .v47-innen.r130-konto .v47-fuss::before { content: none; display: none; }
+  @media (max-width: 700px) { #v47-ein .v47-innen.r130-konto .v47-fuss { border-top: 0; padding-top: 16px; } }
+</style>
+<meta name="runde150" content="einstieg-app-hinweis-2026-11-02">
   <link rel="canonical" href="https://die-ki-macherei.de/mein-bereich">
 </head>
 <body><div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -4525,10 +4535,11 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
           <div class="v47-opts"><label class="v47-opt" data-szene="frei"><input type="radio" name="ein-abo" value="frei"><span>Nein, kostenlos</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="abo"><input type="radio" name="ein-abo" value="abo"><span>Ja, Abo</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="weissnicht"><input type="radio" name="ein-abo" value="weissnicht"><span>Weiß ich nicht</span><i aria-hidden="true"></i></label></div>
                   </fieldset>
         <div class="v47-teil" data-teil="keine" hidden>
-          <h2 class="v47-frage" id="ein-titel-keine" tabindex="-1">Du benötigst ein Konto bei ChatGPT oder Claude.</h2>
+          <h2 class="v47-frage" id="ein-titel-keine" tabindex="-1">Melde dich einmal bei ChatGPT an.</h2>
           <button type="button" class="v57-zurueck" data-v47="zurueck">← Zurück</button>
           <p class="v47-text">Jede Anleitung bei uns ist mit ChatGPT und Claude getestet. Wir beschränken uns auf diese Apps, da sie die aktuell fähigsten KI-Modelle nutzen.</p>
-          <p class="v47-text">Für den schnellen Einstieg empfehlen wir ein kostenloses Konto bei ChatGPT.</p>
+          <p class="v47-text" id="r150-absatz">Öffne ChatGPT hier im Browser und melde dich kostenlos an. Bleib angemeldet, dann öffnet sich jede Anleitung direkt bei dir.</p>
+          <p class="v47-text r150-klein">Lieber Claude? Das geht genauso <span id="r150-mit">auf</span> <a id="r150-claude" href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>.</p>
         </div>
         <div class="v47-teil" data-teil="laden" hidden>
           <h2 class="v47-frage" id="ein-titel-laden" tabindex="-1">Wird für dich eingerichtet</h2>
@@ -4548,7 +4559,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
         <button type="button" class="v47-leise" data-v47="ueberspringen">Überspringen</button>
         <button type="button" class="v47-leise" data-v47="stoebern" hidden>Erst mal stöbern</button>
         <button type="button" class="v47-dunkel" data-v47="weiter" disabled>Weiter <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
-        <a class="v47-dunkel" data-v47="konto" href="https://chatgpt.com/auth/login" target="_blank" rel="noopener" hidden>ChatGPT-Konto anlegen · 2 Min. <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a class="v47-dunkel" data-v47="konto" href="https://chatgpt.com/auth/login" target="_blank" rel="noopener" hidden>Bei ChatGPT anmelden · 2 Min. <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
         <button type="button" class="v47-dunkel" data-v47="r130-weiter" hidden>Weiter mit ChatGPT <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
       </div>
     </div>
@@ -4646,13 +4657,37 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
 
     // Runde 130 (s2-35): Zustand „Konto angelegt“ im Schritt „keine“ (Merker, Anzeige, Fokus)
     var kontoDa = false, TITEL_KEINE = '';
+    // Runde 150: Gerät per User-Agent (nicht nach Breite); ohne Erkennung gilt die Rechner-Fassung aus dem HTML
+    var R150 = (function () {
+      var u = '', mobil = false, ios = false;
+      try {
+        u = navigator.userAgent || '';
+        ios = /iPhone|iPad|iPod/.test(u) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        mobil = ios || /Android/.test(u) || !!(navigator.userAgentData && navigator.userAgentData.mobile);
+      } catch (e) {}
+      return { mobil: mobil, chatgpt: ios ? 'https://apps.apple.com/app/chatgpt/id6448311069' : 'https://play.google.com/store/apps/details?id=com.openai.chatgpt',
+               claude: ios ? 'https://apps.apple.com/app/claude-by-anthropic/id6473753684' : 'https://play.google.com/store/apps/details?id=com.anthropic.claude', fertig: false };
+    })();
+    function r150Anwenden() {
+      if (R150.fertig) return;
+      R150.fertig = true;
+      if (!R150.mobil) return;
+      var t = dlg.querySelector('#ein-titel-keine'), a = dlg.querySelector('#r150-absatz'), m = dlg.querySelector('#r150-mit'), c = dlg.querySelector('#r150-claude'), k = knopf('konto');
+      if (t) t.textContent = 'Lade dir die ChatGPT-App aufs Handy.';
+      if (a) a.textContent = 'Melde dich in der App kostenlos an. Danach öffnet sich jede Anleitung hier direkt in der App.';
+      if (m) m.textContent = 'mit der';
+      if (c) { c.textContent = 'Claude-App'; c.href = R150.claude; }
+      if (k) { k.firstChild.textContent = 'ChatGPT-App laden '; k.href = R150.chatgpt; }
+    }
+    r150Anwenden();
     function r130Ui() {
+      r150Anwenden();
       var an = kontoDa && schritt === 'keine', t = dlg.querySelector('#ein-titel-keine');
       if (!TITEL_KEINE && t) TITEL_KEINE = t.textContent;
       innen.classList.toggle('r130-konto', an);
       knopf('r130-weiter').hidden = !an;
       if (an) { knopf('konto').hidden = true; knopf('stoebern').hidden = true; }
-      if (t) t.textContent = an ? "Konto angelegt? Dann geht's hier weiter." : TITEL_KEINE;
+      if (t) t.textContent = an ? (R150.mobil ? "In der App angemeldet? Dann geht’s hier weiter." : "Angemeldet? Dann geht’s hier weiter.") : TITEL_KEINE;
     }
     function r130Fokus() {
       var b = knopf('r130-weiter');

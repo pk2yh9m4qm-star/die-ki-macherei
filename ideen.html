@@ -2208,6 +2208,148 @@ html .site-nav .v44-nav a.v47-pille[aria-current="page"] span { color: #fff; }
   .r149-leer svg { display: block; width: 28px; height: 28px; }
 </style>
 <meta name="runde149" content="einstieg-keine-ki-leerer-kreis-2026-11-02">
+<style id="r150">
+  /* Runde 150: App-Hinweis im Einstiegsfenster (Schritt „keine“) */
+  #v47-ein .v47-text.r150-klein { font-size: 15px; line-height: 1.45; margin-top: 10px; }
+  #v47-ein .r150-klein a { display: inline-block; padding: 12px 0; margin: -12px 0; color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  /* Nach der Rückkehr („Angemeldet?“): keine leere Fläche; „Weiter mit ChatGPT“ rückt direkt unter „← Zurück“ */
+  #v47-ein .v47-innen.r130-konto .v47-form { flex: none; }
+  #v47-ein .v47-innen.r130-konto .v47-fuss::before { content: none; display: none; }
+  @media (max-width: 700px) { #v47-ein .v47-innen.r130-konto .v47-fuss { border-top: 0; padding-top: 16px; } }
+</style>
+<meta name="runde150" content="einstieg-app-hinweis-2026-11-02">
+<script id="merkspeicher">
+/* merkspeicher.js (Runde 103, Ryan, 30.10.2026)
+   Gemerktes (Herzen, Sammlungen und die uebrigen ki-entdecken-Schluessel) bleibt im Browser (localStorage) und ist nach
+   Tab schliessen und neu oeffnen noch da. Nichts verlaesst den Browser, keine Kennung, keine Anfrage.
+   Startseite und "Alle Ideen" schreiben bis zu Jims naechster Runde noch in sessionStorage. Deshalb gleicht diese Datei
+   Herzen und Sammlungen mit sessionStorage ab (Drei-Wege-Abgleich mit Merkzettel "ki-entdecken-abgleich" in sessionStorage):
+     - neu auf einer Seite: kommt auf beide Seiten
+     - auf einer Seite entfernt (war beim letzten Abgleich auf beiden): faellt auf beiden weg
+   Die Uebergabeschluessel der Testumgebung (live-befehl, live-von) bleiben in sessionStorage und werden hier nicht angefasst.
+   Alles in try/catch. Geht kein Speicher (privates Fenster mit gesperrtem Speicher), merkt sich die Seite nur bis zum Neuladen. */
+(function () {
+  'use strict';
+  var PRAEFIX = 'ki-entdecken-';
+  var HERZEN = PRAEFIX + 'herzen', SAMMLUNGEN = PRAEFIX + 'sammlungen', MERKER = PRAEFIX + 'abgleich';
+  var ALLE = ['herzen', 'sammlungen', 'kompass', 'konto', 'hinweis', 'wissen'].map(function (n) { return PRAEFIX + n; });
+  var ersatz = {};   // nur wenn kein Speicher geht
+
+  function lager(art) {
+    try { var s = window[art]; s.getItem(HERZEN); return s; } catch (e) { return null; }
+  }
+  function leseJson(s, k, leer) {
+    try { if (!s) return leer; var w = s.getItem(k); return w ? JSON.parse(w) : leer; } catch (e) { return leer; }
+  }
+  function schreibeJson(s, k, v) {
+    try { if (!s) return; if (v == null) s.removeItem(k); else s.setItem(k, JSON.stringify(v)); } catch (e) { /* voll oder gesperrt */ }
+  }
+
+  // Herzen (Objekt) und Sammlungen (Liste) als Karte id -> Eintrag
+  function alsKarte(k, v) {
+    var m = {}, i;
+    if (k === HERZEN) { if (v && typeof v === 'object' && !Array.isArray(v)) Object.keys(v).forEach(function (id) { m[id] = v[id]; }); }
+    else if (Array.isArray(v)) for (i = 0; i < v.length; i++) if (v[i] && v[i].id) m[v[i].id] = v[i];
+    return m;
+  }
+  function ausKarte(k, m) {
+    if (k === HERZEN) return m;
+    return Object.keys(m).map(function (id) { return m[id]; }).sort(function (a, b) { return (a.am || 0) - (b.am || 0); });
+  }
+  var js = function (x) { return JSON.stringify(x); };
+
+  function abgleichen(k) {
+    var ls = lager('localStorage'), ss = lager('sessionStorage');
+    if (!ls || !ss) return;
+    var merker = leseJson(ss, MERKER, {});
+    var a = alsKarte(k, leseJson(ls, k, null)), b = alsKarte(k, leseJson(ss, k, null)), alt = merker[k] || {};
+    var neu = {}, ids = {};
+    Object.keys(a).concat(Object.keys(b)).forEach(function (id) { ids[id] = 1; });
+    Object.keys(ids).forEach(function (id) {
+      var inA = id in a, inB = id in b, war = id in alt;
+      if (war && !(inA && inB)) return;   // auf einer Seite entfernt
+      if (inA && inB) {
+        // beide da: hat nur die Sitzung etwas geaendert, gilt die Sitzung, sonst der dauerhafte Speicher
+        neu[id] = (js(b[id]) !== alt[id] && js(a[id]) === alt[id]) ? b[id] : a[id];
+      } else neu[id] = inA ? a[id] : b[id];
+    });
+    var soll = ausKarte(k, neu);
+    if (js(leseJson(ls, k, null)) !== js(soll)) schreibeJson(ls, k, soll);
+    if (js(leseJson(ss, k, null)) !== js(soll)) schreibeJson(ss, k, soll);
+    var stand = {};
+    Object.keys(neu).forEach(function (id) { stand[id] = js(neu[id]); });
+    merker[k] = stand;
+    schreibeJson(ss, MERKER, merker);
+  }
+
+  // Einmal beim Laden: uebrige Schluessel aus der Sitzung uebernehmen, wenn dauerhaft noch nichts steht
+  function uebernehmen() {
+    var ls = lager('localStorage'), ss = lager('sessionStorage');
+    if (!ls || !ss) return;
+    ALLE.forEach(function (k) {
+      if (k === HERZEN || k === SAMMLUNGEN) return;
+      try { if (ls.getItem(k) == null && ss.getItem(k) != null) ls.setItem(k, ss.getItem(k)); } catch (e) { /* weiter */ }
+    });
+  }
+
+  function lies(k, leer) {
+    var ls = lager('localStorage');
+    if (!ls) return k in ersatz ? JSON.parse(ersatz[k]) : leer;
+    if (k === HERZEN || k === SAMMLUNGEN) abgleichen(k);
+    return leseJson(ls, k, leer);
+  }
+  function schreib(k, v) {
+    var ls = lager('localStorage'), ss = lager('sessionStorage');
+    if (!ls) { if (v == null) delete ersatz[k]; else ersatz[k] = js(v); }
+    else schreibeJson(ls, k, v);
+    if (k === HERZEN || k === SAMMLUNGEN) {
+      // Jims Seiten lesen noch aus der Sitzung: spiegeln und Merkzettel nachziehen
+      schreibeJson(ss, k, v);
+      if (ss) {
+        var merker = leseJson(ss, MERKER, {}), stand = {}, m = alsKarte(k, v);
+        Object.keys(m).forEach(function (id) { stand[id] = js(m[id]); });
+        merker[k] = stand; schreibeJson(ss, MERKER, merker);
+      }
+    }
+  }
+  function alleLoeschen() {
+    var ls = lager('localStorage'), ss = lager('sessionStorage');
+    // Runde 103: auch die Antworten des Einstiegsfensters; fremde Schlüssel (etwa der Ausschalter der Besucherzählung) bleiben stehen
+    var ANTWORTEN = ['ki-wahl', 'ki-erfahrung', 'ki-abo', 'ki-einstieg', 'ki-einstieg-stand',
+      // Runde 117: Ablage und Los aus Entdecken, Startplan-Merker (beides localStorage und sessionStorage)
+      'ki-entdecken-ablage', 'ki-entdecken-los', 'r64-start', 'r64-fertig', 'ki-entdecken-abgleich'];
+    ALLE.concat(ANTWORTEN).forEach(function (k) { try { if (ls) ls.removeItem(k); } catch (e) {} try { if (ss) ss.removeItem(k); } catch (e) {} });
+    try { if (ss) ss.removeItem(MERKER); } catch (e) {}
+    ersatz = {};
+  }
+
+  uebernehmen();
+  abgleichen(HERZEN); abgleichen(SAMMLUNGEN);
+  window.KIMerk = { verfuegbar: function () { return !!lager('localStorage'); }, lies: lies, schreib: schreib, alleLoeschen: alleLoeschen, abgleichen: function () { abgleichen(HERZEN); abgleichen(SAMMLUNGEN); }, schluessel: ALLE.slice() };
+})();
+
+  </script>
+<script id="r151-herz">
+/* Runde 151: Herzen und Sammlungen dieser Seite gelten sofort auch dauerhaft (localStorage). Gelesen wird weiter aus der Sitzung;
+   merkspeicher (oben) hat beim Laden beides abgeglichen. Geht ein Speicher nicht, bleibt alles wie vorher. */
+(function () { try {
+  var H = 'ki-entdecken-herzen', S = 'ki-entdecken-sammlungen', ss = window.sessionStorage, ls = window.localStorage, P = Storage.prototype;
+  if (!ss || !ls) return;
+  var set = P.setItem, rem = P.removeItem, clr = P.clear;
+  P.setItem = function (k, v) { set.call(this, k, v); if (this === ss && (k === H || k === S)) { try { set.call(ls, k, String(v)); } catch (e) { /* voll */ } } };
+  P.removeItem = function (k) { rem.call(this, k); if (this === ss && (k === H || k === S)) { try { rem.call(ls, k); } catch (e) { /* weiter */ } } };
+  P.clear = function () { clr.call(this); if (this === ss) { try { rem.call(ls, H); rem.call(ls, S); } catch (e) { /* weiter */ } } };
+} catch (e) { /* kein Speicher */ } })();
+</script>
+<style id="r151">
+  /* Runde 151: Ablage am Handy mit Wort „Mein Bereich“ (Herz, Zahl, Wort, Pfeil nebeneinander) */
+  @media (max-width: 700px) {
+    .herz-ablage { gap: 8px; min-height: 48px; padding: 5px 14px 5px 5px; max-width: calc(100vw - 32px); }
+    .herz-ablage__text { display: inline; flex: none; padding-left: 10px; font-size: 16px; line-height: 1.2; white-space: nowrap; }
+    .herz-ablage .icon { flex: none; }
+  }
+</style>
+<meta name="runde151" content="herz-dauerhaft-ablage-text-2026-11-02">
   <link rel="canonical" href="https://die-ki-macherei.de/ideen">
 </head>
 <body><div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -3908,10 +4050,11 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
           <div class="v47-opts"><label class="v47-opt" data-szene="frei"><input type="radio" name="ein-abo" value="frei"><span>Nein, kostenlos</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="abo"><input type="radio" name="ein-abo" value="abo"><span>Ja, Abo</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="weissnicht"><input type="radio" name="ein-abo" value="weissnicht"><span>Weiß ich nicht</span><i aria-hidden="true"></i></label></div>
                   </fieldset>
         <div class="v47-teil" data-teil="keine" hidden>
-          <h2 class="v47-frage" id="ein-titel-keine" tabindex="-1">Du benötigst ein Konto bei ChatGPT oder Claude.</h2>
+          <h2 class="v47-frage" id="ein-titel-keine" tabindex="-1">Melde dich einmal bei ChatGPT an.</h2>
           <button type="button" class="v57-zurueck" data-v47="zurueck">← Zurück</button>
           <p class="v47-text">Jede Anleitung bei uns ist mit ChatGPT und Claude getestet. Wir beschränken uns auf diese Apps, da sie die aktuell fähigsten KI-Modelle nutzen.</p>
-          <p class="v47-text">Für den schnellen Einstieg empfehlen wir ein kostenloses Konto bei ChatGPT.</p>
+          <p class="v47-text" id="r150-absatz">Öffne ChatGPT hier im Browser und melde dich kostenlos an. Bleib angemeldet, dann öffnet sich jede Anleitung direkt bei dir.</p>
+          <p class="v47-text r150-klein">Lieber Claude? Das geht genauso <span id="r150-mit">auf</span> <a id="r150-claude" href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>.</p>
         </div>
         <div class="v47-teil" data-teil="laden" hidden>
           <h2 class="v47-frage" id="ein-titel-laden" tabindex="-1">Wird für dich eingerichtet</h2>
@@ -3931,7 +4074,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
         <button type="button" class="v47-leise" data-v47="ueberspringen">Überspringen</button>
         <button type="button" class="v47-leise" data-v47="stoebern" hidden>Erst mal stöbern</button>
         <button type="button" class="v47-dunkel" data-v47="weiter" disabled>Weiter <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
-        <a class="v47-dunkel" data-v47="konto" href="https://chatgpt.com/auth/login" target="_blank" rel="noopener" hidden>ChatGPT-Konto anlegen · 2 Min. <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a class="v47-dunkel" data-v47="konto" href="https://chatgpt.com/auth/login" target="_blank" rel="noopener" hidden>Bei ChatGPT anmelden · 2 Min. <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
         <button type="button" class="v47-dunkel" data-v47="r130-weiter" hidden>Weiter mit ChatGPT <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
       </div>
     </div>
@@ -3966,13 +4109,37 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
 
     // Runde 130 (s2-35): Zustand „Konto angelegt“ im Schritt „keine“ (Merker, Anzeige, Fokus)
     var kontoDa = false, TITEL_KEINE = '';
+    // Runde 150: Gerät per User-Agent (nicht nach Breite); ohne Erkennung gilt die Rechner-Fassung aus dem HTML
+    var R150 = (function () {
+      var u = '', mobil = false, ios = false;
+      try {
+        u = navigator.userAgent || '';
+        ios = /iPhone|iPad|iPod/.test(u) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        mobil = ios || /Android/.test(u) || !!(navigator.userAgentData && navigator.userAgentData.mobile);
+      } catch (e) {}
+      return { mobil: mobil, chatgpt: ios ? 'https://apps.apple.com/app/chatgpt/id6448311069' : 'https://play.google.com/store/apps/details?id=com.openai.chatgpt',
+               claude: ios ? 'https://apps.apple.com/app/claude-by-anthropic/id6473753684' : 'https://play.google.com/store/apps/details?id=com.anthropic.claude', fertig: false };
+    })();
+    function r150Anwenden() {
+      if (R150.fertig) return;
+      R150.fertig = true;
+      if (!R150.mobil) return;
+      var t = dlg.querySelector('#ein-titel-keine'), a = dlg.querySelector('#r150-absatz'), m = dlg.querySelector('#r150-mit'), c = dlg.querySelector('#r150-claude'), k = knopf('konto');
+      if (t) t.textContent = 'Lade dir die ChatGPT-App aufs Handy.';
+      if (a) a.textContent = 'Melde dich in der App kostenlos an. Danach öffnet sich jede Anleitung hier direkt in der App.';
+      if (m) m.textContent = 'mit der';
+      if (c) { c.textContent = 'Claude-App'; c.href = R150.claude; }
+      if (k) { k.firstChild.textContent = 'ChatGPT-App laden '; k.href = R150.chatgpt; }
+    }
+    r150Anwenden();
     function r130Ui() {
+      r150Anwenden();
       var an = kontoDa && schritt === 'keine', t = dlg.querySelector('#ein-titel-keine');
       if (!TITEL_KEINE && t) TITEL_KEINE = t.textContent;
       innen.classList.toggle('r130-konto', an);
       knopf('r130-weiter').hidden = !an;
       if (an) { knopf('konto').hidden = true; knopf('stoebern').hidden = true; }
-      if (t) t.textContent = an ? "Konto angelegt? Dann geht's hier weiter." : TITEL_KEINE;
+      if (t) t.textContent = an ? (R150.mobil ? "In der App angemeldet? Dann geht’s hier weiter." : "Angemeldet? Dann geht’s hier weiter.") : TITEL_KEINE;
     }
     function r130Fokus() {
       var b = knopf('r130-weiter');

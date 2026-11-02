@@ -2794,6 +2794,21 @@ button.hh-link{background:none;border:0;padding:0;font-family:inherit;font-size:
 }
 </style>
 <meta name="runde152" content="start-button-1280-2026-11-02">
+<style id="r150-hakt">
+  /* Runde 150 (b): Store-Links im Aufklapper „Falls etwas hakt“, nur am Handy */
+  html[data-geraet="handy"] .r150-apps { display: block; margin: 4px 0 6px; }
+  .r150-app { display: inline-block; padding: 12px 4px; margin: -12px 0; min-height: 20px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+</style>
+<meta name="runde150" content="einstieg-app-hinweis-2026-11-02">
+<style id="r151">
+  /* Runde 151: Ablage am Handy mit Wort „Mein Bereich“ (Herz, Zahl, Wort, Pfeil nebeneinander) */
+  @media (max-width: 700px) {
+    .herz-ablage { gap: 8px; min-height: 48px; padding: 5px 14px 5px 5px; max-width: calc(100vw - 32px); }
+    .herz-ablage__text { display: inline; flex: none; padding-left: 10px; font-size: 16px; line-height: 1.2; white-space: nowrap; }
+    .herz-ablage .icon { flex: none; }
+  }
+</style>
+<meta name="runde151" content="herz-dauerhaft-ablage-text-2026-11-02">
   <link rel="canonical" href="https://die-ki-macherei.de/geld-nach-betrug-zurueckholen">
 </head>
 <body data-fall="geld-nach-betrug-zurueckholen"><div class="live-aufbau" role="note"><b>Public Beta</b> · Die Seite ist noch im Aufbau.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-file-x" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="m14.5 12.5-5 5"/><path d="m9.5 12.5 5 5"/></symbol><symbol id="ls-message-square-warning" viewBox="0 0 24 24"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/><path d="M12 15h.01"/><path d="M12 7v4"/></symbol><symbol id="ls-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol><symbol id="ls-undo-2" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -2942,7 +2957,7 @@ Bei 👮: der Text fürs Online-Formular, nur Tatsachen aus meinen Antworten.
 Bei 📅: Einträge zum Abtippen: Nachhaken, Umsätze prüfen in einer und in vier Wochen.
 Danach bist du fertig.
 
-Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite jeden Schritt ganz durch und hör nie nach einer Ankündigung auf.</pre><p><button type="button" class="clay-btn ra-zweit" data-kopieren>Anleitung als Text kopieren</button></p></details></div></details><details class="ra-auf" data-teil="hakt"><summary><span>Falls etwas hakt</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><ul class="ra-punkte"><li><b>Noch nicht bei ChatGPT angemeldet?</b> <span data-nur-geraet="computer">Melde dich vorher in diesem Browser an.</span><span data-nur-geraet="handy">Melde dich vorher in der ChatGPT-App an.</span> Dann öffnet der Knopf direkt die fertige Anleitung. Noch kein Konto? Das legst du dort kostenlos an, mit E-Mail oder Google-Konto.</li><li><b>Nur im Eingabefeld?</b> Dann tippe auf Senden.</li><li><b>Die KI sucht nicht im Netz:</b> Schreib „Such bitte im Netz“.</li><li><b>Keine Knöpfe zum Antippen:</b> Schreib die Antwort einfach hin.</li><li><b>Ein Datum kommt dir komisch vor:</b> Frag „Wie hast du das gerechnet?“</li><li><b>Es geht nicht weiter oder die KI hört mittendrin auf:</b> Schreib „weiter“.</li></ul><p><a class="ra-leise" href="#" data-start-web target="_blank" rel="noopener">Im Browser öffnen</a></p></div></details></section>
+Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite jeden Schritt ganz durch und hör nie nach einer Ankündigung auf.</pre><p><button type="button" class="clay-btn ra-zweit" data-kopieren>Anleitung als Text kopieren</button></p></details></div></details><details class="ra-auf" data-teil="hakt"><summary><span>Falls etwas hakt</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><ul class="ra-punkte"><li><b>Noch nicht bei ChatGPT angemeldet?</b> <span data-nur-geraet="computer">Melde dich vorher in diesem Browser an.</span><span data-nur-geraet="handy">Lade dir vorher die App deiner KI aufs Handy und melde dich dort an.</span><span data-nur-geraet="handy" class="r150-apps"><a class="r150-app" id="r150-a-chatgpt" href="https://apps.apple.com/app/chatgpt/id6448311069" target="_blank" rel="noopener">ChatGPT-App</a> · <a class="r150-app" id="r150-a-claude" href="https://apps.apple.com/app/claude-by-anthropic/id6473753684" target="_blank" rel="noopener">Claude-App</a></span> Dann öffnet der Knopf direkt die fertige Anleitung. Noch kein Konto? Das legst du dort kostenlos an, mit E-Mail oder Google-Konto.</li><li><b>Nur im Eingabefeld?</b> Dann tippe auf Senden.</li><li><b>Die KI sucht nicht im Netz:</b> Schreib „Such bitte im Netz“.</li><li><b>Keine Knöpfe zum Antippen:</b> Schreib die Antwort einfach hin.</li><li><b>Ein Datum kommt dir komisch vor:</b> Frag „Wie hast du das gerechnet?“</li><li><b>Es geht nicht weiter oder die KI hört mittendrin auf:</b> Schreib „weiter“.</li></ul><p><a class="ra-leise" href="#" data-start-web target="_blank" rel="noopener">Im Browser öffnen</a></p></div></details></section>
     </div>
   </article></div>
   <section class="ra-weitere" aria-labelledby="rueckholen-w">
@@ -4613,6 +4628,17 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
   function spaetSetzen() { if (!aktiv || raf) return; raf = requestAnimationFrame(function () { raf = 0; setze(); }); }
   window.addEventListener('scroll', spaetSetzen, { passive: true });
   window.addEventListener('resize', spaetSetzen);
+})();
+</script>
+<script>
+/* Runde 150 (b): Ziel der Store-Links je Gerät (iOS: App Store, sonst Play Store) */
+(function () {
+  try {
+    var ua = navigator.userAgent || '', ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (ios) return;
+    var z = { 'r150-a-chatgpt': 'https://play.google.com/store/apps/details?id=com.openai.chatgpt', 'r150-a-claude': 'https://play.google.com/store/apps/details?id=com.anthropic.claude' };
+    for (var id in z) { var a = document.getElementById(id); if (a) a.href = z[id]; }
+  } catch (e) {}
 })();
 </script>
 </body>
