@@ -2720,7 +2720,8 @@ html body #hh-sheet .hh-sheet-panel:focus,html body #hh-sheet .hh-sheet-panel:fo
 .hh-notfall{margin:0 0 14px;padding:12px 16px;list-style:none;border:2px solid #8a2f1d;border-radius:16px;background:#fff6f2;color:var(--ink);font:600 16px/1.45 var(--font-ui)}
 .hh-notfall li+li{margin-top:8px}
 .hh-wege{display:grid;gap:10px}
-.hh-wege[hidden]{display:none}
+#hh-sheet[data-hh-ki="chatgpt"] [data-hh-nur="claude"],#hh-sheet[data-hh-ki="claude"] [data-hh-nur="chatgpt"]{display:none}
+.hh-themen{border-top:1px solid color-mix(in srgb,currentColor 25%,transparent)}
 button.hh-link{background:none;border:0;padding:0;font-family:inherit;font-size:inherit;cursor:pointer;text-align:left}
 .hh-weg{border-radius:20px;background:var(--zettel);box-shadow:var(--mulde)}
 .hh-wegbtn{display:grid;grid-template-columns:44px minmax(0,1fr) 20px;gap:14px;align-items:center;width:100%;min-height:76px;padding:12px 14px;border:0;border-radius:20px;background:transparent;color:var(--ink);text-align:left;font-family:var(--font-ui);cursor:pointer}
@@ -2754,6 +2755,30 @@ button.hh-link{background:none;border:0;padding:0;font-family:inherit;font-size:
 <meta name="runde142" content="ausschnitt-feinschliff-2026-11-02">
 <meta name="runde143" content="yannis-korrekturen-2026-11-02">
 <meta name="runde144" content="ausschnitt-handy-2026-11-02">
+<style id="r145">
+/* Runde 145: Hinweis an den KI-Logos (Yannis). Das Feld ist ein Button ohne eigene Optik; die Blase hängt am Ende von body (position: fixed),
+   weil .kk3-fakten per clip-path beschneidet. Trefferfläche mindestens 24 x 24 px über ::after, ohne die Zeile zu verschieben. */
+.kk3-fakten button.r145-tipp { appearance: none; -webkit-appearance: none; background: none; border: 0; margin: 0; padding: 0; font: inherit; color: inherit;
+  cursor: help; position: relative; border-radius: 4px; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+.kk3-fakten button.r145-tipp::after { content: ""; position: absolute; left: -2px; right: -2px; top: 50%; height: 24px; transform: translateY(-50%); }
+.kk3-fakten button.r145-tipp:focus-visible { outline: 3px solid var(--focus, #fff); outline-offset: 3px; }
+.kk3-fakten { clip-path: inset(-8px 0 -8px var(--kkp)); }   /* oben und unten 8 px mehr, damit Fokusring und Trefferfläche nicht beschnitten werden; links bleibt der Schnitt von Runde 139 */
+.r145-blase { position: fixed; left: 0; top: 0; z-index: 2147483002; box-sizing: border-box; max-width: calc(100vw - 16px); padding: 2px 9px; border-radius: 6px;
+  background: #14222c; color: #fff; border: 1px solid rgb(255 255 255 / .45); font-family: inherit; font-size: 13px; font-weight: 650; line-height: 14px; white-space: nowrap;
+  box-shadow: 0 4px 12px rgb(0 0 0 / .30); opacity: 0; visibility: hidden; pointer-events: none; }
+.r145-blase.r145-an { opacity: 1; visibility: visible; pointer-events: auto; }
+/* Pfeil als Dreieck (4 px) zeigt auf die Logos; Blase sitzt bevorzugt direkt UNTER der Zeile, dort ist am Handy eine Lücke von mindestens 26 px bis zum nächsten Text; die Blase ist deshalb nur 20 px hoch */
+.r145-blase::before { content: ""; position: absolute; left: var(--r145-pfeil, 50%); margin-left: -4px; width: 0; height: 0; border: 4px solid transparent; }
+.r145-blase.r145-unten::before { bottom: 100%; border-bottom-color: #14222c; border-top-width: 0; }
+.r145-blase.r145-oben::before { top: 100%; border-top-color: #14222c; border-bottom-width: 0; }
+/* unsichtbare Brücke, damit die Maus ohne Lücke von den Logos zur Blase kommt (WCAG 1.4.13) */
+.r145-blase::after { content: ""; position: absolute; left: 0; right: 0; height: 5px; }
+.r145-blase.r145-oben::after { top: 100%; }
+.r145-blase.r145-unten::after { bottom: 100%; }
+@media (prefers-reduced-motion: no-preference) { .r145-blase { transition: opacity .12s ease, visibility 0s linear .12s; } .r145-blase.r145-an { transition: opacity .12s ease; } }
+@media (forced-colors: active) { .r145-blase { border-color: CanvasText; background: Canvas; color: CanvasText; } }
+</style>
+<meta name="runde145" content="logo-hinweis-2026-11-02">
   <link rel="canonical" href="https://die-ki-macherei.de/grosse-anschaffung-planen">
 </head>
 <body data-fall="grosse-anschaffung-planen"><div class="live-aufbau" role="note"><b>Public Beta</b> · Die Seite ist noch im Aufbau.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol><symbol id="ls-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol><symbol id="ls-shopping-bag" viewBox="0 0 24 24"><path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.103 6.034h17.794"/><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/></symbol><symbol id="ls-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -2826,7 +2851,7 @@ SOFTWARE. --><symbol id="ls-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727
         <div class="kk kk3" role="group" aria-label="Eckdaten dieser Idee">
     <a class="kk-siegel kk3-siegel" href="#" data-oeffne="gut"><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Kostenlos &amp; geprüft</a>
     <span class="kk-btns"><button type="button" class="ra-teilen" data-titel="Große Anschaffung planen" aria-label="Teilen: Große Anschaffung planen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5"/><path d="M5 11.5V19a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7.5"/></svg></button><button type="button" class="ra-herz" data-herz="r45" data-titel="Große Anschaffung planen" aria-pressed="false" aria-label="Merken: Große Anschaffung planen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button></span>
-    <ul class="kk3-fakten"><li><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock"/></svg>15 Min</li><li><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ruler"/></svg>Maße vom Stellplatz</li><li class="kk-ki"><span class="kk-logos" role="img" aria-label="Geht mit ChatGPT"><svg class="kk-logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#l-openai"/></svg></span></li></ul>
+    <ul class="kk3-fakten"><li><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock"/></svg>15 Min</li><li><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ruler"/></svg>Maße vom Stellplatz</li><li class="kk-ki"><button type="button" class="kk-logos r145-tipp" aria-label="Funktioniert mit ChatGPT" data-tipp="Funktioniert mit ChatGPT"><svg class="kk-logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#l-openai"/></svg></button></li></ul>
   </div>
         <h1>Große Anschaffung planen</h1>
         <p class="ra-kurztext">Billig im Laden heißt nicht billig auf Dauer: Strom, Wasser oder Ersatzteile kosten über die Jahre oft mehr, als du beim Kauf sparst.</p>
@@ -4336,7 +4361,7 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
   }
 })();
 </script>
-<div class="hh-sheet" id="hh-sheet" hidden><div class="hh-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="hh-titel" tabindex="-1"><span class="hh-griff" aria-hidden="true"></span><button type="button" class="hh-x" aria-label="Schließen"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button><h2 id="hh-titel">Wobei brauchst du Hilfe?</h2><div class="hh-wege" data-hh-fuer="chatgpt"><div class="hh-weg"><button type="button" class="hh-wegbtn" data-weg="1" aria-expanded="false" aria-controls="hh-p1-chatgpt"><span class="hh-ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></span><span class="hh-txt"><b>Etwas klappt nicht</b><small>Wähl, was hakt. Die Lösung steht gleich darunter.</small></span><span class="hh-chev"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></span></button><div class="hh-pn" id="hh-p1-chatgpt" hidden><details class="hh-prob" data-nur-geraet="handy"><summary><span>Ich bin nicht angemeldet</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Melde dich vorher in der ChatGPT-App an. Dann öffnet der Knopf direkt die fertige Anleitung.</p></div></details><details class="hh-prob" data-nur-geraet="computer"><summary><span>Ich bin nicht angemeldet</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Melde dich vorher in diesem Browser bei ChatGPT an. Dann öffnet der Knopf direkt die fertige Anleitung.</p></div></details><details class="hh-prob"><summary><span>Ich habe kein Konto</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Das legst du bei ChatGPT kostenlos an, mit E-Mail oder Google-Konto.</p></div></details><details class="hh-prob" data-nur-geraet="handy"><summary><span>Es hat sich nichts geöffnet</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Öffne es direkt im Browser. Meist fehlt dann die App. <button type="button" class="hh-link hh-web" data-hh-web>Im Browser öffnen</button></p></div></details><details class="hh-prob" data-nur-geraet="computer"><summary><span>Es hat sich nichts geöffnet</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Öffne es direkt im Browser. <button type="button" class="hh-link hh-web" data-hh-web>Im Browser öffnen</button></p></div></details><details class="hh-prob" data-nur-geraet="handy"><summary><span>Das Eingabefeld ist leer</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Das passiert manchmal nach dem Anmelden. Die Anleitung liegt schon in deiner Zwischenablage: ins Feld tippen, gedrückt halten und „Einfügen“ wählen.</p></div></details><details class="hh-prob" data-nur-geraet="computer"><summary><span>Das Eingabefeld ist leer</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Das passiert manchmal nach dem Anmelden. Die Anleitung liegt schon in deiner Zwischenablage: ins Feld klicken, Rechtsklick und „Einfügen“.</p></div></details><details class="hh-prob" data-nur-geraet="handy"><summary><span>Der Text steht nur im Feld</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Dann tippe auf Senden.</p></div></details><details class="hh-prob" data-nur-geraet="computer"><summary><span>Der Text steht nur im Feld</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Dann klick auf Senden.</p></div></details><details class="hh-prob"><summary><span>Die Antwort passt nicht</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Sag der KI, was du anders willst, etwa „kürzer“ oder „erklär mir den zweiten Punkt genauer“.</p></div></details></div></div><div class="hh-weg"><button type="button" class="hh-wegbtn" data-weg="3" aria-expanded="false" aria-controls="hh-p3-chatgpt"><span class="hh-ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><span class="hh-txt"><b>Wo Menschen helfen</b><small>Beratung vor Ort, am Telefon oder in der Familie.</small></span><span class="hh-chev"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></span></button><div class="hh-pn" id="hh-p3-chatgpt" hidden><div class="hh-ant"><p>Frag jemanden, der sich auskennt, und schaut es euch zusammen an.</p></div></div></div></div><div class="hh-wege" data-hh-fuer="claude" hidden><div class="hh-weg"><button type="button" class="hh-wegbtn" data-weg="1" aria-expanded="false" aria-controls="hh-p1-claude"><span class="hh-ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></span><span class="hh-txt"><b>Etwas klappt nicht</b><small>Wähl, was hakt. Die Lösung steht gleich darunter.</small></span><span class="hh-chev"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></span></button><div class="hh-pn" id="hh-p1-claude" hidden><details class="hh-prob" data-nur-geraet="handy"><summary><span>Ich bin nicht angemeldet</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Melde dich vorher in der Claude-App an. Dann öffnet der Knopf direkt die fertige Anleitung.</p></div></details><details class="hh-prob" data-nur-geraet="computer"><summary><span>Ich bin nicht angemeldet</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Melde dich vorher in diesem Browser bei Claude an. Dann öffnet der Knopf direkt die fertige Anleitung.</p></div></details><details class="hh-prob"><summary><span>Ich habe kein Konto</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Das legst du bei Claude kostenlos an, mit E-Mail oder Google-Konto.</p></div></details><details class="hh-prob" data-nur-geraet="handy"><summary><span>Es hat sich nichts geöffnet</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Öffne es direkt im Browser. Meist fehlt dann die App. <button type="button" class="hh-link hh-web" data-hh-web>Im Browser öffnen</button></p></div></details><details class="hh-prob" data-nur-geraet="computer"><summary><span>Es hat sich nichts geöffnet</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Öffne es direkt im Browser. <button type="button" class="hh-link hh-web" data-hh-web>Im Browser öffnen</button></p></div></details><details class="hh-prob" data-nur-geraet="handy"><summary><span>Das Eingabefeld ist leer</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Das passiert manchmal nach dem Anmelden. Die Anleitung liegt schon in deiner Zwischenablage: ins Feld tippen, gedrückt halten und „Einfügen“ wählen.</p></div></details><details class="hh-prob" data-nur-geraet="computer"><summary><span>Das Eingabefeld ist leer</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Das passiert manchmal nach dem Anmelden. Die Anleitung liegt schon in deiner Zwischenablage: ins Feld klicken, Rechtsklick und „Einfügen“.</p></div></details><details class="hh-prob" data-nur-geraet="handy"><summary><span>Der Text steht nur im Feld</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Dann tippe auf Senden.</p></div></details><details class="hh-prob" data-nur-geraet="computer"><summary><span>Der Text steht nur im Feld</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Dann klick auf Senden.</p></div></details><details class="hh-prob"><summary><span>Die Antwort passt nicht</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Sag der KI, was du anders willst, etwa „kürzer“ oder „erklär mir den zweiten Punkt genauer“.</p></div></details></div></div><div class="hh-weg"><button type="button" class="hh-wegbtn" data-weg="3" aria-expanded="false" aria-controls="hh-p3-claude"><span class="hh-ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><span class="hh-txt"><b>Wo Menschen helfen</b><small>Beratung vor Ort, am Telefon oder in der Familie.</small></span><span class="hh-chev"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></span></button><div class="hh-pn" id="hh-p3-claude" hidden><div class="hh-ant"><p>Frag jemanden, der sich auskennt, und schaut es euch zusammen an.</p></div></div></div></div></div></div>
+<div class="hh-sheet" id="hh-sheet" hidden><div class="hh-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="hh-titel" tabindex="-1"><span class="hh-griff" aria-hidden="true"></span><button type="button" class="hh-x" aria-label="Schließen"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button><h2 id="hh-titel">Wobei brauchst du Hilfe?</h2><div class="hh-themen"><details class="hh-prob"><summary><span>1. Was passiert hier überhaupt?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Du drückst auf den Knopf und kommst zu ChatGPT oder Claude.</p><p>Das sind Chat-Programme: Eine KI, also ein Computerprogramm, das Texte versteht und schreibt, antwortet dir dort wie in einer Nachrichten-App.</p><p>Unsere fertige Anleitung steht dann schon im Eingabefeld, so heißt die Zeile, in die du tippst.</p><p>Du schickst sie nur noch ab und kannst danach nachfragen.</p></div></details><details class="hh-prob"><summary><span>2. Brauche ich ein Konto? Kostet das etwas?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Ein Konto ist dein persönlicher Zugang. Du legst es kostenlos an, mit E-Mail-Adresse oder Google-Konto.</p><div data-hh-nur="chatgpt"><p>Am Handy geht ChatGPT auch ohne Konto. Dann wird dein Chat aber nicht gespeichert. Mit einem kostenlosen Konto bleibt er erhalten. Am Computer meldest du dich dafür an, unser Knopf führt dich dort zuerst zur Anmeldung.</p><p>Normale Text-Chats sind kostenlos. Für Fotos, Dateien, Bilder und einige Zusatzfunktionen gibt es Grenzen.</p><p>Im kostenlosen Tarif kann Werbung erscheinen, und ein bezahltes Abo kannst du jederzeit kündigen.</p></div><div data-hh-nur="claude"><p>Für Claude brauchst du ein Konto.</p><p>Kostenlos hast du eine Nutzungsgrenze, die sich nach einigen Stunden wieder zurücksetzt.</p><p>Im kostenlosen Tarif erscheint keine Werbung, und ein bezahltes Abo kannst du jederzeit kündigen.</p></div></div></details><details class="hh-prob"><summary><span>3. Die KI öffnet sich nicht. Was kann ich tun?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Am Computer fragt dich beim ersten Klick zuerst ein kleines Fenster „Bist du angemeldet?“. Drücke dort „Ja, starten“, erst danach öffnet sich die KI. Bist du noch nicht angemeldet, drücke „Erst anmelden“.</p><p>Die KI öffnet sich in einem neuen Tab, schau in der Leiste oben, ob er hinter deiner Seite liegt.</p><div data-hh-nur="chatgpt"><p>Öffne chatgpt.com im Browser, das ist das Programm, mit dem du Internetseiten öffnest, etwa Safari oder Chrome.</p><p>Drücke bei uns auf „Anleitung kopieren“ und füge sie dort ein (siehe Thema 4).</p></div><div data-hh-nur="claude"><p>Am Handy öffnet der Knopf die Claude-App, das ist ein kleines Programm, das du auf dem Handy installierst. Ist sie nicht installiert, passiert nichts. Installiere die App, oder drücke bei uns auf „Anleitung kopieren“, öffne claude.ai im Browser, das ist das Programm, mit dem du Internetseiten öffnest, etwa Safari oder Chrome, und füge sie dort ein.</p><p>Drücke bei uns auf „Anleitung kopieren“ und füge sie dort ein (siehe Thema 4).</p></div></div></details><details class="hh-prob"><summary><span>4. Die Anleitung steht nicht im Eingabefeld oder wurde nicht abgeschickt. Was nun?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Steht die Anleitung im Eingabefeld, aber nichts passiert, tippe auf den Pfeil zum Senden.</p><p>Ist das Feld leer, etwa nach dem Anmelden, liegt die Anleitung in deiner Zwischenablage, dem Zwischenspeicher deines Geräts.</p><p>Am Handy tippst du ins Feld, hältst gedrückt und wählst „Einfügen“, am Computer klickst du mit der rechten Maustaste ins Feld und wählst „Einfügen“.</p><p>Klappt das nicht, drücke bei uns noch einmal auf „Anleitung kopieren“.</p></div></details><details class="hh-prob"><summary><span>5. Was mache ich mit der Antwort?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Lies die Antwort in Ruhe und frag nach, wenn etwas unklar ist, etwa „kürzer“ oder „erklär mir den zweiten Punkt genauer“.</p><p>Eine KI kann sich irren, prüfe deshalb wichtige Angaben wie Fristen, Beträge und Adressen bei der Quelle, die sie nennt.</p><p>Bietet dir die KI eine Datei an, etwa ein Dokument, kannst du sie herunterladen, und Dateien erzeugt sie auch kostenlos.</p><p>Text, den du brauchst, kannst du markieren, kopieren und in eine Mail oder ein Dokument einfügen.</p></div></details><details class="hh-prob"><summary><span>6. Die KI fragt etwas, das ich nicht weiß. Was schreibe ich?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Schreib einfach „Das weiß ich nicht, wo finde ich das?“, dann sagt dir die KI, wo du nachsehen kannst.</p><p>Oft kannst du eine Antwort antippen oder selbst schreiben, beides ist richtig.</p><div data-hh-nur="chatgpt"><p>Du kannst auch ein Foto oder eine Datei anhängen, tippe dafür auf das Plus im Eingabefeld.</p><p>Kostenlos geht das nur wenige Male am Tag.</p></div><div data-hh-nur="claude"><p>Du kannst auch ein Foto oder eine Datei anhängen, tippe dafür auf das Plus im Eingabefeld.</p><p>Anhänge zählen zu deiner Nutzung, große Dateien brauchen mehr davon.</p></div></div></details><details class="hh-prob"><summary><span>7. Die Antwort bricht ab, oder es kommt eine Grenze. Was heißt das?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Bricht die Antwort mitten im Satz ab, schreib „Bitte mach weiter“.</p><div data-hh-nur="chatgpt"><p>Kostenlos kannst du nur wenige Fotos und Dateien am Tag hochladen, in Stoßzeiten auch weniger. Auch Bilder erstellen ist kostenlos begrenzt.</p><p>Kommt ein Hinweis, dass du die Grenze erreicht hast, warte eine Weile und versuch es später noch einmal.</p><p>Ein Abo brauchst du dafür nicht. Mit Abo fallen diese Grenzen weg.</p></div><div data-hh-nur="claude"><p>Kostenlos darfst du in einem Zeitfenster von einigen Stunden nur begrenzt viel nutzen.</p><p>Ist es aufgebraucht, warte etwas, bis es sich zurücksetzt.</p><p>Ein Abo ist dafür nicht nötig, es gibt dir nur mehr Nutzung.</p></div></div></details></div></div></div>
 <script id="hh-js">
 (function(){
   var sheet=document.getElementById('hh-sheet'); if(!sheet) return;
@@ -4349,10 +4374,19 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
     var w=document.querySelector('[data-start-web]:not(.hh-link)');return w?w.getAttribute('href'):null;
   }
   function webOeffnen(){var z=webZiel(); if(z) window.open(z,'_blank','noopener');}
-  // [[ki-name]]: wie R101/R104 die Wahl lesen (localStorage ki-wahl), nur auf Seiten mit Claude-Auftrag; sonst ChatGPT
-  function kiName(){var k=null;try{k=localStorage.getItem('ki-wahl');}catch(x){}return(k==='claude'&&document.getElementById('auftrag-claude'))?'Claude':'ChatGPT';}
-  function kiSetzen(){var k=kiName().toLowerCase();sheet.querySelectorAll('[data-hh-fuer]').forEach(function(b){b.hidden=(b.getAttribute('data-hh-fuer')!==k);});}
+  // Weiche ChatGPT/Claude fürs Pop-up. html[data-ki] steht beim Laden immer auf „chatgpt“ (die Seite liest ki-wahl nie beim Laden), deshalb hier selbst:
+  // 1. gespeicherte Wahl (ki-wahl), wenn die Seite diese KI anbietet (Seiten mit Claude-Auftrag: id="auftrag-claude"), 2. sonst html[data-ki], 3. Seiten nur mit ChatGPT: immer ChatGPT.
+  function angeboten(){return document.getElementById('auftrag-claude')?['chatgpt','claude']:['chatgpt'];}
+  function kiErmitteln(){
+    var kis=angeboten(); if(kis.length<2) return 'chatgpt';
+    var w=null; try{w=localStorage.getItem('ki-wahl');}catch(x){}
+    if(w==='claude'||w==='chatgpt') return w;
+    var d=html.getAttribute('data-ki'); return d==='claude'?'claude':'chatgpt';
+  }
+  function kiSetzen(k){sheet.setAttribute('data-hh-ki',k||kiErmitteln());}
   kiSetzen();
+  // spätere Klicks auf die KI-Wahl der Seite (waehlen() setzt html[data-ki]) übernehmen
+  new MutationObserver(function(){kiSetzen();}).observe(html,{attributes:true,attributeFilter:['data-ki']});   // waehlen() schreibt ki-wahl vor setzen(); kiErmitteln liest sie
   function toggle(btn){
     var id=btn.getAttribute('aria-controls'),pn=document.getElementById(id),auf=btn.getAttribute('aria-expanded')==='true';
     sheet.querySelectorAll('[data-weg]').forEach(function(b){b.setAttribute('aria-expanded','false');var p=document.getElementById(b.getAttribute('aria-controls'));if(p)p.hidden=true;});
@@ -4428,6 +4462,109 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
     (document.querySelector('.ra-start .ra-knopf.r104-aus')||b).parentElement.classList.add('r138-offen');
   }
   document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.ra-start .ra-knopf.r104-aus'); if(!t) return; ev.preventDefault(); zeigen();},true);   /* delegiert: ein anderes Skript tauscht den Knopf nach dem Laden aus */
+})();
+</script>
+<script id="r145-js">
+(function () {
+  var knoepfe = document.querySelectorAll('button.r145-tipp');
+  if (!knoepfe.length) return;
+  var blase = document.createElement('div');
+  blase.className = 'r145-blase';
+  blase.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(blase);
+  var aktiv = null, zeiger = '', ueber = false, timer = 0;
+
+  // Rechtecke von Text (Zeilen der Textknoten) und von Links, Knöpfen und Feldern, die im Weg sein könnten
+  function hindernisse(k) {
+    var out = [], w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT), n, rg = document.createRange();
+    while ((n = w.nextNode())) {
+      if (!n.nodeValue.trim()) continue;
+      var e = n.parentElement;
+      if (!e || e === blase || blase.contains(e) || k.contains(e) || e.closest('script,style,noscript,svg,[hidden]')) continue;
+      var cs = getComputedStyle(e);
+      if (cs.visibility === 'hidden' || cs.display === 'none') continue;
+      rg.selectNodeContents(n);
+      var rs = rg.getClientRects();
+      for (var i = 0; i < rs.length; i++) if (rs[i].width > 0 && rs[i].height > 0) out.push(rs[i]);
+    }
+    var ia = document.querySelectorAll('a[href],button,input,select,textarea,summary,[tabindex]');
+    for (var j = 0; j < ia.length; j++) {
+      if (ia[j] === k || blase.contains(ia[j]) || ia[j].closest('[hidden]')) continue;
+      var r = ia[j].getBoundingClientRect();
+      if (r.width > 0 && r.height > 0 && getComputedStyle(ia[j]).visibility !== 'hidden') out.push(r);
+    }
+    return out;
+  }
+  function flaeche(x, y, b, h, hs) {
+    var s = 0;
+    for (var i = 0; i < hs.length; i++) {
+      var r = hs[i], dx = Math.min(x + b, r.right) - Math.max(x, r.left), dy = Math.min(y + h, r.bottom) - Math.max(y, r.top);
+      if (dx > 0 && dy > 0) s += dx * dy;
+    }
+    return s;
+  }
+  function setze() {
+    if (!aktiv) return;
+    var r = aktiv.getBoundingClientRect(), vw = document.documentElement.clientWidth, vh = document.documentElement.clientHeight;
+    if (r.bottom < 0 || r.top > vh || r.right < 0 || r.left > vw) { zu(); return; }
+    blase.textContent = aktiv.getAttribute('data-tipp');
+    var b = blase.offsetWidth, h = blase.offsetHeight, rand = 8;
+    var links = Math.max(rand, Math.min(r.left + r.width / 2 - b / 2, vw - b - rand));
+    var hs = hindernisse(aktiv);
+    // Kandidaten: unter den Logos (Abstand 4, 8, 12 px), dann darüber; genommen wird der erste ohne Überdeckung, sonst der mit der kleinsten
+    var kand = [r.bottom + 4, r.bottom + 8, r.bottom + 12, r.top - 4 - h, r.top - 8 - h], beste = null, bf = Infinity, oben = false, top = kand[0];
+    for (var q = 0; q < kand.length; q++) {
+      var y = kand[q];
+      if (y < rand || y + h > vh - rand) continue;
+      var f = flaeche(links, y, b, h, hs);
+      if (f < bf) { bf = f; beste = y; oben = q > 2; }
+      if (f === 0) break;
+    }
+    if (beste !== null) top = beste;
+    blase.style.transform = 'translate(' + Math.round(links) + 'px,' + Math.round(top) + 'px)';
+    blase.style.setProperty('--r145-pfeil', Math.round(r.left + r.width / 2 - links) + 'px');
+    blase.classList.toggle('r145-oben', oben);
+    blase.classList.toggle('r145-unten', !oben);
+  }
+  function auf(k) {
+    clearTimeout(timer);
+    aktiv = k;
+    blase.classList.add('r145-an');
+    setze();
+  }
+  function zu() {
+    clearTimeout(timer);
+    blase.classList.remove('r145-an');
+    aktiv = null;
+  }
+  function spaeter() {
+    clearTimeout(timer);
+    timer = setTimeout(function () { if (!ueber) zu(); }, 250);
+  }
+
+  Array.prototype.forEach.call(knoepfe, function (k) {
+    k.addEventListener('pointerdown', function (e) { zeiger = e.pointerType; });
+    k.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse' || e.pointerType === 'pen') { ueber = true; auf(k); } });
+    k.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse' || e.pointerType === 'pen') { ueber = false; spaeter(); } });
+    k.addEventListener('click', function (e) {
+      var touch = zeiger === 'touch' || e.detail === 0;
+      zeiger = '';
+      if (!touch) return;          // Maus: Hinweis steht schon vom Überfahren her
+      if (aktiv === k) zu(); else auf(k);
+    });
+    k.addEventListener('focus', function () { if (k.matches(':focus-visible')) auf(k); });
+    k.addEventListener('blur', function () { if (aktiv === k && !ueber) zu(); });
+  });
+  blase.addEventListener('pointerenter', function () { ueber = true; clearTimeout(timer); });
+  blase.addEventListener('pointerleave', function () { ueber = false; spaeter(); });
+  document.addEventListener('pointerdown', function (e) {
+    if (aktiv && !blase.contains(e.target) && !(e.target.closest && e.target.closest('button.r145-tipp'))) zu();
+  }, true);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && aktiv) zu(); });
+  var raf = 0;
+  function spaetSetzen() { if (!aktiv || raf) return; raf = requestAnimationFrame(function () { raf = 0; setze(); }); }
+  window.addEventListener('scroll', spaetSetzen, { passive: true });
+  window.addEventListener('resize', spaetSetzen);
 })();
 </script>
 </body>
