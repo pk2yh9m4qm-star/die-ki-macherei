@@ -2180,9 +2180,18 @@ html .site-nav .v44-nav a.v47-pille[aria-current="page"] span { color: #fff; }
   #v47-ein .v47-innen.r130-konto .v47-teil[data-teil="keine"] .v47-text { display: none; }
   /* Ryan 02.11.: Überschriften mit tabindex=-1, die beim Öffnen/Schrittwechsel den Fokus bekommen (nur per Skript), zeigen keinen Fokusrahmen */
   #v47-ein [tabindex="-1"]:focus, #v47-ein [tabindex="-1"]:focus-visible { outline: none !important; box-shadow: none !important; }
-  #v47-ein .v47-fuss .r130-andere { min-height: 44px; min-width: 44px; padding: 0 8px; }
 </style>
 <meta name="runde130" content="einstieg-konto-weiter-ohne-walzenzeile-2026-11-02">
+<style id="r135">
+  /* Runde 135: Abstand in „Fertig eingerichtet!“. Bis 427 px steht der Link unter dem Satz, ab 428 px in einer Zeile mit ihm (Link 44 px hoch, Satz mittig). */
+  #v47-ein #r103-vorbereitet { margin-top: 19px; }
+  @media (min-width: 428px) { #v47-ein #r103-vorbereitet { margin-top: 5.4px; } }
+  #v47-ein #r103-vorbereitet + #r100-ok-hilfe { margin-top: 4px; }
+  /* Runde 135: ohne „Doch eine andere KI wählen“ würde die Fußzeile in „Konto angelegt?“ um 46 px (Handy) bzw. 50 px (Rechner) schrumpfen und „Weiter mit ChatGPT“ springen.
+     Leerer Platzhalter genau in der Höhe des entfernten Knopfes (44 px, den Abstand der Fußzeile bringt sie selbst mit): die Fußzeile bleibt wie in „keine“ davor. */
+  #v47-ein .v47-innen.r130-konto .v47-fuss::before { content: ""; display: block; height: 44px; }
+</style>
+<meta name="runde135" content="einstieg-abstand-fertig-ohne-andere-ki-2026-11-02">
 <meta name="runde136" content="mit-abo-ohne-umbruch-2026-11-02">
 <style id="r136">
   /* Runde 136: Schild „Mit Abo“ bricht nie in sich um */
@@ -3901,7 +3910,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
         <div class="v47-teil" data-teil="fertig" hidden>
           <h2 class="v47-frage" id="ein-titel-fertig" tabindex="-1">Fertig eingerichtet!</h2>
           <p class="v47-text" id="r100-ok-t"></p>
-          <p class="v47-text" id="r103-vorbereitet" style="margin:0;font-size:14px;line-height:1.2;display:flex;flex-wrap:wrap;align-items:center;column-gap:8px">Dein Bereich ist vorbereitet. <a class="r100-link" href="/mein-bereich" style="display:inline-flex;align-items:center;min-height:44px">Zu Mein Bereich</a></p>
+          <p class="v47-text" id="r103-vorbereitet" style="font-size:14px;line-height:1.2;display:flex;flex-wrap:wrap;align-items:center;column-gap:8px">Dein Bereich ist vorbereitet. <a class="r100-link" href="/mein-bereich" style="display:inline-flex;align-items:center;min-height:44px">Zu Mein Bereich</a></p>
           <p class="v47-text" id="r100-ok-hilfe" hidden>Brauchst du Hilfe für den Anfang? Dann fang bei den <a class="r100-link" href="/mein-bereich#wissen" data-r100="grundlagen">Grundlagen</a> an. Ein Einsteiger-Kurs kommt noch dazu, wir bauen ihn gerade.</p>
           <div id="r101-ok-leiste"></div>
           <div class="r100-ende"><button type="button" class="v47-dunkel" data-v47="schliessen">Ideen ansehen <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div>
@@ -3910,7 +3919,6 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       <div class="v47-fuss">
         <button type="button" class="v47-leise" data-v47="ueberspringen">Überspringen</button>
         <button type="button" class="v47-leise" data-v47="stoebern" hidden>Erst mal stöbern</button>
-        <button type="button" class="v47-leise r130-andere" data-v47="r130-andere" hidden>Doch eine andere KI wählen</button>
         <button type="button" class="v47-dunkel" data-v47="weiter" disabled>Weiter <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
         <a class="v47-dunkel" data-v47="konto" href="https://chatgpt.com/auth/login" target="_blank" rel="noopener" hidden>ChatGPT-Konto anlegen · 2 Min. <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
         <button type="button" class="v47-dunkel" data-v47="r130-weiter" hidden>Weiter mit ChatGPT <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
@@ -3951,7 +3959,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       var an = kontoDa && schritt === 'keine', t = dlg.querySelector('#ein-titel-keine');
       if (!TITEL_KEINE && t) TITEL_KEINE = t.textContent;
       innen.classList.toggle('r130-konto', an);
-      knopf('r130-weiter').hidden = !an; knopf('r130-andere').hidden = !an;
+      knopf('r130-weiter').hidden = !an;
       if (an) { knopf('konto').hidden = true; knopf('stoebern').hidden = true; }
       if (t) t.textContent = an ? "Konto angelegt? Dann geht's hier weiter." : TITEL_KEINE;
     }
@@ -4285,7 +4293,6 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
     knopf('stoebern').addEventListener('click', function () { zu('fertig'); });
     // Runde 130 (s2-35): Klick auf „ChatGPT-Konto anlegen“: der Link öffnet den neuen Tab wie bisher (kein preventDefault, Fenster bleibt), danach wechselt der Bereich
     knopf('konto').addEventListener('click', function () { setTimeout(r130Konto, 0); });
-    knopf('r130-andere').addEventListener('click', function () { zeige('f2'); });
     knopf('r130-weiter').addEventListener('click', function () {   // wie die Wahl „ChatGPT“ und „Weiter“ in Frage 2
       var r = dlg.querySelector('input[name="ein-ki"][value="chatgpt"]'); if (!r) return;
       r.checked = true; r.dispatchEvent(new Event('change', { bubbles: true }));
