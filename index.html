@@ -3611,6 +3611,7 @@ article.mcard > .herz { top: 9px; bottom: auto; right: 9px; width: 40px; height:
 </style>
 <meta name="runde143" content="yannis-korrekturen-2026-11-02">
 <meta name="runde147" content="keller-film-rechner-mitte-2026-11-02">
+<meta name="runde175" content="keller-film-halt-oben-2026-11-02">
 <meta name="runde157" content="wissen-teil-c-2026-11-02">
 <script id="merkspeicher">
 /* merkspeicher.js (Runde 103, Ryan, 30.10.2026)
@@ -6480,9 +6481,10 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
           if (cAktiv && cStart) kantenSetzen(cStart.ziel);
           mehr.style.top = (KOPFY + Z2.h * KOPFS / 2 - (mehr.offsetHeight || 58) / 2).toFixed(1) + 'px';
           grundMessen();
+          r175Messen();   // Runde 175: Halt, wenn die Oberkante des Filmfensters oben ankommt (Film um Δ länger, oben um Δ später)
           var r = film.getBoundingClientRect();
-          oben = r.top + window.scrollY;
-          pxVh = Math.max(1, (r.height - innerHeight) / Z.weg);
+          oben = r.top + window.scrollY + r175D;
+          pxVh = Math.max(1, (r.height - innerHeight - r175D) / Z.weg);
           // Schranke: Beispiel samt Fortschrittslinie ganz im Bild (spätestens, wenn die Bühne klebt); Start bei etwa drei Vierteln
           var zf = (buehne.getBoundingClientRect().height || BH) / BH;
           sperrY = Math.min(oben, oben + (kUnten + STEUER) * zf - innerHeight);
@@ -6498,12 +6500,13 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
           startY = sperrY - (STEUER + .25 * (kUnten - kOben)) * zf;
           haltY = oben + (Z.z1 + 1) * pxVh;   // sicher in der Zone „Zoom fertig“, auch wenn der Browser die Position rundet
           waechter();
+          r175Schieb();
           FUSS = ''; fussSetzen();   // Version 25, Runde 8 (Prüfung Runde 1)
         }
         // Klebt die Bühne nicht (etwa weil ein Browser sticky nicht kann), gilt die ruhige Fassung, auch nach resize
         function waechter() {
           var r = film.getBoundingClientRect();
-          if (r.top < -50 && r.bottom > innerHeight + 50 && Math.abs(buehne.getBoundingClientRect().top) > 2) {
+          if (r.top < -50 && r.bottom > innerHeight + 50 && Math.abs(buehne.getBoundingClientRect().top + r175S) > 2) {
             klebtNicht = true;
             if (window.console) console.warn('v22z: Bühne klebt nicht, ruhige Fassung');
             szenePruefen();
@@ -6582,6 +6585,25 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
         }
         function radAn_() { if (!radAn && !stationGesehen) { radAn = true; addEventListener('wheel', rad, { passive: false }); } }
         function radAus() { if (radAn) { radAn = false; removeEventListener('wheel', rad, { passive: false }); } }
+// Runde 175 (Yannis, 02.11.2026): Halt erst, wenn die Oberkante des Filmfensters (.v22z-k-play) oben am Bildschirmrand (bzw. unter einem festen Header) steht.
+        var r175D = 0, r175S = 0, r175Weg = '';
+        function r175Messen() {   // vor der Messung von oben/pxVh: Δ = Abstand der Filmfenster-Oberkante zum oberen Rand (Leinwand: kpTop = BH/2 - 286 * K, unabhängig vom Zoomstand u); Film wird um Δ länger
+          var D = 0;
+          if (r147Fein()) {
+            var kopf = 0;
+            try { var hd = document.querySelector('header'); if (hd) { var hs = getComputedStyle(hd), hr = hd.getBoundingClientRect(); if ((hs.position === 'fixed' || hs.position === 'sticky') && hr.top <= 1 && hr.height > 0) kopf = Math.min(200, Math.max(0, hr.bottom)); } } catch (e) {}
+            D = Math.max(0, Math.round(BH / 2 - 286 * K - kopf));
+          }
+          if (!r175Weg) r175Weg = (getComputedStyle(d).getPropertyValue('--v22z-weg') || '104vh').trim();
+          r175D = D; r175S = 0; buehne.style.top = '';   // Bühne vor dem Wächter auf top 0
+          if (D > 0) film.style.setProperty('--v22z-weg', 'calc(' + r175Weg + ' + ' + D + 'px)'); else film.style.removeProperty('--v22z-weg');
+        }
+        function r175Schieb() {   // Bühne scrollt bis zum Halt mit (wie natürliches Scrollen), danach gleitet sie bis r112Land() zurück auf top 0
+          var s = 0;
+          if (r175D > 0 && szeneAn) { var y = window.scrollY; s = y <= sperrY ? Math.min(r175D, Math.max(0, y - (oben - r175D))) : r175D * (1 - Math.min(1, (y - sperrY) / Math.max(40, r112Land() - sperrY))); }
+          s = Math.round(s * 10) / 10;
+          if (s !== r175S) { r175S = s; buehne.style.top = s ? (-s) + 'px' : ''; }
+        }
         function sperren() { var g = grenze(); if (window.scrollY > g + 1) { if (g === sperrY && !r146Block()) return; var sb = d.style.scrollBehavior; d.style.scrollBehavior = 'auto'; window.scrollTo(0, g); d.style.scrollBehavior = sb; } }
         function vorspulen() { stupsWeg(); if (!ff && !filmFertig) { ff = { von: uJetzt, t0: performance.now() }; filmLauf = false; } }
         function cAn(sofort) {
@@ -7243,7 +7265,7 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
           auftrittePruefen();
         }
         function planen() { if (!geplant) geplant = requestAnimationFrame(takt); }
-        addEventListener('scroll', function () { sperren(); planen(); fussSetzen(); }, { passive: true });   // Version 25, Runde 8: fussSetzen
+        addEventListener('scroll', function () { sperren(); r175Schieb(); planen(); fussSetzen(); }, { passive: true });   // Version 25, Runde 8: fussSetzen
         addEventListener('keydown', function (e) {
           if (window.scrollY < grenze() - 2 || e.altKey || e.ctrlKey || e.metaKey) return;
           var t = e.target, tag = t && t.tagName;
