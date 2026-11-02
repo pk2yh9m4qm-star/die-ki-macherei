@@ -2738,6 +2738,17 @@ article.mcard > .herz { top: 9px; bottom: auto; right: 9px; width: 40px; height:
   /* Runde 136: Schild „Mit Abo“ bricht nie in sich um */
   html .tag.tag--abo { white-space: nowrap; }
 </style>
+<style id="r149">
+  /* Runde 149 (s2-34, Yannis V2): eine leere Scheibe statt ChatGPT + Claude bei „Ich hab noch keine“ */
+  .r100-l[data-k="luecke"]:not(.vorn) .r100-scheibe { opacity: 0 !important; }
+  .r100-l[data-k="luecke"] .r100-scheibe svg { width: 50%; height: 50%; color: var(--muted); }
+  .r100-l[data-k="luecke"].leer .r100-scheibe { background: rgb(255 255 255 / .14); box-shadow: none; }
+  .r100-l[data-k="luecke"].leer .r100-scheibe svg { width: 100%; height: 100%; }
+  /* Walzenfeld KI: derselbe Kreis statt „?“ */
+  .r149-leer { display: grid; place-items: center; color: var(--muted); }
+  .r149-leer svg { display: block; width: 28px; height: 28px; }
+</style>
+<meta name="runde149" content="einstieg-keine-ki-leerer-kreis-2026-11-02">
   <link rel="canonical" href="https://die-ki-macherei.de/mein-bereich">
 </head>
 <body><div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -4545,7 +4556,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
     </div>
     <div class="v47-rechts"><div class="v47-vorschau" aria-hidden="true">
       <div class="v47-szene" data-szene="f1"><div class="ein-flaeche"><div class="ein-buehne ein-f1a" data-stufe="0"><div class="ein-k field pal-sand"><svg class="mcard-symbol" viewBox="0 0 24 24"><use href="#ls-coins"/></svg></div><div class="ein-k field pal-blue"><svg class="mcard-symbol" viewBox="0 0 24 24"><use href="#ls-mail"/></svg></div><div class="ein-k field pal-moss"><svg class="mcard-symbol" viewBox="0 0 24 24"><use href="#r72-grad"/></svg></div><div class="ein-k field pal-coral"><svg class="mcard-symbol" viewBox="0 0 24 24"><use href="#ls-sun"/></svg></div><div class="ein-k field pal-plum"><svg class="mcard-symbol" viewBox="0 0 24 24"><use href="#ls-message-square-warning"/></svg></div></div></div></div>
-      <div class="v47-szene" data-szene="f2"><div class="ein-flaeche"><div class="r100-wolke" id="r100-wolke" aria-hidden="true"><span class="r100-l" data-k="chatgpt" style="--g:92;--x:27%;--y:30%;--ax:14;--ay:11;--dur:17s;--vz:-4s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-chatgpt"/></svg></span></span></span><span class="r100-l" data-k="claude" style="--g:92;--x:66%;--y:58%;--ax:12;--ay:15;--dur:23s;--vz:-11s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-claude"/></svg></span></span></span><span class="r100-l" data-k="gemini" style="--g:60;--x:77%;--y:20%;--ax:13;--ay:12;--dur:19s;--vz:-7s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-gemini"/></svg></span></span></span><span class="r100-l" data-k="copilot" style="--g:56;--x:43%;--y:83%;--ax:15;--ay:10;--dur:21s;--vz:-2s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-copilot"/></svg></span></span></span><span class="r100-l" data-k="grok" style="--g:50;--x:13%;--y:66%;--ax:11;--ay:14;--dur:16s;--vz:-9s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-grok"/></svg></span></span></span><span class="r100-l" data-k="perplexity" style="--g:44;--x:52%;--y:10%;--ax:12;--ay:13;--dur:24s;--vz:-14s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-perplexity"/></svg></span></span></span><span class="r100-l" data-k="meta" style="--g:48;--x:45%;--y:52%;--ax:10;--ay:12;--dur:20s;--vz:-5s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-meta"/></svg></span></span></span><span class="r100-l" data-k="deepseek" style="--g:42;--x:11%;--y:40%;--ax:13;--ay:9;--dur:18s;--vz:-13s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-deepseek"/></svg></span></span></span><span class="r100-l" data-k="mistral" style="--g:40;--x:89%;--y:78%;--ax:9;--ay:12;--dur:22s;--vz:-8s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-mistral"/></svg></span></span></span></div></div></div>
+      <div class="v47-szene" data-szene="f2"><div class="ein-flaeche"><div class="r100-wolke" id="r100-wolke" aria-hidden="true"><span class="r100-l leer" data-k="luecke" style="--g:92;--x:50%;--y:46%;--ax:12;--ay:12;--dur:20s;--vz:-6s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true" viewBox="0 0 92 92" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="46" cy="46" r="43" stroke-width="3" stroke-dasharray="7 8.89" opacity=".8"/></svg></span></span></span><span class="r100-l" data-k="chatgpt" style="--g:92;--x:27%;--y:30%;--ax:14;--ay:11;--dur:17s;--vz:-4s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-chatgpt"/></svg></span></span></span><span class="r100-l" data-k="claude" style="--g:92;--x:66%;--y:58%;--ax:12;--ay:15;--dur:23s;--vz:-11s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-claude"/></svg></span></span></span><span class="r100-l" data-k="gemini" style="--g:60;--x:77%;--y:20%;--ax:13;--ay:12;--dur:19s;--vz:-7s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-gemini"/></svg></span></span></span><span class="r100-l" data-k="copilot" style="--g:56;--x:43%;--y:83%;--ax:15;--ay:10;--dur:21s;--vz:-2s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-copilot"/></svg></span></span></span><span class="r100-l" data-k="grok" style="--g:50;--x:13%;--y:66%;--ax:11;--ay:14;--dur:16s;--vz:-9s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-grok"/></svg></span></span></span><span class="r100-l" data-k="perplexity" style="--g:44;--x:52%;--y:10%;--ax:12;--ay:13;--dur:24s;--vz:-14s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-perplexity"/></svg></span></span></span><span class="r100-l" data-k="meta" style="--g:48;--x:45%;--y:52%;--ax:10;--ay:12;--dur:20s;--vz:-5s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-meta"/></svg></span></span></span><span class="r100-l" data-k="deepseek" style="--g:42;--x:11%;--y:40%;--ax:13;--ay:9;--dur:18s;--vz:-13s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-deepseek"/></svg></span></span></span><span class="r100-l" data-k="mistral" style="--g:40;--x:89%;--y:78%;--ax:9;--ay:12;--dur:22s;--vz:-8s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-mistral"/></svg></span></span></span></div></div></div>
       <div class="v47-szene" data-szene="keine"><div class="ein-flaeche"><div class="ein-buehne ein-kA"><span class="ein-funke f1"></span><span class="ein-funke f2"></span><span class="ein-funke f3"></span><span class="ein-gross g1"><svg aria-hidden="true"><use href="#r72-l-chatgpt"/></svg></span><span class="ein-gross g2"><svg aria-hidden="true"><use href="#r72-l-claude"/></svg></span></div></div></div>
       <div class="v47-szene" data-szene="frei"><div class="r72-faecher" data-art="frei"></div><p class="v47-unter" data-unter="frei"></p></div>
       <div class="v47-szene" data-szene="abo"><div class="r72-faecher" data-art="abo"></div><p class="v47-unter">Alle Ideen stehen dir offen.</p></div>
@@ -4748,6 +4759,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       return v === 'abo' ? ['<svg class="icon" aria-hidden="true"><use href="#ls-badge-euro"/></svg>', 'Abo'] : ['<svg class="icon" aria-hidden="true"><use href="#ls-gift"/></svg>', 'Free'];
     }
     function stueck(art, v) {
+      if (!v && art === 'ki' && wert('ein-ki') === 'keine') return '<span class="r101-it"><span class="r149-leer" role="img" aria-label="KI: noch keine"><svg aria-hidden="true" viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="12" stroke-width="2" stroke-dasharray="3 3.28" opacity=".8"/></svg></span></span>';
       if (!v) return '<span class="r101-it"><span class="r101-q" role="img" aria-label="' + WAL[art].name + ' noch offen">?</span></span>';
       var x = inhalt(art, v); return '<span class="r101-it"><span class="r101-ic">' + x[0] + '</span><span class="r101-t">' + x[1] + '</span></span>';
     }
@@ -4781,7 +4793,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
 
     // ---- KI-Wahl (Punkt 8): Die Logos rechts sind nur Bild. Zeile hovern, fokussieren oder wählen holt die passenden mit der Feder nach vorn.
     var wolke = dlg.querySelector('#r100-wolke'), logos = [].slice.call(wolke.querySelectorAll('.r100-l'));
-    var VORN = { chatgpt: ['chatgpt'], claude: ['claude'], andere: ['copilot', 'gemini', 'grok'], keine: ['chatgpt', 'claude'] };
+    var VORN = { chatgpt: ['chatgpt'], claude: ['claude'], andere: ['copilot', 'gemini', 'grok'], keine: ['luecke'] };
     var hoverK = null, fokusK = null;
     function wolkeZeigen() {
       var k = hoverK || fokusK || wert('ein-ki') || null, vorn = k ? VORN[k] : [], W = wolke.clientWidth, H = wolke.clientHeight,
@@ -4794,7 +4806,8 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
         if (!k || !W) return;
         if (i < 0) { p.setProperty('--sc', '.72'); p.setProperty('--op', '.35'); return; }
         var m = vorn.length, d, cx, cy = H * .46, rot = 0;
-        if (m === 1) { d = Math.min(W * .5, H * .6, 190); cx = W * .5; }
+        if (m === 1 && k === 'keine') { d = Math.min(W * .36, H * .5, 150); cx = W * .5; }
+        else if (m === 1) { d = Math.min(W * .5, H * .6, 190); cx = W * .5; }
         else if (m === 2) { d = Math.min(W * .36, H * .5, 150); cx = W * (i ? .7 : .3); rot = i ? 5 : -6; }
         else { d = Math.min(W * .27, H * .4, 112); cx = W * (.2 + i * .3); }
         var hx = mass[n][0], hy = mass[n][1];
@@ -4941,7 +4954,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       else if (n === 'ein-ki') {
         var k = e.target.value;
         wolkeZeigen(); tippText(k); melde(ZEILE[k] + ' gewählt');
-        if (k === 'keine') zeichen('ki', null);
+        if (k === 'keine') { zeichen('ki', null); leer(dlg.querySelector('.ein-z[data-art="ki"]')); }
         else { zeichen('ki', k); dlg.querySelectorAll('[data-ein-ki]').forEach(function (s) { s.textContent = k === 'andere' ? 'deine KI' : NAME[k]; }); }
       } else if (n === 'ein-abo') { szene(e.target.value); zeichen('abo', e.target.value); }
     });
