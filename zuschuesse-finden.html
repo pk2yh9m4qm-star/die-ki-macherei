@@ -2133,7 +2133,7 @@ body { padding-bottom: 0; }
 .r64-rk h2 { margin: 0 44px 14px 0; font-size: 23px; font-weight: 700; line-height: 1.25; color: #2c2420; letter-spacing: 0; text-transform: none; }
 .r64-rk-knoepfe { display: grid; gap: 10px; }
 .r64-rk-k { display: flex; align-items: center; width: 100%; min-height: 52px; margin: 0; padding: 12px 16px; border: 0; border-radius: 16px; font: 600 17px/1.3 inherit; font-family: inherit; text-align: left; color: #2c2420; background: #fff; box-shadow: 0 1px 0 rgb(0 0 0 / .08); cursor: pointer; }
-.r64-rk-k.r64-haupt, .r64-rk-k[aria-expanded="true"] { color: #fff; background: #2c2420; }
+.r64-rk-k[aria-expanded="true"] { color: #fff; background: #2c2420; }   /* R131 (s2-39): nur was angetippt wurde ist dunkel, auch die erste Antwort */
 .r64-rk-antwort { margin: 8px 0 0; padding: 14px 16px; border-radius: 16px; background: #fff; font-size: 16px; line-height: 1.5; }
 .r64-rk-antwort a:not(.r64-los) { color: #2c2420; text-decoration: underline; text-underline-offset: 3px; display: inline-flex; align-items: center; min-height: 44px; }
 .r64-rk-aktion { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; margin: 12px 0 0; }
@@ -2591,6 +2591,74 @@ html body :is(a, button, summary, input, select, textarea, [tabindex], [role="bu
 </style>
 <meta name="runde128" content="karten-wie-alle-ideen-2026-11-02">
 <meta name="runde129" content="mehr-dazu-zu-ohne-anmelde-link-2026-11-02">
+<style>
+/* Runde 131 (Ryan, 02.11.2026), Yannis' Korrekturen s2-38 bis s2-41 */
+/* s2-38: Schleier = Baustein .v47-schleier (Runde 47), Werte unverändert */
+.v47-schleier { position: fixed; inset: 0; z-index: 2147483000; display: none; background: rgb(250 247 242 / .35);
+  -webkit-backdrop-filter: blur(18px) saturate(1.05); backdrop-filter: blur(18px) saturate(1.05); }
+.v47-schleier.an { display: block; animation: v47-schleier .2s ease-out; }
+@keyframes v47-schleier { from { opacity: 0; } }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .v47-schleier { background: rgb(246 242 236 / .94); } }
+@media (prefers-reduced-transparency: reduce) { .v47-schleier { background: rgb(246 242 236 / .94); -webkit-backdrop-filter: none; backdrop-filter: none; } }
+@media (prefers-reduced-motion: reduce) { .v47-schleier.an { animation: none; } }
+/* s2-40: Fortschritt als Balken, Werte von .v47-fort (Einstiegsfenster) */
+.r64-rm .v47-fort { display: flex; align-items: center; gap: 6px; margin: 0 0 14px; }
+.r64-rm .v47-fort b { width: 28px; height: 4px; border-radius: 2px; background: #e3dcd1; }
+.r64-rm .v47-fort b.an { background: #2b2420; }
+.r64-rm .v47-fort span { margin-left: 8px; font-size: 13px; font-weight: 550; color: #675f56; white-space: nowrap; }   /* = var(--muted) im Einstiegsfenster */
+.r131-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
+/* Überschriften, die beim Öffnen den Fokus bekommen (tabindex=-1), zeigen keinen Rahmen (sieht sonst wie ein Eingabefeld aus); Buttons und Links behalten ihren */
+html body #r64-rk [tabindex="-1"]:focus, html body #r64-rk [tabindex="-1"]:focus-visible { outline: none !important; box-shadow: none !important; }   /* schlägt die globale Fokusregel (html body :is(…[tabindex]):focus-visible, !important) */
+/* s2-38: ab 768 px ein Pop-up über der Seite (Handy: Karte wie bisher) */
+@media (min-width: 768px) {
+  #r64-rk.r131-pop { position: fixed; inset: 0; margin: auto !important; width: min(calc(100vw - 48px), 560px); height: fit-content; max-height: calc(100vh - 48px); max-height: calc(100dvh - 48px);
+    overflow: auto; box-sizing: border-box; display: block; z-index: 2147483001; padding: 36px 32px 24px; background: #fff; color: #2c2420;
+    border: 1px solid #e7dfd4; border-radius: 24px; box-shadow: 0 30px 60px -28px rgb(60 45 25 / .45), 0 2px 8px rgb(60 45 25 / .08); animation: r131-rein .2s ease-out; }
+  #r64-rk.r131-pop[hidden] { display: none !important; }
+  #r64-rk.r131-pop .r64-rk-teil { display: block; }
+  #r64-rk.r131-pop .r64-rk-knoepfe { display: grid; grid-template-columns: minmax(0, 1fr); margin-top: 0; }
+  #r64-rk.r131-pop .r64-rk-fuss { margin-top: 6px; }
+  #r64-rk.r131-pop .r64-rm-kopf { padding-right: 32px; }
+  #r64-rk.r131-pop > .r64-zu { z-index: 1; }
+  #r64-rk.r131-pop .r64-rk-k, #r64-rk.r131-pop .r64-rk-antwort { background: #fbf7f0; box-shadow: none; border: 1px solid #e7dfd4; }
+  #r64-rk.r131-pop .r64-rk-k[aria-expanded="true"] { color: #fff; background: #2c2420; border-color: #2c2420; }
+  @keyframes r131-rein { from { opacity: 0; transform: translateY(8px) scale(.98); } }
+}
+@media (prefers-reduced-motion: reduce) { #r64-rk.r131-pop { animation: none; } }
+</style>
+<meta name="runde131" content="rueckkehr-popup-balken-neutral-2026-11-02">
+<meta name="runde133" content="kopfzeile-sogeht-popup-2026-11-02">
+<style id="r133">
+/* Runde 133, s4-19: Kasten „So geht's“ oben bündig mit der Überschrift (Abstand misst das Skript, ohne Skript 0 = wie vorher) */
+.ra3 .ra-karte-innen > .ra-handeln { margin-top: var(--r133-kopf, 0); }
+/* Runde 133, s4-22 (Jim nach Prüfung 12:4x, Yannis: keine harte dunkelblaue Box am Handy): unter 1024 px hat der Kasten keine eigene Fläche mehr, er liegt ruhig auf der Karte; Button wieder einzeilig */
+@media (max-width: 1023px) {
+  .ra3.r70 .ra-karte-innen > .ra-handeln { background: transparent; background-image: none; box-shadow: none; }
+}
+/* Runde 133, s4-21: Pop-up nach dem Muster der Ebene „Mehr dazu“ (Startseite, v44-ebene) */
+.r133-ebene { box-sizing: border-box; width: min(680px, calc(100vw - 32px)); max-height: min(86vh, 900px); padding: 0; border: 1px solid #e7dfd4; border-radius: 22px; background: #fff; color: var(--ink, #2a2018); box-shadow: 0 24px 64px rgb(60 40 20 / .18); font: inherit; }
+.r133-ebene[open] { display: flex; flex-direction: column; }
+/* Pop-up-Regel 27.10.: heller Schleier mit Unschärfe (die Ebene der Startseite hat noch den dunklen Schleier rgb(28 22 16 / .45); hier gilt die Regel) */
+.r133-ebene::backdrop { background: rgba(250, 247, 242, .35); -webkit-backdrop-filter: blur(18px) saturate(1.05); backdrop-filter: blur(18px) saturate(1.05); }
+.r133-kopf { display: flex; align-items: flex-start; gap: 12px; padding: 22px 22px 10px 26px; }
+.r133-titel { flex: 1; margin: 6px 0 0; font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.25; font-weight: 650; letter-spacing: -.01em; }
+.r133-titel:focus { outline: none; }
+.r133-zu { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 50%; background: rgb(0 0 0 / .05); color: var(--ink, #2a2018); cursor: pointer; }
+.r133-zu .icon { width: 20px; height: 20px; }
+.r133-text { flex: 1; overflow: auto; padding: 4px 26px 8px; font-size: 1.0625rem; line-height: 1.6; overscroll-behavior: contain; }
+.r133-text h4 { margin: 1.3em 0 .35em; font-size: 1.0625rem; font-weight: 700; }
+.r133-text p, .r133-text ul, .r133-text ol { margin: 0 0 .8em; }
+.r133-text ul, .r133-text ol { padding-left: 1.2em; }
+.r133-text li { margin: 0 0 .4em; }
+.r133-text .steps { list-style: decimal; }
+.r133-text .note { color: var(--ink-soft, #5a4d40); font-size: .9375rem; }
+.r133-text a { color: inherit; text-decoration: underline; text-underline-offset: .2em; }
+.r133-text .stapel, .r133-text .zwei { display: block; }
+.r133-fertig { display: block; min-height: 44px; margin: 14px auto 6px; padding: 0 20px; border: 0; border-radius: 999px; background: none; color: var(--ink-soft, #5a4d40); font: inherit; font-size: .9375rem; cursor: pointer; text-decoration: underline; text-underline-offset: .2em; }
+.r133-ebene :is(.r133-zu, .r133-fertig):focus-visible { outline: 2px solid var(--focus, #1d5fd1); outline-offset: 2px; }
+html.r133-offen { overflow: hidden; }
+@media (max-width: 600px) { .r133-ebene { width: 100vw; max-width: 100vw; max-height: 92vh; margin: auto 0 0; border-radius: 22px 22px 0 0; } }
+</style>
   <link rel="canonical" href="https://die-ki-macherei.de/zuschuesse-finden">
 </head>
 <body data-fall="zuschuesse-finden"><div class="live-aufbau" role="note"><b>Public Beta</b> · Die Seite ist noch im Aufbau.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-coins" viewBox="0 0 24 24"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"/><path d="M15 6h1v4"/><path d="m6.134 14.768.866-.5 2 3.464"/><circle cx="16" cy="8" r="6"/></symbol><symbol id="ls-folder-heart" viewBox="0 0 24 24"><path d="M10.638 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v3.417"/><path d="M14.62 18.8A2.25 2.25 0 1 1 18 15.836a2.25 2.25 0 1 1 3.38 2.966l-2.626 2.856a.998.998 0 0 1-1.507 0z"/></symbol><symbol id="ls-house" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol><symbol id="ls-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol><symbol id="ls-shopping-bag" viewBox="0 0 24 24"><path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.103 6.034h17.794"/><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -2658,8 +2726,7 @@ SOFTWARE. --><symbol id="ls-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727
   <div class="ra-wrap"><a class="ra-zurueck" href="/ideen"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>Alle Ideen</a></div><div class="d-buehne"><figure class="ra-szene r70-kopf r71-kopf vd" style="--fa:#e8cba3;--fb:#c0956a;--fc:#6b4a3a;--ml:10%;--mb:58%;--pos-hoch:50% 50%;--pos-quer:50% 57%;--qb:2400;--qh:1200" data-r115="1"><picture><source media="(min-width:1024px)" type="image/webp" srcset="/a-c540df6799ef.webp 1600w, /a-9f5ba57e42cf.webp 2400w" sizes="min(100vw, 2400px)" width="2400" height="1200"><img data-m="1" src="/a-d07923f2650e.webp" srcset="/a-d07923f2650e.webp 750w, /a-2a796322d1de.webp 1200w" sizes="100vw" alt="Ein bärtiger Mann in beiger Jacke lädt vor seinem Haus sein türkisgrünes E-Auto an der Wallbox und hält den Ladestecker an den Anschluss, in der Sprechblase stehen ein Euro-Coin, „bis 6.000 €“ und ein grüner Haken." width="1200" height="1224" fetchpriority="high" loading="eager" decoding="async"></picture><span class="d-dunkel" aria-hidden="true"></span></figure>
   
   <article class="ra-karte" style="--fa:#e8cba3;--fb:#c0956a;--fc:#6b4a3a;--ml:10%;--mb:58%">
-    <svg class="ra-karte-symbol" viewBox="0 0 24 24" aria-hidden="true"><use href="#ls-coins"/></svg>
-    <div class="ra-karte-innen"><section class="r64-rk" id="r64-rk" hidden aria-labelledby="r64-rk-t"><button type="button" class="r64-zu" aria-label="Schließen">×</button><div class="r64-rk-teil" data-teil="hilfe"><div class="r64-rk-kopf"><p class="r64-rk-zeile">Zurück aus ChatGPT</p><h2 id="r64-rk-t">Wie läuft's mit deinem Vorhaben?</h2></div><div class="r64-rk-knoepfe"><div><button type="button" class="r64-rk-k r64-haupt" data-laeuft="laeuft">Läuft, ich sehe den Plan</button></div><div><button type="button" class="r64-rk-k" data-hilfe="leer" aria-expanded="false" aria-controls="r64-a-leer">Das Eingabefeld ist leer</button><div class="r64-rk-antwort" id="r64-a-leer" hidden><p style="margin:0">Das passiert manchmal nach dem Anmelden. Die Anleitung liegt schon in deiner Zwischenablage: <span data-nur-geraet="handy">ins Feld tippen, gedrückt halten und „Einfügen“ wählen, abschicken.</span><span data-nur-geraet="computer">ins Feld klicken, Rechtsklick und „Einfügen“, abschicken.</span></p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und ChatGPT öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-leer">Hat geklappt</button></p></div></div><div><button type="button" class="r64-rk-k" data-hilfe="angemeldet" aria-expanded="false" aria-controls="r64-a-angemeldet">Ich bin nicht angemeldet</button><div class="r64-rk-antwort" id="r64-a-angemeldet" hidden><p style="margin:0"><span data-nur-geraet="computer">Melde dich vorher in diesem Browser bei ChatGPT an.</span><span data-nur-geraet="handy">Melde dich vorher in der ChatGPT-App an.</span> Dann öffnet der Knopf direkt die fertige Anleitung. Noch kein Konto? Das legst du dort kostenlos an, mit E-Mail oder Google-Konto.</p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und ChatGPT öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-angemeldet">Hat geklappt</button></p></div></div><div><button type="button" class="r64-rk-k" data-hilfe="nichts" aria-expanded="false" aria-controls="r64-a-nichts">Es hat sich nichts geöffnet</button><div class="r64-rk-antwort" id="r64-a-nichts" hidden><p style="margin:0"><span data-nur-geraet="handy">Dann fehlt meist die App. </span><a href="#" data-start-web target="_blank" rel="noopener">Im Browser öffnen</a></p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und ChatGPT öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-nichts">Hat geklappt</button></p></div></div></div><p class="r64-rk-fuss"><button type="button" class="r64-leise" data-r64-kopieren>Anleitung noch einmal kopieren</button></p></div><div class="r64-rm" data-teil="rm" hidden><div class="r64-rm-kopf"><h2>Hilfst du uns kurz?</h2><button type="button" class="r64-leise" data-lieber-nicht>Lieber nicht</button></div><p class="r64-rm-unter">3 Fragen, nur antippen.</p><ol class="r64-punkte" aria-hidden="true"><li></li><li></li><li></li></ol><div data-frage="rm-entwuerfe"><p class="r64-frage" id="r64-f0">Wie gefällt dir der Plan?</p><div class="r64-chips" data-anzahl="4" role="group" aria-labelledby="r64-f0"><button type="button" class="r64-chip" data-wert="gar-nicht" aria-pressed="false">Gar nicht</button><button type="button" class="r64-chip" data-wert="geht-so" aria-pressed="false">Geht so</button><button type="button" class="r64-chip" data-wert="gut" aria-pressed="false">Gut</button><button type="button" class="r64-chip" data-wert="richtig-gut" aria-pressed="false">Richtig gut</button></div></div><div data-frage="rm-leicht" hidden><p class="r64-frage" id="r64-f1">War es leicht, loszulegen?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f1"><button type="button" class="r64-chip" data-wert="ganz-leicht" aria-pressed="false">Ganz leicht</button><button type="button" class="r64-chip" data-wert="ging-so" aria-pressed="false">Ging so</button><button type="button" class="r64-chip" data-wert="schwierig" aria-pressed="false">Schwierig</button></div></div><div data-frage="rm-wieder" hidden><p class="r64-frage" id="r64-f2">Würdest du so etwas wieder mit KI machen?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f2"><button type="button" class="r64-chip" data-wert="ja" aria-pressed="false">Ja</button><button type="button" class="r64-chip" data-wert="vielleicht" aria-pressed="false">Vielleicht</button><button type="button" class="r64-chip" data-wert="eher-nicht" aria-pressed="false">Eher nicht</button></div></div></div><div class="r64-feld r64-feld-teil" data-teil="feld" hidden><label for="r64-text">Magst du uns noch etwas sagen?</label><textarea id="r64-text" rows="1" maxlength="500" aria-describedby="r64-text-h"></textarea><p class="r64-feld-klein" id="r64-text-h">Freiwillig. Bitte keine Namen, Adressen oder andere persönlichen Daten.</p><p class="r64-rk-aktion"><button type="button" class="r64-los" data-feld="absenden">Absenden</button><button type="button" class="r64-leise" data-feld="fertig">Fertig</button></p></div><div class="r64-dank" data-teil="dank" hidden role="status"><span class="r64-haken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Danke! Damit machst du die KI-Macherei für alle ein Stück besser.</p><a href="/ideen">Noch eine Idee ausprobieren?</a></div><div class="r64-dank" data-teil="schoen" hidden role="status"><p>Schön! Viel Erfolg mit deinem Antrag.</p></div></section><p class="r64-danke-zeile" id="r64-danke-zeile" hidden role="status"><span>Danke fürs Mitmachen</span><button type="button" class="r64-zu" aria-label="Hinweis schließen">×</button></p>
+    <div class="ra-karte-innen"><section class="r64-rk" id="r64-rk" hidden aria-labelledby="r64-rk-t"><button type="button" class="r64-zu" aria-label="Schließen">×</button><div class="r64-rk-teil" data-teil="hilfe"><div class="r64-rk-kopf"><p class="r64-rk-zeile">Zurück aus dem Chat</p><h2 id="r64-rk-t">Wie läuft's mit deinem Vorhaben?</h2></div><div class="r64-rk-knoepfe"><div><button type="button" class="r64-rk-k" data-laeuft="laeuft">Läuft, ich sehe den Plan</button></div><div><button type="button" class="r64-rk-k" data-hilfe="leer" aria-expanded="false" aria-controls="r64-a-leer">Das Eingabefeld ist leer</button><div class="r64-rk-antwort" id="r64-a-leer" hidden><p style="margin:0">Das passiert manchmal nach dem Anmelden. Die Anleitung liegt schon in deiner Zwischenablage: <span data-nur-geraet="handy">ins Feld tippen, gedrückt halten und „Einfügen“ wählen, abschicken.</span><span data-nur-geraet="computer">ins Feld klicken, Rechtsklick und „Einfügen“, abschicken.</span></p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und den Chat öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-leer">Hat geklappt</button></p></div></div><div><button type="button" class="r64-rk-k" data-hilfe="angemeldet" aria-expanded="false" aria-controls="r64-a-angemeldet">Ich bin nicht angemeldet</button><div class="r64-rk-antwort" id="r64-a-angemeldet" hidden><p style="margin:0"><span data-nur-geraet="computer">Melde dich vorher in diesem Browser bei deiner KI an.</span><span data-nur-geraet="handy">Melde dich vorher in der App deiner KI an.</span> Dann öffnet der Knopf direkt die fertige Anleitung. Noch kein Konto? Das legst du dort kostenlos an, mit E-Mail oder Google-Konto.</p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und den Chat öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-angemeldet">Hat geklappt</button></p></div></div><div><button type="button" class="r64-rk-k" data-hilfe="nichts" aria-expanded="false" aria-controls="r64-a-nichts">Es hat sich nichts geöffnet</button><div class="r64-rk-antwort" id="r64-a-nichts" hidden><p style="margin:0"><span data-nur-geraet="handy">Dann fehlt meist die App. </span><a href="#" data-start-web target="_blank" rel="noopener">Im Browser öffnen</a></p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und den Chat öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-nichts">Hat geklappt</button></p></div></div></div><p class="r64-rk-fuss"><button type="button" class="r64-leise" data-r64-kopieren>Anleitung noch einmal kopieren</button></p></div><div class="r64-rm" data-teil="rm" hidden><div class="r64-rm-kopf"><h2>Hilfst du uns kurz?</h2><button type="button" class="r64-leise" data-lieber-nicht>Lieber nicht</button></div><p class="r64-rm-unter">3 Fragen, nur antippen.</p><div class="v47-fort" aria-hidden="true"><b class="an"></b><b></b><b></b><span>Frage 1 von 3</span></div><div data-frage="rm-entwuerfe"><p class="r64-frage" id="r64-f0"><span class="r131-sr">Frage 1 von 3: </span>Wie gefällt dir der Plan?</p><div class="r64-chips" data-anzahl="4" role="group" aria-labelledby="r64-f0"><button type="button" class="r64-chip" data-wert="gar-nicht" aria-pressed="false">Gar nicht</button><button type="button" class="r64-chip" data-wert="geht-so" aria-pressed="false">Geht so</button><button type="button" class="r64-chip" data-wert="gut" aria-pressed="false">Gut</button><button type="button" class="r64-chip" data-wert="richtig-gut" aria-pressed="false">Richtig gut</button></div></div><div data-frage="rm-leicht" hidden><p class="r64-frage" id="r64-f1"><span class="r131-sr">Frage 2 von 3: </span>War es leicht, loszulegen?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f1"><button type="button" class="r64-chip" data-wert="ganz-leicht" aria-pressed="false">Ganz leicht</button><button type="button" class="r64-chip" data-wert="ging-so" aria-pressed="false">Ging so</button><button type="button" class="r64-chip" data-wert="schwierig" aria-pressed="false">Schwierig</button></div></div><div data-frage="rm-wieder" hidden><p class="r64-frage" id="r64-f2"><span class="r131-sr">Frage 3 von 3: </span>Würdest du so etwas wieder mit KI machen?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f2"><button type="button" class="r64-chip" data-wert="ja" aria-pressed="false">Ja</button><button type="button" class="r64-chip" data-wert="vielleicht" aria-pressed="false">Vielleicht</button><button type="button" class="r64-chip" data-wert="eher-nicht" aria-pressed="false">Eher nicht</button></div></div></div><div class="r64-feld r64-feld-teil" data-teil="feld" hidden><label for="r64-text">Magst du uns noch etwas sagen?</label><textarea id="r64-text" rows="1" maxlength="500" aria-describedby="r64-text-h"></textarea><p class="r64-feld-klein" id="r64-text-h">Freiwillig. Bitte keine Namen, Adressen oder andere persönliche Daten.</p><p class="r64-rk-aktion"><button type="button" class="r64-los" data-feld="absenden">Absenden</button><button type="button" class="r64-leise" data-feld="fertig">Fertig</button></p></div><div class="r64-dank" data-teil="dank" hidden role="status"><span class="r64-haken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Danke! Damit machst du die KI-Macherei für alle ein Stück besser.</p><a href="/ideen">Noch eine Idee ausprobieren?</a></div><div class="r64-dank" data-teil="schoen" hidden role="status"><p>Schön! Viel Erfolg mit deinem Antrag.</p></div></section><p class="r64-danke-zeile" id="r64-danke-zeile" hidden role="status"><span>Danke fürs Mitmachen</span><button type="button" class="r64-zu" aria-label="Hinweis schließen">×</button></p>
       <div class="ra-lesen">
         <div class="kk kk3" role="group" aria-label="Eckdaten dieser Idee">
     <a class="kk-siegel kk3-siegel" href="#" data-oeffne="gut"><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Kostenlos &amp; geprüft</a>
@@ -3922,6 +3989,62 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
   function lies(k) { try { return JSON.parse(localStorage.getItem(k) || '{}') || {}; } catch (e) { return {}; } }
   function schreib(k, feld, wert) { var o = lies(k); o[feld] = wert; try { localStorage.setItem(k, JSON.stringify(o)); } catch (e) {} }
   var TAGE7 = 7 * 24 * 3600 * 1000, weg = false, offen = false;
+  // R131 (s2-38): ab 768 px Pop-up über der Seite (Schleier, Fokus drin, Escape, Klick daneben), Handy unverändert
+  var mq = matchMedia('(min-width: 768px)'), startEl = null, zurueckZu = null, schleier = null, popAn = false, heim = null;
+  function fokusbar() {
+    return Array.prototype.filter.call(karte.querySelectorAll('button, a[href], textarea, input, [tabindex]:not([tabindex="-1"])'), function (el) { return !el.disabled && el.getClientRects().length > 0; });
+  }
+  function kopf(n) { var t = karte.querySelector('[data-teil="' + n + '"]'); return t && (t.querySelector('h2') || t.querySelector('label') || t.querySelector('p')); }
+  function beschriften(n) {
+    var h = kopf(n);
+    if (h) { if (!h.id) h.id = 'r131-t-' + n; karte.setAttribute('aria-labelledby', h.id); }
+  }
+  function aktuellerTeil() { var t = karte.querySelector('[data-teil]:not([hidden])'); return t ? t.getAttribute('data-teil') : 'hilfe'; }
+  function modus() {
+    var soll = offen && mq.matches;
+    if (soll === popAn) return;
+    popAn = soll; karte.classList.toggle('r131-pop', soll);
+    // Pop-up in den <body> heben: im Raster der Seite liegt es in einem eigenen Stapel (z-index) unter dem Schleier und würde mit verwischt
+    if (soll) { if (!heim) heim = { p: karte.parentNode, n: karte.nextSibling }; document.body.appendChild(karte); }
+    else if (heim) { heim.p.insertBefore(karte, heim.n && heim.n.parentNode === heim.p ? heim.n : null); heim = null; }
+    var x = karte.querySelector('.r64-zu');
+    if (soll) {
+      karte.setAttribute('role', 'dialog'); karte.setAttribute('aria-modal', 'true');
+      if (!schleier) {
+        schleier = document.createElement('div'); schleier.className = 'v47-schleier'; schleier.setAttribute('aria-hidden', 'true');
+        schleier.addEventListener('click', function (e) { e.stopPropagation(); schliessen(true); });
+        document.body.appendChild(schleier);
+      }
+      schleier.classList.add('an'); if (x) x.hidden = false;
+      var n = aktuellerTeil(); beschriften(n);
+      var h = kopf(n);
+      if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); }
+    } else {
+      karte.removeAttribute('role'); karte.removeAttribute('aria-modal');
+      if (schleier) schleier.classList.remove('an');
+      if (x) x.hidden = aktuellerTeil() !== 'hilfe';
+    }
+  }
+  function zurueckFokus() {
+    var z = [zurueckZu, startEl, document.querySelector('.ra-knopf'), document.querySelector('.ra-karte h1')];
+    for (var i = 0; i < z.length; i++) {
+      var el = z[i]; if (!el || !el.isConnected) continue;
+      if (el.tagName === 'H1') el.tabIndex = -1;
+      try { el.focus({ preventScroll: true }); } catch (e) {}
+      if (document.activeElement === el) return;
+    }
+  }
+  document.addEventListener('keydown', function (e) {
+    if (!popAn) return;
+    if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); schliessen(true); return; }
+    if (e.key !== 'Tab') return;
+    var f = fokusbar(); if (!f.length) { e.preventDefault(); return; }
+    var a = document.activeElement, i = f.indexOf(a);
+    if (!karte.contains(a)) { e.preventDefault(); (e.shiftKey ? f[f.length - 1] : f[0]).focus(); }
+    else if (e.shiftKey && i === 0) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
+  }, true);
+  if (mq.addEventListener) mq.addEventListener('change', modus); else if (mq.addListener) mq.addListener(modus);
   function fertig() { return !!lies('r64-fertig')[CFG.fall]; }
   function frisch() { var t = lies('r64-start')[CFG.fall]; return t && Date.now() - t < TAGE7; }
   // Datenweg: nur mit aktiver Messung (nicht aus, kein Global Privacy Control, kein Blocker). Sonst kein „Danke“, das nicht stimmt.
@@ -3943,19 +4066,25 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
   function zeige() {
     if (offen || fertig()) return;
     offen = true; karte.hidden = false; html.classList.add('r64-rk-offen');
+    var ak = document.activeElement; zurueckZu = (ak && ak !== document.body && ak !== document.documentElement && !karte.contains(ak)) ? ak : startEl;
+    modus();
+    if (popAn) return;   // R131: das Pop-up steht von selbst in der Mitte, nichts zu scrollen
     var r = karte.getBoundingClientRect();
     if (r.top < 0 || r.top > innerHeight - 120) karte.scrollIntoView({ block: 'start', behavior: ruhig.matches ? 'auto' : 'smooth' });
   }
   function schliessen(endgueltig) {
     if (endgueltig) schreib('r64-fertig', CFG.fall, 1);
-    var f = karte.contains(document.activeElement);
+    var f = karte.contains(document.activeElement), warPop = popAn;
     karte.hidden = true; offen = false; html.classList.remove('r64-rk-offen');
-    if (f) { var h = document.querySelector('.ra-karte h1'); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); } }
+    modus();
+    if (warPop) zurueckFokus();   // R131: zurück zum Auslöser (Start-Button)
+    else if (f) { var h = document.querySelector('.ra-karte h1'); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); } }
   }
   // Start-Tipp merken (je Use Case und Gerät); Rückkehr in denselben Tab oder späterer Besuch bis 7 Tage danach
   document.addEventListener('click', function (e) {
     if (!e.target.closest || !e.target.closest('[data-start]')) return;
     schreib('r64-start', CFG.fall, Date.now()); weg = false;
+    var se = e.target.closest('[data-start]'); if (!karte.contains(se)) startEl = se;
   }, true);
   document.addEventListener('visibilitychange', function () {
     if (document.visibilityState === 'hidden') { if (frisch()) weg = true; return; }
@@ -3990,7 +4119,8 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
   var teil = function (n) { return karte.querySelector('[data-teil="' + n + '"]'); };
   function wechsel(n) {
     ['hilfe', 'rm', 'feld', 'dank', 'schoen'].forEach(function (x) { var t = teil(x); if (t) t.hidden = x !== n; });
-    karte.querySelector('.r64-zu').hidden = n !== 'hilfe';   // ab der Rückmeldung schließt „Lieber nicht“, das × läge sonst darüber
+    karte.querySelector('.r64-zu').hidden = n !== 'hilfe' && !popAn;   // ab der Rückmeldung schließt „Lieber nicht“, das × läge sonst darüber (R131: im Pop-up bleibt das × immer)
+    beschriften(n);
     var t = teil(n); if (!t) return;
     t.classList.remove('r64-schritt'); void t.offsetWidth; t.classList.add('r64-schritt');
     var z = t.querySelector('h2, .r64-frage, label, p'); if (z) { z.tabIndex = -1; z.focus({ preventScroll: true }); }
@@ -4004,16 +4134,18 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
     });
   });
   // 5b: drei Fragen, nur antippen
-  var punkte = karte.querySelectorAll('.r64-punkte li'), fragen = karte.querySelectorAll('[data-frage]'), negativ = false;
+  var balken = karte.querySelectorAll('.r64-rm .v47-fort b'), fragen = karte.querySelectorAll('[data-frage]'), negativ = false;
   function frage(i) {
     fragen.forEach(function (f, j) { f.hidden = j !== i; });
+    balken.forEach(function (b, j) { b.classList.toggle('an', j <= i); });   // R131 (s2-40): Balken wie im Einstiegsfenster
+    var bt = karte.querySelector('.r64-rm .v47-fort span'); if (bt) bt.textContent = 'Frage ' + (i + 1) + ' von ' + fragen.length;
     if (i > 0) { fragen[i].classList.remove('r64-schritt'); void fragen[i].offsetWidth; fragen[i].classList.add('r64-schritt'); var q = fragen[i].querySelector('.r64-frage'); q.tabIndex = -1; q.focus({ preventScroll: true }); }
   }
   fragen.forEach(function (f, i) {
     f.querySelectorAll('.r64-chip').forEach(function (c) {
       c.addEventListener('click', function () {
         if (f.dataset.fertig) return; f.dataset.fertig = '1';
-        c.setAttribute('aria-pressed', 'true'); punkte[i].classList.add('voll');
+        c.setAttribute('aria-pressed', 'true');
         rueckmelden(f.dataset.frage, c.dataset.wert);
         if (CFG.negativ.indexOf(c.dataset.wert) >= 0) negativ = true;
         setTimeout(function () {
@@ -4050,9 +4182,10 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
       setTimeout(function () { ort.querySelectorAll('.r64-konfetti').forEach(function (k) { k.remove(); }); }, 900);
     }
     setTimeout(function () {
-      var f = karte.contains(document.activeElement);
+      if (!offen) return;   // R131: schon von Hand geschlossen
+      var f = karte.contains(document.activeElement), warPop = popAn;
       schliessen(true);
-      var z = document.getElementById('r64-danke-zeile'); if (z) { z.hidden = false; if (f) z.querySelector('button').focus({ preventScroll: true }); }
+      var z = document.getElementById('r64-danke-zeile'); if (z && !warPop) { z.hidden = false; if (f) z.querySelector('button').focus({ preventScroll: true }); }   // R131: im Pop-up stand das Danke schon im Fenster
     }, 4000);
   }
   var zeile = document.getElementById('r64-danke-zeile');
@@ -4105,6 +4238,23 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
   window.addEventListener('resize', an, { passive: true });
   if (mq.addEventListener) mq.addEventListener('change', an);
   an();
+})();
+</script>
+<script id="r133-js">
+(function () {
+  // s4-19: Abstand Oberkante linke Spalte bis Überschrift als Kopf-Versatz des Kastens „So geht's“
+  var k = document.querySelector('.ra3 .ra-karte-innen'); if (!k) return;
+  var l = k.querySelector(':scope > .ra-lesen'), h = k.querySelector(':scope > .ra-handeln'), t = l && l.querySelector('h1');
+  function messen() {
+    if (!l || !h || !t) return;
+    k.style.setProperty('--r133-kopf', '0px');
+    var lr = l.getBoundingClientRect(), hr = h.getBoundingClientRect();
+    var nebeneinander = hr.left > lr.left + 40 && hr.top < lr.bottom;
+    k.style.setProperty('--r133-kopf', nebeneinander ? Math.max(0, t.getBoundingClientRect().top - lr.top).toFixed(1) + 'px' : '0px');
+  }
+  messen(); window.addEventListener('load', messen); window.addEventListener('resize', messen);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(messen);
+  if (window.ResizeObserver && l) new ResizeObserver(messen).observe(l);
 })();
 </script>
 </body>
