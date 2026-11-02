@@ -3610,6 +3610,7 @@ article.mcard > .herz { top: 9px; bottom: auto; right: 9px; width: 40px; height:
   html .tag.tag--abo { white-space: nowrap; }
 </style>
 <meta name="runde143" content="yannis-korrekturen-2026-11-02">
+<meta name="runde147" content="keller-film-rechner-mitte-2026-11-02">
   <link rel="canonical" href="https://die-ki-macherei.de/">
 </head>
 <body><div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole der Laufbänder: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -6348,6 +6349,7 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
             sperrY = PILLE_DA ? Math.min(sperrY, h2Y - KOPF_P - 12) : Math.min(oben, h2Y - KOPF_H2);
             sperrY = Math.min(oben, Math.max(sperrY, oben + (kOben + ERG_U * K) * zf + 16 - innerHeight));   // Runde 37 (Pam): 16 px Rand unter dem Endbild
           }
+          sperrY = r147Fein() ? oben : sperrY;   // Runde 147 (Yannis, 02.11.): Halt erst dort, wo die Bühne klebt und der Film in der Bildmitte steht (vorher 125 bis 270 px tiefer)
           startY = sperrY - (STEUER + .25 * (kUnten - kOben)) * zf;
           haltY = oben + (Z.z1 + 1) * pxVh;   // sicher in der Zone „Zoom fertig“, auch wenn der Browser die Position rundet
           waechter();
@@ -6402,7 +6404,23 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
         // Video-Schranke (08.10., Yannis: man hat das Video oft aus Versehen überscrollt): Wer von oben kommt, hält am Video an. Weiterscrollen
         // startet das Video; erst wenn es das Scannen der Fotos hinter sich hat (VIDEO_SPERRE_T), geht es weiter. Sprünge per Link gehen vorbei.
         var videoDurch = false, vonOben = false, gespielt132 = false;   // Runde 132: wurde das Video je gestartet?
-        function videoSperreAktiv() { return false; }   // Runde 132 (s1-37, Yannis): man scrollt am Video vorbei; Start nur über Play. Vorher: szeneAn && vonOben && !videoDurch && !filmFertig && !!kVideo && !videoKaputt && Date.now() > sprungBis
+        // Runde 146 (Yannis/Pam, 02.11.2026): Die Sperre am Film ist wieder da (Bedingung wie Runde 28), greift an sperrY (Film in der Bildmitte) und hält, wenn der Film nicht läuft, nur kurz.
+        var r146T0 = 0, r146G0 = 0, r146Gest = 0;
+        function r147Fein() { try { return matchMedia('(pointer: fine)').matches; } catch (e) { return true; } }   // Runde 147: Weiche nur Rechner (Szene gibt es nur ab 961 px und nicht auf Handy/iPad; dazu feiner Zeiger)
+        function videoSperreAktiv() { return szeneAn && r147Fein() && vonOben && !videoDurch && !filmFertig && !!kVideo && !videoKaputt && Date.now() > sprungBis; }
+        function r146Frei() {   // der Film gilt als übersprungen (nie gespult): Endbild wie bei „Überspringen“, aber ohne Gleiten
+          r146T0 = 0; videoDurch = true;
+          if (!filmFertig) { filmFertigMarke(); pfeilWeg = true; }
+          zeichnen(uJetzt); knoepfeZeigen(); r26Knopf();
+        }
+        function r146Block() {   // true: Scrollen bleibt am Film hängen. Läuft der Film, immer; sonst nur für die erste Geste oder höchstens 450 ms (Brief: höchstens 600 ms, mit Luft für die Messung)
+          if (!videoSperreAktiv()) return true;
+          if (videoAn) return true;
+          var jetzt = performance.now();
+          if (!r146T0) { r146T0 = jetzt; r146G0 = r146Gest; return true; }
+          if (r146Gest !== r146G0 || jetzt - r146T0 >= 450) { r146Frei(); return false; }
+          return true;
+        }   // Runde 132 (s1-37, Yannis): man scrollt am Video vorbei; Start nur über Play. Vorher: szeneAn && vonOben && !videoDurch && !filmFertig && !!kVideo && !videoKaputt && Date.now() > sprungBis
         function grenze() { return videoSperreAktiv() ? sperrY : sperreAktiv() ? sperrY : haltAktiv() ? haltY : Infinity; }
         // Nach dem Halt schluckt das Mausrad noch den Schwung der laufenden Geste (Trackpad), erst eine neue Geste scrollt weiter (07.10. nachts)
         var nachlauf = false, letztesRad = 0;
@@ -6412,13 +6430,14 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
           var jetzt = performance.now(), pause = jetzt - letztesRad > 220; letztesRad = jetzt;
           if (nachlauf) { if (!pause && e.deltaY > 0) { e.preventDefault(); return; } nachlauf = false; radAus(); return; }
           if (e.deltaY > 0 && window.scrollY >= grenze() - 2) {
-            e.preventDefault();
+            if (pause) r146Gest++;
+            if (r146Block()) e.preventDefault(); else return;   // Runde 146: Halt nur kurz, danach geht die Seite weiter
             // Runde 28: an der Film-Sperre hält Scrollen nur fest; abgespielt wird nur über Play (Yannis, 23.10.)
           }
         }
         function radAn_() { if (!radAn && !stationGesehen) { radAn = true; addEventListener('wheel', rad, { passive: false }); } }
         function radAus() { if (radAn) { radAn = false; removeEventListener('wheel', rad, { passive: false }); } }
-        function sperren() { var g = grenze(); if (window.scrollY > g + 1) { var sb = d.style.scrollBehavior; d.style.scrollBehavior = 'auto'; window.scrollTo(0, g); d.style.scrollBehavior = sb; } }
+        function sperren() { var g = grenze(); if (window.scrollY > g + 1) { if (g === sperrY && !r146Block()) return; var sb = d.style.scrollBehavior; d.style.scrollBehavior = 'auto'; window.scrollTo(0, g); d.style.scrollBehavior = sb; } }
         function vorspulen() { stupsWeg(); if (!ff && !filmFertig) { ff = { von: uJetzt, t0: performance.now() }; filmLauf = false; } }
         function cAn(sofort) {
           cAktiv = true;
@@ -6546,7 +6565,8 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
         function lage() {
           var p = pVh(), y = window.scrollY;
           if (!vonOben && y < sperrY - 10) vonOben = true;
-          if (!gespielt132 && filmFertig && !videoAn && !ff && y <= oben) { posterSetzen(); sofortSetzen(p); return; }   // Runde 132 (s1-37): vorbeigescrollt ohne Film, wieder oben: Standbild mit Play-Knopf
+          if (y < sperrY - 30) r146T0 = 0;   // Runde 146: wer von oben neu an die Sperre kommt, wird wieder kurz gehalten
+          if (!gespielt132 && filmFertig && !videoAn && !ff && y <= Math.min(oben, sperrY - 60)) { posterSetzen(); videoDurch = false; r146T0 = 0; sofortSetzen(p); return; }   // Runde 146: 60 px über der Sperre zurück = Standbild mit Play, Sperre wieder scharf (sperrY liegt vor oben)   // Runde 132 (s1-37): vorbeigescrollt ohne Film, wieder oben: Standbild mit Play-Knopf
           if (p < -100 || p > Z.weg + 100) { sofortSetzen(p); return; }
           if (videoAn && (p - filmStartP >= 9 || p >= Z.weg)) videoEnde(true);
           if (!filmFertig && !videoAn) {
@@ -7083,7 +7103,7 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
           if (window.scrollY < grenze() - 2 || e.altKey || e.ctrlKey || e.metaKey) return;
           var t = e.target, tag = t && t.tagName;
           if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'BUTTON' || (t && t.isContentEditable)) return;
-          if (['ArrowDown', 'PageDown', 'End', ' ', 'Spacebar'].indexOf(e.key) > -1) e.preventDefault();   // Runde 28: Tasten halten an der Sperre nur fest
+          if (['ArrowDown', 'PageDown', 'End', ' ', 'Spacebar'].indexOf(e.key) > -1) { if (!e.repeat) r146Gest++; if (r146Block()) e.preventDefault(); }   // Runde 28/146: Tasten halten an der Sperre kurz fest
         });
         addEventListener('resize', function () { szenePruefen(); planen(); });   // auch das resize der Hülle beim Umschalten
         // Webschrift geladen: Zeilen der Wand-Überschrift neu messen
@@ -8669,6 +8689,33 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
     }, true);
     dlg.addEventListener('close', function () { root.classList.toggle('r121-zeiger', zg); });
   })();
+</script>
+<script id="r146-js">
+(function () {
+  // Runde 147: Escape = „Überspringen“, wenn der Knopf im Bild steht (Rechner-Szene, Leiste während des Films, Handy-Player) und kein Fenster offen ist
+  function sichtbar(b) {
+    if (!b || !b.offsetParent && getComputedStyle(b).position !== 'fixed') return false;
+    var r = b.getBoundingClientRect();
+    return r.width > 0 && r.height > 0 && r.top >= 0 && r.bottom <= innerHeight && getComputedStyle(b).visibility !== 'hidden';
+  }
+  function offen() {   // sichtbares Fenster, Blatt oder Hinweis (die geschlossenen Blätter tragen aria-modal, sind aber unsichtbar)
+    var l = document.querySelectorAll('dialog[open], .is-open, .r145-an, [aria-modal="true"]');
+    for (var i = 0; i < l.length; i++) {
+      var s = getComputedStyle(l[i]), r = l[i].getBoundingClientRect();
+      if (s.visibility !== 'hidden' && s.display !== 'none' && +s.opacity > 0 && r.width > 0 && r.height > 0 && r.bottom > 0 && r.top < innerHeight) return true;
+    }
+    return false;
+  }
+  document.addEventListener('keydown', function (e) {
+    if (!document.documentElement.classList.contains('v22z-szene')) return;   // Runde 147: nur am Rechner (Szene), Handy-Player bleibt wie zuvor
+    if (e.key !== 'Escape' || e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
+    if (document.fullscreenElement || offen()) return;
+    var knoepfe = [].slice.call(document.querySelectorAll('.v28-skip.ist-da, .v26-skip:not(.v26-skip--halt)'));
+    for (var i = 0; i < knoepfe.length; i++) {
+      if (sichtbar(knoepfe[i])) { e.preventDefault(); knoepfe[i].click(); return; }
+    }
+  });
+})();
 </script>
 </body>
 </html>
