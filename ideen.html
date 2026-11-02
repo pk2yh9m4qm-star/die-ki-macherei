@@ -2368,6 +2368,7 @@ html .site-nav .v44-nav a.v47-pille[aria-current="page"] span { color: #fff; }
   body:has(#herz-ablage:not([hidden])) .live-fuss { padding-bottom: 98px; }
 </style>
 <meta name="runde173" content="pille-fuss-abstand-2026-11-02">
+<meta name="runde174" content="einstieg-claude-weiter-2026-11-02">
   <link rel="canonical" href="https://die-ki-macherei.de/ideen">
 </head>
 <body><div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -4157,12 +4158,14 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       if (k) { k.firstChild.textContent = 'ChatGPT-App laden '; k.href = R150.chatgpt; }
     }
     r150Anwenden();
+    var r174Ki = 'chatgpt';   // Runde 174: über welchen Link das Konto angelegt wurde (chatgpt oder claude)
     function r130Ui() {
       r150Anwenden();
       var an = kontoDa && schritt === 'keine', t = dlg.querySelector('#ein-titel-keine');
       if (!TITEL_KEINE && t) TITEL_KEINE = t.textContent;
       innen.classList.toggle('r130-konto', an);
       knopf('r130-weiter').hidden = !an;
+      var r174b = knopf('r130-weiter').firstChild; if (r174b && r174b.nodeType === 3) r174b.nodeValue = r174Ki === 'claude' ? 'Weiter mit Claude ' : 'Weiter mit ChatGPT ';   // Runde 174
       if (an) { knopf('konto').hidden = true; knopf('stoebern').hidden = true; }
       if (t) t.textContent = an ? (R150.mobil ? "In der App angemeldet? Dann geht’s hier weiter." : "Angemeldet? Dann geht’s hier weiter.") : TITEL_KEINE;
     }
@@ -4171,7 +4174,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       function los() {
         if (!dlg.open || !kontoDa || schritt !== 'keine') return;
         var a = document.activeElement;
-        if (!a || a === document.body || a === dlg || !dlg.contains(a) || a === knopf('konto') || a.id === 'ein-titel-keine') { try { b.focus({ preventScroll: true }); } catch (e) {} }   // nur wenn der Fokus sonst nirgends Sinnvolles hat (Link, Überschrift, nichts)
+        if (!a || a === document.body || a === dlg || !dlg.contains(a) || a === knopf('konto') || a.id === 'r150-claude' || a.id === 'ein-titel-keine') { try { b.focus({ preventScroll: true }); } catch (e) {} }   // nur wenn der Fokus sonst nirgends Sinnvolles hat (Link, Überschrift, nichts)
       }
       if (!document.hidden) { los(); return; }   // Tab verborgen (Konto-Tab im Vordergrund): Fokus nicht holen, erst wenn der Tab zurückkommt
       document.addEventListener('visibilitychange', function f() { if (document.hidden) return; document.removeEventListener('visibilitychange', f); los(); });
@@ -4185,7 +4188,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
     function standSchreiben() {
       try {
         if (!dlg.open || lies('ki-einstieg') || !/^(f1|f2|f3|keine)$/.test(schritt)) return;
-        sessionStorage.setItem(STAND, JSON.stringify({ s: schritt, n: wert('ein-niveau'), k: wert('ein-ki'), a: wert('ein-abo'), c: kontoDa ? 1 : 0 }));
+        sessionStorage.setItem(STAND, JSON.stringify({ s: schritt, n: wert('ein-niveau'), k: wert('ein-ki'), a: wert('ein-abo'), c: kontoDa ? (r174Ki === 'claude' ? 2 : 1) : 0 }));
       } catch (e) {}
     }
     function standLoeschen() { try { sessionStorage.removeItem(STAND); } catch (e) {} }
@@ -4204,7 +4207,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
         if (r) { r.checked = true; r.dispatchEvent(new Event('change', { bubbles: true })); }
       });
       zeige(s.s);
-      if (s.c && s.s === 'keine') { kontoDa = true; r130Ui(); standSchreiben(); r130Fokus(); }   // Runde 130: „Konto angelegt“ überlebt Tabwechsel und Neuladen
+      if (s.c && s.s === 'keine') { r174Ki = s.c === 2 ? 'claude' : 'chatgpt'; kontoDa = true; r130Ui(); standSchreiben(); r130Fokus(); }   // Runde 130: „Konto angelegt“ überlebt Tabwechsel und Neuladen
     }
 
     function lies(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
@@ -4497,11 +4500,13 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
     knopf('x').addEventListener('click', function () { zu('uebersprungen'); });
     knopf('stoebern').addEventListener('click', function () { zu('fertig'); });
     // Runde 130 (s2-35): Klick auf „ChatGPT-Konto anlegen“: der Link öffnet den neuen Tab wie bisher (kein preventDefault, Fenster bleibt), danach wechselt der Bereich
-    knopf('konto').addEventListener('click', function () { setTimeout(r130Konto, 0); });
+    knopf('konto').addEventListener('click', function () { r174Ki = 'chatgpt'; setTimeout(r130Konto, 0); });
+    // Runde 174: „claude.ai“ bzw. „Claude-App“ öffnet den neuen Tab wie bisher (kein preventDefault), danach dieselbe Fortsetzung mit „Weiter mit Claude“
+    (function () { var c = dlg.querySelector('#r150-claude'); if (c) c.addEventListener('click', function () { r174Ki = 'claude'; setTimeout(r130Konto, 0); }); })();
     knopf('r130-weiter').addEventListener('click', function () {   // wie die Wahl „ChatGPT“ und „Weiter“ in Frage 2
-      var r = dlg.querySelector('input[name="ein-ki"][value="chatgpt"]'); if (!r) return;
+      var r = dlg.querySelector('input[name="ein-ki"][value="' + r174Ki + '"]'); if (!r) return;   // Runde 174: ChatGPT oder Claude
       r.checked = true; r.dispatchEvent(new Event('change', { bubbles: true }));
-      merke('ki-wahl', 'chatgpt'); zeige('f3');
+      merke('ki-wahl', r174Ki); zeige('f3');
     });
     // Runde 113 (s2-32): „Konto anlegen“ schließt das Fenster nicht mehr (vorher zu('fertig') beim Klick: Fenster weg, ki-einstieg=fertig ohne Antworten)
     knopf('schliessen').addEventListener('click', function () { zu('fertig', true); });
