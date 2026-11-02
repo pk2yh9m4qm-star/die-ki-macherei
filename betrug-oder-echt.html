@@ -1655,7 +1655,6 @@ body { padding-bottom: 0; }
     inset 0 -2px 0 color-mix(in oklab, var(--fc) 50%, transparent), 0 1px 2px color-mix(in oklab, var(--fc) 30%, transparent),
     0 9px 16px -8px rgb(96 72 46 / .2), 0 26px 40px -22px rgb(96 72 46 / .3), 0 -8px 18px -12px rgb(40 26 14 / .28); }
 .ohne-bild .ra3 .ra-karte, .ohne-bild.ra3 .ra-karte { margin-top: 4px; }
-.ra3 .ra-karte-symbol { position: absolute; z-index: -1; right: -40px; top: -10px; width: 230px; height: 230px; fill: none; stroke: #000; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; opacity: .1; pointer-events: none; }
 .ra3 .ra-karte-innen { display: grid; }
 .ra3 .ra-lesen { display: grid; gap: 14px; padding: 20px var(--gutter) 0; }
 .ra3 .ra-handeln { display: grid; gap: 30px; padding: 30px var(--gutter) 34px; }
@@ -1704,7 +1703,6 @@ body { padding-bottom: 0; }
   .ra3 .ra-wrap { width: min(calc(100% - 2 * var(--gutter)), 1160px); }
   .ra3 .ra-szene img { aspect-ratio: auto; height: clamp(360px, 34vw, 480px); object-position: var(--pos-quer); }
   .ra3 .ra-karte { width: min(calc(100% - 2 * var(--gutter)), 1160px); margin: -56px auto 6px; }
-  .ra3 .ra-karte-symbol { right: auto; left: 30%; top: -40px; width: 300px; height: 300px; }
   .ra3 .ra-karte-innen { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 40px; padding: 34px 40px 40px; align-items: start; }
   .ra3 .ra-lesen { padding: 0; }
   .ra3 .ra-handeln { padding: 28px 28px 22px; border-radius: 22px; gap: 26px;
@@ -2664,6 +2662,33 @@ html.r133-offen { overflow: hidden; }
   /* Runde 136: Schild „Mit Abo“ bricht nie in sich um */
   html .tag.tag--abo { white-space: nowrap; }
 </style>
+<style id="r139">
+/* Runde 139 (s4-20, V2): KI-Feld nur Logos. Logos 22 px, Abstand 8 px; Trennstrich links wie bei den anderen Feldern */
+.kk3-fakten li.kk-ki { gap: 0; }
+.kk3-fakten .kk-logos { display: inline-flex; align-items: center; gap: 8px; }
+.kk3-fakten .kk-logo { flex: none; width: 22px; height: 22px; fill: currentColor; }
+/* Felder sind nowrap und brechen als Ganze um (Handy, und am Rechner, wenn die Reihe neben Siegel und Knöpfen zu schmal wird). Der Trennstrich steht links an
+   jedem Feld; die Reihe ist um Strich plus Innenabstand nach links gezogen und links beschnitten, so steht am Zeilenanfang nie ein Strich. */
+.kk3-fakten { --kkp: 10px; margin-left: calc(-1px - var(--kkp)); clip-path: inset(0 0 0 var(--kkp)); }
+.kk3-fakten li, .kk3-fakten li:first-child { padding: 0 var(--kkp); border-left: 1px solid rgb(255 255 255 / .30); }
+@media (max-width: 1023.98px) { .kk3-fakten { width: calc(100% + 1px + var(--kkp)); } }
+@media (max-width: 420px) { .kk3-fakten { --kkp: 8px; } }
+</style>
+<meta name="runde139" content="header-angaben-v2-2026-11-02">
+<style id="r140">
+/* Runde 140 (s4-16, B): offene Karte in „Mehr dazu“ nutzt die ganze Kartenbreite, keine Lücke, Nachbar wird nicht gestreckt */
+@media (min-width: 1024px) {
+  html .ra3.r70 .r70-mehr { align-items: start; }
+  html .ra3.r70 .r70-mehr:has(> details.ra-auf[open]) { grid-template-columns: minmax(0, 1fr); }
+  /* Nachbesserung (Pam): Die Karte bleibt breit, der Inhalt (Text, Listen, Prompt, verschachtelte Aufklapper) hält eine Lesebreite, linksbündig. Gemessen in Figtree: 75ch ergibt bis zu 107 Zeichen je Zeile (ch ist die Breite der „0“, breiter als der Schnitt aller Zeichen);
+     Ziel sind höchstens 80 Zeichen, deshalb 55ch (rund 78 Zeichen). */
+  html .ra3.r70 .r70-mehr details.ra-auf > .ra-auf-innen > :is(p, ul, ol, pre, details):not(.ra-abo-knoepfe) { max-width: 55ch; margin-right: auto; }
+}
+.ra3.r70 .r70-mehr summary:focus-visible { outline: 2px solid var(--focus); outline-offset: -4px; border-radius: 22px; }
+</style>
+<meta name="runde140" content="mehr-dazu-volle-breite-2026-11-02">
+<meta name="runde141" content="persoenliche-daten-raus-2026-11-02">
+<meta name="runde142" content="ausschnitt-feinschliff-2026-11-02">
   <link rel="canonical" href="https://die-ki-macherei.de/betrug-oder-echt">
 </head>
 <body data-fall="betrug-oder-echt"><div class="live-aufbau" role="note"><b>Public Beta</b> · Die Seite ist noch im Aufbau.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-folder-heart" viewBox="0 0 24 24"><path d="M10.638 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v3.417"/><path d="M14.62 18.8A2.25 2.25 0 1 1 18 15.836a2.25 2.25 0 1 1 3.38 2.966l-2.626 2.856a.998.998 0 0 1-1.507 0z"/></symbol><symbol id="ls-message-square-warning" viewBox="0 0 24 24"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/><path d="M12 15h.01"/><path d="M12 7v4"/></symbol><symbol id="ls-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol><symbol id="ls-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -2728,7 +2753,7 @@ SOFTWARE. --><symbol id="ls-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727
       </header>
 
 <div class="ra ra3 r64 r70 r70-z-ergebnis r71" id="fall-betrug" data-fall="betrug">
-  <div class="ra-wrap"><a class="ra-zurueck" href="/ideen"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>Alle Ideen</a></div><div class="d-buehne"><figure class="ra-szene r70-kopf r71-kopf vd" style="--fa:#d6aab6;--fb:#96677d;--fc:#47304d;--ml:0%;--mb:18%;--pos-hoch:50% 13%;--pos-quer:50% 28%;--qb:2400;--qh:1200" data-r115="1"><picture><source media="(min-width:1024px)" type="image/webp" srcset="/a-2ce0812bc62e.webp 1600w, /a-e369d40f18df.webp 2400w" sizes="min(100vw, 2400px)" width="2400" height="1200"><img data-m="1" src="/a-52993b0b617c.webp" srcset="/a-52993b0b617c.webp 750w, /a-08c7543fb129.webp 1200w" sizes="100vw" alt="Eine ältere Frau sitzt im grünen Sessel und hält ein Handy ans Gesicht, man sieht seine dunkle Rückseite mit der Kamera oben; in der Sprechblase daneben steht „Hallo Mama“ von unbekanntem Absender mit rotem Ausrufezeichen und derselben Link-Leiste. Sie zögert, ob sie dem Link trauen soll." width="1200" height="1224" fetchpriority="high" loading="eager" decoding="async"></picture><span class="d-dunkel" aria-hidden="true"></span></figure>
+  <div class="ra-wrap"><a class="ra-zurueck" href="/ideen"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>Alle Ideen</a></div><div class="d-buehne"><figure class="ra-szene r70-kopf r71-kopf vd" style="--fa:#d6aab6;--fb:#96677d;--fc:#47304d;--ml:0%;--mb:18%;--pos-hoch:50% 13%;--pos-quer:50% 38%;--qb:2400;--qh:1200" data-r115="1"><picture><source media="(min-width:1024px)" type="image/webp" srcset="/a-2ce0812bc62e.webp 1600w, /a-e369d40f18df.webp 2400w" sizes="min(100vw, 2400px)" width="2400" height="1200"><img data-m="1" src="/a-52993b0b617c.webp" srcset="/a-52993b0b617c.webp 750w, /a-08c7543fb129.webp 1200w" sizes="100vw" alt="Eine ältere Frau sitzt im grünen Sessel und hält ein Handy ans Gesicht, man sieht seine dunkle Rückseite mit der Kamera oben; in der Sprechblase daneben steht „Hallo Mama“ von unbekanntem Absender mit rotem Ausrufezeichen und derselben Link-Leiste. Sie zögert, ob sie dem Link trauen soll." width="1200" height="1224" fetchpriority="high" loading="eager" decoding="async"></picture><span class="d-dunkel" aria-hidden="true"></span></figure>
   
   <article class="ra-karte" style="--fa:#d6aab6;--fb:#96677d;--fc:#47304d;--ml:0%;--mb:18%">
     <div class="ra-karte-innen"><section class="r64-rk" id="r64-rk" hidden aria-labelledby="r64-rk-t"><button type="button" class="r64-zu" aria-label="Schließen">×</button><div class="r64-rk-teil" data-teil="hilfe"><div class="r64-rk-kopf"><p class="r64-rk-zeile">Zurück aus dem Chat</p><h2 id="r64-rk-t">Wie läuft's mit deiner Nachricht?</h2></div><div class="r64-rk-knoepfe"><div><button type="button" class="r64-rk-k" data-laeuft="laeuft">Läuft, die KI prüft die Nachricht</button></div><div><button type="button" class="r64-rk-k" data-hilfe="leer" aria-expanded="false" aria-controls="r64-a-leer">Das Eingabefeld ist leer</button><div class="r64-rk-antwort" id="r64-a-leer" hidden><p style="margin:0">Das passiert manchmal nach dem Anmelden. Die Anleitung liegt schon in deiner Zwischenablage: <span data-nur-geraet="handy">ins Feld tippen, gedrückt halten und „Einfügen“ wählen, abschicken.</span><span data-nur-geraet="computer">ins Feld klicken, Rechtsklick und „Einfügen“, abschicken.</span></p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und den Chat öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-leer">Hat geklappt</button></p></div></div><div><button type="button" class="r64-rk-k" data-hilfe="angemeldet" aria-expanded="false" aria-controls="r64-a-angemeldet">Ich bin nicht angemeldet</button><div class="r64-rk-antwort" id="r64-a-angemeldet" hidden><p style="margin:0"><span data-nur-geraet="computer">Melde dich vorher in diesem Browser bei deiner KI an.</span><span data-nur-geraet="handy">Melde dich vorher in der App deiner KI an.</span> Dann öffnet der Knopf direkt die fertige Anleitung. Noch kein Konto? Das legst du dort kostenlos an, mit E-Mail oder Google-Konto.</p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und den Chat öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-angemeldet">Hat geklappt</button></p></div></div><div><button type="button" class="r64-rk-k" data-hilfe="nichts" aria-expanded="false" aria-controls="r64-a-nichts">Es hat sich nichts geöffnet</button><div class="r64-rk-antwort" id="r64-a-nichts" hidden><p style="margin:0"><span data-nur-geraet="handy">Dann fehlt meist die App. </span><a href="#" data-start-web target="_blank" rel="noopener">Im Browser öffnen</a></p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und den Chat öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-nichts">Hat geklappt</button></p></div></div></div><p class="r64-rk-fuss"><button type="button" class="r64-leise" data-r64-kopieren>Anleitung noch einmal kopieren</button></p></div><div class="r64-rm" data-teil="rm" hidden><div class="r64-rm-kopf"><h2>Hilfst du uns kurz?</h2><button type="button" class="r64-leise" data-lieber-nicht>Lieber nicht</button></div><p class="r64-rm-unter">3 Fragen, nur antippen.</p><div class="v47-fort" aria-hidden="true"><b class="an"></b><b></b><b></b><span>Frage 1 von 3</span></div><div data-frage="rm-entwuerfe"><p class="r64-frage" id="r64-f0"><span class="r131-sr">Frage 1 von 3: </span>Wie gefällt dir die Antwort?</p><div class="r64-chips" data-anzahl="4" role="group" aria-labelledby="r64-f0"><button type="button" class="r64-chip" data-wert="gar-nicht" aria-pressed="false">Gar nicht</button><button type="button" class="r64-chip" data-wert="geht-so" aria-pressed="false">Geht so</button><button type="button" class="r64-chip" data-wert="gut" aria-pressed="false">Gut</button><button type="button" class="r64-chip" data-wert="richtig-gut" aria-pressed="false">Richtig gut</button></div></div><div data-frage="rm-leicht" hidden><p class="r64-frage" id="r64-f1"><span class="r131-sr">Frage 2 von 3: </span>War es leicht, loszulegen?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f1"><button type="button" class="r64-chip" data-wert="ganz-leicht" aria-pressed="false">Ganz leicht</button><button type="button" class="r64-chip" data-wert="ging-so" aria-pressed="false">Ging so</button><button type="button" class="r64-chip" data-wert="schwierig" aria-pressed="false">Schwierig</button></div></div><div data-frage="rm-wieder" hidden><p class="r64-frage" id="r64-f2"><span class="r131-sr">Frage 3 von 3: </span>Würdest du so etwas wieder mit KI machen?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f2"><button type="button" class="r64-chip" data-wert="ja" aria-pressed="false">Ja</button><button type="button" class="r64-chip" data-wert="vielleicht" aria-pressed="false">Vielleicht</button><button type="button" class="r64-chip" data-wert="eher-nicht" aria-pressed="false">Eher nicht</button></div></div></div><div class="r64-feld r64-feld-teil" data-teil="feld" hidden><label for="r64-text">Magst du uns noch etwas sagen?</label><textarea id="r64-text" rows="1" maxlength="500" aria-describedby="r64-text-h"></textarea><p class="r64-feld-klein" id="r64-text-h">Freiwillig. Bitte keine Namen, Adressen oder andere persönliche Daten.</p><p class="r64-rk-aktion"><button type="button" class="r64-los" data-feld="absenden">Absenden</button><button type="button" class="r64-leise" data-feld="fertig">Fertig</button></p></div><div class="r64-dank" data-teil="dank" hidden role="status"><span class="r64-haken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Danke! Damit machst du die KI-Macherei für alle ein Stück besser.</p><a href="/ideen">Noch eine Idee ausprobieren?</a></div><div class="r64-dank" data-teil="schoen" hidden role="status"><p>Schön! Alles Gute damit.</p></div></section><p class="r64-danke-zeile" id="r64-danke-zeile" hidden role="status"><span>Danke fürs Mitmachen</span><button type="button" class="r64-zu" aria-label="Hinweis schließen">×</button></p>
@@ -2736,7 +2761,7 @@ SOFTWARE. --><symbol id="ls-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727
         <div class="kk kk3" role="group" aria-label="Eckdaten dieser Idee">
     <a class="kk-siegel kk3-siegel" href="#" data-oeffne="gut"><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Kostenlos &amp; geprüft</a>
     <span class="kk-btns"><button type="button" class="ra-teilen" data-titel="Betrug oder echt?" aria-label="Teilen: Betrug oder echt?"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5"/><path d="M5 11.5V19a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7.5"/></svg></button><button type="button" class="ra-herz" data-herz="n01" data-titel="Betrug oder echt?" aria-pressed="false" aria-label="Merken: Betrug oder echt?"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button></span>
-    <ul class="kk3-fakten"><li><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock"/></svg>5 Min</li><li><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-camera"/></svg>1 Screenshot</li><li>ChatGPT</li></ul>
+    <ul class="kk3-fakten"><li><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock"/></svg>5 Min</li><li><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-camera"/></svg>1 Screenshot</li><li class="kk-ki"><span class="kk-logos" role="img" aria-label="Geht mit ChatGPT und Claude"><svg class="kk-logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#l-openai"/></svg><svg class="kk-logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#l-claude"/></svg></span></li></ul>
   </div>
         <h1>Betrug oder echt?</h1>
         <p class="ra-kurztext">Eine SMS von deiner Bank, eine E-Mail mit Frist oder ein Anruf von der Polizei: Betrug sieht heute oft täuschend echt aus. Du zeigst der KI die Nachricht oder erzählst vom Anruf, und sie sagt dir, welche Warnzeichen sie sieht und wie du sicher selbst nachprüfst.</p>
@@ -4261,6 +4286,21 @@ Versprich nicht, dass das Geld sicher ist oder zurückkommt, und nenn keine Fris
   messen(); window.addEventListener('load', messen); window.addEventListener('resize', messen);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(messen);
   if (window.ResizeObserver && l) new ResizeObserver(messen).observe(l);
+})();
+</script>
+<script id="r140-js">
+/* Runde 140: aria-expanded am <summary> folgt dem Zustand des <details> */
+(function () {
+  var ds = document.querySelectorAll('.r70-mehr details');
+  for (var i = 0; i < ds.length; i++) {
+    (function (d) {
+      var s = d.querySelector(':scope > summary');
+      if (!s) return;
+      function sync() { s.setAttribute('aria-expanded', d.open ? 'true' : 'false'); }
+      sync();
+      d.addEventListener('toggle', sync);
+    })(ds[i]);
+  }
 })();
 </script>
 </body>

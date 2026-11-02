@@ -1655,7 +1655,6 @@ body { padding-bottom: 0; }
     inset 0 -2px 0 color-mix(in oklab, var(--fc) 50%, transparent), 0 1px 2px color-mix(in oklab, var(--fc) 30%, transparent),
     0 9px 16px -8px rgb(96 72 46 / .2), 0 26px 40px -22px rgb(96 72 46 / .3), 0 -8px 18px -12px rgb(40 26 14 / .28); }
 .ohne-bild .ra3 .ra-karte, .ohne-bild.ra3 .ra-karte { margin-top: 4px; }
-.ra3 .ra-karte-symbol { position: absolute; z-index: -1; right: -40px; top: -10px; width: 230px; height: 230px; fill: none; stroke: #000; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; opacity: .1; pointer-events: none; }
 .ra3 .ra-karte-innen { display: grid; }
 .ra3 .ra-lesen { display: grid; gap: 14px; padding: 20px var(--gutter) 0; }
 .ra3 .ra-handeln { display: grid; gap: 30px; padding: 30px var(--gutter) 34px; }
@@ -1704,7 +1703,6 @@ body { padding-bottom: 0; }
   .ra3 .ra-wrap { width: min(calc(100% - 2 * var(--gutter)), 1160px); }
   .ra3 .ra-szene img { aspect-ratio: auto; height: clamp(360px, 34vw, 480px); object-position: var(--pos-quer); }
   .ra3 .ra-karte { width: min(calc(100% - 2 * var(--gutter)), 1160px); margin: -56px auto 6px; }
-  .ra3 .ra-karte-symbol { right: auto; left: 30%; top: -40px; width: 300px; height: 300px; }
   .ra3 .ra-karte-innen { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 40px; padding: 34px 40px 40px; align-items: start; }
   .ra3 .ra-lesen { padding: 0; }
   .ra3 .ra-handeln { padding: 28px 28px 22px; border-radius: 22px; gap: 26px;
@@ -2664,6 +2662,32 @@ html.r133-offen { overflow: hidden; }
   /* Runde 136: Schild „Mit Abo“ bricht nie in sich um */
   html .tag.tag--abo { white-space: nowrap; }
 </style>
+<style id="r139">
+/* Runde 139 (s4-20, V2): KI-Feld nur Logos. Logos 22 px, Abstand 8 px; Trennstrich links wie bei den anderen Feldern */
+.kk3-fakten li.kk-ki { gap: 0; }
+.kk3-fakten .kk-logos { display: inline-flex; align-items: center; gap: 8px; }
+.kk3-fakten .kk-logo { flex: none; width: 22px; height: 22px; fill: currentColor; }
+/* Felder sind nowrap und brechen als Ganze um (Handy, und am Rechner, wenn die Reihe neben Siegel und Knöpfen zu schmal wird). Der Trennstrich steht links an
+   jedem Feld; die Reihe ist um Strich plus Innenabstand nach links gezogen und links beschnitten, so steht am Zeilenanfang nie ein Strich. */
+.kk3-fakten { --kkp: 10px; margin-left: calc(-1px - var(--kkp)); clip-path: inset(0 0 0 var(--kkp)); }
+.kk3-fakten li, .kk3-fakten li:first-child { padding: 0 var(--kkp); border-left: 1px solid rgb(255 255 255 / .30); }
+@media (max-width: 1023.98px) { .kk3-fakten { width: calc(100% + 1px + var(--kkp)); } }
+@media (max-width: 420px) { .kk3-fakten { --kkp: 8px; } }
+</style>
+<meta name="runde139" content="header-angaben-v2-2026-11-02">
+<style id="r140">
+/* Runde 140 (s4-16, B): offene Karte in „Mehr dazu“ nutzt die ganze Kartenbreite, keine Lücke, Nachbar wird nicht gestreckt */
+@media (min-width: 1024px) {
+  html .ra3.r70 .r70-mehr { align-items: start; }
+  html .ra3.r70 .r70-mehr:has(> details.ra-auf[open]) { grid-template-columns: minmax(0, 1fr); }
+  /* Nachbesserung (Pam): Die Karte bleibt breit, der Inhalt (Text, Listen, Prompt, verschachtelte Aufklapper) hält eine Lesebreite, linksbündig. Gemessen in Figtree: 75ch ergibt bis zu 107 Zeichen je Zeile (ch ist die Breite der „0“, breiter als der Schnitt aller Zeichen);
+     Ziel sind höchstens 80 Zeichen, deshalb 55ch (rund 78 Zeichen). */
+  html .ra3.r70 .r70-mehr details.ra-auf > .ra-auf-innen > :is(p, ul, ol, pre, details):not(.ra-abo-knoepfe) { max-width: 55ch; margin-right: auto; }
+}
+.ra3.r70 .r70-mehr summary:focus-visible { outline: 2px solid var(--focus); outline-offset: -4px; border-radius: 22px; }
+</style>
+<meta name="runde140" content="mehr-dazu-volle-breite-2026-11-02">
+<meta name="runde141" content="persoenliche-daten-raus-2026-11-02">
   <link rel="canonical" href="https://die-ki-macherei.de/gehaltsgespraech-vorbereiten">
 </head>
 <body data-fall="gehaltsgespraech-vorbereiten"><div class="live-aufbau" role="note"><b>Public Beta</b> · Die Seite ist noch im Aufbau.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-house" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol><symbol id="ls-message-square-warning" viewBox="0 0 24 24"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/><path d="M12 15h.01"/><path d="M12 7v4"/></symbol><symbol id="ls-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol><symbol id="ls-shopping-bag" viewBox="0 0 24 24"><path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.103 6.034h17.794"/><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/></symbol><symbol id="ls-trending-up" viewBox="0 0 24 24"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
@@ -2736,7 +2760,7 @@ SOFTWARE. --><symbol id="ls-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727
         <div class="kk kk3" role="group" aria-label="Eckdaten dieser Idee">
     <a class="kk-siegel kk3-siegel" href="#" data-oeffne="gut"><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Kostenlos &amp; geprüft</a>
     <span class="kk-btns"><button type="button" class="ra-teilen" data-titel="Gehaltsgespräch vorbereiten" aria-label="Teilen: Gehaltsgespräch vorbereiten"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5"/><path d="M5 11.5V19a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7.5"/></svg></button><button type="button" class="ra-herz" data-herz="r17" data-titel="Gehaltsgespräch vorbereiten" aria-pressed="false" aria-label="Merken: Gehaltsgespräch vorbereiten"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button></span>
-    <ul class="kk3-fakten"><li><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock"/></svg>15–25 Min</li><li>ChatGPT</li></ul>
+    <ul class="kk3-fakten"><li><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock"/></svg>15–25 Min</li><li><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-file-text"/></svg>Gehaltsabrechnung</li><li class="kk-ki"><span class="kk-logos" role="img" aria-label="Geht mit ChatGPT und Claude"><svg class="kk-logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#l-openai"/></svg><svg class="kk-logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#l-claude"/></svg></span></li></ul>
   </div>
         <h1>Gehaltsgespräch vorbereiten</h1>
         <p class="ra-kurztext">Das Jahresgespräch steht an, und du weißt nicht, welche Zahl du nennen sollst. <b>KI findet heraus, was dein Beruf in deiner Region wirklich bringt</b>, mit Quelle, und <b>macht aus dem, was du geschafft hast, Sätze, die zählen</b>.</p>
@@ -4251,6 +4275,21 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
   messen(); window.addEventListener('load', messen); window.addEventListener('resize', messen);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(messen);
   if (window.ResizeObserver && l) new ResizeObserver(messen).observe(l);
+})();
+</script>
+<script id="r140-js">
+/* Runde 140: aria-expanded am <summary> folgt dem Zustand des <details> */
+(function () {
+  var ds = document.querySelectorAll('.r70-mehr details');
+  for (var i = 0; i < ds.length; i++) {
+    (function (d) {
+      var s = d.querySelector(':scope > summary');
+      if (!s) return;
+      function sync() { s.setAttribute('aria-expanded', d.open ? 'true' : 'false'); }
+      sync();
+      d.addEventListener('toggle', sync);
+    })(ds[i]);
+  }
 })();
 </script>
 </body>
