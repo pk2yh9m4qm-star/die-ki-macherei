@@ -1593,7 +1593,7 @@
     html.v22z-bewegt .v22z-fw.sofort .v22z-fw-weiter { transition: none; }
     /* Schmale Fenster und Handy: Gabi oben, darunter ihre Fragen als lockerer Schwarm aus Sprechblasen (so breit wie ihr Text,
        abwechselnd links und rechts, leicht schräg), damit sie nicht wie eine Liste aus Knöpfen wirken */
-    @container (max-width: 759px) {
+    @container (max-width: 839px) {
       .v22z-fw-wand { aspect-ratio: auto; display: grid; justify-items: start; gap: 14px; padding: 6px 2px 8px; font-size: 0.5375rem; }
       .v22z-fw-zettel { position: relative; left: auto; top: auto; width: fit-content; max-width: 84%; transform: rotate(var(--rm, -1deg)); }
       .v22z-fw-zettel:nth-child(odd) { --rm: 1.2deg; justify-self: end; }
@@ -3817,6 +3817,16 @@ html body .r187-panel:focus,html body .r187-panel:focus-visible,html body .r187-
   .v44-ebene-text .note a { color: inherit; }
 </style>
 <meta name="runde194" content="wissen-neue-fassung-2026-11-03">
+<meta name="runde197" content="blasen-antwort-2026-11-03">
+<style id="r197">.v22z-fw .v25-antwort .v25-antwort-text { font-size: 1rem !important; } .v22z-fw .v25-antwort .v25-antwort-frage { font-size: 1.0625rem !important; }</style>
+<meta name="runde198" content="antwortkarte-feste-stelle-2026-11-03">
+<style id="r198">.v25-antwort.v25-schwebt { width: min(440px, calc(100cqw * 40 / 110)); }</style>
+<meta name="runde200" content="blase-schmal-2026-11-03">
+<style id="r200">@container (max-width: 839px) {
+  .v22z-fw-zettel { transform-origin: 50% 0; }   /* das li wird mit Karte höher: die Drehung um die Mitte hätte die Blase verschoben */
+  .v22z-fw-zettel > .v25-antwort { --r200-w: min(440px, 84cqw); width: var(--r200-w); max-width: none; margin-right: calc(-1 * var(--r200-w)); margin-bottom: 16px; }
+  .v22z-fw-zettel:nth-child(odd) > .v25-antwort { position: relative; left: calc(100% - var(--r200-w)); }
+}</style>
 </head>
 <body><div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole der Laufbänder: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
@@ -8157,7 +8167,7 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
         var x = A[b.dataset.antwort]; if (!x) return;
         if (offen === b) { zu(); return; }
         if (offen) offen.setAttribute('aria-expanded', 'false');
-        offen = b; b.setAttribute('aria-expanded', 'true');
+        offen = b; b.setAttribute('aria-expanded', 'true'); b.focus({ preventScroll: true });   // Runde 198 N1: Fokus nur auf der aktiven Blase
         box.querySelector('.v25-antwort-frage').textContent = b.textContent.trim();
         box.querySelector('.v25-antwort-text').textContent = x.a;
         box.querySelector('.v25-antwort-mehr').dataset.antwort = b.dataset.antwort;   // Runde 44: „Mehr dazu“ öffnet die Ebene
@@ -8166,9 +8176,18 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
         if (!schwebt) { li.appendChild(box); box.classList.remove('v25-schwebt'); box.style.left = box.style.top = ''; }
         else {
           fw.appendChild(box); box.classList.add('v25-schwebt');
-          var r = li.getBoundingClientRect(), f = fw.getBoundingClientRect(), w = box.offsetWidth;
-          box.style.left = Math.min(Math.max(r.left - f.left, 8), f.width - w - 8) + 'px';
-          box.style.top = (r.bottom - f.top + 12) + 'px';
+          var r = li.getBoundingClientRect(), f = fw.getBoundingClientRect(), w = box.offsetWidth, h = box.offsetHeight;
+          // Runde 198: feste Stelle für alle Karten: mittig in der Szene, direkt unter der obersten Blasenreihe (daten, trauen, funktion)
+          var x = (f.width - w) / 2, y = 0;
+          ['daten', 'trauen', 'funktion'].forEach(function (id) {
+            var ob = fw.querySelector('.v25-blase[data-antwort="' + id + '"]'); if (!ob) return;
+            var ol = ob.closest('li'), q = ol.getBoundingClientRect(), u = q.bottom - f.top;
+            if (ol.getAttribute('data-schwanz') === 'unten') u += parseFloat(getComputedStyle(ob).fontSize) * 1.5;   // Sprechblasen-Schwanz unten
+            y = Math.max(y, u);
+          });
+          y += 12;
+          box.style.left = x + 'px';
+          box.style.top = y + 'px';
         }
       }
       fw.addEventListener('click', function (e) {

@@ -3126,6 +3126,91 @@ html body .r187-panel:focus,html body .r187-panel:focus-visible,html body .r187-
 <style id="r194-popup">.r133-text ol.steps { display: block; padding-left: 1.4em; list-style: decimal; } .r133-text ol.steps > li { display: list-item; margin: 0 0 .6em; } .r133-text ol.steps > li::before { content: none; }</style>
 <meta name="runde196" content="popup-titel-umbruch-2026-11-03">
 <style id="r196">.r133-titel { text-wrap: balance; }</style>
+<meta name="runde197-df" content="diktierfilm-popup-2026-11-03">
+<style id="r197-df">.r133-ebene .df { display: grid; gap: 8px; width: min(100%, 360px); margin: 4px 0; }
+.r133-ebene .df-kopf { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 0 4px; color: var(--ink); font-size: 13.5px; font-weight: 680; line-height: 1.2; }
+.r133-ebene .df-r { display: inline-flex; align-items: center; gap: 8px; }
+.r133-ebene .df-chip { padding: 3px 10px; border-radius: 999px; background: var(--clay-in); color: var(--muted); font-size: 12px; font-weight: 650; box-shadow: inset 0 1px 2px rgb(var(--sh) / .25), 0 1px 0 rgb(255 255 255 / .9); }
+.r133-ebene .df-pause { position: relative; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; color: var(--ink-soft); cursor: pointer; background: linear-gradient(175deg, var(--clay-hi), var(--clay) 55%, var(--clay-lo)); box-shadow: 0 1px 1px rgb(var(--sh) / .16), 0 3px 6px -2px rgb(var(--sh) / .22), inset 0 1px 0 #fff; }
+.r133-ebene .df-pause input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.r133-ebene .df-pause svg { width: 12px; height: 12px; fill: currentColor; }
+.r133-ebene .df-pause:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
+.r133-ebene .df-play { display: none; }
+.r133-ebene .df:has(.df-pause input:checked) .df-pz { display: none; }
+.r133-ebene .df:has(.df-pause input:checked) .df-play { display: block; }
+.r133-ebene .df:has(.df-pause input:checked) .df-buehne * { animation-play-state: paused !important; }
+.r133-ebene .df-buehne { position: relative; display: grid; gap: 10px; padding: 14px 12px 12px; border-radius: 22px; background: linear-gradient(180deg, #e7e0d4 0%, #eee8de 100%); box-shadow: inset 0 3px 7px rgb(var(--sh) / .24), inset 0 -1px 0 rgb(255 255 255 / .8), 0 1px 0 rgb(255 255 255 / .9); }
+.r133-ebene .df-chat { position: relative; display: flex; align-items: flex-end; justify-content: flex-end; height: 92px; animation: df-chat 11s linear infinite both; }
+.r133-ebene .df-leer { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: 15px; font-weight: 650; animation: df-leer 11s linear infinite both; }
+.r133-ebene .df-blase { max-width: 88%; padding: 8px 11px; border-radius: 14px 14px 4px 14px; background: #e3dccf; color: var(--ink); font-size: 11.5px; line-height: 1.4; opacity: 0; animation: df-blase 11s linear infinite both; }
+.r133-ebene .df-box { position: relative; display: grid; gap: 8px; padding: 10px 10px 8px 12px; border-radius: 18px; background: #fdfbf7; box-shadow: 0 1px 1px rgb(var(--sh) / .14), 0 6px 14px -8px rgb(var(--sh) / .35), inset 0 1px 0 #fff; }
+.r133-ebene .df-feld { position: relative; display: block; height: 64px; overflow: hidden; color: var(--ink); font-size: 12px; line-height: 15.5px; animation: df-feld 11s linear infinite both; }
+.r133-ebene .df-ph { position: absolute; top: 0; left: 0; color: var(--muted); opacity: 0; animation: df-ph 11s linear infinite both; }
+.r133-ebene .df-z { display: block; overflow: hidden; white-space: nowrap; }
+.r133-ebene .df-z1 { animation: df-z1 11s linear infinite both; }
+.r133-ebene .df-z2 { animation: df-z2 11s linear infinite both; }
+.r133-ebene .df-z3 { animation: df-z3 11s linear infinite both; }
+.r133-ebene .df-z4 { animation: df-z4 11s linear infinite both; }
+.r133-ebene .df-zeile { display: flex; align-items: center; gap: 6px; }
+.r133-ebene .df-zeile svg, .r133-ebene .df-l-ic svg { display: block; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.r133-ebene .df-plus { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; color: var(--muted); box-shadow: inset 0 0 0 1px rgb(var(--sh) / .22); }
+.r133-ebene .df-plus svg { width: 15px; height: 15px; }
+.r133-ebene .df-welle { display: flex; flex: 1; align-items: center; gap: 2px; height: 22px; padding-left: 4px; opacity: 0; animation: df-welle 11s linear infinite both; }
+.r133-ebene .df-welle i { width: 3px; height: 16px; border-radius: 2px; background: var(--k-blue); transform: scaleY(.3); animation: df-pegel .5s ease-in-out infinite alternate; }
+.r133-ebene .df-welle i:nth-child(2) { animation-delay: -.15s; }
+.r133-ebene .df-welle i:nth-child(3) { animation-delay: -.3s; }
+.r133-ebene .df-welle i:nth-child(4) { animation-delay: -.05s; }
+.r133-ebene .df-welle i:nth-child(5) { animation-delay: -.4s; }
+.r133-ebene .df-welle i:nth-child(6) { animation-delay: -.22s; }
+.r133-ebene .df-welle i:nth-child(7) { animation-delay: -.1s; }
+.r133-ebene .df-welle i:nth-child(8) { animation-delay: -.35s; }
+.r133-ebene .df-welle b { margin-left: 6px; color: var(--k-blue); font-size: 11.5px; font-weight: 650; white-space: nowrap; }
+.r133-ebene .df-mikro { display: grid; place-items: center; width: 32px; height: 32px; margin-left: auto; border-radius: 50%; background-color: #2f5871; color: #fff; box-shadow: 0 0 0 4px rgb(47 88 113 / .18); animation: df-mikro 11s linear infinite both; }
+.r133-ebene .df-welle + .df-mikro { margin-left: 0; }
+.r133-ebene .df-mikro svg { width: 17px; height: 17px; }
+.r133-ebene .df-rund { position: relative; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; color: #fbf7f0; background: linear-gradient(175deg, #4a433b, #1d1a16); box-shadow: inset 0 1px 0 rgb(255 255 255 / .2); }
+.r133-ebene .df-rund > span { grid-area: 1 / 1; display: grid; }
+.r133-ebene .df-rund svg { width: 17px; height: 17px; }
+.r133-ebene .df-ic-wellen { animation: df-ic-wellen 11s linear infinite both; }
+.r133-ebene .df-ic-pfeil { opacity: 0; animation: df-ic-pfeil 11s linear infinite both; }
+.r133-ebene .df-finger { position: absolute; right: 48px; bottom: 9px; width: 30px; height: 30px; border-radius: 50%; background: rgb(35 32 28 / .18); border: 2px solid rgb(255 255 255 / .95); box-shadow: 0 2px 8px rgb(var(--sh) / .35); opacity: 0; pointer-events: none; animation: df-finger 11s linear infinite both; }
+.r133-ebene .df-legende { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0 2px; font-size: 12.5px; font-weight: 650; line-height: 1.3; }
+.r133-ebene .df-legende > span { display: inline-flex; align-items: center; gap: 6px; }
+.r133-ebene .df-l-mikro { color: var(--k-blue); }
+.r133-ebene .df-l-rund { color: var(--muted); }
+.r133-ebene .df-l-ic { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; }
+.r133-ebene .df-l-mikro .df-l-ic { background: #2f5871; color: #fff; }
+.r133-ebene .df-l-rund .df-l-ic { background: #4a443c; color: #fbf7f0; }
+.r133-ebene .df-l-ic svg { width: 13px; height: 13px; }
+.r133-ebene .df-cap { margin: 0 6px; color: var(--muted); font-size: 12.5px; line-height: 1.4; }
+@keyframes df-pegel { from { transform: scaleY(.3); } to { transform: scaleY(1); } }
+@keyframes df-finger {
+      0% { opacity: 0; transform: translate(0, 8px) scale(1); } 6% { opacity: 1; transform: translate(0, 0) scale(1); }
+      9% { opacity: 1; transform: translate(0, 0) scale(.8); } 11% { opacity: 1; transform: translate(0, 0) scale(1); }
+      15%, 50% { opacity: 0; transform: translate(0, 0) scale(1); } 53% { opacity: 1; transform: translate(0, 0) scale(1); }
+      58% { opacity: 1; transform: translate(37px, 0) scale(1); } 60% { opacity: 1; transform: translate(37px, 0) scale(.8); }
+      62% { opacity: 1; transform: translate(37px, 0) scale(1); } 67%, 100% { opacity: 0; transform: translate(37px, 0) scale(1); } }
+@keyframes df-mikro {
+      0%, 9% { background-color: rgb(47 88 113 / 0); color: #4a443c; box-shadow: 0 0 0 0 rgb(47 88 113 / 0); }
+      11%, 48% { background-color: #2f5871; color: #fff; box-shadow: 0 0 0 4px rgb(47 88 113 / .18); }
+      51%, 100% { background-color: rgb(47 88 113 / 0); color: #4a443c; box-shadow: 0 0 0 0 rgb(47 88 113 / 0); } }
+@keyframes df-welle { 0%, 10% { opacity: 0; } 13%, 47% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes df-ph { 0%, 10% { opacity: 1; } 12%, 63% { opacity: 0; } 66%, 100% { opacity: 1; } }
+@keyframes df-chat { 0%, 14% { height: 139px; } 24% { height: 123px; } 34% { height: 108px; } 42%, 62% { height: 92px; } 65%, 100% { height: 139px; } }
+@keyframes df-feld { 0%, 14% { height: 17px; } 24% { height: 33px; } 34% { height: 48px; } 42%, 62% { height: 64px; } 65%, 100% { height: 17px; } }
+@keyframes df-z1 { 0%, 14% { clip-path: inset(0 100% 0 0); opacity: 1; } 24%, 62% { clip-path: inset(0 0 0 0); opacity: 1; } 64%, 100% { clip-path: inset(0 0 0 0); opacity: 0; } }
+@keyframes df-z2 { 0%, 24% { clip-path: inset(0 100% 0 0); opacity: 1; } 34%, 62% { clip-path: inset(0 0 0 0); opacity: 1; } 64%, 100% { clip-path: inset(0 0 0 0); opacity: 0; } }
+@keyframes df-z3 { 0%, 34% { clip-path: inset(0 100% 0 0); opacity: 1; } 42%, 62% { clip-path: inset(0 0 0 0); opacity: 1; } 64%, 100% { clip-path: inset(0 0 0 0); opacity: 0; } }
+@keyframes df-z4 { 0%, 42% { clip-path: inset(0 100% 0 0); opacity: 1; } 47%, 62% { clip-path: inset(0 0 0 0); opacity: 1; } 64%, 100% { clip-path: inset(0 0 0 0); opacity: 0; } }
+@keyframes df-ic-wellen { 0%, 49% { opacity: 1; } 52%, 63% { opacity: 0; } 66%, 100% { opacity: 1; } }
+@keyframes df-ic-pfeil { 0%, 49% { opacity: 0; } 52%, 63% { opacity: 1; } 66%, 100% { opacity: 0; } }
+@keyframes df-leer { 0%, 62% { opacity: 1; } 65%, 94% { opacity: 0; } 98%, 100% { opacity: 1; } }
+@keyframes df-blase { 0%, 63% { opacity: 0; transform: translateY(10px) scale(.97); } 67%, 93% { opacity: 1; transform: none; } 97%, 100% { opacity: 0; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .r133-ebene .df-buehne *, .r133-ebene .df-buehne { animation: none !important; } .r133-ebene .df-pause { display: none; } }</style>
+<meta name="runde202" content="balken-tabben-2026-11-03">
+<style id="r202">@media (max-width: 1023px) {
+  html { scroll-padding-bottom: calc(56px + 12px + 16px + env(safe-area-inset-bottom, 0px)); }   /* Balken 56 + Abstand 12 + Luft 16: ein fokussiertes Element liegt nie unter dem festen Balken */
+}</style>
 </head>
 <body data-fall="kontoauszug-abos"><div class="live-aufbau" role="note"><b>Public Beta</b> · Die Seite ist noch im Aufbau.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol><symbol id="ls-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol><symbol id="ls-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
@@ -4725,6 +4810,7 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
             <li><b>Nachfragen.</b> Schreib einfach weiter, zum Beispiel „Erklär das einfacher“ oder „Was heißt das für mich?“ Die KI behält die vorherigen Nachrichten in eurem Gespräch „im Kopf“ und antwortet darauf.</li></ol>
             <h4>Schneller: sprechen statt tippen</h4>
             <p>Tipp im Eingabefeld auf das Mikrofon und sprich einfach los. Das geht schneller als tippen und bringt meist bessere Antworten, weil du mehr erzählst. Mehr dazu: „Kann ich mit der KI sprechen?“</p>
+            <figure class="df"><div class="df-kopf"><span>So diktierst du</span><span class="df-r"><span class="df-chip">Beispiel</span><label class="df-pause" title="Animation anhalten"><input type="checkbox" aria-label="Animation anhalten"><svg class="df-pz" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="2" width="3" height="10" rx="1"/><rect x="8.5" y="2" width="3" height="10" rx="1"/></svg><svg class="df-play" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.2v9.6a.6.6 0 0 0 .9.5l7.6-4.8a.6.6 0 0 0 0-1L4.9 1.7a.6.6 0 0 0-.9.5z"/></svg></label></span></div><div class="df-buehne" aria-hidden="true"><div class="df-chat"><span class="df-leer">Wie kann ich helfen?</span><span class="df-blase">Also, ich bin Rentnerin, krieg 1.100 Euro Rente und zahl 600 Euro Miete. Jetzt will der Vermieter mehr. Kann ich da Wohngeld bekommen?</span></div><div class="df-box"><span class="df-feld"><span class="df-ph">Frag irgendwas …</span><span class="df-z df-z1">Also, ich bin Rentnerin, krieg 1.100 Euro</span><span class="df-z df-z2">Rente und zahl 600 Euro Miete. Jetzt will</span><span class="df-z df-z3">der Vermieter mehr. Kann ich da</span><span class="df-z df-z4">Wohngeld bekommen?</span></span><span class="df-zeile"><span class="df-plus"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><span class="df-welle"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><b>Ich höre zu …</b></span><span class="df-mikro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></span><span class="df-rund"><span class="df-ic-wellen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v4M10 7v10M14 9v6M17 11v2"/></svg></span><span class="df-ic-pfeil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></span></span><span class="df-finger"></span></div><div class="df-legende"><span class="df-l-mikro"><span class="df-l-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></span>Mikrofon: diktieren</span><span class="df-l-rund"><span class="df-l-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v4M10 7v10M14 9v6M17 11v2"/></svg></span>Wellen: Gespräch mit Stimme</span></div></div></figure>
             <p>Zum Diktieren ist das Mikrofon das richtige Symbol. Das runde Symbol mit den Wellen daneben startet ein Gespräch, bei dem die KI ebenfalls mit Sprache antwortet.</p>
             <h4>Was dir begegnen kann</h4>
             <p>Manchmal erscheint ein Hinweis und bietet dir ein Abo an. Wenn du das nicht willst, kannst du ihn einfach wegklicken. Für den Anfang brauchst du keins, ein Abo lohnt sich erst, wenn du an Grenzen stößt. Mehr dazu: „Kostet mich das etwas?“</p>
@@ -4756,7 +4842,7 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
             <h4 id="kostenlos--denkstaerke">Gründlicher nachdenken</h4>
             <p><b>Mit Abo geht mehr:</b> Die Abos ChatGPT Plus und Claude Pro bieten stärkere KI-Modelle an. Diese denken gründlicher nach. Das merkst du bei Aufgaben mit mehreren Schritten, etwa wenn die KI vergleichen, rechnen und daraus einen Plan machen soll. Für Alltagsfragen reichen die kostenlosen Versionen oft.</p>
             <h4 id="kostenlos--werbung">Werbung</h4>
-            <p><b>Mit Abo hast du mehr Ruhe:</b> ChatGPT Plus zeigt keine Werbung. Bei ChatGPT kann Werbung erscheinen, in der kostenlosen Version und im günstigeren Abo ChatGPT Go. Bei Claude erscheint keine. Mehr dazu: <a href="/mein-bereich#artikel-daten">„Was passiert mit all meinen Daten?“</a></p>
+            <p><b>Mit Abo hast du mehr Ruhe:</b> ChatGPT Plus zeigt keine Werbung. Bei ChatGPT kann Werbung erscheinen, in der kostenlosen Version und im günstigeren Abo ChatGPT Go. Bei Claude erscheint keine. Mehr dazu: „Was passiert mit all meinen Daten?“</p>
             <h4 id="kostenlos--preise">Was ein Abo kostet</h4>
             <p>Ein Abo kostet rund 20 bis 25 Euro im Monat und lässt sich jeden Monat kündigen. Du kannst es also einen Monat ausprobieren. Bei ChatGPT gibt es mit ChatGPT Go eine günstigere Stufe. Sie hat mehr Spielraum als kostenlos, aber Werbung und nicht die stärksten Modelle.</p>
             <h4>Lohnt sich das für dich?</h4>
