@@ -2832,6 +2832,7 @@ article.mcard > .herz { top: 9px; bottom: auto; right: 9px; width: 40px; height:
 <meta name="runde143" content="yannis-korrekturen-2026-11-02">
 <meta name="runde147" content="keller-film-rechner-mitte-2026-11-02">
 <meta name="runde175" content="keller-film-halt-oben-2026-11-02"><meta name="runde175-handy" content="keller-film-halt-oben-handy-2026-11-02">
+<meta name="runde224" content="keller-film-handy-ohne-halt-2026-11-04">
 <meta name="runde157" content="wissen-teil-c-2026-11-02">
 <script id="merkspeicher">
 /* merkspeicher.js (Runde 103, Ryan, 30.10.2026)
@@ -7591,7 +7592,7 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
       try { var h175 = document.querySelector('header'); if (h175) { var s175 = getComputedStyle(h175), r175 = h175.getBoundingClientRect(); if ((s175.position === 'fixed' || s175.position === 'sticky') && r175.top <= 1 && r175.height > 0) k175 = Math.min(200, Math.max(0, r175.bottom)); } } catch (e) {}
       kpY = Math.max(kpY, Math.round(absTop(f175) - k175));
     }
-    function kpAktiv() { return kpMoeglich() && !kpDurch && kpVonOben && !ruhig() && Date.now() > sprungBis && kpFilm && !kv.paused && !kv.ended; }   // Runde 106: nur bei laufendem Film
+    function kpAktiv() { return false; }   // Runde 224 (Yannis 04.11.2026, 12:56): am Handy kein Halt mehr, auch nicht bei laufendem Film
     function kpPruefen() {
       if (!kpK) return;
       var zeigen = kpMoeglich() && !kpDurch && !ruhig();
@@ -7624,6 +7625,7 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
     function kpRad(e) { if (e.deltaY > 0 && window.scrollY >= kpGrenze() - 2) e.preventDefault(); }
     var kpHoererAn = false;
     function kpHoerer() {
+      return;   // Runde 224: ohne Halt keine nicht-passiven touchmove/wheel-Hörer (sie würden das Scrollen nur bremsen)
       if (kpFilm && !kpHoererAn) { kpHoererAn = true; addEventListener('touchmove', kpTouch, { passive: false }); addEventListener('wheel', kpRad, { passive: false }); }
       else if (!kpFilm && kpHoererAn) { kpHoererAn = false; removeEventListener('touchmove', kpTouch, { passive: false }); removeEventListener('wheel', kpRad, { passive: false }); }
     }
