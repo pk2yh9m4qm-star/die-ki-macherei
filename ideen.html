@@ -83,14 +83,11 @@
   })();
 </script>
 <style>
-  /* Live-Fassung (15.10.2026): Leiste „im Aufbau“, Fuß mit Impressum. Die Leiste liegt unter allen Fenstern und
-     Seitenblättern (z-index 1), sonst deckt sie deren oberen Rand ab. */
   .live-aufbau { position: relative; z-index: 1; background: #2b2420; color: #f7f1e8; font: 500 14px/1.4 Figtree, system-ui, sans-serif;
     text-align: center; padding: 8px 16px; }
   .live-aufbau b { font-weight: 700; }
   .live-fuss { font: 500 14px/1.5 Figtree, system-ui, sans-serif; color: #6f655c; text-align: center; padding: 18px 16px 28px; }
   .live-fuss a { color: inherit; }
-  /* Fuß am Handy (Runde 11, 19.10.2026, live seit Yannis' „stell live“): Links 44 px hoch, „Testfassung im Aufbau“ in eigener Zeile */
   @media (max-width: 767.98px) {
     .live-fuss { padding: 12px 16px 28px; }
     .live-fuss a { display: inline-flex; align-items: center; min-height: 44px; font-size: 1rem; margin-inline: 8px; text-underline-offset: 3px; }
@@ -119,14 +116,8 @@
   <noscript><style>.v22s-anlass { display: none !important; }</style></noscript>
   <title>Alle Ideen · KI-Macherei</title>
   <style>
-  /* Figtree (Erik Kennedy, SIL Open Font License 1.1), lateinischer Zeichensatz, eingebettet, damit die Schrift auch ohne Internet und auf jedem System gleich aussieht */
   @font-face { font-family: "Figtree"; font-style: italic; font-weight: 300 900; font-display: swap; src: url(/a-ab2c6d32fc54.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
   @font-face { font-family: "Figtree"; font-style: normal; font-weight: 300 900; font-display: swap; src: url(/a-eddba2ef40ac.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    /* Startseite 11 · „Zum Anfassen“ · paralleles Experiment vom 29.09.
-       Texte, Reihenfolge, Funktionen und Farben aus Startseite 10.2. Neu ist das Material nach Yannis' Styleguide-Bild:
-       weiche, matte Formen, Licht von oben links, Schattenwurf, Höhenstufen und klare Zustände.
-       Grundregel: Was man drücken kann, steht hervor. Was gewählt ist, ist eingedrückt. Wo man etwas eingibt oder wo
-       etwas läuft, ist eine Vertiefung. Gesperrtes ist flach und ohne Licht. */
     :root {
       color-scheme: light;
       --ink: #23201c;
@@ -144,18 +135,15 @@
       --font-display: "Figtree", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
       --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.52'/%3E%3C/svg%3E");
       --noise-coarse: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280' viewBox='0 0 280 280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.29' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.30'/%3E%3C/svg%3E");
-      /* Kategoriefarben wie in 10.2 */
       --coral-a: #f2ad8e; --coral-b: #d47a63; --coral-c: #78343f;
       --sand-a: #e8cba3; --sand-b: #c0956a; --sand-c: #6b4a3a;
       --green-a: #b0c8a8; --green-b: #5f8a77; --green-c: #23473d;
       --blue-a: #a8c2d1; --blue-b: #5f8398; --blue-c: #274357;
       --plum-a: #d6aab6; --plum-b: #96677d; --plum-c: #47304d;
       --moss-a: #d6d6a8; --moss-b: #8a9160; --moss-c: #3f4a2b;
-      /* Kompass-Blau und Pfirsich */
       --k-deep: #1f3a4f; --k-blue: #2f5871; --k-mid: #5f8398; --k-soft: #a8c2d1; --k-tint: #eaf1f5; --k-coral: #e2735a; --k-peach: #f4b49a;
       --frei-bg: #e3ecd9; --frei-ink: #2f4a26; --abo-bg: #f3e1d6; --abo-ink: #7a3b25;
 
-      /* Material: ein warmes Brett aus matter Knete, bildschirmfüllend */
       --backdrop: #f1ebe1;
       --board: #f1ebe1;
       --clay-hi: #fcfaf6;
@@ -165,7 +153,6 @@
       --sh: 96 72 46;
       --lamp: 244 172 140;
       --light-blue: 118 166 197;
-      /* Bewegung: Anheben federt leicht nach, Eindrücken ist kurz und fest */
       --ease: cubic-bezier(.22, 1, .36, 1);
       --spring: cubic-bezier(.34, 1.4, .52, 1);
     }
@@ -182,30 +169,12 @@
     [hidden] { display: none !important; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
     .wrap { width: min(calc(100% - 2 * var(--gutter)), var(--content)); margin: 0 auto; }
-    /* Große Überschriften sind wie ins Brett gedruckt: Unter jeder Linie fängt sich ein Hauch Licht. */
     .display { font-family: var(--font-display); font-weight: 600; letter-spacing: -.03em; text-wrap: balance; text-shadow: 0 1px 0 rgb(255 255 255 / .8); }
     .icon { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
 
-    /* Interne Leiste. Nicht Teil der Besucheransicht. */
-    .review-bar { position: relative; z-index: 5; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 18px; min-height: 52px; padding: 9px var(--gutter); background: #26211c; color: #f0e9df; font-size: 12px; line-height: 1.35; letter-spacing: .02em; }
-    .review-bar strong { font-weight: 680; }
-    .review-bar .review-label { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
-    .review-bar .review-label i { width: 8px; height: 8px; border-radius: 50%; background: #e9a985; }
-    .review-bar .review-label span { color: #c9bfb2; }
-    .review-bar nav { display: flex; flex-wrap: wrap; gap: 6px 14px; }
-    .review-bar nav a { color: #e3d9cc; text-decoration: none; border-bottom: 1px solid rgba(227, 217, 204, .4); padding-bottom: 1px; }
-    .review-bar nav a:hover { color: #fff; border-color: #fff; }
-
-    /* ——— Das Brett ———
-       Die ganze Seite ist ein Brett mit feiner Körnung, keine Rasterlinien. Es füllt den Bildschirm ohne Rand,
-       ohne runde Ecken und ohne Schattenwurf (Yannis, 30.09.). */
     .board { position: relative; isolation: isolate; display: block; margin: 0; overflow: hidden; overflow: clip; background: linear-gradient(180deg, #f4eee5 0%, var(--board) 38%, #eee7dc 100%); }
     .board::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: var(--noise), var(--noise-coarse); background-size: 210px 210px, 280px 280px; opacity: .2; mix-blend-mode: multiply; pointer-events: none; }
 
-    /* ——— Knöpfe aus Knete ———
-       Alle Knöpfe tragen denselben Satz aus elf Schattenlagen. Der Aufbau bleibt in jedem Zustand gleich, damit Ruhe,
-       Anheben und Eindrücken weich ineinander übergehen.
-       o1–o3 Schatten aufs Brett · hl Aufhellung oben links · gl bleibt aus: neutrale, kompakte Schatten statt farbigem Licht (Yannis, 30.09.) · i1–i4 Wölbung · p1–p2 Eindruck */
     .nav-kompass, .button-primary, .button-quiet, .kat-chip, .shelf-nav button, .soon-sheet__links a, .soon-sheet__close, .k-close, .k-option, .moment-cta, .teaser-button {
       --hi: 255 255 255;
       --lo: var(--sh);
@@ -238,7 +207,6 @@
         --o3: 0 11px 16px -8px rgb(var(--sh) / .24);
       }
     }
-    /* Eingedrückt: beim Drücken kurz, bei gewählten Antworten und offenen Schaltern dauerhaft */
     :where(.nav-kompass, .button-primary, .button-quiet, .kat-chip, .shelf-nav button, .soon-sheet__links a, .soon-sheet__close, .k-close, .k-option, .moment-cta):active, .teaser:active .teaser-button, .k-option:has(input:checked) {
       --lift: 1px;
       --o1: 0 1px 0 rgb(255 255 255 / .9);
@@ -256,15 +224,12 @@
     }
     :where(.nav-kompass, .button-primary, .button-quiet, .kat-chip, .shelf-nav button, .soon-sheet__links a, .soon-sheet__close, .k-close, .k-option, .moment-cta):active, .teaser:active .teaser-button { transition-duration: .09s; }
 
-    /* Der dunkle Hauptknopf: weiches, dunkles Gummi. */
     .button-primary { --hi: 255 255 255; --lo: 0 0 0; --lip-a: .14; --lip-a2: .06; --i1: inset 0 1.5px 0 rgb(255 255 255 / .2); --i2: inset 0 -1.5px 0 rgb(0 0 0 / .35); --i3: inset 0 10px 14px -10px rgb(255 255 255 / .16); --i4: inset 0 -12px 16px -12px rgb(0 0 0 / .5);
       display: inline-flex; align-items: center; justify-content: space-between; gap: 20px; min-width: 190px; min-height: 56px; padding: 0 20px 0 26px; border-radius: 999px; color: #fbf7f0; background: linear-gradient(175deg, #4a433b 0%, #2b2722 45%, #1d1a16 100%); text-decoration: none; cursor: pointer; font-size: 15.5px; font-weight: 650; letter-spacing: -.005em; }
     .button-primary:active { background: linear-gradient(175deg, #151310 0%, #25211c 100%); }
     .button-primary .icon { font-size: 19px; stroke-width: 1.8; }
-    /* Der helle Nebenknopf */
     .button-quiet { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 999px; color: var(--ink); cursor: pointer; font-size: 15px; font-weight: 640; text-decoration: none; }
 
-    /* Gesperrt: flach, matt, ohne Licht. Wie der graue Knopf im Styleguide. */
     :is(.button-primary, .shelf-nav button):disabled, .k-dialog .button-primary:disabled {
       --lift: 0px;
       --o1: 0 1px 0 rgb(255 255 255 / .85);
@@ -281,12 +246,8 @@
       background: #e3dcd1; color: #675f56; cursor: not-allowed;
     }
 
-    /* Kopf: Marke links, rechts zwei Wege und der Kompass */
     .site-nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 80px; }
     .brand { display: inline-flex; align-items: center; gap: 11px; color: inherit; text-decoration: none; font-size: 17px; font-weight: 700; letter-spacing: -.02em; white-space: nowrap; }
-    /* Die Marke ist ein kleiner Knopf mit dunklem Kern */
-    .brand-mark { position: relative; width: 26px; height: 26px; flex: none; border-radius: 50%; background: linear-gradient(170deg, var(--clay-hi), var(--clay-lo)); box-shadow: 0 1px 1px rgb(var(--sh) / .2), 0 4px 8px -3px rgb(var(--sh) / .3), -1px -2px 4px rgb(255 255 255 / .8), inset 0 1px 0 #fff, inset 0 -3px 5px -2px rgb(var(--sh) / .2); }
-    .brand-mark::after { content: ""; position: absolute; inset: 8px 7px 6px 7px; border-radius: 50%; background: radial-gradient(circle at 40% 30%, #4a433b, var(--ink) 70%); box-shadow: inset 0 1px 1px rgb(0 0 0 / .5), 0 1px 0 rgb(255 255 255 / .7); }
     .nav-end { display: flex; align-items: center; gap: clamp(18px, 2.6vw, 36px); }
     .nav-links { display: flex; align-items: center; gap: clamp(18px, 2.6vw, 36px); }
     .nav-links a { position: relative; padding: 8px 0; text-decoration: none; font-size: 15px; font-weight: 600; }
@@ -295,9 +256,6 @@
     .nav-kompass { --glow: var(--light-blue); display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px 0 14px; border-radius: 999px; color: var(--k-blue); text-decoration: none; font-size: 14.5px; font-weight: 680; white-space: nowrap; cursor: pointer; }
     .nav-kompass .icon { font-size: 18px; }
 
-    /* ——— Farbige Knete ———
-       Beispielfenster, Ideenkarten und die Empfehlung im Kompass sind aus durchgefärbter Knete in ihrer Kategoriefarbe.
-       Jede Farbe ist so dicht gemischt, dass weiße Schrift darauf lesbar bleibt: Sand am stärksten, Pflaume kaum. */
     .pal-coral { --fa: var(--coral-a); --fb: var(--coral-b); --fc: var(--coral-c); --ml: 6%; --mt: 22%; --mb: 46%; }
     .pal-sand { --fa: var(--sand-a); --fb: var(--sand-b); --fc: var(--sand-c); --ml: 10%; --mt: 26%; --mb: 58%; }
     .pal-green { --fa: var(--green-a); --fb: var(--green-b); --fc: var(--green-c); --ml: 0%; --mt: 4%; --mb: 26%; }
@@ -312,7 +270,6 @@
       background-image: var(--noise), radial-gradient(90% 60% at 18% -6%, color-mix(in oklab, var(--sheen) 34%, transparent) 0%, transparent 62%), linear-gradient(172deg, var(--top) 0%, var(--bot) 100%);
       background-size: 220px 220px, auto, auto;
       background-blend-mode: soft-light, normal, normal;
-      /* Wölbung: Licht auf der oberen Rundung, Schatten an der unteren */
       --bevel: inset 0 1.5px 0 color-mix(in oklab, var(--sheen) 85%, transparent), inset 1.5px 0 0 color-mix(in oklab, var(--sheen) 35%, transparent), inset 0 26px 30px -22px color-mix(in oklab, var(--sheen) 70%, transparent), inset 16px 0 26px -20px color-mix(in oklab, var(--sheen) 34%, transparent), inset -18px 0 28px -20px color-mix(in oklab, var(--fc) 42%, transparent), inset 0 -30px 36px -24px color-mix(in oklab, var(--fc) 72%, transparent), inset 0 -2px 0 color-mix(in oklab, var(--fc) 50%, transparent);
     }
     @supports not (color: color-mix(in oklab, red, blue)) {
@@ -320,11 +277,8 @@
     }
     .glow, .hero-grain { display: none; }
 
-    /* Marken auf der Knete: kleine weiße Plättchen, aufgesetzt */
-    .tag { display: inline-flex; align-items: center; min-height: 26px; padding: 3px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 700; letter-spacing: .01em; white-space: nowrap; }
+    .tag { display: inline-flex; align-items: center; min-height: 26px; padding: 3px 10px; border-radius: 999px; font-weight: 700; letter-spacing: .01em; white-space: nowrap; }
     .tag--cat, .stufe { color: var(--fc, var(--ink)); background: linear-gradient(180deg, #fff 0%, #f5f1eb 100%); box-shadow: inset 0 1px 0 #fff, inset 0 -1px 0 color-mix(in oklab, var(--fc, #23201c) 16%, transparent), 0 1px 1px color-mix(in oklab, var(--fc, #23201c) 34%, transparent), 0 4px 8px -3px color-mix(in oklab, var(--fc, #23201c) 44%, transparent); }
-    /* „Kommt bald“ ist eingeprägt statt aufgesetzt: noch nicht eingeschaltet */
-    .tag--soon { color: #fff; background: color-mix(in oklab, var(--fc, #23201c) 46%, transparent); box-shadow: inset 0 1.5px 3px color-mix(in oklab, var(--fc, #23201c) 80%, transparent), inset 0 -1px 0 rgb(255 255 255 / .2), 0 1px 0 rgb(255 255 255 / .28); }
     .tag--match { color: #fbf7f0; background: linear-gradient(180deg, #44728d, var(--k-blue)); box-shadow: inset 0 1px 0 rgb(255 255 255 / .3), inset 0 -1px 1px rgb(0 0 0 / .25), 0 1px 1px rgb(20 40 55 / .4), 0 4px 8px -3px rgb(20 40 55 / .45); }
     .stufe { display: inline-flex; align-items: center; gap: 7px; min-height: 26px; padding: 3px 10px 3px 9px; border-radius: 999px; font-size: 11.5px; font-weight: 720; letter-spacing: .01em; white-space: nowrap; font-variant-numeric: tabular-nums; }
     .stufe i { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; }
@@ -334,10 +288,6 @@
     .stufe i b:nth-child(3) { height: 12px; }
     .stufe i b.an { background: currentColor; box-shadow: none; }
 
-    /* ——— Ideenkarte ———
-       Eine helle Platte, darauf ein farbiger Block mit dem Titel. Unter der Maus hebt sich die Platte an und wirft
-       einen neutralen Schatten (Yannis, 30.09.; vorher leuchtete ihre Farbe darunter). Beim Klicken sinkt sie ein. Kein Neigen, kein Licht, das dem Zeiger folgt. */
-    /* Nutzertest (02.10.): roter Klebepunkt auf den Karten, die sich schon öffnen lassen. Nach dem Test wieder entfernen. */
     .mcard[data-status="ready"]::before { content: ""; position: absolute; top: -6px; right: -6px; z-index: 3; width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 34% 30%, #ff7a6e 0%, #e5372c 48%, #c2261d 100%); box-shadow: 0 1px 1.5px rgb(60 20 10 / .35), 0 4px 8px -3px rgb(60 20 10 / .35), inset 0 1px 0 rgb(255 255 255 / .35); pointer-events: none; }
     .mcard {
       --c-lift: 0px;
@@ -359,7 +309,6 @@
     }
     .mcard:active { --c-lift: 1px; --co2: 0 1px 3px -1px rgb(var(--sh) / .1); --co3: 0 5px 8px -6px rgb(var(--sh) / .18); transition-duration: .1s; }
     .mcard:active .field { --f-lift: .5px; --f-o: 0 1px 2px -1px rgb(var(--sh) / .2); }
-    /* Tastatur: ein leuchtender Ring um die Platte, wie der Fokusring im Styleguide */
     .mcard:has(.mcard-link:focus-visible) { --c-lift: -5px; --cring: 0 0 0 3px var(--focus); --co2: 0 6px 10px -4px rgb(var(--sh) / .12); --co3: 0 19px 26px -12px rgb(var(--sh) / .26); }
     .mcard a.mcard-link:focus-visible { outline: none; }
     .mcard a.mcard-link { display: flex; flex-direction: column; flex: 1; border-radius: 22px; color: inherit; text-decoration: none; }
@@ -368,7 +317,7 @@
       --f-lift: 0px; --f-o: 0 3px 6px -2px rgb(var(--sh) / .2); display: flex; flex-direction: column; justify-content: space-between; gap: 12px; aspect-ratio: 5 / 3.55; padding: 15px 15px 17px; border-radius: 21px;
       box-shadow: var(--bevel), 0 1px 1px color-mix(in oklab, var(--fc) 38%, transparent), var(--f-o);
       transform: translateY(var(--f-lift)); transition: transform .5s var(--feder) .04s, box-shadow .45s var(--ease); }
-    .mcard .field-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .mcard .field-top { flex-wrap: wrap; justify-content: space-between; align-items: flex-start; }
     .field-tags { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
     .mcard h3.title { margin: 0; font-family: var(--font-display); font-size: clamp(19px, 1.45vw, 21px); line-height: 1.2; font-weight: 650; letter-spacing: -.012em; text-wrap: balance; hyphens: manual; overflow-wrap: break-word; text-shadow: 0 1px 1px color-mix(in oklab, var(--fc) 50%, transparent); }
     .mcard .body { display: flex; flex-direction: column; flex: 1 1 auto; gap: 10px; padding: 15px 11px 9px; color: var(--ink-soft); }
@@ -379,9 +328,7 @@
     .mcard .outcome { margin: 0 0 4px; color: var(--muted); font-size: 13.5px; line-height: 1.5; }
     .mcard .outcome b { color: var(--ink); font-weight: 680; }
     :root { --arrow-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E"); }
-    /* Passende Ideen sehen aus wie alle anderen, nur mit dem Marker „Passt zu dir“ (Yannis, 30.09.; vorher blauer Ring) */
 
-    /* Kartenrand: mit welcher KI, was du brauchst, Zeit, Daten, Kosten. Die Trennlinien sind eingeritzt. */
     .steckbrief { position: relative; display: grid; gap: 8px; margin-top: auto; padding: 13px 0 0; color: var(--muted); background: linear-gradient(to bottom, rgb(var(--sh) / .2) 0 1px, rgb(255 255 255 / .9) 1px 2px, transparent 2px) top / 100% 2px no-repeat; font-size: 12.5px; line-height: 1; }
     .sb-zeile { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; min-height: 20px; }
     .sb-logos { display: inline-flex; align-items: center; gap: 7px; }
@@ -389,15 +336,11 @@
     .steckbrief .sym { display: inline-flex; align-items: center; gap: 5px; cursor: help; transition: color .15s ease; }
     .steckbrief .sym:not(.sb-kosten):hover, .steckbrief .sym:not(.sb-kosten).is-open { color: var(--ink); }
     .steckbrief .ic { width: 18px; height: 18px; flex: none; }
-    .steckbrief .ic-klein { width: 15px; height: 15px; }
     .steckbrief .ki { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 4px; }
     .steckbrief .ki .logo { width: 17px; height: 17px; }
-    .steckbrief .ki--nein { color: rgba(35, 32, 28, .24); background: linear-gradient(to bottom right, transparent calc(50% - .9px), rgba(35, 32, 28, .62) calc(50% - .9px), rgba(35, 32, 28, .62) calc(50% + .9px), transparent calc(50% + .9px)); }
-    .steckbrief .sym.ki--nein:hover, .steckbrief .sym.ki--nein.is-open { color: rgba(35, 32, 28, .42); }
     .sb-min { white-space: nowrap; font-variant-numeric: tabular-nums; }
     .sb-min b { color: var(--ink); font-weight: 700; }
     .steckbrief .sb-auto { margin-left: -6px; }
-    /* Datenmenge: drei kleine Mulden, gefüllte sind aufgesetzt */
     .sb-daten .sb-segs { display: inline-flex; gap: 2px; }
     .sb-daten .sb-seg { width: 6px; height: 10px; border-radius: 2px; background: rgb(var(--sh) / .1); box-shadow: inset 0 1px 1.5px rgb(var(--sh) / .3), 0 1px 0 rgb(255 255 255 / .8); }
     .sb-daten .sb-seg.an { background: currentColor; box-shadow: 0 1px 1px rgb(var(--sh) / .25); }
@@ -409,7 +352,6 @@
     @media (hover: hover) { .steckbrief .sym:hover > .sb-tip { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; } }
     .steckbrief .sym.is-open > .sb-tip { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
 
-    /* „Kommt bald“: eine Platte über der Seite, Höhenstufe 5 */
     .soon-sheet { position: fixed; z-index: 40; inset: 0; display: none; align-items: flex-end; justify-content: center; padding: 16px; background: rgba(46, 36, 26, .42); -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
     .soon-sheet.is-open { display: flex; }
     .soon-sheet__panel { position: relative; width: min(100%, 540px); max-height: calc(100dvh - 32px); overflow-y: auto; padding: 28px 28px 26px; border-radius: 30px; background: linear-gradient(175deg, var(--clay-hi), var(--clay) 60%, #efe9df); box-shadow: inset 0 2px 0 #fff, inset 0 -2px 0 rgb(var(--sh) / .08), 0 2px 4px rgb(var(--sh) / .14), 0 14px 26px -10px rgb(40 26 14 / .24), 0 36px 66px -26px rgb(40 26 14 / .3); animation: sheet-in .5s var(--spring); }
@@ -426,9 +368,7 @@
     .footer::before, .how-line::before { content: ""; position: absolute; left: var(--gutter); right: var(--gutter); top: 0; height: 2px; background: linear-gradient(rgb(var(--sh) / .18) 0 1px, rgb(255 255 255 / .9) 1px 2px); }
     .footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; }
 
-    /* ——— Startseite ——— */
 
-    /* Kopf und Hero. Die Farbe des vorderen Beispiels fällt als Licht aufs Brett und wechselt mit ihm. */
     .hero { position: relative; isolation: isolate; }
     .hero-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
     .hero-bg i { position: absolute; inset: 0; opacity: 0; transition: opacity 1.6s var(--ease); background: radial-gradient(ellipse 34% 40% at 74% 70%, color-mix(in oklab, color-mix(in oklab, var(--fa) 55%, var(--fb)) 58%, transparent) 0%, color-mix(in oklab, var(--fa) 24%, transparent) 50%, transparent 76%), radial-gradient(ellipse 62% 70% at 76% 64%, color-mix(in oklab, var(--fa) 20%, transparent) 0%, transparent 72%); }
@@ -440,11 +380,7 @@
     .hero-intro .zeile { display: block; margin-bottom: 8px; color: var(--ink); font-weight: 600; }
     .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 16px; margin-top: 36px; }
 
-    /* Beispielfenster: ein Stapel dicker Platten wie die Höhenstufen im Styleguide.
-       Die nächsten Fälle schauen unten heraus, jeder in seiner Farbe und etwas tiefer im Schatten.
-       Beim Weiterblättern hebt sich die vordere Platte ab, die nächste rückt nach oben. */
     .moment { position: relative; }
-    /* Der Stapel liegt nach links unten versetzt wie in Version 20, damit man sieht, dass darunter weitere Karten warten (Yannis, 30.09. abends) */
     .moment-stack { --sx: -16px; --sy: 20px; position: relative; display: grid; margin: 0 0 82px 34px; touch-action: pan-y; -webkit-user-select: none; user-select: none; }
     .moment-deck { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
     .moment-deck i { --bevel: inset 0 1.5px 0 color-mix(in oklab, var(--sheen) 85%, transparent), inset 0 -12px 18px -12px color-mix(in oklab, var(--fc) 45%, transparent), inset 0 -2.5px 1px -1px color-mix(in oklab, var(--sheen) 40%, transparent);
@@ -459,22 +395,15 @@
       box-shadow: var(--bevel), 0 1px 2px color-mix(in oklab, var(--fc) 30%, transparent), 0 8px 14px -7px rgb(var(--sh) / .2), 0 22px 34px -20px rgb(var(--sh) / .3);
       transition: opacity .7s var(--ease), transform 1s var(--ease), visibility 0s linear 1s; }
     .moment-panel.is-active { opacity: 1; visibility: visible; transform: none; transition-delay: .06s, 0s, 0s; }
-    /* Die vordere Karte fliegt zur Seite weg, die nächste kommt vom Stapel hoch. Zurück kommt sie von rechts wieder. */
     .moment-panel.is-leaving, .moment-panel.is-leaving-links { opacity: 0; visibility: visible; transform: translate(115%, -12px) rotate(9deg); transition-duration: .5s, .6s, 0s; transition-timing-function: ease, cubic-bezier(.4, 0, .6, 1), linear; }
     .moment-panel.is-leaving-links { transform: translate(-115%, -12px) rotate(-9deg); }
     .moment-panel.kommt-zurueck { opacity: 0; transform: translate(115%, -12px) rotate(9deg); transition: none !important; }
     .moment-panel.is-gezogen { transition: none !important; cursor: grabbing; }
     .moment-panel.is-federt { transition: transform .55s var(--feder), opacity .7s var(--ease), visibility 0s !important; }
-    /* Antippen blättert weiter, Ziehen geht weiterhin (Yannis, 05.10., Nutzertest: Gela und Kaddi klickten auf den Stapel und
-       erwarteten, dass er weiterblättert). Eine wegfliegende Karte fängt keine Klicks mehr ab, damit schnelles Weiterklicken die
-       neue vordere Karte trifft. */
     @media (hover: hover) { .moment-panel.is-active { cursor: pointer; } }
     .moment-panel.is-leaving, .moment-panel.is-leaving-links { pointer-events: none; }
-    /* Die sichtbaren Ränder der Karten darunter holen genau diese Karte nach vorn (Yannis, 05.10.). Mit der Maus schiebt sich der
-       Rand unter dem Zeiger ein Stück aus dem Stapel heraus. */
     .moment-deck i[data-pos="1"], .moment-deck i[data-pos="2"], .moment-deck i[data-pos="3"] { pointer-events: auto; cursor: pointer; }
     @media (hover: hover) { .moment-deck i[data-pos]:hover { translate: calc(var(--sx) * .4) calc(var(--sy) * .4); } }
-    /* Dezente Pfeile links und rechts der Punkte, nur mit Maus; am Handy wischt man */
     .moment-nav { display: flex; align-items: center; justify-content: center; gap: 10px; }
     .moment-nav .moment-dots { margin: 0; }
     .moment-pfeil { display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--muted); font-size: 18px; cursor: pointer; transition: background .2s ease, color .2s ease, transform .35s var(--feder); }
@@ -488,25 +417,21 @@
     .schritte-titel { margin: 0; color: rgba(255, 255, 255, .94); font-size: 13px; font-weight: 650; letter-spacing: .005em; }
     ol.kette { display: block; margin: 0; padding: 0; list-style: none; counter-reset: schritt; }
     ol.kette li { counter-increment: schritt; position: relative; min-height: 24px; padding: 2px 0 10px 38px; color: #fff; font-size: 15px; font-weight: 600; line-height: 1.35; text-wrap: balance; text-shadow: 0 1px 1px color-mix(in oklab, var(--fc) 40%, transparent); }
-    /* Nummern als kleine, aufgesetzte Perlen. Die letzte ist hell: dort bist du fertig. */
     ol.kette li::before { content: counter(schritt); position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(175deg, rgb(255 255 255 / .3), rgb(255 255 255 / .1)); box-shadow: inset 0 1px 0 rgb(255 255 255 / .6), inset 0 -2px 3px color-mix(in oklab, var(--fc) 35%, transparent), 0 1px 1px color-mix(in oklab, var(--fc) 45%, transparent), 0 3px 6px -2px color-mix(in oklab, var(--fc) 50%, transparent); color: #fff; font-size: 12px; font-weight: 720; line-height: 1; font-variant-numeric: tabular-nums; text-shadow: none; }
     ol.kette li::after { content: ""; position: absolute; left: 12.5px; top: 28px; bottom: 2px; width: 1px; background: rgba(255, 255, 255, .42); }
     ol.kette li:last-child { padding-bottom: 0; }
     ol.kette li:last-child::after { display: none; }
-    /* Der weiße Punkt markiert den Schritt, an dem du etwas bekommst, nicht einfach den letzten (Yannis, 30.09.). */
     ol.kette li.fuer-dich::before { background: linear-gradient(180deg, #fff, #f3eee7); box-shadow: inset 0 1px 0 #fff, inset 0 -1.5px 0 color-mix(in oklab, var(--fc) 18%, transparent), 0 1px 1px color-mix(in oklab, var(--fc) 45%, transparent), 0 4px 8px -2px color-mix(in oklab, var(--fc) 55%, transparent); color: var(--fc); }
     .moment-panel.is-active ol.kette li { animation: step-in .7s var(--ease) both; }
     .moment-panel.is-active ol.kette li:nth-child(2) { animation-delay: .06s; }
     .moment-panel.is-active ol.kette li:nth-child(3) { animation-delay: .12s; }
     .moment-panel.is-active ol.kette li:nth-child(4) { animation-delay: .18s; }
     .moment-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }
-    /* Weißer Knopf auf farbiger Knete. */
     .moment-cta { --sh: 24 14 8; --lo: 24 14 8; --glow: 255 248 236; --hl: -2px -3px 8px -1px rgb(255 255 255 / .28); --lip-a: .45; --lip-a2: .22;
       display: inline-flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 48px; padding: 0 16px 0 22px; border-radius: 999px; background: linear-gradient(180deg, #fff 0%, #f4f0ea 100%); color: var(--fc); text-decoration: none; font-size: 14.5px; font-weight: 700; }
     .moment-cta:active { background: linear-gradient(180deg, #ebe6de, #f6f3ee); }
     .moment-cta .icon { font-size: 17px; stroke-width: 2; transition: transform .35s var(--ease); }
     .moment-cta:hover .icon { transform: translateX(3px); }
-    /* Unter dem Stapel eine Rille. Der aktive Fall füllt sie in seiner Farbe, solange das Fenster weiterblättert. */
     .moment-dots { display: flex; justify-content: center; gap: 0; width: fit-content; margin: 0 auto; padding: 0 4px; border-radius: 999px; background: var(--clay-in); box-shadow: inset 0 2px 4px rgb(var(--sh) / .26), inset 0 -1px 0 rgb(255 255 255 / .75), 0 1px 0 rgb(255 255 255 / .9); }
     .moment-dots button { position: relative; width: 44px; height: 30px; padding: 0; border: 0; background: transparent; cursor: pointer; }
     .moment-dots button::before, .moment-dots button::after { content: ""; position: absolute; inset: 11px 7px; border-radius: 999px; }
@@ -516,33 +441,13 @@
     .moment-dots button[aria-selected="true"]::after { opacity: 1; }
 
     @keyframes step-in { from { opacity: 0; transform: translateY(6px); } }
-
-    /* KI-Kompass: eine dunkelblaue Rinne quer durchs Brett. Vertieft, weil man hier etwas eingibt.
-       Kein Fall, deshalb keine Karte (Yannis, 29.09.). Dunkel wie bisher, aber kompakt, wie in 10.3 gewählt (B5):
-       Der Blick geht zuerst auf Überschrift und Karten. Die Nadel pendelt sich einmal ein und beim Darüberfahren. */
-    .kompass-teaser { position: relative; isolation: isolate; overflow: hidden; scroll-margin-top: 16px; background: radial-gradient(38% 130% at 8% 0%, rgba(168, 194, 209, .3) 0%, rgba(168, 194, 209, 0) 70%), radial-gradient(40% 160% at 100% 100%, rgba(8, 22, 34, .32) 0%, rgba(8, 22, 34, 0) 70%), linear-gradient(115deg, #3c6a85 0%, var(--k-blue) 46%, var(--k-deep) 100%);
-      box-shadow: inset 0 18px 24px -14px rgba(3, 12, 20, .66), inset 0 4px 5px -2px rgba(3, 12, 20, .55), inset 0 -14px 20px -16px rgba(3, 12, 20, .42), inset 0 -2px 0 rgba(168, 194, 209, .28), 0 1.5px 0 rgba(255, 255, 255, .95), 0 -1.5px 0 rgba(255, 255, 255, .9); }
-    .kompass-teaser::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: var(--noise); background-size: 240px 240px; opacity: .26; mix-blend-mode: multiply; pointer-events: none; }
     .teaser { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px clamp(20px, 2.6vw, 36px); padding-block: clamp(22px, 2.4vw, 30px); color: #fff; cursor: pointer; }
     .teaser-visual { width: clamp(64px, 5.6vw, 82px); aspect-ratio: 1; filter: drop-shadow(0 5px 4px rgba(3, 12, 20, .32)) drop-shadow(10px 20px 14px rgba(3, 12, 20, .42)); }
-    /* Die Nadel steht still. Beim Darüberfahren pendelt sie einmal aus und bleibt danach stehen, auch wenn die Maus geht
-       (Yannis, 30.09.; vorher pendelte sie beim Laden von selbst und beim Verlassen erneut). Das Skript setzt .is-swinging. */
     .teaser-visual img { display: block; width: 100%; height: 100%; object-fit: contain; transform-origin: 50% 50%; }
     .teaser-visual img.is-swinging { animation: kc-settle-again 2.2s cubic-bezier(.3, .6, .3, 1) 1 both; }
-    /* Die Nadel schwebt nicht mehr im Nichts (Yannis, 30.09. abends): Sie liegt auf einer Kachel aus Knete wie die Farbfelder der
-       Ideenkarten. Ton in Ton aus blauer Knete, nur etwas heller als die Rinne (Variante A), damit der Blick zuerst bei Überschrift
-       und Beispielen bleibt. Die helle Kachel in Stein zog zu viel Aufmerksamkeit. */
-    .pal-rinne { --fa: #7fa3b8; --fb: #406b85; --fc: #1d384c; --ml: 0%; --mt: 8%; --mb: 58%; }
     .teaser-visual.field { display: grid; place-items: center; width: clamp(76px, 6.6vw, 98px); border-radius: 24px; filter: none;
       box-shadow: var(--bevel), 0 1px 1px rgba(3, 12, 20, .45), 0 6px 10px -4px rgba(3, 12, 20, .5), 0 14px 22px -12px rgba(3, 12, 20, .55); }
     .teaser-visual.field img { width: 82%; height: 82%; filter: drop-shadow(0 2px 2px rgba(3, 12, 20, .45)) drop-shadow(0 7px 9px rgba(3, 12, 20, .35)); }
-    .teaser-text { display: grid; justify-items: start; gap: 6px; min-width: 0; }
-    .teaser-tag { color: var(--k-deep); background: linear-gradient(180deg, #fff, #eef2f4); box-shadow: inset 0 1px 0 #fff, 0 1px 1px rgba(3, 12, 20, .4), 0 4px 8px -3px rgba(3, 12, 20, .5); }
-    .teaser-title { margin: 1px 0 0; font-family: var(--font-display); font-size: clamp(26px, 2.4vw, 34px); line-height: 1.06; font-weight: 600; letter-spacing: -.02em; color: #fff; text-wrap: balance; text-shadow: 0 1px 1px rgba(3, 12, 20, .35); }
-    .teaser-lead { max-width: 58ch; margin: 2px 0 0; color: rgba(255, 255, 255, .93); font-size: clamp(15.5px, 1.2vw, 17px); font-weight: 500; line-height: 1.45; text-wrap: pretty; }
-    .teaser-action { display: grid; justify-items: center; }
-    /* Heller, neutraler Knopf in der dunkelblauen Rinne, wie „Anleitung ansehen“ im Beispielfenster (Yannis, 30.09.,
-       vorher Pfirsich). */
     .teaser-button { --lo: 24 14 8; --sh: 4 14 22; --glow: 255 248 236; --hl: -2px -3px 8px -1px rgb(255 255 255 / .1); --lip-a: .5; --lip-a2: .25;
       display: inline-flex; align-items: center; gap: 16px; min-height: 54px; padding: 0 20px 0 26px; border-radius: 999px; background: linear-gradient(180deg, #fff 0%, #f4f0ea 100%); color: var(--k-deep); font-size: 16px; font-weight: 720; white-space: nowrap; cursor: pointer; }
     .teaser:active .teaser-button { background: linear-gradient(180deg, #ebe6de, #f6f3ee); }
@@ -551,15 +456,11 @@
     .teaser-button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
     @keyframes kc-settle-again { 0% { transform: rotate(0deg); } 20% { transform: rotate(-18deg); } 45% { transform: rotate(11deg); } 70% { transform: rotate(-4deg); } 100% { transform: rotate(0deg); } }
 
-    /* Ideen in Reihen */
     .cases { padding-block: clamp(46px, 5vw, 70px) clamp(56px, 7vw, 92px); scroll-margin-top: 8px; }
     .section-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px; }
     .kat-nav { display: flex; flex-wrap: wrap; gap: 10px; }
-    /* Lebensbereiche: helle Knöpfe wie alle anderen. Beim Anheben werfen sie wie alle Knöpfe einen neutralen Schatten
-       (Yannis, 30.09.; vorher leuchtete ihre Kategoriefarbe darunter); gedrückt sinken sie ein. */
     .kat-chip { display: inline-flex; align-items: center; min-height: 44px; padding: 0 19px; border-radius: 999px; color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 640; white-space: nowrap; }
     .kat-chip i { display: none; }
-    /* Reihentitel: die Kategoriefarbe als kleiner, aufgesetzter Unterstrich statt eines Punkts */
     .shelf[data-kat] .shelf-title { position: relative; padding-bottom: 10px; }
     .shelf[data-kat] .shelf-title::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; border-radius: 999px; background: linear-gradient(180deg, color-mix(in oklab, var(--fa) 45%, var(--fb)), color-mix(in oklab, var(--fb), var(--fc) 25%)); box-shadow: inset 0 1px 0 rgb(255 255 255 / .45), 0 1px 1px color-mix(in oklab, var(--fc) 40%, transparent), 0 3px 5px -2px color-mix(in oklab, var(--fc) 45%, transparent); }
     .section-title { margin: 0; font-size: clamp(34px, 3.4vw, 48px); line-height: 1.06; }
@@ -579,8 +480,6 @@
     .shelf-track:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
     .shelf .mcard { flex: 0 0 clamp(268px, 21vw, 304px); width: clamp(268px, 21vw, 304px); scroll-snap-align: start; }
     .more-row { display: flex; justify-content: center; margin-top: 14px; }
-    /* Schlicht wie bei vergleichbaren Seiten („Alle anzeigen“ als Textlink): kein Knopf aus Knete, keine Liste der
-       versteckten Themen (Yannis, 30.09.). */
     .more-toggle { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 10px; border: 0; border-radius: 10px; background: none; color: var(--ink-soft); font-size: 15px; font-weight: 640; cursor: pointer; transition: color .2s ease; }
     .more-label { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .28em; text-decoration-color: var(--line-strong); transition: text-decoration-color .2s ease; }
     .more-toggle:hover { color: var(--ink); }
@@ -588,27 +487,15 @@
     .more-icon { display: inline-flex; font-size: 17px; transition: transform .35s var(--ease); }
     .more-toggle[aria-expanded="true"] .more-icon { transform: rotate(180deg); }
 
-    /* So funktioniert's, als eine Zeile. Die Nummern sind kleine Knöpfe, damit man sieht: Es sind drei Handgriffe. */
-    /* Einstieg (Yannis, 30.09., UX-Audit Punkt 2): zweiter Hero-Knopf öffnet den Kompass, die drei Schritte stehen direkt
-       unter dem Hero statt am Seitenende, „Eigene Idee teilen“ liegt bis zur eigenen Seite im Fuß. */
     .einstieg-kompass { gap: 9px; font-family: inherit; color: var(--k-blue); }
     .einstieg-kompass .icon { font-size: 18px; }
     .footer-rechts { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; }
     .footer-rechts a { color: var(--ink-soft); font-weight: 650; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .25em; text-decoration-color: var(--line-strong); }
     .footer-rechts a:hover { color: var(--ink); text-decoration-color: currentColor; }
-    .how-line { position: relative; scroll-margin-top: 20px; }
-    .how-line .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 30px; padding: 30px 0; }
-    .how-line h2 { margin: 0; font-family: var(--font-display); font-size: clamp(22px, 1.9vw, 26px); font-weight: 600; letter-spacing: -.016em; text-shadow: 0 1px 0 rgb(255 255 255 / .8); }
-    .how-line p { margin: 0; color: var(--ink); font-size: 14.5px; font-weight: 650; }
-    .how-line ol { display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 0; padding: 0; list-style: none; counter-reset: s; }
-    .how-line li { display: inline-flex; align-items: center; gap: 11px; color: var(--ink-soft); font-size: 15px; font-weight: 560; counter-increment: s; }
-    .how-line li::before { content: counter(s); display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(175deg, var(--clay-hi), var(--clay) 55%, var(--clay-lo)); box-shadow: 0 1px 1px rgb(var(--sh) / .16), 0 2px 5px -2px rgb(var(--sh) / .18), -1px -1px 3px rgb(255 255 255 / .6), inset 0 1.5px 0 #fff, inset 0 -6px 8px -6px rgb(var(--sh) / .22); color: var(--ink); font-size: 13px; font-weight: 740; font-variant-numeric: tabular-nums; }
 
-    /* Größere Schrift aus dem Kompass */
     :root.is-large main, :root.is-large .k-body > * { zoom: 1.12; }
 
 
-    /* ——— KI-Kompass im Dialog: eine Platte über der Seite, Höhenstufe 5 ——— */
     html:has(.k-dialog[open]) { overflow: hidden; }
     .k-dialog { width: min(720px, calc(100vw - 32px)); max-width: none; height: min(690px, calc(100vh - 48px)); height: min(690px, calc(100dvh - 48px)); max-height: none; margin: auto; padding: 0; border: 0; border-radius: 30px; background: linear-gradient(175deg, var(--clay-hi) 0%, var(--clay) 40%, #f0eae0 100%); color: var(--ink); box-shadow: inset 0 2px 0 #fff, inset 0 -2px 0 rgb(var(--sh) / .08), 0 2px 4px rgb(var(--sh) / .14), 0 18px 36px -12px rgb(30 18 8 / .27), 0 42px 72px -26px rgb(30 18 8 / .3); overflow: hidden; }
     .k-dialog[open] { display: flex; flex-direction: column; animation: k-in .5s var(--spring); }
@@ -629,7 +516,6 @@
     .k-step-label { color: var(--k-mid); font-size: 13px; font-weight: 620; font-variant-numeric: tabular-nums; }
     .k-close { --glow: var(--light-blue); flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; color: var(--k-blue); font-size: 20px; cursor: pointer; }
 
-    /* Fortschritt: vertiefte Rillen, in die sich eine Pfirsich-Leiste schiebt */
     .k-bar { display: flex; gap: 6px; }
     .k-bar i { position: relative; flex: 1; height: 12px; border-radius: 999px; background: var(--clay-in); box-shadow: inset 0 1.5px 3px rgb(var(--sh) / .3), inset 0 -1px 0 rgb(255 255 255 / .75), 0 1px 0 rgb(255 255 255 / .9); overflow: hidden; }
     .k-bar i::after { content: ""; position: absolute; inset: 2px; border-radius: inherit; background: linear-gradient(180deg, #9dbdd0 0%, #5e8ba6 45%, #2f5871 100%); box-shadow: inset 0 1px 0 rgb(255 255 255 / .45), inset 0 -1px 1px rgb(12 32 46 / .35), 0 1px 1px rgb(var(--sh) / .3); transform: scaleX(var(--fill, 0)); transform-origin: left center; transition: transform .7s var(--ease); }
@@ -659,7 +545,6 @@
     .k-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .k-options--stack { grid-template-columns: 1fr; }
     .k-options > .k-option:last-child:nth-child(odd) { grid-column: 1 / -1; }
-    /* Antworten sind Tasten: ruhend erhaben, gewählt eingedrückt, mit einer blauen Perle als Lämpchen */
     .k-option { --glow: var(--light-blue); display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 14px; min-height: 60px; padding: 12px 16px 12px 20px; border-radius: 18px; cursor: pointer; position: relative; }
     .k-option:has(input:checked) { --i2: inset 0 0 0 1.5px rgb(47 88 113 / .4); background: linear-gradient(175deg, #dde7ed 0%, #e8eff3 100%); }
     .k-option input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
@@ -681,7 +566,6 @@
     .k-skip { padding: 10px 2px; border: 0; background: none; color: var(--muted); font-size: 14.5px; font-weight: 620; cursor: pointer; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 4px; }
     .k-skip:hover { color: var(--k-blue); }
 
-    /* Startplan */
     .k-plan { display: grid; gap: 30px; }
     .k-plan:focus { outline: none; }
     .k-plan-head { display: grid; gap: 6px; }
@@ -696,7 +580,6 @@
     .k-faq summary::after { content: "+"; flex: none; display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(175deg, #fff, var(--clay-lo)); color: var(--k-blue); box-shadow: 0 1px 1px rgb(var(--sh) / .25), 0 3px 6px -2px rgb(var(--sh) / .28), inset 0 1px 0 #fff, inset 0 -2px 3px -1px rgb(var(--sh) / .2); font-family: var(--font-ui); font-size: 18px; font-weight: 500; transition: transform .3s var(--ease); }
     .k-faq details[open] summary::after { transform: rotate(45deg); }
     .k-faq details p { margin: 0; padding: 0 20px 18px; color: var(--ink-soft); font-size: 15px; line-height: 1.55; }
-    /* Grundlagen sind Leseflächen: Höhenstufe 1, kaum erhaben */
     .k-basics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .k-basics > .k-basic:last-child:nth-child(odd) { grid-column: 1 / -1; }
     .k-basic { display: grid; gap: 6px; align-content: start; padding: 16px 18px; border-radius: 18px; background: linear-gradient(175deg, #f7fafb, #edf2f4); box-shadow: 0 1px 1px rgb(var(--sh) / .1), 0 2px 6px -3px rgb(var(--sh) / .12), inset 0 1.5px 0 #fff, inset 0 -1px 0 rgba(47, 88, 113, .08); }
@@ -743,8 +626,6 @@
       .teaser { grid-template-columns: auto minmax(0, 1fr); padding-block: 22px 24px; }
       .teaser-visual { width: 56px; align-self: start; }
       .teaser-visual.field { width: 64px; border-radius: 18px; }
-      .teaser-title { font-size: clamp(25px, 7vw, 30px); }
-      .teaser-action { grid-column: 1 / -1; justify-items: stretch; }
       .teaser-button { justify-content: space-between; width: 100%; }
       .shelf-track { gap: 16px; padding-bottom: 96px; }
       .shelf .mcard { flex-basis: min(78vw, 304px); width: min(78vw, 304px); }
@@ -754,8 +635,6 @@
       .section-head { gap: 16px; }
       .kat-nav { gap: 8px; }
       .kat-chip { min-height: 44px; padding: 0 15px 0 12px; font-size: 14.5px; }
-      .how-line .wrap { flex-direction: column; align-items: flex-start; gap: 14px; padding: 26px 0 28px; }
-      .how-line ol { flex-direction: column; gap: 12px; }
       .k-dialog { width: 100vw; height: 100vh; height: 100dvh; border-radius: 0; }
       .k-head { padding-top: calc(12px + env(safe-area-inset-top, 0px)); }
       .k-foot { flex-direction: column-reverse; align-items: stretch; padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
@@ -775,10 +654,6 @@
       .teaser:hover .teaser-button .icon, .moment-cta:hover .icon { transform: none; }
     }
   
-    /* ——— Herzen (Yannis, 30.09.) ———
-       Jede Ideenkarte hat unten rechts ein Herz. Gemerkt heißt eingedrückt und rot gefüllt, wie alles Gewählte auf der Seite.
-       Beim Merken fliegt ein Herz nach unten rechts in die Ablage; die entsteht mit dem ersten Herz, zeigt die Zahl und führt zu
-       „Mein Bereich“. Nicht im Beispielfenster oben (Yannis). */
     :root { --herz: #d24b3a; --feder: cubic-bezier(.34, 1.56, .64, 1); }
     .herz, .tool { display: inline-grid; place-items: center; flex: none; width: 38px; height: 38px; padding: 0; border: 0; border-radius: 50%; cursor: pointer; -webkit-tap-highlight-color: transparent;
       transition: transform .3s var(--spring), box-shadow .3s var(--ease), background .3s ease, color .2s ease; }
@@ -797,11 +672,9 @@
     [data-herz][aria-pressed="true"] .herz-ic { fill: currentColor; }
     [data-herz].is-pop .herz-ic { animation: herz-pop .5s var(--spring); }
     @keyframes herz-pop { 0% { transform: scale(1); } 30% { transform: scale(1.4); } 100% { transform: scale(1); } }
-    /* Platz für das Herz neben dem Kartenrand; ein Druck aufs Herz lässt nicht die ganze Karte einsinken */
     .mcard .steckbrief { padding-right: 46px; }
     .mcard:has(.herz:active) { --c-lift: -5px; }
     .mcard:has(.herz:active) .field { --f-lift: -1.5px; }
-    /* Die Ablage unten rechts */
     .herz-ablage { position: fixed; z-index: 35; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
       display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 7px 16px 7px 7px; border: 0; border-radius: 999px; color: var(--ink); font: inherit; font-size: 14.5px; font-weight: 680; cursor: pointer;
       background: linear-gradient(175deg, var(--clay-hi), var(--clay) 60%, #efe9df);
@@ -816,11 +689,9 @@
     .herz-zahl { min-width: 1ch; font-size: 17px; font-weight: 760; font-variant-numeric: tabular-nums; }
     .herz-ablage__text { padding-left: 11px; border-left: 1px solid rgb(var(--sh) / .2); color: var(--ink-soft); white-space: nowrap; }
     .herz-ablage .icon { font-size: 16px; color: var(--ink-soft); }
-    /* Das fliegende Herz */
     .herz-flug { position: fixed; z-index: 45; left: 0; top: 0; width: 0; height: 0; pointer-events: none; }
     .herz-flug > span { display: block; width: 0; height: 0; }
     .herz-flug .herz-ic { display: block; width: 26px; height: 26px; margin: -13px 0 0 -13px; fill: var(--herz); stroke: var(--herz); filter: drop-shadow(0 3px 5px rgb(120 30 20 / .35)); }
-    /* „Mein Bereich“ als Fenster, bis es die Seite gibt */
     .herz-liste { display: grid; gap: 8px; margin: 0 0 18px; padding: 0; list-style: none; }
     .herz-liste li { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 14px; background: var(--clay-in); color: var(--ink); font-size: 15px; font-weight: 600; line-height: 1.35;
       box-shadow: inset 0 1px 2px rgb(var(--sh) / .2), 0 1px 0 rgb(255 255 255 / .9); }
@@ -828,18 +699,10 @@
     .herz-toast { position: fixed; z-index: 46; left: 50%; bottom: calc(86px + env(safe-area-inset-bottom, 0px)); width: max-content; max-width: calc(100vw - 32px); padding: 10px 16px; text-align: center; border-radius: 999px; background: #23201c; color: #fbf7f0; font-size: 14px; font-weight: 600;
       opacity: 0; transform: translate(-50%, 12px); pointer-events: none; transition: opacity .25s ease, transform .35s var(--spring); }
     .herz-toast.is-da { opacity: 1; transform: translate(-50%, 0); }
-    /* Am Handy kompakt: Herz, Zahl und Pfeil, damit die Ablage wenig Inhalt verdeckt; „Mein Bereich“ sagt der Knopf dem Screenreader */
     @media (max-width: 700px) {
-      .herz-ablage { min-height: 46px; gap: 8px; padding: 5px 12px 5px 5px; }
       .herz-ablage__herz { width: 36px; height: 36px; }
-      .herz-ablage__text { display: none; }
     }
 
-    /* Karten: Die Stufe steht immer oben rechts am Rand, links die Kategorie, darunter bei Bedarf „Passt zu dir“
-       (Yannis, 01.10. spätnachmittags; vorher stand die Stufe in der zweiten Zeile). „Kommt bald“ steht auf keiner Karte mehr.
-       Ab Tablet-Breite sind die Karten in den Reihen mindestens 296 px breit, damit auch „Behörden und Formulare“ neben die
-       Stufe passt; wird es trotzdem eng, etwa auf kleinen Handys, bricht die Kategorie um, statt unter die Stufe zu rutschen.
-       Ist ein Titel einmal zu lang, wächst der Farbteil mit, statt den Text abzuschneiden. */
     .mcard .field { overflow: clip; }
     .mcard .field-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 6px; }
     .mcard .field-tags { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-width: 0; }
@@ -848,14 +711,8 @@
     .mcard .field-top .tag--cat { white-space: normal; text-wrap: balance; line-height: 1.2; }
     @media (min-width: 701px) { .shelf .mcard { flex-basis: clamp(296px, 21vw, 304px); width: clamp(296px, 21vw, 304px); } }
   
-    /* Knöpfe unter einer Kartenreihe liegen sichtbar und klickbar über ihr (Yannis, 01.10.: „Mehr anzeigen“ nicht klickbar) */
     .more-row, .shelf-head { position: relative; z-index: 2; }
   
-    /* ——— KI-Kompass in Kompass-Blau (Yannis, 01.10. spätnachmittags) ———
-       Die Platte hat das Blau und den Verlauf des Kompass-Bands auf der Startseite, mit derselben feinen Körnung.
-       Antworten, Knöpfe und Infokarten bleiben helle Knete und heben sich davon ab; Schrift auf dem Blau ist weiß.
-       Gesperrt ist ins Blau eingeprägt, wie „Kommt bald“ früher. Schatten sind auf dem Blau dunkel statt warm.
-       Abläufe und Bewegungen sind unverändert. */
     #kompass-dialog { --sh: 4 14 22; --focus: #f6f1e8; isolation: isolate; color: #fff;
       background: radial-gradient(90% 55% at 0% 0%, rgba(168, 194, 209, .3) 0%, rgba(168, 194, 209, 0) 70%), radial-gradient(70% 60% at 100% 100%, rgba(8, 22, 34, .36) 0%, rgba(8, 22, 34, 0) 72%), linear-gradient(160deg, #3c6a85 0%, var(--k-blue) 46%, var(--k-deep) 100%);
       box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, .2), inset 0 -2px 0 rgba(3, 12, 20, .35), 0 2px 4px rgba(3, 12, 20, .2), 0 18px 36px -12px rgba(3, 12, 20, .42), 0 42px 72px -26px rgba(3, 12, 20, .45); }
@@ -864,13 +721,11 @@
     #kompass-dialog .k-head::after, #kompass-dialog .k-foot::before { background: linear-gradient(rgba(3, 12, 20, .42) 0 1px, rgba(255, 255, 255, .14) 1px 2px); }
     #kompass-dialog .k-head-title { color: #fff; }
     #kompass-dialog .k-step-label { color: #d3e2eb; }
-    /* Die Nadel liegt wie im Band auf einer Kachel aus blauer Knete, damit ihr dunkler Teil auf dem Blau nicht verschwindet */
     #kompass-dialog .k-head .mini-rose { --fa: #8fb1c4; --fb: #4a7894; --fc: #1d384c; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; overflow: visible;
       background-image: var(--noise), radial-gradient(90% 60% at 18% -6%, rgba(220, 234, 242, .5) 0%, transparent 62%), linear-gradient(172deg, color-mix(in oklab, var(--fb), var(--fc) 6%) 0%, color-mix(in oklab, var(--fb), var(--fc) 52%) 100%);
       background-size: 220px 220px, auto, auto; background-blend-mode: soft-light, normal, normal;
       box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, .32), inset 0 -2px 0 rgba(3, 12, 20, .3), inset 0 -10px 14px -10px rgba(3, 12, 20, .45), 0 1px 1px rgba(3, 12, 20, .45), 0 6px 10px -4px rgba(3, 12, 20, .5); }
     #kompass-dialog .k-head .mini-rose img.needle { width: 86%; height: 86%; filter: drop-shadow(0 2px 2px rgba(3, 12, 20, .45)) drop-shadow(0 5px 7px rgba(3, 12, 20, .3)); }
-    /* Fortschritt: Rillen ins Blau gedrückt, die Leiste darin hell */
     #kompass-dialog .k-bar i { background: rgba(3, 12, 20, .3); box-shadow: inset 0 1.5px 3px rgba(3, 12, 20, .5), inset 0 -1px 0 rgba(255, 255, 255, .07), 0 1px 0 rgba(255, 255, 255, .14); }
     #kompass-dialog .k-bar i::after { background: linear-gradient(180deg, #fff 0%, #e6eff4 50%, #bdd1dd 100%); box-shadow: inset 0 1px 0 #fff, inset 0 -1px 1px rgba(31, 58, 79, .25), 0 1px 1px rgba(3, 12, 20, .35); }
     #kompass-dialog .k-bar i.is-current { box-shadow: inset 0 1.5px 3px rgba(3, 12, 20, .5), inset 0 -1px 0 rgba(255, 255, 255, .07), 0 1px 0 rgba(255, 255, 255, .14), 0 0 0 1.5px rgba(255, 255, 255, .45); }
@@ -878,14 +733,12 @@
     #kompass-dialog .k-body { scrollbar-color: rgba(255, 255, 255, .3) transparent; }
     #kompass-dialog .k-question { color: #fff; text-shadow: 0 1px 1px rgba(3, 12, 20, .35); }
     #kompass-dialog .k-hint { color: #d3e2eb; }
-    /* Helle Tasten auf dem Blau: dunkle Schatten, kaum Aufhellung daneben, beim Drücken eine feine helle Kante darunter */
     #kompass-dialog :is(.k-close, .k-option, .button-quiet, .button-primary) { --hl: -2px -3px 8px -1px rgb(255 255 255 / .08); }
     #kompass-dialog :is(.k-close, .k-option, .button-quiet):active, #kompass-dialog .k-option:has(input:checked) { --o1: 0 1px 0 rgb(255 255 255 / .16); --hl: 0 -1px 0 0 rgb(var(--sh) / .4); }
     #kompass-dialog .k-option:has(input:checked) { background: linear-gradient(175deg, #d6e3eb 0%, #e6eef3 100%); }
     #kompass-dialog .k-tip { background: linear-gradient(175deg, #1c3446, #102532); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 0 0 1px rgba(255, 255, 255, .26), 0 2px 4px rgba(3, 12, 20, .35), 0 16px 34px -8px rgba(3, 12, 20, .65); }
     #kompass-dialog .k-skip { color: rgba(255, 255, 255, .82); text-decoration-color: rgba(255, 255, 255, .38); }
     #kompass-dialog .k-skip:hover { color: #fff; text-decoration-color: currentColor; }
-    /* „Weiter“ und „Zu meinem Bereich“: heller Knopf wie „Hier starten“ im Band */
     #kompass-dialog .button-primary { --hi: 255 255 255; --lo: var(--sh); --glow: 255 248 236; --lip-a: .5; --lip-a2: .25;
       --i1: inset 0 1.5px 0 rgb(255 255 255 / .95); --i2: inset 0 -1.5px 0 rgb(var(--sh) / .12); --i3: inset 0 10px 14px -10px rgb(255 255 255 / .85); --i4: inset 0 -12px 16px -12px rgb(var(--sh) / .2);
       background: linear-gradient(180deg, #fff 0%, #f4f0ea 100%); color: var(--k-deep); font-weight: 700; }
@@ -894,7 +747,6 @@
     #kompass-dialog .button-primary:disabled { --o1: 0 1px 0 rgb(255 255 255 / .13); --o2: 0 0 0 0 transparent; --o3: 0 0 0 -12px transparent; --hl: 0 0 0 0 transparent; --gl: 0 0 0 0 transparent;
       --i1: inset 0 1.5px 3px rgb(3 12 20 / .42); --i2: inset 0 -1px 0 rgb(255 255 255 / .06); --i3: inset 0 0 0 0 transparent; --i4: inset 0 0 0 0 transparent; --p1: inset 0 0 0 0 transparent; --p2: inset 0 0 0 0 transparent;
       background: rgba(3, 12, 20, .2); color: rgba(255, 255, 255, .6); }
-    /* Startplan im Fenster, falls jemand den Kompass nach dem Abschließen wieder öffnet */
     #kompass-dialog .k-eyebrow { color: #d3e2eb; }
     #kompass-dialog .k-plan-title, #kompass-dialog .k-block h4 { color: #fff; }
     #kompass-dialog .display { text-shadow: 0 1px 1px rgba(3, 12, 20, .35); }
@@ -904,9 +756,6 @@
     #kompass-dialog .k-inline-btn:hover { text-decoration-color: #fff; }
   </style>
   <style>
-    /* ——— Gemeinsam für Startseite, Anleitung und Mein Bereich (Yannis, 30.09.) ———
-       Kopfeintrag „Mein Bereich“, Auswahl der Sammlungen, Rückmeldung nach dem Herz und die Erinnerung ans Konto.
-       Gleiches Material wie alles andere: Was man drücken kann, steht hervor, was gewählt ist, ist eingedrückt, Eingaben sind vertieft. */
     .nav-mein, .ki-row, .ki-emo span, .ki-sugg button, .ki-bubble__zu, .ki-btn {
       --hi: 255 255 255; --lo: var(--sh); --lip: 255 255 255; --lip-a: .6; --lip-a2: .3; --lift: 0px;
       --o1: 0 1px 1px rgb(var(--sh) / .14); --o2: 0 2px 5px -1px rgb(var(--sh) / .1); --o3: 0 8px 14px -8px rgb(var(--sh) / .22);
@@ -932,7 +781,6 @@
       background: linear-gradient(175deg, var(--clay-in) 0%, #efe9df 100%);
     }
 
-    /* Kopf: „Mein Bereich“ neben dem Kompass. Vor dem Konto ein Personen-Symbol, danach der Anfangsbuchstabe. */
     .nav-mein { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 0 16px 0 5px; border-radius: 999px; text-decoration: none; font-size: 14.5px; font-weight: 680; white-space: nowrap; cursor: pointer; }
     .nav-mein__ich { display: grid; place-items: center; width: 34px; height: 34px; flex: none; border-radius: 50%; color: var(--ink-soft); background: var(--clay-in); box-shadow: inset 0 1.5px 3px rgb(var(--sh) / .26), 0 1px 0 rgb(255 255 255 / .9); font-size: 15px; font-weight: 780; }
     .nav-mein__ich .icon { font-size: 17px; }
@@ -945,7 +793,6 @@
     }
     @media (max-width: 380px) { .nav-kompass span { display: none; } .nav-kompass { width: 44px; padding: 0; justify-content: center; } }
 
-    /* Sammlung wählen: eine Platte über der Seite */
     .ki-sheet .soon-sheet__panel { width: min(100%, 560px); }
     .ki-sheet__titel { margin: -2px 0 16px; padding-right: 48px; color: var(--muted); font-size: 14.5px; font-weight: 600; line-height: 1.4; }
     .ki-hint { margin: 0 0 12px !important; color: var(--muted) !important; font-size: 14px !important; }
@@ -980,7 +827,6 @@
     .ki-btn--dunkel:active { background: linear-gradient(175deg, #151310 0%, #25211c 100%); }
     .ki-sheet__fuss { display: flex; justify-content: flex-end; }
 
-    /* Rückmeldung nach dem Herz, mit Weg in eine Sammlung (wie „In Sammlung speichern“ bei Instagram) */
     .ki-toast { position: fixed; z-index: 47; left: 50%; bottom: calc(88px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; gap: 4px 14px; width: max-content; max-width: calc(100vw - 32px); padding: 6px 6px 6px 18px; border-radius: 999px; background: linear-gradient(175deg, #3a342d, #23201c); color: #fbf7f0; font-size: 14.5px; font-weight: 600; box-shadow: 0 10px 24px -10px rgb(0 0 0 / .45), inset 0 1px 0 rgb(255 255 255 / .12); opacity: 0; visibility: hidden; transform: translate(-50%, 12px); transition: opacity .25s ease, transform .45s var(--feder), visibility 0s linear .3s; }
     .ki-toast.is-da { opacity: 1; visibility: visible; transform: translate(-50%, 0); transition-delay: 0s; }
     .ki-toast:not(:has(button:not([hidden]))) { padding: 11px 18px; }
@@ -988,7 +834,6 @@
     .ki-toast button:hover { background: rgb(255 255 255 / .22); }
     .ki-toast button:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
 
-    /* Erinnerung ans Konto: eine kleine Platte über der Herz-Ablage, nur einmal pro Besuch */
     .ki-bubble { position: fixed; z-index: 36; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(84px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 12px; width: min(340px, calc(100vw - 32px)); padding: 18px 18px 16px; border-radius: 24px; background: linear-gradient(175deg, var(--clay-hi), var(--clay) 60%, #efe9df); box-shadow: 0 1px 1px rgb(var(--sh) / .14), 0 10px 18px -8px rgb(var(--sh) / .3), 0 26px 40px -24px rgb(var(--sh) / .4), inset 0 1.5px 0 #fff, inset 0 -2px 0 rgb(var(--sh) / .08); transform-origin: calc(100% - 40px) 100%; }
     .ki-bubble::after { content: ""; position: absolute; right: 34px; bottom: -7px; width: 16px; height: 16px; background: #f0eae0; transform: rotate(45deg); box-shadow: 3px 3px 5px -2px rgb(var(--sh) / .2); border-radius: 0 0 4px 0; }
     .ki-bubble:not([hidden]) { animation: ki-bubble-rein .55s var(--feder); }
@@ -1010,79 +855,30 @@
   </style>
 
   <style>
-    /* ——— Version 22 · Seite „Alle Ideen“ (06.10.2026) ——— Präfix v22i- (neu) und v22s- (aus dem Mittagsmodul) */
     html[data-geraet="handy"] [data-nur-geraet="computer"], html:not([data-geraet="handy"]) [data-nur-geraet="handy"] { display: none !important; }
-    .v22s-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-    /* Vom Kopf bleibt nur die Navigation; das Markup bleibt, damit die Skripte der Seite laufen */
     .hero-bg, .hero-grain, .hero-grid { display: none !important; }
     .hero { min-height: 0; padding-bottom: 0; }
     .v22i-kopf { padding: clamp(18px, 3vh, 34px) 0 0; }
     .v22i-kopf .wrap { display: grid; justify-items: start; gap: 14px; }
-    .v22i-zurueck { gap: 8px; padding: 0 18px 0 14px; }
-    .v22i-zurueck .icon { font-size: 18px; }
-    .v22i-titel { margin: 10px 0 0; font-size: clamp(44px, 5vw, 76px); line-height: 1.02; letter-spacing: -.035em; }
     .v22i-lead { margin: 0; max-width: 38em; color: var(--ink-soft); font-size: clamp(17px, 1.35vw, 20px); line-height: 1.5; text-wrap: pretty; }
     .v22s-ideen { padding-top: clamp(20px, 3vw, 36px); }
     .v22i-bereiche { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; margin-top: clamp(34px, 4vw, 54px); }
-    /* Lebenslagen-Chips und Kartenreihe (aus dem Mittagsmodul) */
-    .v22s-anlass { margin-top: clamp(10px, 1.6vw, 20px); }
-    .v22s-anlass-frage { margin: 0 0 10px; font-size: 15px; font-weight: 700; color: var(--ink); }
-    .v22s-chips { display: flex; flex-wrap: wrap; gap: 10px; }
-    .v22s-chip { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; padding: 0 16px; border: 0; border-radius: 999px; color: var(--ink); font: inherit; font-size: 15px; font-weight: 640; white-space: nowrap; cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-      background: linear-gradient(175deg, var(--clay-hi) 0%, var(--clay) 55%, var(--clay-lo) 100%);
-      box-shadow: 0 1px 1px rgb(var(--sh) / .14), 0 2px 5px -1px rgb(var(--sh) / .1), 0 8px 14px -8px rgb(var(--sh) / .22), -1px -2px 5px -1px rgb(255 255 255 / .6),
-        inset 0 1.5px 0 rgb(255 255 255 / .95), inset 0 -1.5px 0 rgb(var(--sh) / .12), inset 0 10px 14px -10px rgb(255 255 255 / .85), inset 0 -12px 16px -12px rgb(var(--sh) / .2);
-      transition: transform .45s var(--feder), box-shadow .26s var(--ease); }
-    @media (hover: hover) { .v22s-chip:hover { transform: translateY(-2px); } }
-    .v22s-chip:active { transform: translateY(1px); transition-duration: .08s; }
-    .v22s-chip:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-    .v22s-chip[aria-pressed="true"] { transform: translateY(1px); background: linear-gradient(180deg, var(--clay-in) 0%, #efe9df 100%);
-      box-shadow: 0 1px 0 rgb(255 255 255 / .9), 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent,
-        inset 0 2px 4px rgb(var(--sh) / .26), inset 0 8px 14px -6px rgb(var(--sh) / .2), inset 0 -1px 0 rgb(255 255 255 / .75), inset 0 0 0 0 transparent; }
-    .v22s-haken { display: block; flex: none; width: 0; margin-right: -7px; opacity: 0; font-size: 17px; color: var(--k-blue); stroke-width: 2.4;
-      transition: width .25s var(--ease), margin-right .25s var(--ease), opacity .2s ease; }
-    .v22s-chip[aria-pressed="true"] .v22s-haken { width: 17px; margin-right: 0; opacity: 1; }
-    .v22s-ideen .v22s-reihe { margin-top: clamp(10px, 1.2vw, 16px); }
-    html[data-geraet="handy"] .v22s-reihe .mcard[data-status="ready"] { order: -1; }
-    .v22s-reihe-kopf { min-width: 0; }
-    .v22s-reihe-hinweis { margin: 0; color: var(--muted); font-size: 14px; font-weight: 600; }
+    @media (hover: hover) { }
     #mehr-themen > .shelf:first-child { margin-top: clamp(14px, 1.6vw, 22px); }
-    /* Erfundene Fälle in den Regalen (nur zum Beurteilen): Rahmen wie die Ideenkarte, Inhalt nur Plättchen und Titel */
-    .shelf .v22i-fuell { flex: 0 0 clamp(268px, 21vw, 304px); width: clamp(268px, 21vw, 304px); scroll-snap-align: start; position: relative; display: flex; flex-direction: column; min-width: 0; padding: 7px; border-radius: 28px;
-      background: linear-gradient(175deg, var(--clay-hi) 0%, var(--clay) 42%, #eee7dc 100%);
-      box-shadow: 0 1px 1px rgb(var(--sh) / .14), 0 3px 7px -2px rgb(var(--sh) / .1), 0 13px 20px -11px rgb(var(--sh) / .24), -2px -3px 6px -2px rgb(255 255 255 / .6), inset 0 1.5px 0 rgb(255 255 255 / .95), inset 0 -1.5px 0 rgb(var(--sh) / .1), inset 0 14px 18px -14px rgb(255 255 255 / .9), inset 0 -16px 22px -16px rgb(var(--sh) / .16);
-      transition: transform .5s var(--feder), box-shadow .45s var(--ease); }
-    @media (hover: hover) { .shelf .v22i-fuell:hover { transform: translateY(-5px); } }
-    .v22i-fuell-link { display: flex; flex-direction: column; flex: 1; border-radius: 22px; color: inherit; text-decoration: none; }
-    .v22i-fuell-link:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
-    .v22i-fuell .field { display: flex; flex-direction: column; justify-content: space-between; gap: 12px; aspect-ratio: 5 / 3.55; padding: 15px 15px 17px; border-radius: 21px;
-      box-shadow: var(--bevel), 0 1px 1px color-mix(in oklab, var(--fc) 38%, transparent), 0 3px 6px -2px rgb(var(--sh) / .2); }
-    .v22i-fuell .field-top { display: flex; }
-    .v22i-fuell h3.title { margin: 0; font-family: var(--font-display); font-size: clamp(19px, 1.45vw, 21px); line-height: 1.2; font-weight: 650; letter-spacing: -.012em; text-wrap: balance; overflow-wrap: break-word; text-shadow: 0 1px 1px color-mix(in oklab, var(--fc) 50%, transparent); }
-    .v22i-fuell-fuss { display: flex; align-items: center; gap: 8px; margin: auto 0 0; padding: 14px 11px 8px; color: var(--muted); font-size: 13.5px; font-weight: 650; }
-    .v22i-fuell-fuss::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: rgb(var(--sh) / .28); box-shadow: inset 0 1px 1px rgb(var(--sh) / .3); }
-    .v22i-band { margin-top: clamp(30px, 4vw, 56px); }
+    @media (hover: hover) { }
     .footer { padding-inline: 0; }
     .footer .wrap { align-items: center; }
     .footer-rechts a { display: inline-flex; align-items: center; min-height: 44px; }
     body:has(#herz-ablage:not([hidden])) .footer { padding-bottom: 108px; }
     @media (max-width: 700px) {
-      .v22s-chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: calc(-1 * var(--gutter)); padding: 6px var(--gutter) 16px; scroll-padding-inline: var(--gutter); }
-      .v22s-chips::-webkit-scrollbar { display: none; }
-      .v22s-chip { flex: none; padding: 0 15px; font-size: 14.5px; }
-      .shelf .v22i-fuell { flex-basis: min(82vw, 300px); width: min(82vw, 300px); }
       .footer-rechts a { font-size: 14px; }
     }
-    @media (prefers-reduced-motion: reduce) { .v22s-chip, .shelf .v22i-fuell { transform: none !important; } .v22s-haken { transition: none; } }
+    @media (prefers-reduced-motion: reduce) { }
   </style>
   <style>
-    /* Version 25: leere Kategorie und der Hinweis „Anleitung folgt“ in normalen Karten */
-    .v25-leer { margin: 0 var(--gutter); padding: 18px 20px; border-radius: 18px; border: 1.5px dashed rgb(var(--sh) / .3); color: var(--muted); font-size: 15px; }
 
   </style>
 <style>
-    /* Runde 6 (14.10.): drei neue Kategoriefarben aus dem Designsystem, gerechnet in OKLCH wie die sechs bestehenden */
     :root { --copper-a: #ecc19c; --copper-b: #9e5c26; --copper-c: #592c1d;
             --indigo-a: #bbb9dd; --indigo-b: #6f6a9e; --indigo-c: #3a3156;
             --petrol-a: #a0cbca; --petrol-b: #2f7576; --petrol-c: #0c3d42; }
@@ -1092,7 +888,6 @@
 </style>
 
 <style>
-  /* Runde 7: Konto anlegen und Willkommen (14.10.2026) */
   .v25r7 { width: min(560px, calc(100vw - 24px)); max-width: none; max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px); margin: auto; padding: 0; border: 0;
     border-radius: 22px; background: #fbf8f2; color: var(--ink); overflow: auto; overscroll-behavior: contain;
     box-shadow: 0 1px 0 #fff inset, 0 24px 50px -22px rgb(96 72 46 / .55), 0 2px 6px rgb(96 72 46 / .12); }
@@ -1105,56 +900,23 @@
   .v25r7__zu { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 26px; line-height: 1; cursor: pointer; }
   .v25r7__zu:hover { background: rgb(96 72 46 / .08); }
   .v25r7 :is(button, input, a):focus-visible { outline: 3px solid var(--focus, #3b5a9a); outline-offset: 3px; }
-  .v25r7__etikett { display: inline-block; font-size: 14px; font-weight: 600; letter-spacing: .02em; color: #2f4a26; background: #e3ecd9; padding: 5px 12px; border-radius: 999px; }
   .v25r7 h2 { font-size: clamp(26px, 5vw, 32px); line-height: 1.15; letter-spacing: -.015em; margin: 14px 0 14px; font-weight: 780; }
   .v25r7__text p { font-size: 18px; line-height: 1.55; margin: 0 0 14px; color: var(--ink-soft); }
-  .v25r7__text p.v25r7__wichtig { color: var(--ink); }
-  .v25r7__google { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 52px; border-radius: 999px; border: 1px solid rgba(60, 45, 30, .26);
-    background: #fff; font: inherit; font-size: 17px; font-weight: 600; color: var(--ink); cursor: pointer; }
-  .v25r7__google svg { width: 20px; height: 20px; }
-  .v25r7__oder { display: flex; align-items: center; gap: 12px; margin: 18px 0; color: var(--muted); font-size: 15px; }
-  .v25r7__oder::before, .v25r7__oder::after { content: ""; flex: 1; height: 1px; background: rgba(60, 45, 30, .26); }
-  .v25r7__feld { display: block; margin-bottom: 14px; }
-  .v25r7__feld span { display: block; font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .v25r7__feld input { width: 100%; min-height: 52px; font: inherit; font-size: 18px; padding: 12px 16px; border-radius: 14px; border: 1px solid rgba(60, 45, 30, .26); background: #fff; color: var(--ink); }
-  .v25r7__feld input[aria-invalid="true"] { border-color: #b4462f; }
-  .v25r7__fehler { color: #a3361f; font-size: 15px; margin: -6px 0 12px; }
   .v25r7__knopf { appearance: none; border: 0; font: inherit; font-size: 17px; font-weight: 600; padding: 14px 24px; min-height: 52px; border-radius: 999px; cursor: pointer;
     background: var(--k-deep, #1f3a4f); color: #fff; box-shadow: 0 10px 20px -12px rgb(31 58 79 / .8); transition: transform .2s cubic-bezier(.22, 1, .36, 1); }
   .v25r7__knopf:hover { transform: translateY(-1px); }
-  .v25r7__breit { width: 100%; margin-top: 6px; }
-  .v25r7__leise { font: inherit; font-size: 16px; color: var(--k-blue, #2f5871); text-decoration: underline; text-underline-offset: 3px; background: none; border: 0; padding: 12px 6px; min-height: 44px; cursor: pointer; }
-  .v25r7__klein { font-size: 14px; color: var(--muted); line-height: 1.45; margin: 14px 0 0; }
-  .v25r7__spaeter { display: block; margin: 8px auto 0; }
-  .v25r7__bild { position: relative; width: min(260px, 72%); margin: 18px auto 22px; transform: rotate(-2.2deg); background: #fff; padding: 10px 10px 14px; border-radius: 4px;
-    box-shadow: 0 14px 26px -14px rgb(96 72 46 / .6), 0 1px 3px rgb(96 72 46 / .2); }
-  .v25r7__bild::before { content: ""; position: absolute; top: -12px; left: 50%; width: 92px; height: 26px; transform: translateX(-50%) rotate(3deg);
-    background: rgb(255 251 235 / .72); box-shadow: 0 1px 2px rgb(96 72 46 / .15); border-left: 1px dashed rgb(96 72 46 / .12); border-right: 1px dashed rgb(96 72 46 / .12); }
-  .v25r7__foto { aspect-ratio: 4 / 5; border-radius: 2px; display: grid; place-items: center; text-align: center; color: #fff;
-    background: radial-gradient(70% 55% at 50% 38%, #f4b49a, #e2735a 58%, #b85a46); }
-  .v25r7__foto div { font-size: 14px; line-height: 1.35; padding: 0 14px; }
-  .v25r7__foto strong { display: block; font-size: 44px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 6px; }
-  .v25r7__bild figcaption { font-family: "Snell Roundhand", "Bradley Hand", "Segoe Script", cursive; font-size: 20px; text-align: center; margin-top: 8px; color: var(--ink-soft); }
-  .v25r7__gruss { margin: 20px 0 4px; font-size: 17px; color: var(--ink-soft); }
-  .v25r7__unterschrift { font-family: "Snell Roundhand", "Bradley Hand", "Segoe Script", cursive; font-size: 40px; line-height: 1; color: var(--k-deep, #1f3a4f); margin: 2px 0 2px -2px; transform: rotate(-3deg); transform-origin: left; display: inline-block; }
-  .v25r7__rolle { font-size: 14px; color: var(--muted); margin: 6px 0 0; }
   .v25r7__aktionen { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; align-items: center; }
-  @media (max-height: 900px) { .v25r7__bild { width: min(190px, 56%); margin: 12px auto 16px; } .v25r7__innen { padding-top: 24px; } }
-  .v25r7-mb { display: inline-flex; flex-wrap: wrap; gap: 4px 14px; margin-left: 4px; }
+  @media (max-height: 900px) { .v25r7__innen { padding-top: 24px; } }
 </style>
 <style>
-  /* Runde 18 (21.10.2026, Jim): „Alle Ideen“ mit größeren Titeln und einem Symbol je Idee (Pam, Yannis „Ja, so“) */
   .mcard .field { aspect-ratio: 5 / 2.8 !important; position: relative; }
   .mcard .field h3.title { font-size: 1.5rem !important; line-height: 1.15 !important; }
-  /* Dunkle Prägung statt weißer Linie (Pam, 21.10., nach der Kontrastmessung): schwarzer Strich, Deckkraft 0,12, ohne helle Kante
-     (mit Kante 0,12 verlor der Titel bis 0,2 Kontrast unter den Buchstaben; Pam: „oder ganz ohne, falls das schon Verlust bringt“) */
   .mcard .field .mcard-symbol { position: absolute; right: -15%; bottom: -24%; height: 104%; width: auto; aspect-ratio: 1; fill: none; stroke: #000; stroke-width: 1.5;
     stroke-linecap: round; stroke-linejoin: round; opacity: .12; pointer-events: none; z-index: 0;
     filter: none; }
   .mcard .field > :not(.mcard-symbol):not(.glow) { position: relative; z-index: 1; }
 </style>
 <style>
-  /* Runde 22 (21.10.2026, Jim): Free-Zusage und „Anleitung →“ (Pam, Yannis „mit Free nutzbar“, „Einfach nur "Anleitung" ->“) */
   .tag--frei { --frei-bg: #e3ecd9; --frei-ink: #2f4a26; color: var(--frei-ink); background: var(--frei-bg); white-space: normal; line-height: 1.2;
     box-shadow: inset 0 1px 0 rgb(255 255 255 / .6), 0 1px 1px rgb(47 74 38 / .22); }
   .mcard .mcard-los::after { content: ""; display: inline-block; width: .82em; height: .82em; margin-left: .32em; vertical-align: -.06em;
@@ -1163,11 +925,9 @@
   .mcard:hover .mcard-los::after, .mcard:focus-within .mcard-los::after { transform: translateX(3px); }
 </style>
 <style>
-  /* Runde 44 (Jim, 27.10.2026): Kupfer, Indigo, Petrol auf Helligkeit und Sättigung der übrigen Kategorien gebracht (Bauauftrag Punkt 7); .ra-weitere setzt die alten Töne auf den Anleitungsseiten selbst */
   :root, .ra-weitere { --copper-a: #ce9780; --copper-b: #9a5a45; --copper-c: #491e1e; --indigo-a: #bdbbdf; --indigo-b: #837eb3; --indigo-c: #443b61; --petrol-a: #9ec9c8; --petrol-b: #4e9393; --petrol-c: #1c4a4f; }
 </style>
 <style>
-  /* Runde 47 (Jim, 27.10.2026), Punkt 1: zwei gleiche Pillen „Alle Ideen“ und „Mein Bereich“ (Pams Skizze v1-nachher), kein KI-Kompass */
   .site-nav .nav-end { gap: 12px; }
   .site-nav .nav-links.v44-nav { display: flex; gap: 0; }
   .site-nav .v44-nav a.v47-pille, .site-nav .nav-mein { display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-sizing: border-box;
@@ -1190,25 +950,22 @@
   @media (max-width: 340px) { .site-nav .v44-nav a.v47-pille { padding: 0 12px; font-size: .8125rem; } .site-nav .nav-end { gap: 6px; } }
 </style>
 <style>
-  /* Runde 47 (Jim, 27.10.2026), Punkt 3–5: Pop-up nach „Jetzt loslegen“ (Pams Skizze popup.html, Aufbau wie Google AI Studio) */
   .v47-ein { box-sizing: border-box; width: min(960px, calc(100vw - 48px)); height: min(600px, calc(100vh - 48px)); max-width: none; max-height: none; padding: 0;
     border: 1px solid #e7dfd4; border-radius: 24px; background: #fff; color: var(--ink); box-shadow: 0 24px 64px rgb(60 40 20 / .18); overflow: hidden; }
   .v47-ein[open] { display: block; }
   .v47-innen { display: grid; grid-template-columns: 1fr 1fr; height: 100%; }
   .v47-links { display: flex; flex-direction: column; min-height: 0; padding: 36px 48px 32px; }
   .v47-marke { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 650; letter-spacing: -.01em; }
-  .v47-marke .brand-mark { width: 22px; height: 22px; }
   .v47-form { flex: 1; min-height: 0; overflow: auto; margin: 0 -6px; padding: 0 6px; }
-  .v47-teil { border: 0; margin: 0; padding: 30px 0 0; min-width: 0; }   /* Abstand hier: legend nimmt kein margin-top an */
+  .v47-teil { border: 0; margin: 0; padding: 30px 0 0; min-width: 0; }   
   .v47-frage { display: block; float: none; width: 100%; margin: 0; padding: 0; font-size: clamp(26px, 2.4vw, 30px); line-height: 1.14; font-weight: 600; letter-spacing: -.02em; }
   .v47-frage:focus { outline: none; }
   .v47-fort { display: flex; align-items: center; gap: 6px; margin-top: 20px; }
   .v47-fort b { width: 28px; height: 4px; border-radius: 2px; background: #e3dcd1; }
   .v47-fort b.an { background: #2b2420; }
   .v47-fort span { margin-left: 8px; font-size: 13px; font-weight: 550; color: var(--muted); }
-  .v47-fort-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
   .v47-opts { margin-top: 18px; display: grid; gap: 2px; }
-  .v47-opt { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 56px; padding: 0 16px; border: 1px solid transparent;
+  .v47-opt { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 16px; border: 1px solid transparent;
     border-radius: 14px; font-size: 16.5px; font-weight: 550; cursor: pointer; }
   .v47-opt input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
   .v47-opt i { flex: none; width: 22px; height: 22px; border-radius: 50%; border: 1.8px solid #cfc6b8; box-sizing: border-box; }
@@ -1218,9 +975,6 @@
   .v47-opt:has(input:focus-visible) { outline: 2px solid var(--focus); outline-offset: 2px; }
   .v47-tipp, .v47-text { margin: 12px 0 0; font-size: 15px; line-height: 1.45; font-weight: 500; color: var(--muted); }
   .v47-text { font-size: 16px; color: var(--ink-soft); margin-top: 16px; }
-  .v47-schild-gross { display: inline-flex; align-items: center; gap: 10px; margin: 22px 0 4px; height: 48px; padding: 0 22px; border-radius: 999px; background: #e3ecd9; color: #2f4a26;
-    font-size: 20px; font-weight: 700; box-shadow: 0 0 0 5px rgb(176 200 168 / .5); }
-  .v47-schild-gross .icon { width: 20px; height: 20px; }
   .v47-fuss { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 16px; }
   .v47-leise { min-height: 44px; padding: 0; white-space: nowrap; border: 0; background: none; color: var(--ink-soft); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
     text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgb(60 45 30 / .35); }
@@ -1230,55 +984,24 @@
   .v47-dunkel .icon { width: 18px; height: 18px; }
   .v47-dunkel:disabled { opacity: .4; cursor: default; box-shadow: none; }
   .v47-dunkel[hidden], .v47-leise[hidden] { display: none; }
-  .v47-innen[data-schritt="keine"] .v47-fuss { flex-direction: column-reverse; align-items: center; gap: 6px; }   /* Pam: „Erst mal stöbern“ unter dem Knopf */
+  .v47-innen[data-schritt="keine"] .v47-fuss { flex-direction: column-reverse; align-items: center; gap: 6px; }   
   .v47-innen[data-schritt="keine"] .v47-fuss .v47-dunkel { margin: 0; align-self: stretch; }
   :is(.v47-leise, .v47-dunkel):focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
-  /* Vorschau rechts */
   .v47-rechts { padding: 12px 12px 12px 0; min-height: 0; }
   .v47-vorschau { position: relative; height: 100%; border-radius: 18px; overflow: hidden; background: #f6efe4;
     background-image: radial-gradient(60% 50% at 22% 20%, #e8cba3 0, transparent 70%), radial-gradient(55% 45% at 85% 18%, #f2ad8e 0, transparent 70%),
       radial-gradient(60% 50% at 80% 88%, #a8c2d1 0, transparent 70%), radial-gradient(55% 45% at 14% 86%, #b0c8a8 0, transparent 70%); }
   .v47-szene { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility 0s .25s; }
   .v47-szene.an { opacity: 1; visibility: visible; transition: opacity .25s ease; }
-  .v47-chat { position: absolute; left: 7%; right: 7%; top: 10%; bottom: 22%; display: flex; flex-direction: column; overflow: hidden; background: #fff; border-radius: 18px;
-    box-shadow: 0 2px 4px rgb(96 72 46 / .12), 0 24px 40px -16px rgb(96 72 46 / .5); }
-  .v47-chat-bar { display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px; border-bottom: 1px solid #efe8dd; }
-  .v47-chat-bar i { width: 9px; height: 9px; border-radius: 50%; background: #e3dcd1; }
-  .v47-chat-kopf { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 8%; }
-  .v47-chat-logo { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #e2735a; color: #fff; }
-  .v47-chat--chatgpt .v47-chat-logo { background: #1d1a16; }
-  .v47-chat-logo svg { width: 24px; height: 24px; }
-  .v47-chat-kopf p { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
-  .v47-chat-feld { margin: auto 16px 16px; padding: 14px 14px 12px; border: 1.5px solid #e2735a; border-radius: 16px; background: #fffdfb; box-shadow: 0 0 0 4px rgb(226 115 90 / .14); }
-  .v47-chat--chatgpt .v47-chat-feld { border-color: #5d554b; box-shadow: 0 0 0 4px rgb(60 45 30 / .1); }
-  .v47-tippt { margin: 0; min-height: 4.4em; font-size: 13.5px; line-height: 1.45; color: var(--ink-soft); font-weight: 450; }
-  .v47-chat-feld b { display: grid; place-items: center; width: 30px; height: 30px; margin: 10px 0 0 auto; border-radius: 50%; background: #2b2420; color: #fff; }
-  .v47-chat-feld b .icon { width: 15px; height: 15px; transform: rotate(-90deg); }
   .v47-unter { position: absolute; left: 0; right: 0; bottom: 26px; margin: 0; text-align: center; font-size: 15px; font-weight: 600; color: #4a443c; }
-  .v47-schritte { position: absolute; left: 12%; right: 12%; top: 18%; margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
-  .v47-schritte li { display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 0 18px; border-radius: 16px; background: #fff; font-size: 17px; font-weight: 600;
-    box-shadow: 0 2px 4px rgb(96 72 46 / .12), 0 16px 28px -16px rgb(96 72 46 / .5); }
-  .v47-schritte b { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: #2b2420; color: #fff; font-size: 15px; }
-  .v47-karten { position: absolute; left: 14%; right: 14%; top: 16%; display: grid; gap: 14px; }
-  .v47-karten--drei { left: 9%; right: 9%; top: 12%; gap: 10px; }
-  .v47-mk { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 18px 20px; border-radius: 18px; background: var(--a, #fff);
-    box-shadow: 0 2px 4px rgb(96 72 46 / .12), 0 16px 28px -16px rgb(96 72 46 / .5); }
-  .v47-mk b { font-size: 18px; line-height: 1.25; font-weight: 650; color: var(--c, var(--ink)); }
-  .v47-mk-schild { display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; background: #e3ecd9; color: #2f4a26; font-size: 13px; font-weight: 700; }
-  .v47-mk.v47-leuchtet .v47-mk-schild { box-shadow: 0 0 0 4px rgb(255 255 255 / .55), 0 0 18px 2px rgb(176 200 168 / .9); }
-  .v47-karten--drei .v47-mk { padding: 14px 18px; }   /* Pam: Titel linksbündig, ohne Schild */
-  .v47-karten--drei .v47-mk b { font-size: 15px; }
-  .v47-karten--drei .v47-mk.v47-leuchtet { box-shadow: 0 0 0 3px rgb(255 255 255 / .8), 0 0 22px 2px rgb(255 255 255 / .9), 0 16px 28px -16px rgb(96 72 46 / .5); }
   @media (prefers-reduced-motion: reduce) { .v47-szene, .v47-szene.an { transition: none; } }
   html.v47-ein-offen { overflow: hidden; }
-  /* Handy: eine Spalte, Vorschau als Streifen oben, „Weiter“ fest unten */
   @media (max-width: 700px) {
     .v47-ein { width: 100vw; max-width: 100vw; height: calc(100% - 28px); margin: 28px 0 0; border-radius: 24px 24px 0 0; border-bottom: 0; }
     .v47-innen { display: flex; flex-direction: column-reverse; justify-content: flex-end; }
-    .v47-rechts { flex: none; height: 160px; padding: 12px 12px 0; }
+    .v47-rechts { flex: none; height: 160px; }
     .v47-vorschau { border-radius: 16px; }
     .v47-links { flex: 1; padding: 0; }
-    .v47-marke { display: none; }
     .v47-form { padding: 0 20px 12px; margin: 0; }
     .v47-teil { padding-top: 16px; }
     .v47-frage { font-size: 25px; }
@@ -1287,28 +1010,9 @@
     .v47-opt { min-height: 52px; }
     .v47-fuss { flex-direction: column-reverse; gap: 10px; margin: 0; padding: 14px 20px 18px; border-top: 1px solid #efe8dd; background: rgb(255 255 255 / .96); }
     .v47-dunkel { width: 100%; margin: 0; min-height: 52px; padding: 0 16px; white-space: nowrap; text-align: center; }
-    .v47-chat { left: 36px; right: 36px; top: 14px; bottom: auto; height: 104px; border-radius: 14px; }
-    .v47-chat-bar { display: none; }
-    .v47-chat-kopf { flex-direction: row; margin: 10px 12px 0; gap: 8px; }
-    .v47-chat-logo { width: 24px; height: 24px; } .v47-chat-logo svg { width: 16px; height: 16px; }
-    .v47-chat-kopf p { font-size: 14px; }
-    .v47-chat-feld { margin: 6px 12px 0; padding: 7px 10px; box-shadow: 0 0 0 3px rgb(226 115 90 / .14); }
-    .v47-tippt { font-size: 12px; line-height: 1.35; min-height: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .v47-chat-feld b { display: none; }
-    .v47-unter { bottom: 10px; font-size: 12.5px; }
-    .v47-schritte { left: 16px; right: 16px; top: 12px; gap: 6px; }
-    .v47-schritte li { min-height: 30px; padding: 0 10px; font-size: 13px; border-radius: 10px; gap: 8px; }
-    .v47-schritte b { width: 20px; height: 20px; font-size: 11px; }
-    .v47-karten, .v47-karten--drei { left: 24px; right: 24px; top: 14px; gap: 6px; }
-    .v47-mk { padding: 10px 14px; gap: 8px; } .v47-mk b { font-size: 14px; }
-    .v47-karten--drei .v47-mk { padding: 6px 12px; } .v47-karten--drei .v47-mk b { font-size: 12.5px; }
-    .v47-mk-schild { height: 22px; font-size: 11.5px; padding: 0 9px; }
-    .v47-schild-gross { font-size: 18px; height: 44px; }
   }
 </style>
 <style>
-  /* Runde 47 (Jim, 27.10.2026), Punkt 5: Hintergrund unscharf und hell statt dunkel (Pam: blur 18px, Lasur .35, nur die Deckkraft blendet ein).
-     Eigene Schleier-Ebene statt ::backdrop: showModal() machte die große Startseite unbedienbar und rechnete sie neu (44–79 ms bei 4× Drosselung, show() 6–8 ms). */
   .v47-schleier { position: fixed; inset: 0; z-index: 2147483000; display: none; background: rgb(250 247 242 / .35);
     -webkit-backdrop-filter: blur(18px) saturate(1.05); backdrop-filter: blur(18px) saturate(1.05); }
   .v47-schleier.an { display: block; animation: v47-schleier .2s ease-out; }
@@ -1320,11 +1024,9 @@
   .v47-ein, .v44-ebene { position: fixed; inset: 0; z-index: 2147483001; }
 </style>
 <style>
-  /* Runde 49 (Jim, 28.10.2026): Bildfläche nie breiter als die Karte (Yannis: farbiger Kopf auf „Alle Ideen“ nach rechts versetzt) */
   .mcard .field { min-width: 0; max-width: 100%; box-sizing: border-box; }
 </style>
 <style>
-  /* Runde 50 (Jim, 28.10.2026): X zum Schließen im Pop-up (Pam, Live-Check) */
   .v47-x { position: absolute; top: 12px; right: 12px; z-index: 3; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0;
     border-radius: 50%; background: rgb(255 255 255 / .92); color: var(--ink, #23201c); cursor: pointer; box-shadow: 0 1px 2px rgb(60 40 20 / .14); }
   .v47-x .icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
@@ -1334,15 +1036,12 @@
   #alle-ideen-title:focus-visible { outline: 3px solid var(--focus, #3b5a9a); outline-offset: 4px; border-radius: 6px; }
 </style>
 <style>
-  /* Runde 50 (Jim, 28.10.2026): Abfrage am Anfang mit demselben hellen, weichgezeichneten Hintergrund wie das Pop-up (Werte von .v47-schleier,
-     Runde 47). Yannis 27.10.: „Hintergrund unscharf, damit bleibt erhalten dass man ein Gefühl hat wo man sich befindet.“ */
   .k-dialog::backdrop { background: rgb(250 247 242 / .35); -webkit-backdrop-filter: blur(18px) saturate(1.05); backdrop-filter: blur(18px) saturate(1.05); }
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .k-dialog::backdrop { background: rgb(246 242 236 / .94); } }
   @media (prefers-reduced-transparency: reduce) { .k-dialog::backdrop { background: rgb(246 242 236 / .94); -webkit-backdrop-filter: none; backdrop-filter: none; } }
   html.v47-schwach .k-dialog::backdrop { background: rgb(246 242 236 / .94); -webkit-backdrop-filter: none; backdrop-filter: none; }
 </style>
 <style>
-  /* Runde 51 (Jim, 28.10.2026): „Alle Ideen“ am Handy lesbar (Pam, Befund 3) – nur Größe und Gewicht */
   html .tag { font-size: 14px; min-height: 30px; padding: 4px 12px; }
   html .mcard .outcome { font-size: 16px; }
   html .mcard .outcome b { font-weight: 720; }
@@ -1350,33 +1049,26 @@
   html .herz::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; }
 </style>
 <style id="r55">
-  /* Runde 55 (28.10.2026, Jim; Pam, Fertig-Liste): rote Punkte weg (Yannis: „Punkt komplett weg lassen“), Schild „Stufe“ weg */
   .mcard[data-status="ready"]::before { content: none !important; display: none !important; }
   .stufe { display: none !important; }
-  /* Kopfleiste am Handy: 16 px, Tippflächen mindestens 44 × 44 px, auf allen Seiten gleich */
   @media (max-width: 767.98px) {
     .site-nav .v44-nav a.v47-pille, .site-nav .nav-mein, a.ra-zurueck { font-size: 16px; min-height: 44px; }
     .site-nav .nav-mein { min-width: 44px; }
     .site-nav a.brand { min-height: 44px; min-width: 44px; }
   }
-  /* Karten ohne Anleitung: Farbfläche entsättigt, Schrift bleibt voll; Schild „bald“ (Pam: nicht durchsichtig). brightness(.92), damit der
-     weiße Titel auch an der hellsten Stelle der Fläche mindestens 4,5 : 1 hat (nur entsättigt: 4,08 : 1, gemessen mit kontrast55.mjs) */
   .mcard.is-soon .field { filter: saturate(.25) brightness(.92); }
   .tag.tag--bald { color: #3d352d; background: #f3eee6; }
-  /* Schild „Mit Abo“ wie „Mit Free nutzbar“, in Sand (Pam, 28.10.: Grund #f1e3c6, Schrift #5e4210, 7,3 : 1) */
   .tag.tag--abo { color: #5e4210; background: #f1e3c6; white-space: normal; line-height: 1.2;
     box-shadow: inset 0 1px 0 rgb(255 255 255 / .6), 0 1px 1px rgb(94 66 16 / .22); }
   .shelf[hidden] { display: none !important; }
 </style>
 <style id="r58">
-  /* Runde 58 (28.10.2026, Jim; Pam/Yannis): Karten ohne Anleitung ganz grau, auch beim Drüberfahren */
   .mcard:not([data-status="ready"]), .mcard:not([data-status="ready"]):hover, .mcard:not([data-status="ready"]):focus-within { filter: grayscale(1) !important; }
   .mcard:not([data-status="ready"]) .field { filter: brightness(.92) !important; }
   .v22z-wk.v58-bald { filter: grayscale(1) brightness(.92); }
 </style>
 <style id="r57-abfrage">
-  /* Runde 57 (28.10.2026, Jim; Pam, Punkte 13/14): Frage 2 zeigt die Wand aller fertigen Ideen; „← Zurück“ als Text */
-  .v57-zurueck { display: inline-flex; align-items: center; min-height: 44px; margin: 6px 0 -10px -2px; padding: 0 4px; border: 0; background: none; font: inherit;
+  .v57-zurueck { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; border: 0; background: none; font: inherit;
     font-size: 15px; font-weight: 600; color: #5d554c; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgb(93 85 76 / .45); cursor: pointer; }
   .v57-zurueck:hover { color: var(--ink); }
   .v57-zurueck:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
@@ -1384,15 +1076,13 @@
   .v57-wand { position: absolute; left: 14px; right: 14px; top: 64px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
   .v57-k { position: relative; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 5px; min-height: 74px; padding: 9px 10px;
     box-sizing: border-box; border-radius: 12px; overflow: hidden; --top: color-mix(in oklab, var(--fb), var(--fc) var(--mt)); --bot: color-mix(in oklab, var(--fb), var(--fc) var(--mb));
-    background: linear-gradient(172deg, var(--top), var(--bot)); color: #fff;   /* dieselbe Mischung wie die Fläche der Ideenkarte (.field), keine neuen Farben (Pam) */ font-size: 13px; font-weight: 650; line-height: 1.2;
+    background: linear-gradient(172deg, var(--top), var(--bot)); color: #fff;    font-size: 13px; font-weight: 650; line-height: 1.2;
     box-shadow: 0 1px 1px rgb(96 72 46 / .14), 0 6px 12px -8px rgb(96 72 46 / .3); }
-  .v57-k b { text-shadow: 0 1px 1px color-mix(in oklab, var(--fc) 50%, transparent); font-weight: 650; -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; max-width: 100%; }   /* lange Titel trennen statt abschneiden */
-  /* Für den weißen Titel reicht die Fläche allein nicht (P90 3,8–4,5 : 1): Fläche dunkler wie bei den grauen Karten, kein neuer Farbton (Pam) */
+  .v57-k b { text-shadow: 0 1px 1px color-mix(in oklab, var(--fc) 50%, transparent); font-weight: 650; -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; max-width: 100%; }   
   .v57-k:not(.aus):not(.v57-mehr) { isolation: isolate; background: none; }
   .v57-k:not(.aus):not(.v57-mehr)::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(172deg, var(--top), var(--bot)); filter: brightness(.88); }
   .v57-k i { font-style: normal; font-size: 10.5px; font-weight: 700; line-height: 1; padding: 3px 7px; border-radius: 99px; background: #e3ecd9; color: #2f4a26; }
   .v57-k i.abo { background: #f1e3c6; color: #5e4210; }
-  /* gedämpft (kostenlos oder weiß nicht: die Abo-Ideen): grau wie die Karten ohne Anleitung, dunkle Schrift, damit der Titel lesbar bleibt */
   .v57-k.aus { background: linear-gradient(160deg, #ebe6df, #ddd6cc); color: #4a433b; box-shadow: none; }
   .v57-k.aus b { text-shadow: none; }
   .v57-k.aus i.abo { background: #f6f1ea; color: #5e5348; }
@@ -1407,18 +1097,15 @@
     .v57-k:nth-child(n+6):not(.v57-mehr) { display: none; }
     .v57-mehr { display: flex; justify-content: center; align-items: center; background: #f6f1ea; color: #4a433b; font-size: 15px; font-weight: 700; box-shadow: none; }
     .v57-wand-szene .v47-unter { display: none; }
-    .v57-unter-m { display: block; margin: 8px 6px 0; text-align: center; font-size: 16px; font-weight: 600; line-height: 1.3; color: #4a443c; }
+    .v57-unter-m { display: block; text-align: center; font-size: 16px; font-weight: 600; line-height: 1.3; color: #4a443c; }
   }
   @media (min-width: 701px) { .v57-unter-m { display: none; } }
   .v47-innen:not([data-schritt="f2"]) .v57-unter-m { display: none; }
 </style>
 <style id="r59-wand">
-  /* Runde 59 (Jim, 28.10.2026; Yannis, Punkte 5 und 6): Kacheln der Abfrage wie die echten Karten. Schild oben, Titel unten; Fläche, Schatten und
-     Prägesymbol von der Karte der Seite (dieselben Werte, nur kleiner); die Abdunklung für den weißen Titel (Pam) etwas stärker. */
   .v57-k:not(.v57-mehr) { justify-content: space-between; align-items: flex-start; }
   .v57-k b { margin-top: auto; }
   .v57-k:not(.aus):not(.v57-mehr) { box-shadow: var(--v59-sch, 0 1px 1px rgb(96 72 46 / .14), 0 6px 12px -8px rgb(96 72 46 / .3)); }
-  /* die echte Fläche ist oben heller (Glanz): für den 13-px-Titel ≥ 4,5 : 1 deshalb brightness .8 statt .88 (gemessen) */
   .v57-k:not(.aus):not(.v57-mehr)::before { background-image: var(--v59-bg, linear-gradient(172deg, var(--top), var(--bot))); filter: brightness(.8); }
   .v57-k i { position: relative; box-shadow: inset 0 1px 0 rgb(255 255 255 / .6), 0 1px 1px rgb(47 74 38 / .22); }
   .v57-k i.abo { box-shadow: inset 0 1px 0 rgb(255 255 255 / .6), 0 1px 1px rgb(94 66 16 / .22); }
@@ -1427,7 +1114,6 @@
     stroke-linecap: round; stroke-linejoin: round; opacity: .12; pointer-events: none; z-index: 0; }
 </style>
 <style>
-  /* Runde 61, Punkt 7 (Pam): „Bald dabei“ unter den fertigen Ideen, kompakte Zeilen, Ebene mit weichgezeichnetem hellem Grund (Lehre 27.10.) */
   .r61-bald { padding: clamp(72px, 10vh, 128px) 0 clamp(48px, 7vh, 96px); }
   .r61-bald h2 { margin: 0; font-family: Figtree, "Avenir Next", "Helvetica Neue", Arial, sans-serif; font-size: clamp(32px, 3.6vw, 52px); font-weight: 600;
     line-height: 1.08; letter-spacing: -.02em; color: #23201c; }
@@ -1449,15 +1135,12 @@
   .r61-ebene .r61-zu:focus-visible { outline: 2px solid #1c4a4f; outline-offset: 3px; }
   .r61-ebene .r61-zu { position: absolute; right: 10px; top: 10px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; color: #23201c;
     font: 400 26px/1 Figtree, system-ui, sans-serif; cursor: pointer; }
-  /* Punkt 7b: Free-Schild an den Kacheln der Abfrage auch am Handy (verkleinert, 12 px) */
-  /* Am Handy passt „Mit Free nutzbar“ nicht in die 70 px schmalen Kacheln (bricht um und verdeckt den Titel): dort kurz „Free“ bzw. „Abo“, gleiche Farbe */
   @media (max-width: 700px) { .v57-k i { display: inline-block !important; position: absolute; left: 5px; top: 5px; margin: 0; padding: 2px 6px;
     font-size: 0 !important; font-style: normal; line-height: 1.2; border-radius: 999px; white-space: nowrap; }
     .v57-k i::before { content: "Free"; font-size: 12px; font-weight: 700; } .v57-k i.abo::before { content: "Abo"; }
     .v57-k { padding-top: 24px !important; } }
 </style>
 <style id="r72">
-  /* Runde 72 (Jim, 29.10.2026): Einstiegsfenster Runde 2. Werte aus dem Entwurf (entwurf-r2-vorlage.html), Logos in Originalfarbe auf heller Scheibe (Pam A). */
   .v47-ein { --r72-feder: cubic-bezier(.34, 1.56, .64, 1); }
   .v47-marke { margin-bottom: 24px; flex: none; }
   .v47-teil { padding-top: 0; }
@@ -1469,19 +1152,13 @@
   .v47-opt > span { flex: 1; }
   .v47-opt { min-height: 56px; }
   .v47-unter { bottom: calc(var(--zeichen-h) + 34px); }
-  .v47-szene[data-szene="f2"] .r72-deko { position: absolute; border-radius: 50%; box-shadow: 0 2px 4px rgb(96 72 46 / .25); }
-  .r72-deko.d1 { left: 18%; top: 22%; width: 14px; height: 14px; background: #e8cba3; }
-  .r72-deko.d2 { right: 20%; top: 30%; width: 10px; height: 10px; background: #b0c8a8; }
-  .r72-deko.d3 { left: 30%; top: 62%; width: 18px; height: 18px; background: #f2ad8e; }
 
-  /* Bühne für Illustrationen, 360 × 300, skaliert */
   .ein-flaeche { position: absolute; left: 0; right: 0; top: 0; bottom: calc(var(--zeichen-h) + 21px); }
   .ein-buehne { position: absolute; left: 50%; top: 50%; width: 360px; height: 300px; margin: -150px 0 0 -180px; transform-origin: 50% 50%;
     transform: translate(calc((180px - var(--cx, 180px)) * var(--s, 1)), calc((150px - var(--cy, 150px)) * var(--s, 1))) scale(var(--s, 1)); }
   .ein-f1a { --s: 1.33; --cx: 180px; --cy: 157px; }
   .ein-kA { --s: 1.6; --cx: 183px; --cy: 148px; }
   .ein-buehne > * { position: absolute; }
-  /* Frage 1: Kartenfächer (Entwurf Zeilen 61–81), ohne Person */
   .ein-k { left: 140px; top: 88px; width: 80px; height: 112px; border-radius: 15px; z-index: 1; transform-origin: 50% 260.7%;
     transition: transform .55s var(--feder), opacity .3s ease; opacity: 0; transform: translateY(34px) scale(.7); }
   .ein-k.field { box-shadow: var(--bevel), 0 1px 1px color-mix(in oklab, var(--fc) 38%, transparent), 0 10px 18px -8px rgb(96 72 46 / .45); }
@@ -1499,7 +1176,6 @@
   [data-stufe="3"] .ein-k:nth-child(5) { opacity: 1; transform: rotate(26deg); }
   @media (prefers-reduced-motion: reduce) { .ein-k { transition: transform .25s ease, opacity .2s ease; transition-delay: 0s !important; } }
 
-  /* „Ich hab noch keine“ (Entwurf Zeilen 118–131), Scheibe hell mit Zeichen in Originalfarbe */
   .ein-kA .ein-gross { top: 82px; width: 128px; height: 128px; border-radius: 50%; display: grid; place-items: center;
     background: linear-gradient(175deg, var(--clay-hi), var(--clay) 60%, #efe9df);
     box-shadow: inset 0 2px 0 rgb(255 255 255 / .6), inset 0 -16px 22px -14px rgb(96 72 46 / .3), 0 3px 5px rgb(96 72 46 / .2), 0 22px 34px -16px rgb(96 72 46 / .6); }
@@ -1519,80 +1195,19 @@
     .v47-szene.an .ein-kA .ein-gross, .ein-kA.an .ein-gross, .v47-szene.an .ein-funke, .ein-kA.an .ein-funke { animation: r72-ein150 .15s ease both !important; }
   }
 
-  /* Frage 3: drei Karten */
   .r72-faecher { position: absolute; left: 0; right: 0; top: 0; bottom: calc(var(--zeichen-h) + 66px); }
-  .r72-fk { position: absolute; top: 50%; left: 50%; width: 140px; height: 262px; margin: -131px 0 0 -70px; border-radius: 18px; padding: 12px 12px 14px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
-    transform-origin: 50% 50%; transition: transform .5s var(--feder); }
-  .r72-fk .mcard-symbol { position: absolute; right: -30%; bottom: -8%; height: 66%; }
-  .r72-fk .title { position: relative; margin: 0; font-size: 18px; line-height: 1.15; }
-  .r72-fk .tag { position: relative; align-self: flex-start; font-size: 12px; min-height: 26px; padding: 3px 10px; }
-  .r72-fk:nth-child(1) { transform: translateX(-142px) translateY(10px) rotate(-5deg); z-index: 1; }
-  .r72-fk:nth-child(2) { transform: translateY(-6px); z-index: 3; }
-  .r72-fk:nth-child(3) { transform: translateX(142px) translateY(10px) rotate(5deg); z-index: 2; }
-  .v47-szene:not(.an) .r72-fk { transform: translateY(-6px); }
 
-  /* Die drei Marken (Entwurf Zeilen 164–185), Aufrubbeln */
   .v47-rechts { position: relative; }
   .ein-zeichen { position: absolute; left: 0; right: 12px; bottom: 40px; z-index: 2; display: flex; justify-content: center; gap: 30px; pointer-events: none; }
   .ein-z { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 104px; }
-  .ein-z-m { position: relative; width: 46px; height: 46px; border-radius: 50%; overflow: hidden; display: grid; place-items: center; color: var(--ink);
-    background: linear-gradient(175deg, var(--clay-hi), var(--clay) 60%, #efe9df);
-    box-shadow: 0 1px 1px rgb(var(--sh) / .16), 0 6px 12px -5px rgb(var(--sh) / .35), inset 0 1.5px 0 #fff, inset 0 -8px 12px -8px rgb(var(--sh) / .28); }
-  .ein-z-m > .inhalt { display: grid; place-items: center; width: 100%; height: 100%; }
-  .ein-z-m .icon, .ein-z-m .ein-stufe { width: 22px; height: 22px; }
-  .ein-z-m .logo { width: 22px; height: 22px; }
-  .ein-z-m .frage { font-size: 20px; font-weight: 700; color: var(--muted); }
-  .ein-z-t { min-height: 16px; font-size: 13px; line-height: 16px; font-weight: 650; color: var(--ink-soft); white-space: nowrap; transition: opacity .2s ease; }
-  .ein-z:not(.voll) .ein-z-t { opacity: 0; }
-  .ein-z-m canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
   .ein-konfetti { position: fixed; inset: 0; z-index: 2147483002; pointer-events: none; }
   .v47-ein.geht { animation: ein-weg .32s var(--ease) forwards; }
   @keyframes ein-weg { to { opacity: 0; transform: translateY(12px) scale(.98); } }
-
-  /* KI-Wahl: neun schwebende Logos */
-  .r72-feld { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 14px;
-    position: absolute; left: 50%; right: 12px; top: 12px; bottom: 107px; z-index: 3; margin: 0; padding: 20px 22px; }
-  .r72-zelle { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 48px; border-radius: 16px; cursor: pointer; transition: opacity .25s ease; }
-  .r72-zelle input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
-  .r72-bahn { display: block; animation: r72-schwebe var(--dauer, 24s) ease-in-out infinite; animation-delay: var(--vz, 0s); }
-  .r72-zelle:nth-child(3n+1) { --ax: 6px; --ay: 5px; --dauer: 22s; --vz: -3s; } .r72-zelle:nth-child(3n+2) { --ax: -5px; --ay: 6px; --dauer: 27s; --vz: -11s; } .r72-zelle:nth-child(3n) { --ax: 5px; --ay: -4px; --dauer: 19s; --vz: -7s; }
-  .r72-zelle:nth-child(2) { --dauer: 29s; } .r72-zelle:nth-child(5) { --dauer: 18s; } .r72-zelle:nth-child(8) { --dauer: 25s; } .r72-zelle:nth-child(4) { --dauer: 30s; }
-  @keyframes r72-schwebe { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(var(--ax, 5px), calc(var(--ay, 5px) * -1)); } 50% { transform: translate(0, calc(var(--ay, 5px) * -1.4)); } 75% { transform: translate(calc(var(--ax, 5px) * -1), calc(var(--ay, 5px) * .4)); } }
-  .r72-feld.still .r72-bahn { animation-play-state: paused; }
-  .r72-scheibe { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 50%; transform-origin: 50% 100%;
-    transform: translate(var(--dx, 0px), var(--dy, 0px)) scale(var(--sc, 1)); transition: transform .35s var(--ease);
-    background: linear-gradient(175deg, var(--clay-hi), var(--clay) 60%, #efe9df);
-    box-shadow: 0 1px 1px rgb(var(--sh) / .16), 0 6px 12px -5px rgb(var(--sh) / .35), inset 0 1.5px 0 #fff, inset 0 -8px 12px -8px rgb(var(--sh) / .28); }
-  .r72-scheibe svg { width: 50%; height: 50%; }
-  .r72-name { font-size: 15px; line-height: 1.2; font-weight: 650; color: var(--ink); text-align: center; position: relative; z-index: 1; }
-  .r72-zelle:has(input:checked) .r72-name { text-decoration: underline; text-underline-offset: 3px; }
-  .r72-zelle:has(input:focus-visible) { outline: 2px solid var(--focus); outline-offset: 2px; }
-  .r72-feld.ein .r72-zelle, .r72-feld.keine .r72-zelle { opacity: 0; pointer-events: none; }
-  .r72-feld.ein .r72-bahn, .r72-feld.keine .r72-bahn { animation-play-state: paused; }
-  .r72-gross { position: absolute; z-index: 4; display: grid; place-items: center; border-radius: 50%; pointer-events: none; will-change: transform;
-    background: linear-gradient(175deg, var(--clay-hi), var(--clay) 60%, #efe9df);
-    box-shadow: inset 0 2px 0 rgb(255 255 255 / .6), inset 0 -16px 22px -14px rgb(96 72 46 / .3), 0 3px 5px rgb(96 72 46 / .2), 0 22px 34px -16px rgb(96 72 46 / .6); }
-  .r72-gross svg { width: 50%; height: 50%; }
-  .r72-feld:has(input[name="ein-ki"]:focus-visible) .r72-gross { outline: 2px solid var(--focus); outline-offset: 2px; }
-  .r72-funke { position: absolute; z-index: 3; border-radius: 50%; box-shadow: 0 2px 4px rgb(96 72 46 / .25); pointer-events: none; }
-  .r72-info { position: absolute; left: 0; right: 0; z-index: 5; display: flex; flex-direction: column; align-items: center; gap: 0; text-align: center; }
-  .r72-info[hidden] { display: none; }
-  .r72-in-name { font-size: 20px; font-weight: 700; letter-spacing: -.01em; }
-  .r72-aendern { min-height: 48px; min-width: 48px; padding: 0 14px; border: 0; background: none; font: inherit; font-size: 16px; font-weight: 600; color: var(--ink-soft); cursor: pointer;
-    text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgb(60 45 30 / .35); }
-  .r72-aendern:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 8px; }
-  .r72-feld .ein-buehne.r72-paar { display: none; --s: 1.6; }
-  .r72-feld.keine .ein-buehne.r72-paar { display: block; }
-  .r72-keine { margin-top: 0; }
-  .r72-tipp { min-height: 90px; }  /* reserviert für den Satz mit „Mistral (Le Chat)“ und Marker: 4 Zeilen bei 1280, gemessen */
-  .r72-tipp.mit-marker { display: flex; align-items: flex-start; gap: 8px; }   /* Marker oben bündig, Folgezeilen hängend eingerückt */
-  .r72-mark { flex: none; box-sizing: border-box; width: 18px; height: 18px; border-radius: 50%; background: #9e5c26; color: #fff; font-size: 12px; line-height: 18px; font-weight: 700; text-align: center; }  /* copper-b aus tokens.json, kein Rot */
-  .r72-tipp-t { min-width: 0; }
-  .r72-privat { margin: 16px 0 0; font-size: 14px; line-height: 1.4; font-weight: 500; color: #5d554c; }
+  @keyframes r72-schwebe { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(var(--ax, 5px), calc(var(--ay, 5px) * -1)); } 50% { transform: translate(0, calc(var(--ay, 5px) * -1.4)); } 75% { transform: translate(calc(var(--ax, 5px) * -1), calc(var(--ay, 5px) * .4)); } }  
+  .r72-tipp.mit-marker { display: flex; align-items: flex-start; gap: 8px; }
   .v47-fort-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
-  @media (hover: none), (pointer: coarse) { .r72-zelle { --sc: 1 !important; } }
+  @media (hover: none), (pointer: coarse) { }
 
-  /* Leiste „Für dich eingerichtet“ auf Alle Ideen (Entwurf alle_ideen_wirkung) */
   .r72-leiste { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; margin-top: 22px; padding: 4px 8px 4px 18px; border-radius: 999px; background: var(--clay-in);
     box-shadow: inset 0 1px 2px rgb(96 72 46 / .22), 0 1px 0 #fff; font-size: 16px; font-weight: 600; color: var(--ink); }
   .r72-leiste .r72-l-i { display: inline-flex; align-items: center; gap: 7px; min-height: 36px; }
@@ -1604,11 +1219,10 @@
   .r72-leiste .r72-leiste-aendern { min-height: 48px; min-width: 48px; padding: 0 10px; border: 0; background: none; font: inherit; font-size: 16px; font-weight: 600; color: var(--ink-soft); cursor: pointer;
     text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgb(60 45 30 / .35); }
   .r72-leiste .r72-leiste-aendern:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 8px; }
-  h1[tabindex="-1"]:focus, h1#alle-ideen-title[tabindex="-1"]:focus-visible { outline: none; }   /* Fokus bleibt auf der Überschrift, nur der Rahmen entfällt (Pam) */
+  h1[tabindex="-1"]:focus, h1#alle-ideen-title[tabindex="-1"]:focus-visible { outline: none; }   
   .r72-melden { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 2147483000; max-width: min(92vw, 460px); padding: 12px 18px; border-radius: 16px;
     background: #23201c; color: #fbf7f0; font-size: 16px; font-weight: 600; line-height: 1.35; box-shadow: 0 10px 30px rgb(0 0 0 / .25); }
 
-  /* ===== Handy ===== */
   @media (max-width: 700px) {
     .v47-vorschau { --zeichen-h: 0px; flex: none; height: 148px !important; }
     .v47-unter { bottom: 8px; font-size: 12.5px; }
@@ -1617,39 +1231,21 @@
     .ein-f1a { --s: .534; --cy: 154px; } .ein-kA { --s: .615; }
     .ein-zeichen { position: relative; left: auto; right: auto; bottom: auto; flex: none; height: 52px; margin-top: 6px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
     .ein-z { width: auto; flex-direction: row; gap: 7px; justify-content: center; }
-    .ein-z-m { width: 36px; height: 36px; flex: none; }
-    .ein-z-m .icon, .ein-z-m .ein-stufe, .ein-z-m .logo { width: 18px; height: 18px; }
-    .ein-z-t { font-size: 12.5px; line-height: 1.15; white-space: normal; min-width: 0; }
     .r72-faecher { bottom: 26px; right: 40px; }
-    .r72-fk { width: 100px; height: 98px; margin: -49px 0 0 -50px; padding: 6px 7px 7px; border-radius: 11px; }
-    .r72-fk .title { font-size: 12.5px; } .r72-fk .tag { font-size: 11px; min-height: 0; padding: 1px 7px; }
-    .r72-fk:nth-child(1) { transform: translateX(-94px) translateY(4px) rotate(-4deg); } .r72-fk:nth-child(2) { transform: translateY(-3px); } .r72-fk:nth-child(3) { transform: translateX(94px) translateY(4px) rotate(4deg); }
-    .v47-szene:not(.an) .r72-fk { transform: translateY(-3px); }
     .v47-form { padding-top: 0; } .v57-zurueck { margin: 0 0 -14px -2px; } .v47-frage { margin-top: 0; }
-    .r72-feld { position: relative; left: auto; right: auto; top: auto; bottom: auto; z-index: auto; margin: 4px 0 0; padding: 0; height: 190px; gap: 8px; grid-template-rows: repeat(3, 1fr); }
-    .r72-scheibe { width: 40px; height: 40px; } .r72-name { font-size: 16px; line-height: 1.1; } .r72-zelle { gap: 2px; }
-    .r72-feld .ein-buehne.r72-paar { --s: .8; }
-    .r72-keine .v47-opt { min-height: 52px; }
-    .r72-privat { font-size: 16px; }
-    .r72-tipp { font-size: 16px; min-height: 118px; margin-top: 8px; }   /* 5 Zeilen bei 361 bis 700 px, gemessen */
+    .r72-tipp { font-size: 16px; margin-top: 8px; }   
     .v47-marke { display: none; }
-    .v47-ein .v47-innen[data-schritt="f2"] .v47-vorschau { height: 56px !important; }
-    .v47-innen[data-schritt="f2"] .v47-szene .r72-deko { display: none; }
     .r72-leiste { border-radius: 22px; padding: 4px 6px 4px 16px; font-size: 16px; }
     .r72-leiste .r72-l-t { flex: 0 0 100%; }
   }
-  @media (min-width: 361px) and (max-width: 700px) { .r72-feld { height: 216px; } .r72-scheibe { width: 44px; height: 44px; } .r72-zelle { gap: 4px; } }
-  @media (max-width: 360px) { .r72-tipp { min-height: 142px; }   /* 6 Zeilen bei 320 px, gemessen */
-    .v47-innen[data-schritt="f2"] .ein-zeichen { padding-right: 52px; grid-template-columns: auto auto auto; justify-content: space-between; }   /* Platz für .v47-x (44 px) mit 8 px Abstand */
-    .v47-innen[data-schritt="f2"] .ein-z { gap: 5px; } .v47-innen[data-schritt="f2"] .ein-z-m { width: 28px; height: 28px; }
-    .v47-innen[data-schritt="f2"] .ein-z-m .icon, .v47-innen[data-schritt="f2"] .ein-z-m .ein-stufe, .v47-innen[data-schritt="f2"] .ein-z-m .logo { width: 15px; height: 15px; }
-    .r72-info { flex-direction: row; justify-content: center; }   /* Name und „ändern“ nebeneinander, damit die 48-px-Fläche nicht in „Ich hab noch keine“ ragt */
-    .v47-innen[data-schritt="f2"] .v47-vorschau { display: none; } .v47-innen[data-schritt="f2"] .ein-zeichen { margin-top: 0; }
-    .r72-feld { height: 176px; } .r72-scheibe { width: 36px; height: 36px; } .r72-keine .v47-opt { min-height: 48px; } }
-  @media (prefers-reduced-motion: reduce) { .r72-bahn { animation: none; } .r72-scheibe { transition: none; } .r72-zelle { transition: none; } }
+  @media (min-width: 361px) and (max-width: 700px) { }
+  @media (max-width: 360px) { .r72-tipp { min-height: 142px; }   
+    .v47-innen[data-schritt="f2"] .ein-zeichen { padding-right: 52px; grid-template-columns: auto auto auto; justify-content: space-between; }   
+    .v47-innen[data-schritt="f2"] .ein-z { gap: 5px; }   
+    .v47-innen[data-schritt="f2"] .v47-vorschau { display: none; } .v47-innen[data-schritt="f2"] .ein-zeichen { margin-top: 0; } }
+  @media (prefers-reduced-motion: reduce) { }
 </style>
 <style id="r80">
-  /* Runde 80 (Jim, 30.10.2026): Grundkurs-Banner A (Rinne wie die frühere Kompass-Leiste) und Pop-up im Look des Einstiegsfensters. Werte aus Pams Skizzen. */
   .gk { position: relative; justify-self: stretch; width: 100%; max-width: none; margin: 2px 0 0; color: var(--ink); }
   @media (min-width: 701px) { .gk { margin-top: 8px; } }
   .gk h2, .gk p { margin: 0; }
@@ -1677,8 +1273,6 @@
   @media (max-width: 700px) {
     .gk--a { border-radius: 24px; }
     .gk--a .gk-in { grid-template-columns: auto minmax(0, 1fr); padding: 20px 18px 18px; gap: 12px 14px; }
-    .gk--a .gk-icon { width: 56px; }
-    .gk--a .gk-icon svg { width: 28px; height: 28px; }
     .gk--a .gk-text { display: contents; }
     .gk--a .gk-label { grid-column: 1 / -1; grid-row: 1; justify-self: start; }
     .gk--a .gk-icon { grid-row: 2; }
@@ -1688,7 +1282,6 @@
     .gk--a .gk-btn { width: 100%; }
   }
 
-  /* Pop-up: Karte wie das Einstiegsfenster (.v47-ein: weiß, Rand #e7dfd4, 24 px, Schatten); der helle, unscharfe Schleier kommt von window.v47Fenster (.v47-schleier) */
   .r80-pop { position: fixed; inset: 0; z-index: 2147483001; box-sizing: border-box; margin: auto; width: min(540px, calc(100vw - 32px)); height: fit-content; max-height: calc(100dvh - 32px); overflow: auto;
     padding: 36px 36px 28px; border: 1px solid #e7dfd4; border-radius: 24px; background: #fff; color: var(--ink); box-shadow: 0 24px 64px rgb(60 40 20 / .18); }
   .r80-pop[open] { animation: r80-ein .22s var(--ease) both; }
@@ -1720,11 +1313,7 @@
   }
 </style>
 <style id="r100">
-  /* Runde 100 (Ryan, 30.10.2026): Korrekturen Yannis Station 2, Punkte 6–10 */
-  /* 9: schwarze Formen bei Frage 3 – dieselbe Formatierung wie .ein-k .mcard-symbol (Lage und Größe bleiben bei .r72-fk .mcard-symbol) */
-  .r72-fk .mcard-symbol { fill: none; stroke: #000; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; opacity: .14; }
 
-  /* 8: Logo-Wolke (nur Deko, nichts davon ist klickbar). Außen driftet es, innen federt es (nie beides auf demselben Element). */
   .r100-wolke { position: absolute; inset: 0; --u: 1; pointer-events: none; }
   .r100-l { position: absolute; left: var(--x); top: var(--y); width: calc(var(--g) * var(--u) * 1px); height: calc(var(--g) * var(--u) * 1px);
     margin: calc(var(--g) * var(--u) * -.5px) 0 0 calc(var(--g) * var(--u) * -.5px); z-index: 1; }
@@ -1742,17 +1331,15 @@
   .r100-scheibe svg { width: 50%; height: 50%; }
   @media (prefers-reduced-motion: reduce) { .r100-drift { animation: none; } .r100-scheibe { transition: none; transition-delay: 0s; } }
 
-  /* 7: Zeilen in Frage 2. Der Hinweis nach „Andere“ hat fünf Zeilen (gemessen bei 1280: 486 px Inhalt, 420 px Platz): Zeilen und Abstände in Frage 2 enger, Fenster 24 px höher. */
   .r72-tipp { min-height: 112px; margin-top: 8px; }
   .v47-innen[data-schritt="f2"] .v47-opt { min-height: 48px; }
   .v47-innen[data-schritt="f2"] .v47-fort { margin-top: 14px; }
   .v47-innen[data-schritt="f2"] .v47-opts { margin-top: 12px; }
   @media (min-width: 701px) { .v47-ein { height: min(624px, calc(100vh - 48px)); } }
 
-  /* 10: Ladeansicht und Erfolgsansicht */
   .v47-innen[data-schritt="laden"] .v47-fuss, .v47-innen[data-schritt="fertig"] .v47-fuss { display: none; }
   .r100-balken { margin-top: 24px; height: 8px; border-radius: 4px; background: #e3dcd1; overflow: hidden; }
-  .r100-balken i { display: block; height: 100%; width: 0; border-radius: 4px; background: #2b2420; transition: width .65s cubic-bezier(.3, .7, .3, 1); }
+  .r100-balken i { display: block; height: 100%; border-radius: 4px; background: #2b2420; transition: width .65s cubic-bezier(.3, .7, .3, 1); }
   .r100-zeilen { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 12px; }
   .r100-zeilen li { display: flex; align-items: center; gap: 12px; min-height: 28px; font-size: 16.5px; line-height: 1.3; font-weight: 550; animation: r100-zeile .3s ease both; }
   .r100-ic { flex: none; width: 22px; height: 22px; border-radius: 50%; box-sizing: border-box; }
@@ -1765,7 +1352,7 @@
   .r100-link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
   .r100-ende { margin-top: 28px; }
   .r100-ende .v47-dunkel { margin-left: 0; }
-  @media (prefers-reduced-motion: reduce) { .r100-balken i { transition: none; } .r100-zeilen li { animation: none; } }
+  @media (prefers-reduced-motion: reduce) { .r100-zeilen li { animation: none; } }
 
   @media (max-width: 700px) {
     .r100-wolke { --u: .6; }
@@ -1776,15 +1363,11 @@
   @media (max-width: 360px) { .v47-ein .v47-innen[data-schritt="f2"] .v47-vorschau { display: none !important; } }
 </style>
 <style id="r101">
-  /* Runde 101 (Ryan, 30.10.2026) */
-  /* s2-11: Hinweis unter dem Tipp in Frage 2 (Stil des „!“-Hinweises aus Runde 72) */
-  .r101-hinweise { min-height: 112px; margin-top: 8px; }
   .r101-hinweise .r72-tipp { min-height: 0; margin-top: 0; }
   .r101-hinweis { display: flex; align-items: flex-start; gap: 8px; margin-top: 10px; }
   .r101-hinweis[hidden] { display: none; }
   .r101-hinweis b { font-weight: 700; color: var(--ink); }
 
-  /* s2-12: echte Karten von „Alle Ideen“, geklont, nur Bildfläche mit Rahmen, per Skalierung kleiner */
   .r101-fk { position: absolute; top: 50%; left: 50%; width: 286px; margin: -86px 0 0 -143px; transform-origin: 50% 50%; transition: transform .5s var(--feder); }
   .r101-fk .mcard { width: 286px; box-sizing: border-box; margin: 0; pointer-events: none; }
   .r101-fk:nth-child(1) { transform: translateX(-118px) translateY(10px) rotate(-5deg) scale(.58); z-index: 1; }
@@ -1792,7 +1375,6 @@
   .r101-fk:nth-child(3) { transform: translateX(118px) translateY(10px) rotate(5deg) scale(.58); z-index: 2; }
   .v47-szene:not(.an) .r101-fk { transform: translateY(-6px) scale(.58); }
 
-  /* s2-14: Walzen-Zeile unten im rechten Panel */
   .v47-vorschau { --zeichen-h: 74px; }
   .ein-zeichen.r101-z { position: absolute; left: 24px; right: 36px; bottom: 36px; z-index: 2; display: flex; justify-content: stretch; gap: 0; height: 64px; padding: 0; margin: 0;
     border-radius: 999px; background: rgb(255 255 255 / .72); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); overflow: hidden;
@@ -1813,7 +1395,6 @@
     100% { box-shadow: 0 1px 1px rgb(var(--sh) / .16), 0 6px 12px -5px rgb(var(--sh) / .35), inset 0 1.5px 0 #fff; } }
   @media (prefers-reduced-motion: reduce) { .ein-zeichen.r101-z.blitz { animation: none; } }
 
-  /* s2-16: kleines Erfolgs-Pop-up, kein rechter Bereich */
   .v47-ein.r101-klein { width: min(440px, calc(100vw - 32px)); max-width: none; height: fit-content; max-height: calc(100vh - 32px); margin: auto; border: 1px solid #e7dfd4; border-radius: 24px; }
   .v47-ein.r101-klein .v47-innen { display: block; height: auto; }
   .v47-ein.r101-klein .v47-rechts, .v47-ein.r101-klein .v47-marke { display: none; }
@@ -1823,7 +1404,6 @@
   .v47-ein.r101-klein .r100-ende { margin-top: 22px; }
 
   @media (max-width: 700px) {
-    .r101-hinweise { min-height: 118px; }
     .r101-fk:nth-child(1) { transform: translateX(-98px) translateY(4px) rotate(-4deg) scale(.36); }
     .r101-fk:nth-child(2) { transform: translateY(-3px) scale(.4); }
     .r101-fk:nth-child(3) { transform: translateX(98px) translateY(4px) rotate(4deg) scale(.36); }
@@ -1834,8 +1414,6 @@
   }
 </style>
 <style id="r84">
-  /* Runde 84 (Jim, 30.10.2026): „Alle Ideen“ Weg A mit Yannis' Karte. Alles unter #ideen .shelf, damit Ryans geklonte Karten im Einstiegsfenster unberührt bleiben.
-     Grundlage ist die Karte für Handy und Touch (erste Karte offen); der Rechner (ab 1024 px, hover: hover, pointer: fine) überschreibt unten in einer Media-Query. */
   #ideen .shelf { margin-top: clamp(14px, 1.6vw, 22px); }
   #ideen .shelf .shelf-track { gap: 14px; align-items: flex-start; padding: 16px var(--edge) 34px; margin-bottom: -12px; }
   #ideen .shelf .mcard { --r84-h: 264px; flex: 0 0 clamp(160px, 45vw, 210px); width: clamp(160px, 45vw, 210px); height: var(--r84-h); box-sizing: border-box; padding: 6px;
@@ -1852,15 +1430,11 @@
   #ideen .shelf .mcard.r84-offen .field-top { display: flex; }
   #ideen .shelf .mcard .field-tags { flex-direction: row; flex-wrap: wrap; gap: 4px; }
   #ideen .shelf .mcard .tag--cat { display: none; }
-  #ideen .shelf[data-kat="weitere"] .mcard .tag--cat { display: inline-flex; }
-  #ideen .shelf[data-kat="weitere"] .mcard .tag--frei { display: none; }
   #ideen .shelf[data-kat="weitere"] .mcard .field-top { display: flex; order: 0; margin: 0 0 8px; }
-  /* Text-Teil (.body): liegt über der Karte, fängt keine Klicks ab (außer „Anleitung“) */
   #ideen .shelf .mcard .body { position: absolute; inset: 6px; z-index: 2; display: block; padding: 0 !important; min-height: 0 !important; gap: 0; overflow: hidden; border-radius: 18px; pointer-events: none; }
   #ideen .shelf .mcard .mcard-nutzen { position: absolute; left: 12px; right: 12px; bottom: 62px; margin: 0; color: #fff; font-size: 16px; line-height: 1.3; font-weight: 520;
     display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; text-shadow: 0 1px 1px color-mix(in oklab, var(--fc) 55%, transparent); }
   #ideen .shelf .mcard.r84-offen .mcard-nutzen { display: none; }
-  /* nicht offene Karten am Handy: Kurztext und „Anleitung“ bleiben für Screenreader da, sind aber unsichtbar */
   #ideen .shelf .mcard:not(.r84-offen) .mcard-kachel { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   #ideen .shelf .mcard:not(.r84-offen):has(:focus-visible) .mcard-kachel { left: 0; right: 0; bottom: 0; width: auto; height: auto; clip-path: none; white-space: normal; z-index: 3;
     padding: 10px 12px 8px; border-radius: 16px; background: linear-gradient(175deg, var(--clay-hi), var(--clay)); pointer-events: auto; }
@@ -1873,14 +1447,11 @@
   #ideen .shelf .mcard .outcome { margin: 0; font-size: 16px; line-height: 1.3; }
   #ideen .shelf .mcard .mcard-los-link { position: absolute; inset: -8px -10px; z-index: 3; border-radius: 10px; pointer-events: auto; }
   #ideen .shelf .mcard .mcard-los-link:focus-visible { outline: 3px solid var(--focus); outline-offset: -2px; }
-  /* Herz: immer sichtbar, unten rechts, Tippfläche 44 × 44 */
   #ideen .shelf .mcard .herz { position: absolute; z-index: 4; top: auto; bottom: 12px; right: 12px; width: 44px; height: 44px; }
-  /* kein Anheben, keine Bewegung der Karte: Rechtecke bleiben gleich */
   #ideen .shelf .mcard:hover, #ideen .shelf .mcard:active, #ideen .shelf .mcard:has(.mcard-link:focus-visible), #ideen .shelf .mcard:has(.herz:active) { --c-lift: 0px; transform: none !important; }
   #ideen .shelf .mcard:hover .field, #ideen .shelf .mcard:active .field, #ideen .shelf .mcard:has(.herz:active) .field { --f-lift: 0px; transform: none !important; }
   #ideen .shelf .mcard.r84-zu .mcard-kachel { opacity: 0 !important; }
 
-  /* ---------- Rechner: ab 1024 px, nur mit Maus ---------- */
   @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
     #ideen .shelf .shelf-track { gap: 18px; }
     #ideen .shelf .mcard, #ideen .shelf .mcard.r84-offen { --r84-h: 176px; --r84-w: clamp(244px, 20.5vw, 288px); flex: 0 0 var(--r84-w); width: var(--r84-w); }
@@ -1907,48 +1478,32 @@
   @media (prefers-reduced-motion: reduce) {
     #ideen .shelf .mcard .mcard-kachel, #ideen .shelf .mcard:is(:hover, :focus-within):not(.r84-zu) .mcard-kachel { transform: none !important; }
   }
-  /* „Gemerkt“ ganz oben: nur sichtbar, wenn etwas gemerkt ist */
   #r84-gemerkt[hidden] { display: none !important; }
   #ideen > #r84-gemerkt { margin-top: clamp(14px, 1.6vw, 22px); }
 </style>
 <style>
-/* Runde 95: Station 3, Nachbesserung /ideen. Spezifität höher als Runde 84 (#ideen .shelf .mcard.mcard ...). */
 @media (min-width: 1024px) {
-  /* a) Einleitung in einer Zeile */
   #alle-ideen .v22i-lead { max-width: 900px; }
-  /* c) Header → Pill → H1 */
   #alle-ideen.v22i-kopf { padding-top: 16px; }
-  #alle-ideen .v22i-titel { margin-top: 2px; }
-  /* b) Banner → „Was steht bei dir an?“: 40 px */
   section#ideen.v22s-ideen { padding-top: 0; }
-  section#ideen.v22s-ideen > .v22i-bereiche { margin-top: 35px; } /* Zeile ist 44 px hoch (Knöpfe), die H2 sitzt 5 px tiefer: Banner → H2 = 40 px */
-  /* d) H2-Zeile → Reihentitel, Reihentitel → Karten: je höchstens 16 px */
-  section#ideen.v22s-ideen #mehr-themen > .shelf:first-child { margin-top: 4px; } /* Zeile 44 px, Reihentitel sitzt 5 px tiefer: H2 → Reihentitel ca. 16 px */
-  /* Rückfall laut Pam: H2 „Was steht bei dir an?“ auf 32 px */
+  section#ideen.v22s-ideen > .v22i-bereiche { margin-top: 35px; } 
+  section#ideen.v22s-ideen #mehr-themen > .shelf:first-child { margin-top: 4px; } 
   section#ideen.v22s-ideen > .v22i-bereiche .section-title { font-size: 32px; }
   #ideen .shelf .shelf-track { padding-top: 12px; }
 }
-/* 3. Nutzenzeile zweizeilig, Handy und Rechner */
 #ideen .shelf.shelf .mcard.mcard .mcard-nutzen { -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden;
   white-space: normal; text-overflow: clip; line-height: 1.25; }
 @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
   #ideen .shelf.shelf .mcard.mcard .mcard-nutzen { display: -webkit-box; white-space: normal; text-overflow: clip; -webkit-line-clamp: 2; }
-  /* Pill „Mit Free nutzbar“ über die zwei Zeilen Nutzen setzen (Karte bleibt 176 px) */
   #ideen .shelf.shelf .mcard.mcard .field-top { margin-bottom: 52px; }
   #ideen .shelf.shelf[data-kat="weitere"] .mcard.mcard .field-top { margin-bottom: 52px; }
 }
 </style>
 <style id="r105">
-  /* Runde 105 (Ryan, 30.10.2026) */
-  /* s2-20: beide Hinweise weg, der Kasten braucht keinen reservierten Platz mehr (der Tipp hat seinen eigenen) */
   .r101-hinweise { min-height: 0; margin-top: 0; }
   @media (max-width: 700px) { .r101-hinweise { min-height: 0; } }
-  /* R105b (s2-21/22): Titel und Tag als Block unten in der Karte, Abstand Titel zu Tag 4 px */
-  .r101-fk .mcard .field { justify-content: flex-end; gap: 4px; }
-  .r101-fk .mcard .field-top { margin: 0; }
 </style>
 <style id="r109">
-  /* Runde 109 (Ryan, 30.10.2026) */
 @media (max-width: 700px) {
   #v47-ein:not(.r101-klein) { margin-top: 12px; height: calc(100% - 12px); }
   #v47-ein .v47-form { padding-top: 16px; }
@@ -1960,11 +1515,10 @@
   #v47-ein .v47-vorschau .v47-szene { inset: auto; left: 50%; top: 50%; width: 100%; height: 148px; transform: translate(-50%, -50%) scale(0.4865); }
   #v47-ein .v47-innen[data-schritt="f2"] .v47-vorschau .v47-szene { height: 132px; transform: translate(-50%, -50%) scale(0.5455); }
 }
-#v47-ein .v47-x { display: none !important; }   /* Nachbesserung: X auf allen Größen weg; Escape und „Überspringen“ bleiben */
+#v47-ein .v47-x { display: none !important; }   
 #v47-ein .v2-zeile { display: flex; align-items: center; justify-content: space-between; min-height: 44px; max-width: 100%; box-sizing: border-box; }
 #v47-ein .v2-zeile .v47-fort { margin: 0 0 0 auto !important; }
 #v47-ein .v2-zeile .v57-zurueck { margin: 0 0 0 -12px !important; padding: 0 12px; min-height: 44px; min-width: 44px; }
-/* s2-28: ein <legend> mit Vorgänger im Fieldset würde trotzdem als erstes gezeichnet; schwebend wird sie zum normalen Block und folgt der DOM-Reihenfolge (Zeile, dann Frage) */
 #v47-ein .v47-teil > .v2-zeile + .v47-frage { float: left; margin-bottom: 10px; }
 #v47-ein .v47-teil > .v2-zeile + .v47-frage ~ * { clear: both; }
 @media (max-width: 700px) {
@@ -1976,32 +1530,26 @@
   #v47-ein .ein-zeichen.r101-z { height: 56px; }
   #v47-ein .r101-z .ein-z.r101-fenster, #v47-ein .r101-walze, #v47-ein .r101-it { height: 56px; }
 }
-  /* s2-27 (alle Größen): der Tag steht oben in der Karte, vor dem Titel; überschreibt „Block unten“ aus R105b */
   .r101-fk .mcard .field { justify-content: flex-start; gap: 4px; }
   .r101-fk .mcard .field-top { margin: 0; align-self: flex-start; }
 @media (max-width: 700px) {
-  /* s2-26: keine sichtbare Beschriftung unter den Icons, Text bleibt für Screenreader; Icons senkrecht mittig */
   #v47-ein .r101-z .r101-t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; padding: 0; border: 0; }
   #v47-ein .r101-it { justify-content: center; align-items: center; gap: 0; }
 }
 </style>
 <style id="r107">
-/* Runde 107 (Jim, 30.10.2026): Scheck-Karte (s3-5), Banner je Stufe (s3-6), Überschrift Version b (s3-9). */
 
-/* ===== s3-9: Überschrift „Was steht bei dir an?“ oben, Muster ideen-b.html ===== */
 #alle-ideen .v22i-oben { width: 100%; margin: 0; }
 #alle-ideen .v22i-lead { font-size: 16px; }
 #alle-ideen .v22i-oben .section-title { font-size: clamp(34px, 3.4vw, 48px); }
 @media (min-width: 1024px) { #alle-ideen .v22i-oben .section-title { font-size: 32px; } }
-#alle-ideen.v22i-kopf { padding-bottom: 36px; }   /* Banner -> erste Reihentitel: mindestens 40 px (gemessen) */
-/* Header-Knopf „Alle Ideen“ ist hier aktiv: Banner-Blau, Text und Symbol weiß */
+#alle-ideen.v22i-kopf { padding-bottom: 36px; }   
 html .site-nav .v44-nav a.v47-pille[aria-current="page"] { background: linear-gradient(180deg, #386682, var(--k-blue) 60%); color: #fff;
   box-shadow: inset 0 1px 0 rgb(255 255 255 / .18), 0 1px 1px rgb(3 12 20 / .35), 0 6px 10px -5px rgb(3 12 20 / .5); }
 html .site-nav .v44-nav a.v47-pille[aria-current="page"]:is(:hover, :active) { background: linear-gradient(180deg, #2f5871, var(--k-deep)); color: #fff; }
 html .site-nav .v44-nav a.v47-pille[aria-current="page"] .v47-ic { color: #fff; stroke: #fff; }
 html .site-nav .v44-nav a.v47-pille[aria-current="page"] span { color: #fff; }
 
-/* ===== s3-6: Banner je Stufe ===== */
 .gk--a .gk-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; }
 .gk--a .gk-stufe { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; line-height: 1.2; font-weight: 600; color: rgb(255 255 255 / .8); text-shadow: 0 1px 1px rgb(3 12 20 / .35); }
 .gk--a .gk-balken { display: inline-flex; gap: 3px; }
@@ -2016,55 +1564,38 @@ html .site-nav .v44-nav a.v47-pille[aria-current="page"] span { color: #fff; }
 }
 </style>
 <style id="r110">
-/* Runde 110 (Jim, 30.10.2026): s3-12 Herz oben, s3-13 Kategorie-Tag weg, s3-14 Banner wächst mit dem Text. */
-/* s3-12: Rechner (ab 1024 px, Maus) hat das Herz oben schon (R84: 9 px, 40 x 40). Handy, Touch und schmale Fenster: oben 6 px, rechts 6 px, 44 x 44 */
 @media not all and (min-width: 1024px) and (hover: hover) and (pointer: fine) {
   #ideen .shelf .mcard .herz { top: 6px; bottom: auto; right: 6px; width: 44px; height: 44px; }
-  /* der Titel läuft in der ersten Zeile nicht unters Herz (Platzhalter rechts, lange Wörter rutschen darunter) */
   #ideen .shelf .mcard .field h3.title::before { content: ""; float: right; width: 46px; height: 36px; }
   #ideen .shelf[data-kat="weitere"] .mcard .field h3.title::before { display: none; }
 }
-/* s3-13: im Regal „Weitere Themen“ stand nur der Kategorie-Tag; jetzt steht dort der Free/Abo-Tag */
 #ideen .shelf[data-kat="weitere"] .mcard .tag--frei { display: inline-flex; }
 #ideen .shelf[data-kat="weitere"] .mcard .tag--cat { display: none; }
-/* s3-14: Banner Stufe 2 und 3 ohne Höhen- oder Zeilengrenze */
 #r80-banner[data-stufe="2"], #r80-banner[data-stufe="3"] { height: auto; max-height: none; }
 #r80-banner[data-stufe="2"] .gk-text p, #r80-banner[data-stufe="3"] .gk-text p { display: block; max-height: none; overflow: visible; -webkit-line-clamp: unset; line-clamp: unset; }
-/* s3-14, Pam 30.10. abends: Spalte am Rechner bei Stufe 2 56ch statt 62ch (längste Zeile 77 statt 85 Zeichen); Stufe 3 bleibt 62ch (eine Zeile,
-   sonst ein Rest von 15 Zeichen in Zeile 2). Schrift bleibt 16 px / 1.45, am Handy volle Breite */
 #r80-banner[data-stufe="2"] .gk-text p { max-width: 56ch; }
 #r80-banner[data-stufe="3"] .gk-text p { max-width: 62ch; }
 </style>
 <style id="r111">
-  /* Runde 111 (Ryan): Tempo, gleiches Aussehen */
-  /* A: Fläche des Fensters fährt per transform; das Fenster selbst ist währenddessen nur durchsichtig */
   #v47-ein.r111-flug { background: transparent; border-color: transparent; box-shadow: none; overflow: visible; }
-  #v47-ein.r111-flug:not(.r111-zeig) { visibility: hidden; }   /* zwei Bilder lang: neu sichtbarer Inhalt zählt nicht als Verschiebung */
+  #v47-ein.r111-flug:not(.r111-zeig) { visibility: hidden; }   
   #v47-ein.r111-flug::before { content: ""; position: absolute; inset: -1px; z-index: -1; box-sizing: border-box; border: 1px solid #e7dfd4; border-radius: 24px;
     background: #fff; box-shadow: 0 24px 64px rgb(60 40 20 / .18); transform-origin: 0 0; pointer-events: none; visibility: visible; }
-  /* B: Balken ohne width-Übergang */
   .r100-balken i { width: 100%; transform: translateX(calc((var(--p, 0) - 1) * 100%)); transition: transform .65s cubic-bezier(.3, .7, .3, 1); }
   @media (prefers-reduced-motion: reduce) { .r100-balken i { transition: none; } }
-  /* C: Leuchten als eigene Ebene unter dem Inhalt der Zeichen-Zeile, nur opacity */
   .ein-zeichen.r101-z { isolation: isolate; }
   .ein-zeichen.r101-z::after { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; opacity: 0;
     background: rgb(255 255 255 / .98); box-shadow: 0 0 0 3px rgb(242 173 142 / .7), 0 0 26px 6px rgb(255 214 160 / .85); }
-  /* D */
   #v47-ein.r101-klein .ein-zeichen.r101-z { -webkit-backdrop-filter: none; backdrop-filter: none; }
 </style>
 <style id="r113">
-  /* Runde 113 (Ryan, 30.10.2026) s2-30: Luft zwischen Zeile „Zurück · Frage x von 3“ und Überschrift, in f1, f2 und f3 gleich */
   #v47-ein .v47-teil > .v2-zeile + .v47-frage { margin-top: 24px; }
-  /* Nacharbeit 30.10. (Pam, Punkt 2 und Nachtrag a): 320×568 (schmal UND niedrig). Frage 2 blendete die Vorschau schon aus (R72), Frage 1 und 3 zeigten sie:
-     Fenster scrollte innen (35/30/7 px) und beim Fragenwechsel sprangen .v47-links und .ein-zeichen (2× CLS 0,12). Jetzt in allen Fragen ohne Vorschaustreifen
-     (die Zeichen-Zeile bleibt): gleiche Lage in allen Fragen, kein Sprung, kein Innenscrollen. Andere Größen unverändert. */
   html.r113-leiste body { visibility: hidden; }
   html.r113-leiste #v47-ein, html.r113-leiste .v47-schleier { visibility: visible; }
-  @media (max-width: 700px) { #v47-ein .v47-unter { font-size: 13px; } }   /* Pam: kleinste Schrift im Fenster 13 px (vorher 12,5) */
+  @media (max-width: 700px) { #v47-ein .v47-unter { font-size: 13px; } }   
   @media (max-width: 360px) and (max-height: 600px) {
     #v47-ein:not(.r101-klein) .v47-innen .v47-vorschau { display: none !important; }
   }
-  /* Innenscrollen bei niedrigen Handys (Frage 2 hatte 30 px Überhang auch ohne Vorschau): nur senkrechte Abstände; Tippflächen bleiben ≥ 44 px, Schrift unverändert */
   @media (max-width: 700px) and (max-height: 600px) {
     #v47-ein:not(.r101-klein) { margin-top: 6px; height: calc(100% - 6px); }
     #v47-ein .v47-form { padding-top: 8px; padding-bottom: 6px; }
@@ -2073,13 +1604,9 @@ html .site-nav .v44-nav a.v47-pille[aria-current="page"] span { color: #fff; }
   }
 </style>
 <style id="r110b">
-/* Runde 110b (s3-16): neben der Überschrift standen die Pillen in einer 44 px hohen Zeile (ab ca. 870 px Breite in einer Zeile, darunter umgebrochen).
-   Ohne sie bliebe die Zeile 34 px hoch und die Überschrift rutschte 5 px nach oben; deshalb ab 870 px dieselbe Zeilenhöhe. Darunter (Handy, Tablet hoch)
-   rückt der Inhalt bewusst nach oben, weil die umgebrochenen Pillen wegfallen. */
 @media (min-width: 870px) { #alle-ideen .v22i-oben { min-height: 44px; } }
 </style>
 <style>
-/* Runde 120: Ideenkarten wieder groß (Jim, 31.10.2026). Maße wie vor Runde 84; Herz oben; kein Kategorie-Tag. Nur Reihen auf /ideen. */
 #ideen .shelf.shelf .shelf-track { align-items: stretch; }
 #ideen .shelf.shelf .mcard.mcard.mcard { --r84-h: auto; height: auto; box-sizing: border-box; display: flex; flex-direction: column; padding: 6px; border-radius: 24px; flex: 0 0 clamp(296px, 21vw, 304px); width: clamp(296px, 21vw, 304px); transform: none !important; }
 @media (max-width: 699px) { #ideen .shelf.shelf .mcard.mcard.mcard { flex-basis: min(78vw, 304px); width: min(78vw, 304px); } }
@@ -2104,54 +1631,39 @@ html .site-nav .v44-nav a.v47-pille[aria-current="page"] span { color: #fff; }
 </style>
 <meta name="runde120" content="ideen-karten-gross-2026-10-31">
 <style>
-  /* Runde 61 (Pam, Punkt 8): Logo quer im Kopf, 28 px am Handy bis 36 px am Rechner; Schutzzone = halbe Zeichenhöhe */
   .r61-brand { gap: 0; padding: 0; line-height: 0; flex: none; }
   .r61-brand picture { display: block; line-height: 0; }
   .r61-logo { display: block; height: clamp(28px, 2.6vw, 36px); width: auto; }
   .site-nav .nav-end { margin-left: clamp(14px, 1.3vw, 18px); }
   @media (max-width: 359.98px) { .r61-logo { width: clamp(28px, 2.6vw, 36px); } }
   .r61-popup-logo { display: block; height: 22px; width: auto; }
-  /* Fuß: Name und Instagram in S6, 400 */
   .footer .r61-fuss { font-size: 15px; font-weight: 400; }
   .footer .r61-fuss a { color: inherit; text-underline-offset: 3px; }
   @media (max-width: 767.98px) { .footer .r61-fuss a { display: inline-flex; align-items: center; min-height: 44px; } }
 </style>
 <style id="r65">
-  /* Runde 65 (Jim, 29.10.2026; Pam): bei 375 nichts unter 13 px, Schilder 13 px ab Gewicht 600, Nebenzeilen 14 px, Tippflächen 44 × 44 */
   .tag { font-size: 13px; }
   .tag--frei, .tag--cat { font-weight: 650; }
   .ra-weitere .tag { font-size: 13px; }
   .ra-weitere .tag--frei, .ra-weitere .tag--cat { font-weight: 650; }
-  .mz2-ck { font-size: 13px; }   /* Kopf des kleinen Chatfensters auf der Startseite (12 px), damit nichts unter 13 bleibt */
+  .mz2-ck { font-size: 13px; }   
   .ra-versal { font-size: 13px; }
   .r65-motto { font-size: 14px; }
-  /* Siegel bricht nie um; bei 320 wird zuerst der Innenabstand kleiner (Pam: nie die Schrift) */
-  .ra-siegel { white-space: nowrap; }
-  @media (max-width: 359px) { .ra-siegel, .ra-siegel.offen { padding-inline: 7px; } }
+  @media (max-width: 359px) { }
   .mb-fuss-reset .ki-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
-  /* Herz auf den Karten (38 × 38, absolut gesetzt): sieht gleich aus, Trefferfläche unsichtbar 3 px rundum */
   .herz::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; }
-  /* „← Zur Startseite“: 44 hoch, Text an derselben Stelle */
   a.zurueck { display: inline-flex; align-items: center; min-height: 44px; margin: -8.5px 0 11.5px; }
   .v22z-skip:focus { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; }
-  /* Fragen-Dialog: das echte Free-Schild hinter „am Schild“ */
   .r65-schild { margin-left: 6px; vertical-align: middle; }
   @media (max-width: 700px) { .v57-unter-m { margin: 12px 6px 12px; } }
-  /* Ergänzung a (Pam/Yannis): Kopfzeile der Use-Case-Seiten unter 360 px darf umbrechen; Schilder nie, Teilen und Herz zusammen rechtsbündig */
-  /* Teilen reserviert den Platz des Herzens mit (54 px = 44 + 2 + 8 Abstand), das Herz rückt mit -52 px auf diesen Platz: beide brechen nur zusammen um, ohne HTML-Umbau */
-  @media (max-width: 359px) { .ra-chip { white-space: nowrap; } .ra-meta { flex-wrap: wrap; gap: 6px 8px; }
-    .ra-meta .ra-teilen { margin-left: auto; margin-right: 54px; } .ra-meta .ra-teilen + .ra-herz { margin-left: -52px; } }
-  /* Ergänzung b: Datenschutz-Inhaltsverzeichnis unter 768 px, jeder Link 44 px hoch (Innenabstand statt Lücke) */
+  @media (max-width: 359px) { }
   @media (max-width: 767.98px) { ul.index a.index-link { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; } }
-  /* Ergänzung c: Knopftexte „Mit Claude starten“ (15 px) und „Mit ChatGPT starten“ in der Startseiten-Vorführung (15,5 px) auf 16 px */
   .ra-leise.ra-claude, .mz2-knopf { font-size: 16px; }
 </style>
 <style id="r67-dialog">
-  /* Runde 67, Nachbesserung (Pam, 29.10.2026): Marke stößt im Fragen-Dialog sonst an die Überschrift */
   @media (min-width: 768px) { #v47-ein .v47-marke { margin-bottom: 24px; } }
 </style>
 <style id="r98">
-/* Runde 98: Footer-Icons wie Startseite (Regeln wörtlich aus index.html, Runde 81) */
   .footer .r61-fuss { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 0 6px; }
   .footer .r61-fuss .r81-social { display: inline-flex; align-items: center; margin-left: 2px; }
   .footer .r61-fuss .r81-icon { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; width: 44px; height: 44px; min-height: 44px; color: inherit; text-decoration: none; border-radius: 12px; }
@@ -2163,56 +1675,43 @@ html .site-nav .v44-nav a.v47-pille[aria-current="page"] span { color: #fff; }
 </style>
 
 <style>
-  /* Runde 112 (Jim, 30.10.2026): Themenreihen ab der zweiten und „Bald dabei“ werden erst gemalt, wenn sie nahe kommen */
   #mehr-themen > .shelf:nth-child(n+2) { content-visibility: auto; contain-intrinsic-size: auto 270px; overflow-clip-margin: 80px; }
   .r61-bald { content-visibility: auto; contain-intrinsic-size: auto 1280px; overflow-clip-margin: 80px; }
   @media (max-width: 767px) { #mehr-themen > .shelf:nth-child(n+2) { contain-intrinsic-size: auto 350px; } .r61-bald { contain-intrinsic-size: auto 3200px; } }
 </style>
-<style>/* Runde 121: Rahmen nur bei Tastatur; Zeiger-Bedienung zeigt nach dem Schließen eines Fensters keinen Rahmen */ html.r121-zeiger .shelf-track:focus-visible, html.r121-zeiger .herz:focus-visible, html.r121-zeiger [data-herz]:focus-visible { outline: none; } html:not(.r121-zeiger) .herz.r121-fokus, html:not(.r121-zeiger) [data-herz].r121-fokus { outline: 3px solid var(--focus, #3b5a9a); outline-offset: 2px; }</style>
+<style> html.r121-zeiger .shelf-track:focus-visible, html.r121-zeiger .herz:focus-visible, html.r121-zeiger [data-herz]:focus-visible { outline: none; } html:not(.r121-zeiger) .herz.r121-fokus, html:not(.r121-zeiger) [data-herz].r121-fokus { outline: 3px solid var(--focus, #3b5a9a); outline-offset: 2px; }</style>
 <meta name="runde121" content="fokus-nach-fenster-2026-10-31">
 <meta name="runde124" content="kartentexte-2026-10-31">
 <style id="r130">
-  /* Runde 130 (s2-36): die Walzen-Zeile unten im Fenster entfällt, solange sie in der Vorschau-Spalte liegt (Fragen, „keine“). Unsichtbar statt display:none, damit die
-     Live-Ansage #r101-live (Screenreader) und die Maße der Walzen bleiben; aus dem Fluss genommen, sie braucht keinen Platz. In der Erfolgsmeldung liegt sie in #r101-ok-leiste: unverändert. */
   #v47-ein .v47-rechts > .ein-zeichen.r101-z { position: absolute !important; left: 0 !important; right: 0 !important; bottom: 0 !important; top: auto !important; margin: 0 !important;
     opacity: 0 !important; clip-path: inset(100%) !important; pointer-events: none !important; box-shadow: none !important; }
-  /* Runde 130 (s2-35): Zustand „Konto angelegt“ in Schritt „keine“: nur Satz, „Weiter mit ChatGPT“ und kleiner Link; die Erklärtexte und „Erst mal stöbern“ fallen weg */
   #v47-ein .v47-innen.r130-konto .v47-teil[data-teil="keine"] .v47-text { display: none; }
-  /* Ryan 02.11.: Überschriften mit tabindex=-1, die beim Öffnen/Schrittwechsel den Fokus bekommen (nur per Skript), zeigen keinen Fokusrahmen */
   #v47-ein [tabindex="-1"]:focus, #v47-ein [tabindex="-1"]:focus-visible { outline: none !important; box-shadow: none !important; }
 </style>
 <meta name="runde130" content="einstieg-konto-weiter-ohne-walzenzeile-2026-11-02">
 <style id="r135">
-  /* Runde 135: Abstand in „Fertig eingerichtet!“. Bis 427 px steht der Link unter dem Satz, ab 428 px in einer Zeile mit ihm (Link 44 px hoch, Satz mittig). */
   #v47-ein #r103-vorbereitet { margin-top: 19px; }
   @media (min-width: 428px) { #v47-ein #r103-vorbereitet { margin-top: 5.4px; } }
   #v47-ein #r103-vorbereitet + #r100-ok-hilfe { margin-top: 4px; }
-  /* Runde 135: ohne „Doch eine andere KI wählen“ würde die Fußzeile in „Konto angelegt?“ um 46 px (Handy) bzw. 50 px (Rechner) schrumpfen und „Weiter mit ChatGPT“ springen.
-     Leerer Platzhalter genau in der Höhe des entfernten Knopfes (44 px, den Abstand der Fußzeile bringt sie selbst mit): die Fußzeile bleibt wie in „keine“ davor. */
-  #v47-ein .v47-innen.r130-konto .v47-fuss::before { content: ""; display: block; height: 44px; }
+  #v47-ein .v47-innen.r130-konto .v47-fuss::before { content: ""; height: 44px; }
 </style>
 <meta name="runde135" content="einstieg-abstand-fertig-ohne-andere-ki-2026-11-02">
 <meta name="runde136" content="mit-abo-ohne-umbruch-2026-11-02">
 <style id="r136">
-  /* Runde 136: Schild „Mit Abo“ bricht nie in sich um */
   html .tag.tag--abo { white-space: nowrap; }
 </style>
 <style id="r149">
-  /* Runde 149 (s2-34, Yannis V2): eine leere Scheibe statt ChatGPT + Claude bei „Ich hab noch keine“ */
   .r100-l[data-k="luecke"]:not(.vorn) .r100-scheibe { opacity: 0 !important; }
   .r100-l[data-k="luecke"] .r100-scheibe svg { width: 50%; height: 50%; color: var(--muted); }
   .r100-l[data-k="luecke"].leer .r100-scheibe { background: rgb(255 255 255 / .14); box-shadow: none; }
   .r100-l[data-k="luecke"].leer .r100-scheibe svg { width: 100%; height: 100%; }
-  /* Walzenfeld KI: derselbe Kreis statt „?“ */
   .r149-leer { display: grid; place-items: center; color: var(--muted); }
   .r149-leer svg { display: block; width: 28px; height: 28px; }
 </style>
 <meta name="runde149" content="einstieg-keine-ki-leerer-kreis-2026-11-02">
 <style id="r150">
-  /* Runde 150: App-Hinweis im Einstiegsfenster (Schritt „keine“) */
   #v47-ein .v47-text.r150-klein { font-size: 15px; line-height: 1.45; margin-top: 10px; }
   #v47-ein .r150-klein a { display: inline-block; padding: 12px 0; margin: -12px 0; color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
-  /* Nach der Rückkehr („Angemeldet?“): keine leere Fläche; „Weiter mit ChatGPT“ rückt direkt unter „← Zurück“ */
   #v47-ein .v47-innen.r130-konto .v47-form { flex: none; }
   #v47-ein .v47-innen.r130-konto .v47-fuss::before { content: none; display: none; }
   @media (max-width: 700px) { #v47-ein .v47-innen.r130-konto .v47-fuss { border-top: 0; padding-top: 16px; } }
@@ -2317,7 +1816,7 @@ html .site-nav .v44-nav a.v47-pille[aria-current="page"] span { color: #fff; }
     // Runde 103: auch die Antworten des Einstiegsfensters; fremde Schlüssel (etwa der Ausschalter der Besucherzählung) bleiben stehen
     var ANTWORTEN = ['ki-wahl', 'ki-erfahrung', 'ki-abo', 'ki-einstieg', 'ki-einstieg-stand',
       // Runde 117: Ablage und Los aus Entdecken, Startplan-Merker (beides localStorage und sessionStorage)
-      'ki-entdecken-ablage', 'ki-entdecken-los', 'r64-start', 'r64-fertig', 'ki-entdecken-abgleich'];
+      'ki-entdecken-ablage', 'ki-entdecken-los', 'r64-start', 'r64-fertig', 'r64-art', 'ki-entdecken-abgleich'];
     ALLE.concat(ANTWORTEN).forEach(function (k) { try { if (ls) ls.removeItem(k); } catch (e) {} try { if (ss) ss.removeItem(k); } catch (e) {} });
     try { if (ss) ss.removeItem(MERKER); } catch (e) {}
     ersatz = {};
@@ -2342,7 +1841,6 @@ html .site-nav .v44-nav a.v47-pille[aria-current="page"] span { color: #fff; }
 } catch (e) { /* kein Speicher */ } })();
 </script>
 <style id="r151">
-  /* Runde 151: Ablage am Handy mit Wort „Mein Bereich“ (Herz, Zahl, Wort, Pfeil nebeneinander) */
   @media (max-width: 700px) {
     .herz-ablage { gap: 8px; min-height: 48px; padding: 5px 14px 5px 5px; max-width: calc(100vw - 32px); }
     .herz-ablage__text { display: inline; flex: none; padding-left: 10px; font-size: 16px; line-height: 1.2; white-space: nowrap; }
@@ -2352,9 +1850,7 @@ html .site-nav .v44-nav a.v47-pille[aria-current="page"] span { color: #fff; }
 <meta name="runde151" content="herz-dauerhaft-ablage-text-2026-11-02">
 <meta name="runde157" content="wissen-teil-c-2026-11-02">
 <style id="r161">
-  /* (c) Kopf: bis 389 px kleinerer Abstand (gap 0), damit Logo, „Alle Ideen“ und Personen-Knopf mit 16 px Rand ins Bild passen (vorher ragte der Knopf bei 360 px über den Rand) */
-  @media (max-width: 389px) { html .site-nav { gap: 0; }   /* bleibt der Abstand 14 px von .nav-end (margin-left) */ }
-  /* Kopf von 493 bis 700 px: Icon und Wort „Mein Bereich“ nebeneinander, 16 px, Tippfläche mindestens 44 × 44 px; darunter bleibt nur das Icon (aria-label bleibt) */
+  @media (max-width: 389px) { html .site-nav { gap: 0; }    }
   @media (min-width: 493px) and (max-width: 700px) {
     html .site-nav .nav-mein { width: auto; min-width: 44px; min-height: 44px; padding: 0 14px 0 12px; gap: 6px; }
     html .site-nav .nav-mein .nav-mein__text { position: static; width: auto; height: auto; overflow: visible; clip: auto; font-size: 16px; line-height: 1; }
@@ -2363,8 +1859,6 @@ html .site-nav .v44-nav a.v47-pille[aria-current="page"] span { color: #fff; }
 <meta name="runde161" content="startleiste-frei-header-mein-bereich-2026-11-02">
 <meta name="runde172" content="anmelden-einmal-je-geraet-2026-11-02">
 <style>
-  /* Runde 173 (Michael, Pam, 02.11.2026): Solange die Pille steht, 70 px mehr Platz unter dem Fuß, damit sie
-     „Testfassung im Aufbau“ nicht überdeckt. */
   body:has(#herz-ablage:not([hidden])) .live-fuss { padding-bottom: 98px; }
 </style>
 <meta name="runde173" content="pille-fuss-abstand-2026-11-02">
@@ -2417,6 +1911,7 @@ html body .r187-panel:focus,html body .r187-panel:focus-visible,html body .r187-
 @media (prefers-reduced-motion:reduce){.r187-panel{animation:none}}
 </style>
   <link rel="canonical" href="https://die-ki-macherei.de/ideen">
+<meta name="runde205" content="css-ausgeduennt-2026-11-03">
 </head>
 <body><div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
