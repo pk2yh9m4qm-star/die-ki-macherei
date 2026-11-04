@@ -342,7 +342,7 @@
       s1.basis = Object.keys(konto).sort(); s1.weg = []; sitzungSetzen(s1);
     }
     var fremd = vereinen && !gleichesKonto(alt, user);
-    return weiter.then(function () { letzteSig = sig(herzenLokal()); return sammlungenAbgleichen(fremd ? 'fremd' : vereinen ? 'vereinen' : 'normal'); });
+    return weiter.then(function () { letzteSig = sig(herzenLokal()); wartendUebernehmen(); return sammlungenAbgleichen(fremd ? 'fremd' : vereinen ? 'vereinen' : 'normal'); });
   }
 
   /* ——— R195: Sammlungen mit dem Konto (Tabelle public.sammlungen) ———
@@ -924,11 +924,55 @@
     metaSchreiben({ willkommen: new Date().toISOString() });
   }
 
+  /* ——— R228 (Ryan, 04.11.2026): Menü-Logik abgemeldet/angemeldet ———
+     html.ki-angemeldet bzw. html.ki-abgemeldet; [data-nur-angemeldet] und [data-nur-abgemeldet] schalten über hidden;
+     [data-ki-anmelden] öffnet die Anmeldung, [data-ki-abmelden] meldet ab, .nav-mein öffnet abgemeldet die Anmeldung statt zu navigieren. */
+  function stand() {
+    var an = !!sitzung(), h = document.documentElement;
+    h.classList.toggle('ki-angemeldet', an); h.classList.toggle('ki-abgemeldet', !an);
+    if (document.head && !document.getElementById('r228-stil')) {
+      var st = document.createElement('style'); st.id = 'r228-stil';
+      st.textContent = '[data-nur-angemeldet][hidden],[data-nur-abgemeldet][hidden]{display:none!important}html.ki-abgemeldet .nav-herz{display:none!important}';
+      document.head.appendChild(st);
+    }
+    document.querySelectorAll('[data-nur-angemeldet]').forEach(function (e) { if (e.hidden !== !an) e.hidden = !an; });
+    document.querySelectorAll('[data-nur-abgemeldet]').forEach(function (e) { if (e.hidden !== an) e.hidden = an; });
+    if (window.kiHerzZeichnen) { try { window.kiHerzZeichnen(); } catch (e) { /* weiter */ } }
+  }
+  function ksKlicks() {
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest || e.button) return;
+      var ab = e.target.closest('[data-ki-abmelden]');
+      if (ab) { e.preventDefault(); abmelden(); return; }
+      var mein = e.target.closest('.nav-mein');
+      var an = e.target.closest('[data-ki-anmelden]') || (mein && !sitzung() && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) ? mein : null);
+      if (!an || !dlg) return;
+      e.preventDefault(); e.stopPropagation();
+      oeffnen('anmelden');
+    }, true);
+  }
+  /* R228: Ideen, die abgemeldet angetippt wurden (Warteliste ki-herzen-wartend), nach der Anmeldung wie jedes andere Herz speichern:
+     in die Herzen dieses Browsers schreiben, herzGeaendert schiebt sie ins Konto. Danach ist die Warteliste leer. */
+  var WARTEND = 'ki-herzen-wartend';
+  function wartendUebernehmen() {
+    if (!KI || !sitzung() || lsLesen(WARTEND) == null) return;
+    var w = {};
+    try { w = alsKarte(JSON.parse(lsLesen(WARTEND))); } catch (e) { w = {}; }
+    var ids = Object.keys(w);
+    if (ids.length) {
+      var h = Object.assign({}, herzenLokal());
+      ids.forEach(function (id) { if (!h[id]) h[id] = { titel: w[id].titel, am: w[id].am || Date.now() }; });
+      KI.schreib(KI.K.herzen, h);
+    }
+    lsSchreiben(WARTEND, null);
+    if (window.kiHerzZeichnen) { try { window.kiHerzZeichnen(); } catch (e) { /* weiter */ } }
+  }
+
   /* ——— Kopf ——— */
   function kopfNamen() {
     var s = sitzung();
     document.querySelectorAll('.nav-mein .nav-mein__text').forEach(function (t) {
-      var soll = s && s.vorname ? s.vorname : 'Mein Bereich';
+      var soll = !s ? 'Anmelden' : s.vorname ? s.vorname : 'Mein Bereich';   // R228: abgemeldet „Anmelden“
       if (t.textContent !== soll) t.textContent = soll;
     });
   }
@@ -936,7 +980,7 @@
   /* ——— Mein Bereich: Konto-Block ——— */
   var block = null;
   function anzeigen() {
-    kopfNamen();
+    kopfNamen(); stand();
     if (!block) return;
     var s = sitzung();
     block.querySelector('[data-r186-aus]').hidden = !!s;
@@ -1107,6 +1151,7 @@
       e.preventDefault();
       oeffnen('anmelden');
     });
+    ksKlicks();
     window.addEventListener('storage', function (e) {
       if (e.key !== SK) return;
       if (!sitzung()) kontoLokalWeg();
@@ -1138,6 +1183,7 @@
       });
     });
   }
+  stand();
   window.KIAuth = { eingeloggt: function () { return !!sitzung(); }, abmelden: abmelden, oeffnen: oeffnen, nutzerUrl: URL_, r193: true, r195: true };
   if (!KI) return;
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();

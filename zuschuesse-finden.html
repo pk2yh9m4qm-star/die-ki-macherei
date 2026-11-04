@@ -98,6 +98,7 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="runde228" content="1">
   <meta name="color-scheme" content="light">
   <title>Welche Förderung gibt es? Zuschüsse finden · KI-Macherei</title>
   <style>
@@ -2509,6 +2510,74 @@ html body .r187-panel:focus,html body .r187-panel:focus-visible,html body .r187-
 }
 </style>
 <meta name="runde205" content="css-ausgeduennt-2026-11-03">
+<meta name="runde230" content="1">
+<style id="r230">
+  /* Runde 230 (Jim, 04.11.2026): Burger-Menü Variante A, Werte aus Pams Prototyp (CONFIG) */
+  .site-nav .bm-burger { display: none; }
+  .bm-scrim, .bm-panel { display: none; }
+  @media (min-width: 701px) {
+    html .site-nav .nav-links.v44-nav { gap: 12px; }
+    html .site-nav .nav-mein.is-konto .nav-mein__ich { color: #fff; background: linear-gradient(175deg, var(--coral-a), var(--coral-b) 70%);
+      box-shadow: inset 0 1px 0 rgb(255 255 255 / .45), inset 0 -2px 3px rgb(120 52 63 / .3), 0 1px 1px rgb(var(--sh) / .25);
+      width: 24px; height: 24px; margin-left: -4px; border-radius: 50%; font-weight: 780; }
+  }
+  @media (max-width: 700px) {
+    html .site-nav .nav-links.v44-nav, html .site-nav .nav-mein { display: none !important; }
+    html .site-nav .bm-burger { display: block; }
+    html .site-nav .nav-end { gap: 8px; }
+    .bm-scrim { display: block; }
+    .bm-panel { display: block; }
+  }
+  .bm-burger { position: relative; flex: none; width: 44px; height: 44px; min-height: 44px; min-width: 44px; margin: 0; padding: 0; border-radius: 999px;
+    background: linear-gradient(#fdfbf7, #f3ede3); border: 1px solid rgb(60 45 30 / .13);
+    box-shadow: inset 0 1px 0 #fff, 0 2px 4px rgb(96 72 46 / .14), 0 10px 18px -10px rgb(96 72 46 / .45); color: var(--ink, #23201c);
+    font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .bm-burger:active { background: linear-gradient(#efe8dd, #f6f1e8); box-shadow: inset 0 1.5px 3px rgb(96 72 46 / .22); }
+  .bm-burger:focus-visible, .bm-row:focus-visible, .bm-leise:focus-visible { outline: 3px solid var(--focus, #3b5a9a); outline-offset: 3px; }
+  .bm-burger.is-top { z-index: 1002; }
+  .bm-burger i { position: absolute; left: 12px; top: 50%; width: 18px; height: 2px; margin-top: -1px; border-radius: 2px; background: var(--ink, #23201c); }
+  .bm-burger i:nth-child(1) { transform: translateY(-7px); }
+  .bm-burger i:nth-child(3) { transform: translateY(7px); }
+  .bm-burger.is-x i:nth-child(1) { transform: translateY(0) rotate(45deg); }
+  .bm-burger.is-x i:nth-child(2) { opacity: 0; }
+  .bm-burger.is-x i:nth-child(3) { transform: translateY(0) rotate(-45deg); }
+
+  html.bm-offen { overflow: hidden; overscroll-behavior: none; }
+
+  .bm-scrim { position: fixed; inset: 0; z-index: 1000; visibility: hidden; background: rgb(246 242 236 / .94); }
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    .bm-scrim { background: rgb(250 247 242 / .35); -webkit-backdrop-filter: blur(18px) saturate(1.05); backdrop-filter: blur(18px) saturate(1.05); }
+  }
+  @media (prefers-reduced-transparency: reduce) { .bm-scrim { background: rgb(246 242 236 / .94); -webkit-backdrop-filter: none; backdrop-filter: none; } }
+  .bm-scrim.is-visible { visibility: visible; }
+
+  .bm-panel { position: fixed; z-index: 1001; visibility: hidden; top: 141px; right: 16px; width: min(300px, calc(100% - 32px)); overflow-y: auto; overscroll-behavior: contain;
+    padding: 14px; background: var(--card, #fbf8f2); border: 1px solid var(--line, rgba(60, 45, 30, .13)); border-radius: 26px; transform-origin: calc(100% - 22px) -32px;
+    box-shadow: 0 2px 6px rgb(96 72 46 / .12), 0 24px 48px -16px rgb(96 72 46 / .35); user-select: none; -webkit-user-select: none; }
+  .bm-panel.is-visible { visibility: visible; }
+  .bm-panel [hidden] { display: none !important; }
+  .bm-liste { display: flex; flex-direction: column; gap: 10px; }
+  .bm-svg { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+
+  .bm-row { display: flex; align-items: center; gap: 12px; width: 100%; height: 56px; min-height: 56px; box-sizing: border-box; padding: 0 14px 0 10px; border-radius: 18px;
+    background: linear-gradient(#fdfbf7, #f3ede3); border: 1px solid rgb(60 45 30 / .13);
+    box-shadow: inset 0 1px 0 #fff, 0 2px 4px rgb(96 72 46 / .14), 0 10px 18px -10px rgb(96 72 46 / .45); color: var(--ink, #23201c);
+    text-decoration: none; font: inherit; font-size: 17px; font-weight: 680; line-height: 1.2; -webkit-tap-highlight-color: transparent; cursor: pointer; }
+  .bm-row:active, .bm-row[aria-current="page"] { background: linear-gradient(#efe8dd, #f6f1e8); box-shadow: inset 0 1.5px 3px rgb(96 72 46 / .22); }
+  .bm-ic { display: grid; place-items: center; width: 36px; height: 36px; flex: none; border-radius: 50%; font-size: 20px; color: var(--ink-soft, #4a443c);
+    background: var(--clay-in, #e9e2d7); box-shadow: inset 0 1.5px 3px rgb(96 72 46 / .26), 0 1px 0 rgb(255 255 255 / .9); }
+  .bm-tx { flex: 1; min-width: 0; text-align: left; }
+  .bm-pf { display: grid; color: var(--muted, #675f56); font-size: 18px; }
+  .bm-ich { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; color: #fff; font-size: 15px; font-weight: 780; line-height: 1;
+    background: linear-gradient(175deg, var(--coral-a, #f2ad8e), var(--coral-b, #d47a63) 70%);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / .45), inset 0 -2px 3px rgb(120 52 63 / .3), 0 1px 1px rgb(96 72 46 / .25); }
+  .bm-ic:has(.bm-ich) { background: none; box-shadow: none; }
+  .bm-abmelden { margin-top: 2px; padding-top: 12px; border-top: 1px solid var(--line, rgba(60, 45, 30, .13)); }
+  .bm-leise { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 44px; box-sizing: border-box; padding: 0 14px 0 10px; border: 0; border-radius: 14px;
+    background: none; color: var(--muted, #675f56); text-decoration: none; font: inherit; font-size: 16px; font-weight: 600; text-align: left; -webkit-tap-highlight-color: transparent; cursor: pointer; }
+  .bm-leise .bm-ic { background: none; box-shadow: none; font-size: 18px; color: inherit; }
+  .bm-leise:active { background: rgb(60 45 30 / .06); }
+</style>
 </head>
 <body data-fall="zuschuesse-finden"><div class="live-aufbau" role="note"><b>Public Beta</b> · Die Seite ist noch im Aufbau.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-coins" viewBox="0 0 24 24"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"/><path d="M15 6h1v4"/><path d="m6.134 14.768.866-.5 2 3.464"/><circle cx="16" cy="8" r="6"/></symbol><symbol id="ls-folder-heart" viewBox="0 0 24 24"><path d="M10.638 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v3.417"/><path d="M14.62 18.8A2.25 2.25 0 1 1 18 15.836a2.25 2.25 0 1 1 3.38 2.966l-2.626 2.856a.998.998 0 0 1-1.507 0z"/></symbol><symbol id="ls-house" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol><symbol id="ls-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol><symbol id="ls-shopping-bag" viewBox="0 0 24 24"><path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.103 6.034h17.794"/><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
@@ -2566,8 +2635,9 @@ SOFTWARE. --><symbol id="ls-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727
     <header class="site-nav wrap">
         <a class="brand r61-brand" href="/"><picture><source media="(max-width: 359.98px)" srcset="/ki-macherei_zeichen_hell.svg"><img class="r61-logo" src="/ki-macherei_quer_hell.svg" alt="Die KI-Macherei, zur Startseite" width="159" height="28"></picture></a>
         <div class="nav-end">
-          <nav class="nav-links v44-nav" aria-label="Hauptnavigation"><a class="v47-pille" href="/ideen"><svg class="v47-ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg><span>Alle Ideen</span></a></nav>
+          <nav class="nav-links v44-nav" aria-label="Hauptnavigation"><a class="v47-pille" href="/ideen"><svg class="v47-ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg><span>Alle Ideen</span></a><a class="v47-pille r230-wissen" href="/#wissen"><svg class="v47-ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg><span>Wissen</span></a></nav>
           <a class="nav-mein" href="/mein-bereich" aria-label="Mein Bereich"><span class="nav-mein__ich" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-user-round"/></svg></span><span class="nav-mein__text">Mein Bereich</span></a>
+          <button class="bm-burger" id="bm-burger" type="button" aria-label="Menü" aria-expanded="false" aria-controls="bm-menue"><i></i><i></i><i></i></button>
         </div>
       </header>
 
@@ -2812,6 +2882,23 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
       const toastEl = document.getElementById('herz-toast');
       let toastUhr;
       const anzahl = d => Object.keys(d).length;
+      // R228 (Yannis, 04.11.2026): Speichern nur angemeldet. Abgemeldet merkt sich die Seite die Idee in der Warteliste
+      // ki-herzen-wartend (localStorage, damit der Anmeldelink aus der Mail in einem neuen Tab sie findet); auth.js übernimmt sie nach der Anmeldung.
+      const WARTEND = 'ki-herzen-wartend', ANMELDE_HINWEIS = 'Um Ideen zu speichern, melde dich an.';
+      let wartendErsatz = {};
+      function abgemeldet() {
+        if (window.KIAuth) return !KIAuth.eingeloggt();
+        try { const r = window.localStorage.getItem('ki-sitzung'); if (r) { const s = JSON.parse(r); if (s && s.access_token && s.refresh_token) return false; } } catch (e) { /* ohne Speicher: abgemeldet */ }
+        return true;
+      }
+      function wLesen() {
+        try { const r = window.localStorage.getItem(WARTEND); const o = r ? JSON.parse(r) : {}; return o && typeof o === 'object' && !Array.isArray(o) ? o : {}; }
+        catch (e) { return Object.assign({}, wartendErsatz); }
+      }
+      function wSchreiben(d) {
+        wartendErsatz = Object.assign({}, d);
+        try { if (Object.keys(d).length) window.localStorage.setItem(WARTEND, JSON.stringify(d)); else window.localStorage.removeItem(WARTEND); } catch (e) { /* nur im Ersatz */ }
+      }
       function melden(text) { status.textContent = ''; setTimeout(() => { status.textContent = text; }, 30); }
       function toast(text) {
         toastEl.textContent = text; toastEl.classList.add('is-da'); melden(text);
@@ -2827,10 +2914,12 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
       }
       function zaehler(n) {
         zahl.textContent = n;
-        ablage.setAttribute('aria-label', 'Mein Bereich, ' + n + (n === 1 ? ' Herz' : ' Herzen'));
+        const aus = abgemeldet(), text = ablage.querySelector('.herz-ablage__text');
+        if (text && text.textContent !== (aus ? 'Anmelden' : 'Mein Bereich')) text.textContent = aus ? 'Anmelden' : 'Mein Bereich';
+        ablage.setAttribute('aria-label', (aus ? 'Anmelden, ' : 'Mein Bereich, ') + n + (n === 1 ? ' Herz' : ' Herzen'));
       }
       function zeichnen() {
-        const d = lesen();
+        const d = abgemeldet() ? wLesen() : lesen();
         knoepfe(d); zaehler(anzahl(d));
         const zeigen = anzahl(d) > 0 || ablageDa();
         if (ablage.hidden === zeigen) ablage.hidden = !zeigen;
@@ -2871,15 +2960,16 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
         const b = e.target.closest('[data-herz]');
         if (!b) return;
         e.preventDefault();
-        const d = lesen(), id = b.dataset.herz;
-        if (d[id]) { delete d[id]; schreiben(d); zeichnen(); melden('Aus deinen Herzen entfernt.'); return; }
+        const aus = abgemeldet(), d = aus ? wLesen() : lesen(), id = b.dataset.herz, sichern = aus ? wSchreiben : schreiben;
+        if (d[id]) { delete d[id]; sichern(d); zeichnen(); melden('Aus deinen Herzen entfernt.'); return; }
         d[id] = { titel: b.dataset.titel || id, am: Date.now() };
-        schreiben(d); knoepfe(d);
+        sichern(d); knoepfe(d);
         b.classList.remove('is-pop'); void b.offsetWidth; b.classList.add('is-pop');
         if (ablage.hidden) { ablageMerken(); ablage.hidden = false; }
         fliegen(b, () => {
-          const n = anzahl(lesen());
+          const n = anzahl(abgemeldet() ? wLesen() : lesen());
           zaehler(n); stupsen();
+          if (abgemeldet()) { toast(ANMELDE_HINWEIS); return; }   // R228: ohne Konto kein „Gemerkt.“, keine Blase, kein Anmeldefenster von selbst
           melden('Gemerkt. In deinem Bereich ' + (n === 1 ? 'ist jetzt 1 Herz.' : 'sind jetzt ' + n + ' Herzen.'));
           if (window.KI) KI.nachHerz(id, b.dataset.titel || id);
         });
@@ -2907,7 +2997,10 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
       fenster.addEventListener('click', e => { if (e.target === fenster || e.target.closest('.soon-sheet__close')) { e.stopPropagation(); schliessen(); } });
       document.addEventListener('keydown', e => { if (e.key === 'Escape' && fenster.classList.contains('is-open')) schliessen(); });
       // Die Ablage führt jetzt nach „Mein Bereich“, Fach „Gemerkt“ (Yannis, 30.09.)
-      ablage.addEventListener('click', () => { if (window.KI) KI.geh('bereich', 'gemerkt'); });
+      ablage.addEventListener('click', () => {
+        if (abgemeldet()) { if (window.KIAuth) KIAuth.oeffnen('anmelden'); return; }   // R228: abgemeldet führt die Ablage zur Anmeldung
+        if (window.KI) KI.geh('bereich', 'gemerkt');
+      });
 
       // Große Karte der Anleitung: Teilen und Hinzufügen
       async function teilen(knopf) {
@@ -2939,7 +3032,7 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
       });
 
       // Beide Seiten teilen sich die Sammlung: Änderungen auf der anderen Seite, Seitenwechsel (der Umschalter meldet ein resize), Zurück-Taste
-      window.addEventListener('storage', e => { if (!e.key || e.key === SCHLUESSEL || e.key === ABLAGE_DA) zeichnen(); });
+      window.addEventListener('storage', e => { if (!e.key || e.key === SCHLUESSEL || e.key === ABLAGE_DA || e.key === WARTEND || e.key === 'ki-sitzung') zeichnen(); });
       window.addEventListener('resize', zeichnen);
       window.addEventListener('pageshow', zeichnen);
       zeichnen();
@@ -3238,14 +3331,22 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
       }
 
       // ——— Kopf: „Mein Bereich“, nach dem Konto mit Anfangsbuchstabe ———
+      // R228 (Ryan, 04.11.2026): abgemeldet = keine Sitzung. Vor auth.js (defer) steht nur ki-sitzung im Speicher.
+      function istAbgemeldet() {
+        if (window.KIAuth) return !KIAuth.eingeloggt();
+        try { const r = window.localStorage.getItem('ki-sitzung'); if (r) { const s = JSON.parse(r); if (s && s.access_token && s.refresh_token) return false; } } catch (e) { /* ohne Speicher: abgemeldet */ }
+        return true;
+      }
       function kopf() {
-        const k = konto();
+        const k = konto(), aus = istAbgemeldet();
+        document.documentElement.classList.toggle('ki-abgemeldet', aus); document.documentElement.classList.toggle('ki-angemeldet', !aus);
         document.querySelectorAll('.nav-mein').forEach(a => {
           a.classList.toggle('is-konto', !!k);
           const ich = a.querySelector('.nav-mein__ich');
           const soll = k ? (k.name || '?').trim().charAt(0).toUpperCase() : '';
           if (ich.dataset.ich !== soll) { ich.dataset.ich = soll; ich.innerHTML = k ? esc(soll) : '<svg class="icon" aria-hidden="true"><use href="#i-user-round"/></svg>'; }
-          a.setAttribute('aria-label', k ? 'Mein Bereich von ' + k.name : 'Mein Bereich');
+          a.setAttribute('aria-label', aus ? 'Anmelden' : k ? 'Mein Bereich von ' + k.name : 'Mein Bereich');
+          const tx = a.querySelector('.nav-mein__text'); if (aus && tx && tx.textContent !== 'Anmelden') tx.textContent = 'Anmelden';
         });
         if (konto() && !blase.hidden) blase.hidden = true;
       }
@@ -3253,7 +3354,7 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
       window.addEventListener('resize', kopf);
       kopf();
 
-      window.KI = { K, KINDER, EMOJIS, seite, lies, schreib, herzen, sammlungen, konto, hinweis, setzeHerz, passt, fortschritt, geh, toast, sammlungWaehlen, neueSammlung, nachHerz, zuruecksetzen, hoer: fn => hoerer.add(fn), ruhig };
+      window.KI = { K, KINDER, EMOJIS, seite, lies, schreib, herzen, sammlungen, konto, hinweis, setzeHerz, passt, fortschritt, geh, toast, sammlungWaehlen, neueSammlung, nachHerz, zuruecksetzen, hoer: fn => hoerer.add(fn), ruhig, istAbgemeldet };
       document.addEventListener('click', e => {
         const s = e.target.closest('[data-sammlung-fuer]');
         if (s) { e.preventDefault(); sammlungWaehlen(s.dataset.sammlungFuer, s.dataset.titel, s); }
@@ -4625,6 +4726,178 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
       clearTimeout(zeit);sendet=false;pruefe();fehler.hidden=false;
     });
   });
+})();
+</script>
+
+<!-- Runde 230: Burger-Menü (Variante A) -->
+<div class="bm-scrim" id="bm-scrim" aria-hidden="true"></div>
+<div class="bm-panel" id="bm-menue" role="dialog" aria-modal="true" aria-label="Menü"><nav class="bm-liste" id="bm-liste" aria-label="Menü"><a class="bm-row" href="/ideen"><span class="bm-ic" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg></span><span class="bm-tx">Alle Ideen</span><span class="bm-pf" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a><a class="bm-row" href="/#wissen"><span class="bm-ic" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></span><span class="bm-tx">Wissen</span><span class="bm-pf" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a><a class="bm-row" href="/mein-bereich" data-nur-abgemeldet data-ki-anmelden><span class="bm-ic" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></span><span class="bm-tx">Anmelden</span><span class="bm-pf" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a><a class="bm-row" href="/mein-bereich" data-nur-angemeldet hidden><span class="bm-ic" aria-hidden="true"><span class="bm-ich" data-bm-ich></span></span><span class="bm-tx">Mein Bereich</span><span class="bm-pf" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a><div class="bm-abmelden" data-nur-angemeldet hidden><button class="bm-leise" type="button" data-ki-abmelden><span class="bm-ic" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg></span><span>Abmelden</span></button></div></nav></div>
+<script id="r230-skript">
+/* Runde 230 (Jim, 04.11.2026): Burger-Menü Variante A. Zeiten/Kurven aus Pams Prototyp (CONFIG). Anmelden/Abmelden nur über Ryans R228-Haken. */
+(function () {
+  'use strict';
+  var burger = document.getElementById('bm-burger'), panel = document.getElementById('bm-menue'), scrim = document.getElementById('bm-scrim'), liste = document.getElementById('bm-liste');
+  if (!burger || !panel || !scrim || !liste) return;
+  var html = document.documentElement, offen = false;
+  var EASE_LIVE = 'cubic-bezier(.22,1,.36,1)', EASE_IN = 'cubic-bezier(.3,0,.8,.15)';
+  var CONFIG = {
+    scrim: { ein: 240, aus: 180, easeEin: 'cubic-bezier(.2,0,0,1)', easeAus: 'cubic-bezier(.3,0,1,1)' },
+    burger: { dur: 240, ease: EASE_LIVE, abstand: 7 },
+    reduziert: { dur: 120, ease: 'linear' },
+    oeffnen: { dur: 300, ease: 'cubic-bezier(.34,1.3,.64,1)', von: { opacity: 0, transform: 'scale(.7) translateY(-6px)' } },
+    schliessen: { dur: 200, ease: EASE_IN },
+    zeile: { start: 60, step: 35, dur: 220, ease: EASE_LIVE, von: { opacity: 0, transform: 'translateY(6px)' } }
+  };
+  var mqRM = window.matchMedia('(prefers-reduced-motion: reduce)'), mqKlein = window.matchMedia('(max-width: 700px)');
+  var reduziert = function () { return mqRM.matches; };
+  var fertigFn = function () {};
+
+  function alle() { return Array.prototype.slice.call(liste.children); }
+  function sichtbar() { return alle().filter(function (e) { return !e.hidden; }); }
+  function fokussierbar() {
+    var f = Array.prototype.slice.call(panel.querySelectorAll('a[href], button')).filter(function (e) { return !e.closest('[hidden]') && e.offsetParent !== null; });
+    f.push(burger);
+    return f;
+  }
+
+  /* Ryans Haken: hidden an [data-nur-*] setzt auth.js (stand()); hier nur nachziehen, falls die Klasse schon steht, das Attribut aber noch nicht */
+  function abgleich() {
+    var an = html.classList.contains('ki-angemeldet'), aus = html.classList.contains('ki-abgemeldet');
+    if (!an && !aus) return;
+    Array.prototype.forEach.call(liste.querySelectorAll('[data-nur-angemeldet]'), function (e) { if (e.hidden !== !an) e.hidden = !an; });
+    Array.prototype.forEach.call(liste.querySelectorAll('[data-nur-abgemeldet]'), function (e) { if (e.hidden !== an) e.hidden = an; });
+  }
+  /* Buchstabe im Koralle-Kreis wie .nav-mein.is-konto (der Kopf-Knopf bleibt im Dokument, nur ausgeblendet) */
+  function buchstabe() {
+    var slot = liste.querySelector('[data-bm-ich]'); if (!slot) return;
+    var h = document.querySelector('.site-nav .nav-mein.is-konto .nav-mein__ich');
+    var b = h ? (h.textContent || '').trim().charAt(0) : '';
+    if (slot.textContent !== b) slot.textContent = b;
+    slot.hidden = !b;
+    var ic = slot.parentNode;
+    var person = ic.querySelector('.bm-svg');
+    if (!b && !person) ic.insertAdjacentHTML('beforeend', '<svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>');
+    else if (b && person) person.remove();
+  }
+
+  function stoppen() {
+    [panel, scrim, burger].concat(Array.prototype.slice.call(burger.children), alle()).forEach(function (e) { e.getAnimations().forEach(function (a) { a.cancel(); }); });
+  }
+  function morph(zuX) {
+    burger.classList.toggle('is-x', zuX);
+    if (reduziert()) return [];
+    var d = CONFIG.burger.abstand, o = { duration: CONFIG.burger.dur, easing: CONFIG.burger.ease }, l = burger.children;
+    var t = function (y, r) { return 'translateY(' + y + 'px) rotate(' + r + 'deg)'; };
+    var c1 = t(-d, 0), c3 = t(d, 0), x1 = t(0, 45), x3 = t(0, -45);
+    return [
+      l[0].animate(zuX ? [{ transform: c1 }, { transform: x1 }] : [{ transform: x1 }, { transform: c1 }], o),
+      l[2].animate(zuX ? [{ transform: c3 }, { transform: x3 }] : [{ transform: x3 }, { transform: c3 }], o),
+      l[1].animate(zuX ? [{ opacity: 1 }, { opacity: 0 }] : [{ opacity: 0 }, { opacity: 1 }], o)
+    ];
+  }
+  function uebergang(auf) {
+    var C = CONFIG, R = C.reduziert, S = C.scrim, anims = [], rm = reduziert();
+    function A(el, kf, o) { anims.push(el.animate(kf, o)); }
+    if (auf) {
+      stoppen();
+      panel.classList.add('is-visible'); scrim.classList.add('is-visible');
+      var o = { fill: 'backwards' };
+      if (rm) {
+        A(panel, [{ opacity: 0 }, { opacity: 1 }], { fill: 'backwards', duration: R.dur, easing: R.ease });
+        A(scrim, [{ opacity: 0 }, { opacity: 1 }], { fill: 'backwards', duration: R.dur, easing: R.ease });
+      } else {
+        A(scrim, [{ opacity: 0 }, { opacity: 1 }], { fill: 'backwards', duration: S.ein, easing: S.easeEin });
+        A(panel, [C.oeffnen.von, { opacity: 1, transform: 'none' }], { fill: 'backwards', duration: C.oeffnen.dur, easing: C.oeffnen.ease });
+        sichtbar().forEach(function (el, i) {
+          A(el, [C.zeile.von, { opacity: 1, transform: 'none' }], { fill: 'backwards', delay: C.zeile.start + i * C.zeile.step, duration: C.zeile.dur, easing: C.zeile.ease });
+        });
+      }
+      anims.push.apply(anims, morph(true));
+    } else {
+      if (rm) {
+        A(panel, [{ opacity: 1 }, { opacity: 0 }], { fill: 'forwards', duration: R.dur, easing: R.ease });
+        A(scrim, [{ opacity: 1 }, { opacity: 0 }], { fill: 'forwards', duration: R.dur, easing: R.ease });
+      } else {
+        A(scrim, [{ opacity: 1 }, { opacity: 0 }], { fill: 'forwards', duration: S.aus, easing: S.easeAus });
+        A(panel, [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: C.oeffnen.von.transform }], { fill: 'forwards', duration: C.schliessen.dur, easing: C.schliessen.ease });
+        sichtbar().forEach(function (el) { A(el, [{ opacity: 1 }, { opacity: 0 }], { fill: 'forwards', duration: C.schliessen.dur, easing: C.schliessen.ease }); });
+      }
+      anims.push.apply(anims, morph(false));
+    }
+    return anims;
+  }
+  function wennFertig(anims, fn) { return Promise.all(anims.map(function (a) { return a.finished; })).then(fn, function () {}); }
+
+  /* Karte direkt unter den Burger setzen: oben bündig 10 px unter dem Burger, rechte Kante auf der Burger-Kante */
+  function platzieren() {
+    var r = burger.getBoundingClientRect(), top = Math.round(r.bottom + 10), rechts = Math.max(0, Math.round(html.clientWidth - r.right));
+    panel.style.top = top + 'px'; panel.style.right = rechts + 'px';
+    panel.style.maxHeight = Math.max(160, window.innerHeight - top - 12) + 'px';
+    /* Der Burger sitzt im Kopf der Seite (eigener Stapel unter der Schicht). Die unscharfe Schicht bekommt deshalb ein rundes Loch über dem Burger:
+       er bleibt scharf und antippbar (clip-path gilt auch für Treffer). */
+    var cx = r.left + r.width / 2, cy = r.top + r.height / 2, rad = 24;
+    scrim.style.clipPath = 'path(evenodd, "M0 0H4000V4000H0Z M ' + (cx - rad) + ' ' + cy + ' a ' + rad + ' ' + rad + ' 0 1 0 ' + (2 * rad) + ' 0 a ' + rad + ' ' + rad + ' 0 1 0 ' + (-2 * rad) + ' 0Z")';
+  }
+
+  function oeffnen() {
+    if (offen || !mqKlein.matches) return;
+    offen = true;
+    abgleich(); buchstabe(); platzieren();
+    burger.classList.add('is-top'); burger.setAttribute('aria-expanded', 'true');
+    html.classList.add('bm-offen');
+    var anims = uebergang(true);
+    var erste = sichtbar()[0]; if (erste) { var f = erste.matches('a, button') ? erste : erste.querySelector('a, button'); if (f) f.focus({ preventScroll: true }); }
+    wennFertig(anims, function () { window.__bmLog && window.__bmLog.push({ ev: 'auf' }); });
+  }
+  function schliessen(opt) {
+    opt = opt || {};
+    if (!offen) return;
+    offen = false;
+    burger.setAttribute('aria-expanded', 'false');
+    if (opt.sofort) {
+      stoppen(); panel.classList.remove('is-visible'); scrim.classList.remove('is-visible'); burger.classList.remove('is-x', 'is-top'); html.classList.remove('bm-offen');
+      return;
+    }
+    var anims = uebergang(false);
+    if (!opt.keinFokus) burger.focus({ preventScroll: true });
+    if (opt.entsperren) html.classList.remove('bm-offen');
+    wennFertig(anims, function () {
+      if (offen) return;
+      panel.classList.remove('is-visible'); scrim.classList.remove('is-visible'); stoppen();
+      burger.classList.remove('is-top'); html.classList.remove('bm-offen');
+    });
+  }
+
+  burger.addEventListener('click', function () { if (offen) schliessen(); else oeffnen(); });
+  scrim.addEventListener('click', function () { schliessen(); });
+  /* Fingerwischen auf der Unschärfe soll die Seite nicht mitnehmen */
+  scrim.addEventListener('touchmove', function (e) { e.preventDefault(); }, { passive: false });
+
+  /* Klick auf eine Zeile: Menü schließen und Sperre lösen. Muss im Fang-Durchlauf am document stehen, weil auth.js (R228) dort stopPropagation ruft;
+     dieses Skript läuft vor dem deferred auth.js und kommt deshalb zuerst dran. Anmelden/Abmelden selbst macht auth.js. */
+  document.addEventListener('click', function (e) {
+    if (!offen || !e.target.closest) return;
+    var z = e.target.closest('.bm-row, .bm-leise');
+    if (z && panel.contains(z)) schliessen({ keinFokus: true, entsperren: true });
+  }, true);
+
+  document.addEventListener('keydown', function (e) {
+    if (!offen) return;
+    if (e.key === 'Escape') { e.preventDefault(); schliessen(); return; }
+    if (e.key !== 'Tab') return;
+    var f = fokussierbar(), i = f.indexOf(document.activeElement);
+    e.preventDefault();
+    var n = i < 0 ? 0 : (i + (e.shiftKey ? -1 : 1) + f.length) % f.length;
+    f[n].focus({ preventScroll: true });
+  });
+
+  /* Wird das Fenster breit oder die Ausrichtung ändert sich: Menü sofort zu bzw. neu platzieren */
+  function aenderung() { if (!offen) return; if (!mqKlein.matches) schliessen({ sofort: true }); else platzieren(); }
+  if (mqKlein.addEventListener) mqKlein.addEventListener('change', aenderung); else if (mqKlein.addListener) mqKlein.addListener(aenderung);
+  window.addEventListener('resize', aenderung);
+  window.addEventListener('pagehide', function () { if (offen) schliessen({ sofort: true }); });
+  if (window.KI && KI.hoer) KI.hoer(buchstabe);
+  buchstabe();
 })();
 </script>
 </body>
