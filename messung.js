@@ -23,6 +23,7 @@
  * Testmodus (nichts wird gesendet, Ereignisse landen in window.__messungTest und als
  * DOM-Ereignis „messung-test“): ohne data-endpunkt, bei file://, localhost oder ?messung=test.
  */
+/* runde191: anmelde-hosts-ohne-herkunft-2026-11-03 */
 (function (wurzel, fabrik) {
   var api = fabrik();
   if (typeof module === 'object' && module && module.exports) {
@@ -75,11 +76,15 @@
     return werte;
   }
 
+  /** Runde 191 (Ryan, 03.11.2026, Dwights R4): Anmelde-Hosts (Google-Anmeldung, Supabase) zählen nie als Herkunft. */
+  var ANMELDE_HOST = /^(?:accounts\.google\.[a-z]{2,3}(?:\.[a-z]{2})?|(?:[a-z0-9-]+\.)*supabase\.(?:co|com|in))$/;
+
   /** Nur die Domain der vorherigen Seite, nie die ganze Adresse. */
   function herkunftsHost(referrer) {
     var m = /^https?:\/\/(?:[^\/?#@]*@)?([^\/?#:]+)/i.exec(String(referrer || ''));
     if (!m) return '';
     var host = m[1].toLowerCase().replace(/\.$/, '');
+    if (ANMELDE_HOST.test(host)) return '';   // Runde 191
     return HOST.test(host) ? host : '';
   }
 
