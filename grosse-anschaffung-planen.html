@@ -1678,6 +1678,7 @@ html:not(.r64-vorbei) .r64 .ra-leiste, html.r64-rk-offen .r64 .ra-leiste { trans
   .r64-chips[data-anzahl="4"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .r64-chips[data-anzahl="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .r64-chips[data-anzahl="3"] .r64-chip { padding-inline: 6px; }
+  .r64-chips[data-anzahl="3"] .r64-chip[data-wert="schwierig"] { -webkit-hyphens: auto; hyphens: auto; }
 }
 @media (max-width: 359px) { .r64-chips[data-anzahl="3"] { grid-template-columns: minmax(0, 1fr); } }
 @media (min-width: 1024px) {
@@ -2579,7 +2580,7 @@ html body .r187-panel:focus,html body .r187-panel:focus-visible,html body .r187-
   .bm-leise .bm-ic { background: none; box-shadow: none; font-size: 18px; color: inherit; }
   .bm-leise:active { background: rgb(60 45 30 / .06); }
 </style>
-</head>
+<meta name="runde236" content="1"><meta name="runde233" content="1"><meta name="runde234" content="1"><meta name="runde238" content="1"><meta name="runde240" content="1"><meta name="runde241" content="1"></head>
 <body data-fall="grosse-anschaffung-planen"><div class="live-aufbau" role="note"><b>Public Beta</b> · Die Seite ist noch im Aufbau.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol><symbol id="ls-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol><symbol id="ls-shopping-bag" viewBox="0 0 24 24"><path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.103 6.034h17.794"/><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/></symbol><symbol id="ls-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
 
@@ -2636,42 +2637,34 @@ SOFTWARE. --><symbol id="ls-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727
     <header class="site-nav wrap">
         <a class="brand r61-brand" href="/"><picture><source media="(max-width: 359.98px)" srcset="/ki-macherei_zeichen_hell.svg"><img class="r61-logo" src="/ki-macherei_quer_hell.svg" alt="Die KI-Macherei, zur Startseite" width="159" height="28"></picture></a>
         <div class="nav-end">
-          <nav class="nav-links v44-nav" aria-label="Hauptnavigation"><a class="v47-pille" href="/ideen"><svg class="v47-ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg><span>Alle Ideen</span></a><a class="v47-pille r230-wissen" href="/#wissen"><svg class="v47-ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg><span>Wissen</span></a></nav>
+          <nav class="nav-links v44-nav" aria-label="Hauptnavigation"><a class="v47-pille" href="/ideen"><svg class="v47-ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg><span>Alle Ideen</span></a><a class="v47-pille r230-wissen" href="/wissen"><svg class="v47-ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg><span>Wissen</span></a></nav>
           <a class="nav-mein" href="/mein-bereich" aria-label="Mein Bereich"><span class="nav-mein__ich" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-user-round"/></svg></span><span class="nav-mein__text">Mein Bereich</span></a>
           <button class="bm-burger" id="bm-burger" type="button" aria-label="Menü" aria-expanded="false" aria-controls="bm-menue"><i></i><i></i><i></i></button>
         </div>
       </header>
 
-<div class="ra ra3 r64 r70 r70-z-ergebnis r71" id="fall-anschaffung" data-fall="anschaffung">
+<div class="ra ra3 r64 r70 r70-z-ergebnis r71 r234" id="fall-anschaffung" data-fall="anschaffung">
   <div class="ra-wrap"><a class="ra-zurueck" href="/ideen"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>Alle Ideen</a></div><div class="d-buehne"><figure class="ra-szene r70-kopf r71-kopf vd" style="--fa:#e8cba3;--fb:#c0956a;--fc:#6b4a3a;--ml:10%;--mb:58%;--pos-hoch:50% 36%;--pos-quer:50% 57.1%;--pos-quer-breit:50% 59.6%;--qb:2400;--qh:1200"><picture><source media="(min-width:1600px) and (min-height:900px)" type="image/webp" srcset="/a-bc87f193f52d.webp 1600w, /a-14920f7ae968.webp 2400w" sizes="min(100vw, 2400px)" width="2400" height="1200"><source media="(min-width: 1024px)" srcset="/a-9067e2b94e51.webp 1600w, /a-826e6c32f017.webp 2400w" sizes="min(100vw, 2400px)" width="2400" height="1200"><img data-m="1" src="/a-b99b10d7fb5f.webp" srcset="/a-7c4fb80a23ac.webp 375w, /a-b99b10d7fb5f.webp 750w, /a-9ec357f60244.webp 1200w" sizes="100vw" alt="Malte in der Waschküche hält eine Vergleichsliste und einen Zollstock, neben ihm die alte, mit Klebeband geflickte Waschmaschine, die auf einem Podest tropft." width="1200" height="1224" decoding="async"></picture><span class="d-dunkel" aria-hidden="true"></span></figure>
   
   <article class="ra-karte" style="--fa:#e8cba3;--fb:#c0956a;--fc:#6b4a3a;--ml:10%;--mb:58%">
-    <div class="ra-karte-innen"><section class="r64-rk" id="r64-rk" hidden aria-labelledby="r64-rk-t"><button type="button" class="r64-zu" aria-label="Schließen">×</button><div class="r64-rk-teil" data-teil="hilfe"><div class="r64-rk-kopf"><p class="r64-rk-zeile">Zurück aus dem Chat</p><h2 id="r64-rk-t">Hat alles geklappt?</h2></div><div class="r64-rk-knoepfe"><div><button type="button" class="r64-rk-k" data-laeuft="laeuft">Ja, hat alles geklappt</button></div><div><button type="button" class="r64-rk-k" data-hilfe="leer" aria-expanded="false" aria-controls="r64-a-leer">Das Eingabefeld ist leer</button><div class="r64-rk-antwort" id="r64-a-leer" hidden><p style="margin:0">Das passiert manchmal nach dem Anmelden. Die Anleitung liegt schon in deiner Zwischenablage: <span data-nur-geraet="handy">ins Feld tippen, gedrückt halten und „Einfügen“ wählen, abschicken.</span><span data-nur-geraet="computer">ins Feld klicken, Rechtsklick und „Einfügen“, abschicken.</span></p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und den Chat öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-leer">Hat geklappt</button></p></div></div><div><button type="button" class="r64-rk-k" data-hilfe="angemeldet" aria-expanded="false" aria-controls="r64-a-angemeldet">Ich bin nicht angemeldet</button><div class="r64-rk-antwort" id="r64-a-angemeldet" hidden><p style="margin:0"><span data-nur-geraet="computer">Melde dich vorher in diesem Browser bei deiner KI an.</span><span data-nur-geraet="handy">Melde dich vorher in der App deiner KI an.</span> Dann öffnet der Knopf direkt die fertige Anleitung. Noch kein Konto? Das legst du dort kostenlos an, mit E-Mail oder Google-Konto.</p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und den Chat öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-angemeldet">Hat geklappt</button></p></div></div><div><button type="button" class="r64-rk-k" data-hilfe="nichts" aria-expanded="false" aria-controls="r64-a-nichts">Es hat sich nichts geöffnet</button><div class="r64-rk-antwort" id="r64-a-nichts" hidden><p style="margin:0"><span data-nur-geraet="handy">Dann fehlt meist die App. </span><a href="#" data-start-web target="_blank" rel="noopener">Im Browser öffnen</a></p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und den Chat öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-nichts">Hat geklappt</button></p></div></div></div><p class="r64-rk-fuss"><button type="button" class="r64-leise" data-r64-kopieren>Anleitung noch einmal kopieren</button><button type="button" class="r64-leise hh-karte-link" aria-haspopup="dialog" aria-controls="hh-sheet">Hilfe bei Problemen</button></p></div><div class="r64-rm" data-teil="rm" hidden><div class="r64-rm-kopf"><h2>Hilfst du uns kurz?</h2><button type="button" class="r64-leise" data-lieber-nicht>Lieber nicht</button></div><p class="r64-rm-unter">3 Fragen, nur antippen.</p><div class="v47-fort" aria-hidden="true"><b class="an"></b><b></b><b></b><span>Frage 1 von 3</span></div><div data-frage="rm-entwuerfe"><p class="r64-frage" id="r64-f0"><span class="r131-sr">Frage 1 von 3: </span>Wie gefallen dir die Modelle?</p><div class="r64-chips" data-anzahl="4" role="group" aria-labelledby="r64-f0"><button type="button" class="r64-chip" data-wert="gar-nicht" aria-pressed="false">Gar nicht</button><button type="button" class="r64-chip" data-wert="geht-so" aria-pressed="false">Geht so</button><button type="button" class="r64-chip" data-wert="gut" aria-pressed="false">Gut</button><button type="button" class="r64-chip" data-wert="richtig-gut" aria-pressed="false">Richtig gut</button></div></div><div data-frage="rm-leicht" hidden><p class="r64-frage" id="r64-f1"><span class="r131-sr">Frage 2 von 3: </span>War es leicht, loszulegen?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f1"><button type="button" class="r64-chip" data-wert="ganz-leicht" aria-pressed="false">Ganz leicht</button><button type="button" class="r64-chip" data-wert="ging-so" aria-pressed="false">Ging so</button><button type="button" class="r64-chip" data-wert="schwierig" aria-pressed="false">Schwierig</button></div></div><div data-frage="rm-wieder" hidden><p class="r64-frage" id="r64-f2"><span class="r131-sr">Frage 3 von 3: </span>Würdest du so etwas wieder mit KI machen?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f2"><button type="button" class="r64-chip" data-wert="ja" aria-pressed="false">Ja</button><button type="button" class="r64-chip" data-wert="vielleicht" aria-pressed="false">Vielleicht</button><button type="button" class="r64-chip" data-wert="eher-nicht" aria-pressed="false">Eher nicht</button></div></div></div><div class="r64-feld r64-feld-teil" data-teil="feld" hidden><label for="r64-text">Magst du uns noch etwas sagen?</label><textarea id="r64-text" rows="1" maxlength="500" aria-describedby="r64-text-h"></textarea><p class="r64-feld-klein" id="r64-text-h">Freiwillig. Bitte keine Namen, Adressen oder andere persönliche Daten.</p><p class="r64-rk-aktion"><button type="button" class="r64-los" data-feld="absenden">Absenden</button><button type="button" class="r64-leise" data-feld="fertig">Fertig</button></p></div><div class="r64-dank" data-teil="dank" hidden role="status"><span class="r64-haken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Danke! Damit machst du die KI-Macherei für alle ein Stück besser.</p><a href="/ideen">Noch eine Idee ausprobieren?</a></div><div class="r64-dank" data-teil="schoen" hidden role="status"><p>Schön! Viel Spaß mit dem neuen Gerät.</p></div></section><p class="r64-danke-zeile" id="r64-danke-zeile" hidden role="status"><span>Danke fürs Mitmachen</span><button type="button" class="r64-zu" aria-label="Hinweis schließen">×</button></p>
+    <div class="ra-karte-innen"><section class="r64-rk" id="r64-rk" hidden aria-labelledby="r64-rk-t"><button type="button" class="r64-zu" aria-label="Schließen">×</button><div class="r64-rk-teil" data-teil="hilfe"><div class="r64-rk-kopf"><p class="r64-rk-zeile">Zurück aus dem Chat</p><h2 id="r64-rk-t">Hat alles geklappt?</h2></div><div class="r64-rk-knoepfe"><div><button type="button" class="r64-rk-k" data-laeuft="laeuft">Ja, hat alles geklappt</button></div><div><button type="button" class="r64-rk-k" data-hilfe="leer" aria-expanded="false" aria-controls="r64-a-leer">Das Eingabefeld ist leer</button><div class="r64-rk-antwort" id="r64-a-leer" hidden><p style="margin:0">Das kann beim ersten Mal passieren. Die Anleitung liegt schon in deiner Zwischenablage: <span data-nur-geraet="handy">ins Feld tippen, gedrückt halten und „Einfügen“ wählen, abschicken. Das nächste Mal sollte es ohne diesen Schritt funktionieren.</span><span data-nur-geraet="computer">ins Feld klicken, Rechtsklick und „Einfügen“, abschicken. Das nächste Mal sollte es ohne diesen Schritt funktionieren.</span></p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und den Chat öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-leer">Hat geklappt</button></p></div></div><div><button type="button" class="r64-rk-k" data-hilfe="angemeldet" aria-expanded="false" aria-controls="r64-a-angemeldet">Ich bin nicht angemeldet</button><div class="r64-rk-antwort" id="r64-a-angemeldet" hidden><p style="margin:0"><span data-nur-geraet="computer">Melde dich vorher in diesem Browser bei deiner KI an.</span><span data-nur-geraet="handy">Melde dich vorher in der App deiner KI an.</span> Dann öffnet der Knopf direkt die fertige Anleitung. Noch kein Konto? Das legst du dort kostenlos an, mit E-Mail oder Google-Konto.</p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und den Chat öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-angemeldet">Hat geklappt</button></p></div></div><div><button type="button" class="r64-rk-k" data-hilfe="nichts" aria-expanded="false" aria-controls="r64-a-nichts">Es hat sich nichts geöffnet</button><div class="r64-rk-antwort" id="r64-a-nichts" hidden><p style="margin:0"><span data-nur-geraet="handy">Dann fehlt meist die App. </span><a href="#" data-start-web target="_blank" rel="noopener">Im Browser öffnen</a></p><p class="r64-rk-aktion"><a class="r64-los" href="#" data-start data-art="prompt" target="_blank" rel="noopener">Anleitung kopieren und den Chat öffnen</a><button type="button" class="r64-leise" data-laeuft="klappt-nichts">Hat geklappt</button></p></div></div></div><p class="r64-rk-fuss"><button type="button" class="r64-leise" data-r64-kopieren>Anleitung noch einmal kopieren</button><button type="button" class="r64-leise hh-karte-link" aria-haspopup="dialog" aria-controls="hh-sheet">Hilfe bei Problemen</button></p></div><div class="r64-rm" data-teil="rm" hidden><div class="r64-rm-kopf"><h2>Hilfst du uns kurz?</h2><button type="button" class="r64-leise" data-lieber-nicht>Lieber nicht</button></div><p class="r64-rm-unter">3 Fragen, nur antippen.</p><div class="v47-fort" aria-hidden="true"><b class="an"></b><b></b><b></b><span>Frage 1 von 3</span></div><div data-frage="rm-entwuerfe"><p class="r64-frage" id="r64-f0"><span class="r131-sr">Frage 1 von 3: </span>Wie gefiel dir die Idee?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f0"><button type="button" class="r64-chip" data-wert="gar-nicht" aria-pressed="false">Nicht hilfreich</button><button type="button" class="r64-chip" data-wert="gut" aria-pressed="false">Okay</button><button type="button" class="r64-chip" data-wert="richtig-gut" aria-pressed="false">Sehr gut</button></div></div><div data-frage="rm-leicht" hidden><p class="r64-frage" id="r64-f1"><span class="r131-sr">Frage 2 von 3: </span>War es leicht, loszulegen?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f1"><button type="button" class="r64-chip" data-wert="ganz-leicht" aria-pressed="false">Ja, es war leicht</button><button type="button" class="r64-chip" data-wert="ging-so" aria-pressed="false">Etwas hakte</button><button type="button" class="r64-chip" data-wert="schwierig" aria-pressed="false">Es hat nicht funktioniert</button></div></div><div data-frage="rm-wieder" hidden><p class="r64-frage" id="r64-f2"><span class="r131-sr">Frage 3 von 3: </span>Hast du etwas über KI gelernt?</p><div class="r64-chips" data-anzahl="3" role="group" aria-labelledby="r64-f2"><button type="button" class="r64-chip" data-wert="ja" aria-pressed="false">Habe etwas gelernt</button><button type="button" class="r64-chip" data-wert="vielleicht" aria-pressed="false">Ich weiß nicht</button><button type="button" class="r64-chip" data-wert="eher-nicht" aria-pressed="false">Nein</button></div></div></div><div class="r64-feld r64-feld-teil" data-teil="feld" hidden><label for="r64-text">Magst du uns noch etwas sagen?</label><textarea id="r64-text" rows="1" maxlength="500" aria-describedby="r64-text-h"></textarea><p class="r64-feld-klein" id="r64-text-h">Freiwillig. Bitte keine Namen, Adressen oder andere persönliche Daten.</p><p class="r64-rk-aktion"><button type="button" class="r64-los" data-feld="absenden">Absenden</button><button type="button" class="r64-leise" data-feld="fertig">Fertig</button></p></div><div class="r64-dank" data-teil="dank" hidden role="status"><span class="r64-haken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Danke! Damit machst du die KI-Macherei für alle ein Stück besser.</p><a href="/ideen">Noch eine Idee ausprobieren?</a></div><div class="r64-dank" data-teil="schoen" hidden role="status"><p>Super, viel Spaß mit weiteren Ideen!</p></div></section><p class="r64-danke-zeile" id="r64-danke-zeile" hidden role="status"><span>Danke fürs Mitmachen</span><button type="button" class="r64-zu" aria-label="Hinweis schließen">×</button></p>
       <div class="ra-lesen">
         <div class="kk kk3" role="group" aria-label="Eckdaten dieser Idee">
     <a class="kk-siegel kk3-siegel" href="#" data-oeffne="gut"><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Kostenlos &amp; geprüft</a>
     <span class="kk-btns"><button type="button" class="ra-teilen" data-titel="Große Anschaffung planen" aria-label="Teilen: Große Anschaffung planen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5"/><path d="M5 11.5V19a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7.5"/></svg></button><button type="button" class="ra-herz" data-herz="r45" data-titel="Große Anschaffung planen" aria-pressed="false" aria-label="Merken: Große Anschaffung planen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button></span>
     <ul class="kk3-fakten"><li><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock"/></svg>15 Min</li><li><svg class="kk-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ruler"/></svg>Maße vom Stellplatz</li><li class="kk-ki"><button type="button" class="kk-logos r145-tipp" aria-label="Funktioniert mit ChatGPT" data-tipp="Funktioniert mit ChatGPT"><svg class="kk-logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#l-openai"/></svg></button></li></ul>
   </div>
-        <h1>Große Anschaffung planen</h1>
+        <div class="r241-links"><h1>Große Anschaffung planen</h1>
         <p class="ra-kurztext">Billig im Laden heißt nicht billig auf Dauer: Strom, Wasser oder Ersatzteile kosten über die Jahre oft mehr, als du beim Kauf sparst.</p>
+        <div class="r234-los"><div class="ra-start"><a class="button-primary ra-knopf" href="#" data-start data-art="prompt" target="_blank" rel="noopener"><svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg><span>Starte mit ChatGPT</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div><p class="r234-hinweis">Öffnet deine KI mit dem fertigen Auftrag. Es sind keine Daten und Infos von dir enthalten.</p><div class="hh hh-v1"><button type="button" class="hh-oeffner" aria-haspopup="dialog" aria-controls="hh-sheet"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg><span>Hilfe</span></button></div><a class="r234-claude" href="#" data-start data-art="prompt" data-start-ki="claude" target="_blank" rel="noopener"><svg class="logo" aria-hidden="true"><use href="#l-claude"/></svg><span>Mit Claude</span></a></div></div>
         <section class="ra-ergebnis" aria-label="Ergebnis"><div class="ra-zettel">
         <span class="ra-band" aria-hidden="true"></span>
         <p class="ra-ergebnis-satz"><b>Das bekommst du</b></p>
-        <ul class="s412-zeilen s412-zeilen-hell"><li><span class="s412-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></span><span class="s412-wort">Empfehlung mit Preisgrenze</span></li><li><span class="s412-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 5h.01"/><path d="M3 12h.01"/><path d="M3 19h.01"/><path d="M8 5h13"/><path d="M8 12h13"/><path d="M8 19h13"/></svg></span><span class="s412-wort">Was du wirklich brauchst, in zwei Sätzen</span></li><li><span class="s412-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg></span><span class="s412-wort">Bis zu drei passende Modelle, je mit Kaufgrenze, Link zu idealo und was Tester lobten oder bemängelten, die niedrigste Grenze oben</span></li><li><span class="s412-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"/><path d="M15 6h1v4"/><path d="m6.134 14.768.866-.5 2 3.464"/><circle cx="16" cy="8" r="6"/></svg></span><span class="s412-wort">Kosten über die Jahre je Modell, mit Rechenweg und Summe in Euro</span></li><li><span class="s412-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 13v8"/><path d="M12 3v3"/><path d="M18 6a2 2 0 0 1 1.387.56l2.307 2.22a1 1 0 0 1 0 1.44l-2.307 2.22A2 2 0 0 1 18 13H6a2 2 0 0 1-1.387-.56l-2.306-2.22a1 1 0 0 1 0-1.44l2.306-2.22A2 2 0 0 1 6 6z"/></svg></span><span class="s412-wort">So entscheidest du: bei idealo prüfen, auf oder unter der Grenze kaufen, sonst Preiswecker; bei „Sofort“ ein klarer Rat</span></li></ul>
+        <ul class="s412-zeilen s412-zeilen-hell"><li><span class="s412-ico" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span class="s412-wort">Empfehlung mit Preisgrenze</span></li><li><span class="s412-ico" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span class="s412-wort">Was du wirklich brauchst, in zwei Sätzen</span></li><li><span class="s412-ico" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span class="s412-wort">Bis zu drei passende Modelle, je mit Kaufgrenze, Link zu idealo und was Tester lobten oder bemängelten, die niedrigste Grenze oben</span></li><li><span class="s412-ico" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span class="s412-wort">Kosten über die Jahre je Modell, mit Rechenweg und Summe in Euro</span></li><li><span class="s412-ico" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span class="s412-wort">So entscheidest du: bei idealo prüfen, auf oder unter der Grenze kaufen, sonst Preiswecker; bei „Sofort“ ein klarer Rat</span></li></ul>
         
       </div></section>
       </div>
-      <div class="ra-handeln">
-        <section class="ra-schritte" aria-labelledby="anschaffung-s"><h2 class="ra-versal" id="anschaffung-s">So geht's</h2><ol><li class="ra-start-schritt"><span class="ra-nr" aria-hidden="true">1</span>
-        <div class="ra-start">
-          <a class="button-primary ra-knopf" href="#" data-start data-art="prompt" target="_blank" rel="noopener"><svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg><span>Mit ChatGPT starten</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-        </div></li>
-<li><span class="ra-nr" aria-hidden="true">2</span><p>Sagen, was du kaufen willst und was damit besser werden soll</p></li>
-<li><span class="ra-nr" aria-hidden="true">3</span><p>Ein paar Fragen zu Nutzung, Budget und Zeitpunkt beantworten</p></li>
-<li><span class="ra-nr" aria-hidden="true">4</span><p>Bei idealo den Preis prüfen: auf oder unter der Grenze kaufen, sonst Preiswecker</p></li></ol><div class="hh hh-v1"><button type="button" class="hh-oeffner" aria-haspopup="dialog" aria-controls="hh-sheet"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg><span>Hilfe bei Problemen</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></button></div></section>
-      </div>
-      <section class="ra-mehr r70-mehr" aria-labelledby="anschaffung-m"><h2 class="ra-versal" id="anschaffung-m">Mehr dazu</h2><details class="ra-auf" data-teil="gut"><summary><span>Gut zu wissen</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><p>Klappt mit ChatGPT, am Handy und am Computer.</p><ul class="ra-punkte"><li>Die Maße vom Stellplatz, falls das Gerät genau passen muss</li><li>Etwa 15 Minuten</li><li>Danach stellst du dir bei idealo einen Preiswecker auf deine Grenze.</li></ul><ul class="ra-punkte"><li><b>Keine Finanzberatung:</b> Die KI vergleicht und rechnet. Bei Ratenkauf oder Streit mit dem Händler hilft die Verbraucherzentrale.</li><li><b>Preise ändern sich täglich:</b> Die KI nennt keinen heutigen Preis, sondern eine Grenze, bis zu der du kaufst. Den Preis von heute siehst du über ihren Link bei idealo.</li><li><b>„Geschätzt“:</b> Findet die KI keine verlässlichen Werte, rechnet sie mit Richtwerten und sagt es dazu.</li><li><b>Testnoten:</b> Die KI nennt keine Noten. Sie sagt in Worten, was Tester gelobt oder bemängelt haben, aus frei lesbaren Tests.</li><li><b>Streichpreise:</b> Ein durchgestrichener Preis sagt wenig. Die Grenze der KI beruht auf den Preisen, die sie gesehen hat, nicht auf dem Streichpreis.</li><li><b>Energielabel:</b> Die Buchstaben A bis G zeigen, wie sparsam ein Gerät ist. „kWh“ ist dieselbe Einheit wie auf deiner Stromrechnung.</li><li><b>Ersatzteile:</b> Für Waschmaschinen, Spülmaschinen, Kühlschränke und Fernseher muss es sie in der EU 7 bis 10 Jahre geben, ab dem Verkaufsende des Modells.</li><li><b>Altes Gerät:</b> Größere Händler, auch online, müssen anbieten, ein großes Altgerät bei der Lieferung kostenlos mitzunehmen. Sag es schon beim Bestellen.</li><li><b>Nur Geräte:</b> Für Fahrzeuge fehlen Posten wie Versicherung und Wartung.</li><li><b>Die KI sucht nicht im Netz:</b> Schreib „Such bitte im Netz“.</li><li><b>Keine Knöpfe zum Antippen:</b> Schreib die Antwort einfach hin.</li><li><b>Eine Antwort ist schon ausgewählt:</b> Tipp deine Antwort an. Erscheint „Weiter“, tipp danach darauf.</li><li><b>Ein Wort ist unklar, etwa dB oder kWh:</b> Frag die KI einfach, was es heißt.</li><li><b>Beim Händler steht ein anderer Preis:</b> Kopier das Angebot in denselben Chat. Die KI sagt dir, ob es unter deiner Grenze liegt.</li><li><b>Am Ende kommen weitere Vorschläge:</b> Die kannst du übergehen.</li><li><b>Geprüft:</b> „Geprüft“ heißt: Diese Anleitung wurde von unserer Redaktion erfolgreich getestet und freigegeben. Kein amtliches Prüfzeichen.</li></ul><details class="s412-prompt"><summary><span>Den ganzen Prompt ansehen</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><p class="ra-klein">Das bekommt ChatGPT von dir, wenn du auf „Mit ChatGPT starten“ tippst:</p><pre class="ra-auftrag" id="prompt-text">Hilf mir bei einer großen Anschaffung: Kläre gründlich mit mir, was ich wirklich brauche, samt Kosten über die Jahre. Ich will nur entscheiden, du fragst, suchst und rechnest. Am Ende will ich bis zu drei passende Modelle und die Preisgrenze, ab der ich kaufe.
+      <section class="ra-mehr r70-mehr" aria-labelledby="anschaffung-m"><h2 class="ra-versal" id="anschaffung-m">Mehr dazu</h2><details class="ra-auf r234-auftrag" data-teil="auftrag"><summary><span>Den Auftrag an die KI ansehen</span><svg class="icon r234-winkel" aria-hidden="true"><use href="#i-chevron-down"/></svg></summary><div class="ra-auf-innen"><p class="ra-klein">Das bekommt ChatGPT von dir, wenn du auf „Starte mit ChatGPT“ tippst:</p><pre class="ra-auftrag" id="prompt-text">Hilf mir bei einer großen Anschaffung: Kläre gründlich mit mir, was ich wirklich brauche, samt Kosten über die Jahre. Ich will nur entscheiden, du fragst, suchst und rechnest. Am Ende will ich bis zu drei passende Modelle und die Preisgrenze, ab der ich kaufe.
 
 So redest du mit mir: einfach, ruhig, immer mit Du. Kurze Absätze mit höchstens zwei Sätzen. Keine Fachwörter; ist eins unvermeidbar, erklär es gleich in Alltagsworten, etwa Energielabel. Zahlen und Daten nur, wenn sie zählen.
 
@@ -2702,7 +2695,7 @@ Du ersetzt keine Finanzberatung. Bei Ratenkauf oder Streit mit dem Händler sag 
 
 5. Zum Schluss frag mich einmal, ob du noch bei etwas helfen sollst, und erklär jede Wahl in einem Satz: 🧾 Worauf ich beim Bestellen achte · 👋 Nein danke. Fragen zu einem Angebot erst nach meiner Wahl. Danach bist du fertig.
 
-Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite jeden Schritt ganz durch und hör nie nach einer Ankündigung auf.</pre><p><button type="button" class="clay-btn ra-zweit" data-kopieren>Anleitung als Text kopieren</button></p></details></div></details><details class="ra-auf" data-teil="weiter"><summary><span>Weitergedacht</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><p>Zum Schluss bietet die KI an, dir zu sagen, worauf du beim Bestellen achtest. Hast du ein altes Gerät, lass es bei der Lieferung gleich mitnehmen. Kaufst du nicht sofort, stell dir bei idealo einen Preiswecker auf deinen Preis. Taucht später ein Angebot auf, kopier es in denselben Chat und frag, ob es passt.</p></div></details></section>
+Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite jeden Schritt ganz durch und hör nie nach einer Ankündigung auf.</pre><p><button type="button" class="clay-btn ra-zweit" data-kopieren>Anleitung als Text kopieren</button></p></div></details><details class="ra-auf" data-teil="gut"><summary><span>Gut zu wissen</span><svg class="icon r234-winkel" aria-hidden="true"><use href="#i-chevron-down"/></svg></summary><div class="ra-auf-innen"><p>Klappt mit ChatGPT, am Handy und am Computer.</p><ul class="ra-punkte"><li>Die Maße vom Stellplatz, falls das Gerät genau passen muss</li><li>Etwa 15 Minuten</li><li>Danach stellst du dir bei idealo einen Preiswecker auf deine Grenze.</li></ul><ul class="ra-punkte"><li><b>Keine Finanzberatung:</b> Die KI vergleicht und rechnet. Bei Ratenkauf oder Streit mit dem Händler hilft die Verbraucherzentrale.</li><li><b>Preise ändern sich täglich:</b> Die KI nennt keinen heutigen Preis, sondern eine Grenze, bis zu der du kaufst. Den Preis von heute siehst du über ihren Link bei idealo.</li><li><b>„Geschätzt“:</b> Findet die KI keine verlässlichen Werte, rechnet sie mit Richtwerten und sagt es dazu.</li><li><b>Testnoten:</b> Die KI nennt keine Noten. Sie sagt in Worten, was Tester gelobt oder bemängelt haben, aus frei lesbaren Tests.</li><li><b>Streichpreise:</b> Ein durchgestrichener Preis sagt wenig. Die Grenze der KI beruht auf den Preisen, die sie gesehen hat, nicht auf dem Streichpreis.</li><li><b>Energielabel:</b> Die Buchstaben A bis G zeigen, wie sparsam ein Gerät ist. „kWh“ ist dieselbe Einheit wie auf deiner Stromrechnung.</li><li><b>Ersatzteile:</b> Für Waschmaschinen, Spülmaschinen, Kühlschränke und Fernseher muss es sie in der EU 7 bis 10 Jahre geben, ab dem Verkaufsende des Modells.</li><li><b>Altes Gerät:</b> Größere Händler, auch online, müssen anbieten, ein großes Altgerät bei der Lieferung kostenlos mitzunehmen. Sag es schon beim Bestellen.</li><li><b>Nur Geräte:</b> Für Fahrzeuge fehlen Posten wie Versicherung und Wartung.</li><li><b>Die KI sucht nicht im Netz:</b> Schreib „Such bitte im Netz“.</li><li><b>Keine Knöpfe zum Antippen:</b> Schreib die Antwort einfach hin.</li><li><b>Eine Antwort ist schon ausgewählt:</b> Tipp deine Antwort an. Erscheint „Weiter“, tipp danach darauf.</li><li><b>Ein Wort ist unklar, etwa dB oder kWh:</b> Frag die KI einfach, was es heißt.</li><li><b>Beim Händler steht ein anderer Preis:</b> Kopier das Angebot in denselben Chat. Die KI sagt dir, ob es unter deiner Grenze liegt.</li><li><b>Am Ende kommen weitere Vorschläge:</b> Die kannst du übergehen.</li><li><b>Geprüft:</b> „Geprüft“ heißt: Diese Anleitung wurde von unserer Redaktion erfolgreich getestet und freigegeben. Kein amtliches Prüfzeichen.</li></ul></div></details><details class="ra-auf" data-teil="weiter"><summary><span>Weitergedacht</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></summary><div class="ra-auf-innen"><p>Zum Schluss bietet die KI an, dir zu sagen, worauf du beim Bestellen achtest. Hast du ein altes Gerät, lass es bei der Lieferung gleich mitnehmen. Kaufst du nicht sofort, stell dir bei idealo einen Preiswecker auf deinen Preis. Taucht später ein Angebot auf, kopier es in denselben Chat und frag, ob es passt.</p></div></details></section>
     </div>
   </article></div>
   <section class="ra-weitere" aria-labelledby="anschaffung-w">
@@ -2711,10 +2704,10 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
     <div class="ra-wrap"><a class="ra-leise ra-alle" href="/ideen">Alle Ideen</a></div>
   </section>
   
-  <div class="ra-leiste" data-leiste aria-hidden="true"><a class="button-primary" href="#" data-start data-art="prompt" target="_blank" rel="noopener" tabindex="-1"><svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg><span>Mit ChatGPT starten</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+  <div class="ra-leiste" data-leiste aria-hidden="true"><a class="button-primary" href="#" data-start data-art="prompt" target="_blank" rel="noopener" tabindex="-1"><svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg><span>Starte mit ChatGPT</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
 </div>
     
-    <aside class="r187-aussen r187-ein" id="r187-kasten" aria-label="Rückmeldung"><div class="wrap"><div class="r187-karte"><div class="r187-k-text"><p class="r187-k-titel"><b>Hilf uns, die Seite für alle zu verbessern</b></p><p class="r187-k-satz">Fehler, Wünsche oder eine eigene Idee. Ohne Namen, in einer Minute.</p></div><button type="button" class="r187-k-knopf" data-r187-oeffnen="" aria-haspopup="dialog">Rückmeldung geben</button></div></div></aside>
+    <aside class="r187-aussen r187-ein" id="r187-kasten" aria-label="Rückmeldung"><div class="wrap"><div class="r187-karte"><div class="r187-k-text"><p class="r187-k-titel"><b>Hilf uns, die Seite für alle zu verbessern</b></p><p class="r187-k-satz">Fehler, Wünsche oder eine eigene Idee. Anonym. Ca. 1 Min.</p></div><button type="button" class="r187-k-knopf" data-r187-oeffnen="" aria-haspopup="dialog">Rückmeldung geben</button></div></div></aside>
     <footer class="footer"><div class="wrap"><span class="r61-fuss">Die KI-Macherei<span class="r81-social"><a class="r81-icon" href="https://www.instagram.com/ki_macherei/" target="_blank" rel="noopener" aria-label="Die KI-Macherei auf Instagram"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a><a class="r81-icon" href="https://www.youtube.com/@ki_macherei" data-r81-youtube target="_blank" rel="noopener" aria-label="Die KI-Macherei auf YouTube"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a></span></span><span class="r65-motto">Von Menschen für Menschen</span></div></footer>
   </main>
   
@@ -2910,11 +2903,11 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
         if (!b) return;
         e.preventDefault();
         const aus = abgemeldet(), d = aus ? wLesen() : lesen(), id = b.dataset.herz, sichern = aus ? wSchreiben : schreiben;
-        if (d[id]) { delete d[id]; sichern(d); zeichnen(); melden('Aus deinen Herzen entfernt.'); return; }
+        if (d[id]) { delete d[id]; sichern(d); zeichnen(); melden('Aus deinen Herzen entfernt.'); if (aus && !anzahl(d)) r239Raus(); return; }
         d[id] = { titel: b.dataset.titel || id, am: Date.now() };
         sichern(d); knoepfe(d);
         b.classList.remove('is-pop'); void b.offsetWidth; b.classList.add('is-pop');
-        if (ablage.hidden) { ablageMerken(); ablage.hidden = false; }
+        clearTimeout(ablage.r239Uhr); clearTimeout(ablage.r239Weg); if (ablage.classList.contains('r239-raus')) { ablage.classList.remove('r239-raus'); ablage.hidden = true; } if (ablage.hidden) { ablageMerken(); ablage.hidden = false; }
         fliegen(b, () => {
           const n = anzahl(abgemeldet() ? wLesen() : lesen());
           zaehler(n); stupsen();
@@ -2946,7 +2939,10 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
       fenster.addEventListener('click', e => { if (e.target === fenster || e.target.closest('.soon-sheet__close')) { e.stopPropagation(); schliessen(); } });
       document.addEventListener('keydown', e => { if (e.key === 'Escape' && fenster.classList.contains('is-open')) schliessen(); });
       // Die Ablage führt jetzt nach „Mein Bereich“, Fach „Gemerkt“ (Yannis, 30.09.)
-      ablage.addEventListener('click', () => {
+      function r239Raus() { clearTimeout(ablage.r239Uhr); ablage.r239Uhr = setTimeout(() => { if (ablage.hidden || anzahl(abgemeldet() ? wLesen() : lesen())) return; ersatz.da = false; try { const s = speicher(); if (s) s.removeItem(ABLAGE_DA); } catch (e) {} const weg = () => { ablage.hidden = true; ablage.classList.remove('r239-raus'); }; if (ruhig.matches) { weg(); return; } ablage.classList.add('r239-raus'); ablage.r239Weg = setTimeout(weg, 420); }, 500); }
+      function r239HerzWeg() { const d = wLesen(), ids = Object.keys(d); if (!ids.length) return false; const id = ids.reduce((a, b) => ((d[b] || {}).am || 0) >= ((d[a] || {}).am || 0) ? b : a); delete d[id]; wSchreiben(d); zeichnen(); melden('Aus deinen Herzen entfernt.'); if (!anzahl(d)) r239Raus(); return true; }
+      ablage.addEventListener('click', e => {
+        if (abgemeldet() && e.target.closest('.herz-ablage__herz') && r239HerzWeg()) return;
         if (abgemeldet()) { if (window.KIAuth) KIAuth.oeffnen('anmelden'); return; }   // R228: abgemeldet führt die Ablage zur Anmeldung
         if (window.KI) KI.geh('bereich', 'gemerkt');
       });
@@ -3702,13 +3698,13 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
     <button class="v25r7__zu" type="button" data-v25r7-zu aria-label="Schließen">×</button>
     <span class="v25r7__etikett">Kostenlos</span>
     <h2 id="v25r7-t1">Deine Ideen auf all deinen Geräten</h2>
-    <div class="v25r7__text"><p>Leg dir ein Konto an, dann findest du deine gemerkten Ideen auch am Handy oder am Computer wieder.</p></div>
+    <div class="v25r7__text"><p>Melde dich an, um deine Ideen zu speichern, Listen zu erstellen, deine Kurse fortzusetzen und Neuigkeiten zu erfahren.</p></div>
     <button class="v25r7__google" type="button" data-google data-v25r7-google><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7Z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6h-4a12 12 0 0 0 0 10.8l4-3.1Z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9Z"/></svg>Weiter mit Google</button>
     <div class="v25r7__oder">oder mit deiner E-Mail-Adresse</div>
     <form novalidate>
       <label class="v25r7__feld"><span>Dein Vorname</span><input name="vorname" autocomplete="given-name"></label>
       <label class="v25r7__feld"><span>Deine E-Mail-Adresse</span><input type="email" name="email" autocomplete="username" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="name@beispiel.de"></label>
-      <div class="v25r7__feld v25r7__feld--pw"><label class="v25r7__feldtitel" for="v25r7-pw-anlegen">Denk dir ein Passwort aus</label><div class="v25r7__pwzeile"><input id="v25r7-pw-anlegen" type="password" aria-describedby="v25r7-hinweis-anlegen" data-hinweis="v25r7-hinweis-anlegen" name="passwort" autocomplete="new-password" autocapitalize="none" spellcheck="false"><button class="v25r7__zeigen" type="button" data-anzeigen aria-pressed="false" aria-controls="v25r7-pw-anlegen">Anzeigen</button></div><p class="v25r7__klein v25r7__hinweisfeld" id="v25r7-hinweis-anlegen"><span data-haken aria-hidden="true"></span>Mindestens 8 Zeichen. Gut zu merken und sicher sind drei oder vier Wörter, die nur du so zusammenstellst.</p></div>
+      <div class="v25r7__feld v25r7__feld--pw"><label class="v25r7__feldtitel" for="v25r7-pw-anlegen">Denk dir ein Passwort aus</label><div class="v25r7__pwzeile"><input id="v25r7-pw-anlegen" type="password" aria-describedby="v25r7-hinweis-anlegen" data-hinweis="v25r7-hinweis-anlegen" name="passwort" autocomplete="new-password" autocapitalize="none" spellcheck="false"><button class="v25r7__zeigen" type="button" data-anzeigen aria-pressed="false" aria-controls="v25r7-pw-anlegen">Anzeigen</button></div><p class="v25r7__klein v25r7__hinweisfeld" id="v25r7-hinweis-anlegen"><span data-haken aria-hidden="true"></span>Mindestens 8 Zeichen.</p></div>
       <p class="v25r7__fehler v25r7__meldung" role="alert" data-meldung hidden></p>
       <button class="v25r7__knopf v25r7__breit" type="submit">Konto anlegen</button>
     </form>
@@ -3719,8 +3715,8 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
 
   <div class="v25r7__innen" data-ansicht="anmelden" hidden>
     <button class="v25r7__zu" type="button" data-v25r7-zu aria-label="Schließen">×</button>
-    <h2 id="v25r7-t-anmelden">Willkommen zurück</h2>
-    <div class="v25r7__text"><p>Melde dich an, dann hast du deine gemerkten Ideen auf all deinen Geräten.</p></div>
+    <h2 id="v25r7-t-anmelden">Einloggen</h2>
+    <div class="v25r7__text"><p>Mach weiter, wo du aufgehört hast. Hast du noch kein Konto, lege ein neues an unter „Konto anlegen“.</p></div>
     <button class="v25r7__google" type="button" data-google data-v25r7-google><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7Z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6h-4a12 12 0 0 0 0 10.8l4-3.1Z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9Z"/></svg>Weiter mit Google</button>
     <p class="v25r7__fehler v25r7__meldung" role="alert" data-meldung data-google-meldung hidden></p>
     <div class="v25r7__oder">oder mit E-Mail und Passwort</div>
@@ -3738,7 +3734,7 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
   <div class="v25r7__innen" data-ansicht="postfach" hidden>
     <button class="v25r7__zu" type="button" data-v25r7-zu aria-label="Schließen">×</button>
     <h2 id="v25r7-t4">Schau in dein Postfach</h2>
-    <div class="v25r7__text"><p>Wir haben dir einen Link an <strong class="v25r7__mail" data-mail></strong> geschickt. Tipp ihn an, dann ist dein Konto fertig. Der Link gilt eine Stunde.</p></div>
+    <div class="v25r7__text"><p>Wir haben dir einen Link an <strong class="v25r7__mail" data-mail></strong> geschickt. Öffne ihn, dann ist dein Konto angelegt. Der Link gilt eine Stunde.</p></div>
     <p class="v25r7__klein">Keine Mail da? Schau im Spam-Ordner nach.</p>
     <p class="v25r7__klein">Hast du mit dieser Adresse schon ein Konto? Dann schicken wir keine neue Mail. Melde dich einfach an.</p>
     <p class="v25r7__klein">Mail auf einem anderen Gerät geöffnet? Dann melde dich hier danach mit E-Mail und Passwort an.</p>
@@ -3799,16 +3795,14 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
     <span class="v25r7__etikett">Dein Konto ist fertig</span>
     <figure class="v25r7__bild">
       <div class="v25r7__foto" role="img" aria-label="Yannis"><div><strong>YK</strong></div></div>
-      <figcaption>Das bin ich.</figcaption>
     </figure>
     <div class="v25r7__text">
-      <h2 id="v25r7-t2" tabindex="-1">Hallo <span data-v25r7-name>du</span>, schön, dass du da bist.</h2>
-      <p>Ich bin Yannis. Ich habe diese Seite gebaut, weil ich finde, dass KI nicht nur etwas für Technik-Fans ist. Sie kann jedem im Alltag Arbeit abnehmen, wenn man weiß, wie.</p>
-      <p>Jede Idee hier haben wir selbst ausprobiert. Wenn etwas nicht klappt oder dir eine Idee fehlt, schreib mir. Ich lese jede Nachricht selbst.</p>
-      <p class="v25r7__wichtig">Deine gemerkten Ideen sind ab jetzt auf all deinen Geräten.</p>
-      <p class="v25r7__wichtig" data-willkommen-passwortsatz></p>
+      <h2 id="v25r7-t2" tabindex="-1">Hallo <span data-v25r7-name>du</span>, schön, dass du dabei bist!</h2>
+      <p>Ich bin Yannis. Ich habe diese Seite gebaut, weil ich finde, dass KI nicht nur etwas für Tech-Nerds ist. Sie kann jedem etwas im Alltag abnehmen, wenn man weiß, was sie kann.</p>
+      <p>Alle Ideen haben wir selbst ausprobiert. Wenn etwas nicht klappt oder dir eine Idee fehlt, schreib mir. Ich lese jede Nachricht.</p>
+      <p class="v25r7__wichtig">Deine gemerkten Ideen sind ab jetzt auf all deinen Geräten. Neuigkeiten über die Seite erfährst du in „Mein Bereich“.</p>
     </div>
-    <p class="v25r7__gruss">Bis bald</p>
+    <p class="v25r7__gruss">Ich freue mich auf deine Nachricht,</p>
     <span class="v25r7__unterschrift" aria-label="Unterschrift: Yannis">Yannis</span>
     <p class="v25r7__rolle">Yannis Koschel, hat Die KI-Macherei gegründet</p>
     <div class="v25r7__aktionen">
@@ -3816,7 +3810,7 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
     </div>
   </div>
 </dialog>
-<script>window.R193_SAETZE={"anlegen":{"titel":"Deine Ideen auf all deinen Geräten","einleitung":"Leg dir ein Konto an, dann findest du deine gemerkten Ideen auch am Handy oder am Computer wieder.","google":"Weiter mit Google","trenner":"oder mit deiner E-Mail-Adresse","felder":["Dein Vorname","Deine E-Mail-Adresse","Denk dir ein Passwort aus"],"hinweisFeld":"Mindestens 8 Zeichen. Gut zu merken und sicher sind drei oder vier Wörter, die nur du so zusammenstellst.","knopf":"Konto anlegen","hinweisUnten":"Wir schicken dir einmal eine Mail, damit wir wissen, dass die Adresse dir gehört.","wechselFrage":"Schon ein Konto?","wechselKnopf":"Anmelden","spaeter":"Später","fehlerPwLeer":"Denk dir ein Passwort aus.","fehlerVorname":"Wie dürfen wir dich nennen?","fehlerMailLeer":"Gib deine E-Mail-Adresse ein.","fehlerKurz":"Dein Passwort braucht mindestens 8 Zeichen. Bisher sind es {n}.","fehlerHaeufig":"Dieses Passwort ist leicht zu erraten. Nimm lieber drei oder vier Wörter, die nur du so zusammenstellst.","fehlerLang":"Dein Passwort ist zu lang. Lass ein Wort weg, drei oder vier Wörter reichen."},"postfach":{"titel":"Schau in dein Postfach","text":"Wir haben dir einen Link an {mail} geschickt. Tipp ihn an, dann ist dein Konto fertig. Der Link gilt eine Stunde.","spam":"Keine Mail da? Schau im Spam-Ordner nach.","neutral":"Hast du mit dieser Adresse schon ein Konto? Dann schicken wir keine neue Mail. Melde dich einfach an.","anderesGeraet":"Mail auf einem anderen Gerät geöffnet? Dann melde dich hier danach mit E-Mail und Passwort an.","nochmal":"Noch einmal schicken","andereMail":"Andere E-Mail-Adresse","zurAnmeldung":"Zur Anmeldung"},"willkommen":{"titel":"Dein Konto ist fertig","satzMail":"Nächstes Mal meldest du dich mit deiner E-Mail-Adresse und deinem Passwort an.","satzGoogle":"Nächstes Mal tippst du einfach auf „Weiter mit Google“.","knopf":"Zu meinen Ideen"},"anmelden":{"titel":"Willkommen zurück","einleitung":"Melde dich an, dann hast du deine gemerkten Ideen auf all deinen Geräten.","trenner":"oder mit E-Mail und Passwort","felder":["Deine E-Mail-Adresse","Dein Passwort"],"vergessen":"Passwort vergessen?","knopf":"Anmelden","wechselFrage":"Neu hier?","wechselKnopf":"Konto anlegen","fehlerFalsch":"E-Mail-Adresse oder Passwort stimmt nicht. Prüf beides und versuch es noch einmal. Du hast dich bisher mit Google angemeldet? Dann wähl oben „Weiter mit Google“.","fehlerMailLeer":"Gib deine E-Mail-Adresse ein.","fehlerPwLeer":"Gib dein Passwort ein.","fehlerNichtBestaetigt":"Du hast deine E-Mail-Adresse noch nicht bestätigt. In deinem Postfach liegt unser Link.","knopfNochmal":"Link noch einmal schicken","fehlerViele":"Das waren viele Versuche hintereinander. Warte ein paar Minuten und versuch es dann noch einmal. Oder wähl „Passwort vergessen?“."},"vergessen":{"titel":"Passwort vergessen?","einleitung":"Gib deine E-Mail-Adresse ein. Wir schicken dir einen Link, mit dem du dir ein neues Passwort ausdenkst.","knopf":"Link schicken","zurueck":"Zurück zur Anmeldung","erfolgTitel":"Schau in dein Postfach","erfolg":"Wenn es zu {mail} ein Konto gibt, haben wir dir einen Link geschickt. Der Link gilt eine Stunde.","erfolgSpam":"Keine Mail da? Schau im Spam-Ordner nach und prüf, ob die Adresse richtig geschrieben ist."},"neu":{"titel":"Denk dir ein neues Passwort aus","fuer":"Für {mail}","feld":"Neues Passwort","hinweisFeld":"Mindestens 8 Zeichen.","knopf":"Passwort speichern","fehlerLang":"Dein Passwort ist zu lang. Lass ein Wort weg, drei oder vier Wörter reichen.","erfolg":"Dein neues Passwort ist gespeichert. Du bist angemeldet.","erfolgKnopf":"Zu meinen Ideen"},"abgelaufen":{"titel":"Dieser Link gilt nicht mehr","zurAnmeldung":"Zur Anmeldung","bestaetigen":{"text":"Der Link zum Bestätigen gilt eine Stunde und nur einmal. Wir schicken dir gern einen neuen.","zusatz":"Hast du dein Konto schon bestätigt? Dann melde dich einfach an.","knopf":"Link zum Bestätigen schicken"},"passwort":{"text":"Der Link für ein neues Passwort gilt eine Stunde und nur einmal. Wir schicken dir gern einen neuen.","knopf":"Link fürs Passwort schicken"},"text":"Links aus unseren Mails gelten eine Stunde und nur einmal. Wir schicken dir gern einen neuen.","knopf":"Neuen Link schicken","meldung":"Dieser Link gilt nicht mehr. Links aus unseren Mails gelten eine Stunde und nur einmal. Wir schicken dir gern einen neuen."},"meldungen":{"netz":"Das hat nicht geklappt. Prüf deine Internetverbindung und versuch es noch einmal.","stoerung":"Das hat nicht geklappt, weil es bei uns gerade eine Störung gibt. Versuch es später noch einmal.","mailGrenze":"Gerade können wir dir keine Mail schicken. Warte ein paar Minuten und versuch es dann noch einmal.","mailGrenzeHinweis":"Liegt schon eine Mail von uns in deinem Postfach oder im Spam-Ordner? Dann tipp auf den Link darin.","google":"Die Anmeldung mit Google wurde abgebrochen. Du kannst es noch einmal versuchen oder E-Mail und Passwort nehmen."},"konto":{"aendern":"Passwort ändern","festlegen":"Passwort festlegen","gesendet":"Wir haben dir einen Link an {mail} geschickt. Damit denkst du dir ein neues Passwort aus.","abgemeldet":"Du bist abgemeldet.","geloescht":"Dein Konto ist gelöscht. Deine gemerkten Ideen und Sammlungen bleiben in diesem Browser."}};window.R193_MIN=8;</script>
+<script>window.R193_SAETZE={"anlegen":{"titel":"Deine Ideen auf all deinen Geräten","einleitung":"Melde dich an, um deine Ideen zu speichern, Listen zu erstellen, deine Kurse fortzusetzen und Neuigkeiten zu erfahren.","google":"Weiter mit Google","trenner":"oder mit deiner E-Mail-Adresse","felder":["Dein Vorname","Deine E-Mail-Adresse","Denk dir ein Passwort aus"],"hinweisFeld":"Mindestens 8 Zeichen.","knopf":"Konto anlegen","hinweisUnten":"Wir schicken dir einmal eine Mail, damit wir wissen, dass die Adresse dir gehört.","wechselFrage":"Schon ein Konto?","wechselKnopf":"Anmelden","spaeter":"Später","fehlerPwLeer":"Denk dir ein Passwort aus.","fehlerVorname":"Wie dürfen wir dich nennen?","fehlerMailLeer":"Gib deine E-Mail-Adresse ein.","fehlerKurz":"Dein Passwort braucht mindestens 8 Zeichen. Bisher sind es {n}.","fehlerHaeufig":"Dieses Passwort ist leicht zu erraten. Nimm lieber drei oder vier Wörter, die nur du so zusammenstellst.","fehlerLang":"Dein Passwort ist zu lang. Lass ein Wort weg, drei oder vier Wörter reichen."},"postfach":{"titel":"Schau in dein Postfach","text":"Wir haben dir einen Link an {mail} geschickt. Öffne ihn, dann ist dein Konto angelegt. Der Link gilt eine Stunde.","spam":"Keine Mail da? Schau im Spam-Ordner nach.","neutral":"Hast du mit dieser Adresse schon ein Konto? Dann schicken wir keine neue Mail. Melde dich einfach an.","anderesGeraet":"Mail auf einem anderen Gerät geöffnet? Dann melde dich hier danach mit E-Mail und Passwort an.","nochmal":"Noch einmal schicken","andereMail":"Andere E-Mail-Adresse","zurAnmeldung":"Zur Anmeldung"},"willkommen":{"titel":"Dein Konto ist fertig","knopf":"Zu meinen Ideen"},"anmelden":{"titel":"Einloggen","einleitung":"Mach weiter, wo du aufgehört hast. Hast du noch kein Konto, lege ein neues an unter „Konto anlegen“.","trenner":"oder mit E-Mail und Passwort","felder":["Deine E-Mail-Adresse","Dein Passwort"],"vergessen":"Passwort vergessen?","knopf":"Anmelden","wechselFrage":"Neu hier?","wechselKnopf":"Konto anlegen","fehlerFalsch":"E-Mail-Adresse oder Passwort stimmt nicht. Prüf beides und versuch es noch einmal. Du hast dich bisher mit Google angemeldet? Dann wähl oben „Weiter mit Google“.","fehlerMailLeer":"Gib deine E-Mail-Adresse ein.","fehlerPwLeer":"Gib dein Passwort ein.","fehlerNichtBestaetigt":"Du hast deine E-Mail-Adresse noch nicht bestätigt. In deinem Postfach liegt unser Link.","knopfNochmal":"Link noch einmal schicken","fehlerViele":"Das waren viele Versuche hintereinander. Warte ein paar Minuten und versuch es dann noch einmal. Oder wähl „Passwort vergessen?“."},"vergessen":{"titel":"Passwort vergessen?","einleitung":"Gib deine E-Mail-Adresse ein. Wir schicken dir einen Link, mit dem du dir ein neues Passwort ausdenkst.","knopf":"Link schicken","zurueck":"Zurück zur Anmeldung","erfolgTitel":"Schau in dein Postfach","erfolg":"Wenn es zu {mail} ein Konto gibt, haben wir dir einen Link geschickt. Der Link gilt eine Stunde.","erfolgSpam":"Keine Mail da? Schau im Spam-Ordner nach und prüf, ob die Adresse richtig geschrieben ist."},"neu":{"titel":"Denk dir ein neues Passwort aus","fuer":"Für {mail}","feld":"Neues Passwort","hinweisFeld":"Mindestens 8 Zeichen.","knopf":"Passwort speichern","fehlerLang":"Dein Passwort ist zu lang. Lass ein Wort weg, drei oder vier Wörter reichen.","erfolg":"Dein neues Passwort ist gespeichert. Du bist angemeldet.","erfolgKnopf":"Zu meinen Ideen"},"abgelaufen":{"titel":"Dieser Link gilt nicht mehr","zurAnmeldung":"Zur Anmeldung","bestaetigen":{"text":"Der Link zum Bestätigen gilt eine Stunde und nur einmal. Wir schicken dir gern einen neuen.","zusatz":"Hast du dein Konto schon bestätigt? Dann melde dich einfach an.","knopf":"Link zum Bestätigen schicken"},"passwort":{"text":"Der Link für ein neues Passwort gilt eine Stunde und nur einmal. Wir schicken dir gern einen neuen.","knopf":"Link fürs Passwort schicken"},"text":"Links aus unseren Mails gelten eine Stunde und nur einmal. Wir schicken dir gern einen neuen.","knopf":"Neuen Link schicken","meldung":"Dieser Link gilt nicht mehr. Links aus unseren Mails gelten eine Stunde und nur einmal. Wir schicken dir gern einen neuen."},"meldungen":{"netz":"Das hat nicht geklappt. Prüf deine Internetverbindung und versuch es noch einmal.","stoerung":"Das hat nicht geklappt, weil es bei uns gerade eine Störung gibt. Versuch es später noch einmal.","mailGrenze":"Gerade können wir dir keine Mail schicken. Warte ein paar Minuten und versuch es dann noch einmal.","mailGrenzeHinweis":"Liegt schon eine Mail von uns in deinem Postfach oder im Spam-Ordner? Dann tipp auf den Link darin.","google":"Die Anmeldung mit Google wurde abgebrochen. Du kannst es noch einmal versuchen oder E-Mail und Passwort nehmen."},"konto":{"aendern":"Passwort ändern","festlegen":"Passwort festlegen","gesendet":"Wir haben dir einen Link an {mail} geschickt. Damit denkst du dir ein neues Passwort aus.","abgemeldet":"Du bist abgemeldet.","geloescht":"Dein Konto ist gelöscht. Deine gemerkten Ideen und Sammlungen bleiben in diesem Browser."}};window.R193_MIN=8;</script>
 <script data-r193-ui>
 (function () {
   var d = document.getElementById('v25r7');
@@ -3947,7 +3941,7 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
   // Runde 47 (Jim, 27.10.2026), Punkt 4: Start-Knöpfe zeigen die im Pop-up gewählte KI zuerst („ki-wahl“). Punkt 6: nur am Rechner beim ersten Klick
   // je KI auf „Mit … starten“ ein kleines Fenster am Knopf (Wortlaut Pam). „Erst anmelden“ öffnet die Anmeldung im neuen Tab, das Fenster bleibt.
   (function () {
-    var ANMELDEN = {"chatgpt": "https://chatgpt.com/auth/login", "claude": "https://claude.ai/login"}, TEXT = {"chatgpt": "Bist du bei ChatGPT angemeldet? Sonst läuft der Chat ohne Konto und wird nicht gespeichert.", "claude": "Bist du bei Claude angemeldet? Sonst geht deine Anleitung bei der Anmeldung verloren."}, NAMEN = {"chatgpt": "ChatGPT", "claude": "Claude"};
+    var ANMELDEN = {"chatgpt": "https://chatgpt.com/auth/login", "claude": "https://claude.ai/login"}, TEXT = {"chatgpt": "", "claude": ""}, NAMEN = {"chatgpt": "ChatGPT", "claude": "Claude"};
     var d = document.documentElement;
     function lies(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
     // 4. Gemerkte KI zuerst: Knopf und Claude-Link tauschen Ziel, Logo und Text
@@ -3963,10 +3957,16 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
       if (l) { tausch.forEach(function (a) { if (p.getAttribute(a) != null) l.setAttribute(a, p.getAttribute(a)); }); l.setAttribute('data-start-ki', 'claude');
         l.querySelector('.logo use').setAttribute('href', '#l-claude'); l.querySelector('span').textContent = 'Mit Claude starten'; }
     }
-    // 6. Hinweis „im Browser angemeldet“
-    function gesehen() { try { return JSON.parse(lies('ki-anmelde-hinweis') || '{}') || {}; } catch (e) { return {}; } }
-    function merke(k) { var g = gesehen(); g[k] = 1; try { localStorage.setItem('ki-anmelde-hinweis', JSON.stringify(g)); } catch (e) {} }
-    var fenster = null, quelle = null, frei = false;
+    // 6. Runde 240 (Claude, 06.11.2026): Fenster am KI-Button in zwei Schritten mit Browsername; am Handy Frage nach der Claude-App.
+    // „ki-anmelde-hinweis-2“ statt des alten Merkers, damit jeder die neue Fassung einmal sieht.
+    function gesehen() { try { return JSON.parse(lies('ki-anmelde-hinweis-2') || '{}') || {}; } catch (e) { return {}; } }
+    function merke(k) { var g = gesehen(); g[k] = 1; try { localStorage.setItem('ki-anmelde-hinweis-2', JSON.stringify(g)); } catch (e) {} }
+    var ua = navigator.userAgent || '';
+    var BROWSER = /Edg(A|iOS)?\//.test(ua) ? 'Edge' : /OPR\/|Opera/.test(ua) ? 'Opera' : /Firefox\/|FxiOS/.test(ua) ? 'Firefox'
+      : navigator.brave ? 'Brave' : /Chrome\/|CriOS/.test(ua) ? 'Chrome' : /Safari\//.test(ua) ? 'Safari' : '';
+    var WO = BROWSER ? 'in ' + BROWSER : 'in diesem Browser';
+    var STORE = /Android/i.test(ua) ? 'https://play.google.com/store/apps/details?id=com.anthropic.claude' : 'https://apps.apple.com/app/claude-by-anthropic/id6473753684';
+    var fenster = null, quelle = null, frei = false, uhr = null;
     function zu(fokus) { if (!fenster) return; fenster.remove(); fenster = null; if (fokus && quelle) try { quelle.focus({ preventScroll: true }); } catch (e) {} quelle = null; }
     function lage() {
       if (!fenster || !quelle) return;
@@ -3977,29 +3977,117 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
       fenster.classList.toggle('v47-hw--oben', oben);
       fenster.style.setProperty('--pfeil', Math.max(24, Math.min(b - 24, r.left + Math.min(r.width / 2, 60) - x)) + 'px');
     }
-    function zeige(a, k) {
+    function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+    function teil(art, href, text) {
+      return href ? '<a class="' + art + '" href="' + esc(href) + '" target="_blank" rel="noopener">' + esc(text) + '</a>'
+        : '<button type="button" class="' + art + '">' + esc(text) + '</button>';
+    }
+    // schritte: [{ titel, satz, leise, leiseHref, los, losHref }]; tun(n, 'leise'|'los') für Buttons ohne Link
+    function zeige(a, schritte, tun) {
       zu(false); quelle = a;
       fenster = document.createElement('div');
-      fenster.className = 'v47-hw'; fenster.setAttribute('role', 'dialog'); fenster.setAttribute('aria-labelledby', 'v47-hw-t');
-      fenster.innerHTML = '<p id="v47-hw-t"><span></span></p><div class="v47-hw-fuss"><a class="v47-hw-leise" target="_blank" rel="noopener">Erst anmelden</a>'
-        + '<button type="button" class="v47-hw-los">Ja, starten</button></div>';
-      fenster.querySelector('span').textContent = TEXT[k];
-      fenster.querySelector('a').href = ANMELDEN[k];
-      fenster.querySelector('.v47-hw-los').addEventListener('click', function () { merke(k); var q = quelle; zu(false); frei = true; try { q.click(); } finally { frei = false; } });
+      fenster.className = 'v47-hw r240-hw'; fenster.setAttribute('role', 'dialog'); fenster.setAttribute('aria-labelledby', 'r240-t1');
+      fenster.innerHTML = '<div class="r240-rahmen"><div class="r240-bahn">' + schritte.map(function (s, i) {
+        return '<div class="r240-schritt"><p class="r240-t" id="r240-t' + (i + 1) + '">' + esc(s.titel) + '</p>'
+          + (s.satz ? '<p class="r240-satz">' + esc(s.satz) + '</p>' : '')
+          + '<div class="v47-hw-fuss">' + teil('v47-hw-leise', s.leiseHref, s.leise) + teil('v47-hw-los', s.losHref, s.los) + '</div></div>';
+      }).join('') + '</div></div>';
+      var teile = fenster.querySelectorAll('.r240-schritt');
+      teile.forEach(function (t, i) {
+        t.querySelector('.v47-hw-leise').addEventListener('click', function (e) { if (!schritte[i].leiseHref) tun(i + 1, 'leise'); });
+        t.querySelector('.v47-hw-los').addEventListener('click', function (e) { if (!schritte[i].losHref) tun(i + 1, 'los'); else setTimeout(function () { zu(false); }, 0); });
+      });
       fenster.addEventListener('keydown', function (e) { if (e.key === 'Escape') { e.preventDefault(); zu(true); } });
+      fenster.querySelector('.r240-rahmen').addEventListener('transitionend', lage);
       document.body.appendChild(fenster);
-      lage();
-      fenster.querySelector('.v47-hw-los').focus({ preventScroll: true });
+      gehe(1);
     }
+    function gehe(n) {
+      if (!fenster) return;
+      var teile = fenster.querySelectorAll('.r240-schritt'), t = teile[n - 1];
+      teile.forEach(function (x, i) { var an = i === n - 1; x.inert = !an; x.setAttribute('aria-hidden', an ? 'false' : 'true'); });
+      fenster.setAttribute('data-schritt', n); fenster.setAttribute('aria-labelledby', 'r240-t' + n);
+      fenster.querySelector('.r240-rahmen').style.height = t.offsetHeight + 'px';
+      lage();
+      t.querySelector('.v47-hw-los').focus({ preventScroll: true });
+    }
+    function starte(a) { zu(false); fuellen(a); frei = true; try { a.click(); } finally { frei = false; } }
+    function rechner(a, k) {
+      var s = [{ titel: 'Bist du bei ' + NAMEN[k] + ' ' + WO + ' angemeldet?', satz: TEXT[k], leise: 'Erst anmelden', leiseHref: ANMELDEN[k], los: 'Ja, angemeldet' }];
+      if (k === 'claude') s.push({ titel: 'Gleich zeigt Claude einen ❗️ Hinweis.', satz: 'Das ist bei unseren Anleitungen normal. Wenn du magst, lies sie vor dem Abschicken kurz durch.', leise: 'Zurück', los: 'Verstanden, starten' });
+      zeige(a, s, function (n, was) {
+        if (n === 1 && k === 'claude') return gehe(2);
+        if (was === 'leise') return gehe(1);
+        merke(k); starte(a);
+      });
+    }
+    function karte(a) {
+      var name = (a.querySelector('span') || {}).textContent || 'Mit Claude starten';
+      return { titel: 'Dafür brauchst du die Claude-App.', satz: 'Danach hier noch einmal auf „' + name.trim() + '“ tippen.', leise: 'Schließen', los: 'Claude-App laden', losHref: STORE };
+    }
+    function wache(a) {
+      clearTimeout(uhr); var weg = false;
+      function fort() { weg = true; }
+      function sicht() { if (document.hidden) weg = true; }
+      window.addEventListener('blur', fort); document.addEventListener('visibilitychange', sicht);
+      uhr = setTimeout(function () {
+        window.removeEventListener('blur', fort); document.removeEventListener('visibilitychange', sicht);
+        if (!weg && !document.hidden) zeige(a, [karte(a)], function () { zu(true); });
+      }, 2500);
+    }
+    function handy(a) {
+      zeige(a, [{ titel: 'Hast du die Claude-App?', leise: 'Nein', los: 'Ja' }, karte(a)], function (n, was) {
+        if (n === 2) return zu(true);
+        if (was === 'leise') return gehe(2);
+        try { localStorage.setItem('claude-app', 'ja'); } catch (e) {}
+        starte(a); wache(a);
+      });
+    }
+    // Runde 240b: Auf der Spielwiese (claude.ai) fängt die Umgebung Link-Klicks vor uns ab und öffnet sie trotzdem.
+    // Deshalb trägt der Button vom Drücken bis kurz nach dem Klick kein Ziel, wenn gleich das Fenster kommt.
+    var LEER = '#r240-start';
+    function braucht(a) {
+      var k = a.getAttribute('data-start-ki') === 'claude' ? 'claude' : 'chatgpt', g = d.getAttribute('data-geraet');
+      if (g === 'handy') return k === 'claude' && lies('claude-app') !== 'ja';
+      return g === 'computer' && !gesehen()[k];
+    }
+    function leeren(a) {
+      if (a.hasAttribute('data-r240-ziel')) return;
+      a.setAttribute('data-r240-ziel', a.getAttribute('href') || ''); a.setAttribute('data-r240-wo', a.getAttribute('target') || '');
+      a.setAttribute('href', LEER); a.removeAttribute('target');
+    }
+    function fuellen(a) {
+      if (!a || !a.hasAttribute('data-r240-ziel')) return;
+      if (a.getAttribute('href') === LEER) {
+        a.setAttribute('href', a.getAttribute('data-r240-ziel'));
+        if (a.getAttribute('data-r240-wo')) a.setAttribute('target', a.getAttribute('data-r240-wo'));
+      }
+      a.removeAttribute('data-r240-ziel'); a.removeAttribute('data-r240-wo');
+    }
+    function alleFuellen() { setTimeout(function () { document.querySelectorAll('a[data-r240-ziel]').forEach(fuellen); }, 0); }
+    function vorher(e) {
+      if (frei) return;
+      var a = e.target.closest && e.target.closest('a[data-start]');
+      if (a && braucht(a)) leeren(a);
+    }
+    window.addEventListener('pointerdown', function (e) { if (e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey) vorher(e); }, true);
+    window.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.metaKey && !e.ctrlKey && !e.shiftKey) vorher(e); }, true);
+    ['pointerup', 'pointercancel', 'keyup', 'blur'].forEach(function (t) { window.addEventListener(t, alleFuellen, true); });
     window.addEventListener('click', function (e) {
       if (frei) return;
       var a = e.target.closest && e.target.closest('a[data-start]');
       if (!a) { if (fenster && !fenster.contains(e.target)) zu(false); return; }
-      if (d.getAttribute('data-geraet') !== 'computer' || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
-      var k = a.getAttribute('data-start-ki') === 'claude' ? 'claude' : 'chatgpt';
-      if (!TEXT[k] || gesehen()[k]) return;
+      alleFuellen();
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      var k = a.getAttribute('data-start-ki') === 'claude' ? 'claude' : 'chatgpt', g = d.getAttribute('data-geraet');
+      if (g === 'handy') {
+        if (k !== 'claude') return;
+        if (lies('claude-app') === 'ja') { wache(a); return; }
+        e.preventDefault(); e.stopImmediatePropagation(); handy(a); return;
+      }
+      if (g !== 'computer' || gesehen()[k]) return;
       e.preventDefault(); e.stopImmediatePropagation();
-      zeige(a, k);
+      rechner(a, k);
     }, true);
     addEventListener('resize', lage); addEventListener('scroll', lage, { passive: true });
   })();
@@ -4344,7 +4432,7 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
   }
 })();
 </script>
-<div class="hh-sheet" id="hh-sheet" hidden><div class="hh-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="hh-titel" tabindex="-1"><span class="hh-griff" aria-hidden="true"></span><button type="button" class="hh-x" aria-label="Schließen"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button><h2 id="hh-titel">Wobei brauchst du Hilfe?</h2><div class="hh-wege"><div class="hh-weg"><button type="button" class="hh-wegbtn" data-weg="1" aria-expanded="false" aria-controls="hh-p1"><span class="hh-ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></span><span class="hh-txt"><b>Etwas klappt nicht</b></span><span class="hh-chev"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></span></button><div class="hh-pn" id="hh-p1" hidden><details class="hh-prob"><summary><span>Die KI öffnet sich nicht. Was kann ich tun?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Am Computer fragt dich beim ersten Klick zuerst ein kleines Fenster „Bist du angemeldet?“. Drücke dort „Ja, starten“, erst danach öffnet sich die KI. Bist du noch nicht angemeldet, drücke „Erst anmelden“.</p><p>Die Seite deines KI-Anbieters öffnet sich in einem neuen Tab. Melde dich dort an, komme wieder auf diese Seite zurück und klicke erneut den Start-Knopf.</p><div data-hh-nur="claude"><p>Am Handy öffnet der Knopf die Claude-App. Installiere zuerst die App auf deinem Gerät.</p></div><p class="r177-apps" data-nur-geraet="handy"><a class="r177-app" id="r177-a-chatgpt" data-store="chatgpt" href="https://apps.apple.com/app/chatgpt/id6448311069" target="_blank" rel="noopener">ChatGPT-App</a> · <a class="r177-app" id="r177-a-claude" data-store="claude" href="https://apps.apple.com/app/claude-by-anthropic/id6473753684" target="_blank" rel="noopener">Claude-App</a></p><div data-hh-nur="claude"></div></div></details><details class="hh-prob"><summary><span>Die Anleitung steht nicht im Eingabefeld oder wurde nicht abgeschickt. Was nun?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Steht die Anleitung im Eingabefeld, aber nichts passiert, tippe auf den Pfeil zum Senden.</p><p>Ist das Feld leer, etwa nach dem Anmelden, liegt die Anleitung in deiner Zwischenablage deines Gerätes.</p><p>Am Handy tippst du ins Feld, hältst gedrückt und wählst „Einfügen“, am Computer klickst du mit der rechten Maustaste ins Feld und wählst „Einfügen“.</p><p>Klappt das nicht, drücke bei uns noch einmal auf „Anleitung kopieren“.</p></div></details><details class="hh-prob"><summary><span>Die Antwort bricht ab, es passiert nichts mehr oder du erreichst eine Grenze.</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Bricht die Antwort mitten im Satz ab oder die KI tut nichts mehr, schreib „Bitte mach weiter“. Das kann in einzelnen Fällen leider vorkommen und liegt meist an den kleinen KI Modellen in den kostenlosen Versionen.</p><div data-hh-nur="chatgpt"><p>Kostenlos kannst du nur begrenzt Fotos und Dateien hochladen, in Stoßzeiten auch weniger. Auch Bilder erstellen ist kostenlos begrenzt.</p><p>Kommt ein Hinweis, dass du die Grenze erreicht hast, warte eine Weile und versuch es später noch einmal.</p><p>Mit Abo gelten höhere Grenzen.</p></div><div data-hh-nur="claude"><p>Kostenlos darfst du in einem Zeitfenster von einigen Stunden nur begrenzt viel nutzen.</p><p>Ist es aufgebraucht, warte etwas, bis es sich zurücksetzt.</p></div></div></details></div></div><div class="hh-weg"><button type="button" class="hh-wegbtn" data-weg="2" aria-expanded="false" aria-controls="hh-p2"><span class="hh-ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span><span class="hh-txt"><b>Was passiert, wenn ich auf den Start-Knopf drücke?</b></span><span class="hh-chev"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></span></button><div class="hh-pn" id="hh-p2" hidden><details class="hh-prob"><summary><span>Was passiert hier überhaupt?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Du drückst auf den Knopf und wirst zu den Chatfenstern von ChatGPT oder Claude weitergeleitet.</p><p>Unsere fertige Anleitung - nicht mehr als eine Textanweisung an die KI - steht dann schon im Eingabefeld. Sie ist so gestaltet, dass sie dich aktiv Dinge fragt und einem vorgegebenen Ablauf folgt.</p><p>Du musst den Text nur noch absenden.</p></div></details><details class="hh-prob"><summary><span>Brauche ich ein Konto? Kostet das etwas?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><div data-hh-nur="chatgpt"><p>Am Handy im Browser geht ChatGPT auch ohne Konto. Dann wird dein Chat aber nicht gespeichert. Mit einem kostenlosen Konto bleibt er erhalten. Am Computer meldest du dich dafür an, unser Knopf führt dich dort zuerst zur Anmeldung.</p><p>Normale Text-Chats sind kostenlos. Für Fotos, Dateien, Bilder und einige Zusatzfunktionen gibt es Grenzen.</p><p>Im kostenlosen Tarif kann Werbung erscheinen.</p></div><div data-hh-nur="claude"><p>Für Claude brauchst du ein Konto.</p><p>Kostenlos hast du eine Nutzungsgrenze, die sich nach einigen Stunden wieder zurücksetzt.</p><p>Im kostenlosen Tarif erscheint keine Werbung.</p></div></div></details></div></div><div class="hh-weg"><button type="button" class="hh-wegbtn" data-weg="3" aria-expanded="false" aria-controls="hh-p3"><span class="hh-ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><span class="hh-txt"><b>Die KI hat mir geantwortet - was jetzt?</b></span><span class="hh-chev"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></span></button><div class="hh-pn" id="hh-p3" hidden><details class="hh-prob"><summary><span>Was mache ich mit der Antwort?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Lies die Antwort in Ruhe und frag nach, wenn etwas unklar ist, etwa „kürzer“ oder „erklär mir den zweiten Punkt genauer“.</p><p>Eine KI kann sich irren, prüfe deshalb wichtige Angaben wie Fristen, Beträge und Adressen bei der Quelle, die sie nennt.</p><p>Bietet dir die KI eine Datei an, etwa ein Dokument, kannst du sie herunterladen. Das geht auch kostenlos. Wie oft, sagen die Anbieter nicht genau.</p><p>Text, den du brauchst, kannst du markieren, kopieren und in eine Mail oder ein Dokument einfügen.</p></div></details><details class="hh-prob"><summary><span>Die KI fragt etwas, wo ich mir unsicher bin. Was schreibe ich?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></summary><div class="hh-ant"><p>Schreib einfach „Das weiß ich nicht, wo finde ich das?“, dann sagt dir die KI, wo du nachsehen kannst.</p><p>Oft kannst du eine Antwort antippen oder selbst schreiben, beides ist richtig.</p><div data-hh-nur="chatgpt"><p>Du kannst auch ein Foto oder eine Datei anhängen, tippe dafür auf das Plus im Eingabefeld.</p><p>Kostenlos geht das nur begrenzt.</p></div><div data-hh-nur="claude"><p>Du kannst auch ein Foto oder eine Datei anhängen, tippe dafür auf das Plus im Eingabefeld.</p><p>Anhänge zählen zu deiner Nutzung, große Dateien brauchen mehr davon.</p></div></div></details></div></div></div></div></div>
+<div class="hh-sheet" id="hh-sheet" hidden><div class="hh-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="hh-titel" tabindex="-1"><span class="hh-griff" aria-hidden="true"></span><button type="button" class="hh-x" aria-label="Schließen"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button><div class="r238-start"><h2 id="hh-titel">Wobei brauchst du Hilfe?</h2><div class="r238-themen"><button type="button" class="r238-thema" data-r238-thema="1" aria-controls="r238-s1"><span class="r238-ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span><span class="r238-txt"><b>Bevor du startest</b><small>Was passiert beim <span class="r238-nb">Start-Button</span>?</small></span><span class="r238-chev"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></span></button><button type="button" class="r238-thema" data-r238-thema="2" aria-controls="r238-s2"><span class="r238-ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></span><span class="r238-txt"><b>Etwas klappt nicht</b><small>Öffnet nicht, Text fehlt, bricht ab</small></span><span class="r238-chev"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></span></button><button type="button" class="r238-thema" data-r238-thema="3" aria-controls="r238-s3"><span class="r238-ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><span class="r238-txt"><b>Nach der Antwort</b><small>Antwort nutzen, Rückfragen&nbsp;der&nbsp;KI</small></span><span class="r238-chev"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg></span></button></div></div><div class="r238-seite" id="r238-s1" hidden><button type="button" class="r238-zurueck"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg>Zurück</button><h2 class="r238-titel" tabindex="-1"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>Bevor du startest</h2><div class="r238-karte"><details class="hh-prob" open data-r238-auf><summary><span>Was passiert, wenn ich auf den <span class="r238-nb">Start-Button</span> drücke?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary><div class="hh-ant"><p>Du drückst auf den Start-Button und wirst zu den Chatfenstern von ChatGPT oder Claude weitergeleitet.</p><p>Unsere fertige Anleitung (nicht mehr als eine Textanweisung an die KI) steht dann schon im Eingabefeld. Sie ist so gestaltet, dass dich die KI aktiv Dinge fragt und einem vorgegebenen Ablauf folgt.</p><p>Du musst die Anleitung nur absenden.</p></div></details><details class="hh-prob" data-nur-geraet="computer"><summary><span>Worauf muss ich am Rechner achten?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary><div class="hh-ant"><p>Angemeldet sein musst du hier in diesem Browser. Die App oder ein anderer Browser zählt nicht.</p><p>Claude zeigt einen ❗️ Hinweis. Der ist bei unseren Anleitungen normal. Wenn du magst, lies die Anleitung vor dem Abschicken kurz durch.</p></div></details><details class="hh-prob" data-nur-geraet="handy"><summary><span>Worauf muss ich am Handy achten?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary><div class="hh-ant"><p>Claude geht am Handy nur mit der App.</p><a class="r240-laden" href="https://apps.apple.com/app/claude-by-anthropic/id6473753684" target="_blank" rel="noopener">Claude-App laden</a><p>Keine ChatGPT-App? Dann öffnet sich ChatGPT im Browser. Mit der App klappt es aber zuverlässiger, deshalb empfehlen wir sie.</p></div></details><details class="hh-prob"><summary><span>Kostet mich das etwas?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary><div class="hh-ant"><p>Diese Seite kostet dich nichts.</p><p>Bei deinem KI-Anbieter zahlst du nur, wenn du dich für ein kostenpflichtiges Abo entschieden hast. Es geht auch ohne.</p><p>Kostenlos gibt es jedoch Grenzen, etwa bei der Anzahl an hochgeladenen Fotos und Dateien. Ist eine Grenze überschritten, musst du ein paar Stunden warten, bevor es kostenlos weitergeht. Bei ChatGPT kann Werbung erscheinen.</p><p>Steht bei einer Idee „Mit Abo“, klappt sie mit einem bezahlten Abo beim Anbieter besser.</p></div></details></div></div><div class="r238-seite" id="r238-s2" hidden><button type="button" class="r238-zurueck"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg>Zurück</button><h2 class="r238-titel" tabindex="-1"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg>Etwas klappt nicht</h2><div class="r238-karte"><details class="hh-prob"><summary><span>Die KI öffnet sich nicht. Was kann ich tun?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary><div class="hh-ant"><p>Am Computer fragt dich beim ersten Klick zuerst ein kleines Fenster „Bist du angemeldet?“. Drücke dort „Ja, starten“, erst danach öffnet sich die KI. Bist du noch nicht angemeldet, drücke „Erst anmelden“.</p><p>Die Seite deines KI-Anbieters öffnet sich in einem neuen Tab. Melde dich dort an, komme wieder auf diese Seite zurück und drücke erneut den KI-Button.</p><div data-hh-nur="claude"><p>Am Handy öffnet der KI-Button die Claude-App. Installiere zuerst die App auf deinem Gerät und logge dich ein.</p></div><p class="r177-apps" data-nur-geraet="handy"><a class="r177-app" id="r177-a-chatgpt" data-store="chatgpt" href="https://apps.apple.com/app/chatgpt/id6448311069" target="_blank" rel="noopener">ChatGPT-App</a> · <a class="r177-app" id="r177-a-claude" data-store="claude" href="https://apps.apple.com/app/claude-by-anthropic/id6473753684" target="_blank" rel="noopener">Claude-App</a></p><div data-hh-nur="claude"></div></div></details><details class="hh-prob"><summary><span>Die Anleitung steht nicht im Eingabefeld oder es passiert nichts. Was nun?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary><div class="hh-ant"><p>Siehst du unsere Anleitung (ein langer Text) im Eingabefeld, aber nichts passiert, tippe auf den Pfeil zum Senden.</p><p>Ist das Feld leer, etwa nach dem Anmelden, liegt die Anleitung in deiner Zwischenablage deines Gerätes.</p><p>Am Handy tippst du ins Feld, hältst gedrückt und wählst „Einfügen“, am Computer klickst du mit der rechten Maustaste ins Feld und wählst „Einfügen“.</p><p>Klappt das nicht, drücke bei uns noch einmal auf „Anleitung kopieren“.</p></div></details><details class="hh-prob"><summary><span>Die Antwort bricht ab, es passiert nichts mehr oder du erreichst eine Grenze.</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary><div class="hh-ant"><p>Bricht die Antwort mitten im Satz ab oder die KI tut nichts mehr, schreib „Bitte mach weiter“. Das kann in einzelnen Fällen leider vorkommen und liegt meist an den kleinen KI Modellen in den kostenlosen Versionen.</p><div data-hh-nur="chatgpt"><p>Kostenlos kannst du nur begrenzt Fotos und Dateien hochladen, in Stoßzeiten auch weniger. Auch Bilder erstellen ist kostenlos begrenzt.</p><p>Kommt ein Hinweis, dass du die Grenze erreicht hast, warte eine Weile und versuch es später noch einmal.</p><p>Mit Abo gelten höhere Grenzen.</p></div><div data-hh-nur="claude"><p>Kostenlos darfst du in einem Zeitfenster von einigen Stunden nur begrenzt viel nutzen.</p><p>Ist die Grenze erreicht, musst du warten, bis es weitergeht. Meistens ist eine genaue Uhrzeit oder Dauer angegeben.</p></div></div></details></div></div><div class="r238-seite" id="r238-s3" hidden><button type="button" class="r238-zurueck"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg>Zurück</button><h2 class="r238-titel" tabindex="-1"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Nach der Antwort</h2><div class="r238-karte"><details class="hh-prob"><summary><span>Was mache ich mit der Antwort?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary><div class="hh-ant"><p>Lies die Antwort in Ruhe und frag nach, wenn etwas unklar ist, etwa „erklär mir den zweiten Punkt genauer“. "Wo finde ich das"</p><p>Eine KI kann sich irren, prüfe deshalb wichtige Angaben wie Fristen, Beträge und Adressen bei der Quelle, die sie nennt.</p><p>Bietet dir die KI eine Datei an, etwa ein Dokument, kannst du sie herunterladen. Das geht auch kostenlos. Wie oft, sagen die Anbieter leider nicht genau.</p><p>Text, den du brauchst, kannst du markieren, kopieren und in eine Mail oder ein Dokument einfügen.</p></div></details><details class="hh-prob"><summary><span>Die KI fragt etwas, wo ich mir unsicher bin. Was schreibe ich?</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary><div class="hh-ant"><p>Schreib einfach „Das weiß ich nicht, wo finde ich das?“, dann sagt dir die KI, wo du nachsehen kannst.</p><p>Oft kannst du eine Antwort antippen oder selbst schreiben, beides ist richtig.</p><div data-hh-nur="chatgpt"><p>Du kannst auch ein Foto oder eine Datei anhängen, tippe dafür auf das Plus im Eingabefeld.</p><p>Kostenlos gibt es dafür Grenzen.</p></div><div data-hh-nur="claude"><p>Du kannst auch ein Foto oder eine Datei anhängen, tippe dafür auf das Plus im Eingabefeld.</p><p>Anhänge zählen zu deiner Nutzung, große Dateien brauchen mehr davon.</p></div></div></details></div></div></div></div>
 <script id="hh-js">
 (function(){
   var sheet=document.getElementById('hh-sheet'); if(!sheet) return;
@@ -4726,7 +4814,7 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
 
 <!-- Runde 230: Burger-Menü (Variante A) -->
 <div class="bm-scrim" id="bm-scrim" aria-hidden="true"></div>
-<div class="bm-panel" id="bm-menue" role="dialog" aria-modal="true" aria-label="Menü"><nav class="bm-liste" id="bm-liste" aria-label="Menü"><a class="bm-row" href="/ideen"><span class="bm-ic" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg></span><span class="bm-tx">Alle Ideen</span><span class="bm-pf" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a><a class="bm-row" href="/#wissen"><span class="bm-ic" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></span><span class="bm-tx">Wissen</span><span class="bm-pf" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a><a class="bm-row" href="/mein-bereich" data-nur-abgemeldet data-ki-anmelden><span class="bm-ic" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></span><span class="bm-tx">Anmelden</span><span class="bm-pf" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a><a class="bm-row" href="/mein-bereich" data-nur-angemeldet hidden><span class="bm-ic" aria-hidden="true"><span class="bm-ich" data-bm-ich></span></span><span class="bm-tx">Mein Bereich</span><span class="bm-pf" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a><div class="bm-abmelden" data-nur-angemeldet hidden><button class="bm-leise" type="button" data-ki-abmelden><span class="bm-ic" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg></span><span>Abmelden</span></button></div></nav></div>
+<div class="bm-panel" id="bm-menue" role="dialog" aria-modal="true" aria-label="Menü"><nav class="bm-liste" id="bm-liste" aria-label="Menü"><a class="bm-row" href="/ideen"><span class="bm-ic" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg></span><span class="bm-tx">Alle Ideen</span><span class="bm-pf" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a><a class="bm-row" href="/wissen"><span class="bm-ic" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></span><span class="bm-tx">Wissen</span><span class="bm-pf" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a><a class="bm-row" href="/mein-bereich" data-nur-abgemeldet data-ki-anmelden><span class="bm-ic" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></span><span class="bm-tx">Anmelden</span><span class="bm-pf" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a><a class="bm-row" href="/mein-bereich" data-nur-angemeldet hidden><span class="bm-ic" aria-hidden="true"><span class="bm-ich" data-bm-ich></span></span><span class="bm-tx">Mein Bereich</span><span class="bm-pf" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a><div class="bm-abmelden" data-nur-angemeldet hidden><button class="bm-leise" type="button" data-ki-abmelden><span class="bm-ic" aria-hidden="true"><svg class="bm-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg></span><span>Abmelden</span></button></div></nav></div>
 <script id="r230-skript">
 /* Runde 230 (Jim, 04.11.2026): Burger-Menü Variante A. Zeiten/Kurven aus Pams Prototyp (CONFIG). Anmelden/Abmelden nur über Ryans R228-Haken. */
 (function () {
@@ -4895,5 +4983,432 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
   buchstabe();
 })();
 </script>
+<style id="r236">
+/* Tags Free / Mit Abo: Ecken wie in Figma, sonst wie bisher (Yannis 05.11.2026) */
+.mcard .tag { border-radius: 6px !important; }
+</style>
+<style id="r239-herz">
+  .herz-ablage.r239-raus { transform: translateX(calc(100% + 48px)) !important; opacity: 0; pointer-events: none;
+    transition: transform .4s cubic-bezier(.5, 0, .8, .3), opacity .4s ease-in !important; }
+</style>
+<style id="r233">
+:root { --s-ink: #23201c; --s-ink-soft: #4a443c; --s-muted: #675f56; --s-card: #fbf8f2; --s-aus: #e3dcd1; --s-clay-in: #e9e2d7;
+  --s-line: rgba(60,45,30,.13); --s-line-strong: rgba(60,45,30,.26); --s-control: #857b70; --s-focus: #3b5a9a; --s-hell: #fbf7f0;
+  --s-gedrueckt: inset 0 1px 1px rgba(96,72,46,.18), inset 0 2px 4px rgba(96,72,46,.3); }
+
+/* ——— Grundform aller Knöpfe ——— */
+.button-primary, .r187-k-knopf, .r187-senden, .r187-zu-knopf, .ki-btn--dunkel, .v47-dunkel, .r80-ja, .v47-naechste, .v25r7__knopf:not(.v25r7__zweit), .r64-los, .hero .hero-actions .button-primary, #k-done, #k-next, .moment-cta, .gk-btn, .button-quiet, .clay-btn, .soon-sheet__links a, .ki-btn:not(.ki-btn--dunkel), .ki-sugg button, .ki-bubble__zu, .v25r7__google, .v25r7__knopf.v25r7__zweit, .site-nav .nav-mein, .r64-rk-k, .wi-fehlt__k {
+  align-items: center !important; justify-content: center !important; gap: 12px !important;
+  box-sizing: border-box !important; min-height: 52px !important; height: auto !important; padding: 0 24px !important; border-radius: 999px !important;
+  font-family: Figtree, system-ui, sans-serif !important; font-size: 16px !important; font-weight: 600 !important; line-height: 20px !important;
+  letter-spacing: 0 !important; text-decoration: none !important; text-shadow: none !important; transform: none !important;
+  transition: background .12s ease, box-shadow .12s ease, border-color .12s ease !important; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.site-nav .nav-mein, .ki-sugg button, .ki-btn:not(.ki-btn--dunkel), .ki-bubble__zu, .ld__zu, .r187-k-knopf, .r187-zu-knopf, .clay-btn.ld__zu { min-height: 44px !important; padding: 0 20px !important; gap: 10px !important; }
+.button-primary svg, .r187-k-knopf svg, .r187-senden svg, .r187-zu-knopf svg, .ki-btn--dunkel svg, .v47-dunkel svg, .r80-ja svg, .v47-naechste svg, .v25r7__knopf:not(.v25r7__zweit) svg, .r64-los svg, .hero .hero-actions .button-primary svg, #k-done svg, #k-next svg, .moment-cta svg, .gk-btn svg, .button-quiet svg, .clay-btn svg, .soon-sheet__links a svg, .ki-btn:not(.ki-btn--dunkel) svg, .ki-sugg button svg, .ki-bubble__zu svg, .v25r7__google svg, .v25r7__knopf.v25r7__zweit svg, .site-nav .nav-mein svg, .r64-rk-k svg, .wi-fehlt__k svg { flex: none; }
+
+/* CTA */
+.button-primary, .r187-k-knopf, .r187-senden, .r187-zu-knopf, .ki-btn--dunkel, .v47-dunkel, .r80-ja, .v47-naechste, .v25r7__knopf:not(.v25r7__zweit), .r64-los, .hero .hero-actions .button-primary { background: linear-gradient(178.35deg, #3a342d, #23201c) !important; color: var(--s-hell) !important; border: 0 !important;
+  box-shadow: 0 1px 2px rgba(96,72,46,.3), inset 0 1px 0 rgba(255,255,255,.14) !important; }
+@media (hover: hover) { .button-primary:hover:not(:disabled):not([aria-disabled="true"]), .r187-k-knopf:hover:not(:disabled):not([aria-disabled="true"]), .r187-senden:hover:not(:disabled):not([aria-disabled="true"]), .r187-zu-knopf:hover:not(:disabled):not([aria-disabled="true"]), .ki-btn--dunkel:hover:not(:disabled):not([aria-disabled="true"]), .v47-dunkel:hover:not(:disabled):not([aria-disabled="true"]), .r80-ja:hover:not(:disabled):not([aria-disabled="true"]), .v47-naechste:hover:not(:disabled):not([aria-disabled="true"]), .v25r7__knopf:not(.v25r7__zweit):hover:not(:disabled):not([aria-disabled="true"]), .r64-los:hover:not(:disabled):not([aria-disabled="true"]), .hero .hero-actions .button-primary:hover:not(:disabled):not([aria-disabled="true"]) { background: linear-gradient(178.35deg, #4a433b, #2f2a24) !important;
+  box-shadow: 0 2px 6px -1px rgba(96,72,46,.4), inset 0 1px 0 rgba(255,255,255,.14) !important; } }
+.button-primary:active:not(:disabled):not([aria-disabled="true"]), .r187-k-knopf:active:not(:disabled):not([aria-disabled="true"]), .r187-senden:active:not(:disabled):not([aria-disabled="true"]), .r187-zu-knopf:active:not(:disabled):not([aria-disabled="true"]), .ki-btn--dunkel:active:not(:disabled):not([aria-disabled="true"]), .v47-dunkel:active:not(:disabled):not([aria-disabled="true"]), .r80-ja:active:not(:disabled):not([aria-disabled="true"]), .v47-naechste:active:not(:disabled):not([aria-disabled="true"]), .v25r7__knopf:not(.v25r7__zweit):active:not(:disabled):not([aria-disabled="true"]), .r64-los:active:not(:disabled):not([aria-disabled="true"]), .hero .hero-actions .button-primary:active:not(:disabled):not([aria-disabled="true"]) { background: linear-gradient(178.35deg, #151310, #25211c) !important;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.4), inset 0 2px 5px rgba(0,0,0,.6) !important; }
+
+/* CTA auf Dunkel */
+#k-done, #k-next, .moment-cta, .gk-btn { background: linear-gradient(180deg, #fff, #f4f0ea) !important; color: #1f3a4f !important; border: 0 !important;
+  box-shadow: 0 1px 1px rgba(96,72,46,.3), inset 0 1px 0 rgba(255,255,255,.14) !important; }
+@media (hover: hover) { #k-done:hover:not(:disabled):not([aria-disabled="true"]), #k-next:hover:not(:disabled):not([aria-disabled="true"]), .moment-cta:hover:not(:disabled):not([aria-disabled="true"]), .gk-btn:hover:not(:disabled):not([aria-disabled="true"]) { background: #fff !important; } }
+#k-done:active:not(:disabled):not([aria-disabled="true"]), #k-next:active:not(:disabled):not([aria-disabled="true"]), .moment-cta:active:not(:disabled):not([aria-disabled="true"]), .gk-btn:active:not(:disabled):not([aria-disabled="true"]) { background: linear-gradient(180deg, #ebe6de, #f6f3ee) !important; box-shadow: var(--s-gedrueckt) !important; }
+#k-done:focus-visible, #k-next:focus-visible, .moment-cta:focus-visible, .gk-btn:focus-visible { outline: 3px solid #fff !important; outline-offset: 3px !important; }
+.gk-btn::after { background: none !important; box-shadow: none !important; }
+
+/* Sekundär */
+.button-quiet, .clay-btn, .soon-sheet__links a, .ki-btn:not(.ki-btn--dunkel), .ki-sugg button, .ki-bubble__zu, .v25r7__google, .v25r7__knopf.v25r7__zweit, .site-nav .nav-mein, .r64-rk-k, .wi-fehlt__k { background: var(--s-card) !important; color: var(--s-ink) !important; border: 1px solid var(--s-line-strong) !important;
+  box-shadow: 0 1px 2px rgba(96,72,46,.16), inset 0 1px 0 rgba(255,255,255,.8) !important; }
+@media (hover: hover) { .button-quiet:hover:not(:disabled):not([aria-disabled="true"]), .clay-btn:hover:not(:disabled):not([aria-disabled="true"]), .soon-sheet__links a:hover:not(:disabled):not([aria-disabled="true"]), .ki-btn:not(.ki-btn--dunkel):hover:not(:disabled):not([aria-disabled="true"]), .ki-sugg button:hover:not(:disabled):not([aria-disabled="true"]), .ki-bubble__zu:hover:not(:disabled):not([aria-disabled="true"]), .v25r7__google:hover:not(:disabled):not([aria-disabled="true"]), .v25r7__knopf.v25r7__zweit:hover:not(:disabled):not([aria-disabled="true"]), .site-nav .nav-mein:hover:not(:disabled):not([aria-disabled="true"]), .r64-rk-k:hover:not(:disabled):not([aria-disabled="true"]), .wi-fehlt__k:hover:not(:disabled):not([aria-disabled="true"]) { background: #fff !important; box-shadow: 0 2px 6px -1px rgba(96,72,46,.24) !important; } }
+.button-quiet:active:not(:disabled):not([aria-disabled="true"]), .clay-btn:active:not(:disabled):not([aria-disabled="true"]), .soon-sheet__links a:active:not(:disabled):not([aria-disabled="true"]), .ki-btn:not(.ki-btn--dunkel):active:not(:disabled):not([aria-disabled="true"]), .ki-sugg button:active:not(:disabled):not([aria-disabled="true"]), .ki-bubble__zu:active:not(:disabled):not([aria-disabled="true"]), .v25r7__google:active:not(:disabled):not([aria-disabled="true"]), .v25r7__knopf.v25r7__zweit:active:not(:disabled):not([aria-disabled="true"]), .site-nav .nav-mein:active:not(:disabled):not([aria-disabled="true"]), .r64-rk-k:active:not(:disabled):not([aria-disabled="true"]), .wi-fehlt__k:active:not(:disabled):not([aria-disabled="true"]) { background: var(--s-clay-in) !important; box-shadow: var(--s-gedrueckt) !important; }
+
+/* Icon-Button */
+.bm-burger, .shelf-nav button, .k-close, .soon-sheet__close, .v47-x, .r80-x, .v25-antwort-zu, .v44-ebene-zu, .v25r7__zu { place-items: center !important; box-sizing: border-box !important; width: 44px !important;
+  height: 44px !important; min-width: 44px !important; min-height: 44px !important; padding: 0 !important; border-radius: 50% !important;
+  background: var(--s-card) !important; color: var(--s-ink) !important; border: 1px solid var(--s-line-strong) !important; font-size: 18px !important;
+  box-shadow: 0 1px 2px rgba(96,72,46,.16), inset 0 1px 0 rgba(255,255,255,.8) !important; transform: none !important;
+  transition: background .12s ease, box-shadow .12s ease !important; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.bm-burger svg, .shelf-nav button svg, .k-close svg, .soon-sheet__close svg, .v47-x svg, .r80-x svg, .v25-antwort-zu svg, .v44-ebene-zu svg, .v25r7__zu svg { width: 18px; height: 18px; }
+@media (hover: hover) { .bm-burger:hover:not(:disabled):not([aria-disabled="true"]), .shelf-nav button:hover:not(:disabled):not([aria-disabled="true"]), .k-close:hover:not(:disabled):not([aria-disabled="true"]), .soon-sheet__close:hover:not(:disabled):not([aria-disabled="true"]), .v47-x:hover:not(:disabled):not([aria-disabled="true"]), .r80-x:hover:not(:disabled):not([aria-disabled="true"]), .v25-antwort-zu:hover:not(:disabled):not([aria-disabled="true"]), .v44-ebene-zu:hover:not(:disabled):not([aria-disabled="true"]), .v25r7__zu:hover:not(:disabled):not([aria-disabled="true"]) { background: #fff !important; box-shadow: 0 2px 6px -1px rgba(96,72,46,.24) !important; } }
+.bm-burger:active:not(:disabled):not([aria-disabled="true"]), .shelf-nav button:active:not(:disabled):not([aria-disabled="true"]), .k-close:active:not(:disabled):not([aria-disabled="true"]), .soon-sheet__close:active:not(:disabled):not([aria-disabled="true"]), .v47-x:active:not(:disabled):not([aria-disabled="true"]), .r80-x:active:not(:disabled):not([aria-disabled="true"]), .v25-antwort-zu:active:not(:disabled):not([aria-disabled="true"]), .v44-ebene-zu:active:not(:disabled):not([aria-disabled="true"]), .v25r7__zu:active:not(:disabled):not([aria-disabled="true"]) { background: var(--s-clay-in) !important; box-shadow: var(--s-gedrueckt) !important; }
+.bm-burger i { left: 12px !important; }
+
+/* Deaktiviert (CTA, Sekundär, Icon) */
+.button-primary:is(:disabled, [aria-disabled="true"]), .r187-k-knopf:is(:disabled, [aria-disabled="true"]), .r187-senden:is(:disabled, [aria-disabled="true"]), .r187-zu-knopf:is(:disabled, [aria-disabled="true"]), .ki-btn--dunkel:is(:disabled, [aria-disabled="true"]), .v47-dunkel:is(:disabled, [aria-disabled="true"]), .r80-ja:is(:disabled, [aria-disabled="true"]), .v47-naechste:is(:disabled, [aria-disabled="true"]), .v25r7__knopf:not(.v25r7__zweit):is(:disabled, [aria-disabled="true"]), .r64-los:is(:disabled, [aria-disabled="true"]), .hero .hero-actions .button-primary:is(:disabled, [aria-disabled="true"]), .button-quiet:is(:disabled, [aria-disabled="true"]), .clay-btn:is(:disabled, [aria-disabled="true"]), .soon-sheet__links a:is(:disabled, [aria-disabled="true"]), .ki-btn:not(.ki-btn--dunkel):is(:disabled, [aria-disabled="true"]), .ki-sugg button:is(:disabled, [aria-disabled="true"]), .ki-bubble__zu:is(:disabled, [aria-disabled="true"]), .v25r7__google:is(:disabled, [aria-disabled="true"]), .v25r7__knopf.v25r7__zweit:is(:disabled, [aria-disabled="true"]), .site-nav .nav-mein:is(:disabled, [aria-disabled="true"]), .r64-rk-k:is(:disabled, [aria-disabled="true"]), .wi-fehlt__k:is(:disabled, [aria-disabled="true"]), .bm-burger:is(:disabled, [aria-disabled="true"]), .shelf-nav button:is(:disabled, [aria-disabled="true"]), .k-close:is(:disabled, [aria-disabled="true"]), .soon-sheet__close:is(:disabled, [aria-disabled="true"]), .v47-x:is(:disabled, [aria-disabled="true"]), .r80-x:is(:disabled, [aria-disabled="true"]), .v25-antwort-zu:is(:disabled, [aria-disabled="true"]), .v44-ebene-zu:is(:disabled, [aria-disabled="true"]), .v25r7__zu:is(:disabled, [aria-disabled="true"]) { background: var(--s-aus) !important; color: var(--s-muted) !important; border-color: transparent !important;
+  box-shadow: none !important; cursor: not-allowed; opacity: 1 !important; }
+
+/* Fokus */
+.button-primary:focus-visible, .r187-k-knopf:focus-visible, .r187-senden:focus-visible, .r187-zu-knopf:focus-visible, .ki-btn--dunkel:focus-visible, .v47-dunkel:focus-visible, .r80-ja:focus-visible, .v47-naechste:focus-visible, .v25r7__knopf:not(.v25r7__zweit):focus-visible, .r64-los:focus-visible, .hero .hero-actions .button-primary:focus-visible, .button-quiet:focus-visible, .clay-btn:focus-visible, .soon-sheet__links a:focus-visible, .ki-btn:not(.ki-btn--dunkel):focus-visible, .ki-sugg button:focus-visible, .ki-bubble__zu:focus-visible, .v25r7__google:focus-visible, .v25r7__knopf.v25r7__zweit:focus-visible, .site-nav .nav-mein:focus-visible, .r64-rk-k:focus-visible, .wi-fehlt__k:focus-visible, .bm-burger:focus-visible, .shelf-nav button:focus-visible, .k-close:focus-visible, .soon-sheet__close:focus-visible, .v47-x:focus-visible, .r80-x:focus-visible, .v25-antwort-zu:focus-visible, .v44-ebene-zu:focus-visible, .v25r7__zu:focus-visible, .kat-chip:focus-visible, .r64-chip:focus-visible { outline: 3px solid var(--s-focus) !important; outline-offset: 3px !important; }
+
+/* Textlink */
+.v47-leise, .v57-zurueck, .r100-link, .v44-mehr, .v22z-skip, .v25r7__leise { align-items: center !important; gap: 8px; box-sizing: border-box !important; min-height: 44px !important;
+  padding: 0 8px !important; border-radius: 10px !important; background: none !important; border: 0 !important; box-shadow: none !important;
+  color: var(--s-ink-soft) !important; font-family: Figtree, system-ui, sans-serif !important; font-size: 16px !important; font-weight: 600 !important;
+  line-height: 24px !important; text-decoration: underline !important; text-decoration-thickness: 1px !important; text-underline-offset: 3px !important;
+  transform: none !important; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+@media (hover: hover) { .v47-leise:hover, .v57-zurueck:hover, .r100-link:hover, .v44-mehr:hover, .v22z-skip:hover, .v25r7__leise:hover { color: var(--s-ink) !important; } }
+.v47-leise:active, .v57-zurueck:active, .r100-link:active, .v44-mehr:active, .v22z-skip:active, .v25r7__leise:active { background: var(--s-clay-in) !important; box-shadow: var(--s-gedrueckt) !important; }
+.v47-leise:focus-visible, .v57-zurueck:focus-visible, .r100-link:focus-visible, .v44-mehr:focus-visible, .v22z-skip:focus-visible, .v25r7__leise:focus-visible { outline: 3px solid var(--s-focus) !important; outline-offset: 0 !important; border-radius: 16px !important; }
+
+/* Chip */
+.kat-chip, .r64-chip { align-items: center !important; justify-content: center !important; gap: 8px !important;
+  box-sizing: border-box !important; min-height: 44px !important; height: auto !important; padding: 0 18px !important; border-radius: 999px !important;
+  background: var(--s-card) !important; color: var(--s-ink) !important; border: 1px solid var(--s-line-strong) !important; box-shadow: none !important;
+  font-family: Figtree, system-ui, sans-serif !important; font-size: 16px !important; font-weight: 600 !important; line-height: 20px !important;
+  text-decoration: none !important; transform: none !important; animation: none !important;
+  transition: background .12s ease, border-color .12s ease !important; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.kat-chip i { display: none !important; }
+@media (hover: hover) { .kat-chip:hover, .r64-chip:hover { background: #fff !important; border-color: var(--s-control) !important; } }
+.kat-chip:active, .r64-chip:active { background: var(--s-clay-in) !important; box-shadow: var(--s-gedrueckt) !important; }
+.kat-chip:focus-visible, .r64-chip:focus-visible { outline-offset: 4px !important; }
+.kat-chip[aria-pressed="true"], .r64-chip[aria-pressed="true"], .kat-chip[aria-current], .r64-chip[aria-current] { background: var(--s-ink) !important; color: var(--s-hell) !important;
+  border-color: var(--s-ink) !important; }
+
+/* ——— Beta-Banner ——— */
+.live-aufbau { padding: 8px 16px !important; font: 400 14px/19.6px Figtree, system-ui, sans-serif !important; color: #f7f1e8 !important;
+  background: #2b2420 !important; text-align: center !important; }
+.live-aufbau b { font-weight: 700 !important; }
+@media (max-width: 339.98px) { .live-aufbau { font-size: 13px !important; padding-inline: 10px !important; } }
+
+/* ——— Kopfzeile ——— */
+.site-nav { height: 80px !important; }
+@media (max-width: 700px) { .site-nav { height: 68px !important; } }
+html .site-nav .nav-end { gap: 20px !important; }
+html .site-nav .nav-links.v44-nav { gap: 8px !important; }
+.site-nav .v44-nav a.v47-pille { position: relative !important; align-items: center !important; gap: 8px !important; box-sizing: border-box !important;
+  min-height: 44px !important; padding: 0 8px !important; border-radius: 10px !important; background: none !important; border: 0 !important;
+  box-shadow: none !important; color: var(--s-ink) !important; font-family: Figtree, system-ui, sans-serif !important; font-size: 15px !important;
+  font-weight: 600 !important; line-height: 20px !important; text-decoration: none !important; transform: none !important;
+  -webkit-tap-highlight-color: transparent; }
+.site-nav .v44-nav a.v47-pille .v47-ic { width: 18px !important; height: 18px !important; }
+.site-nav .v44-nav a.v47-pille span, .site-nav .v44-nav a.v47-pille .v47-ic { color: inherit !important; background: none !important; }
+.site-nav .v44-nav a.v47-pille .v47-ic, .site-nav .v44-nav a.v47-pille .v47-ic * { stroke: currentColor !important; }
+/* Hover deutet den Auswahl-Strich nur an, an derselben Stelle; der gewählte Reiter bleibt wie er ist (Yannis, 05.11.2026) */
+@media (hover: hover) { .site-nav .v44-nav a.v47-pille:not([aria-current="page"]):hover::after { content: "" !important; display: block !important; position: absolute !important;
+  left: 8px !important; right: 8px !important; top: auto !important; bottom: 3px !important; width: auto !important; height: 2px !important;
+  border-radius: 2px !important; background: var(--s-ink) !important; opacity: .28 !important; transform: none !important; } }
+.site-nav .v44-nav a.v47-pille:active { background: none !important; box-shadow: none !important; }  /* kein gedrückter Rahmen beim Klick, der Reiter hat vorher keinen sichtbaren Rahmen (Yannis 05.11.2026) */
+.site-nav .v44-nav a.v47-pille:focus-visible { outline: 3px solid var(--s-focus) !important; outline-offset: 0 !important; border-radius: 16px !important; }
+.site-nav .v44-nav a.v47-pille[aria-current="page"] { background: none !important; box-shadow: none !important; }
+.site-nav .v44-nav a.v47-pille[aria-current="page"]::after { content: "" !important; display: block !important; position: absolute !important; left: 8px !important; right: 8px !important;
+  top: auto !important; bottom: 3px !important; width: auto !important; height: 2px !important; border-radius: 2px !important;
+  background: var(--s-ink) !important; opacity: 1 !important; transform: none !important; }
+html .site-nav .nav-mein { gap: 10px !important; }
+html .site-nav .nav-mein .nav-mein__ich { width: 18px; height: 18px; }
+
+/* ——— Menü (Handy) ——— */
+.bm-scrim { background: rgba(250,247,242,.35) !important; -webkit-backdrop-filter: blur(9px) !important; backdrop-filter: blur(9px) !important; }
+@media (prefers-reduced-transparency: reduce) { .bm-scrim { background: rgb(246 242 236 / .94) !important; -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important; } }
+.bm-panel { top: 114px !important; right: 14px !important; width: min(302px, calc(100% - 28px)) !important; padding: 14px !important;
+  background: var(--s-card) !important; border: 1px solid var(--s-line) !important; border-radius: 26px !important;
+  box-shadow: 0 2px 6px rgba(96,72,46,.12), 0 24px 48px -16px rgba(96,72,46,.35) !important; }
+.bm-liste { gap: 4px !important; }
+.bm-row { position: relative !important; display: flex !important; align-items: center !important; gap: 12px !important; height: 52px !important;
+  min-height: 52px !important; padding: 0 8px 0 12px !important; border-radius: 10px !important; background: none !important; border: 0 !important;
+  box-shadow: none !important; color: var(--s-ink) !important; font-family: Figtree, system-ui, sans-serif !important; font-size: 16px !important;
+  font-weight: 600 !important; line-height: 24px !important; text-decoration: none !important; transform: none !important; }
+.bm-row .bm-ic { width: 20px !important; height: 20px !important; background: none !important; box-shadow: none !important; font-size: 20px !important;
+  color: var(--s-ink) !important; }
+.bm-row .bm-pf { font-size: 18px !important; color: var(--s-muted) !important; }
+.bm-row:active { background: var(--s-clay-in) !important; box-shadow: var(--s-gedrueckt) !important; }
+.bm-row[aria-current="page"] { background: none !important; box-shadow: none !important; }
+.bm-row[aria-current="page"]::before { content: ""; position: absolute; left: 0; top: 12px; bottom: 12px; width: 3px; border-radius: 2px;
+  background: var(--s-ink); }
+.bm-row:focus-visible { outline: 3px solid var(--s-focus) !important; outline-offset: 0 !important; border-radius: 16px !important; }
+/* „Anmelden“ im Menü: Sekundär Large über die ganze Breite */
+.bm-row[data-ki-anmelden] { justify-content: center !important; gap: 12px !important; margin-top: 12px !important; padding: 0 24px !important;
+  border-radius: 999px !important; background: var(--s-card) !important; border: 1px solid var(--s-line-strong) !important; line-height: 20px !important;
+  box-shadow: 0 1px 2px rgba(96,72,46,.16), inset 0 1px 0 rgba(255,255,255,.8) !important; }
+.bm-row[data-ki-anmelden] .bm-tx { flex: none !important; }
+.bm-row[data-ki-anmelden] .bm-pf { display: none !important; }
+.bm-row[data-ki-anmelden]:active { background: var(--s-clay-in) !important; box-shadow: var(--s-gedrueckt) !important; }
+.bm-row[data-ki-anmelden]:focus-visible { border-radius: 999px !important; outline-offset: 3px !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .button-primary, .r187-k-knopf, .r187-senden, .r187-zu-knopf, .ki-btn--dunkel, .v47-dunkel, .r80-ja, .v47-naechste, .v25r7__knopf:not(.v25r7__zweit), .r64-los, .hero .hero-actions .button-primary, #k-done, #k-next, .moment-cta, .gk-btn, .button-quiet, .clay-btn, .soon-sheet__links a, .ki-btn:not(.ki-btn--dunkel), .ki-sugg button, .ki-bubble__zu, .v25r7__google, .v25r7__knopf.v25r7__zweit, .site-nav .nav-mein, .r64-rk-k, .wi-fehlt__k, .bm-burger, .shelf-nav button, .k-close, .soon-sheet__close, .v47-x, .r80-x, .v25-antwort-zu, .v44-ebene-zu, .v25r7__zu, .kat-chip, .r64-chip { transition: none !important; }
+}
+</style>
+<style id="r234">
+/* Zurück-Link */
+.ra3.r234 .ra-zurueck { min-height: 44px !important; gap: 10px !important; font: 600 16px/24px Figtree, system-ui, sans-serif !important; color: #4a443c !important; }
+.ra3.r234 .ra-zurueck svg { width: 18px !important; height: 18px !important; }
+
+/* Szene niedriger (Figma: 130 Handy, 280 Rechner) */
+.ra3.r234 .ra-szene, .ra3.r234 .ra-szene img { height: 158px !important; }
+.ra3.r234 .ra-szene img { object-fit: cover !important; }
+@media (min-width: 1024px) { .ra3.r234 .ra-szene, .ra3.r234 .ra-szene img { height: 300px !important; } }
+
+/* Eckdaten */
+.ra3.r234 .kk3-siegel { min-height: 24px !important; padding: 0 8px 0 7px !important; gap: 5px !important; border-radius: 6px !important;
+  background: #e3ecd9 !important; color: #2f4a26 !important; font: 600 13px/16px Figtree, system-ui, sans-serif !important; }
+.ra3.r234 .kk3-siegel svg { width: 14px !important; height: 14px !important; }
+.ra3.r234 .kk-btns { gap: 0 !important; }
+.ra3.r234 .kk-btns button { position: relative !important; width: 44px !important; height: 44px !important; min-width: 44px !important; padding: 0 !important;
+  display: inline-grid !important; place-items: center !important; background: none !important; border: 0 !important; box-shadow: none !important;
+  border-radius: 999px !important; color: #fff !important; }
+.ra3.r234 .kk-btns button svg { position: relative; z-index: 1; width: 22px !important; height: 22px !important; }
+.ra3.r234 .kk-btns button:active { background: rgba(255,255,255,.16) !important; }
+.ra3.r234 .kk-btns button:focus-visible { outline: 3px solid #fff !important; outline-offset: 0 !important; }
+.ra3.r234 .kk3-fakten { gap: 14px !important; padding-top: 4px !important; }
+.ra3.r234 .kk3-fakten li { gap: 6px !important; font: 600 14px/21px Figtree, system-ui, sans-serif !important; color: #fff !important; }
+.ra3.r234 .kk3-fakten li > svg { width: 16px !important; height: 16px !important; }
+.ra3.r234 .kk3-fakten .kk-logos { gap: 6px !important; }
+.ra3.r234 .kk3-fakten .kk-logos svg { width: 18px !important; height: 18px !important; }
+
+/* Titel und Kurztext */
+.ra3.r234 .ra-lesen h1 { margin: 18px 0 0 !important; font: 600 32px/33.92px Figtree, system-ui, sans-serif !important; letter-spacing: -.96px !important; color: #fff !important; }
+.ra3.r234 .ra-kurztext { margin: 10px 0 0 !important; max-width: 738px !important; font: 400 17px/26.35px Figtree, system-ui, sans-serif !important; color: #fff !important; }
+
+/* Start-Block */
+.ra3.r234 .r234-los { display: grid; grid-template-columns: minmax(0, 1fr); margin-top: 16px; }
+.ra3.r234 .r234-los .ra-start { margin: 0 !important; padding: 0 !important; }
+.ra3.r234 .r234-los .ra-knopf { display: flex !important; width: 100% !important; height: 52px !important; min-height: 52px !important;
+  justify-content: space-between !important; gap: 12px !important; padding: 0 20px 0 22px !important; border: 0 !important; border-radius: 999px !important;
+  background: linear-gradient(180deg, #fff, #f4f0ea) !important; color: #23201c !important; font: 600 16px/20px Figtree, system-ui, sans-serif !important;
+  box-shadow: 0 1px 1px rgba(96,72,46,.3), inset 0 1px 0 rgba(255,255,255,.14) !important; }
+.ra3.r234 .r234-los .ra-knopf span { flex: 1 1 auto; text-align: center; color: inherit !important; }
+.ra3.r234 .r234-los .ra-knopf .logo { width: 24px !important; height: 24px !important; color: #23201c !important; }
+.ra3.r234 .r234-los .ra-knopf .icon { width: 20px !important; height: 20px !important; color: #23201c !important; }
+@media (hover: hover) { .ra3.r234 .r234-los .ra-knopf:hover { background: #fff !important; box-shadow: 0 2px 6px -1px rgba(60,40,20,.45), inset 0 1px 0 rgba(255,255,255,.14) !important; } }
+.ra3.r234 .r234-los .ra-knopf:active { background: linear-gradient(180deg, #ebe6de, #f6f3ee) !important;
+  box-shadow: inset 0 1px 1px rgba(96,72,46,.18), inset 0 2px 4px rgba(96,72,46,.3) !important; }
+.ra3.r234 .r234-los .ra-knopf:focus-visible { outline: 3px solid #fff !important; outline-offset: 3px !important; }
+.ra3.r234 .r234-hinweis { margin: 8px 0 0 !important; max-width: 297px; font: 400 12px/18px Figtree, system-ui, sans-serif !important; color: #fff !important; }
+.ra3.r234 .r234-claude, .ra3.r234 .r234-los .hh-oeffner { display: inline-flex !important; align-items: center !important; gap: 10px !important; justify-self: start;
+  min-height: 48px !important; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important;
+  color: #fff !important; font: 600 14px/21px Figtree, system-ui, sans-serif !important; text-decoration: none !important; cursor: pointer;
+  -webkit-tap-highlight-color: transparent; }
+.ra3.r234 .r234-claude { margin-top: 10px !important; }
+.ra3.r234 .r234-claude span, .ra3.r234 .r234-los .hh-oeffner span { text-decoration: underline 1px !important; text-underline-offset: 3px !important; color: inherit !important; }
+.ra3.r234 .r234-claude svg { width: 20px !important; height: 20px !important; color: #fff !important; }
+.ra3.r234 .r234-los .hh-oeffner svg { width: 22px !important; height: 22px !important; color: #fff !important; }
+.ra3.r234 .r234-los .hh { margin: 10px 0 0 !important; padding: 0 !important; background: none !important; border: 0 !important; }
+.ra3.r234 .r234-claude[hidden] { display: none !important; }
+@media (hover: hover) { .ra3.r234 .r234-claude:hover span, .ra3.r234 .r234-los .hh-oeffner:hover span { text-decoration-thickness: 2px !important; } }
+.ra3.r234 .r234-claude:active, .ra3.r234 .r234-los .hh-oeffner:active { opacity: .75; }
+.ra3.r234 .r234-claude:focus-visible, .ra3.r234 .r234-los .hh-oeffner:focus-visible { outline: 3px solid #fff !important; outline-offset: 2px !important; border-radius: 8px !important; }
+
+/* Zettel „Das bekommst du“ */
+.ra3.r234 .ra-ergebnis { margin-top: 8px !important; }
+.ra3.r234 .ra-zettel { padding: 24px 20px 22px !important; border-radius: 6px !important; background: linear-gradient(180deg, #fffefb, #faf6ee) !important;
+  box-shadow: 0 1px 1px rgba(40,26,14,.22) !important; }
+.ra3.r234 .ra-ergebnis-satz { margin: 0 0 16px !important; font: 800 18px/25.2px Figtree, system-ui, sans-serif !important; color: #23201c !important; }
+.ra3.r234 .ra-ergebnis-satz b { font-weight: 800 !important; }
+.ra3.r234 .s412-zeilen { display: grid !important; gap: 10px !important; margin: 0 !important; padding: 0 !important; }
+.ra3.r234 .s412-zeilen li { display: flex !important; align-items: center !important; gap: 12px !important; padding: 0 !important; border: 0 !important; }
+.ra3.r234 .s412-ico { flex: none !important; display: grid !important; place-items: center !important; width: 32px !important; height: 32px !important;
+  border-radius: 999px !important; background: rgba(107,74,58,.11) !important; color: #23201c !important; }
+.ra3.r234 .s412-ico svg { width: 18px !important; height: 18px !important; }
+.ra3.r234 .s412-wort { font: 600 17px/22.1px Figtree, system-ui, sans-serif !important; color: #23201c !important; }
+
+/* Mehr dazu */
+.ra3.r234 .ra-mehr { display: block !important; margin-top: 22px !important; padding: 0 !important; border: 0 !important; }
+.ra3.r234 .ra-mehr .ra-versal { margin: 0 0 4px !important; font: 800 13px/19.5px Figtree, system-ui, sans-serif !important; letter-spacing: 1.3px !important;
+  text-transform: uppercase !important; color: #fff !important; }
+.ra3.r234 .ra-mehr .ra-auf { margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; border-bottom: 1px solid rgba(255,255,255,.24) !important;
+  border-radius: 0 !important; box-shadow: none !important; }
+.ra3.r234 .ra-mehr .ra-auf > summary { display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 12px !important;
+  min-height: 52px !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; border-radius: 0 !important;
+  color: #fff !important; font: 600 17px/25.5px Figtree, system-ui, sans-serif !important; cursor: pointer; }
+.ra3.r234 .ra-mehr .ra-auf > summary .r234-winkel { width: 18px !important; height: 18px !important; transform: rotate(-90deg) !important; transition: transform .15s ease; }
+.ra3.r234 .ra-mehr .ra-auf[open] > summary .r234-winkel { transform: none !important; }
+.ra3.r234 .ra-mehr .ra-auf > summary:focus-visible { outline: 3px solid #fff !important; outline-offset: 2px !important; border-radius: 6px !important; }
+.ra3.r234 .ra-mehr .ra-auf-innen { padding: 0 0 20px !important; }
+
+/* Rechner: Zettel links, „Mehr dazu“ rechts */
+@media (min-width: 1024px) {
+  .ra3.r234 .ra-karte-innen { display: grid !important; grid-template-columns: minmax(0, 474px) minmax(0, 1fr) !important; column-gap: 83px !important;
+    align-items: start !important; row-gap: 0 !important; padding: 48px !important; }
+  .ra3.r234 .ra-karte-innen > * { grid-column: 1 / -1; }
+  .ra3.r234 .ra-lesen { display: contents !important; }
+  .ra3.r234 .ra-lesen > * { grid-column: 1 / -1; }
+  .ra3.r234 .ra-lesen > .ra-ergebnis { grid-column: 1 !important; margin-top: 34px !important; }
+  .ra3.r234 .ra-karte-innen > .ra-mehr { grid-column: 2 !important; grid-row: span 1; align-self: start !important; max-width: 353px !important; margin-top: 34px !important; }
+  .ra3.r234 .kk3 { display: flex !important; align-items: center !important; flex-wrap: nowrap !important; gap: 0 !important; }
+  .ra3.r234 .kk3-siegel { order: 0; padding: 6px 12px 6px 10px !important; gap: 6px !important; }
+  .ra3.r234 .kk3-siegel svg { width: 16px !important; height: 16px !important; }
+  .ra3.r234 .kk3 { margin: 0 !important; width: auto !important; min-width: 0 !important; max-width: 100% !important; justify-self: stretch !important; }
+  .ra3.r234 .kk3-fakten { order: 1; flex: 0 1 auto !important; width: auto !important; min-width: 0 !important; display: flex !important; align-items: center !important; gap: 0 !important; padding: 0 !important; margin: 0 !important; }
+  .ra3.r234 .kk3-fakten li { padding: 0 10px !important; }
+  .ra3.r234 .kk3-fakten li + li { border-left: 1px solid rgba(255,255,255,.3) !important; }
+  .ra3.r234 .kk3-fakten li > svg { width: 18px !important; height: 18px !important; }
+  .ra3.r234 .kk3-fakten .kk-logos { gap: 8px !important; }
+  .ra3.r234 .kk3-fakten .kk-logos svg { width: 22px !important; height: 22px !important; }
+  .ra3.r234 .kk-btns { order: 2; margin-left: auto !important; gap: 0 !important; position: static !important; }
+  .ra3.r234 .kk-btns button::before { content: ""; position: absolute; inset: 6px; border-radius: 999px; background: rgba(255,255,255,.16);
+    border: 1px solid rgba(255,255,255,.38); }
+  .ra3.r234 .kk-btns button svg { width: 17px !important; height: 17px !important; }
+  @media (hover: hover) { .ra3.r234 .kk-btns button:hover::before { background: rgba(255,255,255,.26); } }
+  .ra3.r234 .ra-lesen h1 { margin-top: 39px !important; font-size: 48px !important; line-height: 49.92px !important; letter-spacing: 0 !important; }
+  .ra3.r234 .ra-kurztext { margin-top: 16px !important; }
+  .ra3.r234 .r234-los { grid-template-columns: auto auto auto 1fr; align-items: center; column-gap: 24px; margin-top: 20px; }
+  .ra3.r234 .r234-los .ra-start { grid-column: 1; grid-row: 1; }
+  .ra3.r234 .r234-los .ra-knopf { width: auto !important; }
+  .ra3.r234 .r234-los .ra-knopf span { padding: 0 20px; }
+  .ra3.r234 .r234-claude { grid-column: 2; grid-row: 1; margin: 0 !important; }
+  .ra3.r234 .r234-los .hh { grid-column: 3; grid-row: 1; margin: 0 !important; }
+  .ra3.r234 .r234-hinweis { grid-column: 1 / -1; grid-row: 2; max-width: none; margin-top: 10px !important; }
+  .ra3.r234 .ra-zettel { padding: 24px !important; box-shadow: 0 6px 6px rgba(96,72,46,.28), 0 1px .5px rgba(96,72,46,.12) !important; }
+  .ra3.r234 .ra-ergebnis-satz { margin-bottom: 20px !important; }
+  .ra3.r234 .s412-zeilen { gap: 12px !important; }
+  .ra3.r234 .s412-ico { width: 40px !important; height: 40px !important; }
+  .ra3.r234 .s412-ico svg { width: 22px !important; height: 22px !important; }
+  .ra3.r234 .ra-mehr .ra-auf > summary { min-height: 45px !important; }
+  .ra3.r234 .ra-mehr .ra-auf > summary .r234-winkel { width: 24px !important; height: 24px !important; }
+  .ra3.r234 .ra-mehr .ra-versal { margin-bottom: 14px !important; }
+}
+@media (prefers-reduced-motion: reduce) { .ra3.r234 .ra-mehr .ra-auf > summary .r234-winkel { transition: none; } }
+</style>
+<script id="r234-js">
+(function () {
+  // Gemerkte KI: Claude → Knopf startet Claude (das macht R101 schon), der Link bietet ChatGPT an. Andere KIs: Knopf kopiert nur, Link weg.
+  var k = null; try { k = localStorage.getItem('ki-wahl'); } catch (e) {}
+  var c = document.querySelector('.r234-claude'), knopf = document.querySelector('.r234 .ra-knopf'), leiste = document.querySelector('.ra-leiste [data-start] span');
+  document.querySelectorAll('.r234 .ra-start .ra-links').forEach(function (l) { l.remove(); });
+  if (!c) return;
+  if (k === 'claude' && document.getElementById('auftrag-claude')) {
+    var pr = document.getElementById('prompt-text'), q = encodeURIComponent(pr ? pr.textContent.trim() : '');
+    var handy = document.documentElement.getAttribute('data-geraet') === 'handy';
+    c.setAttribute('data-start-ki', 'chatgpt');
+    c.setAttribute('data-web', 'https://chatgpt.com/auth/login?next=' + encodeURIComponent('/?q=' + q));
+    c.href = handy ? 'https://chatgpt.com/?q=' + q : c.getAttribute('data-web'); c.target = '_blank';
+    c.querySelector('use').setAttribute('href', '#l-openai'); c.querySelector('span').textContent = 'Mit ChatGPT';
+    if (knopf) knopf.querySelector('span').textContent = 'Starte mit Claude';
+    if (leiste) leiste.textContent = 'Starte mit Claude';
+  } else if (k && k !== 'chatgpt' && k !== 'claude') {
+    c.hidden = true;
+  }
+})();
+</script>
+<style id="r238">
+#hh-sheet .r238-nb{white-space:nowrap}
+#hh-sheet .r238-themen{display:grid;gap:10px}
+#hh-sheet .r238-thema{display:grid;grid-template-columns:44px minmax(0,1fr) 20px;gap:14px;align-items:center;width:100%;min-height:78px;padding:16px 14px;border:1px solid #e6ddd1;border-radius:18px;background:#fffdf9;box-shadow:0 2px 6px -2px rgba(96,72,46,.12);color:#23201c;text-align:left;font-family:var(--font-ui);cursor:pointer}
+@media (hover:hover){#hh-sheet .r238-thema:hover{border-color:#cdbfae}}
+#hh-sheet .r238-thema:active{background:#f7f2ea}
+#hh-sheet .r238-ic{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#f8f4ee;box-shadow:0 1px 1px rgba(96,72,46,.14),0 4px 8px -5px rgba(96,72,46,.3)}
+#hh-sheet .r238-ic svg{width:22px;height:22px}
+#hh-sheet .r238-txt{display:grid;gap:3px;min-width:0}
+#hh-sheet .r238-txt b{font-size:17.5px;font-weight:700;line-height:1.25}
+#hh-sheet .r238-txt small{font-size:15px;line-height:1.35;color:#675f56}
+#hh-sheet .r238-chev svg{width:20px;height:20px;color:#8a8076}
+#hh-sheet .r238-zurueck{display:inline-flex;align-items:center;gap:2px;min-height:44px;margin:-6px 0 4px;padding:8px 8px 8px 0;border:0;background:none;color:#7a5844;font:700 17px/1.35 var(--font-ui);cursor:pointer}
+#hh-sheet .r238-zurueck svg{width:22px;height:22px}
+#hh-sheet .r238-titel{display:flex;align-items:center;gap:10px;margin:0 0 14px;padding-right:52px;font:600 24px/1.2 var(--font-display);letter-spacing:-.02em;outline:none}
+#hh-sheet .r238-titel svg{width:22px;height:22px;color:#7a5844}
+#hh-sheet .r238-karte{border:1px solid #e6ddd1;border-radius:18px;background:#fffdf9;box-shadow:0 2px 6px -2px rgba(96,72,46,.12);overflow:hidden}
+#hh-sheet .r238-karte .hh-prob{border-bottom:1px solid #ebe4da}
+#hh-sheet .r238-karte .hh-prob:last-child{border-bottom:0}
+#hh-sheet .r238-karte .hh-prob[open]{background:#f7f2ea}
+#hh-sheet .r238-karte .hh-prob summary{min-height:52px;padding:14px 14px 14px 16px;font-size:16px;font-weight:600;line-height:1.4;color:#23201c}
+#hh-sheet .r238-karte .hh-prob summary svg{width:18px;height:18px;color:#8a8076}
+#hh-sheet .r238-karte .hh-prob[open] summary svg{transform:rotate(180deg)}
+#hh-sheet .r238-karte .hh-ant{padding:0 16px 16px;color:#4a443c;font-size:16px;line-height:1.5}
+#hh-sheet .r238-karte .hh-ant p{margin:0 0 10px}
+#hh-sheet .r238-karte .hh-ant p:last-child{margin-bottom:0}
+#hh-sheet .r238-thema:focus-visible,#hh-sheet .r238-zurueck:focus-visible{outline:3px solid var(--focus,#3b5a9a);outline-offset:3px}
+#hh-sheet .r238-karte summary:focus-visible{outline-offset:-3px}
+</style>
+<script id="r238-js">
+(function(){
+  var sh=document.getElementById('hh-sheet'); if(!sh) return;
+  var pn=sh.querySelector('.hh-sheet-panel'),start=sh.querySelector('.r238-start'),zuletzt=null;
+  function seiten(){return sh.querySelectorAll('.r238-seite');}
+  function zeige(id){
+    for(var i=0,s=seiten();i<s.length;i++) s[i].hidden=true;
+    start.hidden=!!id; pn.scrollTop=0;
+    if(id){var z=document.getElementById(id); z.hidden=false; try{z.querySelector('.r238-titel').focus({preventScroll:true});}catch(x){}}
+    else if(zuletzt){try{zuletzt.focus({preventScroll:true});}catch(x){}}
+  }
+  sh.addEventListener('click',function(ev){
+    var t=ev.target; if(!t||!t.closest) return;
+    var b=t.closest('[data-r238-thema]'); if(b){zuletzt=b; zeige('r238-s'+b.getAttribute('data-r238-thema')); return;}
+    if(t.closest('.r238-zurueck')) zeige(null);
+  });
+  // Beim Schließen zurück auf das Startbild, Fragen wieder wie am Anfang
+  new MutationObserver(function(){
+    if(!sh.hidden) return;
+    zuletzt=null; for(var i=0,s=seiten();i<s.length;i++) s[i].hidden=true; start.hidden=false;
+    var d=sh.querySelectorAll('.r238-karte details'); for(var j=0;j<d.length;j++) d[j].open=d[j].hasAttribute('data-r238-auf');
+  }).observe(sh,{attributes:true,attributeFilter:['hidden']});
+})();
+</script>
+<style id="r240">
+.r240-hw .r240-rahmen{box-sizing:content-box;margin:-6px;padding:6px;overflow:hidden;transition:height .3s ease}
+.r240-hw .r240-bahn{display:flex;align-items:flex-start;gap:12px;transition:transform .32s cubic-bezier(.2,.7,.2,1)}
+.r240-hw .r240-schritt{flex:0 0 100%;min-width:0}
+.r240-hw[data-schritt="2"] .r240-bahn{transform:translateX(calc(-100% - 12px))}
+.r240-hw p.r240-t{font-size:17px;font-weight:700;line-height:1.4}
+.r240-hw p.r240-satz{margin-top:6px;color:#4a443c !important;font-weight:500}
+.r240-hw button.v47-hw-leise{padding:0;border:0;background:none;font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.r240-hw a.v47-hw-los{display:inline-flex;align-items:center;text-decoration:none}
+@media (prefers-reduced-motion:reduce){.r240-hw .r240-rahmen,.r240-hw .r240-bahn{transition:none}}
+#hh-sheet .r240-laden{display:inline-flex;align-items:center;min-height:44px;margin:2px 0 12px;padding:0 20px;border-radius:999px;background:linear-gradient(#4a433b,#1d1a16);color:#fbf7f0 !important;font-size:15px;font-weight:650;text-decoration:none}
+#hh-sheet .r240-laden:focus-visible{outline:3px solid var(--focus,#3b5a9a);outline-offset:3px}
+</style>
+<script id="r240-js">
+(function(){
+  if(!/Android/i.test(navigator.userAgent||'')) return;
+  document.querySelectorAll('#hh-sheet .r240-laden').forEach(function(a){a.href='https://play.google.com/store/apps/details?id=com.anthropic.claude';});
+})();
+</script>
+<style id="r241">
+/* Start-Block: KI-Button, Hinweis, darunter „Hilfe“ | „Mit Claude“ (Penpot D und Desktop A) */
+body .ra3.r234 .r234-los { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; column-gap: 8px !important; row-gap: 0 !important;
+  align-items: start !important; margin-top: 32px !important; }
+body .ra3.r234 .r234-los .ra-start, body .ra3.r234 .r234-hinweis { grid-column: 1 / -1 !important; }
+body .ra3.r234 .r234-los .ra-start { grid-row: 1 !important; }
+body .ra3.r234 .r234-hinweis { grid-row: 2 !important; max-width: none !important; margin: 8px 0 0 !important; }
+body .ra3.r234 .r234-los .hh { grid-column: 1 !important; grid-row: 3 !important; margin: 12px 0 0 !important; }
+body .ra3.r234 .r234-claude { grid-column: 2 !important; grid-row: 3 !important; margin: 12px 0 0 !important; }
+body .ra3.r234 .r234-los .hh:has(+ .r234-claude[hidden]) { grid-column: 1 / -1 !important; }
+
+/* Stille Buttons wie in Penpot D vor der Sekundär-Anmerkung: Weiß 10 % Fläche, Weiß 30 % Rand, weiße Schrift */
+body .ra3.r234 .r234-claude, body .ra3.r234 .r234-los .hh-oeffner { display: flex !important; align-items: center !important; justify-content: center !important;
+  gap: 8px !important; box-sizing: border-box !important; width: 100% !important; height: 44px !important; min-height: 44px !important; padding: 0 20px !important;
+  border: 1px solid rgb(255 255 255 / .3) !important; border-radius: 999px !important; background: rgb(255 255 255 / .1) !important; box-shadow: none !important;
+  color: #fff !important; font: 600 16px/20px Figtree, system-ui, sans-serif !important; opacity: 1 !important; }
+body .ra3.r234 .r234-claude span, body .ra3.r234 .r234-los .hh-oeffner span { text-decoration: none !important; white-space: nowrap; color: inherit !important; }
+body .ra3.r234 .r234-claude svg, body .ra3.r234 .r234-los .hh-oeffner svg { flex: none; width: 18px !important; height: 18px !important; color: #fff !important; }
+@media (hover: hover) { body .ra3.r234 .r234-claude:hover, body .ra3.r234 .r234-los .hh-oeffner:hover { background: rgb(255 255 255 / .18) !important; } }
+body .ra3.r234 .r234-claude:active, body .ra3.r234 .r234-los .hh-oeffner:active { background: rgb(255 255 255 / .06) !important; }
+body .ra3.r234 .r234-claude:focus-visible, body .ra3.r234 .r234-los .hh-oeffner:focus-visible { outline: 3px solid #fff !important; outline-offset: 3px !important; }
+
+/* Handy: Abstände nach Penpot D */
+body .ra3.r234 .ra-ergebnis { margin-top: 23px !important; }  /* plus 16 Abstand der Spalte: Zettel 47 unter den Buttons */
+body .ra3.r234 .ra-mehr { margin-top: 13px !important; }  /* plus 24 Abstand der Karte: 37 unter dem Zettel */
+body .ra3.r234 .ra-mehr .ra-versal { margin-bottom: 8px !important; }
+
+/* Rechner nach Penpot Desktop A: links Start, rechts Zettel, „Mehr dazu“ über beide Spalten */
+@media (min-width: 1024px) {
+  body .ra3.r234 .ra-karte-innen { grid-template-columns: minmax(0, 1fr) !important; column-gap: 0 !important; }
+  body .ra3.r234 .ra-lesen { display: grid !important; grid-template-columns: minmax(0, 532fr) minmax(0, 468fr) !important; column-gap: 64px !important;
+    row-gap: 0 !important; align-items: start !important; }
+  body .ra3.r234 .ra-lesen > * { grid-column: 1 / -1 !important; }
+  body .ra3.r234 .ra-lesen > .kk3 { grid-row: 1 !important; }
+  body .ra3.r234 .ra-lesen > .kk-abo { grid-row: 2 !important; }  /* Hinweis unter den Eckdaten, etwa „Keller ausmisten“ */
+  body .ra3.r234 .ra-lesen > .r241-links { grid-column: 1 !important; grid-row: 3 !important; align-self: end !important; }
+  body .ra3.r234 .r241-links h1 { margin-top: 27px !important; }
+  body .ra3.r234 .ra-lesen > .ra-ergebnis { grid-column: 2 !important; grid-row: 3 !important; align-self: end !important; margin-top: 0 !important; }
+  body .ra3.r234 .ra-kurztext { max-width: none !important; }
+  body .ra3.r234 .r234-los { column-gap: 12px !important; margin-top: 41px !important; }
+  body .ra3.r234 .r234-los .ra-knopf { width: 100% !important; }
+  body .ra3.r234 .r234-los .ra-knopf span { padding: 0 !important; }
+  body .ra3.r234 .r234-hinweis { margin-top: 10px !important; }
+  body .ra3.r234 .r234-los .hh, body .ra3.r234 .r234-claude { margin-top: 30px !important; }
+  body .ra3.r234 .ra-karte-innen > .ra-mehr { grid-column: 1 / -1 !important; max-width: none !important; margin-top: 40px !important; display: grid !important;
+    grid-template-columns: minmax(0, 532fr) minmax(0, 468fr) !important; column-gap: 64px !important; row-gap: 0 !important; align-items: start !important; }
+  body .ra3.r234 .ra-mehr .ra-versal { grid-column: 1 / -1 !important; margin-bottom: 12px !important; }
+  body .ra3.r234 .ra-mehr .ra-auf > summary { min-height: 52px !important; }
+  body .ra3.r234 .ra-mehr .ra-auf > summary .r234-winkel { width: 18px !important; height: 18px !important; }
+}
+</style>
 </body>
 </html>

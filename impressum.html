@@ -88,9 +88,9 @@
 <style id="r220">
 </style>
 <meta name="runde205" content="css-ausgeduennt-2026-11-03">
-</head>
+<meta name="runde233" content="1"></head>
 <body>
-<div class="live-aufbau" role="note"><b>Public Beta:</b> Die Seite ist noch im Aufbau, manche Funktionen gehen noch nicht. Dein Feedback hilft uns, sie besser zu machen.</div>
+<div class="live-aufbau" role="note"><b>Public Beta</b> · Die Seite ist noch im Aufbau.</div>
 <header class="r61-rechtskopf"><a class="r61-brand" href="/"><picture><source media="(max-width: 359.98px)" srcset="/ki-macherei_zeichen_hell.svg"><img class="r61-logo" src="/ki-macherei_quer_hell.svg" alt="Die KI-Macherei, zur Startseite" width="159" height="28"></picture></a></header>
 <main>
   <a class="zurueck" href="/">← Zur Startseite</a>
@@ -109,5 +109,149 @@
 </main>
 <div class="live-fuss"><a href="/impressum">Impressum</a><span class="live-fuss-sep" aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a><span class="live-fuss-sep" aria-hidden="true"> · </span><span class="live-fuss-t">Testfassung im Aufbau</span></div>
 <script src="/messung.js" data-endpunkt="https://script.google.com/macros/s/AKfycbxJ_s2hUjUxQiWQQ0QoXxSoxR5SfS0MiUvpHb7PcEJzYVgLpcVq1a9i5iUWonSEirfWSg/exec" defer></script><script defer src="https://cloud.umami.is/script.js" data-website-id="2184b771-dd7d-456c-9609-fcbdf649543e" data-domains="die-ki-macherei.de" data-exclude-hash="true" data-before-send="__messungVorSenden" data-performance="true" data-errors="true"></script><script src="/messpunkte.js" defer></script>
+<style id="r233">
+:root { --s-ink: #23201c; --s-ink-soft: #4a443c; --s-muted: #675f56; --s-card: #fbf8f2; --s-aus: #e3dcd1; --s-clay-in: #e9e2d7;
+  --s-line: rgba(60,45,30,.13); --s-line-strong: rgba(60,45,30,.26); --s-control: #857b70; --s-focus: #3b5a9a; --s-hell: #fbf7f0;
+  --s-gedrueckt: inset 0 1px 1px rgba(96,72,46,.18), inset 0 2px 4px rgba(96,72,46,.3); }
+
+/* ——— Grundform aller Knöpfe ——— */
+.button-primary, .r187-k-knopf, .r187-senden, .r187-zu-knopf, .ki-btn--dunkel, .v47-dunkel, .r80-ja, .v47-naechste, .v25r7__knopf:not(.v25r7__zweit), .r64-los, .hero .hero-actions .button-primary, #k-done, #k-next, .moment-cta, .gk-btn, .button-quiet, .clay-btn, .soon-sheet__links a, .ki-btn:not(.ki-btn--dunkel), .ki-sugg button, .ki-bubble__zu, .v25r7__google, .v25r7__knopf.v25r7__zweit, .site-nav .nav-mein, .r64-rk-k, .wi-fehlt__k {
+  align-items: center !important; justify-content: center !important; gap: 12px !important;
+  box-sizing: border-box !important; min-height: 52px !important; height: auto !important; padding: 0 24px !important; border-radius: 999px !important;
+  font-family: Figtree, system-ui, sans-serif !important; font-size: 16px !important; font-weight: 600 !important; line-height: 20px !important;
+  letter-spacing: 0 !important; text-decoration: none !important; text-shadow: none !important; transform: none !important;
+  transition: background .12s ease, box-shadow .12s ease, border-color .12s ease !important; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.site-nav .nav-mein, .ki-sugg button, .ki-btn:not(.ki-btn--dunkel), .ki-bubble__zu, .ld__zu, .r187-k-knopf, .r187-zu-knopf, .clay-btn.ld__zu { min-height: 44px !important; padding: 0 20px !important; gap: 10px !important; }
+.button-primary svg, .r187-k-knopf svg, .r187-senden svg, .r187-zu-knopf svg, .ki-btn--dunkel svg, .v47-dunkel svg, .r80-ja svg, .v47-naechste svg, .v25r7__knopf:not(.v25r7__zweit) svg, .r64-los svg, .hero .hero-actions .button-primary svg, #k-done svg, #k-next svg, .moment-cta svg, .gk-btn svg, .button-quiet svg, .clay-btn svg, .soon-sheet__links a svg, .ki-btn:not(.ki-btn--dunkel) svg, .ki-sugg button svg, .ki-bubble__zu svg, .v25r7__google svg, .v25r7__knopf.v25r7__zweit svg, .site-nav .nav-mein svg, .r64-rk-k svg, .wi-fehlt__k svg { flex: none; }
+
+/* CTA */
+.button-primary, .r187-k-knopf, .r187-senden, .r187-zu-knopf, .ki-btn--dunkel, .v47-dunkel, .r80-ja, .v47-naechste, .v25r7__knopf:not(.v25r7__zweit), .r64-los, .hero .hero-actions .button-primary { background: linear-gradient(178.35deg, #3a342d, #23201c) !important; color: var(--s-hell) !important; border: 0 !important;
+  box-shadow: 0 1px 2px rgba(96,72,46,.3), inset 0 1px 0 rgba(255,255,255,.14) !important; }
+@media (hover: hover) { .button-primary:hover:not(:disabled):not([aria-disabled="true"]), .r187-k-knopf:hover:not(:disabled):not([aria-disabled="true"]), .r187-senden:hover:not(:disabled):not([aria-disabled="true"]), .r187-zu-knopf:hover:not(:disabled):not([aria-disabled="true"]), .ki-btn--dunkel:hover:not(:disabled):not([aria-disabled="true"]), .v47-dunkel:hover:not(:disabled):not([aria-disabled="true"]), .r80-ja:hover:not(:disabled):not([aria-disabled="true"]), .v47-naechste:hover:not(:disabled):not([aria-disabled="true"]), .v25r7__knopf:not(.v25r7__zweit):hover:not(:disabled):not([aria-disabled="true"]), .r64-los:hover:not(:disabled):not([aria-disabled="true"]), .hero .hero-actions .button-primary:hover:not(:disabled):not([aria-disabled="true"]) { background: linear-gradient(178.35deg, #4a433b, #2f2a24) !important;
+  box-shadow: 0 2px 6px -1px rgba(96,72,46,.4), inset 0 1px 0 rgba(255,255,255,.14) !important; } }
+.button-primary:active:not(:disabled):not([aria-disabled="true"]), .r187-k-knopf:active:not(:disabled):not([aria-disabled="true"]), .r187-senden:active:not(:disabled):not([aria-disabled="true"]), .r187-zu-knopf:active:not(:disabled):not([aria-disabled="true"]), .ki-btn--dunkel:active:not(:disabled):not([aria-disabled="true"]), .v47-dunkel:active:not(:disabled):not([aria-disabled="true"]), .r80-ja:active:not(:disabled):not([aria-disabled="true"]), .v47-naechste:active:not(:disabled):not([aria-disabled="true"]), .v25r7__knopf:not(.v25r7__zweit):active:not(:disabled):not([aria-disabled="true"]), .r64-los:active:not(:disabled):not([aria-disabled="true"]), .hero .hero-actions .button-primary:active:not(:disabled):not([aria-disabled="true"]) { background: linear-gradient(178.35deg, #151310, #25211c) !important;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.4), inset 0 2px 5px rgba(0,0,0,.6) !important; }
+
+/* CTA auf Dunkel */
+#k-done, #k-next, .moment-cta, .gk-btn { background: linear-gradient(180deg, #fff, #f4f0ea) !important; color: #1f3a4f !important; border: 0 !important;
+  box-shadow: 0 1px 1px rgba(96,72,46,.3), inset 0 1px 0 rgba(255,255,255,.14) !important; }
+@media (hover: hover) { #k-done:hover:not(:disabled):not([aria-disabled="true"]), #k-next:hover:not(:disabled):not([aria-disabled="true"]), .moment-cta:hover:not(:disabled):not([aria-disabled="true"]), .gk-btn:hover:not(:disabled):not([aria-disabled="true"]) { background: #fff !important; } }
+#k-done:active:not(:disabled):not([aria-disabled="true"]), #k-next:active:not(:disabled):not([aria-disabled="true"]), .moment-cta:active:not(:disabled):not([aria-disabled="true"]), .gk-btn:active:not(:disabled):not([aria-disabled="true"]) { background: linear-gradient(180deg, #ebe6de, #f6f3ee) !important; box-shadow: var(--s-gedrueckt) !important; }
+#k-done:focus-visible, #k-next:focus-visible, .moment-cta:focus-visible, .gk-btn:focus-visible { outline: 3px solid #fff !important; outline-offset: 3px !important; }
+.gk-btn::after { background: none !important; box-shadow: none !important; }
+
+/* Sekundär */
+.button-quiet, .clay-btn, .soon-sheet__links a, .ki-btn:not(.ki-btn--dunkel), .ki-sugg button, .ki-bubble__zu, .v25r7__google, .v25r7__knopf.v25r7__zweit, .site-nav .nav-mein, .r64-rk-k, .wi-fehlt__k { background: var(--s-card) !important; color: var(--s-ink) !important; border: 1px solid var(--s-line-strong) !important;
+  box-shadow: 0 1px 2px rgba(96,72,46,.16), inset 0 1px 0 rgba(255,255,255,.8) !important; }
+@media (hover: hover) { .button-quiet:hover:not(:disabled):not([aria-disabled="true"]), .clay-btn:hover:not(:disabled):not([aria-disabled="true"]), .soon-sheet__links a:hover:not(:disabled):not([aria-disabled="true"]), .ki-btn:not(.ki-btn--dunkel):hover:not(:disabled):not([aria-disabled="true"]), .ki-sugg button:hover:not(:disabled):not([aria-disabled="true"]), .ki-bubble__zu:hover:not(:disabled):not([aria-disabled="true"]), .v25r7__google:hover:not(:disabled):not([aria-disabled="true"]), .v25r7__knopf.v25r7__zweit:hover:not(:disabled):not([aria-disabled="true"]), .site-nav .nav-mein:hover:not(:disabled):not([aria-disabled="true"]), .r64-rk-k:hover:not(:disabled):not([aria-disabled="true"]), .wi-fehlt__k:hover:not(:disabled):not([aria-disabled="true"]) { background: #fff !important; box-shadow: 0 2px 6px -1px rgba(96,72,46,.24) !important; } }
+.button-quiet:active:not(:disabled):not([aria-disabled="true"]), .clay-btn:active:not(:disabled):not([aria-disabled="true"]), .soon-sheet__links a:active:not(:disabled):not([aria-disabled="true"]), .ki-btn:not(.ki-btn--dunkel):active:not(:disabled):not([aria-disabled="true"]), .ki-sugg button:active:not(:disabled):not([aria-disabled="true"]), .ki-bubble__zu:active:not(:disabled):not([aria-disabled="true"]), .v25r7__google:active:not(:disabled):not([aria-disabled="true"]), .v25r7__knopf.v25r7__zweit:active:not(:disabled):not([aria-disabled="true"]), .site-nav .nav-mein:active:not(:disabled):not([aria-disabled="true"]), .r64-rk-k:active:not(:disabled):not([aria-disabled="true"]), .wi-fehlt__k:active:not(:disabled):not([aria-disabled="true"]) { background: var(--s-clay-in) !important; box-shadow: var(--s-gedrueckt) !important; }
+
+/* Icon-Button */
+.bm-burger, .shelf-nav button, .k-close, .soon-sheet__close, .v47-x, .r80-x, .v25-antwort-zu, .v44-ebene-zu, .v25r7__zu { place-items: center !important; box-sizing: border-box !important; width: 44px !important;
+  height: 44px !important; min-width: 44px !important; min-height: 44px !important; padding: 0 !important; border-radius: 50% !important;
+  background: var(--s-card) !important; color: var(--s-ink) !important; border: 1px solid var(--s-line-strong) !important; font-size: 18px !important;
+  box-shadow: 0 1px 2px rgba(96,72,46,.16), inset 0 1px 0 rgba(255,255,255,.8) !important; transform: none !important;
+  transition: background .12s ease, box-shadow .12s ease !important; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.bm-burger svg, .shelf-nav button svg, .k-close svg, .soon-sheet__close svg, .v47-x svg, .r80-x svg, .v25-antwort-zu svg, .v44-ebene-zu svg, .v25r7__zu svg { width: 18px; height: 18px; }
+@media (hover: hover) { .bm-burger:hover:not(:disabled):not([aria-disabled="true"]), .shelf-nav button:hover:not(:disabled):not([aria-disabled="true"]), .k-close:hover:not(:disabled):not([aria-disabled="true"]), .soon-sheet__close:hover:not(:disabled):not([aria-disabled="true"]), .v47-x:hover:not(:disabled):not([aria-disabled="true"]), .r80-x:hover:not(:disabled):not([aria-disabled="true"]), .v25-antwort-zu:hover:not(:disabled):not([aria-disabled="true"]), .v44-ebene-zu:hover:not(:disabled):not([aria-disabled="true"]), .v25r7__zu:hover:not(:disabled):not([aria-disabled="true"]) { background: #fff !important; box-shadow: 0 2px 6px -1px rgba(96,72,46,.24) !important; } }
+.bm-burger:active:not(:disabled):not([aria-disabled="true"]), .shelf-nav button:active:not(:disabled):not([aria-disabled="true"]), .k-close:active:not(:disabled):not([aria-disabled="true"]), .soon-sheet__close:active:not(:disabled):not([aria-disabled="true"]), .v47-x:active:not(:disabled):not([aria-disabled="true"]), .r80-x:active:not(:disabled):not([aria-disabled="true"]), .v25-antwort-zu:active:not(:disabled):not([aria-disabled="true"]), .v44-ebene-zu:active:not(:disabled):not([aria-disabled="true"]), .v25r7__zu:active:not(:disabled):not([aria-disabled="true"]) { background: var(--s-clay-in) !important; box-shadow: var(--s-gedrueckt) !important; }
+.bm-burger i { left: 12px !important; }
+
+/* Deaktiviert (CTA, Sekundär, Icon) */
+.button-primary:is(:disabled, [aria-disabled="true"]), .r187-k-knopf:is(:disabled, [aria-disabled="true"]), .r187-senden:is(:disabled, [aria-disabled="true"]), .r187-zu-knopf:is(:disabled, [aria-disabled="true"]), .ki-btn--dunkel:is(:disabled, [aria-disabled="true"]), .v47-dunkel:is(:disabled, [aria-disabled="true"]), .r80-ja:is(:disabled, [aria-disabled="true"]), .v47-naechste:is(:disabled, [aria-disabled="true"]), .v25r7__knopf:not(.v25r7__zweit):is(:disabled, [aria-disabled="true"]), .r64-los:is(:disabled, [aria-disabled="true"]), .hero .hero-actions .button-primary:is(:disabled, [aria-disabled="true"]), .button-quiet:is(:disabled, [aria-disabled="true"]), .clay-btn:is(:disabled, [aria-disabled="true"]), .soon-sheet__links a:is(:disabled, [aria-disabled="true"]), .ki-btn:not(.ki-btn--dunkel):is(:disabled, [aria-disabled="true"]), .ki-sugg button:is(:disabled, [aria-disabled="true"]), .ki-bubble__zu:is(:disabled, [aria-disabled="true"]), .v25r7__google:is(:disabled, [aria-disabled="true"]), .v25r7__knopf.v25r7__zweit:is(:disabled, [aria-disabled="true"]), .site-nav .nav-mein:is(:disabled, [aria-disabled="true"]), .r64-rk-k:is(:disabled, [aria-disabled="true"]), .wi-fehlt__k:is(:disabled, [aria-disabled="true"]), .bm-burger:is(:disabled, [aria-disabled="true"]), .shelf-nav button:is(:disabled, [aria-disabled="true"]), .k-close:is(:disabled, [aria-disabled="true"]), .soon-sheet__close:is(:disabled, [aria-disabled="true"]), .v47-x:is(:disabled, [aria-disabled="true"]), .r80-x:is(:disabled, [aria-disabled="true"]), .v25-antwort-zu:is(:disabled, [aria-disabled="true"]), .v44-ebene-zu:is(:disabled, [aria-disabled="true"]), .v25r7__zu:is(:disabled, [aria-disabled="true"]) { background: var(--s-aus) !important; color: var(--s-muted) !important; border-color: transparent !important;
+  box-shadow: none !important; cursor: not-allowed; opacity: 1 !important; }
+
+/* Fokus */
+.button-primary:focus-visible, .r187-k-knopf:focus-visible, .r187-senden:focus-visible, .r187-zu-knopf:focus-visible, .ki-btn--dunkel:focus-visible, .v47-dunkel:focus-visible, .r80-ja:focus-visible, .v47-naechste:focus-visible, .v25r7__knopf:not(.v25r7__zweit):focus-visible, .r64-los:focus-visible, .hero .hero-actions .button-primary:focus-visible, .button-quiet:focus-visible, .clay-btn:focus-visible, .soon-sheet__links a:focus-visible, .ki-btn:not(.ki-btn--dunkel):focus-visible, .ki-sugg button:focus-visible, .ki-bubble__zu:focus-visible, .v25r7__google:focus-visible, .v25r7__knopf.v25r7__zweit:focus-visible, .site-nav .nav-mein:focus-visible, .r64-rk-k:focus-visible, .wi-fehlt__k:focus-visible, .bm-burger:focus-visible, .shelf-nav button:focus-visible, .k-close:focus-visible, .soon-sheet__close:focus-visible, .v47-x:focus-visible, .r80-x:focus-visible, .v25-antwort-zu:focus-visible, .v44-ebene-zu:focus-visible, .v25r7__zu:focus-visible, .kat-chip:focus-visible, .r64-chip:focus-visible { outline: 3px solid var(--s-focus) !important; outline-offset: 3px !important; }
+
+/* Textlink */
+.v47-leise, .v57-zurueck, .r100-link, .v44-mehr, .v22z-skip, .v25r7__leise { align-items: center !important; gap: 8px; box-sizing: border-box !important; min-height: 44px !important;
+  padding: 0 8px !important; border-radius: 10px !important; background: none !important; border: 0 !important; box-shadow: none !important;
+  color: var(--s-ink-soft) !important; font-family: Figtree, system-ui, sans-serif !important; font-size: 16px !important; font-weight: 600 !important;
+  line-height: 24px !important; text-decoration: underline !important; text-decoration-thickness: 1px !important; text-underline-offset: 3px !important;
+  transform: none !important; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+@media (hover: hover) { .v47-leise:hover, .v57-zurueck:hover, .r100-link:hover, .v44-mehr:hover, .v22z-skip:hover, .v25r7__leise:hover { color: var(--s-ink) !important; } }
+.v47-leise:active, .v57-zurueck:active, .r100-link:active, .v44-mehr:active, .v22z-skip:active, .v25r7__leise:active { background: var(--s-clay-in) !important; box-shadow: var(--s-gedrueckt) !important; }
+.v47-leise:focus-visible, .v57-zurueck:focus-visible, .r100-link:focus-visible, .v44-mehr:focus-visible, .v22z-skip:focus-visible, .v25r7__leise:focus-visible { outline: 3px solid var(--s-focus) !important; outline-offset: 0 !important; border-radius: 16px !important; }
+
+/* Chip */
+.kat-chip, .r64-chip { align-items: center !important; justify-content: center !important; gap: 8px !important;
+  box-sizing: border-box !important; min-height: 44px !important; height: auto !important; padding: 0 18px !important; border-radius: 999px !important;
+  background: var(--s-card) !important; color: var(--s-ink) !important; border: 1px solid var(--s-line-strong) !important; box-shadow: none !important;
+  font-family: Figtree, system-ui, sans-serif !important; font-size: 16px !important; font-weight: 600 !important; line-height: 20px !important;
+  text-decoration: none !important; transform: none !important; animation: none !important;
+  transition: background .12s ease, border-color .12s ease !important; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.kat-chip i { display: none !important; }
+@media (hover: hover) { .kat-chip:hover, .r64-chip:hover { background: #fff !important; border-color: var(--s-control) !important; } }
+.kat-chip:active, .r64-chip:active { background: var(--s-clay-in) !important; box-shadow: var(--s-gedrueckt) !important; }
+.kat-chip:focus-visible, .r64-chip:focus-visible { outline-offset: 4px !important; }
+.kat-chip[aria-pressed="true"], .r64-chip[aria-pressed="true"], .kat-chip[aria-current], .r64-chip[aria-current] { background: var(--s-ink) !important; color: var(--s-hell) !important;
+  border-color: var(--s-ink) !important; }
+
+/* ——— Beta-Banner ——— */
+.live-aufbau { padding: 8px 16px !important; font: 400 14px/19.6px Figtree, system-ui, sans-serif !important; color: #f7f1e8 !important;
+  background: #2b2420 !important; text-align: center !important; }
+.live-aufbau b { font-weight: 700 !important; }
+@media (max-width: 339.98px) { .live-aufbau { font-size: 13px !important; padding-inline: 10px !important; } }
+
+/* ——— Kopfzeile ——— */
+.site-nav { height: 80px !important; }
+@media (max-width: 700px) { .site-nav { height: 68px !important; } }
+html .site-nav .nav-end { gap: 20px !important; }
+html .site-nav .nav-links.v44-nav { gap: 8px !important; }
+.site-nav .v44-nav a.v47-pille { position: relative !important; align-items: center !important; gap: 8px !important; box-sizing: border-box !important;
+  min-height: 44px !important; padding: 0 8px !important; border-radius: 10px !important; background: none !important; border: 0 !important;
+  box-shadow: none !important; color: var(--s-ink) !important; font-family: Figtree, system-ui, sans-serif !important; font-size: 15px !important;
+  font-weight: 600 !important; line-height: 20px !important; text-decoration: none !important; transform: none !important;
+  -webkit-tap-highlight-color: transparent; }
+.site-nav .v44-nav a.v47-pille .v47-ic { width: 18px !important; height: 18px !important; }
+.site-nav .v44-nav a.v47-pille span, .site-nav .v44-nav a.v47-pille .v47-ic { color: inherit !important; background: none !important; }
+.site-nav .v44-nav a.v47-pille .v47-ic, .site-nav .v44-nav a.v47-pille .v47-ic * { stroke: currentColor !important; }
+/* Hover deutet den Auswahl-Strich nur an, an derselben Stelle; der gewählte Reiter bleibt wie er ist (Yannis, 05.11.2026) */
+@media (hover: hover) { .site-nav .v44-nav a.v47-pille:not([aria-current="page"]):hover::after { content: "" !important; display: block !important; position: absolute !important;
+  left: 8px !important; right: 8px !important; top: auto !important; bottom: 3px !important; width: auto !important; height: 2px !important;
+  border-radius: 2px !important; background: var(--s-ink) !important; opacity: .28 !important; transform: none !important; } }
+.site-nav .v44-nav a.v47-pille:active { background: none !important; box-shadow: none !important; }  /* kein gedrückter Rahmen beim Klick, der Reiter hat vorher keinen sichtbaren Rahmen (Yannis 05.11.2026) */
+.site-nav .v44-nav a.v47-pille:focus-visible { outline: 3px solid var(--s-focus) !important; outline-offset: 0 !important; border-radius: 16px !important; }
+.site-nav .v44-nav a.v47-pille[aria-current="page"] { background: none !important; box-shadow: none !important; }
+.site-nav .v44-nav a.v47-pille[aria-current="page"]::after { content: "" !important; display: block !important; position: absolute !important; left: 8px !important; right: 8px !important;
+  top: auto !important; bottom: 3px !important; width: auto !important; height: 2px !important; border-radius: 2px !important;
+  background: var(--s-ink) !important; opacity: 1 !important; transform: none !important; }
+html .site-nav .nav-mein { gap: 10px !important; }
+html .site-nav .nav-mein .nav-mein__ich { width: 18px; height: 18px; }
+
+/* ——— Menü (Handy) ——— */
+.bm-scrim { background: rgba(250,247,242,.35) !important; -webkit-backdrop-filter: blur(9px) !important; backdrop-filter: blur(9px) !important; }
+@media (prefers-reduced-transparency: reduce) { .bm-scrim { background: rgb(246 242 236 / .94) !important; -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important; } }
+.bm-panel { top: 114px !important; right: 14px !important; width: min(302px, calc(100% - 28px)) !important; padding: 14px !important;
+  background: var(--s-card) !important; border: 1px solid var(--s-line) !important; border-radius: 26px !important;
+  box-shadow: 0 2px 6px rgba(96,72,46,.12), 0 24px 48px -16px rgba(96,72,46,.35) !important; }
+.bm-liste { gap: 4px !important; }
+.bm-row { position: relative !important; display: flex !important; align-items: center !important; gap: 12px !important; height: 52px !important;
+  min-height: 52px !important; padding: 0 8px 0 12px !important; border-radius: 10px !important; background: none !important; border: 0 !important;
+  box-shadow: none !important; color: var(--s-ink) !important; font-family: Figtree, system-ui, sans-serif !important; font-size: 16px !important;
+  font-weight: 600 !important; line-height: 24px !important; text-decoration: none !important; transform: none !important; }
+.bm-row .bm-ic { width: 20px !important; height: 20px !important; background: none !important; box-shadow: none !important; font-size: 20px !important;
+  color: var(--s-ink) !important; }
+.bm-row .bm-pf { font-size: 18px !important; color: var(--s-muted) !important; }
+.bm-row:active { background: var(--s-clay-in) !important; box-shadow: var(--s-gedrueckt) !important; }
+.bm-row[aria-current="page"] { background: none !important; box-shadow: none !important; }
+.bm-row[aria-current="page"]::before { content: ""; position: absolute; left: 0; top: 12px; bottom: 12px; width: 3px; border-radius: 2px;
+  background: var(--s-ink); }
+.bm-row:focus-visible { outline: 3px solid var(--s-focus) !important; outline-offset: 0 !important; border-radius: 16px !important; }
+/* „Anmelden“ im Menü: Sekundär Large über die ganze Breite */
+.bm-row[data-ki-anmelden] { justify-content: center !important; gap: 12px !important; margin-top: 12px !important; padding: 0 24px !important;
+  border-radius: 999px !important; background: var(--s-card) !important; border: 1px solid var(--s-line-strong) !important; line-height: 20px !important;
+  box-shadow: 0 1px 2px rgba(96,72,46,.16), inset 0 1px 0 rgba(255,255,255,.8) !important; }
+.bm-row[data-ki-anmelden] .bm-tx { flex: none !important; }
+.bm-row[data-ki-anmelden] .bm-pf { display: none !important; }
+.bm-row[data-ki-anmelden]:active { background: var(--s-clay-in) !important; box-shadow: var(--s-gedrueckt) !important; }
+.bm-row[data-ki-anmelden]:focus-visible { border-radius: 999px !important; outline-offset: 3px !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .button-primary, .r187-k-knopf, .r187-senden, .r187-zu-knopf, .ki-btn--dunkel, .v47-dunkel, .r80-ja, .v47-naechste, .v25r7__knopf:not(.v25r7__zweit), .r64-los, .hero .hero-actions .button-primary, #k-done, #k-next, .moment-cta, .gk-btn, .button-quiet, .clay-btn, .soon-sheet__links a, .ki-btn:not(.ki-btn--dunkel), .ki-sugg button, .ki-bubble__zu, .v25r7__google, .v25r7__knopf.v25r7__zweit, .site-nav .nav-mein, .r64-rk-k, .wi-fehlt__k, .bm-burger, .shelf-nav button, .k-close, .soon-sheet__close, .v47-x, .r80-x, .v25-antwort-zu, .v44-ebene-zu, .v25r7__zu, .kat-chip, .r64-chip { transition: none !important; }
+}
+</style>
 </body>
 </html>

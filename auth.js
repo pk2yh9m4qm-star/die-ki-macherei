@@ -972,7 +972,7 @@
   function kopfNamen() {
     var s = sitzung();
     document.querySelectorAll('.nav-mein .nav-mein__text').forEach(function (t) {
-      var soll = !s ? 'Anmelden' : s.vorname ? s.vorname : 'Mein Bereich';   // R228: abgemeldet „Anmelden“
+      var soll = !s ? 'Anmelden' : 'Mein Bereich';   // R231 (Pam), über R246: angemeldet steht im Kopf immer „Mein Bereich“, der Vorname bleibt im Kreis (Anfangsbuchstabe) und in der Begrüßung   // R228: abgemeldet „Anmelden“
       if (t.textContent !== soll) t.textContent = soll;
     });
   }
