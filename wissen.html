@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
+<meta name="runde248" content="1">
 <script>/* Runde 69: Merk-Speicher auf eine Kennung je Idee umziehen (vor allen anderen Skripten) */(function () { try {
   var A = {"miete":"r07","foerderung":"f-foerderung","anschaffung":"r45","gehalt":"r17","therapie":"r50","r26":"facharzt","r37":"stadtrat","r18":"todesfall","r38":"netz","r43":"versicherung","r08":"auto","r32":"garten","r12":"gewerbe","r22":"foto","r25":"suetterlin"}, s = window.sessionStorage;
   var h = s.getItem('ki-entdecken-herzen');
@@ -2598,7 +2599,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
   function ic(n, k) { return '<svg class="wi-i' + (k ? ' ' + k : '') + '" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + (I[n] || '') + '</svg>'; }
   var FARBE = { loslegen: '#f2ad8e', sicher: '#a8c2d1', verstehen: '#b0c8a8', faq: '#e8cba3', haltung: '#d6aab6' };
   var ORDNUNG = ['loslegen', 'sicher', 'verstehen', 'faq'], EXTRA = ['haltung'], EXTERN = { karte: '/mein-bereich#artikel-karte' };
-  var ZUERST = { loslegen: ['erster-chat', 'chatgpt-konto', 'anbieter', 'kostenlos', 'wie-reden', 'sprechen', 'karte'] };
+  var ZUERST = { loslegen: ['idee-starten', 'warum-anleitung', 'erster-chat', 'chatgpt-konto', 'anbieter', 'kostenlos', 'wie-reden', 'sprechen', 'karte'] };
   var A = D.ARTIKEL, G = D.GRUPPEN, LISTE = {};
   ORDNUNG.concat(EXTRA).forEach(function (g) {
     var l = (ZUERST[g] || []).filter(function (k) { return A[k] && A[k].g === g; });

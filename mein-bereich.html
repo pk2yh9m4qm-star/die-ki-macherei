@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
+<meta name="runde248" content="1">
 <script>/* Runde 69: Merk-Speicher auf eine Kennung je Idee umziehen (vor allen anderen Skripten) */(function () { try {
   var A = {"miete":"r07","foerderung":"f-foerderung","anschaffung":"r45","gehalt":"r17","therapie":"r50","r26":"facharzt","r37":"stadtrat","r18":"todesfall","r38":"netz","r43":"versicherung","r08":"auto","r32":"garten","r12":"gewerbe","r22":"foto","r25":"suetterlin"}, s = window.sessionStorage;
   var h = s.getItem('ki-entdecken-herzen');
@@ -2717,7 +2718,6 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
         <a class="brand r61-brand" href="/"><picture><source media="(max-width: 359.98px)" srcset="/ki-macherei_zeichen_hell.svg"><img class="r61-logo" src="/ki-macherei_quer_hell.svg" alt="Die KI-Macherei, zur Startseite" width="159" height="28"></picture></a>
         <div class="nav-end">
           <nav class="nav-links v44-nav" aria-label="Hauptnavigation"><a class="v47-pille" href="/ideen"><svg class="v47-ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg><span>Alle Ideen</span></a><a class="v47-pille r230-wissen" href="/wissen"><svg class="v47-ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg><span>Wissen</span></a></nav>
-          <a class="nav-herz" href="#mb-app" data-tab="gemerkt" aria-label="Mein Bereich, 0 gemerkte Ideen"><svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg><span class="nav-herz__zahl" hidden></span></a>
           <a class="nav-mein" href="#mb-kopf" aria-current="page" aria-label="Mein Bereich"><span class="nav-mein__ich" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-user-round"/></svg></span><span class="nav-mein__text">Mein Bereich</span></a>
           <button class="bm-burger" id="bm-burger" type="button" aria-label="Menü" aria-expanded="false" aria-controls="bm-menue"><i></i><i></i><i></i></button>
         </div>
@@ -2948,7 +2948,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
 
       const herzen = () => lies(K.herzen, {});
       const sammlungen = () => lies(K.sammlungen, []);
-      const konto = () => null;   // Runde 103 (F2): es gibt kein Konto
+      const konto = () => lies(K.konto, null);   // R248: wie auf allen Seiten, damit der Kopf-Button den Anfangsbuchstaben zeigt
       const hinweis = () => lies(K.hinweis, {});
       function setzeHerz(id, titel, an) {
         const d = herzen();

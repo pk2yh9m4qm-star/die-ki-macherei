@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
+<meta name="runde248" content="1">
 <script>/* Runde 69: Merk-Speicher auf eine Kennung je Idee umziehen (vor allen anderen Skripten) */(function () { try {
   var A = {"miete":"r07","foerderung":"f-foerderung","anschaffung":"r45","gehalt":"r17","therapie":"r50","r26":"facharzt","r37":"stadtrat","r18":"todesfall","r38":"netz","r43":"versicherung","r08":"auto","r32":"garten","r12":"gewerbe","r22":"foto","r25":"suetterlin"}, s = window.sessionStorage;
   var h = s.getItem('ki-entdecken-herzen');
@@ -6239,8 +6240,7 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
         function r147Fein() { try { return matchMedia('(pointer: fine)').matches; } catch (e) { return true; } }   // Runde 147: Weiche nur Rechner (Szene gibt es nur ab 961 px und nicht auf Handy/iPad; dazu feiner Zeiger)
         function videoSperreAktiv() { return szeneAn && r147Fein() && vonOben && !videoDurch && !filmFertig && !!kVideo && !videoKaputt && Date.now() > sprungBis; }
         function r146Frei() {   // der Film gilt als übersprungen (nie gespult): Endbild wie bei „Überspringen“, aber ohne Gleiten
-          r146T0 = 0; videoDurch = true;
-          if (!filmFertig) { filmFertigMarke(); pfeilWeg = true; }
+          r146T0 = 0; videoDurch = true;   // R248: Nachrutschen am Halt gilt nicht mehr als übersprungen, das Standbild mit Play bleibt
           zeichnen(uJetzt); knoepfeZeigen(); r26Knopf();
         }
         function r146Block() {   // true: Scrollen bleibt am Film hängen. Läuft der Film, immer; sonst nur für die erste Geste oder höchstens 450 ms (Brief: höchstens 600 ms, mit Luft für die Messung)
@@ -6418,12 +6418,13 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
           var p = pVh(), y = window.scrollY;
           if (!vonOben && y < sperrY - 10) vonOben = true;
           if (y < sperrY - 30) r146T0 = 0;   // Runde 146: wer von oben neu an die Sperre kommt, wird wieder kurz gehalten
+          if (videoDurch && !filmFertig && !ff && !videoAn && y <= sperrY - 60) videoDurch = false;   // R248: nach Nachrutschen und Zurückscrollen hält die Sperre wieder
           if (!gespielt132 && filmFertig && !videoAn && !ff && y <= Math.min(oben, sperrY - 60)) { posterSetzen(); videoDurch = false; r146T0 = 0; sofortSetzen(p); return; }   // Runde 146: 60 px über der Sperre zurück = Standbild mit Play, Sperre wieder scharf (sperrY liegt vor oben)   // Runde 132 (s1-37): vorbeigescrollt ohne Film, wieder oben: Standbild mit Play-Knopf
           if (p < -100 || p > Z.weg + 100) { sofortSetzen(p); return; }
           if (videoAn && (p - filmStartP >= 9 || p >= Z.weg)) videoEnde(true);
           if (!filmFertig && !videoAn) {
             if (p >= Z.weg) { filmFertigMarke(); pfeilWeg = true; }
-            else if (p - filmStartP >= (schrittNr < 0 ? Z.z0 * .5 : Z.ffRel)) vorspulen();   // weitergescrollt (am Fenster oder in den Schritten): zum Endbild
+            else if (p - filmStartP >= (schrittNr < 0 ? Z.z0 * .5 : Z.ffRel)) { if (videoDurch && schrittNr < 0) { filmFertigMarke(); pfeilWeg = true; } else vorspulen(); }   // weitergescrollt: zum Endbild. R248: nach Freigabe am Halt ohne Vorspul-Zwischenbild, wie vorher
             else if (filmLauf && filmT <= .8) filmStartP = Math.max(filmStartP, p);   // Nachrollen beim Start (Trackpad) ist kein Weiterscrollen
           }
           if (!stationGesehen && gesehen) {
@@ -6560,11 +6561,11 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
         if (kVideo) kVideo.addEventListener('error', function () { videoKaputt = true; if (videoAn) videoEnde(false); });
         function videoStart() {   // Play, Klick aufs Fenster, „Nochmal ansehen“: das Video über der Szene
           if (!szeneAn) return;
-          vonOben = true; gespielt132 = true;
+          vonOben = true; gespielt132 = true; videoDurch = false; r146T0 = 0;   // R248: wer nach einem Nachrutschen Play drückt, wird beim Film wieder gehalten
           if (!kVideo || videoKaputt) { abspielen(); return; }
           stupsWeg(); var tast = tastatur();
           if (window.scrollY > sperrY + 40) { var sb = d.style.scrollBehavior; d.style.scrollBehavior = 'auto'; window.scrollTo(0, sperrY); d.style.scrollBehavior = sb; }
-          filmStartP = pVh(); videoAn = true; r26Versuche = 0; buehne.classList.add('v22z-video-an'); hudLage(); if (kHudEl) kHudEl.classList.add('ist-an');
+          filmStartP = Math.max(pVh(), (sperrY - oben) / pxVh); videoAn = true;   /* R248: Start frühestens am Halt */ r26Versuche = 0; buehne.classList.add('v22z-video-an'); hudLage(); if (kHudEl) kHudEl.classList.add('ist-an');
           // Version 25c: keine Untertitel mehr, die Unterzeile bleibt beim Abspielen stehen
           try { kVideo.currentTime = 0; } catch (e) {} kHud.neu();
           var pr = kVideo.play(); if (pr && pr.catch) pr.catch(function () {});
@@ -8386,10 +8387,24 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
     function fokus() { try { titel.focus({ preventScroll: true }); } catch (e) {} }
     function zu() { if (dlg.open) dlg.close(); }
     // Zurück-Geste am Handy schließt nur das Fenster (Startseite bleibt der Weg bis „Loslegen“)
-    var gemerkt = false, stelle = 0;
+    var gemerkt = false, stelle = 0, heim = false;   // R248: heim = das Schließen des Fensters löst das popstate aus
+    // R248: Nach dem Schließen hält die Seite die gemerkte Stelle, bis zu 0,9 s lang (auch während das Fenster noch
+    // ausblendet). Springt sie weg (weiches Scrollen nach oben aus der Live-Hülle), sofort und ohne Animation zurück.
+    // Wer selbst scrollt, tippt oder eine Taste drückt, hat Vorrang: dann hört die Wache auf.
+    function halteStelle() {
+      var bis = performance.now() + 900, aus = false, de = document.documentElement;
+      function ende() { aus = true; ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(function (n) { removeEventListener(n, ende, true); }); }
+      ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(function (n) { addEventListener(n, ende, true); });
+      (function schritt() {
+        if (aus) return;
+        if (!dlg.open && Math.abs(scrollY - stelle) > 3) { var sb = de.style.scrollBehavior; de.style.scrollBehavior = 'auto'; window.scrollTo(0, stelle); de.style.scrollBehavior = sb; }
+        if (performance.now() < bis) requestAnimationFrame(schritt); else ende();
+      })();
+    }
     window.addEventListener('popstate', function () {
-      if (gemerkt) { gemerkt = false; zu(); }
-      requestAnimationFrame(function () { if (scrollY !== stelle && !dlg.open) scrollTo(0, stelle); });
+      if (gemerkt) { gemerkt = false; heim = true; zu(); }
+      if (!heim) return;
+      heim = false; halteStelle();
     });
     mehr.addEventListener('click', function (e) {
       e.preventDefault(); e.stopPropagation();
@@ -8407,7 +8422,7 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
     });
     dlg.addEventListener('close', function () {
       document.documentElement.classList.remove('r243-offen');
-      if (gemerkt) { gemerkt = false; try { history.back(); } catch (e) {} }
+      if (gemerkt) { gemerkt = false; heim = true; try { history.back(); } catch (e) {} }
       if (vorher) try { vorher.focus({ preventScroll: true }); } catch (e) {}
     });
     dlg.addEventListener('click', function (e) {

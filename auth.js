@@ -622,9 +622,9 @@
     v.querySelectorAll('[data-satz]').forEach(function (x) { var t = satz(x.getAttribute('data-satz'), { mail: mail }); if (t !== null) { x.textContent = t; x.hidden = false; } });
   }
   var MAILFORM = /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/;
-  function redirectZiel() { return location.origin + location.pathname; }                    // Google (wie R186)
+  function redirectZiel() { return location.origin + '/mein-bereich'; }                      // Google; R248: immer „Mein Bereich“
   function redirectWillkommen() { return location.origin + '/mein-bereich?willkommen'; }     // Bestätigung nach „Konto anlegen“
-  function redirectPasswort() { return location.origin + location.pathname + '?passwort'; }  // Link für ein neues Passwort
+  function redirectPasswort() { return location.origin + '/mein-bereich?passwort'; }        // Link für ein neues Passwort; R248: auf „Mein Bereich“
 
   /* ——— Aufrufe an Supabase ——— */
   function registrieren(vorname, mail, pw) {
@@ -742,8 +742,13 @@
       var j = r.json || {}, c = j.error_code || j.error;
       if (r.ok && j.access_token && j.refresh_token) {
         wechselnZu({ access_token: j.access_token, refresh_token: j.refresh_token, expires_at: j.expires_at || (jetzt() + (j.expires_in || 3600)), email: (j.user && j.user.email) || m, vorname: '', pw: true }).then(function (alt) {
-          dlg.close(); anzeigen();
-          userHolen().then(function (u) { return u && sitzung() ? abgleichen(u, true, alt) : null; }).then(anzeigen);
+          var ab = userHolen().then(function (u) { return u && sitzung() ? abgleichen(u, true, alt) : null; }).then(anzeigen);
+          if (/\/mein-bereich(\.html)?$/.test(location.pathname)) { dlg.close(); anzeigen(); }
+          else {   // R248 (Yannis 07.11.2026): nach der Anmeldung „Mein Bereich“; erst abgleichen (höchstens 5 s), damit gemerkte Ideen mitkommen
+            knopf.disabled = true;
+            var los = function () { location.assign('/mein-bereich'); };
+            Promise.race([ab, new Promise(function (r) { setTimeout(r, 5000); })]).then(los, los);
+          }
         });
         return;
       }
