@@ -25,7 +25,10 @@
  *    film_ende; je {fassung: computer|handy-hoch|handy-quer|ruhig}.
  * 5. Use Cases: start_knopf {anbieter, weg} beim Tippen auf einen Start-Knopf, start_hilfe wenn danach das Hilfefenster
  *    kommt, start_klick (messpunkte.js) wenn die KI wirklich aufgeht, weiterer_fall {anzahl} ab dem zweiten Fall.
- * 6. Rückmeldung: rueckmeldung_geoeffnet und rueckmeldung_abgeschickt {abfrage} am Rückmeldefenster (R187).
+ * 6. Rückmeldung: rueckmeldung_geoeffnet und rueckmeldung_abgeschickt {abfrage, antwort: klappt-nicht|wunsch|idee} am
+ *    Rückmeldefenster (R187). Rückkehrkarte nach dem Chat (R64): umfrage_antwort {abfrage: rm-entwuerfe|rm-leicht|rm-wieder,
+ *    antwort} je angetippter Antwort, umfrage_text {abfrage: rm-text}, wenn ein Freitext abgeschickt wird. Freitexte selbst
+ *    gehen nie an Umami, nur wie bisher in die Google-Tabelle.
  */
 (function (fenster) {
   'use strict';
@@ -36,7 +39,7 @@
   var MARKE = 'Messung über Umami Cloud, Fassung 2';
   var UMLAUTE = { 'ä': 'ae', 'ö': 'oe', 'ü': 'ue', 'ß': 'ss' };
   var ZAHLEN = ['prozent', 'sekunde', 'generation', 'anzahl'];
-  var ANGABEN = ['fall', 'einstieg', 'anbieter', 'abfrage', 'herkunft', 'zweig', 'fassung', 'weg', 'grund', 'ort']
+  var ANGABEN = ['fall', 'einstieg', 'anbieter', 'abfrage', 'antwort', 'herkunft', 'zweig', 'fassung', 'weg', 'grund', 'ort']
     .concat(ZAHLEN);
   var GEHEIM = /^(access_token|refresh_token|provider_token|provider_refresh_token|code|token|token_hash|error_description)$/i;
   var AUS = 'umami.disabled', ALT_AUS = 'kiosk-zaehlung-aus', SITZUNG = 'ki-sitzung';
@@ -477,7 +480,29 @@
   }
   function beiAbschicken(ereignis) {
     var f = ereignis.target;
-    if (f && f.id === 'r187-form') senden('rueckmeldung_abgeschickt', { abfrage: rueckmeldungArt || 'rueckmeldung' });
+    if (!f || f.id !== 'r187-form') return;
+    var t = doc.getElementById('r187-text');
+    if (t && !String(t.value || '').trim()) return;   // ohne Text schickt das Fenster nichts ab
+    var w = f.querySelector('input[name="r187-art"]:checked');
+    senden('rueckmeldung_abgeschickt', { abfrage: rueckmeldungArt || 'rueckmeldung', antwort: w ? w.value : 'ohne-auswahl' });
+  }
+
+  // ---------- Rückkehrkarte nach dem Chat (R64): Antworten der drei Fragen, ohne Freitext ----------
+
+  function beiUmfrage(ereignis) {
+    var t = ereignis.target, c = t && t.closest ? t.closest('.r64-chip') : null;
+    if (c) {
+      var frage = c.closest('[data-frage]');
+      if (!frage || frage.dataset.fertig || frage.__mvGezaehlt) return;   // die Seite nimmt je Frage nur die erste Antwort
+      frage.__mvGezaehlt = true;
+      senden('umfrage_antwort', { abfrage: frage.getAttribute('data-frage'), antwort: c.getAttribute('data-wert') });
+      return;
+    }
+    var b = t && t.closest ? t.closest('[data-feld="absenden"]') : null;
+    if (b) {
+      var feld = doc.getElementById('r64-text');
+      if (feld && String(feld.value || '').trim()) senden('umfrage_text', { abfrage: 'rm-text' });
+    }
   }
 
   // ---------- Keller-Film ----------
@@ -531,6 +556,7 @@
   doc.addEventListener('auxclick', beiKlick, true);
   doc.addEventListener('click', beiRueckmeldungKlick, true);
   doc.addEventListener('submit', beiAbschicken, true);
+  doc.addEventListener('click', beiUmfrage, true);
   fenster.addEventListener('scroll', beiScroll, { passive: true });
   BEDIENUNG.forEach(function (t) { fenster.addEventListener(t, alsMensch, { capture: true, passive: true }); });
   fenster.addEventListener('scroll', beiErstemScroll, { capture: true, passive: true });
