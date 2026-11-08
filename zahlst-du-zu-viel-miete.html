@@ -2610,6 +2610,7 @@ html body .r187-panel:focus,html body .r187-panel:focus-visible,html body .r187-
 .r133-text .logo.logo--text { width: 1em; height: 1em; vertical-align: -0.14em; margin-right: .22em; }
 .r133-laedt { color: var(--ink-soft, #5a4d40); }
 </style>
+<style id="r249-hover">/* R249b: weiße Grundfarbe unter dem Verlauf, sonst blitzt der Hauptbutton beim Hover braun auf */ body .ra3.r234 .r234-los .ra-knopf { background-color: #fff !important; }</style>
 </head>
 <body data-fall="zahlst-du-zu-viel-miete"><div class="live-aufbau" role="note"><b>Public Beta</b> · Die Seite ist noch im Aufbau.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-folder-heart" viewBox="0 0 24 24"><path d="M10.638 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v3.417"/><path d="M14.62 18.8A2.25 2.25 0 1 1 18 15.836a2.25 2.25 0 1 1 3.38 2.966l-2.626 2.856a.998.998 0 0 1-1.507 0z"/></symbol><symbol id="ls-house" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol><symbol id="ls-message-square-warning" viewBox="0 0 24 24"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/><path d="M12 15h.01"/><path d="M12 7v4"/></symbol><symbol id="ls-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
@@ -3686,7 +3687,9 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
       function text(art) { if (art === 'abo') { var v = document.getElementById('auftrag-abo'); return v ? v.content.textContent.trim() : auftrag(); } return art === 'skill' ? (CFG.skill[ki] || '') : auftrag(); }
       // Ziele je KI, Art und Gerät
       function links(art, k) {
-        var q = enc(text(art));
+        // Runde 27: eigener Claude-Auftrag, wo es ihn gibt (<template id="auftrag-claude">)
+        var cv = (k || ki) === 'claude' && art === 'prompt' && document.getElementById('auftrag-claude');
+        var q = enc(cv ? cv.content.textContent.trim() : text(art));
         if ((k || ki) === 'claude') {
           if (art === 'skill') return { app: 'https://claude.ai/new?q=' + q + '#no_universal_links', web: 'https://claude.ai/new?q=' + q };
           return { app: 'claude://claude.ai/new?q=' + q, web: 'https://claude.ai/new?q=' + q };
@@ -4401,6 +4404,33 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
   var zeile = document.getElementById('r64-danke-zeile');
   if (zeile) zeile.querySelector('button').addEventListener('click', function () { zeile.hidden = true; });
 })();
+</script>
+<script>
+  // Runde 101 (Ryan, 30.10.2026), s2-17: Wer im Einstiegsfenster Claude gewählt hat, bekommt Claude als Haupt-Knopf und „Mit ChatGPT starten“ als Link darunter
+  // (spiegelbildlich). Nur auf Seiten mit Claude-Auftrag (<template id="auftrag-claude">). Bei ChatGPT, Andere, Keine oder ohne Wahl bleibt alles wie vorher.
+  (function () {
+    var k = null; try { k = localStorage.getItem('ki-wahl'); } catch (e) {}
+    var tpl = document.getElementById('auftrag-claude'), pr = document.getElementById('prompt-text');
+    if (k !== 'claude' || !tpl) return;
+    var q = encodeURIComponent(tpl.content.textContent.trim()), web = 'https://claude.ai/new?q=' + q, app = 'claude://claude.ai/new?q=' + q;
+    var handy = document.documentElement.getAttribute('data-geraet') === 'handy';
+    function zuClaude(a) { a.setAttribute('data-start-ki', 'claude'); a.setAttribute('data-web', web); a.href = handy ? app : web; a.setAttribute('target', handy ? '_top' : '_blank'); }
+    document.querySelectorAll('.ra-knopf[data-start], .ra-leiste [data-start]').forEach(function (a) {
+      zuClaude(a); var u = a.querySelector('.logo use'); if (u) u.setAttribute('href', '#l-claude'); var s = a.querySelector('span'); if (s) s.textContent = 'Mit Claude starten';
+    });
+    document.querySelectorAll('.r64-los[data-start]').forEach(function (a) { zuClaude(a); a.textContent = 'Anleitung kopieren und Claude öffnen'; });
+    document.querySelectorAll('[data-start-web]').forEach(function (a) { a.href = web; });
+    var l = document.querySelector('.ra-start .ra-links');
+    if (!l && pr) { var sb = document.querySelector('.ra-start'); if (sb) { l = document.createElement('p'); l.className = 'ra-links'; sb.appendChild(l); } }   // R129: das <p> mit „Noch nicht angemeldet?“ ist weg, der Behälter entsteht bei Bedarf hier
+    if (l && pr) {
+      var q2 = encodeURIComponent(pr.textContent.trim()), c = document.createElement('a');
+      c.className = 'ra-leise ra-claude'; c.setAttribute('data-start', ''); c.setAttribute('data-art', 'prompt'); c.rel = 'noopener';
+      c.setAttribute('data-web', 'https://chatgpt.com/auth/login?next=' + encodeURIComponent('/?q=' + q2));
+      c.href = handy ? 'https://chatgpt.com/?q=' + q2 : c.getAttribute('data-web'); c.target = '_blank';
+      c.innerHTML = '<svg class="logo" aria-hidden="true"><use href="#l-openai"/></svg>Mit ChatGPT starten';
+      l.insertBefore(c, l.firstChild);
+    }
+  })();
 </script>
 <style>
 .ra-start .ra-knopf.r104-aus, .ra-start .ra-knopf.r104-aus:hover, .ra-start .ra-knopf.r104-aus:active {
