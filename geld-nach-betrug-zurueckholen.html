@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
+<meta name="runde254" content="1">
 <meta name="runde253" content="1">
 <meta name="runde251" content="1">
 <meta name="runde250" content="1">
@@ -2606,6 +2607,14 @@ img.r251-unterschrift { display: block; width: 190px; max-width: 62%; height: au
 .live-aufbau a.r253-mit:hover { text-decoration-thickness: 2px; }
 .live-aufbau a.r253-mit:focus-visible { outline: 2px solid #f7f1e8; outline-offset: 3px; border-radius: 2px; }
 </style>
+<style id="r254">
+/* R254: Grußkarte – Überschrift über dem Foto (Yannis 08.11.2026) */
+.v25r7 [data-ansicht="willkommen"] > h2 { margin: 14px 0 0; }
+[data-ansicht="willkommen"] .v25r7__bild { margin-top: 22px; }
+@media (max-height: 900px) and (min-width: 601px) { [data-ansicht="willkommen"] .v25r7__bild { margin-top: 18px; } }
+[data-ansicht="willkommen"] .v25r7__bild { margin-bottom: 16px; }
+[data-ansicht="willkommen"] .v25r7__text p.r254-ich { color: var(--ink); font-weight: 600; text-align: center; margin-bottom: 20px; }
+</style>
 </head>
 <body data-fall="geld-nach-betrug-zurueckholen"><div class="live-aufbau" role="note"><b>Beta</b> · <a class="r253-mit" href="#r187-kasten" data-r187-oeffnen="" aria-haspopup="dialog">Gestalte mit: Was fehlt, was hakt?</a></div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-file-x" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="m14.5 12.5-5 5"/><path d="m9.5 12.5 5 5"/></symbol><symbol id="ls-message-square-warning" viewBox="0 0 24 24"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/><path d="M12 15h.01"/><path d="M12 7v4"/></symbol><symbol id="ls-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol><symbol id="ls-undo-2" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
@@ -3904,13 +3913,16 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
 <div class="v25r7__innen" data-ansicht="willkommen" hidden>
     <button class="v25r7__zu" type="button" data-v25r7-zu aria-label="Schließen">×</button>
     <span class="v25r7__etikett">Dein Konto ist fertig</span>
+    <h2 id="v25r7-t2" tabindex="-1">Hallo <span data-v25r7-name>du</span>, schön, dass du dabei bist!</h2>
     <figure class="v25r7__bild">
       <div class="v25r7__foto"><img src="gruss-yannis.webp" srcset="gruss-yannis.webp 1x, gruss-yannis-2x.webp 2x" width="400" height="500" alt="Foto von Yannis" decoding="async" loading="lazy"></div>
     </figure>
     <div class="v25r7__text">
-      <h2 id="v25r7-t2" tabindex="-1">Hallo <span data-v25r7-name>du</span>, schön, dass du dabei bist!</h2>
-      <p>Ich bin Yannis. Ich habe diese Seite gebaut, weil wir alle gerade erst herausfinden, was mit KI möglich ist. Hilfreiche Ideen entstehen durch Menschen, die etwas für sich selbst ausprobieren. Diese Entdeckungen möchte ich hier sammeln und weitergeben, damit aus einer guten Idee für einen Menschen eine Hilfe für viele werden kann.</p>
-      <p>Alle Ideen haben wir selbst ausprobiert. Wenn etwas nicht klappt oder dir eine Idee fehlt, schreib mir. Ich lese und freue mich über jede Nachricht.</p>
+      <p class="r254-ich">Ich bin Yannis.</p>
+      <p>Ich habe diese Seite gebaut, weil wir alle gerade erst herausfinden, was mit KI möglich ist.</p>
+      <p>Hilfreiche Ideen entstehen durch Menschen, die etwas für sich selbst ausprobieren. Diese Entdeckungen möchte ich hier sammeln und weitergeben, damit aus einer guten Idee für einen Menschen eine Hilfe für alle werden kann.</p>
+      <p>Alle Ideen haben wir selbst ausprobiert. Wenn etwas nicht klappt oder dir eine Idee fehlt, schreib mir.</p>
+      <p>Ich lese und freue mich über jede Nachricht.</p>
     </div>
     <img class="v25r7__unterschrift r251-unterschrift" src="gruss-unterschrift.webp" srcset="gruss-unterschrift.webp 1x, gruss-unterschrift-2x.webp 2x" width="380" height="172" alt="Unterschrift: Yannis" decoding="async" loading="lazy">
     <p class="v25r7__rolle">Yannis Koschel, hat Die KI-Macherei gegründet</p>
