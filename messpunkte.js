@@ -60,6 +60,8 @@
     if (!el || !el.closest) return;
     var a = el.closest('a[href]');
     var ki = a ? anbieter(a.href) : '';
+    if (ki && a.closest('.r240-hw')) { senden('start_anmelden', { fall: fallVon(a), anbieter: ki }); return; }
+    if (ki && e.defaultPrevented) { var wahl = ''; try { wahl = localStorage.getItem('ki-wahl') || ''; } catch (f) {} senden('start_kopiert', { fall: fallVon(a), anbieter: wahl || ki }); return; }
     if (ki) { senden('start_klick', { fall: fallVon(a), anbieter: ki }); return; }
     var kopie = el.closest('[data-kopieren]');
     if (kopie) { senden('prompt_kopiert', { fall: fallVon(kopie) }); return; }
@@ -71,7 +73,7 @@
   document.addEventListener('submit', function (e) {
     var f = e.target;
     if (!f || !f.matches) return;
-    if (f.matches('[data-v25r7-form]')) senden('anmeldung_begonnen', { einstieg: 'mail' });
+    if (f.matches('[data-v25r7-form]')) { /* Messung 2: anmeldung_begonnen (mail) meldet auth.js nach der Prüfung */ }
     else if (f.matches('[data-mb-frage]')) {
       var feld = f.querySelector('input, textarea');
       if (feld && feld.value.trim()) senden('frage_geschickt');

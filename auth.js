@@ -22,6 +22,7 @@
   var URL_ = 'https://fcjadwdzcuqgzddwrrzl.supabase.co';
   var KEY = 'sb_publishable_CLIEw8HDRbsdMfMLOPCSvw_64EmxycT';
   var SK = 'ki-sitzung';
+  function mv(n, d) { try { if (window.Messung && window.Messung.senden) window.Messung.senden(n, d || {}); else (window.__mvVorab = window.__mvVorab || []).push([n, d || {}]); } catch (e) { /* Messung stört die Anmeldung nie */ } }   // Messung Fassung 2 (08.11.2026)
   var MIN = Number(window.R193_MIN) || 8;   // Mindestlänge (Yannis, 03.11.): im Browser und bei Supabase gleich (S2); die Seite setzt window.R193_MIN
   var MAX_BYTES = 72;   // bcrypt, wie bei Supabase
   // Sätze aus R186c/d, mit R195 nach Oscars Wortlaut (03.11.) um die Sammlungen ergänzt; ein Eintrag unter R193_SAETZE.konto186 überschreibt sie
@@ -653,18 +654,22 @@
     if (pf) { feldFehler('anlegen', 'passwort', pf); return; }
     var knopf = f.querySelector('button[type="submit"]');
     knopf.disabled = true;
+    mv('anmeldung_begonnen', { einstieg: 'mail' });
     registrieren(v, m, pw).then(function (r) {
       knopf.disabled = false;
       var c = r.json && r.json.error_code;
       if (r.ok || (r.status === 422 && c === 'user_already_exists')) {   // auch „schon bestätigt“ führt hierher: die Seite verrät nichts
+        mv(r.ok ? 'konto_angelegt' : 'anmeldung_fehler', r.ok ? { einstieg: 'mail' } : { einstieg: 'mail', grund: 'schon-vorhanden' });
         merk.mail = m; feld('anlegen', 'passwort').value = ''; mailSchritt(); return;
       }
       if (r.status === 422 && c === 'weak_password') {
+        mv('anmeldung_fehler', { einstieg: 'mail', grund: 'passwort-schwach' });
         var gruende = (r.json.weak_password && r.json.weak_password.reasons) || [];
         feldFehler('anlegen', 'passwort', gruende.length && gruende.indexOf('length') < 0 ? satz('anlegen.fehlerHaeufig') : satz('anlegen.fehlerKurz', { n: zeichen(pw) })); return;
       }
       if (r.status === 422 && c === 'password_too_long') { feldFehler('anlegen', 'passwort', satz('anlegen.fehlerLang')); return; }
       if ((r.status === 400 || r.status === 422) && (c === 'email_address_invalid' || c === 'validation_failed')) { feldFehler('anlegen', 'email', satz('anlegen.fehlerMailLeer')); return; }
+      mv('anmeldung_fehler', { einstieg: 'mail', grund: r.netz ? 'netz' : 'stoerung-' + (r.status || 0) });
       sonstFehler('anlegen', r, true);
     });
   }
@@ -741,6 +746,7 @@
       knopf.disabled = false;
       var j = r.json || {}, c = j.error_code || j.error;
       if (r.ok && j.access_token && j.refresh_token) {
+        mv('angemeldet', { einstieg: 'passwort' });
         wechselnZu({ access_token: j.access_token, refresh_token: j.refresh_token, expires_at: j.expires_at || (jetzt() + (j.expires_in || 3600)), email: (j.user && j.user.email) || m, vorname: '', pw: true }).then(function (alt) {
           var ab = userHolen().then(function (u) { return u && sitzung() ? abgleichen(u, true, alt) : null; }).then(anzeigen);
           if (/\/mein-bereich(\.html)?$/.test(location.pathname)) { dlg.close(); anzeigen(); }
@@ -753,15 +759,18 @@
         return;
       }
       if (r.status === 400 && c === 'invalid_credentials') {
+        mv('anmeldung_fehler', { einstieg: 'passwort', grund: 'falsches-passwort' });
         feld('anmelden', 'passwort').value = '';
         feldFehler('anmelden', 'passwort', satz('anmelden.fehlerFalsch')); return;
       }
       if (r.status === 400 && c === 'email_not_confirmed') {
+        mv('anmeldung_fehler', { einstieg: 'passwort', grund: 'nicht-bestaetigt' });
         meldungZeigen('anmelden', satz('anmelden.fehlerNichtBestaetigt'));
         if (nk) { nk.textContent = satz('anmelden.knopfNochmal', null, nk.textContent); nk.hidden = false; }
         return;
       }
-      if (r.status === 429) { meldungZeigen('anmelden', satz('anmelden.fehlerViele')); return; }   // Anmelden: eigener Satz, nicht die Mail-Grenze
+      if (r.status === 429) { mv('anmeldung_fehler', { einstieg: 'passwort', grund: 'zu-viele' }); meldungZeigen('anmelden', satz('anmelden.fehlerViele')); return; }   // Anmelden: eigener Satz, nicht die Mail-Grenze
+      mv('anmeldung_fehler', { einstieg: 'passwort', grund: r.netz ? 'netz' : 'stoerung-' + (r.status || 0) });
       sonstFehler('anmelden', r, false);
     });
   }
@@ -788,7 +797,7 @@
     knopf.disabled = true;
     vergessenSenden(m).then(function (r) {
       knopf.disabled = false;
-      if (r.ok) { vergessenErfolg(m); return; }   // immer derselbe Satz, auch bei unbekannter Adresse
+      if (r.ok) { mv('passwort_vergessen'); vergessenErfolg(m); return; }   // immer derselbe Satz, auch bei unbekannter Adresse
       sonstFehler('vergessen', r, true);
     });
   }
@@ -900,6 +909,7 @@
     beobachter = new MutationObserver(function () {
       if (!dlg.open || eigenesOeffnen) return;
       if (sitzung()) { dlg.close(); return; }
+      mv('anmeldung_geoeffnet', { ort: 'seite' });
       zeigeSchritt('anlegen');
       var hh = document.getElementById('hh-sheet');
       if (!zurueck && hh && !hh.hidden) zurueck = document.querySelector('.hh-oeffner');   // Öffner ist hier nicht mehr bekannt: Hilfe-Knopf
@@ -953,6 +963,7 @@
       var an = e.target.closest('[data-ki-anmelden]') || (mein && !sitzung() && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) ? mein : null);
       if (!an || !dlg) return;
       e.preventDefault(); e.stopPropagation();
+      mv('anmeldung_geoeffnet', { ort: an === mein ? 'kopf' : 'knopf' });
       oeffnen('anmelden');
     }, true);
   }
@@ -1154,6 +1165,7 @@
       var t = e.target.closest('[data-r186-anmelden]');
       if (!t || !dlg) return;
       e.preventDefault();
+      mv('anmeldung_geoeffnet', { ort: 'mein-bereich' });
       oeffnen('anmelden');
     });
     ksKlicks();
@@ -1172,6 +1184,7 @@
     var s = sitzung();
     letzteSig = sig(herzenLokal());
     sLetzt = JSON.stringify(sLokal());
+    if (h && h.fehler) mv('anmeldung_fehler', { grund: h.fehler === 'google' ? 'google-abgebrochen' : (h.fehler === 'abgelaufen' ? 'link-abgelaufen' : 'stoerung') });
     if (h && h.recovery) neuZeigen();
     else if (h && h.fehler === 'abgelaufen') { if (!s) abgelaufenZeigen(h.fall); }   // mit Sitzung: kein „abgelaufen“, die Seite zeigt das Konto
     else if (h && h.fehler && dlg && !s) oeffnen('anmelden', satz(h.fehler === 'google' ? 'meldungen.google' : 'meldungen.stoerung'), h.fehler === 'google');
@@ -1184,6 +1197,7 @@
       var neu = !(u.user_metadata && u.user_metadata.willkommen);
       return abgleichen(u, frisch, altSitz).then(function () {
         anzeigen();
+        if (frisch) { var am = u.app_metadata || {}; mv(neu ? 'konto_bestaetigt' : 'angemeldet', { einstieg: am.provider === 'google' ? 'google' : 'mail' }); }
         if (frisch && neu) willkommenZeigen(u);
       });
     });
