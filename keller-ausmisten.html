@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
+<meta name="runde255" content="1">
 <meta name="runde254" content="1">
 <meta name="runde253" content="1">
 <meta name="runde251" content="1">
@@ -2663,6 +2664,18 @@ img.r251-unterschrift { display: block; width: 190px; max-width: 62%; height: au
 @media (max-height: 900px) and (min-width: 601px) { [data-ansicht="willkommen"] .v25r7__bild { margin-top: 18px; } }
 [data-ansicht="willkommen"] .v25r7__bild { margin-bottom: 16px; }
 [data-ansicht="willkommen"] .v25r7__text p.r254-ich { color: var(--ink); font-weight: 600; text-align: center; margin-bottom: 20px; }
+</style>
+<style id="r255">
+/* R255: Herz-Ablage am Handy auch auf den Anleitungen, über der Startleiste (Yannis 08.11.2026); hebt die Ausblendung aus Runde 161 auf */
+@media (max-width: 1023.98px) {
+  html #herz-ablage { visibility: visible; pointer-events: auto; transition: bottom .35s cubic-bezier(.2, .8, .2, 1); }
+  html #herz-ablage.r239-raus { pointer-events: none; }
+  /* Leiste wirklich sichtbar: eingefahren und nicht von der Rückkehrkarte (Runde 64) versteckt */
+  html:has(.ra-leiste.zeigen):not(.r64-rk-offen):is(.r64-vorbei, :not(:has(.r64 .ra-leiste))) #herz-ablage { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+  html:has(.ra-leiste.zeigen):not(.r64-rk-offen):is(.r64-vorbei, :not(:has(.r64 .ra-leiste))):has(#herz-ablage:not([hidden]):not(.r239-raus)) .ki-toast,
+  html:has(.ra-leiste.zeigen):not(.r64-rk-offen):is(.r64-vorbei, :not(:has(.r64 .ra-leiste))):has(#herz-ablage:not([hidden]):not(.r239-raus)) .herz-toast { bottom: calc(140px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (max-width: 1023.98px) and (prefers-reduced-motion: reduce) { html #herz-ablage { transition: none; } }
 </style>
 </head>
 <body data-fall="keller-ausmisten"><div class="live-aufbau" role="note"><b>Beta</b> · <a class="r253-mit" href="#r187-kasten" data-r187-oeffnen="" aria-haspopup="dialog">Gestalte mit: Was fehlt, was hakt?</a></div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol><symbol id="ls-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
