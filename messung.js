@@ -137,13 +137,16 @@
   }
   function herkunftAusReferrer(h) {
     if (!h) return 'direkt';
-    // Android-Apps melden sich als android-app://<paket>
+    // Android-Apps melden sich als android-app://<paket>; spezielle Google-Apps vor der allgemeinen Google-Regel
+    if (/^com\.google\.android\.youtube/.test(h)) return 'social';
+    if (/^com\.google\.android\.gm/.test(h) || /^mail\.google\./.test(h) || /(^|\.)(outlook\.live\.com|mail\.yahoo\.com|web\.de|gmx\.net)$/.test(h)) return 'mail';
     if (/^com\.google\.android/.test(h)) return 'google';
     if (/^com\.whatsapp/.test(h)) return 'whatsapp';
-    if (/^(com\.instagram|com\.facebook|com\.linkedin|com\.zhiliaoapp|com\.ss\.android|com\.twitter|com\.reddit|com\.google\.android\.youtube)/.test(h)) return 'social';
+    if (/^(com\.instagram|com\.facebook|com\.linkedin|com\.zhiliaoapp|com\.ss\.android|com\.twitter|com\.reddit)/.test(h)) return 'social';
+    // KI-Assistenten vor Google (gemini.google.com)
+    if (/(^|\.)(chatgpt\.com|perplexity\.ai|claude\.ai|gemini\.google\.com|copilot\.microsoft\.com)$/.test(h)) return 'ki-assistent';
     if (/(^|\.)google\.[a-z.]+$/.test(h) && !/^(accounts|mail|docs|drive)\./.test(h)) return 'google';
     if (/(^|\.)(bing\.com|duckduckgo\.com|ecosia\.org|search\.brave\.com|startpage\.com|qwant\.com|yahoo\.com)$/.test(h)) return 'suche';
-    if (/(^|\.)(chatgpt\.com|perplexity\.ai|claude\.ai|gemini\.google\.com|copilot\.microsoft\.com)$/.test(h)) return 'ki-assistent';
     if (/(^|\.)(facebook\.com|instagram\.com|t\.co|x\.com|twitter\.com|linkedin\.com|lnkd\.in|tiktok\.com|youtube\.com|reddit\.com|threads\.net|bsky\.app)$/.test(h)) return 'social';
     if (/(^|\.)(whatsapp\.com|wa\.me)$/.test(h)) return 'whatsapp';
     return 'andere-seite';
