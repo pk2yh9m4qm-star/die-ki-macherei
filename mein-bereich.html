@@ -3245,7 +3245,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       // Gelesen werden nur ki-einstieg, ki-wahl, ki-erfahrung, ki-abo (nie geschrieben). Fehlt etwas oder ist es unlesbar: „ohne Antworten“.
       const KI_NAMEN = { chatgpt: 'ChatGPT', claude: 'Claude', gemini: 'Gemini', grok: 'Grok', copilot: 'Copilot', perplexity: 'Perplexity', mistral: 'Mistral', meta: 'Meta AI', deepseek: 'DeepSeek', andere: 'Andere KI' };
       const ERF_NAMEN = { einsteiger: 'Einsteiger', etwas: 'etwas Erfahrung', erfahren: 'erfahren' };
-      const NUR_CHATGPT = ['wohnzimmer', 'anschaffung', 'r45', 'miete', 'r07', 'abo', 'wochenende', 'y4', 'keller'];   // feste Liste aus Runde 104 (CLAUDE_STATUS), nach Kennung der Karte (inkl. Doppelgänger r45, r07, y4)
+      const NUR_CHATGPT = ['wohnzimmer'];   /* R249 (Yannis 08.11.2026): die übrigen Seiten sind für Claude freigeschaltet */   // feste Liste aus Runde 104 (CLAUDE_STATUS), nach Kennung der Karte (inkl. Doppelgänger r45, r07, y4)
       function antworten() {
         try {
           const ls = window.localStorage;
