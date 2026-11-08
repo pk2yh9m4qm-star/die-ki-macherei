@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
+<meta name="runde253" content="1">
 <meta name="runde251" content="1">
 <meta name="runde250" content="1">
 <meta name="runde249" content="1">
@@ -2662,8 +2663,16 @@ body .ra3.r234 .r249-hinweis[hidden] { display: none; }
 img.r251-unterschrift { display: block; width: 190px; max-width: 62%; height: auto; margin: 0 0 6px -6px; transform: none; }
 @media (max-height: 900px) and (min-width: 601px) { .v25r7__bild { width: min(170px, 52%); margin: 18px auto 22px; } }
 </style>
+<style id="r253">
+/* R253: Beta-Leiste mit Link zum Mitgestalten (Yannis 08.11.2026). Tippfläche über ::after auf die Höhe der Leiste. */
+.live-aufbau a.r253-mit { position: relative; color: inherit; text-decoration: underline; text-underline-offset: 3px;
+  text-decoration-thickness: 1px; }
+.live-aufbau a.r253-mit::after { content: ""; position: absolute; inset: -8px -6px; }
+.live-aufbau a.r253-mit:hover { text-decoration-thickness: 2px; }
+.live-aufbau a.r253-mit:focus-visible { outline: 2px solid #f7f1e8; outline-offset: 3px; border-radius: 2px; }
+</style>
 </head>
-<body data-fall="wohnzimmer-neu-denken"><div class="live-aufbau" role="note"><b>Public Beta</b> · Die Ideensammlung wächst laufend.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol><symbol id="ls-sofa" viewBox="0 0 24 24"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M4 18v2"/><path d="M20 18v2"/><path d="M12 4v9"/></symbol><symbol id="ls-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
+<body data-fall="wohnzimmer-neu-denken"><div class="live-aufbau" role="note"><b>Beta</b> · <a class="r253-mit" href="mailto:hallo@die-ki-macherei.de?subject=R%C3%BCckmeldung%20zur%20Beta">Gestalte mit: Was fehlt, was hakt?</a></div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol><symbol id="ls-sofa" viewBox="0 0 24 24"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M4 18v2"/><path d="M20 18v2"/><path d="M12 4v9"/></symbol><symbol id="ls-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
 
 Copyright (c) 2026 Lucide Icons and Contributors
@@ -4493,7 +4502,7 @@ Wichtig:
     s.setAttribute('class', 'icon r104c-pfeil'); s.setAttribute('aria-hidden', 'true'); u.setAttribute('href', '#i-arrow-right'); s.appendChild(u); b.appendChild(s);
   })();
 </script>
-<div class="live-fuss"><a href="/impressum">Impressum</a><span class="live-fuss-sep" aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a><span class="live-fuss-sep" aria-hidden="true"> · </span><span class="live-fuss-t">Public Beta</span></div><script src="/messung.js" data-endpunkt="https://script.google.com/macros/s/AKfycbxJ_s2hUjUxQiWQQ0QoXxSoxR5SfS0MiUvpHb7PcEJzYVgLpcVq1a9i5iUWonSEirfWSg/exec" defer></script><script defer src="https://cloud.umami.is/script.js" data-website-id="2184b771-dd7d-456c-9609-fcbdf649543e" data-domains="die-ki-macherei.de" data-exclude-hash="true" data-before-send="__messungVorSenden" data-performance="true" data-errors="true"></script><script src="/messpunkte.js" defer></script>
+<div class="live-fuss"><a href="/impressum">Impressum</a><span class="live-fuss-sep" aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a><span class="live-fuss-sep" aria-hidden="true"> · </span><span class="live-fuss-t">Beta</span></div><script src="/messung.js" data-endpunkt="https://script.google.com/macros/s/AKfycbxJ_s2hUjUxQiWQQ0QoXxSoxR5SfS0MiUvpHb7PcEJzYVgLpcVq1a9i5iUWonSEirfWSg/exec" defer></script><script defer src="https://cloud.umami.is/script.js" data-website-id="2184b771-dd7d-456c-9609-fcbdf649543e" data-domains="die-ki-macherei.de" data-exclude-hash="true" data-before-send="__messungVorSenden" data-performance="true" data-errors="true"></script><script src="/messpunkte.js" defer></script>
 <script>
 /* Runde 123 (aus Runde 102, Parallax, leise): scroll-gekoppelt (passiv, requestAnimationFrame): Bild dunkelt bis 40 % ab und rückt bis 36 px nach oben, während die Karte darüber läuft. */
 (function () {

@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
+<meta name="runde253" content="1">
 <meta name="runde250" content="1">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -88,16 +89,24 @@
 <style id="r220">
 </style>
 <meta name="runde205" content="css-ausgeduennt-2026-11-03">
-<meta name="runde233" content="1"></head>
+<meta name="runde233" content="1"><style id="r253">
+/* R253: Beta-Leiste mit Link zum Mitgestalten (Yannis 08.11.2026). Tippfläche über ::after auf die Höhe der Leiste. */
+.live-aufbau a.r253-mit { position: relative; color: inherit; text-decoration: underline; text-underline-offset: 3px;
+  text-decoration-thickness: 1px; }
+.live-aufbau a.r253-mit::after { content: ""; position: absolute; inset: -8px -6px; }
+.live-aufbau a.r253-mit:hover { text-decoration-thickness: 2px; }
+.live-aufbau a.r253-mit:focus-visible { outline: 2px solid #f7f1e8; outline-offset: 3px; border-radius: 2px; }
+</style>
+</head>
 <body>
-<div class="live-aufbau" role="note"><b>Public Beta</b> · Die Ideensammlung wächst laufend.</div>
+<div class="live-aufbau" role="note"><b>Beta</b> · <a class="r253-mit" href="mailto:hallo@die-ki-macherei.de?subject=R%C3%BCckmeldung%20zur%20Beta">Gestalte mit: Was fehlt, was hakt?</a></div>
 <header class="r61-rechtskopf"><a class="r61-brand" href="/"><picture><source media="(max-width: 359.98px)" srcset="/ki-macherei_zeichen_hell.svg"><img class="r61-logo" src="/ki-macherei_quer_hell.svg" alt="Die KI-Macherei, zur Startseite" width="159" height="28"></picture></a></header>
 <main>
   <h1>Diese Seite gibt es nicht (mehr).</h1>
   <p>Vielleicht hat sich im Link ein Tippfehler versteckt, oder die Seite ist umgezogen. Hier geht's weiter:</p>
   <p class="r65-knoepfe"><a class="r65-k r65-k--haupt" href="/">Zur Startseite</a><a class="r65-k" href="/ideen">Alle Ideen ansehen</a></p>
 </main>
-<div class="live-fuss"><a href="/impressum">Impressum</a><span class="live-fuss-sep" aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a><span class="live-fuss-sep" aria-hidden="true"> · </span><span class="live-fuss-t">Public Beta</span></div>
+<div class="live-fuss"><a href="/impressum">Impressum</a><span class="live-fuss-sep" aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a><span class="live-fuss-sep" aria-hidden="true"> · </span><span class="live-fuss-t">Beta</span></div>
 <script src="/messung.js" data-endpunkt="https://script.google.com/macros/s/AKfycbxJ_s2hUjUxQiWQQ0QoXxSoxR5SfS0MiUvpHb7PcEJzYVgLpcVq1a9i5iUWonSEirfWSg/exec" defer></script><script defer src="https://cloud.umami.is/script.js" data-website-id="2184b771-dd7d-456c-9609-fcbdf649543e" data-domains="die-ki-macherei.de" data-exclude-hash="true" data-before-send="__messungVorSenden" data-performance="true" data-errors="true"></script><script src="/messpunkte.js" defer></script>
 <style id="r233">
 :root { --s-ink: #23201c; --s-ink-soft: #4a443c; --s-muted: #675f56; --s-card: #fbf8f2; --s-aus: #e3dcd1; --s-clay-in: #e9e2d7;
