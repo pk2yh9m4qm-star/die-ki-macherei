@@ -9,7 +9,7 @@
  *
  * 1. Menschen: bei der ersten echten Bedienung (Tippen, Klicken, Taste, Scrollen) einmal je Seitenaufruf
  *    umami.identify({mensch:'ja', herkunft, zweig, generation}) (so trägt jede Umami-Sitzung das Merkmal, auch nach
- *    Netzwechsel oder Anmeldung). In Umami: Filter „mensch = ja“ (Segment „Menschen“).
+ *    Netzwechsel oder Anmeldung). In Umami (lesbare Namen, Punkt 7): Sitzungseigenschaft „Mensch“ = „ja“ (Segment „Menschen“).
  * 2. Herkunft und Empfehlung: Erstkontakt je Browser in localStorage „ki-herkunft“ {herkunft, zweig, generation}.
  *    zweig = utm_content oder utm_source des ersten Links (z. B. wa-01), sonst google, social, direkt …
  *    Eigener Weitergabe-Code „<zweig>.<generation+1>“ steht als ?von=… in der Adresszeile (gesetzt, bevor Umami startet)
@@ -29,6 +29,13 @@
  *    Rückmeldefenster (R187). Rückkehrkarte nach dem Chat (R64): umfrage_antwort {abfrage: rm-entwuerfe|rm-leicht|rm-wieder,
  *    antwort} je angetippter Antwort, umfrage_text {abfrage: rm-text}, wenn ein Freitext abgeschickt wird. Freitexte selbst
  *    gehen nie an Umami, nur wie bisher in die Google-Tabelle.
+ * 7. Lesbare Namen (08.11.2026, Yannis): Unmittelbar vor dem Versand übersetzt fuerUmami() jede Kennung in einen deutschen
+ *    Namen, den Yannis in Umami ohne Erklärung versteht (z. B. film_ende → „Keller-Film: zu Ende gesehen“, Angabe
+ *    fassung → „Film-Fassung“, rm-leicht → „2. War es leicht, loszulegen?“, Ideen-Kürzel r49 → „Idee: Wenn Eltern älter
+ *    werden“). Ereignisnamen höchstens 50 Zeichen und ohne Komma (Umamis Filter trennt an Kommas). Intern und im Testmodus
+ *    (__messungTest, Ereignis „messung-test“) bleiben die Kennungen. Die übersetzte Fassung steht im Testmodus unter
+ *    art 'event'/'identify', aber nur dort, wo Umami sendet: auf die-ki-macherei.de mit ?messung=test oder lokal, wenn
+ *    localhost in data-domains steht (sonst hält Umami schon vor data-before-send an).
  */
 (function (fenster) {
   'use strict';
@@ -263,6 +270,151 @@
     return nutzlast;
   };
 
+  // ---------- Lesbare Namen in Umami (Yannis, 08.11.2026: „die Namen so machen, dass ich verstehe, was gemeint ist“) ----------
+  // Intern (Seite, Tests, auth.js, messpunkte.js) bleiben die kurzen Kennungen. Erst unmittelbar vor umami.track bzw.
+  // umami.identify werden Name, Angaben und Werte übersetzt. Unbekanntes geht unverändert durch.
+
+  var NAMEN = {
+    "scrolltiefe": "Seite: gescrollt", "erstkontakt": "Besuch: zum ersten Mal da", "geteilt": "Seite: Link geteilt",
+    "start_knopf": "Use Case: Start-Knopf getippt", "start_hilfe": "Use Case: Rückfrage vor dem Start erschienen",
+    "start_anmelden": "Use Case: „Erst anmelden“ bei der KI getippt",
+    "start_klick": "KI geöffnet (Start-Knopf oder KI-Link)",
+    "start_kopiert": "Use Case: Anleitung kopiert (andere KI)",
+    "prompt_kopiert": "Use Case: Anleitung als Text kopiert", "gemerkt": "Use Case: gemerkt (Herz)",
+    "weiterer_fall": "Use Case: weiteren Use Case gestartet", "frage_geschickt": "Mein Bereich: Frage geschickt",
+    "film_start": "Keller-Film: gestartet", "film_nochmal": "Keller-Film: nochmal gestartet",
+    "film_sekunde": "Keller-Film: gesehen bis Sekunde", "film_ende": "Keller-Film: zu Ende gesehen",
+    "anmeldung_geoeffnet": "Anmeldung: Fenster geöffnet",
+    "anmeldung_begonnen": "Anmeldung: Konto anlegen oder Google getippt",
+    "konto_angelegt": "Anmeldung: Konto angelegt (Bestätigung fehlt)",
+    "konto_bestaetigt": "Anmeldung: neues Konto fertig (Mail oder Google)",
+    "angemeldet": "Anmeldung: eingeloggt (Konto gab es schon)", "anmeldung_fehler": "Anmeldung: Fehler",
+    "passwort_vergessen": "Anmeldung: Passwort vergessen",
+    "abfrage_beantwortet": "Rückkehr: „Hat alles geklappt?“ beantwortet",
+    "umfrage_antwort": "Umfrage: Frage beantwortet", "umfrage_text": "Umfrage: Freitext abgeschickt",
+    "rueckmeldung_geoeffnet": "Rückmeldung: Fenster geöffnet",
+    "rueckmeldung_abgeschickt": "Rückmeldung: abgeschickt"
+  };
+  // Name der Angabe in Umami; „ereignis:angabe“ geht vor „angabe“; leerer Name = Angabe weglassen
+  var SCHLUESSEL = {
+    fall: 'Use Case', anbieter: 'KI', einstieg: 'Anmeldeweg', grund: 'Grund', fassung: 'Film-Fassung', sekunde: 'Sekunde',
+    prozent: 'Prozent', anzahl: 'Anzahl Use Cases', herkunft: 'Herkunft', zweig: 'Link-Kennung', generation: 'Weitergabe-Stufe',
+    mensch: 'Mensch', abfrage: 'Frage', antwort: 'Antwort', ort: 'Geöffnet über', weg: 'Wo getippt',
+    'geteilt:weg': 'Wie geteilt',
+    'abfrage_beantwortet:abfrage': 'Antwort',
+    'rueckmeldung_geoeffnet:abfrage': 'Geöffnet über',
+    'rueckmeldung_abgeschickt:abfrage': 'Geöffnet über',
+    'rueckmeldung_abgeschickt:antwort': 'Art',
+    'umfrage_text:abfrage': ''
+  };
+  var HERKUNFT_NAMEN = {"whatsapp": "WhatsApp", "google": "Google", "social": "Soziale Medien", "mail": "E-Mail", "ki-assistent": "KI-Assistent", "suche": "andere Suchmaschine", "andere-seite": "andere Website", "direkt": "direkt (ohne Link)", "empfehlung": "Empfehlung", "anmeldelink": "Link aus Anmelde-Mail oder Google"};
+  var OEFFNER_NAMEN = {"rueckmeldung": "„Rückmeldung geben“ / „Gestalte mit“", "idee": "„Eigene Idee teilen“", "wunsch": "„Frage stellen“ / „Schreib sie uns“"};
+  // Werte je Angabe; „ereignis:angabe“ geht vor „angabe“
+  var WERTE = {
+    fall: {
+      "brief-verstehen": "Brief vom Amt verstehen", "ungewollter-vertrag": "Ungewollt einen Vertrag am Hals?",
+      "vorsorgemappe-anlegen": "Vorsorgemappe anlegen", "wohnzimmer-neu-denken": "Wohnzimmer neu denken",
+      "zahlst-du-zu-viel-miete": "Zahlst du zu viel Miete?", "keller-ausmisten": "Keller ausmisten",
+      "betrug-oder-echt": "Betrug oder echt?", "gekuendigt-und-jetzt": "Gekündigt, und jetzt?",
+      "wochenende-planen": "Was mach ich am Wochenende?", "zuschuesse-finden": "Zuschüsse finden",
+      "geld-nach-betrug-zurueckholen": "Geld nach Betrug zurückholen",
+      "grosse-anschaffung-planen": "Große Anschaffung planen",
+      "gehaltsgespraech-vorbereiten": "Gehaltsgespräch vorbereiten", "therapieplatz-finden": "Therapieplatz finden",
+      "kontoauszug-abos": "Vergessene Abos finden", "startseite": "Startseite", "mein-bereich": "Mein Bereich",
+      "ideen": "Ideen-Seite", "wissen": "Wissen-Seite", "n01": "Idee: Betrug oder echt?",
+      "brief": "Idee: Brief vom Amt verstehen", "abo": "Idee: Vergessene Abos finden",
+      "i10": "Idee: Vorsorgemappe anlegen", "keller": "Idee: Keller ausmisten",
+      "y4": "Idee: Was mach ich am Wochenende?", "wohnzimmer": "Idee: Wohnzimmer neu denken",
+      "r17": "Idee: Gehaltsgespräch vorbereiten", "r07": "Idee: Zahlst du zu viel Miete?",
+      "r45": "Idee: Große Anschaffung planen", "n05": "Idee: Gekündigt, und jetzt?",
+      "f-foerderung": "Idee: Zuschüsse finden", "n02": "Idee: Geld nach Betrug zurückholen",
+      "n10": "Idee: Ungewollt einen Vertrag am Hals?", "r50": "Idee: Therapieplatz finden",
+      "kind": "Idee: Eine Geschichte, die deinem Kind etwas Schweres erklärt",
+      "stellen": "Idee: Den perfekten Job finden lassen", "facharzt": "Idee: Schneller zum Facharzt",
+      "stadtrat": "Idee: Was plant der Stadtrat?", "todesfall": "Idee: Wenn ein Elternteil stirbt",
+      "netz": "Idee: Daten über mich löschen", "versicherung": "Idee: Versicherungen durchleuchten",
+      "auto": "Idee: Gebrauchtwagen prüfen",
+      "kaufen": "Idee: Kaufen oder weiter mieten? Ein Rechner mit deinen Zahlen",
+      "garten": "Idee: Garten neu bepflanzen", "gewerbe": "Idee: Nebengewerbe starten",
+      "schatz": "Idee: Den Kindergeburtstag planen: Schatzkarte, Rätsel und Einladung",
+      "foto": "Idee: Altes Familienfoto retten", "suetterlin": "Idee: Uralte Briefe entziffern",
+      "f-konto": "Idee: Konto durchleuchten", "k06": "Idee: Nebenkosten prüfen",
+      "r47": "Idee: Rente netto ausrechnen", "y3": "Idee: Ein Einkauf, sechs Gerichte",
+      "y2": "Idee: Kfz-Versicherung prüfen", "y1": "Idee: Strom und Gas günstiger",
+      "n07": "Idee: Lücken im Rentenkonto finden", "r20": "Idee: Neue Regeln für dich",
+      "d1": "Idee: Daten bei Firmen abfragen", "d6": "Idee: Fake-Shop oder seriös?",
+      "d5": "Idee: Wer sieht meine Fotos?", "d7": "Idee: Gehacktes Konto retten",
+      "d3": "Idee: Passwort-Chaos aufräumen", "d4": "Idee: Privatsphäre-Check fürs Handy",
+      "d2": "Idee: Datenleck prüfen", "s03": "Idee: Kochen mit dem, was da ist",
+      "r48": "Idee: Vereinsfest organisieren", "i13": "Idee: Flugentschädigung fordern",
+      "k09": "Idee: Befund verstehen", "i01": "Idee: Zahnarzt-Kostenplan verstehen",
+      "r46": "Idee: Klinik für die OP finden", "n15": "Idee: Selbst zahlen beim Arzt?",
+      "r39": "Idee: Diagnose gemeinsam verstehen", "n12": "Idee: Krank im Urlaub",
+      "r16": "Idee: Umzug komplett planen", "n11": "Idee: Möbel nach Maß planen", "y5": "Idee: Mietvertrag prüfen",
+      "r05": "Idee: Streichen beim Auszug?", "i02": "Idee: Wohnungsmängel melden",
+      "r15": "Idee: Welcher Stadtteil passt zu uns?", "n08": "Idee: Abstimmen als Eigentümer",
+      "r14": "Idee: Kostenfallen beim Wohnungskauf", "f-job": "Idee: Jobs finden lassen",
+      "f-website": "Idee: Alte Website auffrischen", "r28": "Idee: Arbeitszeugnis entschlüsseln",
+      "k02": "Idee: Schwieriges Gespräch üben", "r49": "Idee: Wenn Eltern älter werden",
+      "n03": "Idee: Pflegeleistungen voll nutzen", "n04": "Idee: Stolperfallen finden",
+      "n13": "Idee: Erbstücke fair aufteilen", "n14": "Idee: Demenz im Alltag",
+      "k10": "Idee: Pflegebegutachtung vorbereiten", "i11": "Idee: Medikamente der Eltern ordnen"
+    },
+    anbieter: { chatgpt: 'ChatGPT', claude: 'Claude', gemini: 'Gemini', copilot: 'Copilot', grok: 'Grok', perplexity: 'Perplexity',
+      mistral: 'Mistral Le Chat', meta: 'Meta AI', deepseek: 'DeepSeek', andere: 'andere KI' },
+    einstieg: { mail: 'E-Mail (Konto anlegen oder Mail-Link)', google: 'Google', passwort: 'Einloggen mit Passwort' },
+    grund: { 'schon-vorhanden': 'Konto gibt es schon', 'passwort-schwach': 'Passwort zu schwach', netz: 'keine Internetverbindung',
+      'falsches-passwort': 'falsches Passwort', 'nicht-bestaetigt': 'Mail noch nicht bestätigt', 'zu-viele': 'zu viele Versuche',
+      'google-abgebrochen': 'Google abgebrochen', 'link-abgelaufen': 'Link in der Mail abgelaufen', stoerung: 'Störung' },
+    fassung: { computer: 'Computer', 'handy-hoch': 'Handy hochkant', 'handy-quer': 'Handy quer (oder schmales Fenster)',
+      ruhig: 'ruhige Fassung (ohne Bewegung)' },
+    herkunft: HERKUNFT_NAMEN,
+    zweig: HERKUNFT_NAMEN,
+    mensch: { ja: 'ja' },
+    weg: { knopf: 'Start-Knopf auf der Seite', leiste: 'Leiste unten', rueckkehr: 'Karte nach der Rückkehr', browser: '„Im Browser öffnen“' },
+    'geteilt:weg': { menue: 'Teilen-Menü', kopiert: 'Link kopiert' },
+    ort: { kopf: 'Kopfzeile (Mein Bereich)', knopf: 'Menü „Anmelden“', 'mein-bereich': 'Knopf „Anmelden“ in Mein Bereich',
+      seite: 'von der Seite aus (z. B. Merken)' },
+    'abfrage_beantwortet:abfrage': { 'rueckkehr-laeuft': 'Ja, hat alles geklappt', 'rueckkehr-leer': 'Problem: Eingabefeld leer',
+      'rueckkehr-angemeldet': 'Problem: bei der KI nicht angemeldet', 'rueckkehr-nichts': 'Problem: nichts geöffnet',
+      'rueckkehr-klappt-leer': 'Nach Hilfe (Feld leer): hat geklappt',
+      'rueckkehr-klappt-angemeldet': 'Nach Hilfe (bei der KI nicht angemeldet): hat geklappt',
+      'rueckkehr-klappt-nichts': 'Nach Hilfe (nichts geöffnet): hat geklappt' },
+    'umfrage_antwort:abfrage': { 'rm-entwuerfe': '1. Wie gefiel dir die Idee?', 'rm-leicht': '2. War es leicht, loszulegen?',
+      'rm-wieder': '3. Hast du etwas über KI gelernt?' },
+    'umfrage_antwort:antwort': { 'gar-nicht': 'Idee: Nicht hilfreich', gut: 'Idee: Okay', 'richtig-gut': 'Idee: Sehr gut',
+      'ganz-leicht': 'Loslegen: Ja, es war leicht', 'ging-so': 'Loslegen: Etwas hakte', schwierig: 'Loslegen: Es hat nicht funktioniert',
+      ja: 'Gelernt: Habe etwas gelernt', vielleicht: 'Gelernt: Ich weiß nicht', 'eher-nicht': 'Gelernt: Nein' },
+    'rueckmeldung_geoeffnet:abfrage': OEFFNER_NAMEN,
+    'rueckmeldung_abgeschickt:abfrage': OEFFNER_NAMEN,
+    'rueckmeldung_abgeschickt:antwort': { 'klappt-nicht': 'Etwas klappt nicht', wunsch: 'Ein Wunsch', idee: 'Eine eigene Idee',
+      'ohne-auswahl': 'ohne Auswahl' }
+  };
+  function hat(o, k) { return !!o && Object.prototype.hasOwnProperty.call(o, k); }
+  function lesbarerWert(ereignis, k, w) {
+    var tafel = hat(WERTE, ereignis + ':' + k) ? WERTE[ereignis + ':' + k] : (hat(WERTE, k) ? WERTE[k] : null);
+    if (typeof w !== 'string') return w;
+    if (hat(tafel, w)) return tafel[w];
+    if (k === 'grund' && /^stoerung-\d+$/.test(w)) return 'Störung ' + w.slice(9);
+    return w;
+  }
+  function lesbareAngaben(ereignis, daten) {
+    var ergebnis = {};
+    Object.keys(daten || {}).forEach(function (k) {
+      var vor = ereignis + ':' + k;
+      var name = hat(SCHLUESSEL, vor) ? SCHLUESSEL[vor] : (hat(SCHLUESSEL, k) ? SCHLUESSEL[k] : k);
+      if (name) ergebnis[name] = lesbarerWert(ereignis, k, daten[k]);
+    });
+    return ergebnis;
+  }
+  function fuerUmami(name, daten) {
+    try { return [hat(NAMEN, name) ? NAMEN[name] : name, lesbareAngaben(name, daten)]; }
+    catch (f) { return [name, daten]; }
+  }
+  function merkmaleFuerUmami(daten) {
+    try { return lesbareAngaben('', daten); } catch (f) { return daten; }
+  }
+
   // ---------- Versand ----------
 
   var warteschlange = [], identSchlange = [];
@@ -273,16 +425,16 @@
     if (!u || typeof u.track !== 'function') return false;
     while (warteschlange.length) {
       var e = warteschlange.shift();
-      try { u.track(e[0], e[1]); } catch (f) { /* Umami-Fehler bremsen die Seite nicht */ }
+      try { var lesbar = fuerUmami(e[0], e[1]); u.track(lesbar[0], lesbar[1]); } catch (f) { /* Umami-Fehler bremsen die Seite nicht */ }
     }
     while (identSchlange.length) {
-      try { u.identify(identSchlange.shift()); } catch (f) { /* dito */ }
+      try { u.identify(merkmaleFuerUmami(identSchlange.shift())); } catch (f) { /* dito */ }
     }
     if (!erkannt && !wartetAufAnmeldung) {
       person = personKennung();
       if (person && typeof u.identify === 'function') {
         erkannt = true;
-        try { u.identify(person, menschDaten || undefined); } catch (f) { /* dito */ }
+        try { u.identify(person, menschDaten ? merkmaleFuerUmami(menschDaten) : undefined); } catch (f) { /* dito */ }
         if (test) fenster.__messungTest.push({ art: 'kennung', person: person });
       }
     }
