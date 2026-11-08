@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
+<meta name="runde250" content="1">
 <meta name="runde248" content="1">
 <script>/* Runde 69: Merk-Speicher auf eine Kennung je Idee umziehen (vor allen anderen Skripten) */(function () { try {
   var A = {"miete":"r07","foerderung":"f-foerderung","anschaffung":"r45","gehalt":"r17","therapie":"r50","r26":"facharzt","r37":"stadtrat","r18":"todesfall","r38":"netz","r43":"versicherung","r08":"auto","r32":"garten","r12":"gewerbe","r22":"foto","r25":"suetterlin"}, s = window.sessionStorage;
@@ -2652,8 +2653,14 @@ html.r243-offen .ki-toast { z-index: 2147483002; }
 /* Sprungziele #wissen und #konto mit Luft nach oben */
 #mb-wissen-gemerkt, #mb-wissen-teaser, #r186-konto { scroll-margin-top: 24px; }
 </style>
+<style id="r250">
+/* R250: Reihe „Neu dazugekommen“ in Mein Bereich (Yannis 08.11.2026) */
+#mb-app .r250-neu .tag--neu { background: #23201c; color: #fff; font-weight: 700; }
+#mb-app .r250-neu { margin-bottom: 8px; }
+#mb-app .r250-neu .r250-unter { margin: -4px 0 14px; font-size: 17px; line-height: 1.45; font-weight: 400; color: #6a6056; }
+</style>
 </head>
-<body><div class="live-aufbau" role="note"><b>Public Beta</b> · Die Seite ist noch im Aufbau.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
+<body><div class="live-aufbau" role="note"><b>Public Beta</b> · Die Ideensammlung wächst laufend.</div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
 
 Copyright (c) 2026 Lucide Icons and Contributors
@@ -3163,6 +3170,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
         const k = vorlage.cloneNode(true);
         k.classList.remove('is-match');
         baue(k);
+        if (o.neu && o.neu(id)) { const ft = k.querySelector('.field-tags'); if (ft) { const g = document.createElement('span'); g.className = 'tag tag--neu'; g.textContent = 'Neu'; ft.prepend(g); } }   // R250: Marke „Neu“
         const herz = k.querySelector('.herz');
         const an = !!KI.herzen()[id];
         herz.setAttribute('aria-pressed', String(an));
@@ -3189,7 +3197,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
         const text = typeof notiz === 'function' ? notiz(ids.length) : notiz;
         const ende = ids.length >= 6 ? '<a class="mb-endkarte" href="/ideen">Alle Ideen ansehen →</a>' : '';
         return '<section class="shelf mb-reihe' + (o.zeile ? ' mb-reihe--zeile' : '') + '" aria-labelledby="' + hid + '"><div class="wrap shelf-head"><div><' + h + ' class="shelf-title" id="' + hid + '">' + titel + '</' + h + '>' + (text ? '<p class="grid-note">' + text + '</p>' : '') + '</div>' + (o.kopfRechts || '') + '<div class="shelf-nav"><button type="button" data-dir="-1" aria-label="Zurück blättern">' + ic('arrow-left') + '</button><button type="button" data-dir="1" aria-label="Weiter blättern">' + ic('arrow-right') + '</button></div></div>'
-          + '<div class="shelf-track" tabindex="0" data-reihe="' + (o.name || '') + '" aria-label="' + esc(titel) + ', zum Blättern">' + ids.map(id => karte(id, { plus: o.plus })).join('') + ende + '</div></section>';
+          + '<div class="shelf-track" tabindex="0" data-reihe="' + (o.name || '') + '" aria-label="' + esc(titel) + ', zum Blättern">' + ids.map(id => karte(id, { plus: o.plus, neu: o.neu })).join('') + ende + '</div></section>';
       }
       function artKachel(id, fuer) {
         const a = D.ARTIKEL[id];
@@ -3214,7 +3222,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       // ——— Kopf ———
       function kopf() {
         const ko = KI.konto(), k = kompass(), h = Object.keys(KI.herzen()).length;
-        const sub = S.tab === 'wissen' ? '' : 'Hier findest du deine gemerkten Ideen und kannst Listen erstellen. Später findest du hier auch den Fortschritt deiner Wissensreise.';   // R229: neue Einleitung (Yannis, 04.11.2026); der Wissensbereich hat seine eigene
+        const sub = S.tab === 'wissen' ? '' : 'Hier findest du deine gemerkten Ideen, deine Listen und alles, was neu dazugekommen ist.';   // R229: neue Einleitung (Yannis, 04.11.2026); der Wissensbereich hat seine eigene
         kopfEl.innerHTML = '<h1 class="display">' + 'Mein Bereich' + '</h1>' + (sub ? '<p class="mb-sub">' + sub + '</p>' : '');
         const n = gemerktAnzahl();
         const nh = document.querySelector('.nav-herz');
@@ -3441,8 +3449,20 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
         return '<section class="wrap mb-block mb-wissen-teaser" id="mb-wissen-teaser" aria-labelledby="mb-wt-t"><div class="mb-block__kopf"><h2 class="mb-h3" id="mb-wt-t">Wissen</h2>'
           + '<a class="ki-link" href="/mein-bereich#wissen" data-mb-wissen>mehr</a></div><div class="k-faq">' + ids.map(id => faqEintrag(id)).join('') + '</div></section>';
       }
+      // R250: Reihe „Neu dazugekommen“ (nur angemeldet): die 6 neuesten Ideen, Marke „Neu“ 30 Tage ab dem Datum in runde250-neu.json
+      const R250_SEIT = {"brief": "2026-10-27", "keller": "2026-10-27", "abo": "2026-10-01", "wohnzimmer": "2026-10-01", "f-foerderung": "2026-10-27", "r45": "2026-10-23", "r17": "2026-10-27", "r07": "2026-10-23", "i10": "2026-10-22", "n10": "2026-10-27", "n01": "2026-10-27", "n02": "2026-10-27", "y4": "2026-10-16", "r50": "2026-10-28", "n05": "2026-10-28"};
+      function neuReihe() {
+        if (KI.istAbgemeldet()) return '';
+        const tag = d => Date.parse(d + 'T00:00:00');
+        const ids = Object.keys(R250_SEIT).sort((a, b) => tag(R250_SEIT[b]) - tag(R250_SEIT[a])).slice(0, 6);
+        const neu = id => { const t = tag(R250_SEIT[id]); return t > 0 && Date.now() - t < 30 * 864e5; };
+        const r = reihe('Neu dazugekommen', '', ids, { h: 'h2', name: 'r250-neu', neu: neu });
+        if (!r) return '';
+        return r.replace('<section class="shelf mb-reihe', '<section class="shelf mb-reihe r250-neu')
+          .replace('<div class="shelf-track"', '<div class="wrap"><p class="r250-unter">Es kommen laufend neue Ideen dazu. Die neuesten findest du immer hier.</p></div><div class="shelf-track"');
+      }
       function gemerktOderAnmelden() {
-        if (KI.istAbgemeldet()) return '<section class="wrap mb-block" id="mb-abgemeldet"><p class="mb-note">' + 'Um Ideen zu speichern, melde dich an.' + '</p><div><button class="clay-btn" type="button" data-ki-anmelden>Anmelden</button></div></section>';
+        if (KI.istAbgemeldet()) return '<section class="wrap mb-block" id="mb-abgemeldet"><p class="mb-note">' + 'Melde dich an, um Ideen zu speichern und zu sehen, welche neu dazugekommen sind.' + '</p><div><button class="clay-btn" type="button" data-ki-anmelden>Anmelden</button></div></section>';
         return gemerkt();
       }
       // Gemerkte Wissensartikel stehen im Wissen-Abschnitt zuerst (eigener Container), danach die Teaser; das Aussehen der Teaser ist bewusst offen (eigene Runde mit Skizze)
@@ -3490,7 +3510,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       }
       function seite() {
         zN = 0;
-        return '<div class="sk-sec sk-ideen">' + gemerktOderAnmelden() + '</div><div class="wrap mb-zwei">' + gemerkteArtikel() + wissenZeilen() + '</div>';
+        return '<div class="sk-sec sk-ideen">' + neuReihe() + gemerktOderAnmelden() + '</div><div class="wrap mb-zwei">' + gemerkteArtikel() + wissenZeilen() + '</div>';
       }
 
       // Aufklappen: eine Zeile offen, über beide Listen
@@ -4920,7 +4940,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
     // Zurück-Navigation mit Back-Forward-Cache: ist die Seite „ideen“ gezeigt und das Fenster zu, aber noch nicht abgeschlossen, öffnet der Merker es wieder
   })();
 </script>
-<div class="live-fuss"><a href="/impressum">Impressum</a><span class="live-fuss-sep" aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a><span class="live-fuss-sep" aria-hidden="true"> · </span><span class="live-fuss-t">Testfassung im Aufbau</span></div><script src="/messung.js" data-endpunkt="https://script.google.com/macros/s/AKfycbxJ_s2hUjUxQiWQQ0QoXxSoxR5SfS0MiUvpHb7PcEJzYVgLpcVq1a9i5iUWonSEirfWSg/exec" defer></script><script defer src="https://cloud.umami.is/script.js" data-website-id="2184b771-dd7d-456c-9609-fcbdf649543e" data-domains="die-ki-macherei.de" data-exclude-hash="true" data-before-send="__messungVorSenden" data-performance="true" data-errors="true"></script><script src="/messpunkte.js" defer></script>
+<div class="live-fuss"><a href="/impressum">Impressum</a><span class="live-fuss-sep" aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a><span class="live-fuss-sep" aria-hidden="true"> · </span><span class="live-fuss-t">Public Beta</span></div><script src="/messung.js" data-endpunkt="https://script.google.com/macros/s/AKfycbxJ_s2hUjUxQiWQQ0QoXxSoxR5SfS0MiUvpHb7PcEJzYVgLpcVq1a9i5iUWonSEirfWSg/exec" defer></script><script defer src="https://cloud.umami.is/script.js" data-website-id="2184b771-dd7d-456c-9609-fcbdf649543e" data-domains="die-ki-macherei.de" data-exclude-hash="true" data-before-send="__messungVorSenden" data-performance="true" data-errors="true"></script><script src="/messpunkte.js" defer></script>
 <script id="r109-umhaengen">
 (function () {
   // s2-28 (Nachbesserung: auf allen Größen): Zeile „Zurück · Frage x von 3“ steht direkt vor der Frage; idempotent
@@ -4943,7 +4963,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
     <button class="v25r7__zu" type="button" data-v25r7-zu aria-label="Schließen">×</button>
     <span class="v25r7__etikett">Kostenlos</span>
     <h2 id="v25r7-t1">Deine Ideen auf all deinen Geräten</h2>
-    <div class="v25r7__text"><p>Melde dich an, um deine Ideen zu speichern, Listen zu erstellen, deine Kurse fortzusetzen und Neuigkeiten zu erfahren.</p></div>
+    <div class="v25r7__text"><p>Melde dich an, um deine Ideen zu speichern, Listen zu erstellen, deine Kurse fortzusetzen und zu sehen, welche Ideen neu dazugekommen sind.</p></div>
     <button class="v25r7__google" type="button" data-google data-v25r7-google><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7Z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6h-4a12 12 0 0 0 0 10.8l4-3.1Z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9Z"/></svg>Weiter mit Google</button>
     <div class="v25r7__oder">oder mit deiner E-Mail-Adresse</div>
     <form novalidate>
@@ -5055,7 +5075,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
     </div>
   </div>
 </dialog>
-<script>window.R193_SAETZE={"anlegen":{"titel":"Deine Ideen auf all deinen Geräten","einleitung":"Melde dich an, um deine Ideen zu speichern, Listen zu erstellen, deine Kurse fortzusetzen und Neuigkeiten zu erfahren.","google":"Weiter mit Google","trenner":"oder mit deiner E-Mail-Adresse","felder":["Dein Vorname","Deine E-Mail-Adresse","Denk dir ein Passwort aus"],"hinweisFeld":"Mindestens 8 Zeichen.","knopf":"Konto anlegen","hinweisUnten":"Wir schicken dir einmal eine Mail, damit wir wissen, dass die Adresse dir gehört.","wechselFrage":"Schon ein Konto?","wechselKnopf":"Anmelden","spaeter":"Später","fehlerPwLeer":"Denk dir ein Passwort aus.","fehlerVorname":"Wie dürfen wir dich nennen?","fehlerMailLeer":"Gib deine E-Mail-Adresse ein.","fehlerKurz":"Dein Passwort braucht mindestens 8 Zeichen. Bisher sind es {n}.","fehlerHaeufig":"Dieses Passwort ist leicht zu erraten. Nimm lieber drei oder vier Wörter, die nur du so zusammenstellst.","fehlerLang":"Dein Passwort ist zu lang. Lass ein Wort weg, drei oder vier Wörter reichen."},"postfach":{"titel":"Schau in dein Postfach","text":"Wir haben dir einen Link an {mail} geschickt. Öffne ihn, dann ist dein Konto angelegt. Der Link gilt eine Stunde.","spam":"Keine Mail da? Schau im Spam-Ordner nach.","neutral":"Hast du mit dieser Adresse schon ein Konto? Dann schicken wir keine neue Mail. Melde dich einfach an.","anderesGeraet":"Mail auf einem anderen Gerät geöffnet? Dann melde dich hier danach mit E-Mail und Passwort an.","nochmal":"Noch einmal schicken","andereMail":"Andere E-Mail-Adresse","zurAnmeldung":"Zur Anmeldung"},"willkommen":{"titel":"Dein Konto ist fertig","knopf":"Zu meinen Ideen"},"anmelden":{"titel":"Einloggen","einleitung":"Mach weiter, wo du aufgehört hast. Hast du noch kein Konto, lege ein neues an unter „Konto anlegen“.","trenner":"oder mit E-Mail und Passwort","felder":["Deine E-Mail-Adresse","Dein Passwort"],"vergessen":"Passwort vergessen?","knopf":"Anmelden","wechselFrage":"Neu hier?","wechselKnopf":"Konto anlegen","fehlerFalsch":"E-Mail-Adresse oder Passwort stimmt nicht. Prüf beides und versuch es noch einmal. Du hast dich bisher mit Google angemeldet? Dann wähl oben „Weiter mit Google“.","fehlerMailLeer":"Gib deine E-Mail-Adresse ein.","fehlerPwLeer":"Gib dein Passwort ein.","fehlerNichtBestaetigt":"Du hast deine E-Mail-Adresse noch nicht bestätigt. In deinem Postfach liegt unser Link.","knopfNochmal":"Link noch einmal schicken","fehlerViele":"Das waren viele Versuche hintereinander. Warte ein paar Minuten und versuch es dann noch einmal. Oder wähl „Passwort vergessen?“."},"vergessen":{"titel":"Passwort vergessen?","einleitung":"Gib deine E-Mail-Adresse ein. Wir schicken dir einen Link, mit dem du dir ein neues Passwort ausdenkst.","knopf":"Link schicken","zurueck":"Zurück zur Anmeldung","erfolgTitel":"Schau in dein Postfach","erfolg":"Wenn es zu {mail} ein Konto gibt, haben wir dir einen Link geschickt. Der Link gilt eine Stunde.","erfolgSpam":"Keine Mail da? Schau im Spam-Ordner nach und prüf, ob die Adresse richtig geschrieben ist."},"neu":{"titel":"Denk dir ein neues Passwort aus","fuer":"Für {mail}","feld":"Neues Passwort","hinweisFeld":"Mindestens 8 Zeichen.","knopf":"Passwort speichern","fehlerLang":"Dein Passwort ist zu lang. Lass ein Wort weg, drei oder vier Wörter reichen.","erfolg":"Dein neues Passwort ist gespeichert. Du bist angemeldet.","erfolgKnopf":"Zu meinen Ideen"},"abgelaufen":{"titel":"Dieser Link gilt nicht mehr","zurAnmeldung":"Zur Anmeldung","bestaetigen":{"text":"Der Link zum Bestätigen gilt eine Stunde und nur einmal. Wir schicken dir gern einen neuen.","zusatz":"Hast du dein Konto schon bestätigt? Dann melde dich einfach an.","knopf":"Link zum Bestätigen schicken"},"passwort":{"text":"Der Link für ein neues Passwort gilt eine Stunde und nur einmal. Wir schicken dir gern einen neuen.","knopf":"Link fürs Passwort schicken"},"text":"Links aus unseren Mails gelten eine Stunde und nur einmal. Wir schicken dir gern einen neuen.","knopf":"Neuen Link schicken","meldung":"Dieser Link gilt nicht mehr. Links aus unseren Mails gelten eine Stunde und nur einmal. Wir schicken dir gern einen neuen."},"meldungen":{"netz":"Das hat nicht geklappt. Prüf deine Internetverbindung und versuch es noch einmal.","stoerung":"Das hat nicht geklappt, weil es bei uns gerade eine Störung gibt. Versuch es später noch einmal.","mailGrenze":"Gerade können wir dir keine Mail schicken. Warte ein paar Minuten und versuch es dann noch einmal.","mailGrenzeHinweis":"Liegt schon eine Mail von uns in deinem Postfach oder im Spam-Ordner? Dann tipp auf den Link darin.","google":"Die Anmeldung mit Google wurde abgebrochen. Du kannst es noch einmal versuchen oder E-Mail und Passwort nehmen."},"konto":{"aendern":"Passwort ändern","festlegen":"Passwort festlegen","gesendet":"Wir haben dir einen Link an {mail} geschickt. Damit denkst du dir ein neues Passwort aus.","abgemeldet":"Du bist abgemeldet.","geloescht":"Dein Konto ist gelöscht. Deine gemerkten Ideen und Sammlungen bleiben in diesem Browser."}};window.R193_MIN=8;</script>
+<script>window.R193_SAETZE={"anlegen":{"titel":"Deine Ideen auf all deinen Geräten","einleitung":"Melde dich an, um deine Ideen zu speichern, Listen zu erstellen, deine Kurse fortzusetzen und zu sehen, welche Ideen neu dazugekommen sind.","google":"Weiter mit Google","trenner":"oder mit deiner E-Mail-Adresse","felder":["Dein Vorname","Deine E-Mail-Adresse","Denk dir ein Passwort aus"],"hinweisFeld":"Mindestens 8 Zeichen.","knopf":"Konto anlegen","hinweisUnten":"Wir schicken dir einmal eine Mail, damit wir wissen, dass die Adresse dir gehört.","wechselFrage":"Schon ein Konto?","wechselKnopf":"Anmelden","spaeter":"Später","fehlerPwLeer":"Denk dir ein Passwort aus.","fehlerVorname":"Wie dürfen wir dich nennen?","fehlerMailLeer":"Gib deine E-Mail-Adresse ein.","fehlerKurz":"Dein Passwort braucht mindestens 8 Zeichen. Bisher sind es {n}.","fehlerHaeufig":"Dieses Passwort ist leicht zu erraten. Nimm lieber drei oder vier Wörter, die nur du so zusammenstellst.","fehlerLang":"Dein Passwort ist zu lang. Lass ein Wort weg, drei oder vier Wörter reichen."},"postfach":{"titel":"Schau in dein Postfach","text":"Wir haben dir einen Link an {mail} geschickt. Öffne ihn, dann ist dein Konto angelegt. Der Link gilt eine Stunde.","spam":"Keine Mail da? Schau im Spam-Ordner nach.","neutral":"Hast du mit dieser Adresse schon ein Konto? Dann schicken wir keine neue Mail. Melde dich einfach an.","anderesGeraet":"Mail auf einem anderen Gerät geöffnet? Dann melde dich hier danach mit E-Mail und Passwort an.","nochmal":"Noch einmal schicken","andereMail":"Andere E-Mail-Adresse","zurAnmeldung":"Zur Anmeldung"},"willkommen":{"titel":"Dein Konto ist fertig","knopf":"Zu meinen Ideen"},"anmelden":{"titel":"Einloggen","einleitung":"Mach weiter, wo du aufgehört hast. Hast du noch kein Konto, lege ein neues an unter „Konto anlegen“.","trenner":"oder mit E-Mail und Passwort","felder":["Deine E-Mail-Adresse","Dein Passwort"],"vergessen":"Passwort vergessen?","knopf":"Anmelden","wechselFrage":"Neu hier?","wechselKnopf":"Konto anlegen","fehlerFalsch":"E-Mail-Adresse oder Passwort stimmt nicht. Prüf beides und versuch es noch einmal. Du hast dich bisher mit Google angemeldet? Dann wähl oben „Weiter mit Google“.","fehlerMailLeer":"Gib deine E-Mail-Adresse ein.","fehlerPwLeer":"Gib dein Passwort ein.","fehlerNichtBestaetigt":"Du hast deine E-Mail-Adresse noch nicht bestätigt. In deinem Postfach liegt unser Link.","knopfNochmal":"Link noch einmal schicken","fehlerViele":"Das waren viele Versuche hintereinander. Warte ein paar Minuten und versuch es dann noch einmal. Oder wähl „Passwort vergessen?“."},"vergessen":{"titel":"Passwort vergessen?","einleitung":"Gib deine E-Mail-Adresse ein. Wir schicken dir einen Link, mit dem du dir ein neues Passwort ausdenkst.","knopf":"Link schicken","zurueck":"Zurück zur Anmeldung","erfolgTitel":"Schau in dein Postfach","erfolg":"Wenn es zu {mail} ein Konto gibt, haben wir dir einen Link geschickt. Der Link gilt eine Stunde.","erfolgSpam":"Keine Mail da? Schau im Spam-Ordner nach und prüf, ob die Adresse richtig geschrieben ist."},"neu":{"titel":"Denk dir ein neues Passwort aus","fuer":"Für {mail}","feld":"Neues Passwort","hinweisFeld":"Mindestens 8 Zeichen.","knopf":"Passwort speichern","fehlerLang":"Dein Passwort ist zu lang. Lass ein Wort weg, drei oder vier Wörter reichen.","erfolg":"Dein neues Passwort ist gespeichert. Du bist angemeldet.","erfolgKnopf":"Zu meinen Ideen"},"abgelaufen":{"titel":"Dieser Link gilt nicht mehr","zurAnmeldung":"Zur Anmeldung","bestaetigen":{"text":"Der Link zum Bestätigen gilt eine Stunde und nur einmal. Wir schicken dir gern einen neuen.","zusatz":"Hast du dein Konto schon bestätigt? Dann melde dich einfach an.","knopf":"Link zum Bestätigen schicken"},"passwort":{"text":"Der Link für ein neues Passwort gilt eine Stunde und nur einmal. Wir schicken dir gern einen neuen.","knopf":"Link fürs Passwort schicken"},"text":"Links aus unseren Mails gelten eine Stunde und nur einmal. Wir schicken dir gern einen neuen.","knopf":"Neuen Link schicken","meldung":"Dieser Link gilt nicht mehr. Links aus unseren Mails gelten eine Stunde und nur einmal. Wir schicken dir gern einen neuen."},"meldungen":{"netz":"Das hat nicht geklappt. Prüf deine Internetverbindung und versuch es noch einmal.","stoerung":"Das hat nicht geklappt, weil es bei uns gerade eine Störung gibt. Versuch es später noch einmal.","mailGrenze":"Gerade können wir dir keine Mail schicken. Warte ein paar Minuten und versuch es dann noch einmal.","mailGrenzeHinweis":"Liegt schon eine Mail von uns in deinem Postfach oder im Spam-Ordner? Dann tipp auf den Link darin.","google":"Die Anmeldung mit Google wurde abgebrochen. Du kannst es noch einmal versuchen oder E-Mail und Passwort nehmen."},"konto":{"aendern":"Passwort ändern","festlegen":"Passwort festlegen","gesendet":"Wir haben dir einen Link an {mail} geschickt. Damit denkst du dir ein neues Passwort aus.","abgemeldet":"Du bist abgemeldet.","geloescht":"Dein Konto ist gelöscht. Deine gemerkten Ideen und Sammlungen bleiben in diesem Browser."}};window.R193_MIN=8;</script>
 <script data-r193-ui>
 (function () {
   var d = document.getElementById('v25r7');
