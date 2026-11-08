@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
+<meta name="runde256" content="1">
 <meta name="runde254" content="1">
 <meta name="runde253" content="1">
 <meta name="runde251" content="1">
@@ -3440,6 +3441,7 @@ img.r251-unterschrift { display: block; width: 190px; max-width: 62%; height: au
 [data-ansicht="willkommen"] .v25r7__bild { margin-bottom: 16px; }
 [data-ansicht="willkommen"] .v25r7__text p.r254-ich { color: var(--ink); font-weight: 600; text-align: center; margin-bottom: 20px; }
 </style>
+<style id="r256-tipp">html #herz-ablage.r239-raus.r256-an { pointer-events: auto !important; }</style>
 </head>
 <body><div class="live-aufbau" role="note"><b>Beta</b> · <a class="r253-mit" href="#r187-kasten" data-r187-oeffnen="" aria-haspopup="dialog">Gestalte mit: Was fehlt, was hakt?</a></div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole der Laufbänder: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
@@ -5066,7 +5068,8 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
       function zeichnen() {
         const d = abgemeldet() ? wLesen() : lesen();
         knoepfe(d); zaehler(anzahl(d));
-        const zeigen = anzahl(d) > 0 || ablageDa();
+        if (abgemeldet()) ablage.r256Kurz = false; else { ersatz.da = false; try { const s = speicher(); if (s) s.removeItem(ABLAGE_DA); } catch (e) {} }   // R256: Merker nur für den eigenen Zustand (Prüfer-Befund: sonst bleibt nach Ab- und Anmelden etwas stehen)
+        const zeigen = abgemeldet() ? (anzahl(d) > 0 || ablageDa()) : !!ablage.r256Kurz;   // R256: angemeldet nur kurz nach einem neuen Herz
         if (ablage.hidden === zeigen) ablage.hidden = !zeigen;
       }
 
@@ -5110,12 +5113,12 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
         d[id] = { titel: b.dataset.titel || id, am: Date.now() };
         sichern(d); knoepfe(d);
         b.classList.remove('is-pop'); void b.offsetWidth; b.classList.add('is-pop');
-        clearTimeout(ablage.r239Uhr); clearTimeout(ablage.r239Weg); if (ablage.classList.contains('r239-raus')) { ablage.classList.remove('r239-raus'); ablage.hidden = true; } if (ablage.hidden) { ablageMerken(); ablage.hidden = false; }
+        clearTimeout(ablage.r239Uhr); clearTimeout(ablage.r239Weg); if (ablage.classList.contains('r239-raus')) { ablage.classList.remove('r239-raus'); ablage.hidden = true; } ablage.r256Kurz = !aus; if (ablage.hidden) { if (aus) ablageMerken(); ablage.hidden = false; }
         fliegen(b, () => {
           const n = anzahl(abgemeldet() ? wLesen() : lesen());
           zaehler(n); stupsen();
           if (abgemeldet()) { toast(ANMELDE_HINWEIS); return; }   // R228: ohne Konto kein „Gemerkt.“, keine Blase, kein Anmeldefenster von selbst
-          melden('Gemerkt. In deinem Bereich ' + (n === 1 ? 'ist jetzt 1 Herz.' : 'sind jetzt ' + n + ' Herzen.'));
+          melden('Gemerkt. In deinem Bereich ' + (n === 1 ? 'ist jetzt 1 Herz.' : 'sind jetzt ' + n + ' Herzen.')); r256Raus();
           if (window.KI) KI.nachHerz(id, b.dataset.titel || id);
         });
       });
@@ -5142,6 +5145,13 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
       fenster.addEventListener('click', e => { if (e.target === fenster || e.target.closest('.soon-sheet__close')) { e.stopPropagation(); schliessen(); } });
       document.addEventListener('keydown', e => { if (e.key === 'Escape' && fenster.classList.contains('is-open')) schliessen(); });
       // Die Ablage führt jetzt nach „Mein Bereich“, Fach „Gemerkt“ (Yannis, 30.09.)
+      // R256 (Yannis 08.11.2026): angemeldet rutscht die Ablage kurz nach dem Herz rechts hinaus. Sie hält an, solange Finger, Maus oder
+      // Tastatur auf ihr sind, und nimmt einen Tipp auch beim Hinausrutschen an (Yannis: Tipp auf „Mein Bereich“ führte nicht dorthin)
+      function r256Raus() { clearTimeout(ablage.r239Uhr); clearTimeout(ablage.r239Weg); ablage.r239Uhr = setTimeout(() => { if (abgemeldet() || ablage.hidden) { ablage.r256Kurz = false; return; } if (ablage.r256Drauf || ablage.matches(':focus-visible')) return; const weg = () => { ablage.r256Kurz = false; ablage.hidden = true; ablage.classList.remove('r239-raus', 'r256-an'); }; if (ruhig.matches) { weg(); return; } ablage.classList.add('r239-raus', 'r256-an'); ablage.r239Weg = setTimeout(weg, 420); }, 4000); }
+      function r256Halt(e) { if (abgemeldet() || !ablage.r256Kurz || ablage.hidden || (e && e.type === 'pointerenter' && e.pointerType !== 'mouse')) return; ablage.r256Drauf = true; const rutscht = ablage.classList.contains('r239-raus'); clearTimeout(ablage.r239Uhr); clearTimeout(ablage.r239Weg); ablage.classList.remove('r239-raus', 'r256-an'); if (rutscht && e && e.type === 'pointerdown') { const x = e.clientX, y = e.clientY, id = e.pointerId, ac = new AbortController(); setTimeout(() => ac.abort(), 1000); document.addEventListener('pointercancel', c => { if (c.pointerId === id) ac.abort(); }, { signal: ac.signal }); document.addEventListener('pointerup', u => { if (u.pointerId !== id) return; ac.abort(); if (Math.hypot(u.clientX - x, u.clientY - y) >= 12 || abgemeldet() || !window.KI) return; const sperre = c => { c.preventDefault(); c.stopPropagation(); }; document.addEventListener('click', sperre, { capture: true, once: true }); setTimeout(() => document.removeEventListener('click', sperre, true), 700); KI.geh('bereich', 'gemerkt'); }, { signal: ac.signal }); } }
+      function r256Weiter() { ablage.r256Drauf = false; if (abgemeldet() || !ablage.r256Kurz || ablage.hidden || ablage.classList.contains('r239-raus') || ablage.matches(':focus-visible')) return; r256Raus(); }
+      ['pointerenter', 'pointerdown', 'focusin'].forEach(t => ablage.addEventListener(t, r256Halt));
+      ['pointerleave', 'pointercancel', 'focusout'].forEach(t => ablage.addEventListener(t, r256Weiter));
       function r239Raus() { clearTimeout(ablage.r239Uhr); ablage.r239Uhr = setTimeout(() => { if (ablage.hidden || anzahl(abgemeldet() ? wLesen() : lesen())) return; ersatz.da = false; try { const s = speicher(); if (s) s.removeItem(ABLAGE_DA); } catch (e) {} const weg = () => { ablage.hidden = true; ablage.classList.remove('r239-raus'); }; if (ruhig.matches) { weg(); return; } ablage.classList.add('r239-raus'); ablage.r239Weg = setTimeout(weg, 420); }, 500); }
       function r239HerzWeg() { const d = wLesen(), ids = Object.keys(d); if (!ids.length) return false; const id = ids.reduce((a, b) => ((d[b] || {}).am || 0) >= ((d[a] || {}).am || 0) ? b : a); delete d[id]; wSchreiben(d); zeichnen(); melden('Aus deinen Herzen entfernt.'); if (!anzahl(d)) r239Raus(); return true; }
       ablage.addEventListener('click', e => {
