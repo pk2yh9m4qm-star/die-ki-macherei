@@ -36,6 +36,8 @@
  *    (__messungTest, Ereignis „messung-test“) bleiben die Kennungen. Die übersetzte Fassung steht im Testmodus unter
  *    art 'event'/'identify', aber nur dort, wo Umami sendet: auf die-ki-macherei.de mit ?messung=test oder lokal, wenn
  *    localhost in data-domains steht (sonst hält Umami schon vor data-before-send an).
+ * 8. Kurs-Banner (09.11.2026, Yannis): kurs_starten {stufe} beim Knopf „Starten“ im Banner auf „Alle Ideen“,
+ *    kurs_will_ich_haben {stufe} bei „Will ich haben“ im Kurs-Fenster (einmal je Seitenaufruf).
  */
 (function (fenster) {
   'use strict';
@@ -46,7 +48,7 @@
   var MARKE = 'Messung über Umami Cloud, Fassung 2';
   var UMLAUTE = { 'ä': 'ae', 'ö': 'oe', 'ü': 'ue', 'ß': 'ss' };
   var ZAHLEN = ['prozent', 'sekunde', 'generation', 'anzahl'];
-  var ANGABEN = ['fall', 'einstieg', 'anbieter', 'abfrage', 'antwort', 'herkunft', 'zweig', 'fassung', 'weg', 'grund', 'ort']
+  var ANGABEN = ['fall', 'einstieg', 'anbieter', 'abfrage', 'antwort', 'herkunft', 'zweig', 'fassung', 'weg', 'grund', 'ort', 'stufe']
     .concat(ZAHLEN);
   var GEHEIM = /^(access_token|refresh_token|provider_token|provider_refresh_token|code|token|token_hash|error_description)$/i;
   var AUS = 'umami.disabled', ALT_AUS = 'kiosk-zaehlung-aus', SITZUNG = 'ki-sitzung';
@@ -293,13 +295,15 @@
     "abfrage_beantwortet": "Rückkehr: „Hat alles geklappt?“ beantwortet",
     "umfrage_antwort": "Umfrage: Frage beantwortet", "umfrage_text": "Umfrage: Freitext abgeschickt",
     "rueckmeldung_geoeffnet": "Rückmeldung: Fenster geöffnet",
-    "rueckmeldung_abgeschickt": "Rückmeldung: abgeschickt"
+    "rueckmeldung_abgeschickt": "Rückmeldung: abgeschickt",
+    "kurs_starten": "Kurs-Banner: „Starten“ getippt", "kurs_will_ich_haben": "Kurs-Banner: „Will ich haben“ getippt"
   };
   // Name der Angabe in Umami; „ereignis:angabe“ geht vor „angabe“; leerer Name = Angabe weglassen
   var SCHLUESSEL = {
     fall: 'Use Case', anbieter: 'KI', einstieg: 'Anmeldeweg', grund: 'Grund', fassung: 'Film-Fassung', sekunde: 'Sekunde',
     prozent: 'Prozent', anzahl: 'Anzahl Use Cases', herkunft: 'Herkunft', zweig: 'Link-Kennung', generation: 'Weitergabe-Stufe',
     mensch: 'Mensch', abfrage: 'Frage', antwort: 'Antwort', ort: 'Geöffnet über', weg: 'Wo getippt',
+    'kurs_starten:stufe': 'Banner-Stufe', 'kurs_will_ich_haben:stufe': 'Banner-Stufe',
     'geteilt:weg': 'Wie geteilt',
     'abfrage_beantwortet:abfrage': 'Antwort',
     'rueckmeldung_geoeffnet:abfrage': 'Geöffnet über',
@@ -309,6 +313,7 @@
   };
   var HERKUNFT_NAMEN = {"whatsapp": "WhatsApp", "google": "Google", "social": "Soziale Medien", "mail": "E-Mail", "ki-assistent": "KI-Assistent", "suche": "andere Suchmaschine", "andere-seite": "andere Website", "direkt": "direkt (ohne Link)", "empfehlung": "Empfehlung", "anmeldelink": "Link aus Anmelde-Mail oder Google"};
   var OEFFNER_NAMEN = {"rueckmeldung": "„Rückmeldung geben“ / „Gestalte mit“", "idee": "„Eigene Idee teilen“", "wunsch": "„Frage stellen“ / „Schreib sie uns“"};
+  var KURS_STUFEN = { '1': 'Stufe 1: Neu bei KI', '2': 'Stufe 2: etwas Erfahrung', '3': 'Stufe 3: erfahren' };
   // Werte je Angabe; „ereignis:angabe“ geht vor „angabe“
   var WERTE = {
     fall: {
@@ -385,6 +390,7 @@
     'umfrage_antwort:antwort': { 'gar-nicht': 'Idee: Nicht hilfreich', gut: 'Idee: Okay', 'richtig-gut': 'Idee: Sehr gut',
       'ganz-leicht': 'Loslegen: Ja, es war leicht', 'ging-so': 'Loslegen: Etwas hakte', schwierig: 'Loslegen: Es hat nicht funktioniert',
       ja: 'Gelernt: Habe etwas gelernt', vielleicht: 'Gelernt: Ich weiß nicht', 'eher-nicht': 'Gelernt: Nein' },
+    'kurs_starten:stufe': KURS_STUFEN, 'kurs_will_ich_haben:stufe': KURS_STUFEN,
     'rueckmeldung_geoeffnet:abfrage': OEFFNER_NAMEN,
     'rueckmeldung_abgeschickt:abfrage': OEFFNER_NAMEN,
     'rueckmeldung_abgeschickt:antwort': { 'klappt-nicht': 'Etwas klappt nicht', wunsch: 'Ein Wunsch', idee: 'Eine eigene Idee',
@@ -657,6 +663,23 @@
     }
   }
 
+  // ---------- Kurs-Banner auf „Alle Ideen“ (R80/R107, Yannis 09.11.2026: „Die Klicks am Kurs-Banner sollen gezählt werden“) ----------
+  // „Starten“ öffnet das Fenster „Der Einsteiger-Kurs entsteht gerade“; „Will ich haben“ zählt einmal je Seitenaufruf (die Seite
+  // dankt danach und sperrt den Knopf). Stufe aus data-stufe des Banners (1 neu, 2 etwas Erfahrung, 3 erfahren).
+
+  function beiKurs(ereignis) {
+    var t = ereignis.target;
+    if (!t || !t.closest) return;
+    var banner = doc.getElementById('r80-banner');
+    var stufe = banner ? (banner.getAttribute('data-stufe') || '1') : '';
+    if (t.closest('[data-r80-open]')) { senden('kurs_starten', { stufe: stufe }); return; }
+    var ja = t.closest('#r80-pop [data-r80="ja"]');
+    if (ja && ja.getAttribute('aria-disabled') !== 'true' && !ja.__mvGezaehlt) {
+      ja.__mvGezaehlt = true;
+      senden('kurs_will_ich_haben', { stufe: stufe });
+    }
+  }
+
   // ---------- Keller-Film ----------
   // Jeder Start und „Nochmal“ setzt den Film auf 0 und spielt (Klick). Fortsetzen nach Pause oder Fenster: currentTime > 0.
   var FILM = '.r79-film, .v22z-k-video, .v22z-kp-video';
@@ -709,6 +732,7 @@
   doc.addEventListener('click', beiRueckmeldungKlick, true);
   doc.addEventListener('submit', beiAbschicken, true);
   doc.addEventListener('click', beiUmfrage, true);
+  doc.addEventListener('click', beiKurs, true);
   fenster.addEventListener('scroll', beiScroll, { passive: true });
   BEDIENUNG.forEach(function (t) { fenster.addEventListener(t, alsMensch, { capture: true, passive: true }); });
   fenster.addEventListener('scroll', beiErstemScroll, { capture: true, passive: true });
