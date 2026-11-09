@@ -3413,7 +3413,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
     var t=text.value.trim().slice(0,500); if(!t||sendet) return;
     sendet=true;fehler.hidden=true;pruefe();
     var n={art:'rueckmeldung',abfrage:'fuss',antwort:wahl(),text:t,
-      pfad:(location.pathname.replace(/[^A-Za-z0-9\/._~%-]/g,'')||'/').slice(0,200),hp:String(hp.value||'').slice(0,100)};
+      pfad:(location.pathname.replace(/[^A-Za-z0-9\/._~%-]/g,'')||'/').slice(0,200),hp:String(hp.value||'').slice(0,100)};try{var mkM=window.Messung,mkK=mkM&&mkM.rueckmeldungKontext&&mkM.rueckmeldungKontext();if(mkK)for(var mkX in mkK)n[mkX]=mkK[mkX];}catch(mkF){}
     var s=document.querySelector('script[data-endpunkt]'),ziel=(s&&s.getAttribute('data-endpunkt'))||ENDPUNKT;
     var ort=location,test=!/^https:\/\//.test(ziel)||ort.protocol==='file:'||/^(localhost|127\.0\.0\.1|\[::1\]|.*\.localhost)$/.test(ort.hostname||'')||/[?&]messung=test\b/.test(ort.search||'');
     if(test&&!window.R187_TEST_SENDEN){   // Testmodus wie in messung.js: nichts senden, nur Danke zeigen

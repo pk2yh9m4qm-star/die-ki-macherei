@@ -26,7 +26,7 @@
  * 5. Use Cases: start_knopf {anbieter, weg} beim Tippen auf einen Start-Knopf, start_hilfe wenn danach das Hilfefenster
  *    kommt, start_klick (messpunkte.js) wenn die KI wirklich aufgeht, weiterer_fall {anzahl} ab dem zweiten Fall.
  * 6. Rückmeldung: rueckmeldung_geoeffnet und rueckmeldung_abgeschickt {abfrage, antwort: klappt-nicht|wunsch|idee} am
- *    Rückmeldefenster (R187). Rückkehrkarte nach dem Chat (R64): umfrage_antwort {abfrage: rm-entwuerfe|rm-leicht|rm-wieder,
+ *    Rückmeldefenster (R187). Rückkehrkarte nach dem Chat (R64): umfrage_antwort {abfrage: rm-entwuerfe|rm-leicht|rm-empfehlen,
  *    antwort} je angetippter Antwort, umfrage_text {abfrage: rm-text}, wenn ein Freitext abgeschickt wird. Freitexte selbst
  *    gehen nie an Umami, nur wie bisher in die Google-Tabelle.
  * 7. Lesbare Namen (08.11.2026, Yannis): Unmittelbar vor dem Versand übersetzt fuerUmami() jede Kennung in einen deutschen
@@ -38,6 +38,12 @@
  *    localhost in data-domains steht (sonst hält Umami schon vor data-before-send an).
  * 8. Kurs-Banner (09.11.2026, Yannis): kurs_starten {stufe} beim Knopf „Starten“ im Banner auf „Alle Ideen“,
  *    kurs_will_ich_haben {stufe} bei „Will ich haben“ im Kurs-Fenster (einmal je Seitenaufruf).
+ * 9. Umfrage Frage 3 (09.11.2026, Yannis): neue Kennung rm-empfehlen („Würdest du diese Idee weiterempfehlen?“, Werte
+ *    ja|vielleicht|nein). Antworten werden je Frage übersetzt (WERTE 'umfrage_antwort:antwort:rm-empfehlen'), damit „ja“ hier
+ *    nicht als „Gelernt: …“ erscheint. rm-wieder bleibt für ältere Seitenstände übersetzt.
+ * 10. Nachjustiert (09.11.2026, Yannis „alles umsetzen“): film_start zählt bis 1,6 s (R261 startet beim Handbild) und
+ *    trägt {start: von-selbst|klick}; Link-Kennung „direkt“ heißt in Umami „Anfang ohne Link“; Messung.rueckmeldungKontext()
+ *    gibt den Rückmeldungen für die Tabelle herkunft, utm_content (Link-Kennung) und utm_medium (stufe-n) mit.
  */
 (function (fenster) {
   'use strict';
@@ -48,7 +54,7 @@
   var MARKE = 'Messung über Umami Cloud, Fassung 2';
   var UMLAUTE = { 'ä': 'ae', 'ö': 'oe', 'ü': 'ue', 'ß': 'ss' };
   var ZAHLEN = ['prozent', 'sekunde', 'generation', 'anzahl'];
-  var ANGABEN = ['fall', 'einstieg', 'anbieter', 'abfrage', 'antwort', 'herkunft', 'zweig', 'fassung', 'weg', 'grund', 'ort', 'stufe']
+  var ANGABEN = ['fall', 'einstieg', 'anbieter', 'abfrage', 'antwort', 'herkunft', 'zweig', 'fassung', 'weg', 'grund', 'ort', 'stufe', 'start']
     .concat(ZAHLEN);
   var GEHEIM = /^(access_token|refresh_token|provider_token|provider_refresh_token|code|token|token_hash|error_description)$/i;
   var AUS = 'umami.disabled', ALT_AUS = 'kiosk-zaehlung-aus', SITZUNG = 'ki-sitzung';
@@ -300,6 +306,7 @@
   };
   // Name der Angabe in Umami; „ereignis:angabe“ geht vor „angabe“; leerer Name = Angabe weglassen
   var SCHLUESSEL = {
+    'film_start:start': 'Wie gestartet',
     fall: 'Use Case', anbieter: 'KI', einstieg: 'Anmeldeweg', grund: 'Grund', fassung: 'Film-Fassung', sekunde: 'Sekunde',
     prozent: 'Prozent', anzahl: 'Anzahl Use Cases', herkunft: 'Herkunft', zweig: 'Link-Kennung', generation: 'Weitergabe-Stufe',
     mensch: 'Mensch', abfrage: 'Frage', antwort: 'Antwort', ort: 'Geöffnet über', weg: 'Wo getippt',
@@ -312,6 +319,10 @@
     'umfrage_text:abfrage': ''
   };
   var HERKUNFT_NAMEN = {"whatsapp": "WhatsApp", "google": "Google", "social": "Soziale Medien", "mail": "E-Mail", "ki-assistent": "KI-Assistent", "suche": "andere Suchmaschine", "andere-seite": "andere Website", "direkt": "direkt (ohne Link)", "empfehlung": "Empfehlung", "anmeldelink": "Link aus Anmelde-Mail oder Google"};
+  // Link-Kennung = Anfang der Empfehlungskette; „direkt“ heißt dort: die Kette begann ohne Link (09.11.2026, Yannis)
+  var ZWEIG_NAMEN = {};
+  for (var zn in HERKUNFT_NAMEN) if (hat(HERKUNFT_NAMEN, zn)) ZWEIG_NAMEN[zn] = HERKUNFT_NAMEN[zn];
+  ZWEIG_NAMEN.direkt = 'Anfang ohne Link';
   var OEFFNER_NAMEN = {"rueckmeldung": "„Rückmeldung geben“ / „Gestalte mit“", "idee": "„Eigene Idee teilen“", "wunsch": "„Frage stellen“ / „Schreib sie uns“"};
   var KURS_STUFEN = { '1': 'Stufe 1: Neu bei KI', '2': 'Stufe 2: etwas Erfahrung', '3': 'Stufe 3: erfahren' };
   // Werte je Angabe; „ereignis:angabe“ geht vor „angabe“
@@ -374,7 +385,8 @@
     fassung: { computer: 'Computer', 'handy-hoch': 'Handy hochkant', 'handy-quer': 'Handy quer (oder schmales Fenster)',
       ruhig: 'ruhige Fassung (ohne Bewegung)' },
     herkunft: HERKUNFT_NAMEN,
-    zweig: HERKUNFT_NAMEN,
+    zweig: ZWEIG_NAMEN,
+    'film_start:start': { 'von-selbst': 'von selbst (Autostart)', klick: 'per Klick' },
     mensch: { ja: 'ja' },
     weg: { knopf: 'Start-Knopf auf der Seite', leiste: 'Leiste unten', rueckkehr: 'Karte nach der Rückkehr', browser: '„Im Browser öffnen“' },
     'geteilt:weg': { menue: 'Teilen-Menü', kopiert: 'Link kopiert' },
@@ -386,7 +398,9 @@
       'rueckkehr-klappt-angemeldet': 'Nach Hilfe (bei der KI nicht angemeldet): hat geklappt',
       'rueckkehr-klappt-nichts': 'Nach Hilfe (nichts geöffnet): hat geklappt' },
     'umfrage_antwort:abfrage': { 'rm-entwuerfe': '1. Wie gefiel dir die Idee?', 'rm-leicht': '2. War es leicht, loszulegen?',
-      'rm-wieder': '3. Hast du etwas über KI gelernt?' },
+      'rm-wieder': '3. Hast du etwas über KI gelernt?', 'rm-empfehlen': '3. Würdest du diese Idee weiterempfehlen?' },
+    'umfrage_antwort:antwort:rm-empfehlen': { ja: 'Weiterempfehlen: Ja', vielleicht: 'Weiterempfehlen: Vielleicht',
+      nein: 'Weiterempfehlen: Nein' },
     'umfrage_antwort:antwort': { 'gar-nicht': 'Idee: Nicht hilfreich', gut: 'Idee: Okay', 'richtig-gut': 'Idee: Sehr gut',
       'ganz-leicht': 'Loslegen: Ja, es war leicht', 'ging-so': 'Loslegen: Etwas hakte', schwierig: 'Loslegen: Es hat nicht funktioniert',
       ja: 'Gelernt: Habe etwas gelernt', vielleicht: 'Gelernt: Ich weiß nicht', 'eher-nicht': 'Gelernt: Nein' },
@@ -397,8 +411,10 @@
       'ohne-auswahl': 'ohne Auswahl' }
   };
   function hat(o, k) { return !!o && Object.prototype.hasOwnProperty.call(o, k); }
-  function lesbarerWert(ereignis, k, w) {
-    var tafel = hat(WERTE, ereignis + ':' + k) ? WERTE[ereignis + ':' + k] : (hat(WERTE, k) ? WERTE[k] : null);
+  function lesbarerWert(ereignis, k, w, abfrage) {
+    var jeFrage = ereignis + ':' + k + ':' + abfrage;   // Werte, die je Frage anders heißen (Umfrage Frage 3)
+    var tafel = abfrage && hat(WERTE, jeFrage) ? WERTE[jeFrage]
+      : (hat(WERTE, ereignis + ':' + k) ? WERTE[ereignis + ':' + k] : (hat(WERTE, k) ? WERTE[k] : null));
     if (typeof w !== 'string') return w;
     if (hat(tafel, w)) return tafel[w];
     if (k === 'grund' && /^stoerung-\d+$/.test(w)) return 'Störung ' + w.slice(9);
@@ -409,7 +425,7 @@
     Object.keys(daten || {}).forEach(function (k) {
       var vor = ereignis + ':' + k;
       var name = hat(SCHLUESSEL, vor) ? SCHLUESSEL[vor] : (hat(SCHLUESSEL, k) ? SCHLUESSEL[k] : k);
-      if (name) ergebnis[name] = lesbarerWert(ereignis, k, daten[k]);
+      if (name) ergebnis[name] = lesbarerWert(ereignis, k, daten[k], typeof daten.abfrage === 'string' ? daten.abfrage : '');
     });
     return ergebnis;
   }
@@ -696,9 +712,11 @@
     var z = v.__mvFilm || (v.__mvFilm = { laeuft: false, gespielt: 0, letzte: 0, marken: {}, starts: 0 });
     var jetzt = v.currentTime || 0;
     if (ereignis.type === 'playing') {
-      if (jetzt < 1 && (!z.laeuft || z.gespielt > 2)) {
+      // Seit R261 beginnt der Film beim Handbild (Rechner 0,9 s, Handy hochkant 1,1 s), darum Start bis 1,6 s
+      if (jetzt < 1.6 && (!z.laeuft || z.gespielt > 2)) {
         z.laeuft = true; z.gespielt = 0; z.marken = {}; z.starts++;
-        senden(z.starts === 1 ? 'film_start' : 'film_nochmal', { fassung: fassung });
+        if (z.starts === 1) senden('film_start', { fassung: fassung, start: v.getAttribute('data-r261-auto') === '1' ? 'von-selbst' : 'klick' });
+        else senden('film_nochmal', { fassung: fassung });
       }
       z.letzte = jetzt;
     } else if (ereignis.type === 'timeupdate') {
@@ -720,7 +738,16 @@
   // ---------- Öffentliche Brücke und Vorab-Meldungen aus auth.js ----------
 
   var vorab = fenster.__mvVorab || [];
-  fenster.Messung = { senden: senden, aktiv: !aus, testmodus: test, abgeschaltet: abgeschaltet, umami: true, fassung: 2,
+  /** Herkunft für die Rückmeldungen in der Google-Tabelle (09.11.2026): herkunft, utm_content = Link-Kennung,
+   *  utm_medium = Weitergabe-Stufe; nur Werte, die Code.gs annimmt (sonst ginge die ganze Rückmeldung verloren). */
+  function rueckmeldungKontext() {
+    var k = {}, h = String(erstkontakt.herkunft || ''), z = String(erstkontakt.zweig || '');
+    if (/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(h)) k.herkunft = h;
+    if (/^[a-z0-9._~-]{1,80}$/.test(z)) k.utm_content = z;
+    k.utm_medium = 'stufe-' + Math.min(99, Math.max(1, Number(erstkontakt.generation) || 1));
+    return k;
+  }
+  fenster.Messung = { senden: senden, rueckmeldungKontext: rueckmeldungKontext, aktiv: !aus, testmodus: test, abgeschaltet: abgeschaltet, umami: true, fassung: 2,
     eigenerCode: eigenerCode, erstkontakt: erstkontakt, marke: MARKE };
   fenster.__mvVorab = { push: function (e) { try { senden(e[0], e[1]); } catch (f) { /* nie die Seite stören */ } } };
   if (vorab && vorab.length) for (var i = 0; i < vorab.length; i++) { try { senden(vorab[i][0], vorab[i][1]); } catch (f) { /* dito */ } }
