@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="de">
 <head>
+<meta name="runde263" content="1">
+<meta name="runde262" content="1">
 <meta name="runde259" content="1">
 <meta name="runde258" content="1">
 <meta name="runde256" content="1">
@@ -3500,6 +3502,25 @@ html:not(#r258) body :is(.v22z-karte, .r92-kk, .v22z-wk-innen) > .v22z-hook { ma
     background: linear-gradient(90deg, var(--ez-rille) 0 1px, var(--ez-licht) 1px 2px); }
 }
 </style>
+<style id="r263">
+/* R263: „Einfach loslegen.“ etwas kleiner, an die übrigen Größen der Startseite angelehnt (Yannis 09.11.2026). */
+#so-gehts .ez { --ez-sw: 2.04; --ez-d1: 5.83 5.83; --ez-d2: 7 5.83; padding: 72px 42px; }
+#so-gehts .ez-sk { max-width: 240px; height: 137px; }
+#so-gehts .ez-nr { width: 36px; height: 36px; margin-top: 40px; font-size: 15px; }
+#so-gehts .ez-titel { margin-top: 14px; max-width: 260px; font-size: 18px; letter-spacing: -.2px; }
+/* Linie mittig an den Nummern: 137 + 40 + 18 − 1; 14 px Abstand zum Kreis (18 + 14) */
+#so-gehts .ez-st:not(:last-child)::after { top: 194px; left: calc(50% + 32px); right: calc(-50% + 32px); }
+@media (max-width: 959px) {
+  #so-gehts .ez { --ez-sw: 2.91; --ez-d1: 8.26 8.26; --ez-d2: 9.94 8.26; padding: 10px 20px 28px; }
+  #so-gehts .ez-st { grid-template-columns: 36px minmax(0, 1fr); column-gap: 14px; }
+  #so-gehts .ez-st + .ez-st { margin-top: 28px; }
+  #so-gehts .ez-sk { width: 200px; height: 114px; margin-left: -7px; }
+  #so-gehts .ez-nr { margin-top: 8px; margin-bottom: -8px; }
+  #so-gehts .ez-titel { margin-top: 16px; font-size: 17px; }
+  /* 8 px unter der Nummer (114 + 8 + 36 + 8) bis 8 px über der nächsten (28 + 114) */
+  #so-gehts .ez-st:not(:last-child)::after { top: 166px; bottom: -142px; left: 17px; }
+}
+</style>
 </head>
 <body><div class="live-aufbau" role="note"><b>Beta</b> · <a class="r253-mit" href="#r187-kasten" data-r187-oeffnen="" aria-haspopup="dialog">Gestalte mit: Was fehlt, was hakt?</a></div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole der Laufbänder: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
@@ -3915,11 +3936,11 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
 
     <section class="v22z-abschnitt v22z-wissen" id="wissen" aria-labelledby="wissen-title">
       <div class="wrap">
-        <div class="v22z-kopf v22z-kopf--mitte" id="v22z-k3" data-v22z-auftritt>
+        <div class="v22z-kopf v22z-kopf--mitte ist-da sofort" id="v22z-k3" data-v22z-auftritt>
           <h2 class="display v22z-titel v22z-titel--3" id="wissen-title">Verstehen. Entscheiden. Nutzen.</h2>
           <p class="v22z-lead">Wie KI tickt, wann du ihr trauen kannst und wann nicht, erfährst du im Wissensbereich. Wir erklären ohne Hype und ohne Fachchinesisch.</p>
         </div>
-        <div class="v22z-fw v22z-fw--figur" data-v22z-nach="#v22z-k3" data-v22z-schwelle="0.38" data-v22z-lesen="1500" style="--n:7">
+        <div class="v22z-fw v22z-fw--figur ist-da sofort" style="--n:7">
         <ul class="v22z-fw-wand" aria-label="Fragen zum Umgang mit KI">
           <li class="v22z-fw-gabi" aria-hidden="true"><img src="/a-2d50773a44ff.webp" srcset="/a-2d50773a44ff-600.webp 600w, /a-2d50773a44ff.webp 1100w" sizes="473px" alt="" width="1100" height="975"></li>
           <li class="v22z-fw-zettel" style="--l:3.1818%;--t:6.1404%;--w:25.9091%;--r:-1.5deg;--fs:2.45em;--i:0" data-schwanz="rechts"><button type="button" class="v22z-fw-blase v25-blase" aria-expanded="false" aria-controls="v25-antwort" data-antwort="daten"><span class="v22z-fw-frage">Was passiert mit all meinen Daten?</span></button></li>
@@ -3939,7 +3960,7 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
 
     <section class="v22z-abschnitt v22z-schluss v22z-schluss--kurz" id="schluss" aria-label="Jetzt loslegen">
       <div class="wrap">
-        <div class="v22z-los-raster" data-v22z-schwelle="0.35">
+        <div class="v22z-los-raster ist-da sofort">
           <a class="v22z-los" href="/ideen">
             <span class="v22z-los-faecher" aria-hidden="true"><i class="plate pal-moss"></i><i class="plate pal-plum"></i><i class="plate pal-coral"></i><i class="plate pal-sand"></i><i class="plate pal-blue"></i></span>
             <b class="v22z-los-titel">Jetzt loslegen</b>
