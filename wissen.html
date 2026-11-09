@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
+<meta name="runde267" content="1">
 <meta name="runde264" content="1">
 <meta name="runde258" content="1">
 <meta name="runde254" content="1">
@@ -2604,6 +2605,10 @@ body:has(#k-ablage:not([hidden])) .live-fuss { padding-bottom: 98px; }
 .k-flug svg { display: block; width: 24px; height: 24px; margin: -12px 0 0 -12px; fill: var(--k-blue, #2f5871); filter: drop-shadow(0 3px 5px rgb(20 40 60 / .35)); }
 @media (prefers-reduced-motion: reduce) { .k-ablage:not([hidden]) { animation: none; } .k-merk.is-pop svg { animation: none; } .k-ablage.is-raus { transition: none; } }
 </style>
+<style id="r267">
+  /* R267: Leiste gleitet hinaus, solange nicht antippbar (wie r239-herz) */
+  .k-ablage.is-raus { pointer-events: none; }
+</style>
 </head>
 <body><div class="live-aufbau" role="note"><b>Beta</b> · <a class="r253-mit" href="/#r187-kasten" data-r187-oeffnen="" aria-haspopup="dialog">Gestalte mit: Was fehlt, was hakt?</a></div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
@@ -3812,7 +3817,7 @@ html .site-nav .nav-mein .nav-mein__ich { width: 18px; height: 18px; }
   var toastEl = document.createElement('div'); toastEl.className = 'k-toast'; toastEl.setAttribute('aria-hidden', 'true');
   var status = document.createElement('div'); status.className = 'sr-only'; status.setAttribute('role', 'status'); status.setAttribute('aria-live', 'polite');
   document.body.append(ablage, toastEl, status);
-  var uhr, rausUhr, toastUhr, kurz = false;
+  var uhr, rausUhr, toastUhr, kurz = false, sanft = false, sanftUhr = 0;   // R267: sanft = abgemeldet leer, gleitet hinaus
   function melden(t) { status.textContent = ''; setTimeout(function () { status.textContent = t; }, 30); }
   function toast(t, ansage) { toastEl.textContent = t; toastEl.classList.add('is-da'); melden(ansage || t); clearTimeout(toastUhr); toastUhr = setTimeout(function () { toastEl.classList.remove('is-da'); }, 2200); }
   function ablageZeichnen() {
@@ -3821,7 +3826,26 @@ html .site-nav .nav-mein .nav-mein__ich { width: 18px; height: 18px; }
     ablage.querySelector('.k-ablage__text').textContent = aus ? 'Anmelden' : 'Mein Bereich';
     ablage.setAttribute('aria-label', (aus ? 'Anmelden, ' : 'Mein Bereich, ') + n + (n === 1 ? ' gemerkter Artikel' : ' gemerkte Artikel'));
     var zeigen = aus ? n > 0 : kurz;
+    if (zeigen) { sanftHalt(); }
+    else if (aus && sanft && !ablage.hidden) {   // R267: wie r239Raus beim Herz
+      if (!sanftUhr) sanftUhr = setTimeout(function () {
+        var weg = function () { sanftUhr = 0; sanft = false; ablage.hidden = true; ablage.classList.remove('is-raus'); };
+        if (aktuell().length) { sanftUhr = 0; sanft = false; return; }
+        if (ruhig.matches) { weg(); return; }
+        ablage.classList.add('is-raus'); sanftUhr = setTimeout(weg, 420);
+      }, 500);
+      return;
+    }
     if (ablage.hidden === zeigen) ablage.hidden = !zeigen;
+  }
+  function sanftHalt() { if (sanftUhr) { clearTimeout(sanftUhr); sanftUhr = 0; } sanft = false; if (abgemeldet()) ablage.classList.remove('is-raus'); }
+  function zeichenWeg() {   // R267: abgemeldet, Lesezeichen in der Leiste nimmt den zuletzt gemerkten Artikel zurück (wie r239HerzWeg)
+    var a = aktuell(); if (!a.length) return false;
+    var id = a[0].id;   // aktuell() ist nach „am“ absteigend sortiert
+    wartendSetzen(wartend().filter(function (y) { return y.id !== id; }));
+    listeSetzen(liste().filter(function (y) { return y.id !== id; }));
+    sanft = true; schmuecken(); melden('Nicht mehr gemerkt.');
+    return true;
   }
   function raus() {
     clearTimeout(uhr); clearTimeout(rausUhr);
@@ -3876,14 +3900,14 @@ html .site-nav .nav-mein .nav-mein__ich { width: 18px; height: 18px; }
     var aus = abgemeldet(), id = b.dataset.merk;
     if (gemerkt(id)) {
       listeSetzen(liste().filter(function (y) { return y.id !== id; }));
-      if (aus) wartendSetzen(wartend().filter(function (y) { return y.id !== id; }));
+      if (aus) { wartendSetzen(wartend().filter(function (y) { return y.id !== id; })); sanft = true; }   // R267
       schmuecken(); melden('Nicht mehr gemerkt.'); return;
     }
     var neu = { id: id, am: Date.now() };
     if (aus) wartendSetzen([neu].concat(wartend())); else listeSetzen([neu].concat(liste()));
     knopf(b);
     b.classList.remove('is-pop'); void b.offsetWidth; b.classList.add('is-pop');
-    clearTimeout(uhr); clearTimeout(rausUhr); ablage.classList.remove('is-raus');
+    clearTimeout(uhr); clearTimeout(rausUhr); sanftHalt(); ablage.classList.remove('is-raus');
     kurz = !aus; ablage.hidden = false; ablageZeichnen();
     fliegen(b, function () {
       schmuecken();
@@ -3892,7 +3916,8 @@ html .site-nav .nav-mein .nav-mein__ich { width: 18px; height: 18px; }
       toast('Gemerkt.', 'Gemerkt. Du findest es in Mein Bereich.'); raus();
     });
   });
-  ablage.addEventListener('click', function () {
+  ablage.addEventListener('click', function (e) {
+    if (abgemeldet() && e.target.closest('.k-ablage__zeichen') && zeichenWeg()) return;   // R267
     if (abgemeldet()) { if (window.KIAuth && KIAuth.oeffnen) KIAuth.oeffnen('anmelden'); return; }
     location.href = '/mein-bereich#wissen';
   });
