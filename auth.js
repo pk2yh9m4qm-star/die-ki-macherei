@@ -66,7 +66,8 @@
   function wechselnZu(neu) {
     var alt = sitzung();
     var vor = alt && (alt.offen || alt.soffen) ? allesPushen().catch(function () { return false; }) : Promise.resolve();
-    return vor.then(function () { sitzungSetzen(neu); return alt; });
+    return vor.then(function () { return artikelVorAbmelden(true); }).catch(function () { /* weiter */ })   // R258: offene Artikel der alten Sitzung
+      .then(function () { sitzungSetzen(neu); return alt; });
   }
   function gleichesKonto(alt, user) {
     if (!alt) return true;                         // vorher niemand angemeldet: wie bisher vereinen
@@ -343,7 +344,8 @@
       s1.basis = Object.keys(konto).sort(); s1.weg = []; sitzungSetzen(s1);
     }
     var fremd = vereinen && !gleichesKonto(alt, user);
-    return weiter.then(function () { letzteSig = sig(herzenLokal()); wartendUebernehmen(); return sammlungenAbgleichen(fremd ? 'fremd' : vereinen ? 'vereinen' : 'normal'); });
+    return weiter.then(function () { letzteSig = sig(herzenLokal()); wartendUebernehmen(); return aAbgleichen(user, vereinen, fremd).catch(function () { /* weiter */ }); })   // R258: Artikel
+      .then(function () { return sammlungenAbgleichen(fremd ? 'fremd' : vereinen ? 'vereinen' : 'normal'); });
   }
 
   /* ——— R195: Sammlungen mit dem Konto (Tabelle public.sammlungen) ———
@@ -1028,7 +1030,7 @@
   function abmelden() {
     var s = sitzung();
     if (!s) return Promise.resolve();
-    var vorher = s.offen || s.soffen ? allesPushen() : Promise.resolve(true);
+    var vorher = (s.offen || s.soffen ? allesPushen() : Promise.resolve(true)).then(artikelVorAbmelden);   // R258: offene Artikel auch
     var hatte = Object.keys(herzenLokal()).length > 0;   // Rückfall; maßgeblich sind die Herzen im Konto (unten)
     return vorher.then(function (ok) {
       // 186c (Dwights R8): Kamen die gemerkten Ideen nicht ins Konto (etwa ohne Verbindung), nicht abmelden und nichts leeren.
@@ -1048,6 +1050,7 @@
         lokalAbmelden();
         herzenSetzen({});   // die Herzen dieses Kontos liegen im Konto
         sSetzen([]);   // R195: die Sammlungen auch
+        aSetzen([]);   // R258: die gemerkten Artikel auch (liegen im Konto)
         anzeigen();
         status(text);
         if (KI && KI.toast) KI.toast(text);
@@ -1153,7 +1156,7 @@
         return r;
       };
     }
-    if (KI && KI.hoer) { KI.hoer(herzGeaendert); KI.hoer(sammlungGeaendert); KI.hoer(kopfNamen); }
+    if (KI && KI.hoer) { KI.hoer(herzGeaendert); KI.hoer(sammlungGeaendert); KI.hoer(kopfNamen); KI.hoer(artikelGeaendert); }   // R258: Artikel
     // Die Herz-Knöpfe der Seiten schreiben selbst in den Speicher und melden erst nach der Flugbahn; deshalb nach jedem Tipp selbst nachsehen
     document.addEventListener('click', function (e) {
       setTimeout(sammlungGeaendert, 60); setTimeout(sammlungGeaendert, 1400);   // R195: Sammlungsfenster, Umbenennen, Löschen
@@ -1184,6 +1187,7 @@
     var s = sitzung();
     letzteSig = sig(herzenLokal());
     sLetzt = JSON.stringify(sLokal());
+    aLetzt = aSig(aLokal());   // R258
     if (h && h.fehler) mv('anmeldung_fehler', { grund: h.fehler === 'google' ? 'google-abgebrochen' : (h.fehler === 'abgelaufen' ? 'link-abgelaufen' : 'stoerung') });
     if (h && h.recovery) neuZeigen();
     else if (h && h.fehler === 'abgelaufen') { if (!s) abgelaufenZeigen(h.fall); }   // mit Sitzung: kein „abgelaufen“, die Seite zeigt das Konto
@@ -1202,8 +1206,88 @@
       });
     });
   }
+  /* ——— R258 (Yannis 09.11.2026): gemerkte Wissens-Artikel im Konto (user_metadata.artikel, [{id, am}]) ———
+     Im Browser: ki-entdecken-wissen (KI.K.wissen), dieselbe Liste, die Mein Bereich liest. Zusammenführen wie bei den Herzen:
+     Basis = Stand beim letzten Abgleich (s.abasis); was nur hier entfernt wurde (s.aweg), fällt im Konto weg; was hier neu ist, kommt dazu.
+     Abgemeldet getippte Artikel (Warteliste ki-artikel-wartend) kommen bei der Anmeldung dazu. Beim Abmelden wird die Liste geleert. */
+  var A_WART = 'ki-artikel-wartend', A_KEY = 'ki-entdecken-wissen', aLetzt = null, aUhr = null;
+  /* Prüfer-Befund: wissen.html liest KI.lies in sessionStorage, Mein Bereich über KIMerk in localStorage. Für die Artikel gilt überall
+     localStorage (KIMerk); die Sitzungs-Kopie wird nur gespiegelt, damit ältere Leser denselben Stand sehen. */
+  function aRoh() {
+    try { if (window.KIMerk) return KIMerk.lies(A_KEY, []); } catch (e) { /* weiter */ }
+    try { return JSON.parse(localStorage.getItem(A_KEY) || '[]'); } catch (e) { return KI ? KI.lies(KI.K.wissen, []) : []; }
+  }
+  function aRein(x) {
+    var g = {}, o = [];
+    (Array.isArray(x) ? x : []).forEach(function (i) { if (i && typeof i.id === 'string' && /^[A-Za-z0-9_-]{1,60}$/.test(i.id) && !g[i.id] && o.length < 300) { g[i.id] = 1; o.push({ id: i.id, am: amOk(i.am) }); } });
+    return o;
+  }
+  function aLokal() { try { return aRein(aRoh()); } catch (e) { return []; } }
+  function aSig(l) { return l.map(function (x) { return x.id; }).sort().join('|'); }
+  function aSetzen(l) {
+    aLetzt = aSig(l);
+    try { if (window.KIMerk) KIMerk.schreib(A_KEY, l); else localStorage.setItem(A_KEY, JSON.stringify(l)); } catch (e) { /* weiter */ }
+    try { if (l.length) sessionStorage.setItem(A_KEY, JSON.stringify(l)); else sessionStorage.removeItem(A_KEY); } catch (e) { /* weiter */ }
+    if (window.r258Schmuecken) { try { window.r258Schmuecken(); } catch (e) { /* weiter */ } }
+  }
+  function aAbgleichen(user, vereinen, fremd) {
+    var s = sitzung();
+    if (!s || !KI || !user) return Promise.resolve(false);
+    var konto = aRein((user.user_metadata || {}).artikel), lokalVor = aLokal(), lokal = fremd ? [] : lokalVor, wart = [];
+    try { wart = aRein(JSON.parse(lsLesen(A_WART) || '[]')); } catch (e) { wart = []; }
+    var basis = vereinen ? [] : (s.abasis || konto.map(function (x) { return x.id; })), weg = vereinen ? [] : (s.aweg || []);
+    var voll = konto.filter(function (x) { return weg.indexOf(x.id) < 0; }), da = {};
+    voll.forEach(function (x) { da[x.id] = 1; });
+    lokal.forEach(function (x) { if (!da[x.id] && basis.indexOf(x.id) < 0) { da[x.id] = 1; voll.push(x); } });
+    wart.forEach(function (x) { if (!da[x.id]) { da[x.id] = 1; voll.push(x); } });
+    voll.sort(function (a, b) { return (b.am || 0) - (a.am || 0); });
+    var schreiben = aSig(voll) !== aSig(konto) ? metaSchreiben({ artikel: voll }) : Promise.resolve(user);
+    return schreiben.then(function (ok) {
+      var s2 = sitzung();
+      if (!s2) return false;
+      // Prüfer-Befund: Was während der Anfrage gemerkt oder entfernt wurde, bleibt und geht beim nächsten Abgleich ins Konto.
+      var jetztL = aLokal(), vorIds = lokalVor.map(function (x) { return x.id; }), jetztIds = jetztL.map(function (x) { return x.id; });
+      var dazu = jetztL.filter(function (x) { return vorIds.indexOf(x.id) < 0; }), raus = vorIds.filter(function (id) { return jetztIds.indexOf(id) < 0; });
+      var zus = voll.filter(function (x) { return raus.indexOf(x.id) < 0; });
+      dazu.forEach(function (x) { if (!zus.some(function (y) { return y.id === x.id; })) zus.unshift(x); });
+      var neu = dazu.length || raus.length;
+      if (ok) {
+        s2.abasis = voll.map(function (x) { return x.id; }).sort(); s2.aweg = neu ? raus : [];
+        if (neu) s2.aoffen = 1; else delete s2.aoffen;
+        sitzungSetzen(s2); lsSchreiben(A_WART, null);
+      }
+      if (aSig(zus) !== aSig(jetztL)) aSetzen(zus); else aLetzt = aSig(zus);
+      if (neu) artikelSpaeter();
+      return !!ok;
+    });
+  }
+  function artikelGeaendert() {
+    var l = aLokal(), sg = aSig(l);
+    if (aLetzt === null) { aLetzt = sg; return; }
+    if (sg === aLetzt) return;
+    var vorher = aLetzt ? aLetzt.split('|') : [], ids = l.map(function (x) { return x.id; });
+    aLetzt = sg;
+    var sz = sitzung();
+    if (!sz) return;
+    var weg = (sz.aweg || []).filter(function (id) { return ids.indexOf(id) < 0; });
+    vorher.forEach(function (id) { if (id && ids.indexOf(id) < 0 && weg.indexOf(id) < 0) weg.push(id); });
+    sz.aweg = weg; sz.aoffen = 1; sitzungSetzen(sz);
+    artikelSpaeter();
+  }
+  function artikelSpaeter() {
+    clearTimeout(aUhr);
+    aUhr = setTimeout(function () { userHolen().then(function (u) { if (u && sitzung()) return aAbgleichen(u, false, false); }).catch(function () { /* beim nächsten Laden */ }); }, 1000);
+  }
+  function artikelVorAbmelden(ok) {   // wie 186c bei den Herzen: Offenes erst ins Konto, sonst nicht abmelden
+    var s3 = sitzung();
+    if (!ok || !s3 || !s3.aoffen) return ok;
+    clearTimeout(aUhr);
+    return userHolen().then(function (u) { return u ? aAbgleichen(u, false, false) : false; }).catch(function () { return false; });
+  }
+
   stand();
   window.KIAuth = { eingeloggt: function () { return !!sitzung(); }, abmelden: abmelden, oeffnen: oeffnen, nutzerUrl: URL_, r193: true, r195: true };
+  window.KIAuth.r258Artikel = artikelGeaendert;   // R258: wissen.html meldet gemerkte Artikel (schreibt an KI.schreib vorbei)
   if (!KI) return;
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();

@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
+<meta name="runde258" content="1">
 <meta name="runde254" content="1">
 <meta name="runde253" content="1">
 <meta name="runde251" content="1">
@@ -2544,6 +2545,64 @@ img.r251-unterschrift { display: block; width: 190px; max-width: 62%; height: au
 [data-ansicht="willkommen"] .v25r7__bild { margin-bottom: 16px; }
 [data-ansicht="willkommen"] .v25r7__text p.r254-ich { color: var(--ink); font-weight: 600; text-align: center; margin-bottom: 20px; }
 </style>
+<style id="r258-karten">
+/* R258 A (Yannis 09.11.2026): Ideenkarten ohne Pillen Free/Mit Abo/Kategorie, Marke „Neu“ bleibt. Einstiegsfenster (#v47-ein) behält seine Pillen.
+   Die hohe Gewichtung braucht es, weil ältere Runden die Pillen mit !important einschalten. */
+html:not(#r258) body .mcard.mcard.mcard.mcard:not(#v47-ein .mcard) .tag.tag:is(.tag--frei, .tag--abo, .tag--cat) { display: none !important; }
+html:not(#r258) body .mcard.mcard.mcard.mcard:not(#v47-ein .mcard) .field-tags:not(:has(.tag--neu, .tag--bald, .tag--match)) { display: none !important; }
+/* Pfeil hinter dem Kurztext weg, der Pfeil hinter „Zur Idee“ bleibt */
+html:not(#r258):not(#r258b) body .mcard.mcard.mcard.mcard .anriss-ende::after { display: none !important; }
+</style><style id="r258-wissen">
+/* R258 E (Yannis 09.11.2026): Artikel merken – Lesezeichen wie das Herz der Ideenkarte, Ablage unten rechts, Hinweis */
+.wi-artikel .k-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: -8px 0 -6px; min-height: 44px; }
+.wi-artikel .k-meta .wi-label { margin: 0; }
+.k-merk { flex: none; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; cursor: pointer;
+  color: var(--ink-soft, #675f56); -webkit-tap-highlight-color: transparent;
+  background: linear-gradient(175deg, #fcfaf6, #f5f0e8 60%, #efe9df);
+  box-shadow: 0 1px 1px rgb(96 72 46 / .16), 0 3px 6px -2px rgb(96 72 46 / .2), inset 0 1.5px 0 #fff, inset 0 -6px 10px -8px rgb(96 72 46 / .24);
+  transition: background-color .2s ease, color .2s ease; }
+.k-merk svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; }
+@media (hover: hover) { .k-merk:hover { background: #fff; color: var(--ink, #23201c); } }
+.k-merk:active { background: #e9e2d7; box-shadow: inset 0 2px 4px rgb(96 72 46 / .3), inset 0 1px 1px rgb(96 72 46 / .18); }
+.k-merk[aria-pressed="true"] { color: var(--k-blue, #2f5871); background: #e9e2d7;
+  box-shadow: inset 0 2px 4px rgb(96 72 46 / .3), inset 0 -1px 0 rgb(255 255 255 / .8), 0 1px 0 rgb(255 255 255 / .9); }
+.k-merk[aria-pressed="true"] svg { fill: currentColor; }
+.k-merk:focus-visible, .k-ablage:focus-visible { outline: 3px solid #3b5a9a; outline-offset: 3px; }
+.k-merk.is-pop svg { animation: k-pop .42s cubic-bezier(.34, 1.56, .64, 1); }
+@keyframes k-pop { 0% { transform: scale(1); } 45% { transform: scale(1.3); } 100% { transform: scale(1); } }
+.wi-karte .k-zeichen { position: absolute; right: 21px; top: 50px; width: 16px; height: 16px; color: var(--k-blue, #2f5871); fill: currentColor; stroke: none; pointer-events: none; }
+.wi-seite a:has(.k-zeichen) { position: relative; }
+.wi-seite a .k-zeichen { position: absolute; right: -24px; top: 50%; width: 14px; height: 14px; margin-top: -7px; color: var(--k-blue, #2f5871); fill: currentColor; pointer-events: none; }
+@media (min-width: 1024px) { .wi-karte .k-zeichen { right: 27px; top: 62px; } }
+.k-ablage { position: fixed; z-index: 35; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 7px 16px 7px 7px; border: 0; border-radius: 999px;
+  color: #23201c; font: inherit; font-size: 14.5px; font-weight: 680; cursor: pointer;
+  background: linear-gradient(175deg, #fcfaf6, #f5f0e8 60%, #efe9df);
+  box-shadow: inset 0 1.5px 0 #fff, inset 0 -1.5px 0 rgb(96 72 46 / .08), 0 1px 2px rgb(96 72 46 / .14), 0 8px 16px -8px rgb(96 72 46 / .24), 0 18px 34px -18px rgb(96 72 46 / .3);
+  transition: transform .3s cubic-bezier(.34, 1.56, .64, 1), opacity .3s ease; }
+.k-ablage[hidden] { display: none; }
+.k-ablage:not([hidden]) { animation: k-rein .6s cubic-bezier(.34, 1.56, .64, 1); }
+@keyframes k-rein { from { opacity: 0; transform: translateY(28px) scale(.8); } to { opacity: 1; transform: none; } }
+.k-ablage.is-raus { transform: translateX(calc(100% + 24px)); opacity: 0; transition: transform .42s cubic-bezier(.55, 0, .85, .45), opacity .42s ease; }
+.k-ablage__zeichen { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: var(--k-blue, #2f5871); background: #e9e2d7;
+  box-shadow: inset 0 2px 4px rgb(96 72 46 / .28), inset 0 -1px 0 rgb(255 255 255 / .8), 0 1px 0 rgb(255 255 255 / .9); }
+.k-ablage__zeichen svg { width: 19px; height: 19px; fill: currentColor; }
+.k-ablage__zahl { min-width: 1ch; font-size: 17px; font-weight: 760; font-variant-numeric: tabular-nums; }
+.k-ablage__text { padding-left: 11px; border-left: 1px solid rgb(96 72 46 / .2); color: #4a443c; font-weight: 680; white-space: nowrap; }
+.k-ablage > svg:last-child { width: 16px; height: 16px; color: #4a443c; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 700px) { .k-ablage { min-height: 48px; padding: 5px 14px 5px 5px; gap: 8px; max-width: calc(100vw - 32px); } .k-ablage__zeichen { width: 36px; height: 36px; }
+  .k-ablage__text { padding-left: 10px; font-size: 16px; line-height: 1.2; } }
+body:has(#k-ablage:not([hidden])) .live-fuss { padding-bottom: 98px; }
+@media (hover: hover) { .k-ablage:hover { background: #fff; } }
+.k-toast { position: fixed; z-index: 46; left: 50%; bottom: calc(86px + env(safe-area-inset-bottom, 0px)); width: max-content; max-width: calc(100vw - 32px);
+  padding: 10px 16px; border-radius: 999px; background: #23201c; color: #fbf7f0; font-size: 14px; font-weight: 600; line-height: 1.5; text-align: center;
+  opacity: 0; transform: translate(-50%, 12px); pointer-events: none; transition: opacity .25s ease, transform .35s ease; }
+.k-toast.is-da { opacity: 1; transform: translate(-50%, 0); }
+.k-flug { position: fixed; z-index: 45; left: 0; top: 0; width: 0; height: 0; pointer-events: none; }
+.k-flug > span { display: block; width: 0; height: 0; }
+.k-flug svg { display: block; width: 24px; height: 24px; margin: -12px 0 0 -12px; fill: var(--k-blue, #2f5871); filter: drop-shadow(0 3px 5px rgb(20 40 60 / .35)); }
+@media (prefers-reduced-motion: reduce) { .k-ablage:not([hidden]) { animation: none; } .k-merk.is-pop svg { animation: none; } .k-ablage.is-raus { transition: none; } }
+</style>
 </head>
 <body><div class="live-aufbau" role="note"><b>Beta</b> · <a class="r253-mit" href="/#r187-kasten" data-r187-oeffnen="" aria-haspopup="dialog">Gestalte mit: Was fehlt, was hakt?</a></div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
@@ -3686,5 +3745,168 @@ html .site-nav .nav-mein .nav-mein__ich { width: 18px; height: 18px; }
 /* Tags Free / Mit Abo: Ecken wie in Figma, sonst wie bisher (Yannis 05.11.2026) */
 .mcard .tag { border-radius: 6px !important; }
 </style>
+<script id="r258-karten-js">
+/* R258 A: Karten, die Skripte nachbauen, bekommen ebenfalls „Zur Idee“ und data-abo (Platzhalter-Stufen aus dem Bau). */
+(function () {
+  var ABO = {"zahlst-du-zu-viel-miete": "nur", "keller-ausmisten": "stern", "brief-verstehen": "stern", "wohnzimmer-neu-denken": "stern"};
+  function karte(k) {
+    if (k.closest('#v47-ein')) return;
+    if (!k.hasAttribute('data-abo')) {
+      var a = k.querySelector('a[href]'), slug = a ? (a.getAttribute('href').split('/').pop() || '').replace(/\.html$/, '').replace(/[?#].*$/, '') : '';
+      k.setAttribute('data-abo', ABO[slug] || 'nein');
+    }
+    k.querySelectorAll('.mcard-los').forEach(function (b) { if (b.textContent.trim() === 'Anleitung') b.textContent = 'Zur Idee'; });
+    k.querySelectorAll('[aria-label^="Anleitung lesen: "], [aria-label^="Anleitung öffnen: "]').forEach(function (a) {
+      a.setAttribute('aria-label', a.getAttribute('aria-label').replace(/^Anleitung (lesen|öffnen): /, 'Zur Idee: '));
+    });
+  }
+  function alle() { document.querySelectorAll('.mcard').forEach(karte); }
+  var plan = 0;
+  function los() {
+    alle();
+    new MutationObserver(function () { if (plan) return; plan = requestAnimationFrame(function () { plan = 0; alle(); }); })
+      .observe(document.body, { childList: true, subtree: true });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', los); else los();
+})();
+</script><script id="r258-wissen-js">
+/* R258 E: Artikel merken. Angemeldet: Liste ki-entdecken-wissen [{id, am}] (dieselbe, die Mein Bereich liest; auth.js gleicht sie mit
+   dem Konto ab, user_metadata.artikel), Ablage „Mein Bereich“ kurz, dann rechts hinaus. Abgemeldet: Warteliste ki-artikel-wartend im Browser,
+   Ablage „Anmelden“ bleibt stehen, Hinweis „Um Artikel zu speichern, melde dich an.“; nach der Anmeldung übernimmt auth.js die Warteliste. */
+(function () {
+  if (window.__r258Wissen) return; window.__r258Wissen = true;
+  function los() {
+  var app = document.getElementById('wi-app'), D = window.MB_DATEN;
+  if (!app || !D || !window.KI) return;
+  var A = D.ARTIKEL, WARTEND = 'ki-artikel-wartend';
+  var ruhig = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var PFAD = '<path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>';
+  function zeichen(k) { return '<svg class="' + (k || '') + '" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + PFAD + '</svg>'; }
+  function abgemeldet() {
+    if (window.KIAuth && KIAuth.eingeloggt) return !KIAuth.eingeloggt();
+    try { var s = JSON.parse(localStorage.getItem('ki-sitzung') || 'null'); if (s && s.access_token && s.refresh_token) return false; } catch (e) { /* abgemeldet */ }
+    return true;
+  }
+  function rein(v) { return Array.isArray(v) ? v.filter(function (x) { return x && A[x.id]; }) : []; }
+  var KEY = 'ki-entdecken-wissen';   // dieselbe Ablage wie Mein Bereich (KIMerk = localStorage), nicht KI.lies dieser Seite (sessionStorage)
+  function liste() { try { return rein(window.KIMerk ? KIMerk.lies(KEY, []) : JSON.parse(localStorage.getItem(KEY) || '[]')); } catch (e) { return []; } }
+  function listeSetzen(v) {
+    try { if (window.KIMerk) KIMerk.schreib(KEY, v); else localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) { /* nur bis zum Neuladen */ }
+    try { if (v.length) sessionStorage.setItem(KEY, JSON.stringify(v)); else sessionStorage.removeItem(KEY); } catch (e) { /* weiter */ }
+    if (window.KIAuth && KIAuth.r258Artikel) { try { KIAuth.r258Artikel(); } catch (e) { /* weiter */ } }
+  }
+  function wartend() { try { return rein(JSON.parse(localStorage.getItem(WARTEND) || '[]')); } catch (e) { return []; } }
+  function wartendSetzen(v) { try { if (v.length) localStorage.setItem(WARTEND, JSON.stringify(v)); else localStorage.removeItem(WARTEND); } catch (e) { /* nur bis zum Neuladen */ } }
+  function aktuell() {   // abgemeldet: Warteliste und was dieser Tab schon gemerkt hat, jede ID einmal
+    if (!abgemeldet()) return liste();
+    var m = {}; wartend().concat(liste()).forEach(function (x) { if (!m[x.id]) m[x.id] = x; });
+    return Object.keys(m).map(function (k) { return m[k]; }).sort(function (a, b) { return (b.am || 0) - (a.am || 0); });
+  }
+  function gemerkt(id) { return aktuell().some(function (x) { return x.id === id; }); }
+
+  var ablage = document.createElement('button');
+  ablage.type = 'button'; ablage.className = 'k-ablage'; ablage.id = 'k-ablage'; ablage.hidden = true;
+  ablage.innerHTML = '<span class="k-ablage__zeichen" aria-hidden="true">' + zeichen() + '</span><span class="k-ablage__zahl" aria-hidden="true">0</span>' +
+    '<span class="k-ablage__text">Mein Bereich</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+  var toastEl = document.createElement('div'); toastEl.className = 'k-toast'; toastEl.setAttribute('aria-hidden', 'true');
+  var status = document.createElement('div'); status.className = 'sr-only'; status.setAttribute('role', 'status'); status.setAttribute('aria-live', 'polite');
+  document.body.append(ablage, toastEl, status);
+  var uhr, rausUhr, toastUhr, kurz = false;
+  function melden(t) { status.textContent = ''; setTimeout(function () { status.textContent = t; }, 30); }
+  function toast(t, ansage) { toastEl.textContent = t; toastEl.classList.add('is-da'); melden(ansage || t); clearTimeout(toastUhr); toastUhr = setTimeout(function () { toastEl.classList.remove('is-da'); }, 2200); }
+  function ablageZeichnen() {
+    var aus = abgemeldet(), n = aktuell().length;
+    ablage.querySelector('.k-ablage__zahl').textContent = n;
+    ablage.querySelector('.k-ablage__text').textContent = aus ? 'Anmelden' : 'Mein Bereich';
+    ablage.setAttribute('aria-label', (aus ? 'Anmelden, ' : 'Mein Bereich, ') + n + (n === 1 ? ' gemerkter Artikel' : ' gemerkte Artikel'));
+    var zeigen = aus ? n > 0 : kurz;
+    if (ablage.hidden === zeigen) ablage.hidden = !zeigen;
+  }
+  function raus() {
+    clearTimeout(uhr); clearTimeout(rausUhr);
+    uhr = setTimeout(function () {
+      if (abgemeldet() || ablage.hidden || ablage.matches(':hover') || ablage.matches(':focus-visible')) return;
+      var weg = function () { kurz = false; ablage.hidden = true; ablage.classList.remove('is-raus'); };
+      if (ruhig.matches) { weg(); return; }
+      ablage.classList.add('is-raus'); rausUhr = setTimeout(weg, 420);
+    }, 4000);
+  }
+  function fliegen(von, fertig) {
+    if (ruhig.matches || !Element.prototype.animate) { fertig(); return; }
+    var a = von.getBoundingClientRect(), ziel = ablage.querySelector('.k-ablage__zeichen');
+    var sx = a.left + a.width / 2, sy = a.top + a.height / 2;
+    var tx = ablage.offsetLeft + ziel.offsetLeft + ziel.offsetWidth / 2, ty = ablage.offsetTop + ziel.offsetTop + ziel.offsetHeight / 2;
+    var dx = tx - sx, dy = ty - sy, hoch = Math.max(50, Math.min(140, Math.hypot(dx, dy) * .22));
+    var f = document.createElement('span'); f.className = 'k-flug'; f.setAttribute('aria-hidden', 'true'); f.innerHTML = '<span>' + zeichen() + '</span>';
+    f.style.left = sx + 'px'; f.style.top = sy + 'px'; document.body.append(f);
+    f.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(' + dx + 'px)' }], { duration: 780, easing: 'cubic-bezier(.45, 0, .2, 1)', fill: 'forwards' });
+    var s = f.firstChild.animate([
+      { transform: 'translateY(0) scale(1)', easing: 'cubic-bezier(.2, .8, .4, 1)' },
+      { transform: 'translateY(' + (-hoch) + 'px) scale(1.3)', offset: .3, easing: 'cubic-bezier(.55, 0, .85, .45)' },
+      { transform: 'translateY(' + dy + 'px) scale(.5)' }], { duration: 780, fill: 'forwards' });
+    s.onfinish = function () { f.remove(); fertig(); };
+  }
+  function knopf(b) {
+    var an = gemerkt(b.dataset.merk), t = (A[b.dataset.merk] || {}).q || '';
+    b.setAttribute('aria-pressed', String(an));
+    b.setAttribute('aria-label', (an ? 'Gemerkt: ' : 'Merken: ') + t);
+    b.title = an ? 'Gemerkt' : 'Merken';
+  }
+  function schmuecken() {
+    var label = app.querySelector('.wi-artikel > .wi-label'), id = decodeURIComponent(location.hash.slice(1));
+    if (label && A[id] && !label.parentNode.classList.contains('k-meta')) {
+      var zeile = document.createElement('div'); zeile.className = 'k-meta';
+      label.parentNode.insertBefore(zeile, label); zeile.appendChild(label);
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'k-merk'; b.dataset.merk = id; b.innerHTML = zeichen();
+      zeile.appendChild(b);
+    }
+    app.querySelectorAll('[data-merk]').forEach(knopf);
+    var ids = {}; aktuell().forEach(function (x) { ids[x.id] = 1; });
+    app.querySelectorAll('a.wi-karte, .wi-seite a').forEach(function (a) {
+      var k = decodeURIComponent((a.getAttribute('href') || '').replace(/^#/, '')), z = a.querySelector('.k-zeichen');
+      if (ids[k] && !z) { a.insertAdjacentHTML('beforeend', zeichen('k-zeichen')); a.insertAdjacentHTML('beforeend', '<span class="sr-only"> (gemerkt)</span>'); }
+      else if (!ids[k] && z) { z.remove(); var s = a.querySelector('.sr-only:last-child'); if (s && s.textContent === ' (gemerkt)') s.remove(); }
+    });
+    ablageZeichnen();
+  }
+  app.addEventListener('click', function (e) {
+    var b = e.target.closest('.k-merk'); if (!b) return;
+    e.preventDefault();
+    var aus = abgemeldet(), id = b.dataset.merk;
+    if (gemerkt(id)) {
+      listeSetzen(liste().filter(function (y) { return y.id !== id; }));
+      if (aus) wartendSetzen(wartend().filter(function (y) { return y.id !== id; }));
+      schmuecken(); melden('Nicht mehr gemerkt.'); return;
+    }
+    var neu = { id: id, am: Date.now() };
+    if (aus) wartendSetzen([neu].concat(wartend())); else listeSetzen([neu].concat(liste()));
+    knopf(b);
+    b.classList.remove('is-pop'); void b.offsetWidth; b.classList.add('is-pop');
+    clearTimeout(uhr); clearTimeout(rausUhr); ablage.classList.remove('is-raus');
+    kurz = !aus; ablage.hidden = false; ablageZeichnen();
+    fliegen(b, function () {
+      schmuecken();
+      if (!gemerkt(id)) { if (!abgemeldet()) { kurz = false; ablageZeichnen(); } return; }   // inzwischen wieder entfernt (Doppeltipp)
+      if (abgemeldet()) { toast('Um Artikel zu speichern, melde dich an.'); return; }
+      toast('Gemerkt.', 'Gemerkt. Du findest es in Mein Bereich.'); raus();
+    });
+  });
+  ablage.addEventListener('click', function () {
+    if (abgemeldet()) { if (window.KIAuth && KIAuth.oeffnen) KIAuth.oeffnen('anmelden'); return; }
+    location.href = '/mein-bereich#wissen';
+  });
+  ablage.addEventListener('mouseleave', function () { if (kurz) raus(); });
+  ablage.addEventListener('focusout', function () { if (kurz) raus(); });   // Tastatur: nach dem Wegtabben auch hinaus
+  var plan = 0;   // auch Suchtreffer (#wi-treffer) schmücken; schmuecken ändert nur einmal, die Schleife endet
+  new MutationObserver(function () { if (plan) return; plan = requestAnimationFrame(function () { plan = 0; schmuecken(); }); }).observe(app, { childList: true, subtree: true });
+  if (KI.hoer) KI.hoer(schmuecken);
+  window.addEventListener('storage', schmuecken);
+  window.addEventListener('pageshow', schmuecken);
+  schmuecken();
+  window.r258Schmuecken = schmuecken;
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', los); else los();
+})();
+</script>
 </body>
 </html>
