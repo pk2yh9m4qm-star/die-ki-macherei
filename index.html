@@ -4,6 +4,7 @@
 <meta name="runde266" content="1">
 <meta name="runde263" content="1">
 <meta name="runde262" content="1">
+<meta name="runde261" content="1">
 <meta name="runde259" content="1">
 <meta name="runde258" content="1">
 <meta name="runde256" content="1">
@@ -3522,6 +3523,22 @@ html:not(#r258) body :is(.v22z-karte, .r92-kk, .v22z-wk-innen) > .v22z-hook { ma
   #so-gehts .ez-st:not(:last-child)::after { top: 166px; bottom: -142px; left: 17px; }
 }
 </style>
+<style id="r261">
+/* R261: Hinweis „Klicke/Tippe auf eine Frage.“ oben an der Fragewand, mittig zwischen Einleitung und Wand (Yannis 09.11.2026) */
+html body .v22z-fw > .v25-tipp { margin: 0 0 clamp(8px, 1.4vh, 14px); }
+/* Breite Wand (Blasen frei verteilt): die Wand ist oben 2,7273 % ihrer Breite leer (oberste Blase bei top 5,2632 % von 57/110);
+   der Hinweis rückt in diesen Streifen und steht 12 px über „Ist KI gefährlich?“, der Abstand zur Einleitung bleibt groß (Nähe) */
+@container (min-width: 840px) { html body .v22z-fw > .v25-tipp { margin-bottom: calc(12px - 2.7273%); } }
+/* Schmale Wand (Blasen untereinander), Yannis 09.11.2026: „wir nehmen B“ – der Hinweis steht zwischen Gabi und der ersten Blase.
+   Sichtbar als Zeile unter Gabi (deren Listenpunkt ist aria-hidden); der Absatz vor der Wand bleibt für Screenreader dort stehen,
+   wird aber unsichtbar. Die Spitze der ersten Blase zeigte auf Gabi; mit dem Hinweis dazwischen fällt sie weg (wie im Bild B). */
+@container (max-width: 839px) {
+  html body .v22z-fw > .v25-tipp { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  html body .v22z-fw--figur .v22z-fw-gabi::after { content: "Klicke auf eine Frage."; display: block; margin: 18px 0 2px; text-align: center; color: var(--muted); font-size: 0.9375rem; font-weight: 650; line-height: 1.4; }
+  html[data-geraet="handy"] body .v22z-fw--figur .v22z-fw-gabi::after { content: "Tippe auf eine Frage."; }
+  html body .v22z-fw-gabi + .v22z-fw-zettel > .v22z-fw-blase::before { display: none; }
+}
+</style>
 <style id="r266">
 /* R266: Karte „Jetzt loslegen“ sofort da (kein Einblenden), nur der Kartenfächer klappt beim Ankommen auf (Yannis 09.11.2026). */
 html.v22z-bewegt .v22z-los-raster:not(.ist-da) > * { opacity: 1; translate: none; }
@@ -3946,6 +3963,7 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
           <p class="v22z-lead">Wie KI tickt, wann du ihr trauen kannst und wann nicht, erfährst du im Wissensbereich. Wir erklären ohne Hype und ohne Fachchinesisch.</p>
         </div>
         <div class="v22z-fw v22z-fw--figur ist-da sofort" style="--n:7">
+        <p class="v25-tipp"><span data-nur-geraet="computer">Klicke auf eine Frage.</span><span data-nur-geraet="handy">Tippe auf eine Frage.</span></p>
         <ul class="v22z-fw-wand" aria-label="Fragen zum Umgang mit KI">
           <li class="v22z-fw-gabi" aria-hidden="true"><img src="/a-2d50773a44ff.webp" srcset="/a-2d50773a44ff-600.webp 600w, /a-2d50773a44ff.webp 1100w" sizes="473px" alt="" width="1100" height="975"></li>
           <li class="v22z-fw-zettel" style="--l:3.1818%;--t:6.1404%;--w:25.9091%;--r:-1.5deg;--fs:2.45em;--i:0" data-schwanz="rechts"><button type="button" class="v22z-fw-blase v25-blase" aria-expanded="false" aria-controls="v25-antwort" data-antwort="daten"><span class="v22z-fw-frage">Was passiert mit all meinen Daten?</span></button></li>
@@ -3957,7 +3975,6 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
           <li class="v22z-fw-zettel v22z-fw-zettel--moos" style="--l:75%;--t:64.9123%;--w:20%;--r:.8deg;--fs:2.35em;--i:6" data-schwanz="links"><button type="button" class="v22z-fw-blase v25-blase" aria-expanded="false" aria-controls="v25-antwort" data-antwort="ampel"><span class="v22z-fw-frage">Was darf ich der KI erzählen?</span></button></li>
         </ul>
         <div class="v25-antwort" id="v25-antwort" role="region" aria-label="Antwort" hidden><button type="button" class="v25-antwort-zu" aria-label="Antwort schließen"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button><p class="v25-antwort-frage"></p><p class="v25-antwort-text"></p><button type="button" class="v22z-textlink v25-antwort-mehr v44-mehr" aria-haspopup="dialog"><span>Ganze Antwort lesen</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button><a class="v22z-textlink v44-mehr r243-ausweich" href="/wissen" hidden>Antwort auf der Wissen-Seite lesen<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
-        <p class="v25-tipp"><span data-nur-geraet="computer">Klicke auf eine Frage.</span><span data-nur-geraet="handy">Tippe auf eine Frage.</span></p>
 
         </div>
       </div>
@@ -6372,7 +6389,7 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
         }
         function r146Block() {   // true: Scrollen bleibt am Film hängen. Läuft der Film, immer; sonst nur für die erste Geste oder höchstens 450 ms (Brief: höchstens 600 ms, mit Luft für die Messung)
           if (!videoSperreAktiv()) return true;
-          if (videoAn) return true;
+          if (videoAn && !r261Auto) return true;   // R261: ein von selbst gestarteter Film hält nur kurz wie das Standbild
           var jetzt = performance.now();
           if (!r146T0) { r146T0 = jetzt; r146G0 = r146Gest; return true; }
           if (r146Gest !== r146G0 || jetzt - r146T0 >= 450) { r146Frei(); return false; }
@@ -6686,17 +6703,33 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
         var kUt = kHudEl && $('.v22z-vh-ut', kHudEl), kLead = $('.v22z-moeglich .v22z-kopf .v22z-lead');
         addEventListener('scroll', hudLage, { passive: true }); addEventListener('resize', hudLage);
         if (kVideo) kVideo.addEventListener('error', function () { videoKaputt = true; if (videoAn) videoEnde(false); });
+        // R261: Der Film beginnt mit dem Bild, in dem die Hand mit dem Handy von unten hereinkommt (Yannis 09.11.2026); davor steht
+        // das Bild gut eine Sekunde still. Hochkant (Handy) ab 1,1 s, quer (Rechner, Tablet) ab 0,9 s, je zwei Bilder vor der Hand.
+        function r261Anfang(v) {
+          if (!v) return; var s = /hoch/.test(v.currentSrc || v.getAttribute('src') || '') ? 1.1 : 0.9;
+          try { v.currentTime = s; } catch (e) {}
+          // Ohne Metadaten oder ohne Teilabruf (Range) kann der Browser noch nicht springen: nachholen, sobald es geht, bis der Film
+          // über s ist (dann ist er von selbst dort angekommen; die Bilder bis s sind gleich, man sieht keinen Sprung).
+          if (v.__r261Weg) v.__r261Weg();
+          var arten = ['loadedmetadata', 'canplay', 'progress', 'timeupdate'], nach = function () {
+            var t = v.currentTime || 0; if (t >= s - 0.05) { v.__r261Weg(); return; }
+            try { var g = v.seekable; if (g && g.length && g.end(g.length - 1) >= s) v.currentTime = s; } catch (e) {}
+          };
+          v.__r261Weg = function () { arten.forEach(function (n) { v.removeEventListener(n, nach); }); v.__r261Weg = null; };
+          arten.forEach(function (n) { v.addEventListener(n, nach); });
+        }
         function videoStart() {   // Play, Klick aufs Fenster, „Nochmal ansehen“: das Video über der Szene
           if (!szeneAn) return;
-          vonOben = true; gespielt132 = true; videoDurch = false; r146T0 = 0;   // R248: wer nach einem Nachrutschen Play drückt, wird beim Film wieder gehalten
+          var r261Fok = document.activeElement; r261Auto = r261Ruf; if (!r261Auto && kVideo) { kVideo.removeAttribute('data-r261-auto'); if (typeof r261Live === 'function') r261Live(kHudEl, true); }   // R261
+          vonOben = true; gespielt132 = true; videoDurch = false; if (!r261Auto) r146T0 = 0;   /* R261: Autoplay hält nicht ein zweites Mal */   // R248: wer nach einem Nachrutschen Play drückt, wird beim Film wieder gehalten
           if (!kVideo || videoKaputt) { abspielen(); return; }
-          stupsWeg(); var tast = tastatur();
+          stupsWeg(); var tast = r261Auto ? !!(r261Fok && r261Fok !== document.body && (r261Fok === kPlay || (kHudEl && kHudEl.contains(r261Fok)))) : tastatur();   /* R261: Autoplay verschiebt den Fokus nicht, außer Play (verschwindet) hatte ihn */ if (r261Auto && tast && typeof r261Live === 'function') r261Live(kHudEl, true);
           if (window.scrollY > sperrY + 40) { var sb = d.style.scrollBehavior; d.style.scrollBehavior = 'auto'; window.scrollTo(0, sperrY); d.style.scrollBehavior = sb; }
           filmStartP = Math.max(pVh(), (sperrY - oben) / pxVh); videoAn = true;   /* R248: Start frühestens am Halt */ r26Versuche = 0; buehne.classList.add('v22z-video-an'); hudLage(); if (kHudEl) kHudEl.classList.add('ist-an');
           // Version 25c: keine Untertitel mehr, die Unterzeile bleibt beim Abspielen stehen
-          try { kVideo.currentTime = 0; } catch (e) {} kHud.neu();
-          var pr = kVideo.play(); if (pr && pr.catch) pr.catch(function () {});
-          knoepfeZeigen(); r26Knopf(); if (tast) fokus(kHud.pause);
+          r261Anfang(kVideo); kHud.neu();   /* R261: ab dem Handbild */
+          var pr = kVideo.play(); if (pr && pr.catch) pr.catch(function (e) { if (r261Auto && e && e.name !== 'AbortError' && typeof r261KZurueck === 'function') r261KZurueck(); });   // R261
+          knoepfeZeigen(); r26Knopf(); if (tast) { var r261PK = kHudEl && kHudEl.querySelector('.v26-leiste .v26-pause'); fokus(r261PK && r261PK.getClientRects().length ? r261PK : kHud.pause); }   /* R261: sichtbare Pause der Leiste */
         }
         function videoEnde(weg) {   // Ende oder weitergescrollt: das Endbild der Szene übernimmt
           if (!videoAn) return;
@@ -6793,10 +6826,107 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
         if (kpPlay) kpPlay.addEventListener('click', function () {
           if (!kpVideo) { v26Ersatz(); return; }
           kpEl.classList.remove('ist-ende'); kpEl.classList.add('ist-video');
-          try { kpVideo.currentTime = 0; } catch (e) {} kpHud.neu();
+          r261Anfang(kpVideo); kpHud.neu();   /* R261: ab dem Handbild */
           var tast = tastatur(), pr = kpVideo.play(); if (pr && pr.catch) pr.catch(v26Abgelehnt);
           if (tast && v26P) fokus(v26P);
         });
+        // Runde 261 (Claude, Yannis 09.11.2026): Keller-Film wieder von selbst, stumm, sobald er zu 60 % im Bild ist; aus dem Bild hält er an,
+        // zurück im Bild läuft er weiter (nicht nach eigener Pause). Einmal je Besuch, ohne Schleife. Kein Autoplay bei reduzierter Bewegung,
+        // im Datensparmodus oder wenn der Browser ablehnt: dann bleibt das Standbild mit Play (am Handy ohne Ersatz-Szene).
+        var r261Ruf = false, r261Auto = false, r261Aus = false, r261KZurueck = null, r261Live = null;
+        try {
+          var r261Darf = function () { return !r261Aus && !ruhig() && !document.hidden && !(navigator.connection && navigator.connection.saveData); };
+          // Schrittsätze und Untertitel sprechen erst, wenn man den Film selbst bedient (kein Vorlesen beim bloßen Vorbeiscrollen)
+          r261Live = function (wurzel, an) {
+            if (!wurzel) return;
+            Array.prototype.forEach.call(wurzel.querySelectorAll('[aria-live]'), function (el) {
+              if (!an) { if (!el.hasAttribute('data-r261-live')) el.setAttribute('data-r261-live', el.getAttribute('aria-live')); el.setAttribute('aria-live', 'off'); }
+              else if (el.hasAttribute('data-r261-live')) { el.setAttribute('aria-live', el.getAttribute('data-r261-live')); el.removeAttribute('data-r261-live'); }
+            });
+          };
+          var r261Bedient = function (wurzel) { if (!wurzel) return; ['pointerdown', 'keydown'].forEach(function (t) { wurzel.addEventListener(t, function () { r261Live(wurzel, true); }, true); }); };
+          var r261Laden = function (v) {   // erst kurz vor dem Film laden (eine Viertel-Bildschirmhöhe)
+            if (!v || !window.IntersectionObserver) return;
+            var io = new IntersectionObserver(function (es) {
+              if (!es[es.length - 1].isIntersecting) return;
+              io.disconnect();
+              if (r261Darf() && v.getAttribute('src') && v.preload !== 'auto') v.preload = 'auto';
+            }, { rootMargin: '0px 0px 25% 0px', threshold: 0 });
+            io.observe(v);
+          };
+          // Rechner (Szene ab 961 px)
+          if (kVideo && kPlay && window.IntersectionObserver) {
+            kVideo.muted = true; kVideo.defaultMuted = true;
+            var r261KSicht = false, r261KWollte = false, r261KEinmal = false, r261KSelbst = false;
+            r261KZurueck = function () {   // Browser lehnt ab: Standbild mit Play wie vorher
+              r261Aus = true; r261Auto = false; kVideo.removeAttribute('data-r261-auto'); r261Live(kHudEl, true);
+              if (kVideo.__r261Weg) kVideo.__r261Weg();
+              if (!videoAn) return;
+              videoAn = false; gespielt132 = false; try { kVideo.pause(); if (kVideo.__r261Weg) kVideo.__r261Weg(); kVideo.currentTime = 0; } catch (e) {}
+              buehne.classList.remove('v22z-video-an'); if (kHudEl) kHudEl.classList.remove('ist-an');
+              posterSetzen(); zeichnen(uJetzt); knoepfeZeigen(); r26Knopf();
+            };
+            kVideo.addEventListener('playing', function () { r261KWollte = true; });
+            kVideo.addEventListener('pause', function () { if (r261KSelbst) r261KSelbst = false; else r261KWollte = false; });   // eigene Pause (aus dem Bild) zählt nicht
+            kVideo.addEventListener('ended', function () { r261KWollte = false; if (r261Auto) { r261Auto = false; gespielt132 = true; } r261Live(kHudEl, true); });
+            new IntersectionObserver(function (es) {
+              var e = es[es.length - 1], q = e.isIntersecting ? e.intersectionRatio : 0;
+              r261KSicht = q >= .15;
+              if (!r261KSicht) { if (videoAn && !kVideo.paused) { r261KSelbst = true; kVideo.pause(); } return; }
+              if (q < .6 || !szeneAn) return;
+              if (videoAn) { if (r261KWollte && kVideo.paused && !kVideo.ended) { var pr = kVideo.play(); if (pr && pr.catch) pr.catch(function () {}); } return; }
+              if (r261KEinmal || !r261Darf() || filmFertig || ff || schrittNr >= 0 || videoDurch || videoKaputt || window.scrollY > sperrY + 40) return;
+              r261KEinmal = true; r261Live(kHudEl, false);
+              r261Ruf = true; try { videoStart(); } finally { r261Ruf = false; }
+              if (videoAn && r261Auto) { kVideo.setAttribute('data-r261-auto', '1'); gespielt132 = false; }   // Halt an „Von vielen.“ erst nach dem ganzen Film
+              else r261Live(kHudEl, true);
+            }, { threshold: [0, .15, .6] }).observe(kVideo);
+            r261Bedient(kHudEl); r261Laden(kVideo);
+          }
+          // Handy und schmale Fenster (Player .v22z-kp); anhalten außerhalb des Bildes macht schon Runde 12
+          if (kpVideo && kpEl && kpPlay && window.IntersectionObserver) {
+            kpVideo.muted = true; kpVideo.defaultMuted = true;
+            var r261PWollte = false, r261PEinmal = false, r261PLeiste = kpEl.querySelector('.v26-leiste');
+            var r261PSicht = function () { var r = kpVideo.getBoundingClientRect(); return r.height < 1 ? 0 : Math.max(0, Math.min(innerHeight, r.bottom) - Math.max(0, r.top)) / r.height; };
+            // Start erst, wenn auch die Leiste mit Pause ganz im Bild ist (WCAG 2.2.2: sichtbar anhalten können)
+            // Beim Start erscheint über dem Film der Schrittsatz (vorher versteckt, ab 768 px im Fluss) und schiebt Film und Leiste um seine Höhe nach unten
+            var r261PKopf = kpEl.querySelector('.v26-kopf'), r261PSatz = kpEl.querySelector('.v26-satz');
+            var r261PZuwachs = function () { if (!r261PKopf || !r261PSatz || r261PSatz.getClientRects().length || getComputedStyle(r261PKopf).position === 'absolute') return 0; return parseFloat(getComputedStyle(r261PSatz).minHeight) || 0; };
+            var r261PLeisteDa = function () { if (!r261PLeiste) return true; var r = r261PLeiste.getBoundingClientRect(); return r.height > 0 && r.top >= 0 && r.bottom + r261PZuwachs() <= innerHeight; };
+            kpVideo.addEventListener('playing', function () { r261PWollte = true; });
+            kpVideo.addEventListener('pause', function () { var r = kpEl.getBoundingClientRect(), s = (Math.min(innerHeight, r.bottom) - Math.max(0, r.top)) / Math.max(1, r.height); if (s >= .25) r261PWollte = false; });   // Pause gut im Bild = selbst gedrückt; unter 15 % sichtbar hält Runde 12 an
+            kpVideo.addEventListener('ended', function () { r261PWollte = false; r261Live(kpEl, true); });
+            var r261PPruef = function () {
+                if (r261PSicht() < .6) return;
+                if (kpEl.classList.contains('ist-video')) { if (r261PWollte && kpVideo.paused && !kpVideo.ended) { var pr = kpVideo.play(); if (pr && pr.catch) pr.catch(function () {}); } return; }
+                if (r261PEinmal || !r261Darf() || !r261PLeisteDa() || kpEl.classList.contains('ist-ende') || (kFilm && kFilm.classList.contains('v26-auto'))) return;
+                var fokPlay = document.activeElement === kpPlay;   // Play verschwindet gleich: der Fokus geht wie beim eigenen Start auf Pause
+                r261PEinmal = true; r261Live(kpEl, fokPlay);
+                kpEl.classList.add('ist-video'); kpVideo.setAttribute('data-r261-auto', '1');
+                r261Anfang(kpVideo); kpHud.neu();
+                var pr2 = kpVideo.play();
+                if (pr2 && pr2.catch) pr2.catch(function (x) {
+                  if (x && x.name === 'AbortError') return;
+                  var f = kpEl.contains(document.activeElement);
+                  r261Aus = true; kpEl.classList.remove('ist-video'); kpVideo.removeAttribute('data-r261-auto'); try { if (kpVideo.__r261Weg) kpVideo.__r261Weg(); kpVideo.currentTime = 0; } catch (y) {} r261Live(kpEl, true); v26Zeigen(); if (f) fokus(kpPlay);
+                });
+                v26Zeigen();
+                if (fokPlay && typeof v26P !== 'undefined' && v26P) fokus(v26P);
+            };
+            // Zwischen den Schwellen des Beobachters (Film ganz im Bild, Leiste noch knapp darunter) prüft ein Scroll-Hörer nach,
+            // nur solange der Film im Bild ist und noch nicht von selbst lief
+            var r261PRollt = false, r261PTakt = 0;
+            var r261PRoll = function () { if (r261PTakt) return; r261PTakt = requestAnimationFrame(function () { r261PTakt = 0; r261PPruef(); if (r261PEinmal || r261Aus) r261PHoeren(false); }); };
+            var r261PHoeren = function (an) { if (an === r261PRollt) return; r261PRollt = an; if (an) addEventListener('scroll', r261PRoll, { passive: true }); else removeEventListener('scroll', r261PRoll); };
+            var r261PIo = new IntersectionObserver(function () {
+                r261PHoeren(!r261PEinmal && !r261Aus && r261PSicht() > 0);
+                r261PPruef();
+            }, { threshold: [0, .15, .6, 1] });
+            r261PIo.observe(kpVideo); if (r261PLeiste) r261PIo.observe(r261PLeiste);
+            r261Bedient(kpEl); r261Laden(kpVideo);
+            kpPlay.addEventListener('click', function () { kpVideo.removeAttribute('data-r261-auto'); r261Live(kpEl, true); });
+          }
+        } catch (r261Fehler) { r261Aus = true; if (window.console) console.warn('R261: Autoplay aus', r261Fehler); }
         // ===== Runde 12 (20.10.2026, Jim): Keller-Film am Handy wie ein Video (Pams Bauauftrag nach Yannis' Handy-Feedback) =====
         var v26Kopf = kpEl && $('.v26-kopf', kpEl), v26B = kpEl ? $$('.v26-seg b', kpEl) : [], v26Satz = kpEl && $('.v26-satz', kpEl), v26Nr = -1, v26Uhr = 0;
         var v26L = kpEl && $('.v26-leiste .v26-linie b', kpEl), v26P = kpEl && $('.v26-leiste .v26-pause', kpEl), v26V = kpEl && $('.v26-leiste .v26-voll', kpEl), V26_HALT = [5.55, 6.25, 4.4, 8.1];
