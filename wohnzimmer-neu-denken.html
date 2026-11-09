@@ -2725,7 +2725,7 @@ html:not(#r258):not(#r258b) body .mcard.mcard.mcard.mcard .anriss-ende::after { 
   body .ra3.r234 .ra-lesen > .r258-stern { grid-row: 2 !important; }
 }
 </style>
-<meta name="runde260" content="1"></head>
+<meta name="runde260" content="1"><meta name="runde270" content="1"></head>
 <body data-fall="wohnzimmer-neu-denken"><div class="live-aufbau" role="note"><b>Beta</b> · <a class="r253-mit" href="#r187-kasten" data-r187-oeffnen="" aria-haspopup="dialog">Gestalte mit: Was fehlt, was hakt?</a></div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol><symbol id="ls-sofa" viewBox="0 0 24 24"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M4 18v2"/><path d="M20 18v2"/><path d="M12 4v9"/></symbol><symbol id="ls-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
 
@@ -3778,6 +3778,13 @@ Wichtig:
         if (art === 'skill') return { app: 'https://chatgpt.com/?mode=work&q=' + q, web: 'https://chatgpt.com/auth/login?next=' + enc('/work?q=' + q) };
         return { app: 'https://chatgpt.com/?q=' + q, web: 'https://chatgpt.com/auth/login?next=' + enc('/?q=' + q) };
       }
+      // Runde 270: Am Handy ohne ChatGPT-App, im Browser angemeldet bestätigt (Runde 260) – nur dann bleibt es beim neuen Tab.
+      function r270NurBrowser() {
+        try {
+          if (localStorage.getItem('chatgpt-app') === 'ja') return false;
+          return !!(JSON.parse(localStorage.getItem('ki-anmelde-hinweis-2') || '{}') || {}).chatgpt;
+        } catch (e) { return false; }
+      }
       function setzen() {
         document.documentElement.setAttribute('data-ki', ki);
         // R214: zuletzt mit „Mit Abo starten“ gestartet? Dann geben die Start-Buttons in der Rückkehr-Karte die Abo-Fassung
@@ -3793,7 +3800,8 @@ Wichtig:
           var ziel = handy ? L.app : L.web;
           a.href = ziel;
           // App-Schema im Rahmen der Hülle: oben öffnen; Webadressen im neuen Tab, damit die Seite offen bleibt
-          if (ziel.indexOf('claude://') === 0) a.setAttribute('target', '_top'); else a.setAttribute('target', '_blank');
+          // Runde 270: ChatGPT am Handy im selben Fenster, sonst nimmt iOS den App-Link nicht (neuer Tab = Browser ohne Anmeldung).
+          if (ziel.indexOf('claude://') === 0 || (handy && ziel.indexOf('https://chatgpt.com/') === 0 && !r270NurBrowser())) a.setAttribute('target', '_top'); else a.setAttribute('target', '_blank');
           a.setAttribute('data-web', L.web);
         });
         // R214: in der Rückkehr-Karte folgt „Im Browser öffnen“ der zuletzt gestarteten Fassung (abo), sonst wie bisher

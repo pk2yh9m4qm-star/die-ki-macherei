@@ -2650,7 +2650,7 @@ html:not(#r258) body .mcard.mcard.mcard.mcard:not(#v47-ein .mcard) .field-tags:n
 /* Pfeil hinter dem Kurztext weg, der Pfeil hinter „Zur Idee“ bleibt */
 html:not(#r258):not(#r258b) body .mcard.mcard.mcard.mcard .anriss-ende::after { display: none !important; }
 </style>
-<meta name="runde260" content="1"></head>
+<meta name="runde260" content="1"><meta name="runde270" content="1"></head>
 <body data-fall="zuschuesse-finden"><div class="live-aufbau" role="note"><b>Beta</b> · <a class="r253-mit" href="#r187-kasten" data-r187-oeffnen="" aria-haspopup="dialog">Gestalte mit: Was fehlt, was hakt?</a></div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ls-coins" viewBox="0 0 24 24"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"/><path d="M15 6h1v4"/><path d="m6.134 14.768.866-.5 2 3.464"/><circle cx="16" cy="8" r="6"/></symbol><symbol id="ls-folder-heart" viewBox="0 0 24 24"><path d="M10.638 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v3.417"/><path d="M14.62 18.8A2.25 2.25 0 1 1 18 15.836a2.25 2.25 0 1 1 3.38 2.966l-2.626 2.856a.998.998 0 0 1-1.507 0z"/></symbol><symbol id="ls-house" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol><symbol id="ls-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol><symbol id="ls-shopping-bag" viewBox="0 0 24 24"><path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.103 6.034h17.794"/><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
 
@@ -3756,6 +3756,13 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
         if (art === 'skill') return { app: 'https://chatgpt.com/?mode=work&q=' + q, web: 'https://chatgpt.com/auth/login?next=' + enc('/work?q=' + q) };
         return { app: 'https://chatgpt.com/?q=' + q, web: 'https://chatgpt.com/auth/login?next=' + enc('/?q=' + q) };
       }
+      // Runde 270: Am Handy ohne ChatGPT-App, im Browser angemeldet bestätigt (Runde 260) – nur dann bleibt es beim neuen Tab.
+      function r270NurBrowser() {
+        try {
+          if (localStorage.getItem('chatgpt-app') === 'ja') return false;
+          return !!(JSON.parse(localStorage.getItem('ki-anmelde-hinweis-2') || '{}') || {}).chatgpt;
+        } catch (e) { return false; }
+      }
       function setzen() {
         document.documentElement.setAttribute('data-ki', ki);
         document.querySelectorAll('[data-ki-name]').forEach(function (s) { s.textContent = CFG.namen[ki]; });
@@ -3768,7 +3775,8 @@ Sprich alles als dein eigenes Wissen aus, nie „nach deiner Vorgabe“. Arbeite
           var ziel = handy ? L.app : L.web;
           a.href = ziel;
           // App-Schema im Rahmen der Hülle: oben öffnen; Webadressen im neuen Tab, damit die Seite offen bleibt
-          if (ziel.indexOf('claude://') === 0) a.setAttribute('target', '_top'); else a.setAttribute('target', '_blank');
+          // Runde 270: ChatGPT am Handy im selben Fenster, sonst nimmt iOS den App-Link nicht (neuer Tab = Browser ohne Anmeldung).
+          if (ziel.indexOf('claude://') === 0 || (handy && ziel.indexOf('https://chatgpt.com/') === 0 && !r270NurBrowser())) a.setAttribute('target', '_top'); else a.setAttribute('target', '_blank');
           a.setAttribute('data-web', L.web);
         });
         document.querySelectorAll('[data-start-web]').forEach(function (a) { a.href = links('prompt').web; });
