@@ -3543,6 +3543,19 @@ html body .v22z-fw > .v25-tipp { margin: 0 0 clamp(8px, 1.4vh, 14px); }
 /* R266: Karte „Jetzt loslegen“ sofort da (kein Einblenden), nur der Kartenfächer klappt beim Ankommen auf (Yannis 09.11.2026). */
 html.v22z-bewegt .v22z-los-raster:not(.ist-da) > * { opacity: 1; translate: none; }
 </style>
+<style id="r269">
+  /* Runde 269 (09.11.2026): Handy-Film ohne Anschnitt oben und unten (Yannis: „anschnitt fehler“). Höhe wie R108, Breite nach Seitenverhältnis. */
+  @media (max-width: 767px) {
+    html body .v22z-film .v22z-kp.ist-hoch:not(:fullscreen) .v22z-kp-fenster .v22z-kp-video {
+      --r269-h: min(calc(100vw * 1300 / 1080), calc(100svh - 184px));
+      --r269-f: clamp(0px, calc((100vw - var(--r269-h) * 1080 / 1300) / 2), 28px);
+      display: block; height: var(--r269-h); width: min(100%, calc(var(--r269-h) * 1080 / 1300)); max-width: 100%; margin-inline: auto;
+      object-fit: cover; object-position: 50% 50%;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--r269-f), #000 calc(100% - var(--r269-f)), transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0, #000 var(--r269-f), #000 calc(100% - var(--r269-f)), transparent 100%);
+    }
+  }
+</style>
 </head>
 <body><div class="live-aufbau" role="note"><b>Beta</b> · <a class="r253-mit" href="#r187-kasten" data-r187-oeffnen="" aria-haspopup="dialog">Gestalte mit: Was fehlt, was hakt?</a></div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole der Laufbänder: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
@@ -6897,9 +6910,9 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
             kpVideo.addEventListener('pause', function () { var r = kpEl.getBoundingClientRect(), s = (Math.min(innerHeight, r.bottom) - Math.max(0, r.top)) / Math.max(1, r.height); if (s >= .25) r261PWollte = false; });   // Pause gut im Bild = selbst gedrückt; unter 15 % sichtbar hält Runde 12 an
             kpVideo.addEventListener('ended', function () { r261PWollte = false; r261Live(kpEl, true); });
             var r261PPruef = function () {
-                if (r261PSicht() < .6) return;
+                if (r261PSicht() < (kpEl.classList.contains('ist-video') || !kpEl.classList.contains('ist-hoch') ? .6 : .35)) return;   /* R269: Autostart am Handy (Hochkant) früher */
                 if (kpEl.classList.contains('ist-video')) { if (r261PWollte && kpVideo.paused && !kpVideo.ended) { var pr = kpVideo.play(); if (pr && pr.catch) pr.catch(function () {}); } return; }
-                if (r261PEinmal || !r261Darf() || !r261PLeisteDa() || kpEl.classList.contains('ist-ende') || (kFilm && kFilm.classList.contains('v26-auto'))) return;
+                if (r261PEinmal || !r261Darf() || (!kpEl.classList.contains('ist-hoch') && !r261PLeisteDa()) || kpEl.classList.contains('ist-ende') || (kFilm && kFilm.classList.contains('v26-auto'))) return;
                 var fokPlay = document.activeElement === kpPlay;   // Play verschwindet gleich: der Fokus geht wie beim eigenen Start auf Pause
                 r261PEinmal = true; r261Live(kpEl, fokPlay);
                 kpEl.classList.add('ist-video'); kpVideo.setAttribute('data-r261-auto', '1');
@@ -6921,7 +6934,7 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
             var r261PIo = new IntersectionObserver(function () {
                 r261PHoeren(!r261PEinmal && !r261Aus && r261PSicht() > 0);
                 r261PPruef();
-            }, { threshold: [0, .15, .6, 1] });
+            }, { threshold: [0, .15, .35, .6, 1] });
             r261PIo.observe(kpVideo); if (r261PLeiste) r261PIo.observe(r261PLeiste);
             r261Bedient(kpEl); r261Laden(kpVideo);
             kpPlay.addEventListener('click', function () { kpVideo.removeAttribute('data-r261-auto'); r261Live(kpEl, true); });
