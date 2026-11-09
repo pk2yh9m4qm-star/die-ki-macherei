@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
+<meta name="runde266" content="1">
 <meta name="runde263" content="1">
 <meta name="runde262" content="1">
 <meta name="runde259" content="1">
@@ -3521,6 +3522,10 @@ html:not(#r258) body :is(.v22z-karte, .r92-kk, .v22z-wk-innen) > .v22z-hook { ma
   #so-gehts .ez-st:not(:last-child)::after { top: 166px; bottom: -142px; left: 17px; }
 }
 </style>
+<style id="r266">
+/* R266: Karte „Jetzt loslegen“ sofort da (kein Einblenden), nur der Kartenfächer klappt beim Ankommen auf (Yannis 09.11.2026). */
+html.v22z-bewegt .v22z-los-raster:not(.ist-da) > * { opacity: 1; translate: none; }
+</style>
 </head>
 <body><div class="live-aufbau" role="note"><b>Beta</b> · <a class="r253-mit" href="#r187-kasten" data-r187-oeffnen="" aria-haspopup="dialog">Gestalte mit: Was fehlt, was hakt?</a></div><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Symbole der Laufbänder: Lucide 1.31.0 (lucide.dev, gebündelt aus lucide-react). Lizenz:
 ISC License
@@ -3960,7 +3965,7 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
 
     <section class="v22z-abschnitt v22z-schluss v22z-schluss--kurz" id="schluss" aria-label="Jetzt loslegen">
       <div class="wrap">
-        <div class="v22z-los-raster ist-da sofort">
+        <div class="v22z-los-raster" data-v22z-schwelle="0.35">
           <a class="v22z-los" href="/ideen">
             <span class="v22z-los-faecher" aria-hidden="true"><i class="plate pal-moss"></i><i class="plate pal-plum"></i><i class="plate pal-coral"></i><i class="plate pal-sand"></i><i class="plate pal-blue"></i></span>
             <b class="v22z-los-titel">Jetzt loslegen</b>
