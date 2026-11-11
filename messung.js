@@ -44,6 +44,10 @@
  * 10. Nachjustiert (09.11.2026, Yannis „alles umsetzen“): film_start zählt bis 1,6 s (R261 startet beim Handbild) und
  *    trägt {start: von-selbst|klick}; Link-Kennung „direkt“ heißt in Umami „Anfang ohne Link“; Messung.rueckmeldungKontext()
  *    gibt den Rückmeldungen für die Tabelle herkunft, utm_content (Link-Kennung) und utm_medium (stufe-n) mit.
+ * 11. KI-Herkunft (11.11.2026, B6), eingebaut durch Designvorschauen/version25_ki_herkunft.py: utm_source eines
+ *    KI-Assistenten (ChatGPT hängt utm_source=chatgpt.com an) zählt als Herkunft „ki-assistent“ statt roh als
+ *    „chatgpt-com“. Bei KI-Herkunft (UTM oder Referrer) ist die Link-Kennung der Assistent (chatgpt, perplexity,
+ *    claude, gemini, copilot …), in Umami „KI: ChatGPT“ usw.; KI-Apps (android-app://…) und weitere KI-Hosts erkannt.
  */
 (function (fenster) {
   'use strict';
@@ -153,8 +157,27 @@
     var m = /^([a-z0-9-]{1,40})\.([1-9][0-9]?)$/.exec(String(code || '').toLowerCase());
     return m ? { zweig: m[1], generation: Number(m[2]) } : null;
   }
+  /** KI-Assistent aus utm_source oder Referrer-Host (B6, 11.11.2026): 'chatgpt', 'perplexity' … oder ''.
+   *  Vergleich in Kennungsform (chatgpt.com → chatgpt-com), ganze Kennung; Android-Apps über ihre Paketkennung. */
+  var KI_ASSISTENTEN = [
+    [/^(chatgpt|openai|chat-openai|searchgpt)(-com)?$|^com-openai-chatgpt$/, 'chatgpt'],
+    [/^(www-)?perplexity(-ai)?$|^ai-perplexity-app-android$/, 'perplexity'],
+    [/^claude(-ai)?$|^com-anthropic-claude$/, 'claude'],
+    [/^(gemini|bard)(-google(-com)?)?$|^com-google-android-apps-bard$/, 'gemini'],
+    [/^(copilot|bing-chat)(-microsoft-com|-com)?$|^com-microsoft-copilot$/, 'copilot'],
+    [/^(chat-)?mistral(-ai)?$/, 'mistral'],
+    [/^grok(-com)?$/, 'grok'],
+    [/^(chat-)?deepseek(-com)?$/, 'deepseek'],
+    [/^meta-ai$/, 'meta-ai']
+  ];
+  function kiAssistent(wert) {
+    var k = kennung(wert);
+    for (var i = 0; k && i < KI_ASSISTENTEN.length; i++) if (KI_ASSISTENTEN[i][0].test(k)) return KI_ASSISTENTEN[i][1];
+    return '';
+  }
   function herkunftAusReferrer(h) {
     if (!h) return 'direkt';
+    if (kiAssistent(h)) return 'ki-assistent';   // B6: KI-Hosts und KI-Apps vor den Android- und Google-Regeln
     // Android-Apps melden sich als android-app://<paket>; spezielle Google-Apps vor der allgemeinen Google-Regel
     if (/^com\.google\.android\.youtube/.test(h)) return 'social';
     if (/^com\.google\.android\.gm/.test(h) || /^mail\.google\./.test(h) || /(^|\.)(outlook\.live\.com|mail\.yahoo\.com|web\.de|gmx\.net)$/.test(h)) return 'mail';
@@ -171,6 +194,7 @@
   }
   function herkunftAusUtm(q) {
     if (q === 'empfehlung') return 'empfehlung';
+    if (kiAssistent(q)) return 'ki-assistent';   // B6: utm_source=chatgpt.com u. a.
     if (/^(wa|whatsapp)/.test(q)) return 'whatsapp';
     if (/^(instagram|ig|tiktok|facebook|fb|linkedin|youtube|x|threads|social)/.test(q)) return 'social';
     return q;
@@ -184,10 +208,11 @@
   if (!erstkontakt || !erstkontakt.zweig) {
     var h, z, g = 1;
     if (eingang) { h = 'empfehlung'; z = eingang.zweig; g = eingang.generation; }
-    else if (utmQuelle) { h = herkunftAusUtm(utmQuelle); z = utmInhalt || utmQuelle; }
+    else if (utmQuelle) { h = herkunftAusUtm(utmQuelle); z = kiAssistent(utmQuelle) || utmInhalt || utmQuelle; }
     else if (anmeldeRueckkehr) { h = 'anmeldelink'; z = 'anmeldelink'; }
     else if (intern) { h = 'direkt'; z = 'direkt'; }
-    else { h = herkunftAusReferrer(referrerHost); z = h === 'andere-seite' ? (kennung(referrerHost).slice(0, 40) || 'andere-seite') : h; }
+    else { h = herkunftAusReferrer(referrerHost); z = h === 'andere-seite' ? (kennung(referrerHost).slice(0, 40) || 'andere-seite')
+      : (h === 'ki-assistent' ? (kiAssistent(referrerHost) || h) : h); }
     erstkontakt = { herkunft: kennung(h) || 'direkt', zweig: kennung(z).slice(0, 40) || 'direkt', generation: g };
     neuerKontakt = true;
     if (!aus) schreib(HERKUNFT, JSON.stringify(erstkontakt));
@@ -323,6 +348,10 @@
   var ZWEIG_NAMEN = {};
   for (var zn in HERKUNFT_NAMEN) if (hat(HERKUNFT_NAMEN, zn)) ZWEIG_NAMEN[zn] = HERKUNFT_NAMEN[zn];
   ZWEIG_NAMEN.direkt = 'Anfang ohne Link';
+  // B6 (11.11.2026): Link-Kennung bei KI-Herkunft = Assistent
+  var KI_ZWEIG_NAMEN = { chatgpt: 'KI: ChatGPT', perplexity: 'KI: Perplexity', claude: 'KI: Claude', gemini: 'KI: Gemini',
+    copilot: 'KI: Copilot', mistral: 'KI: Mistral Le Chat', grok: 'KI: Grok', deepseek: 'KI: DeepSeek', 'meta-ai': 'KI: Meta AI' };
+  for (var kz in KI_ZWEIG_NAMEN) if (hat(KI_ZWEIG_NAMEN, kz)) ZWEIG_NAMEN[kz] = KI_ZWEIG_NAMEN[kz];
   var OEFFNER_NAMEN = {"rueckmeldung": "„Rückmeldung geben“ / „Gestalte mit“", "idee": "„Eigene Idee teilen“", "wunsch": "„Frage stellen“ / „Schreib sie uns“"};
   var KURS_STUFEN = { '1': 'Stufe 1: Neu bei KI', '2': 'Stufe 2: etwas Erfahrung', '3': 'Stufe 3: erfahren' };
   // Werte je Angabe; „ereignis:angabe“ geht vor „angabe“
