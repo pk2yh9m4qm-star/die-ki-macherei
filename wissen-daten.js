@@ -40,7 +40,7 @@ window.MB_DATEN = (function () {
 ` },   // R265
         'warum-anleitung': { g: 'loslegen', q: 'Warum nicht einfach selbst die KI fragen?', kw: 'warum vorteil unterschied selbst fragen eigene frage chatgpt schon nutzen anleitung idee besser lohnt weiterdenken angebot einarbeiten durchdacht',
           kurz: 'Mit einer Anleitung fragt die KI nach und führt dich bis zum Ergebnis.',
-          lead: 'Es spricht nichts dagegen, im Gegenteil. Selbst mit der KI ins Gespräch zu kommen ist der beste Weg herauszufinden, wie sie dir bei etwas helfen kann. Unsere Anleitungen sind ein Angebot, schnell zu einem Ergebnis zu kommen und so die Fähigkeiten und Möglichkeiten von KI zu erkunden und zu nutzen. Wie man die KI fragt, damit sie bis zu einem fertigen Ergebnis mitdenkt, haben wir schon durchdacht und getestet.',
+          lead: 'Es spricht nichts dagegen, im Gegenteil. Selbst mit der KI ins Gespräch zu kommen ist der beste Weg herauszufinden, wie sie dir bei etwas helfen kann. Unsere Anleitungen sind ein Angebot, schnell zu einem Ergebnis zu kommen und so die Fähigkeiten und Möglichkeiten von KI zu erkunden und zu nutzen.',
           body: `<p>Wer KI zum ersten Mal öffnet, sieht ein leeres Eingabefeld und fragt sich: Und jetzt? Viele tippen dann eine kurze Frage wie bei einer Suchmaschine und bekommen eine allgemeine KI-Antwort. Die ist nicht falsch. Aber was du als Nächstes fragst, musst du selbst herausfinden. Unsere Anleitungen nehmen dir das ab. Dazu findest du bei uns Ideen, an die du bei KI vielleicht gar nicht gedacht hättest.</p>
 <h4>Was die Anleitung anders macht</h4>
 <ul class="wf-merkmale">
