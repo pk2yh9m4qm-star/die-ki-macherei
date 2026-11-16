@@ -88,5 +88,10 @@
   "kennung": "K09",
   "seite": "arztbefund-verstehen",
   "adresse": "/arztbefund-verstehen"
+ },
+ {
+  "kennung": "R43",
+  "seite": "versicherungen-pruefen",
+  "adresse": "/versicherungen-pruefen"
  }
 ]
