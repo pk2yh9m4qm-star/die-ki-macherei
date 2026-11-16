@@ -93,5 +93,10 @@
   "kennung": "R43",
   "seite": "versicherungen-pruefen",
   "adresse": "/versicherungen-pruefen"
+ },
+ {
+  "kennung": "I13",
+  "seite": "flugentschaedigung-pruefen",
+  "adresse": "/flugentschaedigung-pruefen"
  }
 ]
