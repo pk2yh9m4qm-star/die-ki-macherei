@@ -78,5 +78,15 @@
   "kennung": "R16",
   "seite": "umzug-planen",
   "adresse": "/umzug-planen"
+ },
+ {
+  "kennung": "I01",
+  "seite": "zahnarzt-kostenplan-verstehen",
+  "adresse": "/zahnarzt-kostenplan-verstehen"
+ },
+ {
+  "kennung": "K09",
+  "seite": "arztbefund-verstehen",
+  "adresse": "/arztbefund-verstehen"
  }
 ]
