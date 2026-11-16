@@ -73,5 +73,10 @@
   "kennung": "N05",
   "seite": "kuendigung",
   "adresse": "/gekuendigt-und-jetzt"
+ },
+ {
+  "kennung": "R16",
+  "seite": "umzug-planen",
+  "adresse": "/umzug-planen"
  }
 ]
