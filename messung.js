@@ -357,7 +357,7 @@
   // Werte je Angabe; „ereignis:angabe“ geht vor „angabe“
   var WERTE = {
     fall: {
-      "brief-verstehen": "Brief vom Amt verstehen", "ungewollter-vertrag": "Ungewollt einen Vertrag am Hals?",
+      "brief-verstehen": "Brief vom Amt verstehen", "ungewollter-vertrag": "Ungewollten Vertrag loswerden",
       "vorsorgemappe-anlegen": "Vorsorgemappe anlegen", "wohnzimmer-neu-denken": "Wohnzimmer neu denken",
       "zahlst-du-zu-viel-miete": "Zahlst du zu viel Miete?", "keller-ausmisten": "Keller ausmisten",
       "betrug-oder-echt": "Betrug oder echt?", "gekuendigt-und-jetzt": "Gekündigt, und jetzt?",
@@ -373,7 +373,7 @@
       "r17": "Idee: Gehaltsgespräch vorbereiten", "r07": "Idee: Zahlst du zu viel Miete?",
       "r45": "Idee: Große Anschaffung planen", "n05": "Idee: Gekündigt, und jetzt?",
       "f-foerderung": "Idee: Zuschüsse finden", "n02": "Idee: Geld nach Betrug zurückholen",
-      "n10": "Idee: Ungewollt einen Vertrag am Hals?", "r50": "Idee: Therapieplatz finden",
+      "n10": "Idee: Ungewollten Vertrag loswerden", "r50": "Idee: Therapieplatz finden",
       "kind": "Idee: Eine Geschichte, die deinem Kind etwas Schweres erklärt",
       "stellen": "Idee: Den perfekten Job finden lassen", "facharzt": "Idee: Schneller zum Facharzt",
       "stadtrat": "Idee: Was plant der Stadtrat?", "todesfall": "Idee: Wenn ein Elternteil stirbt",
