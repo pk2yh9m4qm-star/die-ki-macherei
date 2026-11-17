@@ -13,7 +13,8 @@
 <meta name="runde251" content="1">
 <meta name="runde250" content="1">
 <meta name="runde248" content="1">
-<script>/* Runde 69: Merk-Speicher auf eine Kennung je Idee umziehen (vor allen anderen Skripten) */(function () { try {
+<script>/* 17.11.2026: Das Einstiegsfenster ist weg. Seine alten Antworten räumen wir weg, damit überall ChatGPT der Standard ist. */(function () { try { ['ki-wahl', 'ki-erfahrung', 'ki-abo', 'ki-einstieg'].forEach(function (k) { localStorage.removeItem(k); }); } catch (e) {} })();
+/* Runde 69: Merk-Speicher auf eine Kennung je Idee umziehen (vor allen anderen Skripten) */(function () { try {
   var A = {"miete":"r07","foerderung":"f-foerderung","anschaffung":"r45","gehalt":"r17","therapie":"r50","r26":"facharzt","r37":"stadtrat","r18":"todesfall","r38":"netz","r43":"versicherung","r08":"auto","r32":"garten","r12":"gewerbe","r22":"foto","r25":"suetterlin"}, s = window.sessionStorage;
   var h = s.getItem('ki-entdecken-herzen');
   if (h) { var d = JSON.parse(h), o = {}, ch = false;
@@ -8765,16 +8766,6 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
     if (window.MutationObserver) new MutationObserver(function (ms) {
       if (ms.some(function (m) { return [].some.call(m.addedNodes, function (n) { return n.nodeType === 1 && (n.matches('.mcard, .shelf') || n.querySelector && n.querySelector('.mcard')); }); })) bald();
     }).observe(document.body, { childList: true, subtree: true });
-  })();
-</script>
-<script>
-  // Runde 47 (Jim, 27.10.2026), Punkt 3: „Jetzt loslegen“ führt auf „Alle Ideen“; beim ersten Mal kommt dort das Pop-up (Merker für diesen Besuch).
-  (function () {
-    function fertig() { try { return !!localStorage.getItem('ki-einstieg'); } catch (e) { return false; } }
-    window.addEventListener('click', function (e) {
-      if (!(e.target.closest && e.target.closest('.v22z-los, .r258-los')) || fertig()) return;   /* R258: auch der obere Button */
-      try { if (window.KI) KI.schreib('ki-entdecken-los', 1); } catch (x) {}
-    }, true);
   })();
 </script>
 <script>

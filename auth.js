@@ -1177,8 +1177,6 @@
       if (!sitzung()) kontoLokalWeg();
       anzeigen();
     });
-    var ein = document.getElementById('v47-ein');   // Einstiegsfenster: nie gleichzeitig mit der Anmeldung (es wird nur geschlossen, es schreibt hier nichts)
-    if (ein && window.MutationObserver) new MutationObserver(function () { if (ein.open && dlg && dlg.open) ein.close(); }).observe(ein, { attributes: true, attributeFilter: ['open'] });
     var h = hashLesen();
     // frische Anmeldung per Link oder Google: erst die alte Sitzung abwickeln, dann umschalten
     if (h && h.tokens && neueSitz) wechselnZu(neueSitz).then(function (alt) { altSitz = alt; startRest(h); }); else startRest(h);

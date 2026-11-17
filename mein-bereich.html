@@ -7,7 +7,8 @@
 <meta name="runde251" content="1">
 <meta name="runde250" content="1">
 <meta name="runde248" content="1">
-<script>/* Runde 69: Merk-Speicher auf eine Kennung je Idee umziehen (vor allen anderen Skripten) */(function () { try {
+<script>/* 17.11.2026: Das Einstiegsfenster ist weg. Seine alten Antworten räumen wir weg, damit überall ChatGPT der Standard ist. */(function () { try { ['ki-wahl', 'ki-erfahrung', 'ki-abo', 'ki-einstieg'].forEach(function (k) { localStorage.removeItem(k); }); } catch (e) {} })();
+/* Runde 69: Merk-Speicher auf eine Kennung je Idee umziehen (vor allen anderen Skripten) */(function () { try {
   var A = {"miete":"r07","foerderung":"f-foerderung","anschaffung":"r45","gehalt":"r17","therapie":"r50","r26":"facharzt","r37":"stadtrat","r18":"todesfall","r38":"netz","r43":"versicherung","r08":"auto","r32":"garten","r12":"gewerbe","r22":"foto","r25":"suetterlin"}, s = window.sessionStorage;
   var h = s.getItem('ki-entdecken-herzen');
   if (h) { var d = JSON.parse(h), o = {}, ch = false;
@@ -2801,7 +2802,6 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
   <p class="r186-konto__status r186-konto__passwort-meldung" role="status" data-konto-passwort-meldung></p>
   <p class="r186-konto__status" role="status" data-r186-status></p>
 </section>
-<div class="wrap" id="mb-einstieg-ort"></div>
     </div>   <!-- R229-Nachtrag: Kasten „Für dich eingerichtet“ bzw. Knopf „Fragen beantworten“; gefüllt von mbKasten() -->
 <aside class="r187-aussen r187-ein" id="r187-kasten" aria-label="Rückmeldung"><div class="wrap"><div class="r187-karte"><div class="r187-k-text"><p class="r187-k-titel"><b>Hilf uns, die Seite für alle zu verbessern</b></p><p class="r187-k-satz">Fehler, Wünsche oder eine eigene Idee. Anonym. Ca. 1 Min.</p></div><button type="button" class="r187-k-knopf" data-r187-oeffnen="" aria-haspopup="dialog">Rückmeldung geben</button></div></div></aside>
     <footer class="footer"><div class="wrap"><span class="r61-fuss">Die KI-Macherei<span class="r81-social"><a class="r81-icon" href="https://www.instagram.com/ki_macherei/" target="_blank" rel="noopener" aria-label="Die KI-Macherei auf Instagram"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a><a class="r81-icon" href="https://www.youtube.com/@ki_macherei" data-r81-youtube target="_blank" rel="noopener" aria-label="Die KI-Macherei auf YouTube"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a></span></span><span class="footer-rechts"><a class="r187-fuss-idee" href="#kommt-bald" data-r187-oeffnen="idee" aria-haspopup="dialog">Eigene Idee teilen</a><span class="mb-fuss-reset" id="mb-reset"><button class="ki-link" type="button" data-mb-reset>Alles in diesem Browser löschen</button></span><span class="r65-motto">Von Menschen für Menschen</span></span></div></footer>
@@ -3158,9 +3158,6 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       const karten = {};
       document.getElementById('mb-karten').content.querySelectorAll('.mcard').forEach(k => { karten[k.dataset.case] = k; });
       Object.keys({"miete":"r07","foerderung":"f-foerderung","anschaffung":"r45","gehalt":"r17","therapie":"r50","r26":"facharzt","r37":"stadtrat","r18":"todesfall","r38":"netz","r43":"versicherung","r08":"auto","r32":"garten","r12":"gewerbe","r22":"foto","r25":"suetterlin"}).forEach(function (a) { var g = {"miete":"r07","foerderung":"f-foerderung","anschaffung":"r45","gehalt":"r17","therapie":"r50","r26":"facharzt","r37":"stadtrat","r18":"todesfall","r38":"netz","r43":"versicherung","r08":"auto","r32":"garten","r12":"gewerbe","r22":"foto","r25":"suetterlin"}[a]; if (!karten[a] && karten[g]) karten[a] = karten[g]; });   // Runde 69: alte Namen in festen Listen und Kompass finden die gültige Karte
-      (function () { const mt = document.createElement('div'); mt.id = 'mehr-themen'; mt.hidden = true; Object.keys(karten).forEach(id => mt.appendChild(karten[id].cloneNode(true))); document.body.appendChild(mt); })();   // Runde 103: nur Vorlage für das Fenster, unsichtbar
-      document.addEventListener('close', e => { if (e.target && e.target.id === 'v47-ein') render(); }, true);   // nach dem Fenster neu zeichnen, ohne Neuladen
-
       const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
       const ic = (n, k) => '<svg class="icon' + (k ? ' ' + k : '') + '" aria-hidden="true"><use href="#i-' + n + '"/></svg>';
       const herzIc = () => '<svg class="herz-ic" aria-hidden="true"><use href="#i-heart"/></svg>';
@@ -3190,15 +3187,6 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       a.appendChild(aus); a.appendChild(l); k.appendChild(sit); k.appendChild(a); neu.appendChild(n); neu.appendChild(k);
       body.remove(); link.after(neu);
     }
-      function vorauswahl() {   // Runde 103: gespeicherte Antworten im Fenster als gewählt markieren (nur lesen; das Fenster schreibt selbst und springt nicht weiter)
-        const dlg = document.getElementById('v47-ein'); if (!dlg) return;
-        [['ein-niveau', 'ki-erfahrung'], ['ein-ki', 'ki-wahl'], ['ein-abo', 'ki-abo']].forEach(([name, key]) => {
-          let v = null; try { v = localStorage.getItem(key); } catch (e) {}
-          if (!v) return;
-          const r = Array.from(dlg.querySelectorAll('input[name="' + name + '"]')).find(x => x.value === v);
-          if (r) { r.checked = true; r.dispatchEvent(new Event('change', { bubbles: true })); }
-        });
-      }
       function karte(id, o) {
         o = o || {};
         const vorlage = karten[id];
@@ -3286,47 +3274,10 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
           + '<button class="clay-btn" type="button" data-mb-erklaeren>Erklärung ansehen' + ic('arrow-right', 'icon-rechts') + '</button></div></section>';
       }
 
-      // ——— Fach „Für dich“ (Runde 103, s6-3): nach den Antworten aus dem Einstiegsfenster ———
-      // Gelesen werden nur ki-einstieg, ki-wahl, ki-erfahrung, ki-abo (nie geschrieben). Fehlt etwas oder ist es unlesbar: „ohne Antworten“.
-      const KI_NAMEN = { chatgpt: 'ChatGPT', claude: 'Claude', gemini: 'Gemini', grok: 'Grok', copilot: 'Copilot', perplexity: 'Perplexity', mistral: 'Mistral', meta: 'Meta AI', deepseek: 'DeepSeek', andere: 'Andere KI' };
-      const ERF_NAMEN = { einsteiger: 'Einsteiger', etwas: 'etwas Erfahrung', erfahren: 'erfahren' };
-      const NUR_CHATGPT = ['wohnzimmer'];   /* R249 (Yannis 08.11.2026): die übrigen Seiten sind für Claude freigeschaltet */   // feste Liste aus Runde 104 (CLAUDE_STATUS), nach Kennung der Karte (inkl. Doppelgänger r45, r07, y4)
-      function antworten() {
-        try {
-          const ls = window.localStorage;
-          if (ls.getItem('ki-einstieg') !== 'fertig') return null;
-          const ki = ls.getItem('ki-wahl'), erf = ls.getItem('ki-erfahrung'), abo = ls.getItem('ki-abo');
-          if (!KI_NAMEN[ki] || !ERF_NAMEN[erf] || !(abo === 'frei' || abo === 'abo' || abo === 'weissnicht')) return null;
-          return { ki, erf, abo };
-        } catch (e) { return null; }
-      }
-      const antwortStand = () => { const a = antworten(); return a ? a.ki + '|' + a.erf + '|' + a.abo : ''; };
-      function passend(a) {
-        const einst = new Set(D.EINSTIEG.map(zielVon));
-        const gptNur = id => NUR_CHATGPT.includes(karten[id].dataset.case);
-        const istAbo = id => karten[id].getAttribute('data-abo') === 'nur';   /* R258: „stern“ geht auch ohne Abo */
-        const ok = id => karten[id] && sichtbar(id) && KI.passt(id) && (a.ki === 'chatgpt' || !gptNur(id)) && (a.abo === 'abo' || !istAbo(id));   // Regel 1, 2, 4 („Kommt bald“ fällt weg)
-        const einmal = liste => { const g = new Set(); return liste.filter(id => { const z = zielVon(id); if (g.has(z)) return false; g.add(z); return true; }); };
-        const rang = id => [a.abo === 'abo' && !istAbo(id) ? 1 : 0, (a.erf === 'einsteiger') === einst.has(zielVon(id)) ? 0 : 1];   // Abo-Ideen zuerst; Einsteiger: Einstiege zuerst, sonst zuletzt
-        let ids = einmal(Object.keys(karten).filter(ok)).map((id, i) => [id, rang(id), i]).sort((x, y) => x[1][0] - y[1][0] || x[1][1] - y[1][1] || x[2] - y[2]).map(x => x[0]).slice(0, 6);
-        if (ids.length < 3) {   // Regel 5: mit „Gute Einstiege“ auffüllen, nie gegen Regel 1 oder 2
-          const vorhanden = new Set(ids.map(zielVon));
-          einmal(D.EINSTIEG.filter(ok)).forEach(id => { if (ids.length < 3 && !vorhanden.has(zielVon(id))) ids.push(id); });
-        }
-        return ids;
-      }
       // Hinweis: Die Kachel „Was passiert mit all meinen Daten?“ der alten Ansicht entfällt; dieser Satz bleibt als Anker für Runde 98 in live_bauen.py (3 Treffer erwartet).
       function fuerDich() {
-        const a = antworten();
         const einstiege = '<section class="wrap mb-block"><div class="mb-block__kopf"><div><h2 class="mb-h3">Gute Einstiege</h2><p class="mb-note">Die Fragen, die fast alle am Anfang haben</p></div></div><div class="mb-arts">' + ['erster-chat', 'f-abhaengig', 'ampel'].map(id => artKachel(id)).join('') + '</div></section>';
-        if (a) {
-          const zeile = KI_NAMEN[a.ki] + ' · ' + (a.abo === 'abo' ? 'Abo' : 'kostenlos') + ' · ' + ERF_NAMEN[a.erf];
-          return lesezeichenLeiste()
-            + reihe('Passend zu dir', esc(zeile), passend(a), { h: 'h2', name: 'f-passend', kopfRechts: '<button class="ki-link mb-aendern" type="button" data-mb-einstieg>Ändern</button>' })
-            + einstiege + erklHinweis();
-        }
         return lesezeichenLeiste()
-          + '<section class="wrap mb-fragen"><p>Sag uns in 3 kurzen Fragen, was du nutzt, dann passen die Ideen zu dir.</p><button class="clay-btn" type="button" data-mb-einstieg>Fragen beantworten</button></section>'
           + einstiege + erklHinweis()
           + reihe('Zum Einstieg', 'Leichte Ideen, die sich lohnen', D.EINSTIEG, { einzeln: true, name: 'f-einstieg' });
       }
@@ -3657,7 +3608,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
 
       // ——— Zeichnen ———
       let stand = '';
-      const standJetzt = () => JSON.stringify([Object.keys(KI.herzen()).sort(), KI.sammlungen(), (kompass() || {}).am, KI.konto(), window.kiAngemeldet(), KI.istAbgemeldet(), KI.hinweis(), KI.lies(KI.K.wissen, []), antwortStand()]);
+      const standJetzt = () => JSON.stringify([Object.keys(KI.herzen()).sort(), KI.sammlungen(), (kompass() || {}).am, KI.konto(), window.kiAngemeldet(), KI.istAbgemeldet(), KI.hinweis(), KI.lies(KI.K.wissen, [])]);
       function render() {
         stand = standJetzt();
         kopf();
@@ -3666,8 +3617,6 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
         app.innerHTML = S.tab === 'wissen' ? wissenAnsicht() : seite();   // R229: eine Seite statt Reiter (Für dich / Gemerkt / Wissen)
         nachZeichnen();
         app.querySelectorAll('.shelf-track[data-reihe]').forEach(t => { if (sl[t.dataset.reihe]) t.scrollLeft = sl[t.dataset.reihe]; });
-        const einOrt = document.getElementById('mb-einstieg-ort'); if (einOrt) einOrt.hidden = S.tab === 'wissen';   // R229-Nachtrag: nicht im Wissensbereich
-        if (window.mbEinstiegKasten) window.mbEinstiegKasten();   // zeigt die aktuellen Antworten (Anmelden, Abmelden, Speicher-Abgleich)
         S.frisch = false;
       }
       function nachZeichnen() {
@@ -3729,7 +3678,6 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
         if (t.closest('[data-mb-anleitung]')) { const zurueck = ANLEITUNGS_TITEL[S.leserVon] ? S.leserVon : 'anleitung'; leserZu(true); KI.geh(zurueck, '', { behalten: true }); return; }
         if (t.closest('.mb-mini:not([data-sheet])')) { leserZu(true); return; }
         if (t.closest('[data-mb-kompass]') || t.closest('[data-kompass-open]')) { e.preventDefault(); KI.geh('start', '', { befehl: t.closest('[data-mb-kompass]') ? 'kompass-aendern' : 'kompass' }); return; }
-        if (t.closest('[data-mb-einstieg]')) { e.preventDefault(); if (window.v47Oeffnen) { window.v47Oeffnen(); vorauswahl(); } return; }   // Runde 103: Einstiegsfenster öffnen
         const sm = t.closest('[data-sammlung]');
         if (sm) { S.sammlung = sm.dataset.sammlung; S.bearbeiten = false; S.loeschen = false; render(); return; }
         if (t.closest('[data-mb-neu]')) { neueSammlungFenster(); return; }
@@ -4390,68 +4338,6 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
     };
   </script>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="r72-gem" x1="0" y1="24" x2="24" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4285f4"/><stop offset=".55" stop-color="#9b72cb"/><stop offset="1" stop-color="#d96570"/></linearGradient><linearGradient id="r72-cop1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a8bf2"/><stop offset="1" stop-color="#8f5cf5"/></linearGradient><linearGradient id="r72-cop2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a3c"/><stop offset="1" stop-color="#f5c542"/></linearGradient></defs><symbol id="r72-l-chatgpt" viewBox="0 0 24 24"><path fill="#10100f" d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></symbol><symbol id="r72-l-claude" viewBox="0 0 24 24"><path fill="#d97757" d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></symbol><symbol id="r72-l-gemini" viewBox="0 0 24 24"><path fill="url(#r72-gem)" d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></symbol><symbol id="r72-l-grok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4" fill="none" stroke="#10100f" stroke-width="2.4"/><path d="M4.2 20.2 19.8 3.8" stroke="#10100f" stroke-width="2.4" stroke-linecap="round" fill="none"/></symbol><symbol id="r72-l-copilot" viewBox="0 0 24 24"><path fill="url(#r72-cop1)" d="M12.6 2.6c-2.4 0-3.6 1.2-4.3 3.4L4.4 15.7c-.6 1.7.3 3 2 3h3.2l3.5-12.5c.4-1.4.2-3.6-.5-3.6z"/><path fill="url(#r72-cop2)" d="M12.9 7.2 9.6 18.7c-.1.4.2.7.6.7h4.4c2.1 0 3.3-1 4-3.1l1-3.5c.5-1.7-.4-2.9-2.1-2.9h-2.9l.9-2.7z"/></symbol><symbol id="r72-l-perplexity" viewBox="0 0 24 24"><g fill="none" stroke="#20808d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5v19M5 5.8l7 6.2 7-6.2M5 18.2l7-6.2 7 6.2M5 5.8v12.4M19 5.8v12.4M12 12 5 5.8M12 12l7-6.2"/></g></symbol><symbol id="r72-l-mistral" viewBox="0 0 24 24"><g shape-rendering="crispEdges"><rect x="1.5" y="2" width="4.2" height="4.2" fill="#ffd800"/><rect x="18.3" y="2" width="4.2" height="4.2" fill="#ffd800"/><rect x="1.5" y="6.2" width="4.2" height="4.2" fill="#ffaf00"/><rect x="5.7" y="6.2" width="4.2" height="4.2" fill="#ffaf00"/><rect x="14.1" y="6.2" width="4.2" height="4.2" fill="#ffaf00"/><rect x="18.3" y="6.2" width="4.2" height="4.2" fill="#ffaf00"/><rect x="1.5" y="10.4" width="21" height="4.2" fill="#ff8205"/><rect x="1.5" y="14.6" width="4.2" height="4.2" fill="#fa500f"/><rect x="9.9" y="14.6" width="4.2" height="4.2" fill="#fa500f"/><rect x="18.3" y="14.6" width="4.2" height="4.2" fill="#fa500f"/><rect x="1.5" y="18.8" width="4.2" height="3.4" fill="#e10500"/><rect x="18.3" y="18.8" width="4.2" height="3.4" fill="#e10500"/></g></symbol><symbol id="r72-l-meta" viewBox="0 0 24 24"><path fill="none" stroke="#0866ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5.6 17c-2 0-3.1-2.2-3.1-5S4.1 7 6.3 7c2.7 0 4.3 3.6 5.7 6.1s2.8 3.9 4.2 3.9c2 0 3.3-2 3.3-5s-1.4-5-3.4-5c-1.8 0-3.1 1.7-4.5 4.1C10.2 14.200 8.600 17 5.600 17z"/></symbol><symbol id="r72-l-deepseek" viewBox="0 0 24 24"><path fill="#4d6bfe" d="M2.6 13.4C2.6 9.5 6.500 6.600 11 6.600c3.100 0 5.400 1 7.100 2.700l2.900-1.200-.6 3.300c.3.700.5 1.400.5 2.100 0 3.700-3.900 5.800-8.700 5.800-1.200 0-2.300-.1-3.300-.4l-3 2 .6-3.100c-2.200-1.100-3.900-2.600-3.900-4.400z"/><circle cx="7.600" cy="12" r="1.100" fill="#fff"/></symbol><symbol id="r72-stufe-1" viewBox="0 0 24 24"><rect x="3" y="14" width="4.5" height="7" rx="1.6" fill="currentColor"/><rect x="9.75" y="9" width="4.5" height="12" rx="1.6" fill="currentColor" opacity=".22"/><rect x="16.5" y="3" width="4.5" height="18" rx="1.6" fill="currentColor" opacity=".22"/></symbol><symbol id="r72-stufe-2" viewBox="0 0 24 24"><rect x="3" y="14" width="4.5" height="7" rx="1.6" fill="currentColor"/><rect x="9.75" y="9" width="4.5" height="12" rx="1.6" fill="currentColor"/><rect x="16.5" y="3" width="4.5" height="18" rx="1.6" fill="currentColor" opacity=".22"/></symbol><symbol id="r72-stufe-3" viewBox="0 0 24 24"><rect x="3" y="14" width="4.5" height="7" rx="1.6" fill="currentColor"/><rect x="9.75" y="9" width="4.5" height="12" rx="1.6" fill="currentColor"/><rect x="16.5" y="3" width="4.5" height="18" rx="1.6" fill="currentColor"/></symbol><symbol id="r72-grad" viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol></svg>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="r72-l-andere" viewBox="0 0 24 24"><g fill="none" stroke="#10100f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5l1.9 5.1 5.1 1.9-5.1 1.9L11 17.5l-1.9-5.1L4 10.5l5.1-1.9z"/><path d="M18.5 15.5v4M16.5 17.5h4"/></g></symbol></svg>
-<dialog class="v47-ein" id="v47-ein" aria-labelledby="ein-titel-f1"><button type="button" class="v47-x" data-v47="x" aria-label="Schließen"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
-  <div class="v47-innen" data-schritt="f1">
-    <div class="v47-links">
-      <div class="v47-marke" aria-hidden="true"><img class="r61-popup-logo" src="/ki-macherei_quer_hell.svg" alt="" width="125" height="22"></div>
-      <form class="v47-form" novalidate>
-        <fieldset class="v47-teil" data-teil="f1"><legend class="v47-frage" id="ein-titel-f1" tabindex="-1">Wie viel Erfahrung hast du mit KI?</legend>
-          <div class="v47-fort" aria-hidden="true"><b class="an"></b><b></b><b></b><span>Frage 1 von 3</span></div><p class="v47-fort-sr">Frage 1 von 3</p>
-          <div class="v47-opts"><label class="v47-opt" data-szene="f1"><input type="radio" name="ein-niveau" value="einsteiger"><span>Noch gar nicht oder nur ausprobiert</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="f1"><input type="radio" name="ein-niveau" value="etwas"><span>Ab und zu, für Fragen und Rat</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="f1"><input type="radio" name="ein-niveau" value="erfahren"><span>Regelmäßig, auch um Aufgaben abzugeben</span><i aria-hidden="true"></i></label></div>
-        </fieldset>
-        <fieldset class="v47-teil" data-teil="f2" hidden><legend class="v47-frage" id="ein-titel-f2" tabindex="-1">Welche KI nutzt du?</legend>
-          <button type="button" class="v57-zurueck" data-v47="zurueck">← Zurück</button><div class="v47-fort" aria-hidden="true"><b class="an"></b><b class="an"></b><b></b><span>Frage 2 von 3</span></div><p class="v47-fort-sr">Frage 2 von 3</p>
-          <p class="v47-fort-sr" id="r72-status" aria-live="polite"></p>
-          <div class="v47-opts" id="r100-ki-zeilen"><label class="v47-opt" data-szene="chatgpt"><input type="radio" name="ein-ki" value="chatgpt"><span>ChatGPT</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="claude"><input type="radio" name="ein-ki" value="claude"><span>Claude</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="andere"><input type="radio" name="ein-ki" value="andere"><span>Andere</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="keine"><input type="radio" name="ein-ki" value="keine"><span>Ich hab noch keine</span><i aria-hidden="true"></i></label></div>
-          <div class="r101-hinweise"><p class="v47-tipp r72-tipp" id="r72-tipp" aria-live="polite">Du nutzt mehrere? Wähle die App, die du öfter nutzt oder wo du ein Abo besitzt.</p>
-</div>
-        </fieldset>
-        <fieldset class="v47-teil" data-teil="f3" hidden><legend class="v47-frage" id="ein-titel-f3" tabindex="-1">Zahlst du für <span data-ein-ki>ChatGPT</span>?</legend>
-          <button type="button" class="v57-zurueck" data-v47="zurueck">← Zurück</button><div class="v47-fort" aria-hidden="true"><b class="an"></b><b class="an"></b><b class="an"></b><span>Frage 3 von 3</span></div><p class="v47-fort-sr">Frage 3 von 3</p>
-          <div class="v47-opts"><label class="v47-opt" data-szene="frei"><input type="radio" name="ein-abo" value="frei"><span>Nein, kostenlos</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="abo"><input type="radio" name="ein-abo" value="abo"><span>Ja, Abo</span><i aria-hidden="true"></i></label><label class="v47-opt" data-szene="weissnicht"><input type="radio" name="ein-abo" value="weissnicht"><span>Weiß ich nicht</span><i aria-hidden="true"></i></label></div>
-                  </fieldset>
-        <div class="v47-teil" data-teil="keine" hidden>
-          <h2 class="v47-frage" id="ein-titel-keine" tabindex="-1">Melde dich einmal bei ChatGPT an.</h2>
-          <button type="button" class="v57-zurueck" data-v47="zurueck">← Zurück</button>
-          <p class="v47-text">Jede Anleitung bei uns ist mit ChatGPT und Claude getestet. Wir beschränken uns auf diese Apps, da sie die aktuell fähigsten KI-Modelle nutzen.</p>
-          <p class="v47-text" id="r150-absatz">Öffne ChatGPT hier im Browser und melde dich kostenlos an. Danach kannst du unsere Ideen direkt ausprobieren.</p>
-          <p class="v47-text r150-klein">Lieber Claude? Das geht genauso <span id="r150-mit">auf</span> <a id="r150-claude" href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>.</p>
-        </div>
-        <div class="v47-teil" data-teil="laden" hidden>
-          <h2 class="v47-frage" id="ein-titel-laden" tabindex="-1">Wird für dich eingerichtet</h2>
-          <div class="r100-balken" aria-hidden="true"><i></i></div>
-          <ol class="r100-zeilen" id="r100-zeilen" aria-live="polite"></ol>
-        </div>
-        <div class="v47-teil" data-teil="fertig" hidden>
-          <h2 class="v47-frage" id="ein-titel-fertig" tabindex="-1">Fertig!</h2>
-          <p class="v47-text" id="r100-ok-t"></p>
-          <p class="v47-text" id="r103-vorbereitet" style="font-size:14px;line-height:1.2;display:flex;flex-wrap:wrap;align-items:center;column-gap:8px">Dein Bereich ist vorbereitet. <a class="r100-link" href="/mein-bereich" style="display:inline-flex;align-items:center;min-height:44px">Zu Mein Bereich</a></p>
-          <div id="r101-ok-leiste"></div>
-          <div class="r100-ende"><button type="button" class="v47-dunkel" data-v47="schliessen">Ideen ansehen <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div>
-        </div>
-      </form>
-      <div class="v47-fuss">
-        <button type="button" class="v47-leise" data-v47="ueberspringen">Überspringen</button>
-        <button type="button" class="v47-leise" data-v47="stoebern" hidden>Erst mal stöbern</button>
-        <button type="button" class="v47-dunkel" data-v47="weiter" disabled>Weiter <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
-        <a class="v47-dunkel" data-v47="konto" href="https://chatgpt.com/auth/login" target="_blank" rel="noopener" hidden>Bei ChatGPT anmelden · 2 Min. <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-        <button type="button" class="v47-dunkel" data-v47="r130-weiter" hidden>Weiter mit ChatGPT <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
-      </div>
-    </div>
-    <div class="v47-rechts"><div class="v47-vorschau" aria-hidden="true">
-      <div class="v47-szene" data-szene="f1"><div class="ein-flaeche"><div class="ein-buehne ein-f1a" data-stufe="0"><div class="ein-k field pal-sand"><svg class="mcard-symbol" viewBox="0 0 24 24"><use href="#ls-coins"/></svg></div><div class="ein-k field pal-blue"><svg class="mcard-symbol" viewBox="0 0 24 24"><use href="#ls-mail"/></svg></div><div class="ein-k field pal-moss"><svg class="mcard-symbol" viewBox="0 0 24 24"><use href="#r72-grad"/></svg></div><div class="ein-k field pal-coral"><svg class="mcard-symbol" viewBox="0 0 24 24"><use href="#ls-sun"/></svg></div><div class="ein-k field pal-plum"><svg class="mcard-symbol" viewBox="0 0 24 24"><use href="#ls-message-square-warning"/></svg></div></div></div></div>
-      <div class="v47-szene" data-szene="f2"><div class="ein-flaeche"><div class="r100-wolke" id="r100-wolke" aria-hidden="true"><span class="r100-l leer" data-k="luecke" style="--g:92;--x:50%;--y:46%;--ax:12;--ay:12;--dur:20s;--vz:-6s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true" viewBox="0 0 92 92" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="46" cy="46" r="43" stroke-width="3" stroke-dasharray="7 8.89" opacity=".8"/></svg></span></span></span><span class="r100-l" data-k="chatgpt" style="--g:92;--x:27%;--y:30%;--ax:14;--ay:11;--dur:17s;--vz:-4s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-chatgpt"/></svg></span></span></span><span class="r100-l" data-k="claude" style="--g:92;--x:66%;--y:58%;--ax:12;--ay:15;--dur:23s;--vz:-11s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-claude"/></svg></span></span></span><span class="r100-l" data-k="gemini" style="--g:60;--x:77%;--y:20%;--ax:13;--ay:12;--dur:19s;--vz:-7s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-gemini"/></svg></span></span></span><span class="r100-l" data-k="copilot" style="--g:56;--x:43%;--y:83%;--ax:15;--ay:10;--dur:21s;--vz:-2s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-copilot"/></svg></span></span></span><span class="r100-l" data-k="grok" style="--g:50;--x:13%;--y:66%;--ax:11;--ay:14;--dur:16s;--vz:-9s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-grok"/></svg></span></span></span><span class="r100-l" data-k="perplexity" style="--g:44;--x:52%;--y:10%;--ax:12;--ay:13;--dur:24s;--vz:-14s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-perplexity"/></svg></span></span></span><span class="r100-l" data-k="meta" style="--g:48;--x:45%;--y:52%;--ax:10;--ay:12;--dur:20s;--vz:-5s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-meta"/></svg></span></span></span><span class="r100-l" data-k="deepseek" style="--g:42;--x:11%;--y:40%;--ax:13;--ay:9;--dur:18s;--vz:-13s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-deepseek"/></svg></span></span></span><span class="r100-l" data-k="mistral" style="--g:40;--x:89%;--y:78%;--ax:9;--ay:12;--dur:22s;--vz:-8s"><span class="r100-drift"><span class="r100-scheibe"><svg aria-hidden="true"><use href="#r72-l-mistral"/></svg></span></span></span></div></div></div>
-      <div class="v47-szene" data-szene="keine"><div class="ein-flaeche"><div class="ein-buehne ein-kA"><span class="ein-funke f1"></span><span class="ein-funke f2"></span><span class="ein-funke f3"></span><span class="ein-gross g1"><svg aria-hidden="true"><use href="#r72-l-chatgpt"/></svg></span><span class="ein-gross g2"><svg aria-hidden="true"><use href="#r72-l-claude"/></svg></span></div></div></div>
-      <div class="v47-szene" data-szene="frei"><div class="r72-faecher" data-art="frei"></div><p class="v47-unter" data-unter="frei"></p></div>
-      <div class="v47-szene" data-szene="abo"><div class="r72-faecher" data-art="abo"></div><p class="v47-unter">Alle Ideen stehen dir offen.</p></div>
-      <div class="v47-szene" data-szene="weissnicht"><div class="r72-faecher" data-art="frei"></div><p class="v47-unter">Diese gehen sicher kostenlos.</p></div>
-    </div>
-      <div class="ein-zeichen r101-z" role="group" aria-label="Deine Auswahl"><div class="ein-z r101-fenster" data-art="niveau"><div class="r101-walze"><span class="r101-strip"><span class="r101-it"><span class="r101-q" role="img" aria-label="Erfahrung noch offen">?</span></span></span></div></div><div class="ein-z r101-fenster" data-art="ki"><div class="r101-walze"><span class="r101-strip"><span class="r101-it"><span class="r101-q" role="img" aria-label="KI noch offen">?</span></span></span></div></div><div class="ein-z r101-fenster" data-art="abo"><div class="r101-walze"><span class="r101-strip"><span class="r101-it"><span class="r101-q" role="img" aria-label="Abo noch offen">?</span></span></span></div></div><p class="v47-fort-sr" id="r101-live" aria-live="polite"></p></div>
-    </div>
-  </div>
-</dialog>
 <script>
   // Runde 47 (Jim, 27.10.2026): Hintergrund anhalten, solange Pop-up oder Ebene offen sind; schwache Geräte bekommen die helle Fläche ohne Unschärfe.
   (function () {
@@ -4514,487 +4400,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
     };
   })();
 </script>
-<script>
-  // Runde 100 (Ryan, 30.10.2026): Einstiegsfenster nach Yannis' Korrekturen (Station 2, Punkte 6–10). Baut auf dem Skript der Runde 72 auf (Ausschnitte unten unverändert).
-  // Gemerkt wird wie in Runde 72: ki-wahl bei „Weiter“ nach Frage 2; ki-einstieg, ki-erfahrung, ki-abo, ki-wahl sofort bei „Ideen ansehen“ (vor der Ladeansicht).
-  (function () {
-    var dlg = document.getElementById('v47-ein');
-    if (!dlg) return;
-    var KIS = [["chatgpt", "ChatGPT", "ChatGPT"], ["claude", "Claude", "Claude"], ["gemini", "Gemini", "Google Gemini"], ["grok", "Grok", "Grok"], ["copilot", "Copilot", "Microsoft Copilot"], ["perplexity", "Perplexity", "Perplexity"], ["mistral", "Mistral", "Mistral Le Chat"], ["meta", "Meta AI", "Meta AI"], ["deepseek", "DeepSeek", "DeepSeek"]], TIPP = "Du nutzt mehrere? Wähle die App, die du öfter nutzt oder wo du ein Abo besitzt.", ANDERE = "Mit anderen KIs klappt es vielleicht auch: Du kopierst die Anleitung selbst. Wir empfehlen dir aber ChatGPT oder Claude, denn mit diesen testen wir unsere Anleitungen, und mit ihnen gelingen die meisten Ideen zuverlässig.", T = {"anfang": "Hilfe für den Anfang wird bereitgelegt", "kopier": "Kopier-Buttons werden hinzugefügt", "frei": "Kostenlose Ideen werden vorgezogen", "abo": "Ideen mit Abo werden einsortiert", "speicher": "Deine Auswahl wird auf diesem Gerät gespeichert", "fertig": "Alles für dich eingerichtet", "okKi": "Die Seite ist für dich eingerichtet. Jede Ideenkarte bringt dich jetzt automatisch zu {Name}.", "okAndere": "Die Seite ist für dich eingerichtet. Jede Ideenkarte hat jetzt einen Kopier-Button für deine KI.", "gesamt": 2900};
-    var NAME = {}; KIS.forEach(function (k) { NAME[k[0]] = k[1]; }); NAME.andere = 'Andere KI';
-    var innen = dlg.querySelector('.v47-innen'), ruhigMQ = matchMedia('(prefers-reduced-motion: reduce)'), ruhig = function () { return ruhigMQ.matches; };
-    var tipp = dlg.querySelector('#r72-tipp'), status = dlg.querySelector('#r72-status');
-    var knopf = function (n) { return dlg.querySelector('[data-v47="' + n + '"]'); };
-    var schritt = 'f1', vorher = null, zeichenNr = 0, ladeNr = 0, ladeTimer = 0;
-    var FELD = { f1: 'ein-niveau', f2: 'ein-ki', f3: 'ein-abo' };
-    var NIVEAU = { einsteiger: ['Einsteiger', 1], etwas: ['Etwas Erfahrung', 2], erfahren: ['Erfahren', 3] };
-    var STUFE = { einsteiger: 1, etwas: 2, erfahren: 3 };
-    var ZEILE = { chatgpt: 'ChatGPT', claude: 'Claude', andere: 'Andere', keine: 'Ich hab noch keine' };
-    function merke(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
-
-    // Runde 130 (s2-35): Zustand „Konto angelegt“ im Schritt „keine“ (Merker, Anzeige, Fokus)
-    var kontoDa = false, TITEL_KEINE = '';
-    // Runde 150: Gerät per User-Agent (nicht nach Breite); ohne Erkennung gilt die Rechner-Fassung aus dem HTML
-    var R150 = (function () {
-      var u = '', mobil = false, ios = false;
-      try {
-        u = navigator.userAgent || '';
-        ios = /iPhone|iPad|iPod/.test(u) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-        mobil = ios || /Android/.test(u) || !!(navigator.userAgentData && navigator.userAgentData.mobile);
-      } catch (e) {}
-      return { mobil: mobil, chatgpt: ios ? 'https://apps.apple.com/app/chatgpt/id6448311069' : 'https://play.google.com/store/apps/details?id=com.openai.chatgpt',
-               claude: ios ? 'https://apps.apple.com/app/claude-by-anthropic/id6473753684' : 'https://play.google.com/store/apps/details?id=com.anthropic.claude', fertig: false };
-    })();
-    function r150Anwenden() {
-      if (R150.fertig) return;
-      R150.fertig = true;
-      if (!R150.mobil) return;
-      var t = dlg.querySelector('#ein-titel-keine'), a = dlg.querySelector('#r150-absatz'), m = dlg.querySelector('#r150-mit'), c = dlg.querySelector('#r150-claude'), k = knopf('konto');
-      if (t) t.textContent = 'Lade dir die ChatGPT-App aufs Handy.';
-      if (a) a.textContent = 'Lade dir die App kostenlos herunter und melde dich an. Danach kannst du unsere Ideen direkt ausprobieren.';
-      if (m) m.textContent = 'mit der';
-      if (c) { c.textContent = 'Claude-App'; c.href = R150.claude; }
-      if (k) { k.firstChild.textContent = 'ChatGPT-App laden '; k.href = R150.chatgpt; }
-    }
-    r150Anwenden();
-    var r174Ki = 'chatgpt';   // Runde 174: über welchen Link das Konto angelegt wurde (chatgpt oder claude)
-    function r130Ui() {
-      r150Anwenden();
-      var an = kontoDa && schritt === 'keine', t = dlg.querySelector('#ein-titel-keine');
-      if (!TITEL_KEINE && t) TITEL_KEINE = t.textContent;
-      innen.classList.toggle('r130-konto', an);
-      knopf('r130-weiter').hidden = !an;
-      var r174b = knopf('r130-weiter').firstChild; if (r174b && r174b.nodeType === 3) r174b.nodeValue = r174Ki === 'claude' ? 'Weiter mit Claude ' : 'Weiter mit ChatGPT ';   // Runde 174
-      if (an) { knopf('konto').hidden = true; knopf('stoebern').hidden = true; }
-      if (t) t.textContent = an ? (R150.mobil ? "In der App angemeldet? Dann geht’s hier weiter." : "Angemeldet? Dann geht’s hier weiter.") : TITEL_KEINE;
-    }
-    function r130Fokus() {
-      var b = knopf('r130-weiter');
-      function los() {
-        if (!dlg.open || !kontoDa || schritt !== 'keine') return;
-        var a = document.activeElement;
-        if (!a || a === document.body || a === dlg || !dlg.contains(a) || a === knopf('konto') || a.id === 'r150-claude' || a.id === 'ein-titel-keine') { try { b.focus({ preventScroll: true }); } catch (e) {} }   // nur wenn der Fokus sonst nirgends Sinnvolles hat (Link, Überschrift, nichts)
-      }
-      if (!document.hidden) { los(); return; }   // Tab verborgen (Konto-Tab im Vordergrund): Fokus nicht holen, erst wenn der Tab zurückkommt
-      document.addEventListener('visibilitychange', function f() { if (document.hidden) return; document.removeEventListener('visibilitychange', f); los(); });
-    }
-    function r130Konto() {
-      if (schritt !== 'keine' || !dlg.open) return;
-      kontoDa = true; r130Ui(); standSchreiben(); r130Fokus();
-    }
-    // Runde 113 (s2-32): Schritt und Antworten in sessionStorage (nur dieser Tab, keine Kennung, nichts geht nach außen)
-    var STAND = 'ki-einstieg-stand';
-    function standSchreiben() {
-      try {
-        if (!dlg.open || lies('ki-einstieg') || !/^(f1|f2|f3|keine)$/.test(schritt)) return;
-        sessionStorage.setItem(STAND, JSON.stringify({ s: schritt, n: wert('ein-niveau'), k: wert('ein-ki'), a: wert('ein-abo'), c: kontoDa ? (r174Ki === 'claude' ? 2 : 1) : 0 }));
-      } catch (e) {}
-    }
-    function standLoeschen() { try { sessionStorage.removeItem(STAND); } catch (e) {} }
-    function standLesen() {
-      try {
-        var s = JSON.parse(sessionStorage.getItem(STAND) || 'null');
-        if (!s || !/^(f1|f2|f3|keine)$/.test(s.s)) return null;
-        return s;
-      } catch (e) { return null; }
-    }
-    function standWiederher(s) {
-      auf();
-      [['ein-niveau', s.n], ['ein-ki', s.k], ['ein-abo', s.a]].forEach(function (p) {
-        if (!p[1] || !/^[a-z]+$/.test(p[1])) return;
-        var r = dlg.querySelector('input[name="' + p[0] + '"][value="' + p[1] + '"]');
-        if (r) { r.checked = true; r.dispatchEvent(new Event('change', { bubbles: true })); }
-      });
-      zeige(s.s);
-      if (s.c && s.s === 'keine') { r174Ki = s.c === 2 ? 'claude' : 'chatgpt'; kontoDa = true; r130Ui(); standSchreiben(); r130Fokus(); }   // Runde 130: „Konto angelegt“ überlebt Tabwechsel und Neuladen
-    }
-
-    function lies(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
-    function wert(n) { var x = dlg.querySelector('input[name="' + n + '"]:checked'); return x ? x.value : null; }
-    function ns(t) { return t; }
-
-    // ---- Bild rechts
-    function szene(s) { dlg.querySelectorAll('.v47-szene').forEach(function (el) { el.classList.toggle('an', el.dataset.szene === s); }); }
-    function standSzene() {
-      if (schritt === 'f1') return 'f1';
-      if (schritt === 'f2') return 'f2';
-      if (schritt === 'keine') return 'keine';
-      var a = wert('ein-abo'); return a || 'frei';
-    }
-    function stufe(n) { var b = dlg.querySelector('.ein-f1a'); b.dataset.stufe = n; }
-    function karten() {   // Frage 3 (Runde 101, s2-12): echte Karten von „Alle Ideen“ klonen, drei verschiedene Farben, Tarif-Pille je nach Antwort
-      var alle = [].slice.call(document.querySelectorAll('#mehr-themen .mcard[data-status="ready"]')), gesehen = {}, frei = [], abo = [];
-      alle.forEach(function (k) {
-        var t = k.querySelector('h3.title'); if (!t) return; var titel = t.textContent.trim(); if (gesehen[titel]) return; gesehen[titel] = 1;
-        (k.getAttribute('data-abo') === 'nur' ? abo : frei).push(k);   /* R258: data-abo, „stern“ zählt wie kostenlos */
-      });
-      function pal(k) { return (k.className.match(/\bpal-\w+/) || ['pal-sand'])[0]; }
-      function drei(liste) {
-        var aus = [], p = {};
-        liste.forEach(function (k) { if (aus.length < 3 && !p[pal(k)]) { p[pal(k)] = 1; aus.push(k); } });
-        liste.forEach(function (k) { if (aus.length < 3 && aus.indexOf(k) < 0) aus.push(k); });
-        return aus;
-      }
-      function titelVon(k) { var t = k.querySelector('h3.title'); return t ? t.textContent.trim() : ''; }
-      var vorsorge = null;   // Runde 105 (s2-22): bei „Mit Abo“ bleibt diese Karte „Free“
-      function auswahl(art) {   // links hinten, vorne, rechts
-        if (art !== 'abo') return drei(frei);
-        var kel = abo[0],   /* R258: erste Idee „nur mit Abo“ vorne; Keller geht jetzt auch ohne Abo */
-            vor = frei.filter(function (k) { return titelVon(k) === "Vorsorgemappe anlegen"; })[0];
-        if (!kel || !vor) return drei(abo.concat(frei));
-        vorsorge = vor;
-        var rest = abo.concat(frei).filter(function (k) { return k !== kel && k !== vor; }),   /* R258 */ dritte = rest.filter(function (k) { return pal(k) !== pal(kel) && pal(k) !== pal(vor); })[0] || rest[0];
-        return dritte ? [vor, kel, dritte] : [vor, kel];
-      }
-      dlg.querySelectorAll('.r72-faecher').forEach(function (f) {
-        var art = f.dataset.art; f.innerHTML = '';
-        auswahl(art).forEach(function (k) {
-          var c = k.cloneNode(true), w = document.createElement('div'); w.className = 'r101-fk';
-          [].slice.call(c.attributes).forEach(function (a) { if (a.name !== 'class' && a.name !== 'data-status') c.removeAttribute(a.name); });
-          ['.body', '.herz'].forEach(function (s) { var x = c.querySelector(s); if (x) x.remove(); });
-          var l = c.querySelector('.mcard-link'); if (l) { l.removeAttribute('href'); l.removeAttribute('aria-label'); l.setAttribute('tabindex', '-1'); }
-          var tf = c.querySelector('.tag--frei, .tag--abo');
-          var kat = c.querySelector('.tag--cat'); if (kat) kat.remove();   // Runde 105 (s2-21): keine Kategorie-Pill
-          var ti = c.querySelector('h3.title'), ft = c.querySelector('.field-top'); if (ti && ft) ti.before(ft);   // Runde 109 (s2-27): der Tag steht oben, vor dem Titel
-          if (tf) { var imAbo = art === 'abo' && k !== vorsorge && k.getAttribute('data-abo') === 'nur';   /* R258 */ tf.className = 'tag ' + (imAbo ? 'tag--abo' : 'tag--frei'); tf.textContent = imAbo ? "Mit Abo" : "Free"; }
-          w.appendChild(c); f.appendChild(w);
-        });
-      });
-      var u = dlg.querySelector('[data-unter="frei"]'); if (u) u.textContent = '+ ' + Math.max(0, frei.length - 3) + ' weitere kostenlos';
-    }
-
-    // ---- Walzen-Zeile (Runde 101, s2-14): drei Fenster, jedes dreht sich nach seiner Antwort und rastet ein
-    var WAL = { niveau: { name: 'Erfahrung', opt: ['einsteiger', 'etwas', 'erfahren'] }, ki: { name: 'KI', opt: ['chatgpt', 'claude', 'andere'] }, abo: { name: 'Abo', opt: ['frei', 'abo'] } };
-    function inhalt(art, v) {
-      if (art === 'niveau') return ['<svg class="ein-stufe" aria-hidden="true"><use href="#r72-stufe-' + NIVEAU[v][1] + '"/></svg>', NIVEAU[v][0]];
-      if (art === 'ki') return ['<svg class="logo" aria-hidden="true"><use href="#r72-l-' + v + '"/></svg>', NAME[v]];
-      return v === 'abo' ? ['<svg class="icon" aria-hidden="true"><use href="#ls-badge-euro"/></svg>', 'Abo'] : ['<svg class="icon" aria-hidden="true"><use href="#ls-gift"/></svg>', 'Free'];
-    }
-    function stueck(art, v) {
-      if (!v && art === 'ki' && wert('ein-ki') === 'keine') return '<span class="r101-it"><span class="r149-leer" role="img" aria-label="KI: noch keine"><svg aria-hidden="true" viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="12" stroke-width="2" stroke-dasharray="3 3.28" opacity=".8"/></svg></span></span>';
-      if (!v) return '<span class="r101-it"><span class="r101-q" role="img" aria-label="' + WAL[art].name + ' noch offen">?</span></span>';
-      var x = inhalt(art, v); return '<span class="r101-it"><span class="r101-ic">' + x[0] + '</span><span class="r101-t">' + x[1] + '</span></span>';
-    }
-    function leer(z) {
-      z.classList.remove('voll'); delete z.dataset.wert; z._tok = (z._tok || 0) + 1;
-      var w = z.querySelector('.r101-walze'); w.classList.remove('dreht'); w.removeAttribute('aria-hidden');
-      w.innerHTML = '<span class="r101-strip">' + stueck(z.dataset.art, null) + '</span>';
-    }
-    var hWalze = 0; window.addEventListener('resize', function () { hWalze = 0; });
-    function drehen(z, art, von, nach) {
-      var w = z.querySelector('.r101-walze'), H = hWalze || (hWalze = w.clientHeight || 64), tok = z._tok = (z._tok || 0) + 1;
-      if (ruhig()) { w.innerHTML = '<span class="r101-strip">' + stueck(art, nach) + '</span>'; w.firstChild.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 150 }); return; }
-      var folge = [''].concat(WAL[art].opt), n = folge.length, a = folge.indexOf(von), b = folge.indexOf(nach), k = ((b - a + n) % n) + n, h = '';
-      for (var i = 0; i <= k; i++) h += stueck(art, folge[(a + i) % n]);
-      w.innerHTML = '<span class="r101-strip">' + h + '</span>'; w.classList.add('dreht'); w.setAttribute('aria-hidden', 'true');
-      var s = w.firstChild, an = s.animate([{ transform: 'translateY(0)', easing: 'cubic-bezier(.2,.8,.2,1)' }, { transform: 'translateY(' + (-(k * H) - 3) + 'px)', offset: .84, easing: 'ease-out' },
-        { transform: 'translateY(' + (-(k * H)) + 'px)' }], { duration: 900, fill: 'forwards' });
-      an.onfinish = function () {
-        if (z._tok !== tok) return;
-        w.classList.remove('dreht'); w.removeAttribute('aria-hidden'); w.innerHTML = '<span class="r101-strip">' + stueck(art, nach) + '</span>';
-      };
-    }
-    function zeichen(art, v) {
-      var z = dlg.querySelector('.ein-z[data-art="' + art + '"]'), schl = v ? (art === 'abo' && v === 'weissnicht' ? 'frei' : v) : '';
-      if ((z.dataset.wert || '') === schl) return;
-      if (!schl) { leer(z); return; }
-      var von = z.dataset.wert || ''; z.dataset.wert = schl; z.classList.add('voll');
-      drehen(z, art, von, schl);
-      var live = dlg.querySelector('#r101-live'); live.textContent = ''; setTimeout(function () { live.textContent = WAL[art].name + ': ' + inhalt(art, schl)[1]; }, 30);
-    }
-
-    // ---- KI-Wahl (Punkt 8): Die Logos rechts sind nur Bild. Zeile hovern, fokussieren oder wählen holt die passenden mit der Feder nach vorn.
-    var wolke = dlg.querySelector('#r100-wolke'), logos = [].slice.call(wolke.querySelectorAll('.r100-l'));
-    var VORN = { chatgpt: ['chatgpt'], claude: ['claude'], andere: ['copilot', 'gemini', 'grok'], keine: ['luecke'] };
-    var hoverK = null, fokusK = null;
-    function wolkeZeigen() {
-      var k = hoverK || fokusK || wert('ein-ki') || null, vorn = k ? VORN[k] : [], W = wolke.clientWidth, H = wolke.clientHeight,
-        mass = logos.map(function (l) { return [l.offsetLeft + l.offsetWidth / 2, l.offsetTop + l.offsetHeight / 2, l.offsetWidth]; });   // Runde 111: erst alles lesen
-      wolke.dataset.zustand = k || '';
-      logos.forEach(function (l, n) {
-        var s = l.querySelector('.r100-scheibe'), i = vorn.indexOf(l.dataset.k), p = s.style;
-        ['--tx', '--ty', '--rot', '--sc', '--op', '--vzg'].forEach(function (v) { p.removeProperty(v); });
-        l.classList.toggle('vorn', i >= 0);
-        if (!k || !W) return;
-        if (i < 0) { p.setProperty('--sc', '.72'); p.setProperty('--op', '.35'); return; }
-        var m = vorn.length, d, cx, cy = H * .46, rot = 0;
-        if (m === 1 && k === 'keine') { d = Math.min(W * .36, H * .5, 150); cx = W * .5; }
-        else if (m === 1) { d = Math.min(W * .5, H * .6, 190); cx = W * .5; }
-        else if (m === 2) { d = Math.min(W * .36, H * .5, 150); cx = W * (i ? .7 : .3); rot = i ? 5 : -6; }
-        else { d = Math.min(W * .27, H * .4, 112); cx = W * (.2 + i * .3); }
-        var hx = mass[n][0], hy = mass[n][1];
-        p.setProperty('--tx', (cx - hx).toFixed(1) + 'px'); p.setProperty('--ty', (cy - hy).toFixed(1) + 'px');
-        p.setProperty('--sc', (d / mass[n][2]).toFixed(3)); p.setProperty('--rot', rot + 'deg');
-        if (i && !ruhig()) p.setProperty('--vzg', (i * .08) + 's');
-      });
-    }
-    window.addEventListener('resize', function () { if (schritt === 'f2') wolkeZeigen(); });
-    function tippText(k) {   // Runde 105 (s2-20): beide Hinweise entfallen, bei jeder Wahl (auch „Andere“) steht nur der Tipp
-      tipp.classList.remove('mit-marker'); tipp.textContent = TIPP;
-    }
-    function melde(t) { status.textContent = ''; setTimeout(function () { status.textContent = t; }, 30); }
-
-
-    // ---- Erfolgs-Pop-up (Runde 101, s2-16): Dialog schrumpft vom großen Fenster aufs kleine Pop-up; die Walzen-Zeile zieht mit um
-    var dlgZiel = null;
-    function leisteZiehen(s) {
-      var z = dlg.querySelector('.ein-zeichen'), slot = dlg.querySelector('#r101-ok-leiste'), rechts = dlg.querySelector('.v47-rechts');
-      if (s === 'fertig' && z.parentNode !== slot) slot.appendChild(z);
-      if (s !== 'fertig' && z.parentNode === slot) rechts.appendChild(z);
-      dlg.classList.toggle('r101-klein', s === 'fertig');
-      if (s !== 'fertig') dlg.getAnimations().forEach(function (a) { a.cancel(); });
-    }
-    function klein(r0, br0) {
-      dlgZiel = dlg.getBoundingClientRect();
-      if (!r0 || ruhig()) return;
-      var sx = r0.width / dlgZiel.width, sy = r0.height / dlgZiel.height, ab = function () { dlg.classList.remove('r111-flug'); dlg.classList.remove('r111-zeig'); };   // Runde 111: nur transform, kein Layout je Bild
-      dlg.classList.add('r111-flug');
-      var fl = dlg.animate([{ transform: 'translate(' + (r0.left - dlgZiel.left) + 'px,' + (r0.top - dlgZiel.top) + 'px) scale(' + sx + ',' + sy + ')' }, { transform: 'none' }],
-        { duration: 480, easing: 'cubic-bezier(.3,.8,.2,1)', pseudoElement: '::before' });
-      requestAnimationFrame(function () { requestAnimationFrame(function () {
-        if (!dlg.classList.contains('r111-flug')) return;
-        dlg.classList.add('r111-zeig'); var ti = dlg.querySelector('#ein-titel-fertig'); try { ti.focus({ preventScroll: true }); } catch (e) {}
-      }); });
-      fl.onfinish = ab; fl.oncancel = ab; setTimeout(ab, 700);
-      dlg.querySelector('[data-teil="fertig"]').animate([{ opacity: 0 }, { opacity: 1 }], { duration: 260, delay: 200, fill: 'backwards' });
-    }
-    function blitz() {
-      var z = dlg.querySelector('.ein-zeichen'); if (ruhig()) return;
-      z.animate([{ opacity: 0 }, { opacity: 1, offset: .3 }, { opacity: 0 }], { duration: 800, easing: 'ease-out', pseudoElement: '::after' });   // Runde 111: nur opacity
-    }
-    // ---- Schritte
-    function zeige(s) {
-      var r0 = (s === 'fertig' && dlg.open) ? dlg.getBoundingClientRect() : null, br0 = getComputedStyle(dlg).borderRadius;
-      schritt = s; innen.dataset.schritt = s; leisteZiehen(s);
-      dlg.querySelectorAll('.v47-teil').forEach(function (t) { t.hidden = t.dataset.teil !== s; });
-      var frage = !!FELD[s];
-      knopf('ueberspringen').hidden = !frage; knopf('weiter').hidden = !frage;
-      knopf('weiter').firstChild.textContent = s === 'f3' ? 'Ideen ansehen ' : 'Weiter ';
-      knopf('weiter').disabled = frage ? !wert(FELD[s]) : true;
-      knopf('stoebern').hidden = s !== 'keine'; knopf('konto').hidden = s !== 'keine';
-      if (s !== 'keine') kontoDa = false;
-      r130Ui();   // Runde 130: Zustand „Konto angelegt“ (nur in „keine“)
-      dlg.setAttribute('aria-labelledby', 'ein-titel-' + s);
-      szene(standSzene());
-      hoverK = null; fokusK = null; wolkeZeigen();
-      var ziel = document.getElementById('ein-titel-' + s);
-      try { ziel.focus({ preventScroll: true }); } catch (e) {}
-      if (s === 'fertig') klein(r0, br0);
-      standSchreiben();
-    }
-    function konfetti(x0, y0, breite) {
-      var c = document.createElement('canvas'), dpr = Math.min(2, devicePixelRatio || 1);
-      c.className = 'ein-konfetti'; c.width = innerWidth * dpr; c.height = innerHeight * dpr; c.style.width = innerWidth + 'px'; c.style.height = innerHeight + 'px'; (dlg.open ? dlg : document.body).appendChild(c);   // Runde 105 (s2-23): ohne feste Größe misst die Fläche Pixel statt CSS-Pixel (bei dpr 2 doppelt so groß, Konfetti unten rechts)   // Runde 101: im Dialog, sonst liegt das Konfetti unter dem Top Layer
-      var g = c.getContext('2d'); g.scale(dpr, dpr);
-      var farben = ['#d47a63', '#f2ad8e', '#c0956a', '#e8cba3', '#5f8a77', '#b0c8a8', '#5f8398', '#a8c2d1', '#96677d', '#8a9160', '#2b2420'];
-      var teile = [], N = innerWidth > 700 ? 150 : 90, gr = innerWidth > 700;
-      for (var i = 0; i < N; i++) {
-        var w = (Math.random() - .5) * 1.4;
-        teile.push({ x: x0 + (Math.random() - .5) * breite, y: y0, vx: Math.sin(w) * (300 + Math.random() * 380), vy: -(gr ? 620 + Math.random() * 520 : 520 + Math.random() * 420) * Math.cos(w),
-          r: Math.random() * 6.28, vr: (Math.random() - .5) * 14, b: 6 + Math.random() * 5, h: 3 + Math.random() * 3, f: farben[i % farben.length], kipp: Math.random() * 6.28 });
-      }
-      var start = performance.now(), DAUER = 1350, zuletzt = start;
-      function bild(t) {
-        var dt = Math.min(.034, (t - zuletzt) / 1000), alter = t - start; zuletzt = t;
-        g.clearRect(0, 0, innerWidth, innerHeight);
-        var alpha = alter > DAUER - 380 ? Math.max(0, (DAUER - alter) / 380) : 1;
-        teile.forEach(function (p) {
-          p.vy += 1500 * dt; p.vx *= (1 - 1.4 * dt); p.vy *= (1 - .8 * dt);
-          p.x += p.vx * dt; p.y += p.vy * dt; p.r += p.vr * dt; p.kipp += 9 * dt;
-          g.save(); g.globalAlpha = alpha; g.translate(p.x, p.y); g.rotate(p.r); g.scale(1, Math.abs(Math.cos(p.kipp)) * .8 + .2);
-          g.fillStyle = p.f; g.fillRect(-p.b / 2, -p.h / 2, p.b, p.h); g.restore();
-        });
-        if (alter < DAUER) requestAnimationFrame(bild); else c.remove();
-      }
-      requestAnimationFrame(bild);
-    }
-    function v50Anfang() { var h = document.getElementById('alle-ideen-title') || document.querySelector('main h1, h1'); if (h && !h.hasAttribute('tabindex')) h.setAttribute('tabindex', '-1'); return h || document.querySelector('.v47-pille') || document.body; }
-    function ladenStopp() { ladeNr++; clearTimeout(ladeTimer); }
-    function zu(art, sanft) {
-      if (art === 'uebersprungen' && (schritt === 'laden' || schritt === 'fertig')) art = 'fertig';   // X/Escape während der Ladeansicht zählt als fertig: Speicher steht schon
-      ladenStopp(); standLoeschen();
-      if (!(art === 'uebersprungen' && lies('ki-einstieg') === 'fertig')) merke('ki-einstieg', art);   // wer schon eingerichtet ist und nur „ändern“ schließt, bleibt eingerichtet
-      var ende = function () { if (dlg.open) dlg.close(); dlg.classList.remove('geht'); eingerichtet(); };
-      if (sanft && !ruhig()) { dlg.classList.add('geht'); setTimeout(ende, 320); } else ende();
-    }
-    // Punkt 10: erst schreiben, dann die Ladeansicht (Balken, Zeilen nacheinander), Konfetti, Erfolgsansicht
-    function ideenAnsehen() {
-      if (schritt !== 'f3') return;
-      var ein = wert('ein-niveau'), ki = wert('ein-ki'), abo = wert('ein-abo');
-      standLoeschen(); merke('ki-einstieg', 'fertig'); merke('ki-wahl', ki); merke('ki-erfahrung', ein); merke('ki-abo', abo);   // Dwight 1: erst hier, mit den echten Antworten
-      var zeilen = [];
-      if (ein === 'einsteiger') zeilen.push(T.anfang);
-      zeilen.push(ki === 'andere' ? T.kopier : NAME[ki] + '-Buttons werden hinzugefügt');
-      zeilen.push(abo === 'abo' ? T.abo : T.frei);
-      zeilen.push(T.speicher); zeilen.push(T.fertig);
-      var ok = dlg.querySelector('#r100-ok-t'); ok.textContent = ki === 'andere' ? T.okAndere : T.okKi.replace('{Name}', NAME[ki]);
-      ladenStopp(); r113Leiste();   // Nacharbeit: Leiste jetzt, hinter dem Fenster, nicht erst beim Schließen
-      function r113Leiste() { var d = document.documentElement; d.classList.add('r113-leiste'); eingerichtet(true); void d.offsetWidth; requestAnimationFrame(function () { requestAnimationFrame(function () { d.classList.remove('r113-leiste'); }); }); }   // Seite zwei Bilder lang unsichtbar (wie R111): neu sichtbarer Inhalt zählt nicht als Verschiebung
-      if (ruhig()) { zeige('fertig'); return; }   // keine künstliche Wartezeit, kein Konfetti
-      zeige('laden');
-      var tok = ladeNr, ul = dlg.querySelector('#r100-zeilen'), balken = dlg.querySelector('.r100-balken i'), n = zeilen.length;
-      ul.innerHTML = ''; balken.style.setProperty('--p', '0');
-      var dauer = (T.gesamt - 700) / (n - 1);
-      function zeile(i) {
-        if (tok !== ladeNr) return;
-        var li = document.createElement('li'), letzte = i === n - 1;
-        li.className = letzte ? 'fertig' : 'lauf';
-        li.innerHTML = '<span class="r100-ic" aria-hidden="true"></span><span></span>'; li.lastChild.textContent = zeilen[i] + (letzte ? '' : '…');
-        ul.appendChild(li);
-        balken.style.setProperty('--p', ((letzte ? n : i + .6) / n).toFixed(3));
-        if (letzte) { ladeTimer = setTimeout(fertigAnzeige, 700); return; }
-        ladeTimer = setTimeout(function () {
-          if (tok !== ladeNr) return;
-          li.className = 'fertig'; li.lastChild.textContent = zeilen[i];
-          zeile(i + 1);
-        }, dauer);
-      }
-      function fertigAnzeige() {
-        if (tok !== ladeNr) return;
-        zeige('fertig');
-        var m = dlgZiel || dlg.getBoundingClientRect(); konfetti(m.left + m.width / 2, m.top + m.height * .55, Math.min(innerWidth * .8, 700)); blitz();
-      }
-      zeile(0);
-    }
-
-    // ---- Bedienung
-    dlg.addEventListener('change', function (e) {
-      var n = e.target.name; if (!n) return;
-      knopf('weiter').disabled = false; setTimeout(standSchreiben, 0);
-      if (n === 'ein-niveau') { stufe(STUFE[e.target.value]); zeichen('niveau', e.target.value); }
-      else if (n === 'ein-ki') {
-        var k = e.target.value;
-        wolkeZeigen(); tippText(k); melde(ZEILE[k] + ' gewählt');
-        if (k === 'keine') { zeichen('ki', null); leer(dlg.querySelector('.ein-z[data-art="ki"]')); }
-        else { zeichen('ki', k); dlg.querySelectorAll('[data-ein-ki]').forEach(function (s) { s.textContent = k === 'andere' ? 'deine KI' : NAME[k]; }); }
-      } else if (n === 'ein-abo') { szene(e.target.value); zeichen('abo', e.target.value); }
-    });
-    dlg.querySelectorAll('.v47-opts .v47-opt').forEach(function (o) {
-      var inp = o.querySelector('input');
-      o.addEventListener('pointerenter', function (e) {
-        if (e.pointerType !== 'mouse') return;
-        if (inp.name === 'ein-niveau') stufe(STUFE[inp.value]); else if (inp.name === 'ein-abo') szene(o.dataset.szene);
-        else if (inp.name === 'ein-ki') { hoverK = inp.value; wolkeZeigen(); }
-      });
-      o.addEventListener('pointerleave', function (e) {
-        if (e.pointerType !== 'mouse') return;
-        if (inp.name === 'ein-niveau') stufe(STUFE[wert('ein-niveau')] || 0); else if (inp.name === 'ein-abo') szene(standSzene());
-        else if (inp.name === 'ein-ki') { hoverK = null; wolkeZeigen(); }
-      });
-      if (inp.name === 'ein-ki') {
-        inp.addEventListener('focus', function () { if (inp.matches(':focus-visible')) { fokusK = inp.value; wolkeZeigen(); } });
-        inp.addEventListener('blur', function () { fokusK = null; wolkeZeigen(); });
-      }
-    });
-    dlg.querySelector('.v47-form').addEventListener('submit', function (e) { e.preventDefault(); if (!knopf('weiter').hidden && !knopf('weiter').disabled) knopf('weiter').click(); });
-    dlg.addEventListener('keydown', function (e) { if (e.key === 'Enter' && e.target.matches('.v47-opt input')) { e.preventDefault(); if (!knopf('weiter').disabled) knopf('weiter').click(); } });
-    knopf('weiter').addEventListener('click', function () {
-      if (schritt === 'f1' && wert('ein-niveau')) zeige('f2');
-      else if (schritt === 'f2') { var w = wert('ein-ki'); if (!w) return; if (w === 'keine') { zeige('keine'); return; } merke('ki-wahl', w); if (w === 'andere') { zeige('keine'); return; } zeige('f3'); }
-      else if (schritt === 'f3' && wert('ein-abo')) ideenAnsehen();
-    });
-    dlg.querySelectorAll('[data-v47="zurueck"]').forEach(function (z) { z.addEventListener('click', function () { zeige(schritt === 'f3' || schritt === 'keine' ? 'f2' : 'f1'); }); });
-    knopf('ueberspringen').addEventListener('click', function () { zu('uebersprungen'); });
-    knopf('x').addEventListener('click', function () { zu('uebersprungen'); });
-    knopf('stoebern').addEventListener('click', function () { zu('fertig'); });
-    // Runde 130 (s2-35): Klick auf „ChatGPT-Konto anlegen“: der Link öffnet den neuen Tab wie bisher (kein preventDefault, Fenster bleibt), danach wechselt der Bereich
-    knopf('konto').addEventListener('click', function () { r174Ki = 'chatgpt'; setTimeout(r130Konto, 0); });
-    // Runde 174: „claude.ai“ bzw. „Claude-App“ öffnet den neuen Tab wie bisher (kein preventDefault), danach dieselbe Fortsetzung mit „Weiter mit Claude“
-    (function () { var c = dlg.querySelector('#r150-claude'); if (c) c.addEventListener('click', function () { r174Ki = 'claude'; setTimeout(r130Konto, 0); }); })();
-    knopf('r130-weiter').addEventListener('click', function () {   // wie die Wahl „ChatGPT“ und „Weiter“ in Frage 2
-      var r = dlg.querySelector('input[name="ein-ki"][value="' + r174Ki + '"]'); if (!r) return;   // Runde 174: ChatGPT oder Claude
-      r.checked = true; r.dispatchEvent(new Event('change', { bubbles: true }));
-      merke('ki-wahl', r174Ki); zeige('f3');
-    });
-    // Runde 113 (s2-32): „Konto anlegen“ schließt das Fenster nicht mehr (vorher zu('fertig') beim Klick: Fenster weg, ki-einstieg=fertig ohne Antworten)
-    knopf('schliessen').addEventListener('click', function () { zu('fertig', true); });
-    dlg.addEventListener('close', function () {
-      ladenStopp(); standLoeschen();
-      document.documentElement.classList.remove('v47-ein-offen');
-      var r201 = vorher && !vorher.isConnected && vorher.classList && vorher.classList.contains('r72-leiste-aendern') ? document.querySelector('#r72-leiste .r72-leiste-aendern') : null;   // R201: „ändern“ wurde beim Schließen neu gebaut, Fokus auf den Nachfolger (Pam, WCAG 2.4.3)
-      mbKasten();   // R229-Nachtrag: Kasten in Mein Bereich zeigt die neuen Antworten; ist „ändern“ neu gebaut, geht der Fokus auf den Nachfolger (WCAG 2.4.3)
-      if (!r201 && vorher && !vorher.isConnected && vorher.hasAttribute && vorher.hasAttribute('data-mb-einstieg')) r201 = document.querySelector('#mb-einstieg-kasten [data-mb-einstieg]');
-      try { (r201 || (vorher && vorher.isConnected && vorher !== document.body ? vorher : v50Anfang())).focus({ preventScroll: true }); } catch (e) {}
-    });
-    function auf() {
-      ladenStopp(); dlg.querySelector('#r100-zeilen').innerHTML = ''; dlg.querySelector('.r100-balken i').style.setProperty('--p', '0');
-      dlg.querySelectorAll('input[type="radio"]').forEach(function (r) { r.checked = false; });
-      dlg.querySelectorAll('.ein-z').forEach(leer); stufe(0); tippText(null); hoverK = null; fokusK = null; wolkeZeigen();
-      dlg.querySelectorAll('[data-ein-ki]').forEach(function (s) { s.textContent = 'ChatGPT'; });
-      vorher = document.activeElement;
-      document.documentElement.classList.add('v47-ein-offen');
-      window.v47Fenster(dlg, function () { zu('uebersprungen'); }, function () { zu('uebersprungen'); });
-      zeige('f1');
-    }
-    // besuch: die Hülle hat gemeldet, dass „Alle Ideen“ jetzt gezeigt wird (Adresse, Pille, Fußzeile, „Jetzt loslegen“). Erster Besuch = kein ki-einstieg.
-    function pruefe(besuch) {
-      var los = null; try { los = window.KI && KI.lies('ki-entdecken-los', null); } catch (e) {}
-      if (los) { try { KI.schreib('ki-entdecken-los', null); } catch (e) {} }
-      if (lies('ki-einstieg') || dlg.open) return;
-      var s = standLesen(), gezeigt = !(window.frameElement && window.frameElement.hidden);   // Zurück-Navigation lädt den Rahmen neu (Link im selben Tab): ist „ideen“ gerade gezeigt, öffnet der Merker das Fenster gleich
-      if (s && (besuch || los || gezeigt)) { standWiederher(s); return; }
-      if (los || besuch) auf();
-    }
-
-    // ---- Alle Ideen: Leiste „Für dich eingerichtet“ (nur nach „Ideen ansehen“)
-    function eingerichtet(vor) {
-      if (!vor && dlg.open && (schritt === 'laden' || schritt === 'fertig')) return;   // Runde 100: die Leiste erscheint erst nach dem Schließen
-      var alt = document.getElementById('r72-leiste'); if (alt) alt.remove();
-      var ein = lies('ki-erfahrung'), abo = lies('ki-abo'), ki = lies('ki-wahl');
-      if (lies('ki-einstieg') !== 'fertig' || !NIVEAU[ein] || !abo || !NAME[ki]) return;
-      var lead = document.querySelector('.v22i-lead'); if (!lead) return;
-      var l = document.createElement('div'); l.id = 'r72-leiste'; l.className = 'r72-leiste'; l.setAttribute('role', 'group'); l.setAttribute('aria-label', 'Für dich eingerichtet');
-      l.innerHTML = '<span class="r72-l-t">Für dich eingerichtet:</span>' +
-        '<span class="r72-l-i"><svg class="r72-stufe" aria-hidden="true"><use href="#r72-stufe-' + NIVEAU[ein][1] + '"/></svg><span>' + NIVEAU[ein][0] + '</span></span>' +
-        '<span class="r72-l-i"><span class="r72-l-m"><svg aria-hidden="true"><use href="#r72-l-' + ki + '"/></svg></span><span>' + NAME[ki] + '</span></span>' +
-        '<span class="tag ' + (abo === 'abo' ? 'tag--abo' : 'tag--frei') + '">' + (abo === 'abo' ? 'Abo' : 'Free') + '</span>' +
-        '<button type="button" class="r72-leiste-aendern">ändern</button>';
-      lead.insertAdjacentElement('afterend', l);
-      l.querySelector('button').addEventListener('click', function () { auf(); });
-    }
-    // R229-Nachtrag (Yannis, 04.11.2026): Kasten ganz unten in Mein Bereich. Gleiche Texte und Klassen wie die frühere Leiste; Klick über [data-mb-einstieg] (Delegation im Mein-Bereich-Skript)
-    function mbKasten() {
-      var ort = document.getElementById('mb-einstieg-ort'); if (!ort) return;
-      var h = '';
-      if (lies('ki-einstieg')) {
-        var ein = lies('ki-erfahrung'), abo = lies('ki-abo'), ki = lies('ki-wahl');
-        if (NIVEAU[ein] && abo && NAME[ki]) {
-          h = '<div id="mb-einstieg-kasten" class="r72-leiste" role="group" aria-label="Für dich eingerichtet"><span class="r72-l-t">Für dich eingerichtet:</span>' +
-            '<span class="r72-l-i"><svg class="r72-stufe" aria-hidden="true"><use href="#r72-stufe-' + NIVEAU[ein][1] + '"/></svg><span>' + NIVEAU[ein][0] + '</span></span>' +
-            '<span class="r72-l-i"><span class="r72-l-m"><svg aria-hidden="true"><use href="#r72-l-' + ki + '"/></svg></span><span>' + NAME[ki] + '</span></span>' +
-            '<span class="tag ' + (abo === 'abo' ? 'tag--abo' : 'tag--frei') + '">' + (abo === 'abo' ? 'Abo' : 'Free') + '</span>' +
-            '<button type="button" class="r72-leiste-aendern" data-mb-einstieg>ändern</button></div>';
-        } else h = '<div id="mb-einstieg-kasten"><button class="clay-btn" type="button" data-mb-einstieg>Fragen beantworten</button></div>';
-      }
-      if (ort.getAttribute('data-gezeichnet') === h) return;   // unverändert: nicht neu bauen (der Fokus bleibt)
-      ort.setAttribute('data-gezeichnet', h); ort.innerHTML = h;
-    }
-    window.mbEinstiegKasten = mbKasten;
-    window.v47Oeffnen = auf;
-    mbKasten();
-    window.v57Zeige = zeige;
-    karten();
-    // Zurück-Navigation mit Back-Forward-Cache: ist die Seite „ideen“ gezeigt und das Fenster zu, aber noch nicht abgeschlossen, öffnet der Merker es wieder
-  })();
-</script>
 <div class="live-fuss"><a href="/impressum">Impressum</a><span class="live-fuss-sep" aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a><span class="live-fuss-sep" aria-hidden="true"> · </span><span class="live-fuss-t">Beta</span></div><script src="/messung.js" data-endpunkt="https://script.google.com/macros/s/AKfycbxJ_s2hUjUxQiWQQ0QoXxSoxR5SfS0MiUvpHb7PcEJzYVgLpcVq1a9i5iUWonSEirfWSg/exec" defer></script><script defer src="https://cloud.umami.is/script.js" data-website-id="2184b771-dd7d-456c-9609-fcbdf649543e" data-domains="die-ki-macherei.de" data-exclude-hash="true" data-before-send="__messungVorSenden" data-performance="true" data-errors="true"></script><script src="/messpunkte.js" defer></script>
-<script id="r109-umhaengen">
-(function () {
-  // s2-28 (Nachbesserung: auf allen Größen): Zeile „Zurück · Frage x von 3“ steht direkt vor der Frage; idempotent
-  function umhaengen() {
-    var d = document.getElementById('v47-ein'); if (!d) return;
-    d.querySelectorAll('[data-teil="f1"], [data-teil="f2"], [data-teil="f3"]').forEach(function (t) {
-      var f = t.querySelector('.v47-fort'), q = t.querySelector('.v47-frage'), z = t.querySelector('.v57-zurueck'), row = t.querySelector('.v2-zeile');
-      if (!f || !q) return;
-      if (!row) { row = document.createElement('div'); row.className = 'v2-zeile'; if (z) row.append(z); row.append(f); }
-      if (row.nextSibling !== q || row.parentNode !== t) q.before(row);
-    });
-  }
-  var d0 = document.getElementById('v47-ein');
-  if (d0) new MutationObserver(umhaengen).observe(d0, { attributes: true, attributeFilter: ['open', 'data-schritt', 'hidden', 'class'], subtree: true, childList: true });
-  umhaengen();
-})();
-</script>
 <dialog class="v25r7" id="v25r7" data-v25r7 aria-labelledby="v25r7-t1">
   <div class="v25r7__innen" data-ansicht="anlegen">
     <button class="v25r7__zu" type="button" data-v25r7-zu aria-label="Schließen">×</button>
