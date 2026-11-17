@@ -118,5 +118,10 @@
   "kennung": "P06",
   "seite": "gebrauchtwagen-pruefen",
   "adresse": "/gebrauchtwagen-pruefen"
+ },
+ {
+  "kennung": "Z06",
+  "seite": "pflegegrad-vorbereiten",
+  "adresse": "/pflegegrad-vorbereiten"
  }
 ]
