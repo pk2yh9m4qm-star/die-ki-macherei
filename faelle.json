@@ -138,5 +138,10 @@
   "kennung": "Z18",
   "seite": "rente-eltern-aufstocken",
   "adresse": "/rente-eltern-aufstocken"
+ },
+ {
+  "kennung": "Z08",
+  "seite": "mieterhoehung-pruefen",
+  "adresse": "/mieterhoehung-pruefen"
  }
 ]
