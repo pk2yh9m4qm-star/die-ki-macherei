@@ -113,5 +113,10 @@
   "kennung": "Z17",
   "seite": "arbeitszeugnis-verstehen",
   "adresse": "/arbeitszeugnis-verstehen"
+ },
+ {
+  "kennung": "P06",
+  "seite": "gebrauchtwagen-pruefen",
+  "adresse": "/gebrauchtwagen-pruefen"
  }
 ]
