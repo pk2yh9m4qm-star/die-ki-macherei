@@ -98,5 +98,10 @@
   "kennung": "I13",
   "seite": "flugentschaedigung-pruefen",
   "adresse": "/flugentschaedigung-pruefen"
+ },
+ {
+  "kennung": "Z01",
+  "seite": "nebenkosten-pruefen",
+  "adresse": "/nebenkosten-pruefen"
  }
 ]
