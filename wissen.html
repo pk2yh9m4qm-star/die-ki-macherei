@@ -2696,6 +2696,21 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
   var ORDNUNG = ['loslegen', 'sicher', 'verstehen', 'faq'], EXTRA = ['haltung'], EXTERN = { karte: '/mein-bereich#artikel-karte' };
   var ZUERST = { loslegen: ['idee-starten', 'warum-anleitung', 'erster-chat', 'chatgpt-konto', 'anbieter', 'kostenlos', 'wie-reden', 'sprechen', 'karte'] };
   var A = D.ARTIKEL, G = D.GRUPPEN, LISTE = {};
+  /* wissen-eigene-seiten */ // 17.11.2026: Jeder Artikel hat eine eigene Adresse, die Häufigen Fragen eine gemeinsame. Alte Adressen (/wissen#…) führen dorthin.
+  var ADRESSE = {"idee-starten": "/idee-nutzen", "warum-anleitung": "/warum-nicht-selbst-fragen", "erster-chat": "/ki-chat-benutzen", "chatgpt-konto": "/chatgpt-konto-anlegen", "anbieter": "/welche-ki", "kostenlos": "/kostenlos-oder-abo", "wie-reden": "/mit-ki-reden", "sprechen": "/mit-ki-sprechen", "daten": "/was-passiert-mit-meinen-daten", "ampel": "/was-darf-ich-der-ki-erzaehlen", "falsch": "/ki-antworten-trauen", "meldungen": "/kann-ich-etwas-falsch-machen", "staerken": "/was-kann-ki", "grenzen": "/was-kann-ki-nicht", "auftrag": "/warum-fragt-die-ki-so-viel", "mehr": "/mehr-als-chatten", "mensch": "/ki-loesung-fuer-alles", "haltung": "/wer-steckt-dahinter"}, FAQ = '/haeufige-fragen', PFAD = {};
+  Object.keys(ADRESSE).forEach(function (k) { PFAD[ADRESSE[k]] = k; });
+  function tziel(g) { return g === 'faq' ? FAQ : '/wissen#thema-' + g; }
+  function ort() {   // was gerade aufgeschlagen ist: Artikel-Schlüssel, 'thema-…' oder '' (Übersicht)
+    var p = location.pathname.replace(/\.html$/, ''), h = decodeURIComponent(location.hash.slice(1));
+    if (PFAD[p]) return PFAD[p];
+    if (p === FAQ) return 'thema-faq';
+    var neu = ADRESSE[h] || (h === 'thema-faq' || h === 'faq' || (A[h] && A[h].g === 'faq') ? FAQ : '');
+    if (!neu) return h;
+    try { history.replaceState(null, '', neu + location.search); } catch (x) {}
+    return ADRESSE[h] ? h : 'thema-faq';
+  }
+  window.wiOrt = ort;
+  window.wiSchluessel = function (href) { var p = String(href).split('?')[0]; return PFAD[p] || decodeURIComponent(p.replace(/^(\/wissen)?#/, '')); };
   ORDNUNG.concat(EXTRA).forEach(function (g) {
     var l = (ZUERST[g] || []).filter(function (k) { return A[k] && A[k].g === g; });
     Object.keys(A).forEach(function (k) { if (A[k].g === g && l.indexOf(k) < 0) l.push(k); });
@@ -2705,7 +2720,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
   function anz(n) { return n + (n === 1 ? ' Antwort' : ' Antworten'); }
   function erster(s) { var m = String(s).match(/^.*?[.!?](?=\s|$)/); return m ? m[0] : s; }
   function kurz(k) { var a = A[k]; return a.kurz || (a.g === 'faq' ? a.lead || '' : erster(a.lead || '')); }
-  function ziel(k) { return EXTERN[k] || '#' + k; }
+  function ziel(k) { return EXTERN[k] || ADRESSE[k] || (A[k] && A[k].g === 'faq' ? FAQ : '/wissen#' + k); }
   function pfeil(k) { return EXTERN[k] ? ic('extern', 'wi-pfeil r243-ext') + '<span class="sr-only"> (in Mein Bereich)</span>' : ic('pfeil', 'wi-pfeil'); }
   function farbe(g) { return ' style="--c:' + FARBE[g] + '"'; }
 
@@ -2722,12 +2737,12 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       '<div class="wi-suche" role="search">' + ic('suche') + '<label class="sr-only" for="wi-q">Im Wissen suchen</label>' +
       '<input id="wi-q" type="search" placeholder="Wonach suchst du? Zum Beispiel „Daten“" autocomplete="off" enterkeyhint="search" aria-describedby="wi-q-status"></div>' +
       '<p class="sr-only" id="wi-q-status" role="status" aria-live="polite"></p></div>' +
-      '<a class="wi-start wi-flaeche" href="#warum-anleitung"><span class="wi-start__k">Für den Anfang</span><span class="wi-start__t">' + nw(A['warum-anleitung'].q) + '</span>' +
+      '<a class="wi-start wi-flaeche" href="' + ziel('warum-anleitung') + '"><span class="wi-start__k">Für den Anfang</span><span class="wi-start__t">' + nw(A['warum-anleitung'].q) + '</span>' +
       '<span class="wi-start__u">Was die Anleitung anders macht.</span>' + ic('pfeil', 'wi-pfeil') + '</a></div>' +
       '<div class="wi-treffer" id="wi-treffer" hidden></div>' +
       '<div class="wi-themenbox" id="wi-themenbox"><h2 class="wi-h2">Themen</h2><ul class="wi-themen wi-anim">';
     ORDNUNG.forEach(function (g, i) {
-      h += '<li style="--i:' + i + '"><a class="wi-thema wi-flaeche" href="#thema-' + g + '"><span class="wi-ic"' + farbe(g) + '>' + ic(G[g].icon) + '</span>' +
+      h += '<li style="--i:' + i + '"><a class="wi-thema wi-flaeche" href="' + tziel(g) + '"><span class="wi-ic"' + farbe(g) + '>' + ic(G[g].icon) + '</span>' +
         '<span class="wi-thema__txt"><span class="wi-thema__t">' + esc(G[g].t) + '</span><span class="wi-thema__d">' + esc(G[g].d) + '</span>' +
         '<span class="wi-n">' + anz(LISTE[g].length) + '</span></span>' + ic('pfeil', 'wi-pfeil') + '</a></li>';
     });
@@ -2735,19 +2750,19 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       '<p class="wi-fehlt__d">Schreib sie uns. Die Liste wächst mit euren Fragen.</p>' +
       '<button type="button" class="wi-fehlt__k" data-r187-oeffnen="wunsch" aria-haspopup="dialog">Frage stellen' + ic('pfeil') + '</button></li></ul>' +
       '<p class="wi-hinweis">Deine Frage fehlt? <button type="button" class="wi-knopf-link" data-r187-oeffnen="wunsch" aria-haspopup="dialog">Schreib sie uns</button>, die Liste wächst mit euren Fragen.</p>' +
-      (A.haltung && G.haltung ? '<p class="r243-haltung"><a href="#haltung">' + esc(G.haltung.t) + ': ' + esc(A.haltung.q) + '</a></p>' : '') +
+      (A.haltung && G.haltung ? '<p class="r243-haltung"><a href="' + ziel('haltung') + '">' + esc(G.haltung.t) + ': ' + esc(A.haltung.q) + '</a></p>' : '') +
       '</div></section>';
     return h;
   }
   function seitenleiste(aktiv) {
     var h = '<nav class="wi-seite" aria-label="Themen"><p class="wi-seite__k" aria-hidden="true">Themen</p><ul>';
     ORDNUNG.forEach(function (g) {
-      h += '<li><a href="#thema-' + g + '"' + (g === aktiv ? ' aria-current="page"' : '') + '><span class="wi-punkt"' + farbe(g) + ' aria-hidden="true"></span>' + esc(G[g].t) + '</a></li>';
+      h += '<li><a href="' + tziel(g) + '"' + (g === aktiv ? ' aria-current="page"' : '') + '><span class="wi-punkt"' + farbe(g) + ' aria-hidden="true"></span>' + esc(G[g].t) + '</a></li>';
     });
     return h + '</ul></nav>';
   }
   function thema(g) {
-    var h = '<section class="wi-view wi-thema-ansicht"><a class="wi-zurueck" href="#">' + ic('zurueck') + 'Wissen</a><div class="wi-spalten">' + seitenleiste(g) +
+    var h = '<section class="wi-view wi-thema-ansicht"><a class="wi-zurueck" href="/wissen">' + ic('zurueck') + 'Wissen</a><div class="wi-spalten">' + seitenleiste(g) +
       '<div class="wi-thema-haupt"><div class="wi-tkopf"><span class="wi-ic"' + farbe(g) + ' aria-hidden="true">' + ic(G[g].icon) + '</span><div><h1 tabindex="-1">' + esc(G[g].t) + '</h1>' +
       '<p class="wi-n">' + anz(LISTE[g].length) + '</p></div></div><p class="wi-beschr">' + esc(G[g].d) + '</p>';
     if (g === 'faq') return h + fragen() + '</div></div></section>';
@@ -2768,7 +2783,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
   function koerper(k) {
     var a = A[k];
     if (a.body) {
-      return '<div class="wi-prose">' + a.body.replace(/href="(?:\/mein-bereich|mein-bereich\.html)#artikel-([\w-]+)"/g, function (m, z) { return A[z] && !EXTERN[z] ? 'href="#' + z + '"' : m; })
+      return '<div class="wi-prose">' + a.body.replace(/href="(?:\/mein-bereich|mein-bereich\.html)#artikel-([\w-]+)"/g, function (m, z) { return A[z] && !EXTERN[z] ? 'href="' + ziel(z) + '"' : m; })
         .replace(/<h4(\s|>)/g, '<h2 class="wi-zw"$1').replace(/<\/h4>/g, '</h2>') + '</div>';
     }
     if (a.erklaeren) {
@@ -2778,9 +2793,9 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
   }
   function artikel(k) {
     var a = A[k], g = a.g, l = LISTE[g], n = l.indexOf(k), t = ORDNUNG.indexOf(g), h, w;
-    h = '<section class="wi-view wi-artikel-ansicht"><a class="wi-zurueck" href="' + (t < 0 ? '#' : '#thema-' + g) + '">' + ic('zurueck') + esc(t < 0 ? 'Wissen' : G[g].t) + '</a>' +
-      '<nav class="wi-krumen" aria-label="Brotkrumen"><a href="#">Wissen</a><span aria-hidden="true">/</span>' +
-      (t < 0 ? '<span aria-current="page">' + esc(G[g].t) + '</span>' : '<a href="#thema-' + g + '">' + esc(G[g].t) + '</a>') + '</nav>' +
+    h = '<section class="wi-view wi-artikel-ansicht"><a class="wi-zurueck" href="' + (t < 0 ? '/wissen' : tziel(g)) + '">' + ic('zurueck') + esc(t < 0 ? 'Wissen' : G[g].t) + '</a>' +
+      '<nav class="wi-krumen" aria-label="Brotkrumen"><a href="/wissen">Wissen</a><span aria-hidden="true">/</span>' +
+      (t < 0 ? '<span aria-current="page">' + esc(G[g].t) + '</span>' : '<a href="' + tziel(g) + '">' + esc(G[g].t) + '</a>') + '</nav>' +
       '<div class="wi-spalten wi-spalten--artikel">';
     if (t < 0) h += seitenleiste('');
     else {
@@ -2800,13 +2815,13 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
       var lesbar = l.filter(function (x) { return !EXTERN[x]; }), p = lesbar.indexOf(k);
       if (p >= 0 && p < lesbar.length - 1) {
         w = lesbar[p + 1];
-        h += '<p class="wi-weiter-k">Weiterlesen</p><a class="wi-weiter wi-flaeche" href="#' + w + '"><span>' + esc(A[w].q) + '</span>' + ic('pfeil', 'wi-pfeil') + '</a>';
+        h += '<p class="wi-weiter-k">Weiterlesen</p><a class="wi-weiter wi-flaeche" href="' + ziel(w) + '"><span>' + esc(A[w].q) + '</span>' + ic('pfeil', 'wi-pfeil') + '</a>';
       } else {
         w = ORDNUNG[(t + 1) % ORDNUNG.length];
-        h += '<p class="wi-weiter-k">Nächstes Thema</p><a class="wi-weiter wi-flaeche" href="#thema-' + w + '"><span>' + esc(G[w].t) + '</span>' + ic('pfeil', 'wi-pfeil') + '</a>';
+        h += '<p class="wi-weiter-k">Nächstes Thema</p><a class="wi-weiter wi-flaeche" href="' + tziel(w) + '"><span>' + esc(G[w].t) + '</span>' + ic('pfeil', 'wi-pfeil') + '</a>';
       }
     }
-    return h + '<a class="wi-alle" href="#">Alle Themen im Wissen</a></article></div></section>';
+    return h + '<a class="wi-alle" href="/wissen">Alle Themen im Wissen</a></article></div></section>';
   }
   function aufbereiten() {
     Array.prototype.forEach.call(app.querySelectorAll('.wi-prose ol.steps > li > b:first-child'), function (b) { b.textContent = b.textContent.replace(/\.\s*$/, ''); });
@@ -2844,12 +2859,12 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
     st.textContent = t.length === 1 ? '1 Treffer' : t.length + ' Treffer';
   }
 
-  var erstes = true;
+  var erstes = true, gezeigt = '';
   function zeigen() {
-    var z = decodeURIComponent(location.hash.slice(1)), titel = 'Wissen · KI-Macherei', g;
+    var z = ort(), titel = 'Wissen · KI-Macherei', g;
     if (EXTERN[z]) { location.replace(EXTERN[z]); return; }
-    if (z.indexOf('thema-') === 0 && ORDNUNG.indexOf(g = z.slice(6)) >= 0 && G[g]) { app.innerHTML = thema(g); titel = G[g].t + ' · Wissen · KI-Macherei'; }
-    else if (A[z]) { app.innerHTML = artikel(z); aufbereiten(); titel = A[z].q + ' · Wissen · KI-Macherei'; }
+    if (z.indexOf('thema-') === 0 && ORDNUNG.indexOf(g = z.slice(6)) >= 0 && G[g]) { app.innerHTML = thema(g); titel = g === 'faq' ? 'Häufige Fragen zu KI · Die KI-Macherei' : G[g].t + ' · Wissen · KI-Macherei'; }
+    else if (A[z]) { app.innerHTML = artikel(z); aufbereiten(); titel = A[z].q + ' · Die KI-Macherei'; }
     else {
       app.innerHTML = uebersicht();
       var f = document.getElementById('wi-q');
@@ -2860,12 +2875,16 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
     window.scrollTo(0, 0);
     if (!erstes) { var h1 = app.querySelector('h1'); if (h1) h1.focus({ preventScroll: true }); }
     erstes = false;
+    gezeigt = location.href;
   }
-  app.addEventListener('click', function (e) {
-    var l = e.target.closest && e.target.closest('a[href="#"]');
-    if (!l) return;
+  app.addEventListener('click', function (e) {   // Links ins Wissen: Adresse wechseln, ohne die Seite neu zu laden
+    var l = e.target.closest && e.target.closest('a[href]'), u, p;
+    if (!l || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || l.target === '_blank') return;
+    try { u = new URL(l.href); } catch (x) { return; }
+    p = u.pathname.replace(/\.html$/, '');
+    if (u.origin !== location.origin || !(p === '/wissen' || p === FAQ || PFAD[p])) return;
     e.preventDefault();
-    if (location.hash) { try { history.pushState(null, '', location.pathname + location.search); } catch (x) { location.hash = ''; } }
+    if (u.href !== location.href) { try { history.pushState(null, '', u.pathname + u.search + u.hash); } catch (x) { location.href = u.href; return; } }
     zeigen();
   });
   app.addEventListener('click', function (e) {
@@ -2883,8 +2902,9 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
     an.onfinish = function () { if (zu && d._anim === an) d.open = false; ende(); };
     an.oncancel = ende;
   });
-  window.addEventListener('hashchange', zeigen);
-  window.addEventListener('popstate', function () { if (!location.hash) zeigen(); });
+  function wechsel() { if (location.href !== gezeigt) zeigen(); }
+  window.addEventListener('hashchange', wechsel);
+  window.addEventListener('popstate', wechsel);
   zeigen();
 })();
 </script>
@@ -3879,7 +3899,7 @@ html .site-nav .nav-mein .nav-mein__ich { width: 18px; height: 18px; }
     b.title = an ? 'Gemerkt' : 'Merken';
   }
   function schmuecken() {
-    var label = app.querySelector('.wi-artikel > .wi-label'), id = decodeURIComponent(location.hash.slice(1));
+    var label = app.querySelector('.wi-artikel > .wi-label'), id = window.wiOrt ? window.wiOrt() : '';
     if (label && A[id] && !label.parentNode.classList.contains('k-meta')) {
       var zeile = document.createElement('div'); zeile.className = 'k-meta';
       label.parentNode.insertBefore(zeile, label); zeile.appendChild(label);
@@ -3889,7 +3909,7 @@ html .site-nav .nav-mein .nav-mein__ich { width: 18px; height: 18px; }
     app.querySelectorAll('[data-merk]').forEach(knopf);
     var ids = {}; aktuell().forEach(function (x) { ids[x.id] = 1; });
     app.querySelectorAll('a.wi-karte, .wi-seite a').forEach(function (a) {
-      var k = decodeURIComponent((a.getAttribute('href') || '').replace(/^#/, '')), z = a.querySelector('.k-zeichen');
+      var k = window.wiSchluessel ? window.wiSchluessel(a.getAttribute('href') || '') : '', z = a.querySelector('.k-zeichen');
       if (ids[k] && !z) { a.insertAdjacentHTML('beforeend', zeichen('k-zeichen')); a.insertAdjacentHTML('beforeend', '<span class="sr-only"> (gemerkt)</span>'); }
       else if (!ids[k] && z) { z.remove(); var s = a.querySelector('.sr-only:last-child'); if (s && s.textContent === ' (gemerkt)') s.remove(); }
     });
