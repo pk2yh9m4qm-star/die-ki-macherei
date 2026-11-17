@@ -123,5 +123,10 @@
   "kennung": "Z06",
   "seite": "pflegegrad-vorbereiten",
   "adresse": "/pflegegrad-vorbereiten"
+ },
+ {
+  "kennung": "Z21",
+  "seite": "vertrag-pruefen",
+  "adresse": "/vertrag-pruefen"
  }
 ]
