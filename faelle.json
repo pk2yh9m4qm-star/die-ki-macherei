@@ -103,5 +103,10 @@
   "kennung": "Z01",
   "seite": "nebenkosten-pruefen",
   "adresse": "/nebenkosten-pruefen"
+ },
+ {
+  "kennung": "Z04",
+  "seite": "jobcenter-bescheid-pruefen",
+  "adresse": "/jobcenter-bescheid-pruefen"
  }
 ]
