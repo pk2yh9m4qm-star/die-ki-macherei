@@ -48,6 +48,9 @@
  *    KI-Assistenten (ChatGPT hängt utm_source=chatgpt.com an) zählt als Herkunft „ki-assistent“ statt roh als
  *    „chatgpt-com“. Bei KI-Herkunft (UTM oder Referrer) ist die Link-Kennung der Assistent (chatgpt, perplexity,
  *    claude, gemini, copilot …), in Umami „KI: ChatGPT“ usw.; KI-Apps (android-app://…) und weitere KI-Hosts erkannt.
+ * 12. Bot-Filter nachgeschärft (18.11.2026), eingebaut durch Designvorschauen/version25_bot_filter.py: „Mensch“ nur bei echter
+ *    Eingabe (isTrusted), nicht mehr bei bloßem Scrollen, und nur mit Bezug nach Europa (Sprache Deutsch oder
+ *    Zeitzone Europa). Automatische Browser an ihrer Kennung erkannt (wie webdriver: keine Zählung).
  */
 (function (fenster) {
   'use strict';
@@ -133,7 +136,14 @@
   var test = ort.protocol === 'file:' || /^(localhost|127\.0\.0\.1|\[::1\]|.*\.localhost)$/.test(ort.hostname || '') ||
     /[?&]messung=test\b/.test(ort.search || '');
   var abgeschaltet = ausschalter();
-  var roboter = nav.webdriver === true;
+  var roboter = nav.webdriver === true ||
+    /headless|phantomjs|lighthouse|puppeteer|playwright|crawler|spider|\bbot\b|bot\//i.test(nav.userAgent || '');
+  /** Bezug nach Europa (18.11.2026): Browser-Sprache Deutsch oder Zeitzone Europa. Sonst kein „Mensch“. */
+  var europa = (function () {
+    var sprachen = [].concat(nav.languages || [], nav.language || []);
+    for (var i = 0; i < sprachen.length; i++) if (/^de\b/i.test(String(sprachen[i]))) return true;
+    try { return /^Europe\//.test(Intl.DateTimeFormat().resolvedOptions().timeZone || ''); } catch (f) { return false; }
+  })();
   if (test) fenster.__messungTest = fenster.__messungTest || [];
   var aus = abgeschaltet || roboter;
 
@@ -540,11 +550,11 @@
 
   var menschGemeldet = false;
   var BEDIENUNG = ['pointerdown', 'keydown', 'touchstart', 'wheel'];
-  function alsMensch() {
-    if (menschGemeldet || aus) return;
+  function alsMensch(ereignis) {
+    if (menschGemeldet || aus || !europa) return;
+    if (ereignis && ereignis.isTrusted === false) return;   // von einem Skript ausgelöst, nicht von einem Menschen
     menschGemeldet = true;
     BEDIENUNG.forEach(function (t) { fenster.removeEventListener(t, alsMensch, true); });
-    fenster.removeEventListener('scroll', beiErstemScroll, true);
     menschDaten = { mensch: 'ja', herkunft: erstkontakt.herkunft, zweig: erstkontakt.zweig, generation: Number(erstkontakt.generation) || 1 };
     if (test) fenster.__messungTest.push({ art: 'merkmal', daten: menschDaten });
     identSchlange.push(menschDaten);
@@ -553,7 +563,6 @@
       senden('erstkontakt', { herkunft: erstkontakt.herkunft, zweig: erstkontakt.zweig, generation: menschDaten.generation });
     } else ausliefern();
   }
-  function beiErstemScroll() { if ((fenster.scrollY || 0) > 40) alsMensch(); }
 
   // ---------- Klicks auf [data-messung] wie bisher ----------
 
@@ -791,7 +800,6 @@
   doc.addEventListener('click', beiKurs, true);
   fenster.addEventListener('scroll', beiScroll, { passive: true });
   BEDIENUNG.forEach(function (t) { fenster.addEventListener(t, alsMensch, { capture: true, passive: true }); });
-  fenster.addEventListener('scroll', beiErstemScroll, { capture: true, passive: true });
   fenster.addEventListener('pointerup', beiStartKnopf, true);
   fenster.addEventListener('keydown', beiStartKnopf, true);
   ['playing', 'timeupdate', 'seeking', 'seeked', 'ended'].forEach(function (t) { doc.addEventListener(t, beiFilm, true); });
