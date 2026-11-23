@@ -966,7 +966,7 @@
       if (!an || !dlg) return;
       e.preventDefault(); e.stopPropagation();
       mv('anmeldung_geoeffnet', { ort: an === mein ? 'kopf' : 'knopf' });
-      oeffnen('anmelden');
+      oeffnen('anlegen');
     }, true);
   }
   /* R228: Ideen, die abgemeldet angetippt wurden (Warteliste ki-herzen-wartend), nach der Anmeldung wie jedes andere Herz speichern:
@@ -1169,7 +1169,7 @@
       if (!t || !dlg) return;
       e.preventDefault();
       mv('anmeldung_geoeffnet', { ort: 'mein-bereich' });
-      oeffnen('anmelden');
+      oeffnen('anlegen');
     });
     ksKlicks();
     window.addEventListener('storage', function (e) {
