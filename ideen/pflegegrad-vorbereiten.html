@@ -1385,4 +1385,4 @@ html .herz-toast,html .ra-weitere .herz-toast{transition: opacity .25s ease, tra
       else e.target.scrollIntoView({ block: "nearest", behavior: "smooth" });
     }, true);
   })();
-</script> <script type="module">document.querySelector("[data-zurueck]")?.addEventListener("click",e=>{document.referrer&&new URL(document.referrer).pathname.replace(/\.html$/,"")==="/ideen"&&(e.preventDefault(),history.back())});</script>
+</script> <script type="module">try{const e=location.pathname.replace(/\.html$/,""),t=JSON.parse(localStorage.getItem("angesehen")??"[]"),r=(Array.isArray(t)?t:[]).filter(a=>a!==e);r.push(e),localStorage.setItem("angesehen",JSON.stringify(r.slice(-60)))}catch{}document.querySelector("[data-zurueck]")?.addEventListener("click",e=>{document.referrer&&new URL(document.referrer).pathname.replace(/\.html$/,"")==="/ideen"&&(e.preventDefault(),history.back())});</script>
