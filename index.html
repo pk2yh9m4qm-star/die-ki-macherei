@@ -5404,7 +5404,7 @@ SOFTWARE. --><symbol id="ls-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15
       // Der Flug: waagerecht gleichmäßig, senkrecht erst ein Stück hoch, dann hinunter in die Ablage. So entsteht ein Bogen.
       function fliegen(von, fertig) {
         if (ruhig.matches || !Element.prototype.animate) { fertig(); return; }
-        const a = von.getBoundingClientRect();
+        const a = (von.querySelector('svg') || von).getBoundingClientRect();
         const sx = a.left + a.width / 2, sy = a.top + a.height / 2;
         // Zielpunkt aus dem Layout, ohne die Einblend-Bewegung der Ablage
         const tx = ablage.offsetLeft + ziel.offsetLeft + ziel.offsetWidth / 2;

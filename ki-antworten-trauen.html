@@ -3941,7 +3941,7 @@ SOFTWARE. --><symbol id="ls-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.
   }
   function fliegen(von, fertig) {
     if (ruhig.matches || !Element.prototype.animate) { fertig(); return; }
-    var a = von.getBoundingClientRect(), ziel = ablage.querySelector('.k-ablage__zeichen');
+    var a = (von.querySelector('svg') || von).getBoundingClientRect(), ziel = ablage.querySelector('.k-ablage__zeichen');
     var sx = a.left + a.width / 2, sy = a.top + a.height / 2;
     var tx = ablage.offsetLeft + ziel.offsetLeft + ziel.offsetWidth / 2, ty = ablage.offsetTop + ziel.offsetTop + ziel.offsetHeight / 2;
     var dx = tx - sx, dy = ty - sy, hoch = Math.max(50, Math.min(140, Math.hypot(dx, dy) * .22));
